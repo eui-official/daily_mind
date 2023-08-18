@@ -27,6 +27,7 @@ class FavoriteSounds extends StatelessWidget {
             child: GridView.builder(
               shrinkWrap: true,
               itemCount: soundCards.length,
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: spacing(2),
                 crossAxisSpacing: spacing(2),

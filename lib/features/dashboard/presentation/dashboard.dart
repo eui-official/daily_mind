@@ -21,9 +21,11 @@ class Dashboard extends StatelessWidget {
               children: [
                 const AppLogo(),
                 Flexible(
-                  child: Container(
-                    padding: EdgeInsets.only(top: spacing(5)),
-                    child: const FavoriteSounds(),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: EdgeInsets.only(top: spacing(5)),
+                      child: const FavoriteSounds(),
+                    ),
                   ),
                 ),
               ],
