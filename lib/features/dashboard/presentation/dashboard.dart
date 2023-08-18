@@ -1,3 +1,4 @@
+import 'package:daily_mind/features/create_mix/presentation/create_mix.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -17,7 +18,7 @@ class Dashboard extends StatelessWidget {
               ?.copyWith(fontWeight: FontWeight.w700),
         ),
       ),
-      body: Container(),
+      body: const CreateMix(),
     );
   }
 }
