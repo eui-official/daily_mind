@@ -22,7 +22,7 @@ class ListSounds extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Chọn gói âm thanh',
+            'Âm thanh',
             style: context.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w700,
             ),
