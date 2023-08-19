@@ -1,6 +1,6 @@
 import 'package:daily_mind/features/app_logo/presentation/app_logo.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
-import 'package:daily_mind/features/create_mix/presentation/create_mix.dart';
+import 'package:daily_mind/features/list_mix/presentation/list_mix.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -19,7 +19,7 @@ class Dashboard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppLogo(),
-                Expanded(child: CreateMix()),
+                Expanded(child: ListMix()),
               ],
             ),
           ),
