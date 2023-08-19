@@ -3,8 +3,8 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 final backgroundImages = [
-  'assets/images/forrest.png',
-  'assets/images/red_forrest.png'
+  'assets/images/forest.png',
+  'assets/images/red_forest.png'
 ];
 
 class Background extends StatelessWidget {

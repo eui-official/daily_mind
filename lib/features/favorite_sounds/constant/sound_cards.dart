@@ -7,7 +7,7 @@ final List<SoundCard> soundCards = [
     image: 'assets/images/rain_forest.png',
   ),
   SoundCard(
-    id: 'forrest',
+    id: 'forest',
     name: 'Rừng',
     image: 'assets/images/forest_with_birds.png',
   ),

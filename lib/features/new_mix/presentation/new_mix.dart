@@ -1,7 +1,10 @@
+import 'package:animated_switcher_plus/animated_switcher_plus.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
-import 'package:daily_mind/features/create_mix_button/presentation/create_mix_button.dart';
 import 'package:daily_mind/features/favorite_sounds/presentation/favorite_sounds.dart';
+import 'package:daily_mind/features/new_mix/presentation/new_mix_add.dart';
+import 'package:daily_mind/features/new_mix/presentation/new_mix_create_button.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -35,20 +38,21 @@ class NewMix extends HookConsumerWidget {
                 bottom: spacing(8),
               ),
               child: SafeArea(
-                child: Column(
-                  children: [
-                    FavoriteSounds(
-                      selectingId: newMixSelectedState.selectingId,
-                      onSelected: newMixSelectedNotifier.onSelected,
-                    ),
-                  ],
+                child: FavoriteSounds(
+                  selectingId: newMixSelectedState.selectingId,
+                  onSelected: newMixSelectedNotifier.onSelected,
                 ),
               ),
             ),
           ),
           Positioned(
             bottom: spacing(3),
-            child: const CreateMixButton(),
+            child: AnimatedSwitcherFlip.flipX(
+              duration: defaultDuration,
+              child: newMixSelectedState.isSelecting
+                  ? const NewMixAdd()
+                  : const NewMixCreateButton(),
+            ),
           ),
         ],
       ),

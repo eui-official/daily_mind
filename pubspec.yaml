@@ -43,6 +43,8 @@ dependencies:
   hooks_riverpod: ^2.3.8
   freezed_annotation: ^2.4.1
   lottie: ^2.6.0
+  just_audio: ^0.9.34
+  animated_switcher_plus: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,7 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+    - assets/sounds/rain/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

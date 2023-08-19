@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewMixSelected {
-  String? get selectingId => throw _privateConstructorUsedError;
+  String get selectingId => throw _privateConstructorUsedError;
   List<String> get ids => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $NewMixSelectedCopyWith<$Res> {
           NewMixSelected value, $Res Function(NewMixSelected) then) =
       _$NewMixSelectedCopyWithImpl<$Res, NewMixSelected>;
   @useResult
-  $Res call({String? selectingId, List<String> ids});
+  $Res call({String selectingId, List<String> ids});
 }
 
 /// @nodoc
@@ -46,14 +46,14 @@ class _$NewMixSelectedCopyWithImpl<$Res, $Val extends NewMixSelected>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectingId = freezed,
+    Object? selectingId = null,
     Object? ids = null,
   }) {
     return _then(_value.copyWith(
-      selectingId: freezed == selectingId
+      selectingId: null == selectingId
           ? _value.selectingId
           : selectingId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       ids: null == ids
           ? _value.ids
           : ids // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,7 @@ abstract class _$$_NewMixSelectedCopyWith<$Res>
       __$$_NewMixSelectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? selectingId, List<String> ids});
+  $Res call({String selectingId, List<String> ids});
 }
 
 /// @nodoc
@@ -84,14 +84,14 @@ class __$$_NewMixSelectedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectingId = freezed,
+    Object? selectingId = null,
     Object? ids = null,
   }) {
     return _then(_$_NewMixSelected(
-      selectingId: freezed == selectingId
+      selectingId: null == selectingId
           ? _value.selectingId
           : selectingId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       ids: null == ids
           ? _value._ids
           : ids // ignore: cast_nullable_to_non_nullable
@@ -102,12 +102,14 @@ class __$$_NewMixSelectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewMixSelected implements _NewMixSelected {
-  const _$_NewMixSelected({this.selectingId, required final List<String> ids})
-      : _ids = ids;
+class _$_NewMixSelected extends _NewMixSelected {
+  const _$_NewMixSelected(
+      {required this.selectingId, required final List<String> ids})
+      : _ids = ids,
+        super._();
 
   @override
-  final String? selectingId;
+  final String selectingId;
   final List<String> _ids;
   @override
   List<String> get ids {
@@ -142,13 +144,14 @@ class _$_NewMixSelected implements _NewMixSelected {
       __$$_NewMixSelectedCopyWithImpl<_$_NewMixSelected>(this, _$identity);
 }
 
-abstract class _NewMixSelected implements NewMixSelected {
+abstract class _NewMixSelected extends NewMixSelected {
   const factory _NewMixSelected(
-      {final String? selectingId,
+      {required final String selectingId,
       required final List<String> ids}) = _$_NewMixSelected;
+  const _NewMixSelected._() : super._();
 
   @override
-  String? get selectingId;
+  String get selectingId;
   @override
   List<String> get ids;
   @override

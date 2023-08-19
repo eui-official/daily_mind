@@ -4,8 +4,14 @@ part 'new_mix_selected.freezed.dart';
 
 @freezed
 class NewMixSelected with _$NewMixSelected {
+  const NewMixSelected._();
+
   const factory NewMixSelected({
-    String? selectingId,
+    required String selectingId,
     required List<String> ids,
   }) = _NewMixSelected;
+
+  bool get isSelecting => selectingId.isNotEmpty;
+
+  bool get isNoSound => ids.isEmpty;
 }
