@@ -34,6 +34,7 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
 
     if (soundPath.isNotEmpty) {
       player.setAsset(soundPath);
+      player.setLoopMode(LoopMode.all);
       player.play();
     }
   }
