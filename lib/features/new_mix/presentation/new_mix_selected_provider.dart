@@ -17,12 +17,16 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
 
   void onSelected(String id) {
     if (state.selectingId == id) {
-      state = state.copyWith(selectingId: emptyString);
-      player.stop();
+      onResetSelectingId();
     } else {
       state = state.copyWith(selectingId: id);
       onPlayingSound(id);
     }
+  }
+
+  void onResetSelectingId() {
+    state = state.copyWith(selectingId: emptyString);
+    player.stop();
   }
 
   void onPlayingSound(String id) {
@@ -34,11 +38,13 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
     }
   }
 
-  void addNewId(String id) {
+  void onAddCurrentId() {
     final newIds = List<String>.from(state.ids);
-    newIds.add(id);
+    newIds.add(state.selectingId);
 
     state = state.copyWith(ids: newIds);
+
+    onResetSelectingId();
   }
 }
 

@@ -7,11 +7,12 @@ class NewMixAdd extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final newMixSelectedNotifier = ref.read(newMixSelectedProvider.notifier);
     final newMixSelectedState = ref.watch(newMixSelectedProvider);
     final soundItem = newMixSelectedState.soundItem;
 
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: newMixSelectedNotifier.onAddCurrentId,
       style: ElevatedButton.styleFrom(
         fixedSize: const Size.fromHeight(48),
       ),
