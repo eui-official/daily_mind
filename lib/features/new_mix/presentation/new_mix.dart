@@ -23,7 +23,10 @@ class NewMix extends StatelessWidget {
           const Background(backgroundIndex: 1),
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: spacing(4)),
+              padding: EdgeInsets.only(
+                top: spacing(4),
+                bottom: spacing(8),
+              ),
               child: const SafeArea(
                 child: Column(
                   children: [
