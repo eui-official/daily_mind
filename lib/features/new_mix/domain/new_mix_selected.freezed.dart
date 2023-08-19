@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewMixSelected {
+  String? get selectingId => throw _privateConstructorUsedError;
   List<String> get ids => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $NewMixSelectedCopyWith<$Res> {
           NewMixSelected value, $Res Function(NewMixSelected) then) =
       _$NewMixSelectedCopyWithImpl<$Res, NewMixSelected>;
   @useResult
-  $Res call({List<String> ids});
+  $Res call({String? selectingId, List<String> ids});
 }
 
 /// @nodoc
@@ -45,9 +46,14 @@ class _$NewMixSelectedCopyWithImpl<$Res, $Val extends NewMixSelected>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? selectingId = freezed,
     Object? ids = null,
   }) {
     return _then(_value.copyWith(
+      selectingId: freezed == selectingId
+          ? _value.selectingId
+          : selectingId // ignore: cast_nullable_to_non_nullable
+              as String?,
       ids: null == ids
           ? _value.ids
           : ids // ignore: cast_nullable_to_non_nullable
@@ -64,7 +70,7 @@ abstract class _$$_NewMixSelectedCopyWith<$Res>
       __$$_NewMixSelectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> ids});
+  $Res call({String? selectingId, List<String> ids});
 }
 
 /// @nodoc
@@ -78,9 +84,14 @@ class __$$_NewMixSelectedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? selectingId = freezed,
     Object? ids = null,
   }) {
     return _then(_$_NewMixSelected(
+      selectingId: freezed == selectingId
+          ? _value.selectingId
+          : selectingId // ignore: cast_nullable_to_non_nullable
+              as String?,
       ids: null == ids
           ? _value._ids
           : ids // ignore: cast_nullable_to_non_nullable
@@ -92,8 +103,11 @@ class __$$_NewMixSelectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NewMixSelected implements _NewMixSelected {
-  const _$_NewMixSelected({required final List<String> ids}) : _ids = ids;
+  const _$_NewMixSelected({this.selectingId, required final List<String> ids})
+      : _ids = ids;
 
+  @override
+  final String? selectingId;
   final List<String> _ids;
   @override
   List<String> get ids {
@@ -104,7 +118,7 @@ class _$_NewMixSelected implements _NewMixSelected {
 
   @override
   String toString() {
-    return 'NewMixSelected(ids: $ids)';
+    return 'NewMixSelected(selectingId: $selectingId, ids: $ids)';
   }
 
   @override
@@ -112,12 +126,14 @@ class _$_NewMixSelected implements _NewMixSelected {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NewMixSelected &&
+            (identical(other.selectingId, selectingId) ||
+                other.selectingId == selectingId) &&
             const DeepCollectionEquality().equals(other._ids, _ids));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_ids));
+  int get hashCode => Object.hash(
+      runtimeType, selectingId, const DeepCollectionEquality().hash(_ids));
 
   @JsonKey(ignore: true)
   @override
@@ -127,9 +143,12 @@ class _$_NewMixSelected implements _NewMixSelected {
 }
 
 abstract class _NewMixSelected implements NewMixSelected {
-  const factory _NewMixSelected({required final List<String> ids}) =
-      _$_NewMixSelected;
+  const factory _NewMixSelected(
+      {final String? selectingId,
+      required final List<String> ids}) = _$_NewMixSelected;
 
+  @override
+  String? get selectingId;
   @override
   List<String> get ids;
   @override

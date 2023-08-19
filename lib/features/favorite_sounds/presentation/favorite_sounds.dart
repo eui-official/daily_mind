@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class FavoriteSounds extends StatelessWidget {
+  final ValueChanged<String> onSelected;
+  final String? selectingId;
+
   const FavoriteSounds({
     super.key,
+    this.selectingId,
+    required this.onSelected,
   });
 
   @override
@@ -35,8 +40,13 @@ class FavoriteSounds extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final soundCard = soundCards[index];
+                final isPlaying = soundCard.id == selectingId;
 
-                return SoundCardItem(soundCard: soundCard);
+                return SoundCardItem(
+                  isPlaying: isPlaying,
+                  onSelected: onSelected,
+                  soundCard: soundCard,
+                );
               },
             ),
           ),
