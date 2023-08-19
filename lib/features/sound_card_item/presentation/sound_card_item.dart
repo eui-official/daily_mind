@@ -8,13 +8,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
 class SoundCardItem extends HookWidget {
-  final SoundCard soundCard;
+  final SoundItem soundItem;
   final bool isPlaying;
   final ValueChanged<String> onSelected;
 
   const SoundCardItem({
     super.key,
-    required this.soundCard,
+    required this.soundItem,
     required this.isPlaying,
     required this.onSelected,
   });
@@ -23,16 +23,16 @@ class SoundCardItem extends HookWidget {
   Widget build(BuildContext context) {
     final onTap = useCallback(
       () {
-        onSelected(soundCard.id);
+        onSelected(soundItem.id);
       },
-      [soundCard.id],
+      [soundItem.id],
     );
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(spacing(3)),
       child: Stack(
         children: [
-          SoundCardItemBackground(image: soundCard.image),
+          SoundCardItemBackground(image: soundItem.image),
           const SoundCardItemGradient(),
           Positioned(
             bottom: spacing(2),
@@ -44,7 +44,7 @@ class SoundCardItem extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    soundCard.name,
+                    soundItem.name,
                     style: context.textTheme.titleLarge,
                   ),
                   if (isPlaying) const MusicPlaying(),

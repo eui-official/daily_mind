@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/favorite_sounds/constant/sound_cards.dart';
+import 'package:daily_mind/features/favorite_sounds/constant/sound_items.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class FavoriteSounds extends StatelessWidget {
             padding: EdgeInsets.only(top: spacing(4)),
             child: GridView.builder(
               shrinkWrap: true,
-              itemCount: soundCards.length,
+              itemCount: soundItems.length,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: spacing(2),
@@ -39,13 +39,13 @@ class FavoriteSounds extends StatelessWidget {
                 crossAxisCount: 2,
               ),
               itemBuilder: (context, index) {
-                final soundCard = soundCards[index];
-                final isPlaying = soundCard.id == selectingId;
+                final soundItem = soundItems[index];
+                final isPlaying = soundItem.id == selectingId;
 
                 return SoundCardItem(
                   isPlaying: isPlaying,
                   onSelected: onSelected,
-                  soundCard: soundCard,
+                  soundItem: soundItem,
                 );
               },
             ),

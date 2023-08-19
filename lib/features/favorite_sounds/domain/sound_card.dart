@@ -1,9 +1,9 @@
-class SoundCard {
+class SoundItem {
   final String id;
   final String name;
   final String image;
 
-  SoundCard({
+  SoundItem({
     required this.id,
     required this.name,
     required this.image,

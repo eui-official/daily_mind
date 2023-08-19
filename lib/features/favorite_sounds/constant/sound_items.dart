@@ -1,32 +1,32 @@
 import 'package:daily_mind/features/favorite_sounds/domain/sound_card.dart';
 
-final List<SoundCard> soundCards = [
-  SoundCard(
+final List<SoundItem> soundItems = [
+  SoundItem(
     id: 'rain',
     name: 'Mưa',
     image: 'assets/images/rain_forest.png',
   ),
-  SoundCard(
+  SoundItem(
     id: 'forest',
     name: 'Rừng',
     image: 'assets/images/forest_with_birds.png',
   ),
-  SoundCard(
+  SoundItem(
     id: 'wind',
     name: 'Gió',
     image: 'assets/images/wind_and_peaceful.png',
   ),
-  SoundCard(
+  SoundItem(
     id: 'fire',
     name: 'Lửa',
     image: 'assets/images/firecamp.png',
   ),
-  SoundCard(
+  SoundItem(
     id: 'river',
     name: 'Sông',
     image: 'assets/images/river.png',
   ),
-  SoundCard(
+  SoundItem(
     id: 'sky',
     name: 'Vũ trụ',
     image: 'assets/images/sky.png',
