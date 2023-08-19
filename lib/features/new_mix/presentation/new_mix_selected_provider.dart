@@ -10,7 +10,7 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
   NewMixSelectedNotifier()
       : super(
           const NewMixSelected(
-            ids: [],
+            selectedIds: [],
             selectingId: emptyString,
           ),
         );
@@ -39,10 +39,10 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
   }
 
   void onAddCurrentId() {
-    final newIds = List<String>.from(state.ids);
-    newIds.add(state.selectingId);
+    final newSelectedIds = List<String>.from(state.selectedIds);
+    newSelectedIds.add(state.selectingId);
 
-    state = state.copyWith(ids: newIds);
+    state = state.copyWith(selectedIds: newSelectedIds);
 
     onResetSelectingId();
   }

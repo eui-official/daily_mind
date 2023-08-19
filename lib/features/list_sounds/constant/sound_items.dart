@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/favorite_sounds/domain/sound_card.dart';
+import 'package:daily_mind/features/list_sounds/domain/sound_card.dart';
 
 final List<SoundItem> soundItems = [
   SoundItem(

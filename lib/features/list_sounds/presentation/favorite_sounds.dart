@@ -1,14 +1,14 @@
-import 'package:daily_mind/features/favorite_sounds/constant/sound_items.dart';
+import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class FavoriteSounds extends StatelessWidget {
-  final ValueChanged<String> onSelected;
+class ListSounds extends StatelessWidget {
   final String? selectingId;
+  final ValueChanged<String> onSelected;
 
-  const FavoriteSounds({
+  const ListSounds({
     super.key,
     this.selectingId,
     required this.onSelected,

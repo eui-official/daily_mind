@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/favorite_sounds/domain/sound_card.dart';
+import 'package:daily_mind/features/list_sounds/domain/sound_card.dart';
 import 'package:daily_mind/features/music_playing/presentation/music_playing.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item_background.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item_gradient.dart';
@@ -8,15 +8,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
 class SoundCardItem extends HookWidget {
-  final SoundItem soundItem;
   final bool isPlaying;
+  final SoundItem soundItem;
   final ValueChanged<String> onSelected;
 
   const SoundCardItem({
     super.key,
-    required this.soundItem,
     required this.isPlaying,
     required this.onSelected,
+    required this.soundItem,
   });
 
   @override
@@ -57,7 +57,7 @@ class SoundCardItem extends HookWidget {
             child: InkWell(
               onTap: onTap,
             ),
-          )
+          ),
         ],
       ),
     );

@@ -2,7 +2,7 @@ import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
-import 'package:daily_mind/features/favorite_sounds/presentation/favorite_sounds.dart';
+import 'package:daily_mind/features/list_sounds/presentation/favorite_sounds.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_add.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_create_button.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
@@ -38,7 +38,7 @@ class NewMix extends HookConsumerWidget {
                 bottom: spacing(8),
               ),
               child: SafeArea(
-                child: FavoriteSounds(
+                child: ListSounds(
                   selectingId: newMixSelectedState.selectingId,
                   onSelected: newMixSelectedNotifier.onSelected,
                 ),
