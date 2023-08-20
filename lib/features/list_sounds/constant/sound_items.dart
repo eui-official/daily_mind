@@ -23,7 +23,7 @@ final List<SoundItem> soundItems = [
   ),
   SoundItem(
     id: 'water',
-    name: 'Sông',
+    name: 'Nước',
     image: 'assets/images/water.png',
   ),
   SoundItem(
