@@ -7,6 +7,7 @@ import 'package:get/utils.dart';
 
 class ListSounds extends StatelessWidget {
   final String? selectingId;
+  final List<String> selectedIds;
   final ValueChanged<String> onSelected;
   final Widget headerTrailing;
 
@@ -14,6 +15,7 @@ class ListSounds extends StatelessWidget {
     super.key,
     this.selectingId,
     this.headerTrailing = emptyWidget,
+    required this.selectedIds,
     required this.onSelected,
   });
 
@@ -53,9 +55,11 @@ class ListSounds extends StatelessWidget {
               itemBuilder: (context, index) {
                 final soundItem = soundItems[index];
                 final isPlaying = soundItem.id == selectingId;
+                final isSelected = selectedIds.contains(soundItem.id);
 
                 return SoundCardItem(
                   isPlaying: isPlaying,
+                  isSelected: isSelected,
                   onSelected: onSelected,
                   soundItem: soundItem,
                 );

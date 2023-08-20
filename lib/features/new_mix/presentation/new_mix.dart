@@ -39,6 +39,7 @@ class NewMix extends HookConsumerWidget {
                 child: ListSounds(
                   headerTrailing: const NewMixSelectedRow(),
                   selectingId: newMixSelectedState.selectingId,
+                  selectedIds: newMixSelectedState.selectedIds,
                   onSelected: newMixSelectedNotifier.onSelected,
                 ),
               ),
