@@ -74,7 +74,13 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+    - assets/sounds/
+    - assets/sounds/fire/
+    - assets/sounds/forest/
     - assets/sounds/rain/
+    - assets/sounds/space/
+    - assets/sounds/water/
+    - assets/sounds/wind/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

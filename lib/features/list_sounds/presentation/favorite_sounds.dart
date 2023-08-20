@@ -1,3 +1,4 @@
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -7,10 +8,12 @@ import 'package:get/utils.dart';
 class ListSounds extends StatelessWidget {
   final String? selectingId;
   final ValueChanged<String> onSelected;
+  final Widget headerTrailing;
 
   const ListSounds({
     super.key,
     this.selectingId,
+    this.headerTrailing = emptyWidget,
     required this.onSelected,
   });
 
@@ -21,10 +24,19 @@ class ListSounds extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Âm thanh',
-            style: context.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w700,
+          SizedBox(
+            height: spacing(6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Âm thanh',
+                  style: context.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                headerTrailing
+              ],
             ),
           ),
           Container(

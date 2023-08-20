@@ -45,7 +45,7 @@ class SoundCardItem extends HookWidget {
                 children: [
                   Text(
                     soundItem.name,
-                    style: context.textTheme.titleLarge,
+                    style: context.textTheme.titleMedium,
                   ),
                   if (isPlaying) const MusicPlaying(),
                 ],

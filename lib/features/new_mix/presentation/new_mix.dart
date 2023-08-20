@@ -1,11 +1,9 @@
-import 'package:animated_switcher_plus/animated_switcher_plus.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:daily_mind/features/list_sounds/presentation/favorite_sounds.dart';
-import 'package:daily_mind/features/new_mix/presentation/new_mix_add.dart';
-import 'package:daily_mind/features/new_mix/presentation/new_mix_create_button.dart';
+import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
+import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_row.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -39,6 +37,7 @@ class NewMix extends HookConsumerWidget {
               ),
               child: SafeArea(
                 child: ListSounds(
+                  headerTrailing: const NewMixSelectedRow(),
                   selectingId: newMixSelectedState.selectingId,
                   onSelected: newMixSelectedNotifier.onSelected,
                 ),
@@ -47,12 +46,7 @@ class NewMix extends HookConsumerWidget {
           ),
           Positioned(
             bottom: spacing(3),
-            child: AnimatedSwitcherFlip.flipX(
-              duration: defaultDuration,
-              child: newMixSelectedState.isSelecting
-                  ? const NewMixAdd()
-                  : const NewMixCreateButton(),
-            ),
+            child: const NewMixButtonSwitcher(),
           ),
         ],
       ),

@@ -16,6 +16,8 @@ class NewMixSelected with _$NewMixSelected {
 
   bool get isSelecting => selectingId.isNotEmpty;
 
+  bool get isCanAdd => isSelecting && !selectedIds.contains(selectingId);
+
   bool get isNoSound => selectedIds.isEmpty;
 
   SoundItem? get soundItem =>

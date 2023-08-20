@@ -22,13 +22,13 @@ final List<SoundItem> soundItems = [
     image: 'assets/images/firecamp.png',
   ),
   SoundItem(
-    id: 'river',
+    id: 'water',
     name: 'Sông',
-    image: 'assets/images/river.png',
+    image: 'assets/images/water.png',
   ),
   SoundItem(
-    id: 'sky',
-    name: 'Vũ trụ',
+    id: 'space',
+    name: 'Không gian',
     image: 'assets/images/sky.png',
   ),
 ];

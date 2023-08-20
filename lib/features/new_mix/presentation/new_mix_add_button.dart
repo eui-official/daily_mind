@@ -2,8 +2,10 @@ import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provid
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class NewMixAdd extends HookConsumerWidget {
-  const NewMixAdd({super.key});
+class NewMixAddButton extends HookConsumerWidget {
+  const NewMixAddButton({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
