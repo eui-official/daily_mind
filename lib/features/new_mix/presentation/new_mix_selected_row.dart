@@ -13,6 +13,10 @@ class NewMixSelectedRow extends HookConsumerWidget {
     final newMixSelectedState = ref.watch(newMixSelectedProvider);
     final selectedIds = newMixSelectedState.selectedIds;
 
+    if (selectedIds.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Material(
       borderRadius: BorderRadius.circular(context.width),
       color: Colors.white12,
