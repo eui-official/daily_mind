@@ -1,9 +1,9 @@
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
-import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:daily_mind/features/list_sounds/presentation/favorite_sounds.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_row.dart';
+import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,20 +28,14 @@ class NewMix extends HookConsumerWidget {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          const Background(backgroundIndex: 1),
-          SingleChildScrollView(
+          StackBackground(
             child: Container(
-              padding: EdgeInsets.only(
-                top: spacing(4),
-                bottom: spacing(8),
-              ),
-              child: SafeArea(
-                child: ListSounds(
-                  headerTrailing: const NewMixSelectedRow(),
-                  selectingId: newMixSelectedState.selectingId,
-                  selectedIds: newMixSelectedState.selectedIds,
-                  onSelected: newMixSelectedNotifier.onSelected,
-                ),
+              padding: EdgeInsets.only(bottom: spacing(10)),
+              child: ListSounds(
+                headerTrailing: const NewMixSelectedRow(),
+                selectingId: newMixSelectedState.selectingId,
+                selectedIds: newMixSelectedState.selectedIds,
+                onSelected: newMixSelectedNotifier.onSelected,
               ),
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SoundCardItemGradient extends StatelessWidget {
-  const SoundCardItemGradient({super.key});
+class BaseBackgroundGradient extends StatelessWidget {
+  const BaseBackgroundGradient({super.key});
 
   @override
   Widget build(BuildContext context) {

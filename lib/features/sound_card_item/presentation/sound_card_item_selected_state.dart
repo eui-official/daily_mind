@@ -9,7 +9,7 @@ class SoundCardItemSelectedState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacing(3)),
+        borderRadius: BorderRadius.circular(spacing(2)),
         border: Border.all(
           width: 2,
           color: context.theme.primaryColor,
