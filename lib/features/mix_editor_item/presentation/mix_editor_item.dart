@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_widgets/base_background_gradient.dart';
 import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
+import 'package:daily_mind/features/mix_editor_item/presentation/mix_editor_content.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -32,13 +33,12 @@ class MixEditorItem extends StatelessWidget {
               ),
             ),
             const BaseBackgroundGradient(),
-            Container(
-              padding: EdgeInsets.all(spacing(2)),
-              child: Text(
-                soundItem.name,
-                style: context.textTheme.titleMedium,
-              ),
-            )
+            Positioned(
+              bottom: spacing(2),
+              left: 0,
+              right: 0,
+              child: MixEditorContent(name: soundItem.name),
+            ),
           ],
         ),
       ),
