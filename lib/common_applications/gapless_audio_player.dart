@@ -3,8 +3,10 @@ import 'package:daily_mind/features/new_mix/constant/sounds.dart';
 import 'package:just_audio/just_audio.dart';
 
 class GaplessAudioPlayer {
-  final player = AudioPlayer();
+  final audioPlayer = AudioPlayer();
   late List<AudioSource> children;
+
+  Stream<bool> get playingStream => audioPlayer.playingStream;
 
   void setSource(String id) async {
     final path = sounds[id] ?? emptyString;
@@ -22,7 +24,7 @@ class GaplessAudioPlayer {
         children: children,
       );
 
-      await player.setAudioSource(
+      await audioPlayer.setAudioSource(
         playlist,
         initialIndex: 0,
         initialPosition: Duration.zero,
@@ -31,14 +33,14 @@ class GaplessAudioPlayer {
   }
 
   void play() async {
-    await player.play();
+    await audioPlayer.play();
   }
 
   void stop() async {
-    await player.stop();
+    await audioPlayer.stop();
   }
 
   void setVolume(double volume) async {
-    await player.setVolume(volume);
+    await audioPlayer.setVolume(volume);
   }
 }

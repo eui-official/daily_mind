@@ -15,22 +15,15 @@ class VolumeSlider extends HookWidget {
   Widget build(BuildContext context) {
     final volume = useState(initVolume);
 
-    return Row(
-      children: [
-        const Icon(Icons.volume_up),
-        Expanded(
-          child: Slider(
-            value: volume.value.toDouble(),
-            min: 0,
-            max: 1,
-            divisions: 100,
-            onChanged: (value) {
-              volume.value = value;
-              onChanged(value);
-            },
-          ),
-        )
-      ],
+    return Slider(
+      value: volume.value.toDouble(),
+      min: 0,
+      max: 1,
+      divisions: 100,
+      onChanged: (value) {
+        volume.value = value;
+        onChanged(value);
+      },
     );
   }
 }

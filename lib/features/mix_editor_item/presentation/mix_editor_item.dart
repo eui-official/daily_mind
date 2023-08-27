@@ -3,6 +3,7 @@ import 'package:daily_mind/common_widgets/base_background_gradient.dart';
 import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
 import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
 import 'package:daily_mind/features/mix_editor_item/presentation/mix_editor_content.dart';
+import 'package:daily_mind/features/toggle_play_mode_button/presentation/toggle_play_mode_button.dart';
 import 'package:daily_mind/features/volume_slider/presentation/volume_slider.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:daily_mind/types/commom.dart';
@@ -65,14 +66,21 @@ class MixEditorItem extends HookWidget {
             ),
             const BaseBackgroundGradient(),
             Container(
-              padding: EdgeInsets.all(spacing(2)),
+              padding: EdgeInsets.symmetric(vertical: spacing(2)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  VolumeSlider(
-                    onChanged: onChanged,
-                    initVolume: itemState.volume,
+                  Row(
+                    children: [
+                      TogglePlayModeButton(player: player),
+                      Expanded(
+                        child: VolumeSlider(
+                          onChanged: onChanged,
+                          initVolume: itemState.volume,
+                        ),
+                      )
+                    ],
                   ),
                   MixEditorContent(name: soundItem.name),
                 ],
