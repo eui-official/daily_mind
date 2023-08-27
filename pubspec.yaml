@@ -45,6 +45,10 @@ dependencies:
   lottie: ^2.6.0
   just_audio: ^0.9.34
   animated_switcher_plus: ^1.0.3
+  isar: ^3.1.0+1
+  isar_flutter_libs: ^3.1.0+1
+  path_provider: ^2.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +61,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   build_runner: ^2.4.6
-  freezed: ^2.4.2
+  freezed: ^2.4.1
+  isar_generator: ^3.1.0+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -19,6 +19,7 @@ class ListMix extends HookWidget {
     );
 
     return Container(
+      alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
         horizontal: spacing(2),
         vertical: spacing(4),
@@ -31,12 +32,14 @@ class ListMix extends HookWidget {
             'Danh sách kết hợp âm thanh',
             style: context.textTheme.titleLarge,
           ),
-          ElevatedButton(
-            onPressed: onOpenCreateNewMix,
-            style: ElevatedButton.styleFrom(
-              minimumSize: const Size.fromHeight(48),
+          Center(
+            child: ElevatedButton(
+              onPressed: onOpenCreateNewMix,
+              style: ElevatedButton.styleFrom(
+                fixedSize: const Size(200, 48),
+              ),
+              child: const Text('Thêm mới'),
             ),
-            child: const Text('Thêm mới'),
           )
         ],
       ),

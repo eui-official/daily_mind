@@ -6,6 +6,6 @@ part 'mix_editor_state.freezed.dart';
 @freezed
 class MixEditorState with _$MixEditorState {
   const factory MixEditorState({
-    required List<MixEditorItemState> items,
+    required List<MixEditorItemState> itemStates,
   }) = _MixEditorState;
 }

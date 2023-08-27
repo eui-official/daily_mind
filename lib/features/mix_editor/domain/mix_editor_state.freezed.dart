@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MixEditorState {
-  List<MixEditorItemState> get items => throw _privateConstructorUsedError;
+  List<MixEditorItemState> get itemStates => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MixEditorStateCopyWith<MixEditorState> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $MixEditorStateCopyWith<$Res> {
           MixEditorState value, $Res Function(MixEditorState) then) =
       _$MixEditorStateCopyWithImpl<$Res, MixEditorState>;
   @useResult
-  $Res call({List<MixEditorItemState> items});
+  $Res call({List<MixEditorItemState> itemStates});
 }
 
 /// @nodoc
@@ -45,12 +45,12 @@ class _$MixEditorStateCopyWithImpl<$Res, $Val extends MixEditorState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = null,
+    Object? itemStates = null,
   }) {
     return _then(_value.copyWith(
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      itemStates: null == itemStates
+          ? _value.itemStates
+          : itemStates // ignore: cast_nullable_to_non_nullable
               as List<MixEditorItemState>,
     ) as $Val);
   }
@@ -64,7 +64,7 @@ abstract class _$$_MixEditorStateCopyWith<$Res>
       __$$_MixEditorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MixEditorItemState> items});
+  $Res call({List<MixEditorItemState> itemStates});
 }
 
 /// @nodoc
@@ -78,12 +78,12 @@ class __$$_MixEditorStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = null,
+    Object? itemStates = null,
   }) {
     return _then(_$_MixEditorState(
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
+      itemStates: null == itemStates
+          ? _value._itemStates
+          : itemStates // ignore: cast_nullable_to_non_nullable
               as List<MixEditorItemState>,
     ));
   }
@@ -92,20 +92,20 @@ class __$$_MixEditorStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MixEditorState implements _MixEditorState {
-  const _$_MixEditorState({required final List<MixEditorItemState> items})
-      : _items = items;
+  const _$_MixEditorState({required final List<MixEditorItemState> itemStates})
+      : _itemStates = itemStates;
 
-  final List<MixEditorItemState> _items;
+  final List<MixEditorItemState> _itemStates;
   @override
-  List<MixEditorItemState> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
+  List<MixEditorItemState> get itemStates {
+    if (_itemStates is EqualUnmodifiableListView) return _itemStates;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(_itemStates);
   }
 
   @override
   String toString() {
-    return 'MixEditorState(items: $items)';
+    return 'MixEditorState(itemStates: $itemStates)';
   }
 
   @override
@@ -113,12 +113,13 @@ class _$_MixEditorState implements _MixEditorState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MixEditorState &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality()
+                .equals(other._itemStates, _itemStates));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_itemStates));
 
   @JsonKey(ignore: true)
   @override
@@ -129,10 +130,10 @@ class _$_MixEditorState implements _MixEditorState {
 
 abstract class _MixEditorState implements MixEditorState {
   const factory _MixEditorState(
-      {required final List<MixEditorItemState> items}) = _$_MixEditorState;
+      {required final List<MixEditorItemState> itemStates}) = _$_MixEditorState;
 
   @override
-  List<MixEditorItemState> get items;
+  List<MixEditorItemState> get itemStates;
   @override
   @JsonKey(ignore: true)
   _$$_MixEditorStateCopyWith<_$_MixEditorState> get copyWith =>
