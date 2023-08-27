@@ -46,7 +46,7 @@ class MixEditorItem extends HookWidget {
     useEffect(() {
       onInit();
 
-      return () {};
+      return player.dispose;
     }, []);
 
     return SizedBox(

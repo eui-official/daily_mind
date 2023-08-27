@@ -43,4 +43,8 @@ class GaplessAudioPlayer {
   void setVolume(double volume) async {
     await audioPlayer.setVolume(volume);
   }
+
+  void dispose() async {
+    await audioPlayer.dispose();
+  }
 }
