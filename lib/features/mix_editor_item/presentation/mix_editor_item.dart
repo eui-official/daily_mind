@@ -1,21 +1,52 @@
+import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_widgets/base_background_gradient.dart';
 import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
+import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
 import 'package:daily_mind/features/mix_editor_item/presentation/mix_editor_content.dart';
+import 'package:daily_mind/features/volume_slider/presentation/volume_slider.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/types/commom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
-class MixEditorItem extends StatelessWidget {
-  final String id;
+class MixEditorItem extends HookWidget {
+  final MixEditorItemState itemState;
+  final OnItemVolumeChanged onItemVolumeChanged;
 
   const MixEditorItem({
     super.key,
-    required this.id,
+    required this.itemState,
+    required this.onItemVolumeChanged,
   });
 
   @override
   Widget build(BuildContext context) {
-    final soundItem = soundItems.firstWhere((item) => item.id == id);
+    final player = useMemoized(() => GaplessAudioPlayer());
+    final soundItem = soundItems.firstWhere((item) => item.id == itemState.id);
+
+    final onInit = useCallback(
+      () {
+        player.setSource(itemState.id);
+        player.setVolume(itemState.volume);
+        player.play();
+      },
+      [],
+    );
+
+    final onChanged = useCallback(
+      (double volume) {
+        player.setVolume(volume);
+        onItemVolumeChanged(itemState, volume);
+      },
+      [player, itemState],
+    );
+
+    useEffect(() {
+      onInit();
+
+      return () {};
+    }, []);
 
     return SizedBox(
       height: spacing(15),
@@ -33,11 +64,19 @@ class MixEditorItem extends StatelessWidget {
               ),
             ),
             const BaseBackgroundGradient(),
-            Positioned(
-              bottom: spacing(2),
-              left: 0,
-              right: 0,
-              child: MixEditorContent(name: soundItem.name),
+            Container(
+              padding: EdgeInsets.all(spacing(2)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  VolumeSlider(
+                    onChanged: onChanged,
+                    initVolume: itemState.volume,
+                  ),
+                  MixEditorContent(name: soundItem.name),
+                ],
+              ),
             ),
           ],
         ),

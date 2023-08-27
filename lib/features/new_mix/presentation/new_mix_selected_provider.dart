@@ -1,6 +1,5 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/features/new_mix/constant/sounds.dart';
 import 'package:daily_mind/features/new_mix/domain/new_mix_selected.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -30,12 +29,8 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
   }
 
   void onPlayingSound(String id) {
-    final soundPath = sounds[id] ?? emptyString;
-
-    if (soundPath.isNotEmpty) {
-      player.setSource(soundPath);
-      player.play();
-    }
+    player.setSource(id);
+    player.play();
   }
 
   void onAddCurrentId() {
