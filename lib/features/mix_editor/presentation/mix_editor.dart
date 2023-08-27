@@ -1,3 +1,4 @@
+import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/mix_editor/presentation/mix_editor_add_button.dart';
 import 'package:daily_mind/features/mix_editor/presentation/mix_editor_provider.dart';
@@ -9,6 +10,7 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixEditor extends HookConsumerWidget {
@@ -25,6 +27,17 @@ class MixEditor extends HookConsumerWidget {
 
     final mixEditorNotifier = ref.read(mixEditorMemoized.notifier);
     final mixEditorState = ref.watch(mixEditorMemoized);
+
+    final onAddANewMix = useCallback(
+      () {
+        db.addANewMix(mixEditorState.itemStates);
+
+        context
+          ..pop()
+          ..pop();
+      },
+      [mixEditorState.itemStates],
+    );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -71,9 +84,7 @@ class MixEditor extends HookConsumerWidget {
           ),
           Positioned(
             bottom: spacing(3),
-            child: NewMixEditorAddButton(
-              onPressed: mixEditorNotifier.addANewMix,
-            ),
+            child: NewMixEditorAddButton(onPressed: onAddANewMix),
           ),
         ],
       ),
