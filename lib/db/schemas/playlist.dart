@@ -13,7 +13,7 @@ class Playlist {
 
 @embedded
 class PlaylistItem {
-  String? id;
+  late String id;
 
-  double? volume;
+  late double volume;
 }

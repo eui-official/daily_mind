@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const background = Color(0xFF272727);
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.sakura,
+  scheme: FlexScheme.amber,
   useMaterial3: true,
 );
 

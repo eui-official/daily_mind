@@ -635,12 +635,7 @@ int _playlistItemEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  {
-    final value = object.id;
-    if (value != null) {
-      bytesCount += 3 + value.length * 3;
-    }
-  }
+  bytesCount += 3 + object.id.length * 3;
   return bytesCount;
 }
 
@@ -661,8 +656,8 @@ PlaylistItem _playlistItemDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = PlaylistItem();
-  object.id = reader.readStringOrNull(offsets[0]);
-  object.volume = reader.readDoubleOrNull(offsets[1]);
+  object.id = reader.readString(offsets[0]);
+  object.volume = reader.readDouble(offsets[1]);
   return object;
 }
 
@@ -674,9 +669,9 @@ P _playlistItemDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readString(offset)) as P;
     case 1:
-      return (reader.readDoubleOrNull(offset)) as P;
+      return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -684,25 +679,8 @@ P _playlistItemDeserializeProp<P>(
 
 extension PlaylistItemQueryFilter
     on QueryBuilder<PlaylistItem, PlaylistItem, QFilterCondition> {
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'id',
-      ));
-    });
-  }
-
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
-      idIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'id',
-      ));
-    });
-  }
-
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idEqualTo(
-    String? value, {
+    String value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -715,7 +693,7 @@ extension PlaylistItemQueryFilter
   }
 
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idGreaterThan(
-    String? value, {
+    String value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -730,7 +708,7 @@ extension PlaylistItemQueryFilter
   }
 
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idLessThan(
-    String? value, {
+    String value, {
     bool include = false,
     bool caseSensitive = true,
   }) {
@@ -745,8 +723,8 @@ extension PlaylistItemQueryFilter
   }
 
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idBetween(
-    String? lower,
-    String? upper, {
+    String lower,
+    String upper, {
     bool includeLower = true,
     bool includeUpper = true,
     bool caseSensitive = true,
@@ -832,26 +810,8 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
-      volumeIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'volume',
-      ));
-    });
-  }
-
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
-      volumeIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'volume',
-      ));
-    });
-  }
-
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> volumeEqualTo(
-    double? value, {
+    double value, {
     double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
@@ -865,7 +825,7 @@ extension PlaylistItemQueryFilter
 
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
       volumeGreaterThan(
-    double? value, {
+    double value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -881,7 +841,7 @@ extension PlaylistItemQueryFilter
 
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
       volumeLessThan(
-    double? value, {
+    double value, {
     bool include = false,
     double epsilon = Query.epsilon,
   }) {
@@ -896,8 +856,8 @@ extension PlaylistItemQueryFilter
   }
 
   QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> volumeBetween(
-    double? lower,
-    double? upper, {
+    double lower,
+    double upper, {
     bool includeLower = true,
     bool includeUpper = true,
     double epsilon = Query.epsilon,

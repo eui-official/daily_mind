@@ -17,6 +17,10 @@ class Db {
     );
   }
 
+  Stream<List<Playlist>> getAllPlaylists() {
+    return isar.playlists.where().findAll().asStream();
+  }
+
   void addANewMix(List<MixEditorItemState> itemStates) {
     final items = itemStates.map((item) {
       return PlaylistItem()
