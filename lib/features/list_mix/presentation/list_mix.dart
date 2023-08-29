@@ -26,14 +26,20 @@ class ListMix extends HookWidget {
         vertical: spacing(4),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Danh sách kết hợp âm thanh',
-            style: context.textTheme.titleLarge,
+          Wrap(
+            children: [
+              Text(
+                'Danh sách kết hợp âm thanh',
+                style: context.textTheme.titleLarge,
+              ),
+              Container(
+                padding: EdgeInsets.only(top: spacing(5)),
+                child: const ListPlaylist(),
+              )
+            ],
           ),
-          const ListPlaylist(),
           Center(
             child: ElevatedButton(
               onPressed: onOpenCreateNewMix,
