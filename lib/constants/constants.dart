@@ -7,3 +7,5 @@ const emptyFunction = null;
 const emptyWidget = SizedBox.shrink();
 
 const defaultDuration = Duration(milliseconds: 300);
+
+const diskDuration = Duration(seconds: 10);

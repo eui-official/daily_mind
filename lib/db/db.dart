@@ -21,6 +21,10 @@ class Db {
     return isar.playlists.where().findAll().asStream();
   }
 
+  Playlist? getPlaylistById(int id) {
+    return isar.playlists.where().idEqualTo(id).findFirstSync();
+  }
+
   void addANewMix(List<MixEditorItemState> itemStates) {
     final items = itemStates.map((item) {
       return PlaylistItem()
