@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/list_mix/presentation/list_playlist.dart';
+import 'package:daily_mind/features/list_mix/presentation/list_chord.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -39,7 +39,7 @@ class ListMix extends HookWidget {
                 Flexible(
                   child: Container(
                     padding: EdgeInsets.only(top: spacing(5)),
-                    child: const ListPlaylist(),
+                    child: const ListChord(),
                   ),
                 )
               ],

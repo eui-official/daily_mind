@@ -6,10 +6,10 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
-class ListPlaylistItem extends StatelessWidget {
+class ListChordItem extends StatelessWidget {
   final Playlist playlist;
 
-  const ListPlaylistItem({
+  const ListChordItem({
     super.key,
     required this.playlist,
   });
