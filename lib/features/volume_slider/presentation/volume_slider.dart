@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class VolumeSlider extends HookWidget {
-  final ValueChanged<double> onChanged;
+  final ValueChanged<double> onVolumeChanged;
   final double initVolume;
 
   const VolumeSlider({
     super.key,
     required this.initVolume,
-    required this.onChanged,
+    required this.onVolumeChanged,
   });
 
   @override
@@ -22,7 +22,7 @@ class VolumeSlider extends HookWidget {
       divisions: 100,
       onChanged: (value) {
         volume.value = value;
-        onChanged(value);
+        onVolumeChanged(value);
       },
     );
   }

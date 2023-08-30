@@ -44,7 +44,7 @@ class MixEditor extends HookConsumerWidget {
       appBar: AppBar(
         forceMaterialTransparency: true,
         flexibleSpace: const AppBarFilter(),
-        title: const Text('Chỉnh sửa hợp âm'),
+        title: const Text('Chỉnh sửa âm thanh'),
       ),
       body: Stack(
         alignment: Alignment.center,

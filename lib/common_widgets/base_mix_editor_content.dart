@@ -2,10 +2,10 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class MixEditorContent extends StatelessWidget {
+class BaseMixEditorContent extends StatelessWidget {
   final String name;
 
-  const MixEditorContent({
+  const BaseMixEditorContent({
     super.key,
     required this.name,
   });
