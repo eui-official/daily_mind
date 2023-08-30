@@ -8,11 +8,8 @@ class PlayMixNotifier extends StateNotifier<void> {
   PlayMixNotifier() : super({});
 
   List<PlayerItem> playerItems = [];
-  List<PlaylistItem> items = [];
 
-  void playPlaylist(List<PlaylistItem> inputItems) {
-    items = inputItems;
-
+  void playPlaylist(List<PlaylistItem> items) {
     for (var item in items) {
       final player = GaplessAudioPlayer();
 
