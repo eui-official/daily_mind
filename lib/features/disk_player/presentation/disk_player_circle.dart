@@ -28,6 +28,7 @@ class DiskPlayerCircle extends HookWidget {
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
+          border: Border.all(color: Colors.white60),
           boxShadow: kElevationToShadow[4],
           image: DecorationImage(
             image: AssetImage(image),

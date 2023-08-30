@@ -18,11 +18,19 @@ class DiskPlayer extends StatelessWidget {
         DiskPlayerCircle(image: image),
         Container(
           decoration: const BoxDecoration(
-            color: Colors.black87,
+            color: Colors.white54,
             shape: BoxShape.circle,
           ),
           width: context.width / 4,
           height: context.height / 4,
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.black87,
+            shape: BoxShape.circle,
+          ),
+          width: context.width / 8,
+          height: context.height / 8,
         ),
       ],
     );
