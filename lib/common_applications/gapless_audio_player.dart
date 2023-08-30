@@ -19,7 +19,6 @@ class GaplessAudioPlayer {
       ];
 
       final playlist = ConcatenatingAudioSource(
-        useLazyPreparation: true,
         shuffleOrder: DefaultShuffleOrder(),
         children: children,
       );
@@ -33,6 +32,7 @@ class GaplessAudioPlayer {
   }
 
   void play() async {
+    await audioPlayer.setLoopMode(LoopMode.all);
     await audioPlayer.play();
   }
 

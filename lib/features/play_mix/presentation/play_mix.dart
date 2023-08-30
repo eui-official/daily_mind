@@ -42,7 +42,9 @@ class PlayMix extends HookConsumerWidget {
               StackBackground(
                 child: Column(
                   children: [
-                    DiskPlayer(image: image),
+                    Center(
+                      child: DiskPlayer(image: image),
+                    ),
                   ],
                 ),
               ),
