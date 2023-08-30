@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
 import 'package:isar/isar.dart';
@@ -23,6 +24,34 @@ class Db {
 
   Playlist? getPlaylistById(int id) {
     return isar.playlists.where().idEqualTo(id).findFirstSync();
+  }
+
+  void updateVolume(
+    double volume,
+    String itemId,
+    int playlistId,
+  ) {
+    final playlist =
+        isar.playlists.where().idEqualTo(playlistId).findFirstSync();
+
+    safeValueBuilder(
+      playlist,
+      (safePlaylist) {
+        final items = safePlaylist.items ?? [];
+        final index = items.indexWhere((item) => item.id == itemId);
+        final item = items[index];
+
+        item.volume = volume;
+
+        items[index] = item;
+
+        safePlaylist.items = items;
+
+        isar.writeTxnSync(() {
+          isar.playlists.putSync(safePlaylist);
+        });
+      },
+    );
   }
 
   void addANewMix(List<MixEditorItemState> itemStates) {

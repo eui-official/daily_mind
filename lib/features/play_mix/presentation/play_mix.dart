@@ -59,6 +59,7 @@ class PlayMix extends HookConsumerWidget {
                 ) {
                   return PlayMixAdjustBottom(
                     items: items,
+                    playlistId: playlist?.id,
                     scrollController: scrollController,
                   );
                 },

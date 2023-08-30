@@ -1,14 +1,17 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/features/play_mix/domain/player_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PlayMixNotifier extends StateNotifier<void> {
   PlayMixNotifier() : super({});
 
-  List<GaplessAudioPlayer> players = [];
+  List<PlayerItem> playerItems = [];
+  List<PlaylistItem> items = [];
 
-  void playPlaylist(List<PlaylistItem> items) {
-    players = [];
+  void playPlaylist(List<PlaylistItem> inputItems) {
+    items = inputItems;
 
     for (var item in items) {
       final player = GaplessAudioPlayer();
@@ -17,13 +20,23 @@ class PlayMixNotifier extends StateNotifier<void> {
       player.setVolume(item.volume);
       player.play();
 
-      players.add(player);
+      playerItems.add(PlayerItem(
+        player: player,
+        id: item.id,
+      ));
     }
   }
 
+  void updateVolume(double volume, String itemId, int playlistId) {
+    final playerItem = playerItems.firstWhere((item) => item.id == itemId);
+    playerItem.player.setVolume(volume);
+
+    db.updateVolume(volume, itemId, playlistId);
+  }
+
   void disposePlaylist() {
-    for (var player in players) {
-      player.dispose();
+    for (var playerItme in playerItems) {
+      playerItme.player.dispose();
     }
   }
 }
