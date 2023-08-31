@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
 class PlayMixAdjustBottom extends HookWidget {
-  final int? playlistId;
+  final int playlistId;
   final List<PlaylistItem> items;
   final ScrollController scrollController;
 
@@ -14,7 +14,7 @@ class PlayMixAdjustBottom extends HookWidget {
     super.key,
     required this.items,
     required this.scrollController,
-    this.playlistId,
+    required this.playlistId,
   });
 
   @override

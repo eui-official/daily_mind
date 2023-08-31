@@ -34,7 +34,7 @@ class PlayMix extends HookConsumerWidget {
     return EmptyWidgetBuilder(
       data: playlist,
       builder: (checkedPlaylist) {
-        final items = playlist?.items ?? [];
+        final items = checkedPlaylist.items ?? [];
         final image = items.first.id.soundItem.image;
 
         return Scaffold(
@@ -59,7 +59,7 @@ class PlayMix extends HookConsumerWidget {
                 ) {
                   return PlayMixAdjustBottom(
                     items: items,
-                    playlistId: playlist?.id,
+                    playlistId: checkedPlaylist.id,
                     scrollController: scrollController,
                   );
                 },

@@ -4,12 +4,12 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class PlayMixListItem extends StatelessWidget {
-  final int? playlistId;
+  final int playlistId;
   final List<PlaylistItem> items;
 
   const PlayMixListItem({
     super.key,
-    this.playlistId,
+    required this.playlistId,
     required this.items,
   });
 
