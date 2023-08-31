@@ -22,6 +22,9 @@ class MixEditorItem extends HookWidget {
     final player = useMemoized(() => GaplessAudioPlayer());
     final soundItem = soundItems.firstWhere((item) => item.id == itemState.id);
 
+    final playingSnapshot = useStream(player.playingStream);
+    final isPlaying = playingSnapshot.data ?? false;
+
     final onInit = useCallback(
       () {
         player.setSource(itemState.id);
@@ -50,7 +53,11 @@ class MixEditorItem extends HookWidget {
       initVolume: itemState.volume,
       name: soundItem.name,
       onVolumeChanged: onVolumeChanged,
-      prefixChild: TogglePlayModeButton(player: player),
+      prefixChild: TogglePlayModeButton(
+        isPlaying: isPlaying,
+        onStop: player.stop,
+        onStart: player.play,
+      ),
     );
   }
 }
