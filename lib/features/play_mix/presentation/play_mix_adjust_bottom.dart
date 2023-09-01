@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_list_item.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -34,6 +35,7 @@ class PlayMixAdjustBottom extends HookWidget {
               'Danh sách âm thanh',
               style: context.textTheme.bodyLarge,
             ),
+            const BaseTextField(),
             PlayMixListItem(
               items: items,
               playlistId: playlistId,

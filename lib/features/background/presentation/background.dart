@@ -1,5 +1,4 @@
 import 'package:blur/blur.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 final backgroundImages = [
@@ -24,6 +23,8 @@ class Background extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-    ).blurred(blurColor: background);
+    ).blurred(
+      blurColor: Colors.black,
+    );
   }
 }

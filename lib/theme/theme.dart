@@ -1,11 +1,12 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/material.dart';
-
-const background = Color(0xFF272727);
+import 'package:google_fonts/google_fonts.dart';
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.amber,
-  useMaterial3: true,
+  fontFamily: GoogleFonts.inter().fontFamily,
+  scheme: FlexScheme.sakura,
+  subThemesData: FlexSubThemesData(
+    elevatedButtonRadius: spacing(5),
+  ),
 );
 
 double spacing([size = 1]) => size * 8.0;

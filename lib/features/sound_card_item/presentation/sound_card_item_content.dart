@@ -17,6 +17,7 @@ class SoundCardItemContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+      height: spacing(3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

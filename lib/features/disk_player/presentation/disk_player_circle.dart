@@ -34,7 +34,7 @@ class DiskPlayerCircle extends HookWidget {
           ),
         ),
         width: context.width,
-        height: context.height / 2,
+        height: context.height / 2.5,
       ),
     );
   }
