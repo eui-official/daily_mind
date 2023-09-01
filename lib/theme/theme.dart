@@ -4,9 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 final darkTheme = FlexThemeData.dark(
   fontFamily: GoogleFonts.inter().fontFamily,
   scheme: FlexScheme.sakura,
-  subThemesData: FlexSubThemesData(
-    elevatedButtonRadius: spacing(5),
-  ),
+  useMaterial3: true,
 );
 
 double spacing([size = 1]) => size * 8.0;

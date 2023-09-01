@@ -10,12 +10,14 @@ class PlayMixAdjustBottom extends HookWidget {
   final int playlistId;
   final List<PlaylistItem> items;
   final ScrollController scrollController;
+  final ValueChanged<String>? onChanged;
 
   const PlayMixAdjustBottom({
     super.key,
     required this.items,
     required this.scrollController,
     required this.playlistId,
+    this.onChanged,
   });
 
   @override
@@ -35,7 +37,10 @@ class PlayMixAdjustBottom extends HookWidget {
               'Danh sách âm thanh',
               style: context.textTheme.bodyLarge,
             ),
-            const BaseTextField(),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: spacing(3)),
+              child: BaseTextField(onChanged: onChanged),
+            ),
             PlayMixListItem(
               items: items,
               playlistId: playlistId,
