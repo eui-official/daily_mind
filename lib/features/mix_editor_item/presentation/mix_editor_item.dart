@@ -56,7 +56,7 @@ class MixEditorItem extends HookWidget {
       prefixChild: TogglePlayModeButton(
         isPlaying: isPlaying,
         onStop: player.stop,
-        onStart: player.play,
+        onPlay: player.play,
       ),
     );
   }

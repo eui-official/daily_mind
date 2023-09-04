@@ -6,16 +6,28 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 
 class DiskPlayerCircle extends HookWidget {
+  final bool isPlaying;
   final String image;
 
   const DiskPlayerCircle({
     super.key,
     required this.image,
+    required this.isPlaying,
   });
 
   @override
   Widget build(BuildContext context) {
     final animation = useAnimationController(duration: diskDuration)..repeat();
+
+    useEffect(() {
+      if (isPlaying) {
+        animation.repeat();
+      } else {
+        animation.stop();
+      }
+
+      return () {};
+    }, [isPlaying]);
 
     return AnimatedBuilder(
       animation: animation,

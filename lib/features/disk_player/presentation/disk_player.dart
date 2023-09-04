@@ -1,12 +1,15 @@
 import 'package:daily_mind/features/disk_player/presentation/disk_player_circle.dart';
+import 'package:daily_mind/features/play_mix/presentation/play_mix_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class DiskPlayer extends StatelessWidget {
+  final bool isPlaying;
   final String image;
 
   const DiskPlayer({
     super.key,
+    required this.isPlaying,
     required this.image,
   });
 
@@ -15,7 +18,10 @@ class DiskPlayer extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        DiskPlayerCircle(image: image),
+        DiskPlayerCircle(
+          isPlaying: isPlaying,
+          image: image,
+        ),
         Container(
           decoration: const BoxDecoration(
             color: Colors.white54,
@@ -29,9 +35,10 @@ class DiskPlayer extends StatelessWidget {
             color: Colors.black87,
             shape: BoxShape.circle,
           ),
-          width: context.width / 8,
-          height: context.height / 8,
+          width: context.width / 6,
+          height: context.height / 6,
         ),
+        const PlayMixToggleButton(),
       ],
     );
   }
