@@ -34,10 +34,20 @@ class TogglePlayModeButton extends HookWidget {
       [isPlaying, onPlay, onStop],
     );
 
+    useEffect(() {
+      if (isPlaying) {
+        animationController.forward();
+      } else {
+        animationController.reverse();
+      }
+
+      return () {};
+    }, [isPlaying]);
+
     return IconButton(
       onPressed: onToggle,
       icon: AnimatedIcon(
-        icon: AnimatedIcons.pause_play,
+        icon: AnimatedIcons.play_pause,
         progress: animationController,
         size: size,
       ),

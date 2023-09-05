@@ -22,16 +22,17 @@ class PlayMix extends HookConsumerWidget {
     final playlist = useMemoized(() => db.getPlaylistById(playlistId));
     final items = playlist?.items ?? [];
 
-    final playMixState = ref.watch(playMixProvider);
     final playMixNotifier = ref.read(playMixProvider.notifier);
+    final playBackState = useStream(playMixNotifier.audioHandler.playbackState);
+    final isPlaying = playBackState.data?.playing ?? false;
 
     useEffect(() {
       Future(() {
-        playMixNotifier.playPlaylist(items);
+        playMixNotifier.audioHandler.setupPlaylist(items);
       });
 
       return () {
-        playMixNotifier.disposePlaylist();
+        playMixNotifier.audioHandler.dispose();
       };
     }, [items]);
 
@@ -50,7 +51,7 @@ class PlayMix extends HookConsumerWidget {
                   children: [
                     DiskPlayer(
                       image: image,
-                      isPlaying: playMixState.isPlaying,
+                      isPlaying: isPlaying,
                     ),
                   ],
                 ),
