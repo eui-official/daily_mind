@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/logger.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/new_mix/constant/sounds.dart';
 import 'package:just_audio/just_audio.dart';
@@ -32,7 +33,12 @@ class GaplessAudioPlayer {
   }
 
   void play() async {
-    await audioPlayer.setLoopMode(LoopMode.all);
+    try {
+      await audioPlayer.setLoopMode(LoopMode.all);
+    } catch (error) {
+      logger.e(error);
+    }
+
     await audioPlayer.play();
   }
 

@@ -1,6 +1,7 @@
+import 'package:audio_service/audio_service.dart';
+import 'package:daily_mind/common_applications/audio_handler.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/router/router.dart';
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/features/init/presentation/init.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -9,26 +10,17 @@ void main() async {
 
   await db.init();
 
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
+  final audioHandler = await AudioService.init(
+    builder: () => DailyMindAudioHandler(),
+    config: const AudioServiceConfig(
+      androidNotificationChannelId: 'dev.andyng.dailymind.channel.audio',
+      androidNotificationChannelName: 'Music Playback',
     ),
   );
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'DailyMind',
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.dark,
-      routerConfig: routerConfig,
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  runApp(
+    ProviderScope(
+      child: Init(audioHandler: audioHandler),
+    ),
+  );
 }

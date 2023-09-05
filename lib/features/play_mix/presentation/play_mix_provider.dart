@@ -1,3 +1,5 @@
+import 'package:audio_service/audio_service.dart';
+import 'package:daily_mind/common_applications/audio_handler.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
@@ -14,18 +16,10 @@ class PlayMixNotifier extends StateNotifier<PlayMixState> {
           ),
         );
 
-  void play() {
-    for (var playerItme in state.playerItems) {
-      playerItme.player.play();
-      state = state.copyWith(isPlaying: true);
-    }
-  }
+  late DailyMindAudioHandler audioHandler;
 
-  void stop() {
-    for (var playerItme in state.playerItems) {
-      playerItme.player.stop();
-      state = state.copyWith(isPlaying: false);
-    }
+  void setAudioHandler(DailyMindAudioHandler newAudioHandler) {
+    audioHandler = newAudioHandler;
   }
 
   void playPlaylist(List<PlaylistItem> items) {
@@ -35,7 +29,6 @@ class PlayMixNotifier extends StateNotifier<PlayMixState> {
 
       player.setSource(item.id);
       player.setVolume(item.volume);
-      player.play();
 
       playerItems.add(PlayerItem(
         player: player,
@@ -44,6 +37,8 @@ class PlayMixNotifier extends StateNotifier<PlayMixState> {
 
       state = state.copyWith(playerItems: playerItems);
     }
+
+    play();
   }
 
   void updateVolume(double volume, String itemId, int playlistId) {
@@ -57,6 +52,24 @@ class PlayMixNotifier extends StateNotifier<PlayMixState> {
   void disposePlaylist() {
     for (var playerItme in state.playerItems) {
       playerItme.player.dispose();
+    }
+  }
+
+  void play() {
+    audioHandler.setSoundId(state.playerItems.first.id);
+    audioHandler.play();
+
+    for (var playerItme in state.playerItems) {
+      playerItme.player.play();
+
+      state = state.copyWith(isPlaying: true);
+    }
+  }
+
+  void stop() {
+    for (var playerItme in state.playerItems) {
+      playerItme.player.stop();
+      state = state.copyWith(isPlaying: false);
     }
   }
 }
