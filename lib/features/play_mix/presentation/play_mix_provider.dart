@@ -13,6 +13,7 @@ class PlayMixNotifier extends StateNotifier<void> {
 
   void updateVolume(double volume, String itemId, int playlistId) {
     audioHandler.updateVolume(volume, itemId, playlistId);
+
     db.updateVolume(volume, itemId, playlistId);
   }
 }

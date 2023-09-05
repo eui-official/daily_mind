@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
 class BaseTextField extends StatelessWidget {
+  final String? initialValue;
   final ValueChanged<String>? onChanged;
 
   const BaseTextField({
     super.key,
+    this.initialValue,
     this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       onChanged: onChanged,
+      initialValue: initialValue,
       decoration: const InputDecoration(
         hintText: 'Tên của danh sách',
       ),

@@ -26,6 +26,19 @@ class Db {
     return isar.playlists.where().idEqualTo(id).findFirstSync();
   }
 
+  void onUpdatePlaylistTitle(int playlistId, String title) {
+    final playlist =
+        isar.playlists.where().idEqualTo(playlistId).findFirstSync();
+
+    safeValueBuilder(playlist, (safePlaylist) {
+      safePlaylist.title = title;
+
+      isar.writeTxnSync(() {
+        isar.playlists.putSync(safePlaylist);
+      });
+    });
+  }
+
   void updateVolume(
     double volume,
     String itemId,

@@ -36,14 +36,14 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void stopMix() {
-    for (var playerItme in playerItems) {
-      playerItme.player.stop();
+    for (var playerItem in playerItems) {
+      playerItem.player.stop();
     }
   }
 
   void dispose() {
-    for (var playerItme in playerItems) {
-      playerItme.player.dispose();
+    for (var playerItem in playerItems) {
+      playerItem.player.dispose();
     }
   }
 

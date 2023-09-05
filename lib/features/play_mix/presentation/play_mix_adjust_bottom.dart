@@ -11,12 +11,14 @@ class PlayMixAdjustBottom extends HookWidget {
   final List<PlaylistItem> items;
   final ScrollController scrollController;
   final ValueChanged<String>? onChanged;
+  final String? initialTitle;
 
   const PlayMixAdjustBottom({
     super.key,
     required this.items,
     required this.scrollController,
     required this.playlistId,
+    this.initialTitle,
     this.onChanged,
   });
 
@@ -26,7 +28,7 @@ class PlayMixAdjustBottom extends HookWidget {
       padding: EdgeInsets.all(spacing(2)),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(spacing(5)),
-        color: context.theme.scaffoldBackgroundColor.withOpacity(0.9),
+        color: context.theme.colorScheme.background.withOpacity(0.6),
       ),
       child: SingleChildScrollView(
         controller: scrollController,
@@ -39,7 +41,10 @@ class PlayMixAdjustBottom extends HookWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: spacing(3)),
-              child: BaseTextField(onChanged: onChanged),
+              child: BaseTextField(
+                initialValue: initialTitle,
+                onChanged: onChanged,
+              ),
             ),
             PlayMixListItem(
               items: items,

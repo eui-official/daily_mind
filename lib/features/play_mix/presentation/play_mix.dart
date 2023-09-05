@@ -67,6 +67,11 @@ class PlayMix extends HookConsumerWidget {
                     items: items,
                     playlistId: checkedPlaylist.id,
                     scrollController: scrollController,
+                    initialTitle: checkedPlaylist.title,
+                    onChanged: (newName) => db.onUpdatePlaylistTitle(
+                      checkedPlaylist.id,
+                      newName,
+                    ),
                   );
                 },
               ),
