@@ -1,5 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 final backgroundImages = [
   'assets/images/forest.png',
@@ -24,7 +25,7 @@ class Background extends StatelessWidget {
         ),
       ),
     ).blurred(
-      blurColor: Colors.black,
+      blurColor: context.theme.colorScheme.background,
     );
   }
 }

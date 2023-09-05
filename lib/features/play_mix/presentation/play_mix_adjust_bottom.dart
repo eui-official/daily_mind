@@ -25,8 +25,8 @@ class PlayMixAdjustBottom extends HookWidget {
     return Container(
       padding: EdgeInsets.all(spacing(2)),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacing(4)),
-        color: Colors.black45,
+        borderRadius: BorderRadius.circular(spacing(5)),
+        color: context.theme.scaffoldBackgroundColor.withOpacity(0.9),
       ),
       child: SingleChildScrollView(
         controller: scrollController,
