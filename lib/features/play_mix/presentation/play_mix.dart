@@ -28,7 +28,7 @@ class PlayMix extends HookConsumerWidget {
 
     useEffect(() {
       Future(() {
-        playMixNotifier.audioHandler.setupPlaylist(items);
+        playMixNotifier.audioHandler.initPlaylist(items);
       });
 
       return () {

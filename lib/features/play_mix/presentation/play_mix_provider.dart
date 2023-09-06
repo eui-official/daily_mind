@@ -1,9 +1,11 @@
 import 'package:daily_mind/common_applications/audio_handler.dart';
 import 'package:daily_mind/db/db.dart';
+import 'package:daily_mind/features/play_mix/domain/play_mix_state.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class PlayMixNotifier extends StateNotifier<void> {
-  PlayMixNotifier() : super({});
+class PlayMixNotifier extends StateNotifier<PlayMixState> {
+  PlayMixNotifier() : super(const PlayMixState());
 
   late DailyMindAudioHandler audioHandler;
 
@@ -16,8 +18,13 @@ class PlayMixNotifier extends StateNotifier<void> {
 
     db.updateVolume(volume, itemId, playlistId);
   }
+
+  void updateTimer(Time time) {
+    state = state.copyWith(time: time);
+  }
 }
 
-final playMixProvider = StateNotifierProvider<PlayMixNotifier, void>((ref) {
+final playMixProvider =
+    StateNotifierProvider<PlayMixNotifier, PlayMixState>((ref) {
   return PlayMixNotifier();
 });

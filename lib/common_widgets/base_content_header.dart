@@ -22,7 +22,7 @@ class BaseContentHeader extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        child,
+        child
       ],
     );
   }

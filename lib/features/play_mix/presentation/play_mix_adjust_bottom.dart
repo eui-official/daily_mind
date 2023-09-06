@@ -2,6 +2,7 @@ import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_list_item.dart';
+import 'package:daily_mind/features/timer_picker/presentation/timer_picker.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +36,10 @@ class PlayMixAdjustBottom extends HookWidget {
         controller: scrollController,
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: space(
             [
+              const TimerPicker(),
               BaseContentHeader(
                 title: 'Tên playlist',
                 child: BaseTextField(
@@ -49,11 +52,11 @@ class PlayMixAdjustBottom extends HookWidget {
                 child: PlayMixListItem(
                   items: items,
                   playlistId: playlistId,
-                  padding: EdgeInsets.only(top: spacing(3)),
+                  padding: EdgeInsets.only(top: spacing(2)),
                 ),
               ),
             ],
-            height: spacing(4),
+            height: spacing(3),
           ),
         ),
       ),

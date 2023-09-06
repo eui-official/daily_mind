@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
@@ -8,7 +10,17 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   late String soundId;
   List<PlayerItem> playerItems = [];
 
-  void setupPlaylist(List<PlaylistItem> items) {
+  DailyMindAudioHandler() {
+    startTimer();
+  }
+
+  void startTimer() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      print(DateTime.now());
+    });
+  }
+
+  void initPlaylist(List<PlaylistItem> items) {
     for (var item in items) {
       final player = GaplessAudioPlayer();
 
