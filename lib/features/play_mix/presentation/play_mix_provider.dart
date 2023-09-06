@@ -21,6 +21,7 @@ class PlayMixNotifier extends StateNotifier<PlayMixState> {
 
   void updateTimer(Time time) {
     state = state.copyWith(time: time);
+    audioHandler.startTimer(time);
   }
 }
 

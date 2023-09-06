@@ -8,13 +8,13 @@ import 'package:daily_mind/features/play_mix/domain/player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler {
-  late String soundId;
+  Timer? timer;
   List<PlayerItem> playerItems = [];
 
   void startTimer(Time time) {
-    final timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      print(DateTime.now());
-    });
+    timer?.cancel();
+
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {});
   }
 
   void initPlaylist(List<PlaylistItem> items) {
