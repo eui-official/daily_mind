@@ -35,7 +35,7 @@ class TimerPicker extends HookConsumerWidget {
               ),
             );
           },
-          child: Text('${time.hour}:${time.minute}'),
+          child: Text(time.format(context)),
         ),
       ),
     );

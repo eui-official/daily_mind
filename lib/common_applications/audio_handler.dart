@@ -5,17 +5,14 @@ import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/play_mix/domain/player_item.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler {
   late String soundId;
   List<PlayerItem> playerItems = [];
 
-  DailyMindAudioHandler() {
-    startTimer();
-  }
-
-  void startTimer() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+  void startTimer(Time time) {
+    final timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       print(DateTime.now());
     });
   }
