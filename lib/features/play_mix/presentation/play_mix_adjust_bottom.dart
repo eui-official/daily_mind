@@ -1,6 +1,8 @@
+import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_list_item.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -27,30 +29,32 @@ class PlayMixAdjustBottom extends HookWidget {
     return Container(
       padding: EdgeInsets.all(spacing(2)),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacing(5)),
         color: context.theme.colorScheme.background.withOpacity(0.6),
       ),
       child: SingleChildScrollView(
         controller: scrollController,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Danh sách âm thanh',
-              style: context.textTheme.bodyLarge,
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: spacing(3)),
-              child: BaseTextField(
-                initialValue: initialTitle,
-                onChanged: onChanged,
+          children: space(
+            [
+              BaseContentHeader(
+                title: 'Tên playlist',
+                child: BaseTextField(
+                  initialValue: initialTitle,
+                  onChanged: onChanged,
+                ),
               ),
-            ),
-            PlayMixListItem(
-              items: items,
-              playlistId: playlistId,
-            ),
-          ],
+              BaseContentHeader(
+                title: 'Danh sách âm thanh',
+                child: PlayMixListItem(
+                  items: items,
+                  playlistId: playlistId,
+                  padding: EdgeInsets.only(top: spacing(3)),
+                ),
+              ),
+            ],
+            height: spacing(4),
+          ),
         ),
       ),
     );
