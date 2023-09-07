@@ -11,7 +11,8 @@ class ListChord extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final playlistSnapshot = useStream(db.getAllPlaylists());
+    final streamPlaylist = useMemoized(db.getAllPlaylists, []);
+    final playlistSnapshot = useStream(streamPlaylist);
     final playlists = playlistSnapshot.data ?? [];
 
     return ListView.separated(

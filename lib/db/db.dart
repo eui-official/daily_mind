@@ -19,7 +19,7 @@ class Db {
   }
 
   Stream<List<Playlist>> getAllPlaylists() {
-    return isar.playlists.where().findAll().asStream();
+    return isar.playlists.where().watch(fireImmediately: true);
   }
 
   Playlist? getPlaylistById(int id) {
