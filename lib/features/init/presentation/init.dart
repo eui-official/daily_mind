@@ -26,6 +26,7 @@ class Init extends HookConsumerWidget {
 
     return MaterialApp.router(
       title: 'DailyMind',
+      theme: darkTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       routerConfig: routerConfig,
