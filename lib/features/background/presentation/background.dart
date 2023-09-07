@@ -4,7 +4,7 @@ import 'package:get/utils.dart';
 
 final backgroundImages = [
   'assets/images/forest.png',
-  'assets/images/red_forest.png'
+  'assets/images/water.png'
 ];
 
 class Background extends StatelessWidget {
@@ -22,6 +22,10 @@ class Background extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(backgroundImages[backgroundIndex]),
           fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            context.theme.primaryColor,
+            BlendMode.overlay,
+          ),
         ),
       ),
     ).blurred(

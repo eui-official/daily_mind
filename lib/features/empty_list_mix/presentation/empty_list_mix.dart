@@ -17,7 +17,7 @@ class EmptyListMix extends StatelessWidget {
         color: context.theme.colorScheme.background.withOpacity(0.4),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: space(
           [
@@ -26,13 +26,14 @@ class EmptyListMix extends StatelessWidget {
               style: context.textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             Image.asset(
               'assets/images/playlist.png',
               width: 128,
+              height: 128,
               color: context.theme.primaryColor,
             ),
-            const Text('Bấm vào nút "Thêm mới" để tạo mới một playlist'),
           ],
           height: spacing(2),
         ),
