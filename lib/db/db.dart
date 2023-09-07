@@ -26,6 +26,12 @@ class Db {
     return isar.playlists.where().idEqualTo(id).findFirstSync();
   }
 
+  void deletePlaylist(int id) {
+    isar.writeTxnSync(() {
+      isar.playlists.deleteSync(id);
+    });
+  }
+
   void onUpdatePlaylistTitle(int playlistId, String title) {
     final playlist =
         isar.playlists.where().idEqualTo(playlistId).findFirstSync();

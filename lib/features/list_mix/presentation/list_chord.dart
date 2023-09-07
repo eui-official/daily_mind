@@ -19,7 +19,10 @@ class ListChord extends HookWidget {
       itemBuilder: (context, index) {
         final playlist = playlists[index];
 
-        return ListChordItem(playlist: playlist);
+        return ListChordItem(
+          key: ValueKey(playlist.id),
+          playlist: playlist,
+        );
       },
       separatorBuilder: (context, index) {
         return SizedBox(height: spacing());
