@@ -1,4 +1,5 @@
 import 'package:daily_mind/db/db.dart';
+import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_chord_item.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,10 @@ class ListChord extends HookWidget {
     final streamPlaylist = useMemoized(db.getAllPlaylists, []);
     final playlistSnapshot = useStream(streamPlaylist);
     final playlists = playlistSnapshot.data ?? [];
+
+    if (playlists.isEmpty) {
+      return const EmptyListMix();
+    }
 
     return ListView.separated(
       itemCount: playlists.length,

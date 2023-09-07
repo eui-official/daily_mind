@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -36,6 +38,7 @@ class TimerPicker extends HookConsumerWidget {
                 value: Time(hour: now.hour, minute: now.minute),
                 onChange: playMixNotifier.updateTimer,
                 is24HrFormat: true,
+                iosStylePicker: Platform.isIOS,
               ),
             );
           },

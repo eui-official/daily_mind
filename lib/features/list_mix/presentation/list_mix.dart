@@ -26,7 +26,7 @@ class ListMix extends HookWidget {
         vertical: spacing(4),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
             child: Column(
