@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const emptyString = '';
 
-const emptyFunction = null;
+const empty = null;
 
 const emptyWidget = SizedBox.shrink();
 

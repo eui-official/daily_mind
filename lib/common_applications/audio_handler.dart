@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/play_mix/domain/player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
@@ -14,7 +15,12 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   void startTimer(Time time) {
     timer?.cancel();
 
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {});
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (isBefore(time)) {
+        stopMix();
+        timer.cancel();
+      }
+    });
   }
 
   void initPlaylist(List<PlaylistItem> items) {
@@ -84,7 +90,11 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void pauseMediaNotification() {
-    playbackState.add(playbackState.value.copyWith(playing: false));
+    playbackState.add(
+      playbackState.value.copyWith(
+        playing: false,
+      ),
+    );
   }
 
   @override

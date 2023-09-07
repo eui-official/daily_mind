@@ -3,6 +3,7 @@ import 'package:daily_mind/features/play_mix/presentation/play_mix_provider.dart
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TimerPicker extends HookConsumerWidget {
@@ -15,8 +16,11 @@ class TimerPicker extends HookConsumerWidget {
     final playBackState = ref.watch(playMixProvider);
     final playMixNotifier = ref.read(playMixProvider.notifier);
 
-    final now = DateTime.now();
-    final time = playBackState.time ?? Time(hour: now.hour, minute: now.minute);
+    final display = useMemoized(() {
+      final time = playBackState.time;
+
+      return time?.format(context) ?? 'Chọn giờ';
+    }, [playBackState.time]);
 
     return BaseContentHeader(
       title: 'Hẹn giờ tắt',
@@ -35,7 +39,7 @@ class TimerPicker extends HookConsumerWidget {
               ),
             );
           },
-          child: Text(time.format(context)),
+          child: Text(display),
         ),
       ),
     );
