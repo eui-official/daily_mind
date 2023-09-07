@@ -72,7 +72,7 @@ class ListChordItem extends StatelessWidget {
                               ),
                             Text(
                               names,
-                              style: context.textTheme.bodySmall?.copyWith(
+                              style: context.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
