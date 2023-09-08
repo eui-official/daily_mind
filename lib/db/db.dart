@@ -22,12 +22,12 @@ class Db {
     return isar.playlists.where().watch(fireImmediately: true);
   }
 
-  Stream<List<Playlist>> streamPlaylistById(int id) {
-    return isar.playlists.where().idEqualTo(id).watch(fireImmediately: true);
+  Stream<Playlist?> streamPlaylistById(int id) {
+    return isar.playlists.watchObject(id, fireImmediately: true);
   }
 
   Playlist? getPlaylistById(int id) {
-    return isar.playlists.where().idEqualTo(id).findFirstSync();
+    return isar.playlists.getSync(id);
   }
 
   void deletePlaylist(int id) {
