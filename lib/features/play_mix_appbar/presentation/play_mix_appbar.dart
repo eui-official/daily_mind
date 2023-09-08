@@ -16,8 +16,8 @@ class PlayMixAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final streamPlaylist = useMemoized(() => db.streamPlaylistById(playlistId));
-    final playlists = useStream(streamPlaylist);
-    final playlist = playlists.data;
+    final snapshotPlaylist = useStream(streamPlaylist);
+    final playlist = snapshotPlaylist.data;
 
     return EmptyWidgetBuilder(
       data: playlist,
