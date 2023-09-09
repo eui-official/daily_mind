@@ -18,7 +18,7 @@ class Db {
     );
   }
 
-  Stream<List<Playlist>> getAllPlaylists() {
+  Stream<List<Playlist>> streamAllPlaylists() {
     return isar.playlists.where().watch(fireImmediately: true);
   }
 
@@ -28,6 +28,10 @@ class Db {
 
   Playlist? getPlaylistById(int id) {
     return isar.playlists.getSync(id);
+  }
+
+  List<Playlist> getAllPlaylists() {
+    return isar.playlists.where().findAllSync();
   }
 
   void deletePlaylist(int id) {
