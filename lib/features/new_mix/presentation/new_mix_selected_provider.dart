@@ -23,6 +23,13 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
     }
   }
 
+  void onDeleted(String id) {
+    final cloneSelectedIds = List<String>.from(state.selectedIds);
+    cloneSelectedIds.remove(id);
+
+    state = state.copyWith(selectedIds: cloneSelectedIds);
+  }
+
   void onResetSelectingId() {
     state = state.copyWith(selectingId: emptyString);
     player.stop();

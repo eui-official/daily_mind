@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class ListSounds extends StatelessWidget {
-  final String? selectingId;
   final List<String> selectedIds;
+  final String? selectingId;
   final ValueChanged<String> onSelected;
+  final ValueChanged<String> onDeleted;
   final Widget headerTrailing;
 
   const ListSounds({
@@ -18,6 +19,7 @@ class ListSounds extends StatelessWidget {
     this.headerTrailing = emptyWidget,
     required this.selectedIds,
     required this.onSelected,
+    required this.onDeleted,
   });
 
   @override
@@ -54,6 +56,7 @@ class ListSounds extends StatelessWidget {
                 isPlaying: isPlaying,
                 isSelected: isSelected,
                 onSelected: onSelected,
+                onDeleted: onDeleted,
                 soundItem: soundItem,
               );
             },
