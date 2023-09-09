@@ -31,7 +31,7 @@ class ListChord extends HookWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return SizedBox(height: spacing());
+        return SizedBox(height: spacing(2));
       },
     );
   }
