@@ -3,20 +3,20 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class StackBackground extends StatelessWidget {
-  final int backgroundIndex;
+  final String image;
   final Widget child;
 
   const StackBackground({
     super.key,
     required this.child,
-    this.backgroundIndex = 0,
+    required this.image,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Background(backgroundIndex: backgroundIndex),
+        Background(image: image),
         SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(

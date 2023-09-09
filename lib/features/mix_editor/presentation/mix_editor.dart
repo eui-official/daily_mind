@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/images.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/mix_editor/presentation/mix_editor_add_button.dart';
@@ -50,6 +51,7 @@ class MixEditor extends HookConsumerWidget {
         alignment: Alignment.center,
         children: [
           StackBackground(
+            image: images.randomBackground,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

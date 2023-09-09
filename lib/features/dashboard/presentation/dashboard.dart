@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/images.dart';
 import 'package:daily_mind/features/app_logo/presentation/app_logo.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_mix.dart';
@@ -10,11 +11,11 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
-          Background(),
-          SafeArea(
+          Background(image: images.randomBackground),
+          const SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

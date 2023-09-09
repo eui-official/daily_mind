@@ -49,6 +49,7 @@ class PlayMix extends HookConsumerWidget {
           body: Stack(
             children: [
               StackBackground(
+                image: image,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

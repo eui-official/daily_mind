@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/images.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/list_sounds/presentation/favorite_sounds.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
@@ -28,6 +29,7 @@ class NewMix extends HookConsumerWidget {
         alignment: Alignment.center,
         children: [
           StackBackground(
+            image: images.randomBackground,
             child: Container(
               padding: EdgeInsets.only(bottom: spacing(10)),
               child: ListSounds(
