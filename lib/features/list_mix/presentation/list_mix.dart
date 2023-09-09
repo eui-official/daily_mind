@@ -4,24 +4,15 @@ import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_chord.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
-import 'package:go_router/go_router.dart';
 
-class ListMix extends HookWidget {
+class ListMix extends StatelessWidget {
   const ListMix({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final onOpenCreateNewMix = useCallback(
-      () {
-        context.push('/new-mix');
-      },
-      [],
-    );
-
     return Stack(
       children: [
         Background(image: images.randomBackground),
@@ -57,15 +48,6 @@ class ListMix extends HookWidget {
                           ],
                         ),
                       ),
-                      Center(
-                        child: ElevatedButton(
-                          onPressed: onOpenCreateNewMix,
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(200, 48),
-                          ),
-                          child: const Text('Thêm mới'),
-                        ),
-                      )
                     ],
                   ),
                 ),

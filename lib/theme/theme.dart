@@ -8,7 +8,7 @@ const background = Color(0xFF2E1F27);
 
 final darkTheme = FlexThemeData.dark(
   fontFamily: GoogleFonts.inter().fontFamily,
-  scheme: FlexScheme.green,
+  scheme: FlexScheme.sakura,
   useMaterial3: true,
 );
 

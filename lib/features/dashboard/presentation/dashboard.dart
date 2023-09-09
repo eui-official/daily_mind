@@ -1,3 +1,4 @@
+import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_mix.dart';
@@ -24,6 +25,9 @@ class Dashboard extends HookConsumerWidget {
 
     return Scaffold(
       body: body,
+      extendBody: true,
+      floatingActionButton: const AddNewMixButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const AppNavigationBar(),
     );
   }
