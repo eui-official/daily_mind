@@ -12,7 +12,7 @@ Future<Uri> getSoundImageFromAsset(String id) async {
   Directory tempDir = await getApplicationDocumentsDirectory();
 
   String tempPath = tempDir.path;
-  var filePath = '$tempPath/daily_mind_art.png';
+  var filePath = '$tempPath/daily-mind-art.png';
 
   return (await File(filePath).writeAsBytes(
           buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes)))
