@@ -21,10 +21,10 @@ class PlayMixAppBar extends HookConsumerWidget implements PreferredSizeWidget {
 
     return EmptyWidgetBuilder(
       data: playlist,
-      builder: (checkedPlaylist) {
+      builder: (safePlaylist) {
         return AppBar(
           forceMaterialTransparency: true,
-          title: Text(checkedPlaylist.title ?? emptyString),
+          title: Text(safePlaylist.title ?? emptyString),
         );
       },
     );

@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/settings.dart';
 import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,6 +14,7 @@ class Db {
     isar = await Isar.open(
       [
         PlaylistSchema,
+        SettingsSchema,
       ],
       directory: dir.path,
     );
@@ -32,6 +34,28 @@ class Db {
 
   List<Playlist> getAllPlaylists() {
     return isar.playlists.where().findAllSync();
+  }
+
+  void addPrimary(String value) {
+    final themeSetting =
+        isar.settings.filter().typeEqualTo("theme").findFirstSync();
+
+    isar.writeTxnSync(() {
+      safeValueBuilder(
+        themeSetting,
+        (safeThemeSetting) {
+          safeThemeSetting.value = value;
+          isar.settings.putSync(safeThemeSetting);
+        },
+        () {
+          final newThemeSetting = Settings()
+            ..type = "theme"
+            ..value = value;
+
+          isar.settings.putSync(newThemeSetting);
+        },
+      );
+    });
   }
 
   void deletePlaylist(int id) {

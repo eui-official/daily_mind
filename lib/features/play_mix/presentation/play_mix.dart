@@ -39,13 +39,13 @@ class PlayMix extends HookConsumerWidget {
 
     return EmptyWidgetBuilder(
       data: playlist,
-      builder: (checkedPlaylist) {
-        final items = checkedPlaylist.items ?? [];
+      builder: (safePlaylist) {
+        final items = safePlaylist.items ?? [];
         final image = items.first.id.soundItem.image;
 
         return Scaffold(
           extendBodyBehindAppBar: true,
-          appBar: PlayMixAppBar(playlistId: checkedPlaylist.id),
+          appBar: PlayMixAppBar(playlistId: safePlaylist.id),
           body: Stack(
             children: [
               StackBackground(
@@ -69,11 +69,11 @@ class PlayMix extends HookConsumerWidget {
                 ) {
                   return PlayMixAdjustBottom(
                     items: items,
-                    playlistId: checkedPlaylist.id,
+                    playlistId: safePlaylist.id,
                     scrollController: scrollController,
-                    initialTitle: checkedPlaylist.title,
+                    initialTitle: safePlaylist.title,
                     onChanged: (newName) => db.onUpdatePlaylistTitle(
-                      checkedPlaylist.id,
+                      safePlaylist.id,
                       newName,
                     ),
                   );
