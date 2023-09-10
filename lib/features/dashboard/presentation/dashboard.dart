@@ -4,6 +4,7 @@ import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigati
 import 'package:daily_mind/features/list_mix/presentation/list_mix.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -25,8 +26,12 @@ class Dashboard extends HookConsumerWidget {
     }, [appNavigationBarState.index]);
 
     return Scaffold(
-      body: body,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: body,
+      ),
       extendBody: true,
+      extendBodyBehindAppBar: true,
       floatingActionButton: const AddNewMixButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: const AppNavigationBar(),
