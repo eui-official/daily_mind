@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/safe_builder.dart';
+import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
 import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
@@ -13,6 +14,7 @@ class Db {
 
     isar = await Isar.open(
       [
+        FirstTimeSchema,
         PlaylistSchema,
         SettingsSchema,
       ],
@@ -42,6 +44,23 @@ class Db {
 
   Stream<List<Settings>> streamTheme() {
     return isar.settings.filter().typeEqualTo("theme").watch();
+  }
+
+  FirstTime? getFirstTime(String task) {
+    return isar.firstTimes.filter().taskEqualTo(task).findFirstSync();
+  }
+
+  void addFirstTime(String task) {
+    final firstTime = getFirstTime(task);
+
+    safeValueBuilder(firstTime, (safeFirstTime) {
+      isar.firstTimes.putSync(safeFirstTime);
+    }, () {
+      isar.writeTxnSync(() {
+        final newFirstTime = FirstTime()..task = "introduction";
+        isar.firstTimes.putSync(newFirstTime);
+      });
+    });
   }
 
   void addTheme(String value) {

@@ -1,13 +1,22 @@
+import 'package:daily_mind/db/db.dart';
+import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
 import 'package:daily_mind/features/introduction/application/introduction.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-class Introduction extends StatelessWidget {
+class Introduction extends HookWidget {
   const Introduction({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final firstTime = useMemoized(() => db.getFirstTime("introduction"), []);
+
+    if (firstTime != null) {
+      return const Dashboard();
+    }
+
     return IntroductionScreen(
       pages: [
         createPageViewModel(
@@ -20,15 +29,17 @@ class Introduction extends StatelessWidget {
           context,
           title: 'Thư giãn hơn',
           body:
-              'Âm thanh pcủa thiên nhiên giúp thư giãn và giảm đi sự căng thẳng',
+              'Âm thanh của thiên nhiên giúp thư giãn và giảm đi sự căng thẳng',
           image: 'assets/images/relax.png',
         ),
       ],
-      showNextButton: false,
-      done: const Text("Tới trang chủ"),
       onDone: () {
+        db.addFirstTime("introduction");
         context.pushReplacement("/dashboard");
       },
+      next: const Text('Tiếp theo'),
+      done: const Text('Trang chủ'),
+      controlsPadding: const EdgeInsets.only(bottom: kToolbarHeight),
     );
   }
 }

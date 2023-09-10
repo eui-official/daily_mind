@@ -57,7 +57,8 @@ dependencies:
   animated_bottom_navigation_bar: ^1.2.0
   package_info_plus: ^4.1.0
   introduction_screen: ^3.1.11
-
+  is_first_run: ^1.0.0
+  shared_preferences: ^2.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

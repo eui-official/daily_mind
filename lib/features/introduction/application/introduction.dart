@@ -12,11 +12,20 @@ PageViewModel createPageViewModel(
   return PageViewModel(
     title: title,
     body: body,
-    image: Image.asset(
-      image,
-      height: context.height,
-      fit: BoxFit.cover,
-    ).blurred(blurColor: context.theme.scaffoldBackgroundColor),
+    image: Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(image),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            context.theme.primaryColor,
+            BlendMode.overlay,
+          ),
+        ),
+      ),
+    ).blurred(
+      blurColor: context.theme.colorScheme.background,
+    ),
     decoration: const PageDecoration(
       fullScreen: true,
       bodyPadding: EdgeInsets.zero,
