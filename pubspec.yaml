@@ -55,6 +55,7 @@ dependencies:
   flutter_slidable: ^3.0.0
   animations: ^2.0.8
   animated_bottom_navigation_bar: ^1.2.0
+  package_info_plus: ^4.1.0
 
 dev_dependencies:
   flutter_test:
