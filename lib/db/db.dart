@@ -36,7 +36,18 @@ class Db {
     return isar.playlists.where().findAllSync();
   }
 
-  void addPrimary(String value) {
+  Settings? getTheme() {
+    return isar.settings.filter().typeEqualTo("theme").findFirstSync();
+  }
+
+  Stream<List<Settings>> streamTheme() {
+    return isar.settings
+        .filter()
+        .typeEqualTo("theme")
+        .watch(fireImmediately: true);
+  }
+
+  void addTheme(String value) {
     final themeSetting =
         isar.settings.filter().typeEqualTo("theme").findFirstSync();
 

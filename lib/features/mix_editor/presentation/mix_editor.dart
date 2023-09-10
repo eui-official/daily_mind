@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/images.dart';
+import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/mix_editor/presentation/mix_editor_add_button.dart';
@@ -21,7 +21,9 @@ class MixEditor extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final appState = ref.watch(appProvider);
     final newMixSelectedState = ref.watch(newMixSelectedProvider);
+
     final mixEditorMemoized = useMemoized(
       () => mixEditorProvider(newMixSelectedState.selectedIds),
     );
@@ -51,7 +53,7 @@ class MixEditor extends HookConsumerWidget {
         alignment: Alignment.center,
         children: [
           StackBackground(
-            image: images.randomBackground,
+            image: appState.backgroundImage,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

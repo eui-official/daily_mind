@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_applications/audio_handler.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_provider.dart';
+import 'package:daily_mind/features/watch_theme/presentation/watch_theme.dart';
 import 'package:daily_mind/router/router.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +25,17 @@ class Init extends HookConsumerWidget {
       return () {};
     }, [audioHandler]);
 
-    return MaterialApp.router(
-      title: 'DailyMind',
-      theme: darkTheme,
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.dark,
-      routerConfig: routerConfig,
-      debugShowCheckedModeBanner: false,
+    return WatchTheme(
+      onWidgetThemeBuilder: (theme) {
+        return MaterialApp.router(
+          title: 'DailyMind',
+          theme: createDarkTheme(theme),
+          darkTheme: createDarkTheme(theme),
+          themeMode: ThemeMode.dark,
+          routerConfig: routerConfig,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }

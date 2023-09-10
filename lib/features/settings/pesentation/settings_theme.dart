@@ -1,15 +1,23 @@
+import 'package:daily_mind/features/settings/pesentation/settings_theme_bottomsheet.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class SettingsPrimaryColor extends StatelessWidget {
-  const SettingsPrimaryColor({super.key});
+class SettingsTheme extends StatelessWidget {
+  const SettingsTheme({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: const Text('Màu sắc'),
-      onTap: () {},
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return const SettingsThemeBottomSheet();
+          },
+        );
+      },
       trailing: Container(
         width: 32,
         height: 32,

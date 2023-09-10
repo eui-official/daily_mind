@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/images.dart';
+import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/list_sounds/presentation/favorite_sounds.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
@@ -15,6 +15,7 @@ class NewMix extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final appState = ref.watch(appProvider);
     final newMixSelectedNotifier = ref.read(newMixSelectedProvider.notifier);
     final newMixSelectedState = ref.watch(newMixSelectedProvider);
 
@@ -29,7 +30,7 @@ class NewMix extends HookConsumerWidget {
         alignment: Alignment.center,
         children: [
           StackBackground(
-            image: images.randomBackground,
+            image: appState.backgroundImage,
             child: Container(
               padding: EdgeInsets.only(bottom: spacing(10)),
               child: ListSounds(
