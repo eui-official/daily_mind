@@ -18,7 +18,7 @@ final sounds = {
     'assets/sounds/water/water-stream.mp3',
   ],
   'wind': [
-    'assets/sounds/wind/wind_blowing.mp3',
+    'assets/sounds/wind/wind-blowing.mp3',
     'assets/sounds/wind/wind-sound-effect-free.mp3',
   ],
 };
