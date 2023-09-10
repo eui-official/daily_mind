@@ -21,7 +21,7 @@ class Db {
   }
 
   Stream<List<Playlist>> streamAllPlaylists() {
-    return isar.playlists.where().watch(fireImmediately: true);
+    return isar.playlists.where().watch();
   }
 
   Stream<Playlist?> streamPlaylistById(int id) {
@@ -41,10 +41,7 @@ class Db {
   }
 
   Stream<List<Settings>> streamTheme() {
-    return isar.settings
-        .filter()
-        .typeEqualTo("theme")
-        .watch(fireImmediately: true);
+    return isar.settings.filter().typeEqualTo("theme").watch();
   }
 
   void addTheme(String value) {
