@@ -18,14 +18,13 @@ class Background extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(image),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            context.theme.primaryColor,
+          colorFilter: const ColorFilter.mode(
+            Colors.black87,
             BlendMode.overlay,
           ),
         ),
       ),
     ).blurred(
-      blur: spacing(),
       blurColor: context.theme.scaffoldBackgroundColor,
     );
   }

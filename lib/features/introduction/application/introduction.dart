@@ -25,7 +25,6 @@ PageViewModel createPageViewModel(
         ),
       ),
     ).blurred(
-      blur: spacing(),
       blurColor: context.theme.colorScheme.background,
     ),
     decoration: const PageDecoration(
