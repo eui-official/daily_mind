@@ -1,4 +1,5 @@
 import 'package:blur/blur.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -24,6 +25,7 @@ PageViewModel createPageViewModel(
         ),
       ),
     ).blurred(
+      blur: spacing(),
       blurColor: context.theme.colorScheme.background,
     ),
     decoration: const PageDecoration(

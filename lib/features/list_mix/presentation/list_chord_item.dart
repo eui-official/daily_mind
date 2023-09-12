@@ -49,7 +49,11 @@ class ListChordItem extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SoundImagesStack(items: items),
+                    SoundImagesStack(
+                      items: items,
+                      width: 112,
+                      height: 112,
+                    ),
                     Container(
                       padding: EdgeInsets.all(spacing()),
                       child: Column(
