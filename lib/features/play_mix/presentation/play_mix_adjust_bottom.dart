@@ -5,9 +5,10 @@ import 'package:daily_mind/features/play_mix/presentation/play_mix_list_item.dar
 import 'package:daily_mind/features/timer_picker/presentation/timer_picker.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 
 class PlayMixAdjustBottom extends HookWidget {
   final int playlistId;
@@ -41,14 +42,14 @@ class PlayMixAdjustBottom extends HookWidget {
             [
               const TimerPicker(),
               BaseContentHeader(
-                title: 'Tên playlist',
+                title: 'name'.tr(),
                 child: BaseTextField(
                   initialValue: initialTitle,
                   onChanged: onChanged,
                 ),
               ),
               BaseContentHeader(
-                title: 'Danh sách âm thanh',
+                title: 'soundList'.tr(),
                 child: PlayMixListItem(
                   items: items,
                   playlistId: playlistId,

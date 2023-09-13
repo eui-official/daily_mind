@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,11 +22,11 @@ class TimerPicker extends HookConsumerWidget {
     final display = useMemoized(() {
       final time = playBackState.time;
 
-      return time?.format(context) ?? 'Chọn giờ';
+      return time?.format(context) ?? 'pickTime'.tr();
     }, [playBackState.time]);
 
     return BaseContentHeader(
-      title: 'Hẹn giờ tắt',
+      title: 'turnOffTime'.tr(),
       child: Container(
         padding: EdgeInsets.only(top: spacing()),
         child: ElevatedButton(

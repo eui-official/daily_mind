@@ -1,3 +1,26 @@
 {
-  "audioMixList": "Danh sách kết hợp âm thanh"
+  "addToList": "Thêm {name} vào danh sách",
+  "audioMixList": "Danh sách kết hợp âm thanh",
+  "byYourFavorites": "Theo sở thích của bạn",
+  "createANewSoundtrackFromNaturalSounds": "Create a soundtrack from nature sounds",
+  "createNewMix": "Create new",
+  "dashboard": "Dashboard",
+  "delete": "Delete",
+  "fire": "Fire",
+  "forest": "Forest",
+  "moreRelaxing": "More relaxing",
+  "name": "Name",
+  "naturalSoundsHelpRelaxingAndReduceStress": "The sounds of nature help relax and reduce stress",
+  "newMix": "New mix",
+  "next": "Next",
+  "nextStep": "Next step",
+  "pickTime": "Pick time",
+  "rain": "Rain",
+  "sound": "Sound",
+  "soundEditor": "Sound Editor",
+  "soundList": "Sound list",
+  "space": "Space",
+  "turnOffTime": "Turn off timer",
+  "water": "Water",
+  "wind": "Wind"
 }

@@ -7,9 +7,10 @@ import 'package:daily_mind/features/open_container_transition/presentation/open_
 import 'package:daily_mind/features/play_mix/presentation/play_mix.dart';
 import 'package:daily_mind/features/sound_images_stack/presentation/sound_images_stack.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/get_utils/src/extensions/context_extensions.dart';
+import 'package:get/utils.dart' hide Trans;
 
 class ListChordItem extends StatelessWidget {
   final Playlist playlist;
@@ -38,7 +39,7 @@ class ListChordItem extends StatelessWidget {
               db.deletePlaylist(playlist.id);
             },
             backgroundColor: context.theme.colorScheme.error,
-            label: 'Delete',
+            label: 'delete'.tr(),
           ),
         ],
         child: OpenContainerTransition(

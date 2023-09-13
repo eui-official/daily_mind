@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,7 +17,7 @@ class NewMixEditorAddButton extends HookConsumerWidget {
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(200, 48),
       ),
-      child: const Text('Tạo mới'),
+      child: Text('createNewMix'.tr()),
     );
   }
 }

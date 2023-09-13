@@ -3,8 +3,9 @@ import 'package:daily_mind/features/app_logo/presentation/app_logo.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_chord.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ListMix extends HookConsumerWidget {
@@ -39,7 +40,7 @@ class ListMix extends HookConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Danh sách kết hợp âm thanh',
+                              'audioMixList'.tr(),
                               style: context.textTheme.titleLarge,
                             ),
                             Flexible(

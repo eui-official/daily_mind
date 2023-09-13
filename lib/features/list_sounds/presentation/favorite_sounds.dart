@@ -3,8 +3,9 @@ import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 
 class ListSounds extends StatelessWidget {
   final List<String> selectedIds;
@@ -30,7 +31,7 @@ class ListSounds extends StatelessWidget {
         ListHeader(
           trailing: headerTrailing,
           child: Text(
-            'Âm thanh',
+            'sound'.tr(),
             style: context.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.w700,
             ),

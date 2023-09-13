@@ -5,6 +5,7 @@ import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -24,7 +25,7 @@ class NewMix extends HookConsumerWidget {
       appBar: AppBar(
         forceMaterialTransparency: true,
         flexibleSpace: const AppBarFilter(),
-        title: const Text('Âm thanh mới'),
+        title: Text('newMix'.tr()),
       ),
       body: Stack(
         alignment: Alignment.center,

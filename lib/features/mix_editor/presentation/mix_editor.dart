@@ -8,9 +8,10 @@ import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provid
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -47,7 +48,7 @@ class MixEditor extends HookConsumerWidget {
       appBar: AppBar(
         forceMaterialTransparency: true,
         flexibleSpace: const AppBarFilter(),
-        title: const Text('Chỉnh sửa âm thanh'),
+        title: Text('soundEditor'.tr()),
       ),
       body: Stack(
         alignment: Alignment.center,
@@ -60,7 +61,7 @@ class MixEditor extends HookConsumerWidget {
               children: [
                 ListHeader(
                   child: Text(
-                    'Danh sách âm thanh',
+                    'soundList'.tr(),
                     style: context.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
