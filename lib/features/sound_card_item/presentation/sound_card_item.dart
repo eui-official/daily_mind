@@ -6,6 +6,7 @@ import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item_overlay.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item_selected_state.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -41,7 +42,7 @@ class SoundCardItem extends HookWidget {
           SoundCardItemBackground(image: soundItem.image),
           const BaseBackgroundGradient(),
           SoundCardItemContent(
-            name: soundItem.name,
+            name: soundItem.name.tr(),
             isPlaying: isPlaying,
           ),
           SoundCardItemOverlay(onTap: onTap),

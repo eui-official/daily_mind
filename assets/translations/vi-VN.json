@@ -2,12 +2,15 @@
   "addToList": "Thêm {name} vào danh sách",
   "audioMixList": "Danh sách âm thanh",
   "byYourFavorites": "Theo sở thích của bạn",
+  "color": "Màu sắc",
+  "colorList": "Danh sách màu sắc",
   "createANewSoundtrackFromNaturalSounds": "Tạo một bản nhạc từ các âm thanh thiên nhiên",
   "createNewMix": "Tạo mới",
   "dashboard": "Trang chủ",
   "delete": "Xóa",
   "fire": "Lừa",
   "forest": "Rừng",
+  "language": "Ngôn ngữ",
   "moreRelaxing": "Thư giãn hơn",
   "name": "Tên",
   "naturalSoundsHelpRelaxingAndReduceStress": "Âm thanh của thiên nhiên giúp thư giãn và giảm đi sự căng thẳng",
@@ -21,6 +24,7 @@
   "soundList": "Danh sách âm thanh",
   "space": "Không gian",
   "turnOffTime": "Hẹn giờ tắt",
+  "version": "Phiên bản",
   "water": "Nước",
   "wind": "Gió"
 }

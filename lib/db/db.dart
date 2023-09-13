@@ -38,12 +38,37 @@ class Db {
     return isar.playlists.where().findAllSync();
   }
 
-  Settings? getTheme() {
-    return isar.settings.filter().typeEqualTo("theme").findFirstSync();
+  void addSetting(String? value, String type) {
+    final setting = isar.settings.filter().typeEqualTo(type).findFirstSync();
+
+    isar.writeTxnSync(() {
+      safeValueBuilder(
+        setting,
+        (safeSetting) {
+          safeSetting.value = value;
+          isar.settings.putSync(safeSetting);
+        },
+        () {
+          final newSetting = Settings()
+            ..type = type
+            ..value = value;
+
+          isar.settings.putSync(newSetting);
+        },
+      );
+    });
   }
 
-  Stream<List<Settings>> streamTheme() {
-    return isar.settings.filter().typeEqualTo("theme").watch();
+  Settings? getSetting(String type) {
+    return isar.settings.filter().typeEqualTo(type).findFirstSync();
+  }
+
+  Stream<List<Settings>> streamSetting(String type,
+      [bool fireImmediately = true]) {
+    return isar.settings
+        .filter()
+        .typeEqualTo(type)
+        .watch(fireImmediately: fireImmediately);
   }
 
   FirstTime? getFirstTime(String task) {
@@ -60,28 +85,6 @@ class Db {
         final newFirstTime = FirstTime()..task = "introduction";
         isar.firstTimes.putSync(newFirstTime);
       });
-    });
-  }
-
-  void addTheme(String value) {
-    final themeSetting =
-        isar.settings.filter().typeEqualTo("theme").findFirstSync();
-
-    isar.writeTxnSync(() {
-      safeValueBuilder(
-        themeSetting,
-        (safeThemeSetting) {
-          safeThemeSetting.value = value;
-          isar.settings.putSync(safeThemeSetting);
-        },
-        () {
-          final newThemeSetting = Settings()
-            ..type = "theme"
-            ..value = value;
-
-          isar.settings.putSync(newThemeSetting);
-        },
-      );
     });
   }
 

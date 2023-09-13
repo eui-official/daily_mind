@@ -1,5 +1,5 @@
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/types/commom.dart';
+import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 
 class EmptyWidgetBuilder<T> extends StatelessWidget {

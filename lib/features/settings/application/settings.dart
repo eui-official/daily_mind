@@ -8,3 +8,9 @@ SupportedTheme getTheme(Settings? settings) {
 
   return theme;
 }
+
+String getLanguage(Settings? settings) {
+  final languageId = settings?.value ?? 'vi-VN';
+
+  return languageId;
+}

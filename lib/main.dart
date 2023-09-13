@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final engine = WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
   await db.init();
@@ -22,9 +22,12 @@ void main() async {
   );
 
   runApp(
-    Localization(
-      child: ProviderScope(
-        child: Init(audioHandler: audioHandler),
+    ProviderScope(
+      child: Localization(
+        child: Init(
+          engine: engine,
+          audioHandler: audioHandler,
+        ),
       ),
     ),
   );

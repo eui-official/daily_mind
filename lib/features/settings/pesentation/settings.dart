@@ -1,3 +1,4 @@
+import 'package:daily_mind/features/settings/pesentation/settings_language.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_theme.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_version.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -13,6 +14,7 @@ class Settings extends StatelessWidget {
       child: ListView(
         children: const [
           SettingsTheme(),
+          SettingsLanguage(),
           SettingsVersion(),
         ],
       ),
