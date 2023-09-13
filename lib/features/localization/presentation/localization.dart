@@ -16,8 +16,8 @@ class Localization extends StatelessWidget {
         Locale('en', 'US'),
         Locale('vi', 'VN'),
       ],
+      fallbackLocale: const Locale('en', 'US'),
       path: 'assets/translations',
-      fallbackLocale: const Locale('vi', 'VN'),
       child: child,
     );
   }

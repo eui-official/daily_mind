@@ -1,7 +1,8 @@
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 
 class EmptyListMix extends StatelessWidget {
   const EmptyListMix({
@@ -22,7 +23,7 @@ class EmptyListMix extends StatelessWidget {
         children: space(
           [
             Text(
-              "Chưa có playlist nào",
+              "mixLisEmpty".tr(),
               style: context.textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

@@ -29,10 +29,12 @@ class Init extends HookConsumerWidget {
       playMixNotifier.setAudioHandler(audioHandler);
 
       db.streamSetting('language').listen((setting) {
-        final language = getLanguage(setting.first).toMapLocale;
+        if (setting.isNotEmpty) {
+          final language = getLanguage(setting.first, context).toMapLocale;
 
-        context.setLocale(Locale(language.first, language.last));
-        engine.performReassemble();
+          context.setLocale(Locale(language.first, language.last));
+          engine.performReassemble();
+        }
       });
 
       return () {};

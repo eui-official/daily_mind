@@ -1,10 +1,11 @@
 {
   "addToList": "Thêm {name} vào danh sách",
-  "audioMixList": "Danh sách âm thanh",
+  "mixList": "Danh sách âm thanh",
+  "mixLisEmpty": "Danh sách trống",
   "byYourFavorites": "Theo sở thích của bạn",
   "color": "Màu sắc",
   "colorList": "Danh sách màu sắc",
-  "createANewSoundtrackFromNaturalSounds": "Tạo một bản nhạc từ các âm thanh thiên nhiên",
+  "createANewMixFromNaturalSounds": "Tạo một bản nhạc từ các âm thanh thiên nhiên",
   "createNewMix": "Tạo mới",
   "dashboard": "Trang chủ",
   "delete": "Xóa",

@@ -1,10 +1,11 @@
 {
   "addToList": "Add {name} to the list",
-  "audioMixList": "Mix list",
+  "mixList": "Mix list",
+  "mixLisEmpty": "Empty list",
   "byYourFavorites": "For you",
   "color": "Color",
   "colorList": "List of color",
-  "createANewSoundtrackFromNaturalSounds": "Create a soundtrack from nature sounds",
+  "createANewMixFromNaturalSounds": "Create a new mix from nature sounds",
   "createNewMix": "Create new",
   "dashboard": "Dashboard",
   "delete": "Delete",

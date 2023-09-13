@@ -25,7 +25,7 @@ class Introduction extends HookWidget {
           createPageViewModel(
             context,
             title: 'byYourFavorites'.tr(),
-            body: 'createANewSoundtrackFromNaturalSounds'.tr(),
+            body: 'createANewMixFromNaturalSounds'.tr(),
             image: 'assets/images/birds.png',
           ),
           createPageViewModel(

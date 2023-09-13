@@ -23,7 +23,7 @@ class NewMixAddButton extends HookConsumerWidget {
       child: Text(
         'addToList'.tr(
           namedArgs: {
-            "name": soundItem?.name ?? emptyString,
+            "name": soundItem?.name.tr() ?? emptyString,
           },
         ),
       ),

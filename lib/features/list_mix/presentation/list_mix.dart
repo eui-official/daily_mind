@@ -40,7 +40,7 @@ class ListMix extends HookConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'audioMixList'.tr(),
+                              'mixList'.tr(),
                               style: context.textTheme.titleLarge,
                             ),
                             Flexible(

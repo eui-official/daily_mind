@@ -14,7 +14,7 @@ class SettingsLanguage extends StatelessWidget {
       trailing: SettingWatcher(
         type: 'language',
         onWidgetSettingBuilder: (setting) {
-          final language = getLanguage(setting);
+          final language = getLanguage(setting, context);
 
           return DropdownButtonHideUnderline(
             child: DropdownButton(
