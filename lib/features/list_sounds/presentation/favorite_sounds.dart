@@ -55,8 +55,7 @@ class ListSounds extends StatelessWidget {
               final isSelected = selectedIds.contains(soundItem.id);
 
               return SoundCardItem(
-                backgroundKey:
-                    index == 0 ? listSoundKey : ValueKey(soundItem.id),
+                backgroundKey: index == 0 ? soundKey : ValueKey(soundItem.id),
                 isPlaying: isPlaying,
                 isSelected: isSelected,
                 onSelected: onSelected,

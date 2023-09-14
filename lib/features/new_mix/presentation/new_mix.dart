@@ -34,7 +34,7 @@ class NewMix extends HookConsumerWidget {
         task: 'newMixTutorial',
         targets: [
           TargetFocus(
-            keyTarget: listSoundKey,
+            keyTarget: soundKey,
             shape: ShapeLightFocus.RRect,
             radius: spacing(2),
             contents: [
