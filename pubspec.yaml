@@ -59,6 +59,7 @@ dependencies:
   is_first_run: ^1.0.0
   shared_preferences: ^2.2.1
   easy_localization: ^3.0.3
+  tutorial_coach_mark: ^1.2.9
 dev_dependencies:
   flutter_test:
     sdk: flutter

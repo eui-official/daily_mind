@@ -1,3 +1,4 @@
+import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -16,6 +17,7 @@ class AddNewMixButton extends HookWidget {
     );
 
     return FloatingActionButton(
+      key: addNewMixKey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(spacing(5)),
       ),

@@ -72,7 +72,10 @@ class Db {
   }
 
   FirstTime? getFirstTime(String task) {
-    return isar.firstTimes.filter().taskEqualTo(task).findFirstSync();
+    final firstTime =
+        isar.firstTimes.filter().taskEqualTo(task).findFirstSync();
+
+    return firstTime;
   }
 
   void addFirstTime(String task) {
@@ -82,7 +85,7 @@ class Db {
       isar.firstTimes.putSync(safeFirstTime);
     }, () {
       isar.writeTxnSync(() {
-        final newFirstTime = FirstTime()..task = "introduction";
+        final newFirstTime = FirstTime()..task = task;
         isar.firstTimes.putSync(newFirstTime);
       });
     });
