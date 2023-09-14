@@ -12,6 +12,7 @@ class BaseMixEditorItem extends StatelessWidget {
   final double initVolume;
   final ValueChanged<double> onVolumeChanged;
   final Widget prefixChild;
+  final Key? volumeKey;
 
   const BaseMixEditorItem({
     super.key,
@@ -20,6 +21,7 @@ class BaseMixEditorItem extends StatelessWidget {
     required this.initVolume,
     required this.onVolumeChanged,
     this.prefixChild = emptyWidget,
+    this.volumeKey,
   });
 
   @override
@@ -51,6 +53,7 @@ class BaseMixEditorItem extends StatelessWidget {
                       prefixChild,
                       Expanded(
                         child: VolumeSlider(
+                          key: volumeKey,
                           onVolumeChanged: onVolumeChanged,
                           initVolume: initVolume,
                         ),

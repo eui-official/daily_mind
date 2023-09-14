@@ -11,11 +11,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class MixEditorItem extends HookWidget {
   final MixEditorItemState itemState;
   final OnItemVolumeChanged onItemVolumeChanged;
+  final Key? volumeKey;
 
   const MixEditorItem({
     super.key,
     required this.itemState,
     required this.onItemVolumeChanged,
+    this.volumeKey,
   });
 
   @override
@@ -50,6 +52,7 @@ class MixEditorItem extends HookWidget {
     }, []);
 
     return BaseMixEditorItem(
+      volumeKey: volumeKey,
       image: soundItem.image,
       initVolume: itemState.volume,
       name: soundItem.name.tr(),

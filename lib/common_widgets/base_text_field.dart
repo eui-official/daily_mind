@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class BaseTextField extends StatelessWidget {
@@ -15,8 +16,8 @@ class BaseTextField extends StatelessWidget {
     return TextFormField(
       onChanged: onChanged,
       initialValue: initialValue,
-      decoration: const InputDecoration(
-        hintText: 'Tên của danh sách',
+      decoration: InputDecoration(
+        hintText: 'nameOfTheMix'.tr(),
       ),
     );
   }

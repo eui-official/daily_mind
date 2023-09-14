@@ -23,7 +23,7 @@ class EmptyListMix extends HookWidget {
           contents: [
             TargetContent(
               align: ContentAlign.top,
-              child: const Text('Click here to add a new mix'),
+              child: Text('addNewMixTutorialContent'.tr()),
             ),
           ],
         ),

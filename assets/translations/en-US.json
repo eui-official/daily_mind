@@ -14,6 +14,7 @@
   "language": "Language",
   "moreRelaxing": "More relaxing",
   "name": "Name",
+  "nameOfTheMix": "Name of this mix",
   "naturalSoundsHelpRelaxingAndReduceStress": "The sounds of nature help relax and reduce stress",
   "newMix": "New mix",
   "next": "Next",
@@ -27,5 +28,9 @@
   "turnOffTime": "Turn off timer",
   "version": "Version",
   "water": "Water",
-  "wind": "Wind"
+  "wind": "Wind",
+  "addNewMixTutorialContent": "Click here to add a new mix",
+  "newMixTutorialContent1": "Choose one or more sounds from the list to create a new mix",
+  "newMixTutorialContent2": "After choosing your favorite sounds. Click here to continue",
+  "mixEditorContent": "Adjust the volume of each sound to suit you"
 }

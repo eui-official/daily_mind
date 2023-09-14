@@ -1,6 +1,7 @@
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
 import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item.dart';
+import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -54,6 +55,8 @@ class ListSounds extends StatelessWidget {
               final isSelected = selectedIds.contains(soundItem.id);
 
               return SoundCardItem(
+                backgroundKey:
+                    index == 0 ? listSoundKey : ValueKey(soundItem.id),
                 isPlaying: isPlaying,
                 isSelected: isSelected,
                 onSelected: onSelected,

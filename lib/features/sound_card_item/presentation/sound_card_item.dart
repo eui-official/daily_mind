@@ -16,6 +16,7 @@ class SoundCardItem extends HookWidget {
   final SoundItem soundItem;
   final ValueChanged<String> onSelected;
   final ValueChanged<String> onDeleted;
+  final Key? backgroundKey;
 
   const SoundCardItem({
     super.key,
@@ -24,6 +25,7 @@ class SoundCardItem extends HookWidget {
     required this.onSelected,
     required this.soundItem,
     required this.onDeleted,
+    this.backgroundKey,
   });
 
   @override
@@ -39,7 +41,10 @@ class SoundCardItem extends HookWidget {
       borderRadius: BorderRadius.circular(spacing(2)),
       child: Stack(
         children: [
-          SoundCardItemBackground(image: soundItem.image),
+          SoundCardItemBackground(
+            key: backgroundKey,
+            image: soundItem.image,
+          ),
           const BaseBackgroundGradient(),
           SoundCardItemContent(
             name: soundItem.name.tr(),

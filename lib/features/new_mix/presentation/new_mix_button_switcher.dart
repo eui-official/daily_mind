@@ -8,7 +8,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'new_mix_create_button.dart';
 
 class NewMixButtonSwitcher extends HookConsumerWidget {
-  const NewMixButtonSwitcher({super.key});
+  const NewMixButtonSwitcher({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

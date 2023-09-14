@@ -71,6 +71,10 @@ class Db {
         .watch(fireImmediately: fireImmediately);
   }
 
+  bool isFirstTime(String task) {
+    return isar.firstTimes.filter().taskEqualTo(task).isEmptySync();
+  }
+
   FirstTime? getFirstTime(String task) {
     final firstTime =
         isar.firstTimes.filter().taskEqualTo(task).findFirstSync();

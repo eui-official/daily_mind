@@ -14,6 +14,7 @@
   "language": "Ngôn ngữ",
   "moreRelaxing": "Thư giãn hơn",
   "name": "Tên",
+  "nameOfTheMix": "Tên của bản mix này",
   "naturalSoundsHelpRelaxingAndReduceStress": "Âm thanh của thiên nhiên giúp thư giãn và giảm đi sự căng thẳng",
   "newMix": "Âm thanh mới",
   "next": "Thiếp theo",
@@ -27,5 +28,9 @@
   "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "water": "Nước",
-  "wind": "Gió"
+  "wind": "Gió",
+  "addNewMixTutorialContent": "Bấm vào đây để tạo một bản mix mới",
+  "newMixTutorialContent1": "Chọn một hoặc nhiều âm thanh để tạo một bản mix",
+  "newMixTutorialContent2": "Sau khi chọn những âm thanh bạn yêu thích. Bấm vào đây để tiếp tục",
+  "mixEditorContent": "Điều chỉnh âm thanh để phù hợp với bạn"
 }
