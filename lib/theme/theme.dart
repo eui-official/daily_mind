@@ -12,6 +12,7 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     fontFamily: GoogleFonts.inter().fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
+    useMaterial3ErrorColors: true,
   );
 }
 

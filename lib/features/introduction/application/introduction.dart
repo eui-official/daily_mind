@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -6,12 +7,24 @@ import 'package:introduction_screen/introduction_screen.dart';
 PageViewModel createPageViewModel(
   BuildContext context, {
   required String title,
-  required String body,
   required String image,
+  String? body,
+  Widget? bodyWidget,
 }) {
   return PageViewModel(
-    title: title,
+    titleWidget: AnimatedTextKit(
+      animatedTexts: [
+        TyperAnimatedText(
+          title,
+          textStyle: context.textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+      isRepeatingAnimation: false,
+    ),
     body: body,
+    bodyWidget: bodyWidget,
     image: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -24,7 +37,8 @@ PageViewModel createPageViewModel(
         ),
       ),
     ).blurred(
-      blurColor: context.theme.colorScheme.background,
+      blurColor: Colors.black87,
+      colorOpacity: 0.6,
     ),
     decoration: const PageDecoration(
       fullScreen: true,

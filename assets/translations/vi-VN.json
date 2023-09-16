@@ -1,4 +1,5 @@
 {
+  "welcome": "Chúc bạn có một ngày tuyệt vời!",
   "addToList": "Thêm {name} vào danh sách",
   "mixList": "Danh sách âm thanh",
   "mixLisEmpty": "Danh sách trống",
@@ -17,7 +18,7 @@
   "nameOfTheMix": "Tên của bản mix này",
   "naturalSoundsHelpRelaxingAndReduceStress": "Âm thanh của thiên nhiên giúp thư giãn và giảm đi sự căng thẳng",
   "newMix": "Âm thanh mới",
-  "next": "Thiếp theo",
+  "next": "Tiếp theo",
   "nextStep": "Bước tiếp theo",
   "pickTime": "Chọn giờ",
   "rain": "Mưa",

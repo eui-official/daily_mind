@@ -24,7 +24,8 @@ class Background extends StatelessWidget {
         ),
       ),
     ).blurred(
-      blurColor: context.theme.scaffoldBackgroundColor,
+      blurColor: Colors.black,
+      colorOpacity: 0.6,
     );
   }
 }
