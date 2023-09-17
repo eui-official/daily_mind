@@ -2,8 +2,8 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
-class SoundCardItemSelectedState extends StatelessWidget {
-  const SoundCardItemSelectedState({super.key});
+class SoundCardSelectedState extends StatelessWidget {
+  const SoundCardSelectedState({super.key});
 
   @override
   Widget build(BuildContext context) {

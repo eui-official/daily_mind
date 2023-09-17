@@ -3,11 +3,11 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class SoundCardItemContent extends StatelessWidget {
+class SoundCardContent extends StatelessWidget {
   final String name;
   final bool isPlaying;
 
-  const SoundCardItemContent({
+  const SoundCardContent({
     super.key,
     required this.name,
     required this.isPlaying,

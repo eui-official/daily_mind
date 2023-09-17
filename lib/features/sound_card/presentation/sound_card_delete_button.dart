@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SoundCardItemDeleteButton extends StatelessWidget {
+class SoundCardDeleteButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const SoundCardItemDeleteButton({
+  const SoundCardDeleteButton({
     super.key,
     required this.onPressed,
   });

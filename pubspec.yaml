@@ -61,6 +61,11 @@ dependencies:
   easy_localization: ^3.0.3
   tutorial_coach_mark: ^1.2.9
   animated_text_kit: ^4.2.2
+  youtube_explode_dart: ^2.0.2
+  supabase_flutter: ^1.10.16
+  envied: ^0.3.0+3
+  json_annotation: ^4.8.1
+  cached_network_image: ^3.2.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +80,8 @@ dev_dependencies:
   freezed: ^2.4.1
   isar_generator: ^3.1.0+1
   flutter_launcher_icons: ^0.13.1
+  envied_generator: ^0.3.0+3
+  json_serializable: ^6.7.1
 
 flutter_launcher_icons:
   android: 'launcher_icon'

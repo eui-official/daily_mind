@@ -1,22 +1,22 @@
+import 'package:daily_mind/common_domains/sound.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/features/list_sounds/domain/sound_card.dart';
-import 'package:daily_mind/features/sound_card_item/presentation/sound_card_item.dart';
+import 'package:daily_mind/features/sound_card/presentation/sound_card_online.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart' hide Trans;
 
-class ListSounds extends StatelessWidget {
-  final List<SoundItem> items;
-  final List<String> selectedIds;
+class BaseListSoundOnline extends StatelessWidget {
+  final List<Sound> items;
+  final List<int> selectedIds;
   final String title;
-  final String? selectingId;
-  final ValueChanged<String> onDeleted;
-  final ValueChanged<String> onSelected;
+  final int? selectingId;
+  final ValueChanged<int> onDeleted;
+  final ValueChanged<int> onSelected;
   final Widget headerTrailing;
 
-  const ListSounds({
+  const BaseListSoundOnline({
     super.key,
     required this.items,
     required this.onDeleted,
@@ -51,17 +51,17 @@ class ListSounds extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               separatorBuilder: (context, index) => SizedBox(width: spacing()),
               itemBuilder: (context, index) {
-                final soundItem = items[index];
-                final isPlaying = soundItem.id == selectingId;
-                final isSelected = selectedIds.contains(soundItem.id);
+                final sound = items[index];
+                final isPlaying = sound.id == selectingId;
+                final isSelected = selectedIds.contains(sound.id);
 
-                return SoundCardItem(
-                  backgroundKey: index == 0 ? soundKey : ValueKey(soundItem.id),
+                return SoundCardOnline(
+                  backgroundKey: index == 0 ? soundKey : ValueKey(sound.id),
                   isPlaying: isPlaying,
                   isSelected: isSelected,
                   onSelected: onSelected,
                   onDeleted: onDeleted,
-                  soundItem: soundItem,
+                  sound: sound,
                 );
               },
             ),

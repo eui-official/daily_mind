@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SoundCardItemOverlay extends StatelessWidget {
+class SoundCardOverlay extends StatelessWidget {
   final VoidCallback onTap;
 
-  const SoundCardItemOverlay({
+  const SoundCardOverlay({
     super.key,
     required this.onTap,
   });

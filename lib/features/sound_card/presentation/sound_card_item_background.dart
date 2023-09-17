@@ -2,11 +2,11 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SoundCardItemBackground extends StatelessWidget {
-  final String image;
+  final ImageProvider imageProvider;
 
   const SoundCardItemBackground({
     super.key,
-    required this.image,
+    required this.imageProvider,
   });
 
   @override
@@ -15,7 +15,7 @@ class SoundCardItemBackground extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(spacing(3)),
         image: DecorationImage(
-          image: AssetImage(image),
+          image: imageProvider,
           fit: BoxFit.cover,
         ),
       ),
