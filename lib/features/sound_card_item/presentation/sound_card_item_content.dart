@@ -16,18 +16,17 @@ class SoundCardItemContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: spacing(2),
+      bottom: spacing(),
       left: 0,
       right: 0,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-        height: spacing(3),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               name,
-              style: context.textTheme.titleMedium,
+              style: context.textTheme.bodyMedium,
             ),
             if (isPlaying) const MusicPlaying(),
           ],

@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
-import 'package:daily_mind/features/list_sounds/presentation/favorite_sounds.dart';
+import 'package:daily_mind/features/list_sounds/constant/sound_items.dart';
+import 'package:daily_mind/features/list_sounds/presentation/list_sounds.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
@@ -67,6 +68,8 @@ class NewMix extends HookConsumerWidget {
               child: Container(
                 padding: EdgeInsets.only(bottom: spacing(10)),
                 child: ListSounds(
+                  title: 'naturalSounds'.tr(),
+                  items: soundItems,
                   selectingId: newMixSelectedState.selectingId,
                   selectedIds: newMixSelectedState.selectedIds,
                   onSelected: newMixSelectedNotifier.onSelected,

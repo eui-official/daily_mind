@@ -39,22 +39,26 @@ class SoundCardItem extends HookWidget {
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(spacing(2)),
-      child: Stack(
-        children: [
-          SoundCardItemBackground(
-            key: backgroundKey,
-            image: soundItem.image,
-          ),
-          const BaseBackgroundGradient(),
-          SoundCardItemContent(
-            name: soundItem.name.tr(),
-            isPlaying: isPlaying,
-          ),
-          SoundCardItemOverlay(onTap: onTap),
-          if (isSelected) const SoundCardItemSelectedState(),
-          if (isSelected)
-            SoundCardItemDeleteButton(onPressed: () => onDeleted(soundItem.id)),
-        ],
+      child: SizedBox(
+        width: spacing(15),
+        child: Stack(
+          children: [
+            SoundCardItemBackground(
+              key: backgroundKey,
+              image: soundItem.image,
+            ),
+            const BaseBackgroundGradient(),
+            SoundCardItemContent(
+              name: soundItem.name.tr(),
+              isPlaying: isPlaying,
+            ),
+            SoundCardItemOverlay(onTap: onTap),
+            if (isSelected) const SoundCardItemSelectedState(),
+            if (isSelected)
+              SoundCardItemDeleteButton(
+                  onPressed: () => onDeleted(soundItem.id)),
+          ],
+        ),
       ),
     );
   }

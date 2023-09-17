@@ -1,6 +1,5 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
 
 class Background extends StatelessWidget {
   final String image;
