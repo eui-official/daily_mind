@@ -16,9 +16,6 @@ class ListSoundLive extends HookWidget {
       onListSoundBuilder: (context, listSound) {
         return BaseListSoundOnline(
           items: listSound,
-          onDeleted: (int value) {},
-          onSelected: (int value) {},
-          selectedIds: const [],
           title: 'Live',
         );
       },

@@ -17,21 +17,20 @@ class ListSoundOffline extends HookConsumerWidget {
 
     return BaseListSound(
       title: 'naturalSounds'.tr(),
-      items: soundItems,
-      onSelected: newMixSelectedNotifier.onSelected,
-      onDeleted: newMixSelectedNotifier.onDeleted,
-      onSoundBuilder: (context, index, soundItem) {
-        final isPlaying = soundItem.id == newMixSelectedState.selectingId;
+      items: soundOfflineItems,
+      onSoundBuilder: (context, index, soundOfflineItem) {
+        final isPlaying =
+            soundOfflineItem.id == newMixSelectedState.selectingId;
         final isSelected =
-            newMixSelectedState.selectedIds.contains(soundItem.id);
+            newMixSelectedState.selectedIds.contains(soundOfflineItem.id);
 
         return SoundCard(
-          backgroundKey: index == 0 ? soundKey : ValueKey(soundItem.id),
+          backgroundKey: index == 0 ? soundKey : ValueKey(soundOfflineItem.id),
           isPlaying: isPlaying,
           isSelected: isSelected,
           onSelected: newMixSelectedNotifier.onSelected,
           onDeleted: newMixSelectedNotifier.onDeleted,
-          soundItem: soundItem,
+          soundOfflineItem: soundOfflineItem,
         );
       },
     );

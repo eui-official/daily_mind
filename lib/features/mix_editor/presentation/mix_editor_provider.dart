@@ -4,7 +4,7 @@ import 'package:daily_mind/features/mix_editor/domain/mix_editor_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixEditorNotifier extends StateNotifier<MixEditorState> {
-  final List<String> ids;
+  final List<dynamic> ids;
 
   MixEditorNotifier({
     required this.ids,
@@ -42,6 +42,6 @@ class MixEditorNotifier extends StateNotifier<MixEditorState> {
 }
 
 final mixEditorProvider = StateNotifierProvider.family<MixEditorNotifier,
-    MixEditorState, List<String>>((ref, ids) {
+    MixEditorState, List<dynamic>>((ref, ids) {
   return MixEditorNotifier(ids: ids);
 });

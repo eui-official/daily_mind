@@ -20,7 +20,7 @@ class PlayMixItemEditor extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final playMixNotifier = ref.read(playMixProvider.notifier);
-    final soundItem = item.id.soundItem;
+    final soundOfflineItem = item.id.soundOfflineItem;
 
     final onVolumeChanged = useCallback(
       (double volume) {
@@ -30,8 +30,8 @@ class PlayMixItemEditor extends HookConsumerWidget {
     );
 
     return BaseMixEditorItem(
-      name: soundItem.name.tr(),
-      image: soundItem.image,
+      name: soundOfflineItem.name.tr(),
+      image: soundOfflineItem.image,
       initVolume: item.volume,
       onVolumeChanged: onVolumeChanged,
     );

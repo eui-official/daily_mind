@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<Uri> getSoundImageFromAsset(String id) async {
-  final soundItem = id.soundItem;
+  final soundOfflineItem = id.soundOfflineItem;
 
-  final byteData = await rootBundle.load(soundItem.image);
+  final byteData = await rootBundle.load(soundOfflineItem.image);
   final buffer = byteData.buffer;
   Directory tempDir = await getApplicationDocumentsDirectory();
 

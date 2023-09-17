@@ -8,16 +8,12 @@ import 'package:get/utils.dart' hide Trans;
 class BaseListSound<I, T> extends StatelessWidget {
   final List<I> items;
   final String title;
-  final ValueChanged<T> onDeleted;
-  final ValueChanged<T> onSelected;
   final Widget headerTrailing;
   final OnSoundBuilder<I> onSoundBuilder;
 
   const BaseListSound({
     super.key,
     required this.items,
-    required this.onDeleted,
-    required this.onSelected,
     required this.title,
     required this.onSoundBuilder,
     this.headerTrailing = emptyWidget,

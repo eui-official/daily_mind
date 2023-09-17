@@ -7,7 +7,7 @@ part of 'sound.dart';
 // **************************************************************************
 
 _$_Sound _$$_SoundFromJson(Map<String, dynamic> json) => _$_Sound(
-      id: json['id'] as int,
+      id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
       image: json['image'] as String,

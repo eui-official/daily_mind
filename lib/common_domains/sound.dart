@@ -6,7 +6,7 @@ part 'sound.g.dart';
 @freezed
 class Sound with _$Sound {
   const factory Sound({
-    required int id,
+    required String id,
     @JsonKey(name: 'created_at') required String createdAt,
     required String name,
     required String image,

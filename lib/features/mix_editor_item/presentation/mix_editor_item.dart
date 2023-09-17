@@ -23,7 +23,8 @@ class MixEditorItem extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final player = useMemoized(() => GaplessAudioPlayer());
-    final soundItem = soundItems.firstWhere((item) => item.id == itemState.id);
+    final soundItem =
+        soundOfflineItems.firstWhere((item) => item.id == itemState.id);
 
     final playingSnapshot = useStream(player.playingStream);
     final isPlaying = playingSnapshot.data ?? false;

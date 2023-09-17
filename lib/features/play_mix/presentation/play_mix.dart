@@ -41,7 +41,7 @@ class PlayMix extends HookConsumerWidget {
       data: playlist,
       builder: (safePlaylist) {
         final items = safePlaylist.items ?? [];
-        final image = items.first.id.soundItem.image;
+        final image = items.first.id.soundOfflineItem.image;
 
         return Scaffold(
           extendBodyBehindAppBar: true,

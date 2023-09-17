@@ -23,7 +23,8 @@ class ListChordItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = playlist.items ?? [];
-    final names = items.map((item) => item.id.soundItem.name.tr()).join(', ');
+    final names =
+        items.map((item) => item.id.soundOfflineItem.name.tr()).join(', ');
     final title = playlist.title ?? emptyString;
 
     return ClipRRect(

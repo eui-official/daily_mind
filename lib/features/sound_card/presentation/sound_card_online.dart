@@ -13,8 +13,8 @@ class SoundCardOnline extends HookWidget {
   final bool isPlaying;
   final bool isSelected;
   final Sound sound;
-  final ValueChanged<int> onSelected;
-  final ValueChanged<int> onDeleted;
+  final ValueChanged<dynamic> onSelected;
+  final ValueChanged<dynamic> onDeleted;
   final Key? backgroundKey;
 
   const SoundCardOnline({
@@ -31,9 +31,9 @@ class SoundCardOnline extends HookWidget {
   Widget build(BuildContext context) {
     final onTap = useCallback(
       () {
-        onSelected(sound.id);
+        onSelected(sound);
       },
-      [sound.id],
+      [sound],
     );
 
     return ClipRRect(

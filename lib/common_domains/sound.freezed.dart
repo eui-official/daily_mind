@@ -20,7 +20,7 @@ Sound _$SoundFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Sound {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $SoundCopyWith<$Res> {
       _$SoundCopyWithImpl<$Res, Sound>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'created_at') String createdAt,
       String name,
       String image,
@@ -74,7 +74,7 @@ class _$SoundCopyWithImpl<$Res, $Val extends Sound>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -110,7 +110,7 @@ abstract class _$$_SoundCopyWith<$Res> implements $SoundCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'created_at') String createdAt,
       String name,
       String image,
@@ -140,7 +140,7 @@ class __$$_SoundCopyWithImpl<$Res> extends _$SoundCopyWithImpl<$Res, _$_Sound>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -185,7 +185,7 @@ class _$_Sound implements _Sound {
       _$$_SoundFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
@@ -242,7 +242,7 @@ class _$_Sound implements _Sound {
 
 abstract class _Sound implements Sound {
   const factory _Sound(
-      {required final int id,
+      {required final String id,
       @JsonKey(name: 'created_at') required final String createdAt,
       required final String name,
       required final String image,
@@ -253,7 +253,7 @@ abstract class _Sound implements Sound {
   factory _Sound.fromJson(Map<String, dynamic> json) = _$_Sound.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   @JsonKey(name: 'created_at')
   String get createdAt;

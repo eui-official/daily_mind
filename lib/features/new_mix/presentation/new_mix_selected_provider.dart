@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/common_domains/sound_offline_item.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/new_mix/domain/new_mix_selected.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,18 +15,21 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
           ),
         );
 
-  void onSelected(String id) {
-    if (state.selectingId == id) {
+  void onSelected(dynamic data) {
+    if (state.selectingId == data.id) {
       onResetSelectingId();
     } else {
-      state = state.copyWith(selectingId: id);
-      onPlayingSound(id);
+      state = state.copyWith(selectingId: data.id);
+
+      if (data is SoundOfflineItem) {
+        onPlayingOfflineSound(data.id);
+      }
     }
   }
 
-  void onDeleted(String id) {
+  void onDeleted(dynamic data) {
     final cloneSelectedIds = List<String>.from(state.selectedIds);
-    cloneSelectedIds.remove(id);
+    cloneSelectedIds.remove(data.id);
 
     state = state.copyWith(selectedIds: cloneSelectedIds);
   }
@@ -35,7 +39,7 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
     player.stop();
   }
 
-  void onPlayingSound(String id) {
+  void onPlayingOfflineSound(String id) {
     player.setSource(id);
     player.play();
   }

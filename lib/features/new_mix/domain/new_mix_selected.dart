@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_domains/sound_item.dart';
+import 'package:daily_mind/common_domains/sound_offline_item.dart';
 import 'package:daily_mind/constants/sound_items.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/utils.dart';
@@ -20,6 +20,6 @@ class NewMixSelected with _$NewMixSelected {
 
   bool get isNoSound => selectedIds.isEmpty;
 
-  SoundItem? get soundItem =>
-      soundItems.firstWhereOrNull((item) => item.id == selectingId);
+  SoundOfflineItem? get soundItem =>
+      soundOfflineItems.firstWhereOrNull((item) => item.id == selectingId);
 }

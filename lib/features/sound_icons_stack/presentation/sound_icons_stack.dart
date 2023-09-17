@@ -18,7 +18,8 @@ class SoundIconsStack extends StatelessWidget {
       alignment: AlignmentDirectional.topEnd,
       children: ids.map(
         (id) {
-          final soundItem = soundItems.firstWhere((item) => item.id == id);
+          final soundItem =
+              soundOfflineItems.firstWhere((item) => item.id == id);
           final index = ids.indexOf(id);
 
           return Container(

@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_domains/sound_item.dart';
+import 'package:daily_mind/common_domains/sound_offline_item.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_item_background.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -8,9 +8,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class SoundCard extends HookWidget {
   final bool isPlaying;
   final bool isSelected;
-  final SoundItem soundItem;
-  final ValueChanged<String> onSelected;
-  final ValueChanged<String> onDeleted;
+  final SoundOfflineItem soundOfflineItem;
+  final ValueChanged<dynamic> onSelected;
+  final ValueChanged<dynamic> onDeleted;
   final Key? backgroundKey;
 
   const SoundCard({
@@ -18,7 +18,7 @@ class SoundCard extends HookWidget {
     required this.isPlaying,
     required this.isSelected,
     required this.onSelected,
-    required this.soundItem,
+    required this.soundOfflineItem,
     required this.onDeleted,
     this.backgroundKey,
   });
@@ -27,22 +27,22 @@ class SoundCard extends HookWidget {
   Widget build(BuildContext context) {
     final onTap = useCallback(
       () {
-        onSelected(soundItem.id);
+        onSelected(soundOfflineItem);
       },
-      [soundItem.id],
+      [soundOfflineItem],
     );
 
     return BaseSoundCard(
       isPlaying: isPlaying,
       isSelected: isSelected,
       onDeleted: () {
-        onDeleted(soundItem.id);
+        onDeleted(soundOfflineItem.id);
       },
       image: SoundCardItemBackground(
         key: backgroundKey,
-        imageProvider: AssetImage(soundItem.image),
+        imageProvider: AssetImage(soundOfflineItem.image),
       ),
-      name: soundItem.name.tr(),
+      name: soundOfflineItem.name.tr(),
       onTap: onTap,
     );
   }

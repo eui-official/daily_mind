@@ -17,7 +17,7 @@ class SoundImagesStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final item = items.first;
-    final soundItem = item.id.soundItem;
+    final soundItem = item.id.soundOfflineItem;
 
     return Container(
       height: height,
