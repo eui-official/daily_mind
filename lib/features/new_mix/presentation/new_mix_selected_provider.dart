@@ -1,11 +1,17 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/common_applications/live_audio_player.dart';
+import 'package:daily_mind/common_domains/sound_online_item.dart';
 import 'package:daily_mind/common_domains/sound_offline_item.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/new_mix/domain/new_mix_selected.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:youtube_explode_dart/youtube_explode_dart.dart';
+
+final yt = YoutubeExplode();
 
 class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
   final player = GaplessAudioPlayer();
+  final livePlayer = LiveAudioPlayer();
 
   NewMixSelectedNotifier()
       : super(
@@ -22,14 +28,18 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
       state = state.copyWith(selectingId: data.id);
 
       if (data is SoundOfflineItem) {
-        onPlayingOfflineSound(data.id);
+        onPlayOfflineSound(data.id);
+      } else if (data is SoundOnlineItem) {
+        if (data.isLive) {
+          onPlayLiveOnlineSound(data.source);
+        }
       }
     }
   }
 
-  void onDeleted(dynamic data) {
+  void onDeleted(dynamic id) {
     final cloneSelectedIds = List<String>.from(state.selectedIds);
-    cloneSelectedIds.remove(data.id);
+    cloneSelectedIds.remove(id);
 
     state = state.copyWith(selectedIds: cloneSelectedIds);
   }
@@ -37,11 +47,17 @@ class NewMixSelectedNotifier extends StateNotifier<NewMixSelected> {
   void onResetSelectingId() {
     state = state.copyWith(selectingId: emptyString);
     player.stop();
+    livePlayer.stop();
   }
 
-  void onPlayingOfflineSound(String id) {
+  void onPlayOfflineSound(String id) {
     player.setSource(id);
     player.play();
+  }
+
+  void onPlayLiveOnlineSound(String source) async {
+    final url = await yt.videos.streams.getHttpLiveStreamUrl(VideoId(source));
+    livePlayer.play(url);
   }
 
   void onAddCurrentId() {

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sound.dart';
+part of 'sound_online_item.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Sound _$SoundFromJson(Map<String, dynamic> json) {
-  return _Sound.fromJson(json);
+SoundOnlineItem _$SoundOnlineItemFromJson(Map<String, dynamic> json) {
+  return _SoundOnlineItem.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Sound {
+mixin _$SoundOnlineItem {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
@@ -31,13 +31,15 @@ mixin _$Sound {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SoundCopyWith<Sound> get copyWith => throw _privateConstructorUsedError;
+  $SoundOnlineItemCopyWith<SoundOnlineItem> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SoundCopyWith<$Res> {
-  factory $SoundCopyWith(Sound value, $Res Function(Sound) then) =
-      _$SoundCopyWithImpl<$Res, Sound>;
+abstract class $SoundOnlineItemCopyWith<$Res> {
+  factory $SoundOnlineItemCopyWith(
+          SoundOnlineItem value, $Res Function(SoundOnlineItem) then) =
+      _$SoundOnlineItemCopyWithImpl<$Res, SoundOnlineItem>;
   @useResult
   $Res call(
       {String id,
@@ -50,9 +52,9 @@ abstract class $SoundCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SoundCopyWithImpl<$Res, $Val extends Sound>
-    implements $SoundCopyWith<$Res> {
-  _$SoundCopyWithImpl(this._value, this._then);
+class _$SoundOnlineItemCopyWithImpl<$Res, $Val extends SoundOnlineItem>
+    implements $SoundOnlineItemCopyWith<$Res> {
+  _$SoundOnlineItemCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -104,9 +106,11 @@ class _$SoundCopyWithImpl<$Res, $Val extends Sound>
 }
 
 /// @nodoc
-abstract class _$$_SoundCopyWith<$Res> implements $SoundCopyWith<$Res> {
-  factory _$$_SoundCopyWith(_$_Sound value, $Res Function(_$_Sound) then) =
-      __$$_SoundCopyWithImpl<$Res>;
+abstract class _$$_SoundOnlineItemCopyWith<$Res>
+    implements $SoundOnlineItemCopyWith<$Res> {
+  factory _$$_SoundOnlineItemCopyWith(
+          _$_SoundOnlineItem value, $Res Function(_$_SoundOnlineItem) then) =
+      __$$_SoundOnlineItemCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,9 +124,11 @@ abstract class _$$_SoundCopyWith<$Res> implements $SoundCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SoundCopyWithImpl<$Res> extends _$SoundCopyWithImpl<$Res, _$_Sound>
-    implements _$$_SoundCopyWith<$Res> {
-  __$$_SoundCopyWithImpl(_$_Sound _value, $Res Function(_$_Sound) _then)
+class __$$_SoundOnlineItemCopyWithImpl<$Res>
+    extends _$SoundOnlineItemCopyWithImpl<$Res, _$_SoundOnlineItem>
+    implements _$$_SoundOnlineItemCopyWith<$Res> {
+  __$$_SoundOnlineItemCopyWithImpl(
+      _$_SoundOnlineItem _value, $Res Function(_$_SoundOnlineItem) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,7 +142,7 @@ class __$$_SoundCopyWithImpl<$Res> extends _$SoundCopyWithImpl<$Res, _$_Sound>
     Object? isLive = null,
     Object? category = null,
   }) {
-    return _then(_$_Sound(
+    return _then(_$_SoundOnlineItem(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -171,8 +177,8 @@ class __$$_SoundCopyWithImpl<$Res> extends _$SoundCopyWithImpl<$Res, _$_Sound>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Sound implements _Sound {
-  const _$_Sound(
+class _$_SoundOnlineItem implements _SoundOnlineItem {
+  const _$_SoundOnlineItem(
       {required this.id,
       @JsonKey(name: 'created_at') required this.createdAt,
       required this.name,
@@ -181,8 +187,8 @@ class _$_Sound implements _Sound {
       required this.isLive,
       required this.category});
 
-  factory _$_Sound.fromJson(Map<String, dynamic> json) =>
-      _$$_SoundFromJson(json);
+  factory _$_SoundOnlineItem.fromJson(Map<String, dynamic> json) =>
+      _$$_SoundOnlineItemFromJson(json);
 
   @override
   final String id;
@@ -202,14 +208,14 @@ class _$_Sound implements _Sound {
 
   @override
   String toString() {
-    return 'Sound(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, isLive: $isLive, category: $category)';
+    return 'SoundOnlineItem(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, isLive: $isLive, category: $category)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Sound &&
+            other is _$_SoundOnlineItem &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -229,28 +235,29 @@ class _$_Sound implements _Sound {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SoundCopyWith<_$_Sound> get copyWith =>
-      __$$_SoundCopyWithImpl<_$_Sound>(this, _$identity);
+  _$$_SoundOnlineItemCopyWith<_$_SoundOnlineItem> get copyWith =>
+      __$$_SoundOnlineItemCopyWithImpl<_$_SoundOnlineItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SoundToJson(
+    return _$$_SoundOnlineItemToJson(
       this,
     );
   }
 }
 
-abstract class _Sound implements Sound {
-  const factory _Sound(
+abstract class _SoundOnlineItem implements SoundOnlineItem {
+  const factory _SoundOnlineItem(
       {required final String id,
       @JsonKey(name: 'created_at') required final String createdAt,
       required final String name,
       required final String image,
       required final String source,
       required final bool isLive,
-      required final String category}) = _$_Sound;
+      required final String category}) = _$_SoundOnlineItem;
 
-  factory _Sound.fromJson(Map<String, dynamic> json) = _$_Sound.fromJson;
+  factory _SoundOnlineItem.fromJson(Map<String, dynamic> json) =
+      _$_SoundOnlineItem.fromJson;
 
   @override
   String get id;
@@ -269,6 +276,6 @@ abstract class _Sound implements Sound {
   String get category;
   @override
   @JsonKey(ignore: true)
-  _$$_SoundCopyWith<_$_Sound> get copyWith =>
+  _$$_SoundOnlineItemCopyWith<_$_SoundOnlineItem> get copyWith =>
       throw _privateConstructorUsedError;
 }

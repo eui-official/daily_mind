@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sound.dart';
+part of 'sound_online_item.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Sound _$$_SoundFromJson(Map<String, dynamic> json) => _$_Sound(
+_$_SoundOnlineItem _$$_SoundOnlineItemFromJson(Map<String, dynamic> json) =>
+    _$_SoundOnlineItem(
       id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
@@ -16,7 +17,8 @@ _$_Sound _$$_SoundFromJson(Map<String, dynamic> json) => _$_Sound(
       category: json['category'] as String,
     );
 
-Map<String, dynamic> _$$_SoundToJson(_$_Sound instance) => <String, dynamic>{
+Map<String, dynamic> _$$_SoundOnlineItemToJson(_$_SoundOnlineItem instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt,
       'name': instance.name,

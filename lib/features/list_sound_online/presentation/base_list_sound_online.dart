@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_domains/sound.dart';
+import 'package:daily_mind/common_domains/sound_online_item.dart';
 import 'package:daily_mind/common_widgets/base_list_sound.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_selected_provider.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BaseListSoundOnline extends HookConsumerWidget {
-  final List<Sound> items;
+  final List<SoundOnlineItem> items;
   final String title;
   final Widget headerTrailing;
 
@@ -27,17 +27,18 @@ class BaseListSoundOnline extends HookConsumerWidget {
     return BaseListSound(
       items: items,
       title: title,
-      onSoundBuilder: (context, index, sound) {
-        final isPlaying = sound.id == newMixSelectedState.selectingId;
-        final isSelected = newMixSelectedState.selectedIds.contains(sound.id);
+      onSoundBuilder: (context, index, soundOnlineItem) {
+        final isPlaying = soundOnlineItem.id == newMixSelectedState.selectingId;
+        final isSelected =
+            newMixSelectedState.selectedIds.contains(soundOnlineItem.id);
 
         return SoundCardOnline(
-          backgroundKey: index == 0 ? soundKey : ValueKey(sound.id),
+          backgroundKey: index == 0 ? soundKey : ValueKey(soundOnlineItem.id),
           isPlaying: isPlaying,
           isSelected: isSelected,
           onSelected: newMixSelectedNotifier.onSelected,
           onDeleted: newMixSelectedNotifier.onDeleted,
-          sound: sound,
+          soundOnlineItem: soundOnlineItem,
         );
       },
     );

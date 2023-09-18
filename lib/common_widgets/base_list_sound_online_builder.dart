@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_domains/sound.dart';
+import 'package:daily_mind/common_domains/sound_online_item.dart';
 import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -19,13 +19,17 @@ class BaseListSoundOnlineBuilder extends StatelessWidget {
       future: queryBuilder,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Sound> listSound = [];
+          List<SoundOnlineItem> listSoundOnlineItem = [];
           final listSounds = snapshot.data as List<dynamic>;
+
           for (final sound in listSounds) {
-            listSound.add(Sound.fromJson(sound));
+            listSoundOnlineItem.add(SoundOnlineItem.fromJson(sound));
           }
 
-          return onListSoundBuilder(context, listSound);
+          return onListSoundBuilder(
+            context,
+            listSoundOnlineItem,
+          );
         }
 
         return const CircularProgressIndicator();

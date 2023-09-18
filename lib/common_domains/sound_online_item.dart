@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'sound.freezed.dart';
-part 'sound.g.dart';
+part 'sound_online_item.freezed.dart';
+part 'sound_online_item.g.dart';
 
 @freezed
-class Sound with _$Sound {
-  const factory Sound({
+class SoundOnlineItem with _$SoundOnlineItem {
+  const factory SoundOnlineItem({
     required String id,
     @JsonKey(name: 'created_at') required String createdAt,
     required String name,
@@ -13,7 +13,8 @@ class Sound with _$Sound {
     required String source,
     required bool isLive,
     required String category,
-  }) = _Sound;
+  }) = _SoundOnlineItem;
 
-  factory Sound.fromJson(Map<String, dynamic> json) => _$SoundFromJson(json);
+  factory SoundOnlineItem.fromJson(Map<String, dynamic> json) =>
+      _$SoundOnlineItemFromJson(json);
 }
