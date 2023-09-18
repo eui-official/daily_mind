@@ -12,7 +12,10 @@ class ListSoundLive extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return BaseListSoundOnlineBuilder(
-      queryBuilder: supabase.from('sounds').select().eq('category', 1),
+      queryBuilder: supabase.from('sounds').select().eq(
+            'category',
+            'ac25d14e-a1f8-463a-9581-ee88526c04bd',
+          ),
       onListSoundBuilder: (context, listSound) {
         return BaseListSoundOnline(
           items: listSound,

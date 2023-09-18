@@ -27,7 +27,7 @@ mixin _$Sound {
   String get image => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
   bool get isLive => throw _privateConstructorUsedError;
-  int get category => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +46,7 @@ abstract class $SoundCopyWith<$Res> {
       String image,
       String source,
       bool isLive,
-      int category});
+      String category});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class _$SoundCopyWithImpl<$Res, $Val extends Sound>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -116,7 +116,7 @@ abstract class _$$_SoundCopyWith<$Res> implements $SoundCopyWith<$Res> {
       String image,
       String source,
       bool isLive,
-      int category});
+      String category});
 }
 
 /// @nodoc
@@ -164,7 +164,7 @@ class __$$_SoundCopyWithImpl<$Res> extends _$SoundCopyWithImpl<$Res, _$_Sound>
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -198,7 +198,7 @@ class _$_Sound implements _Sound {
   @override
   final bool isLive;
   @override
-  final int category;
+  final String category;
 
   @override
   String toString() {
@@ -248,7 +248,7 @@ abstract class _Sound implements Sound {
       required final String image,
       required final String source,
       required final bool isLive,
-      required final int category}) = _$_Sound;
+      required final String category}) = _$_Sound;
 
   factory _Sound.fromJson(Map<String, dynamic> json) = _$_Sound.fromJson;
 
@@ -266,7 +266,7 @@ abstract class _Sound implements Sound {
   @override
   bool get isLive;
   @override
-  int get category;
+  String get category;
   @override
   @JsonKey(ignore: true)
   _$$_SoundCopyWith<_$_Sound> get copyWith =>

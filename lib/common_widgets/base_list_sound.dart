@@ -5,11 +5,11 @@ import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart' hide Trans;
 
-class BaseListSound<I, T> extends StatelessWidget {
-  final List<I> items;
+class BaseListSound<T> extends StatelessWidget {
+  final List<T> items;
   final String title;
   final Widget headerTrailing;
-  final OnSoundBuilder<I> onSoundBuilder;
+  final OnSoundBuilder<T> onSoundBuilder;
 
   const BaseListSound({
     super.key,
@@ -37,7 +37,7 @@ class BaseListSound<I, T> extends StatelessWidget {
         Flexible(
           child: Container(
             height: spacing(20),
-            padding: EdgeInsets.only(top: spacing(4)),
+            padding: EdgeInsets.only(top: spacing()),
             child: ListView.separated(
               itemCount: items.length,
               scrollDirection: Axis.horizontal,

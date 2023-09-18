@@ -12,7 +12,7 @@ class Sound with _$Sound {
     required String image,
     required String source,
     required bool isLive,
-    required int category,
+    required String category,
   }) = _Sound;
 
   factory Sound.fromJson(Map<String, dynamic> json) => _$SoundFromJson(json);

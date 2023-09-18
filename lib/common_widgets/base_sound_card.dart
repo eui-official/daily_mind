@@ -31,7 +31,7 @@ class BaseSoundCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(spacing(2)),
       child: SizedBox(
-        width: spacing(15),
+        width: spacing(20),
         child: Stack(
           children: [
             image,

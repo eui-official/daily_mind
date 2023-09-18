@@ -13,7 +13,7 @@ _$_Sound _$$_SoundFromJson(Map<String, dynamic> json) => _$_Sound(
       image: json['image'] as String,
       source: json['source'] as String,
       isLive: json['isLive'] as bool,
-      category: json['category'] as int,
+      category: json['category'] as String,
     );
 
 Map<String, dynamic> _$$_SoundToJson(_$_Sound instance) => <String, dynamic>{
