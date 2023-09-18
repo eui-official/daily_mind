@@ -6,6 +6,7 @@ import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -64,11 +65,14 @@ class NewMix extends HookConsumerWidget {
               image: appState.backgroundImage,
               child: Container(
                 padding: EdgeInsets.only(bottom: spacing(10)),
-                child: const Column(
-                  children: [
-                    ListSoundOffline(),
-                    ListSoundLive(),
-                  ],
+                child: Column(
+                  children: space(
+                    [
+                      const ListSoundOffline(),
+                      const ListSoundLive(),
+                    ],
+                    height: spacing(4),
+                  ),
                 ),
               ),
             ),
