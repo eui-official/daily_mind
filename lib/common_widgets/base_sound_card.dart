@@ -7,21 +7,23 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BaseSoundCard extends StatelessWidget {
+  final bool isLoading;
   final bool isPlaying;
   final bool isSelected;
-  final VoidCallback onDeleted;
   final Key? backgroundKey;
-  final Widget image;
   final String name;
+  final VoidCallback onDeleted;
   final VoidCallback onTap;
+  final Widget image;
 
   const BaseSoundCard({
     super.key,
+    required this.image,
+    required this.isLoading,
     required this.isPlaying,
     required this.isSelected,
-    required this.onDeleted,
-    required this.image,
     required this.name,
+    required this.onDeleted,
     required this.onTap,
     this.backgroundKey,
   });
@@ -39,6 +41,7 @@ class BaseSoundCard extends StatelessWidget {
             SoundCardContent(
               name: name,
               isPlaying: isPlaying,
+              isLoading: isLoading,
             ),
             SoundCardOverlay(onTap: onTap),
             if (isSelected) const SoundCardSelectedState(),

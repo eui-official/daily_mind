@@ -19,7 +19,7 @@ class ListSoundLive extends HookWidget {
       onListSoundBuilder: (context, listSound) {
         return BaseListSoundOnline(
           items: listSound,
-          title: 'Live',
+          title: 'Chill',
         );
       },
     );

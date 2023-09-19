@@ -1,14 +1,16 @@
 import 'dart:math';
 
+import 'package:daily_mind/common_applications/base_audio_player.dart';
 import 'package:daily_mind/common_applications/logger.dart';
 import 'package:daily_mind/features/new_mix/constant/sounds.dart';
 import 'package:just_audio/just_audio.dart';
 
-class GaplessAudioPlayer {
-  final audioPlayer = AudioPlayer();
+class GaplessAudioPlayer extends BaseAudioPlayer {
   late List<AudioSource> children;
 
   Stream<bool> get playingStream => audioPlayer.playingStream;
+
+  bool get isPlaying => audioPlayer.playing;
 
   void setSource(String id) async {
     children = [];

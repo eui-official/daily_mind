@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'new_mix_selected.dart';
+part of 'new_mix_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$NewMixSelected {
+mixin _$NewMixState {
   String get selectingId => throw _privateConstructorUsedError;
   List<String> get selectedIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NewMixSelectedCopyWith<NewMixSelected> get copyWith =>
+  $NewMixStateCopyWith<NewMixState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NewMixSelectedCopyWith<$Res> {
-  factory $NewMixSelectedCopyWith(
-          NewMixSelected value, $Res Function(NewMixSelected) then) =
-      _$NewMixSelectedCopyWithImpl<$Res, NewMixSelected>;
+abstract class $NewMixStateCopyWith<$Res> {
+  factory $NewMixStateCopyWith(
+          NewMixState value, $Res Function(NewMixState) then) =
+      _$NewMixStateCopyWithImpl<$Res, NewMixState>;
   @useResult
   $Res call({String selectingId, List<String> selectedIds});
 }
 
 /// @nodoc
-class _$NewMixSelectedCopyWithImpl<$Res, $Val extends NewMixSelected>
-    implements $NewMixSelectedCopyWith<$Res> {
-  _$NewMixSelectedCopyWithImpl(this._value, this._then);
+class _$NewMixStateCopyWithImpl<$Res, $Val extends NewMixState>
+    implements $NewMixStateCopyWith<$Res> {
+  _$NewMixStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +63,22 @@ class _$NewMixSelectedCopyWithImpl<$Res, $Val extends NewMixSelected>
 }
 
 /// @nodoc
-abstract class _$$_NewMixSelectedCopyWith<$Res>
-    implements $NewMixSelectedCopyWith<$Res> {
-  factory _$$_NewMixSelectedCopyWith(
-          _$_NewMixSelected value, $Res Function(_$_NewMixSelected) then) =
-      __$$_NewMixSelectedCopyWithImpl<$Res>;
+abstract class _$$_NewMixStateCopyWith<$Res>
+    implements $NewMixStateCopyWith<$Res> {
+  factory _$$_NewMixStateCopyWith(
+          _$_NewMixState value, $Res Function(_$_NewMixState) then) =
+      __$$_NewMixStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String selectingId, List<String> selectedIds});
 }
 
 /// @nodoc
-class __$$_NewMixSelectedCopyWithImpl<$Res>
-    extends _$NewMixSelectedCopyWithImpl<$Res, _$_NewMixSelected>
-    implements _$$_NewMixSelectedCopyWith<$Res> {
-  __$$_NewMixSelectedCopyWithImpl(
-      _$_NewMixSelected _value, $Res Function(_$_NewMixSelected) _then)
+class __$$_NewMixStateCopyWithImpl<$Res>
+    extends _$NewMixStateCopyWithImpl<$Res, _$_NewMixState>
+    implements _$$_NewMixStateCopyWith<$Res> {
+  __$$_NewMixStateCopyWithImpl(
+      _$_NewMixState _value, $Res Function(_$_NewMixState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_NewMixSelectedCopyWithImpl<$Res>
     Object? selectingId = null,
     Object? selectedIds = null,
   }) {
-    return _then(_$_NewMixSelected(
+    return _then(_$_NewMixState(
       selectingId: null == selectingId
           ? _value.selectingId
           : selectingId // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_NewMixSelectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewMixSelected extends _NewMixSelected {
-  const _$_NewMixSelected(
+class _$_NewMixState extends _NewMixState {
+  const _$_NewMixState(
       {required this.selectingId, required final List<String> selectedIds})
       : _selectedIds = selectedIds,
         super._();
@@ -120,14 +120,14 @@ class _$_NewMixSelected extends _NewMixSelected {
 
   @override
   String toString() {
-    return 'NewMixSelected(selectingId: $selectingId, selectedIds: $selectedIds)';
+    return 'NewMixState(selectingId: $selectingId, selectedIds: $selectedIds)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewMixSelected &&
+            other is _$_NewMixState &&
             (identical(other.selectingId, selectingId) ||
                 other.selectingId == selectingId) &&
             const DeepCollectionEquality()
@@ -141,15 +141,15 @@ class _$_NewMixSelected extends _NewMixSelected {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewMixSelectedCopyWith<_$_NewMixSelected> get copyWith =>
-      __$$_NewMixSelectedCopyWithImpl<_$_NewMixSelected>(this, _$identity);
+  _$$_NewMixStateCopyWith<_$_NewMixState> get copyWith =>
+      __$$_NewMixStateCopyWithImpl<_$_NewMixState>(this, _$identity);
 }
 
-abstract class _NewMixSelected extends NewMixSelected {
-  const factory _NewMixSelected(
+abstract class _NewMixState extends NewMixState {
+  const factory _NewMixState(
       {required final String selectingId,
-      required final List<String> selectedIds}) = _$_NewMixSelected;
-  const _NewMixSelected._() : super._();
+      required final List<String> selectedIds}) = _$_NewMixState;
+  const _NewMixState._() : super._();
 
   @override
   String get selectingId;
@@ -157,6 +157,6 @@ abstract class _NewMixSelected extends NewMixSelected {
   List<String> get selectedIds;
   @override
   @JsonKey(ignore: true)
-  _$$_NewMixSelectedCopyWith<_$_NewMixSelected> get copyWith =>
+  _$$_NewMixStateCopyWith<_$_NewMixState> get copyWith =>
       throw _privateConstructorUsedError;
 }

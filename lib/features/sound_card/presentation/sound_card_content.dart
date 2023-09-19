@@ -6,11 +6,13 @@ import 'package:get/utils.dart';
 class SoundCardContent extends StatelessWidget {
   final String name;
   final bool isPlaying;
+  final bool isLoading;
 
   const SoundCardContent({
     super.key,
     required this.name,
     required this.isPlaying,
+    required this.isLoading,
   });
 
   @override
@@ -29,6 +31,12 @@ class SoundCardContent extends StatelessWidget {
               name,
               style: context.textTheme.bodyMedium,
             ),
+            if (isLoading)
+              SizedBox(
+                height: spacing(),
+                width: spacing(),
+                child: const CircularProgressIndicator(strokeWidth: 2),
+              ),
             if (isPlaying) const MusicPlaying(),
           ],
         ),

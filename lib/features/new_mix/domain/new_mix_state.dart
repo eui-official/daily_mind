@@ -3,16 +3,16 @@ import 'package:daily_mind/constants/sound_items.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/utils.dart';
 
-part 'new_mix_selected.freezed.dart';
+part 'new_mix_state.freezed.dart';
 
 @freezed
-class NewMixSelected with _$NewMixSelected {
-  const NewMixSelected._();
+class NewMixState with _$NewMixState {
+  const NewMixState._();
 
-  const factory NewMixSelected({
+  const factory NewMixState({
     required String selectingId,
     required List<String> selectedIds,
-  }) = _NewMixSelected;
+  }) = _NewMixState;
 
   bool get isSelecting => selectingId.isNotEmpty;
 

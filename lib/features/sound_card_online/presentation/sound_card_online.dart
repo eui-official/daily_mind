@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daily_mind/common_applications/youtube_audio_player.dart';
 import 'package:daily_mind/common_domains/sound_online_item.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:just_audio/just_audio.dart';
 
 class SoundCardOnline extends HookWidget {
   final bool isPlaying;
@@ -25,11 +27,31 @@ class SoundCardOnline extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final youtubeAudioPlayer = useMemoized(() => YoutubeAudioPlayer(), []);
+
+    final state = useStream(
+      useMemoized(
+        () => youtubeAudioPlayer.audioPlayer.playerStateStream,
+        [],
+      ),
+    );
+
+    final isLoading =
+        state.data?.processingState == ProcessingState.buffering ||
+            state.data?.processingState == ProcessingState.loading;
+
+    final isPlaying = state.data?.playing ?? false;
+
     final onTap = useCallback(
       () {
         onSelected(soundOnlineItem);
+        if (isPlaying) {
+          youtubeAudioPlayer.stop();
+        } else {
+          youtubeAudioPlayer.play(soundOnlineItem.source);
+        }
       },
-      [soundOnlineItem],
+      [isPlaying, soundOnlineItem],
     );
 
     return BaseSoundCard(
@@ -39,6 +61,7 @@ class SoundCardOnline extends HookWidget {
         imageUrl: soundOnlineItem.image,
       ),
       isPlaying: isPlaying,
+      isLoading: isLoading,
       isSelected: isSelected,
       name: soundOnlineItem.name,
       onDeleted: () => onDeleted(soundOnlineItem.id),
