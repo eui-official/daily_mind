@@ -13,7 +13,7 @@ class YoutubeAudioPlayer extends BaseAudioPlayer {
     } else {
       final manifest = await yt.videos.streams.getManifest(VideoId(source));
       final audio = manifest.audioOnly.first;
-      final url = audio.url.path;
+      final url = audio.url.toString();
 
       await audioPlayer.setUrl(url);
     }
