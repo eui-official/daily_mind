@@ -28,16 +28,15 @@ class BaseListSoundOnline extends HookConsumerWidget {
       items: items,
       title: title,
       onSoundBuilder: (context, index, soundOnlineItem) {
-        final isPlaying = soundOnlineItem.id == newMixSelectedState.selectingId;
         final isSelected =
             newMixSelectedState.selectedIds.contains(soundOnlineItem.id);
 
         return SoundCardOnline(
           backgroundKey: index == 0 ? soundKey : ValueKey(soundOnlineItem.id),
-          isPlaying: isPlaying,
           isSelected: isSelected,
-          onSelected: newMixSelectedNotifier.onSelected,
           onDeleted: newMixSelectedNotifier.onDeleted,
+          onSelected: newMixSelectedNotifier.onSelected,
+          selectingId: newMixSelectedState.selectingId,
           soundOnlineItem: soundOnlineItem,
         );
       },

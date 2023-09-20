@@ -11,15 +11,15 @@ class NewMixdNotifier extends StateNotifier<NewMixState> {
           ),
         );
 
-  void onSelected(dynamic data) {
-    if (state.selectingId == data.id) {
+  void onSelected(String id) {
+    if (state.selectingId == id) {
       onResetSelectingId();
     } else {
-      state = state.copyWith(selectingId: data.id);
+      state = state.copyWith(selectingId: id);
     }
   }
 
-  void onDeleted(dynamic id) {
+  void onDeleted(String id) {
     final cloneSelectedIds = List<String>.from(state.selectedIds);
     cloneSelectedIds.remove(id);
 

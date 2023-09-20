@@ -1,4 +1,5 @@
 import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:daily_mind/types/common.dart';
@@ -36,7 +37,7 @@ class BaseListSound<T> extends StatelessWidget {
         ),
         Flexible(
           child: Container(
-            height: spacing(20),
+            height: itemHeight,
             padding: EdgeInsets.only(top: spacing()),
             child: ListView.separated(
               itemCount: items.length,

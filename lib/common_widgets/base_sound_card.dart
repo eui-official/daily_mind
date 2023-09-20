@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_background_gradient.dart';
+import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_content.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_delete_button.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_overlay.dart';
@@ -33,7 +34,7 @@ class BaseSoundCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(spacing(2)),
       child: SizedBox(
-        width: spacing(20),
+        width: itemWidth,
         child: Stack(
           children: [
             image,

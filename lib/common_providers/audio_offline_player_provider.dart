@@ -29,6 +29,8 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   }
 
   void play(String id) {
+    state = state.copyWith(isLoading: true);
+
     gaplessAudioPlayer.setSource(id);
     gaplessAudioPlayer.play();
   }
