@@ -6,8 +6,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 final supabase = Supabase.instance.client;
 
-class ListSoundLive extends HookWidget {
-  const ListSoundLive({super.key});
+class ListSoundChill extends HookWidget {
+  const ListSoundChill({super.key});
 
   @override
   Widget build(BuildContext context) {

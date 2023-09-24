@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
 class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
-  final gaplessAudioPlayer = GaplessAudioPlayer();
+  GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
 
   AudioOfflinePlayerNotifier()
       : super(const AudioPlayerState(

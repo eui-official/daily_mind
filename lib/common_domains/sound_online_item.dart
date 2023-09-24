@@ -11,7 +11,7 @@ class SoundOnlineItem with _$SoundOnlineItem {
     required String name,
     required String image,
     required String source,
-    required bool isLive,
+    @JsonKey(name: 'sound_type') required String soundType,
     required String category,
   }) = _SoundOnlineItem;
 

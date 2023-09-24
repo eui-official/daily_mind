@@ -40,6 +40,7 @@ class BaseListSound<T> extends StatelessWidget {
             height: itemHeight,
             padding: EdgeInsets.only(top: spacing()),
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               itemCount: items.length,
               scrollDirection: Axis.horizontal,
               separatorBuilder: (context, index) => SizedBox(width: spacing()),

@@ -26,7 +26,8 @@ mixin _$SoundOnlineItem {
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
-  bool get isLive => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sound_type')
+  String get soundType => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,7 @@ abstract class $SoundOnlineItemCopyWith<$Res> {
       String name,
       String image,
       String source,
-      bool isLive,
+      @JsonKey(name: 'sound_type') String soundType,
       String category});
 }
 
@@ -69,7 +70,7 @@ class _$SoundOnlineItemCopyWithImpl<$Res, $Val extends SoundOnlineItem>
     Object? name = null,
     Object? image = null,
     Object? source = null,
-    Object? isLive = null,
+    Object? soundType = null,
     Object? category = null,
   }) {
     return _then(_value.copyWith(
@@ -93,10 +94,10 @@ class _$SoundOnlineItemCopyWithImpl<$Res, $Val extends SoundOnlineItem>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as String,
-      isLive: null == isLive
-          ? _value.isLive
-          : isLive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      soundType: null == soundType
+          ? _value.soundType
+          : soundType // ignore: cast_nullable_to_non_nullable
+              as String,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -119,7 +120,7 @@ abstract class _$$_SoundOnlineItemCopyWith<$Res>
       String name,
       String image,
       String source,
-      bool isLive,
+      @JsonKey(name: 'sound_type') String soundType,
       String category});
 }
 
@@ -139,7 +140,7 @@ class __$$_SoundOnlineItemCopyWithImpl<$Res>
     Object? name = null,
     Object? image = null,
     Object? source = null,
-    Object? isLive = null,
+    Object? soundType = null,
     Object? category = null,
   }) {
     return _then(_$_SoundOnlineItem(
@@ -163,10 +164,10 @@ class __$$_SoundOnlineItemCopyWithImpl<$Res>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as String,
-      isLive: null == isLive
-          ? _value.isLive
-          : isLive // ignore: cast_nullable_to_non_nullable
-              as bool,
+      soundType: null == soundType
+          ? _value.soundType
+          : soundType // ignore: cast_nullable_to_non_nullable
+              as String,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -184,7 +185,7 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
       required this.name,
       required this.image,
       required this.source,
-      required this.isLive,
+      @JsonKey(name: 'sound_type') required this.soundType,
       required this.category});
 
   factory _$_SoundOnlineItem.fromJson(Map<String, dynamic> json) =>
@@ -202,13 +203,14 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
   @override
   final String source;
   @override
-  final bool isLive;
+  @JsonKey(name: 'sound_type')
+  final String soundType;
   @override
   final String category;
 
   @override
   String toString() {
-    return 'SoundOnlineItem(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, isLive: $isLive, category: $category)';
+    return 'SoundOnlineItem(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, soundType: $soundType, category: $category)';
   }
 
   @override
@@ -222,7 +224,8 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.source, source) || other.source == source) &&
-            (identical(other.isLive, isLive) || other.isLive == isLive) &&
+            (identical(other.soundType, soundType) ||
+                other.soundType == soundType) &&
             (identical(other.category, category) ||
                 other.category == category));
   }
@@ -230,7 +233,7 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, createdAt, name, image, source, isLive, category);
+      runtimeType, id, createdAt, name, image, source, soundType, category);
 
   @JsonKey(ignore: true)
   @override
@@ -253,7 +256,7 @@ abstract class _SoundOnlineItem implements SoundOnlineItem {
       required final String name,
       required final String image,
       required final String source,
-      required final bool isLive,
+      @JsonKey(name: 'sound_type') required final String soundType,
       required final String category}) = _$_SoundOnlineItem;
 
   factory _SoundOnlineItem.fromJson(Map<String, dynamic> json) =
@@ -271,7 +274,8 @@ abstract class _SoundOnlineItem implements SoundOnlineItem {
   @override
   String get source;
   @override
-  bool get isLive;
+  @JsonKey(name: 'sound_type')
+  String get soundType;
   @override
   String get category;
   @override

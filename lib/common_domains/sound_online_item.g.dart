@@ -13,7 +13,7 @@ _$_SoundOnlineItem _$$_SoundOnlineItemFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       image: json['image'] as String,
       source: json['source'] as String,
-      isLive: json['isLive'] as bool,
+      soundType: json['sound_type'] as String,
       category: json['category'] as String,
     );
 
@@ -24,6 +24,6 @@ Map<String, dynamic> _$$_SoundOnlineItemToJson(_$_SoundOnlineItem instance) =>
       'name': instance.name,
       'image': instance.image,
       'source': instance.source,
-      'isLive': instance.isLive,
+      'sound_type': instance.soundType,
       'category': instance.category,
     };

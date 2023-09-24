@@ -61,7 +61,6 @@ dependencies:
   easy_localization: ^3.0.3
   tutorial_coach_mark: ^1.2.9
   animated_text_kit: ^4.2.2
-  youtube_explode_dart: ^2.0.2
   supabase_flutter: ^1.10.16
   envied: ^0.3.0+3
   json_annotation: ^4.8.1

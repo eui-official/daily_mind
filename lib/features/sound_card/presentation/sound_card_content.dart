@@ -27,9 +27,15 @@ class SoundCardContent extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              name,
-              style: context.textTheme.bodyMedium,
+            Flexible(
+              child: Container(
+                padding: EdgeInsets.only(right: spacing()),
+                child: Text(
+                  name,
+                  style: context.textTheme.bodyMedium,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ),
             if (isLoading)
               SizedBox(

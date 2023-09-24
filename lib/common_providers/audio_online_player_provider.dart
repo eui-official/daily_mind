@@ -1,10 +1,10 @@
-import 'package:daily_mind/common_applications/youtube_audio_player.dart';
+import 'package:daily_mind/common_applications/online_audio_player.dart';
 import 'package:daily_mind/common_providers/domain/audio_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
 class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
-  final youtubeAudioPlayer = YoutubeAudioPlayer();
+  final onlineAudioPlayer = OnlineAudioPlayer();
 
   AudioOnlinePlayerNotifier()
       : super(const AudioPlayerState(
@@ -15,7 +15,7 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   }
 
   void init() {
-    youtubeAudioPlayer.audioPlayer.processingStateStream
+    onlineAudioPlayer.audioPlayer.processingStateStream
         .listen((processingState) {
       final isLoading = processingState == ProcessingState.buffering ||
           processingState == ProcessingState.loading;
@@ -23,7 +23,7 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
       state = state.copyWith(isLoading: isLoading);
     });
 
-    youtubeAudioPlayer.audioPlayer.playingStream.listen((isPlaying) {
+    onlineAudioPlayer.audioPlayer.playingStream.listen((isPlaying) {
       state = state.copyWith(
         isPlaying: isPlaying,
       );
@@ -33,11 +33,11 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   void play(String source) {
     state = state.copyWith(isLoading: true);
 
-    youtubeAudioPlayer.play(source);
+    onlineAudioPlayer.play(source);
   }
 
   void stop() {
-    youtubeAudioPlayer.stop();
+    onlineAudioPlayer.stop();
   }
 }
 

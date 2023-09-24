@@ -1,7 +1,7 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/list_sound_offline/presentation/list_sound_offline.dart';
-import 'package:daily_mind/features/list_sound_online/presentation/list_sound_live.dart';
+import 'package:daily_mind/features/list_sound_online/presentation/list_sound_chill.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
@@ -69,7 +69,7 @@ class NewMix extends HookConsumerWidget {
                   children: space(
                     [
                       const ListSoundOffline(),
-                      const ListSoundLive(),
+                      const ListSoundChill(),
                     ],
                     height: spacing(4),
                   ),
