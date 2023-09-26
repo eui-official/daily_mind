@@ -65,6 +65,7 @@ dependencies:
   envied: ^0.3.0+3
   json_annotation: ^4.8.1
   cached_network_image: ^3.2.3
+  collection: ^1.17.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
