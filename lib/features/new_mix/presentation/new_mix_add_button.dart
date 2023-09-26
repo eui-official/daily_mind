@@ -12,8 +12,8 @@ class NewMixAddButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
-    final newMixSelectedState = ref.watch(newMixProvider);
-    final soundItem = newMixSelectedState.soundItem;
+    final soundItem = newMixSelectedNotifier.getSoundItem();
+    String name = soundItem?.name ?? emptyString;
 
     return ElevatedButton(
       onPressed: newMixSelectedNotifier.onAddCurrentId,
@@ -23,7 +23,7 @@ class NewMixAddButton extends HookConsumerWidget {
       child: Text(
         'addToList'.tr(
           namedArgs: {
-            "name": soundItem?.name.tr() ?? emptyString,
+            "name": name.tr(),
           },
         ),
       ),

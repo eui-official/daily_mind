@@ -1,40 +1,50 @@
-import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/features/new_mix/constant/network_type.dart';
 import 'package:daily_mind/features/new_mix/domain/new_mix_state.dart';
+import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class NewMixdNotifier extends StateNotifier<NewMixState> {
-  NewMixdNotifier()
-      : super(
-          const NewMixState(
-            selectedIds: [],
-            selectingId: emptyString,
-          ),
-        );
+const initSelectingState = SelectingState(
+  sound: null,
+  networkType: NetworkType.offline,
+);
 
-  void onSelected(String id) {
-    if (state.selectingId == id) {
+const initNewMixState = NewMixState(
+  selectedStates: [],
+  selectingState: initSelectingState,
+);
+
+class NewMixdNotifier extends StateNotifier<NewMixState> {
+  NewMixdNotifier() : super(initNewMixState);
+
+  dynamic getSoundItem() {
+    return state.selectingState.sound;
+  }
+
+  void onSelecting(SelectingState newSelectingState) {
+    if (state.selectingState == newSelectingState) {
       onResetSelectingId();
     } else {
-      state = state.copyWith(selectingId: id);
+      state = state.copyWith(selectingState: newSelectingState);
     }
   }
 
   void onDeleted(String id) {
-    final cloneSelectedIds = List<String>.from(state.selectedIds);
-    cloneSelectedIds.remove(id);
+    final cloneSelectingStates =
+        List<SelectingState>.from(state.selectedStates);
+    cloneSelectingStates.removeWhere((element) => element.sound.id == id);
 
-    state = state.copyWith(selectedIds: cloneSelectedIds);
+    state = state.copyWith(selectedStates: cloneSelectingStates);
   }
 
   void onResetSelectingId() {
-    state = state.copyWith(selectingId: emptyString);
+    state = state.copyWith(selectingState: initSelectingState);
   }
 
   void onAddCurrentId() {
-    final newSelectedIds = List<String>.from(state.selectedIds);
-    newSelectedIds.add(state.selectingId);
+    final newSelectedStates = List<SelectingState>.from(state.selectedStates);
+    newSelectedStates.add(state.selectingState);
 
-    state = state.copyWith(selectedIds: newSelectedIds);
+    state = state.copyWith(selectedStates: newSelectedStates);
 
     onResetSelectingId();
   }

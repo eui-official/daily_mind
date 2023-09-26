@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_list_sound.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/sound_items.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
 import 'package:daily_mind/features/sound_card_offline/presentation/sound_card_offline.dart';
@@ -19,13 +20,16 @@ class ListSoundOffline extends HookConsumerWidget {
       title: 'naturalSounds'.tr(),
       items: soundOfflineItems,
       onSoundBuilder: (context, index, item) {
+        final isSelected = newMixSelectedState.isContain(item.id);
+
         return SoundCardOffline(
           backgroundKey: index == 0 ? soundKey : ValueKey(item.id),
-          isSelected: newMixSelectedState.selectedIds.contains(item.id),
+          isSelected: isSelected,
           item: item,
           onDeleted: newMixSelectedNotifier.onDeleted,
-          onSelected: newMixSelectedNotifier.onSelected,
-          selectingId: newMixSelectedState.selectingId,
+          onSelecting: newMixSelectedNotifier.onSelecting,
+          selectingId:
+              newMixSelectedState.selectingState.sound?.id ?? emptyString,
         );
       },
     );

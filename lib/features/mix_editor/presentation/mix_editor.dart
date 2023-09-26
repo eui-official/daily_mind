@@ -29,7 +29,7 @@ class MixEditor extends HookConsumerWidget {
     final newMixSelectedState = ref.watch(newMixProvider);
 
     final mixEditorMemoized = useMemoized(
-      () => mixEditorProvider(newMixSelectedState.selectedIds),
+      () => mixEditorProvider(newMixSelectedState.selectedStates),
     );
 
     final mixEditorNotifier = ref.read(mixEditorMemoized.notifier);

@@ -5,6 +5,8 @@ import 'package:daily_mind/common_providers/audio_online_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
 import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/list_sound_online/domain/sound_online_bundle.dart';
+import 'package:daily_mind/features/new_mix/constant/network_type.dart';
+import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,13 +17,13 @@ class SoundCardOnline extends HookConsumerWidget {
   final SoundOnlineBundle bundle;
   final String selectingId;
   final ValueChanged<String> onDeleted;
-  final ValueChanged<String> onSelected;
+  final ValueChanged<SelectingState> onSelecting;
 
   const SoundCardOnline({
     super.key,
     required this.isSelected,
     required this.onDeleted,
-    required this.onSelected,
+    required this.onSelecting,
     required this.selectingId,
     required this.bundle,
     this.backgroundKey,
@@ -41,7 +43,12 @@ class SoundCardOnline extends HookConsumerWidget {
 
     final onTap = useCallback(
       () {
-        onSelected(soundType.id);
+        onSelecting(
+          SelectingState(
+            sound: soundType,
+            networkType: NetworkType.online,
+          ),
+        );
 
         if (audioOnlinePlayerState.isPlaying) {
           audioOnlinePlayerNotifier.stop();

@@ -1,7 +1,5 @@
-import 'package:daily_mind/common_domains/sound_offline_item.dart';
-import 'package:daily_mind/constants/sound_items.dart';
+import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:get/utils.dart';
 
 part 'new_mix_state.freezed.dart';
 
@@ -10,16 +8,21 @@ class NewMixState with _$NewMixState {
   const NewMixState._();
 
   const factory NewMixState({
-    required String selectingId,
-    required List<String> selectedIds,
+    required SelectingState selectingState,
+    required List<SelectingState> selectedStates,
   }) = _NewMixState;
 
-  bool get isSelecting => selectingId.isNotEmpty;
+  bool isContain(String id) {
+    if (isNoSound) {
+      return false;
+    }
 
-  bool get isCanAdd => isSelecting && !selectedIds.contains(selectingId);
+    return selectedStates.every((state) => state.sound?.id == id);
+  }
 
-  bool get isNoSound => selectedIds.isEmpty;
+  bool get isSelecting => selectingState.sound != null;
 
-  SoundOfflineItem? get soundItem =>
-      soundOfflineItems.firstWhereOrNull((item) => item.id == selectingId);
+  bool get isCanAdd => isSelecting && !selectedStates.contains(selectingState);
+
+  bool get isNoSound => selectedStates.isEmpty;
 }

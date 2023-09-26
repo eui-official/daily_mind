@@ -1,6 +1,8 @@
 import 'package:daily_mind/common_domains/sound_offline_item.dart';
 import 'package:daily_mind/common_providers/audio_offline_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
+import 'package:daily_mind/features/new_mix/constant/network_type.dart';
+import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_item_background.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +15,14 @@ class SoundCardOffline extends HookConsumerWidget {
   final SoundOfflineItem item;
   final String selectingId;
   final ValueChanged<String> onDeleted;
-  final ValueChanged<String> onSelected;
+  final ValueChanged<SelectingState> onSelecting;
 
   const SoundCardOffline({
     super.key,
     required this.isSelected,
     required this.item,
     required this.onDeleted,
-    required this.onSelected,
+    required this.onSelecting,
     required this.selectingId,
     this.backgroundKey,
   });
@@ -34,7 +36,12 @@ class SoundCardOffline extends HookConsumerWidget {
     final audioOfflinePlayerState = ref.watch(audioOfflinePlayerMemoized);
 
     final onTap = useCallback(() {
-      onSelected(item.id);
+      onSelecting(
+        SelectingState(
+          sound: item,
+          networkType: NetworkType.offline,
+        ),
+      );
 
       if (audioOfflinePlayerState.isPlaying) {
         audioOfflinePlayerNotifier.stop();
