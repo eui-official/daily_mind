@@ -17,7 +17,9 @@ class NewMixState with _$NewMixState {
       return false;
     }
 
-    return selectedStates.every((state) => state.sound?.id == id);
+    final sounds = selectedStates.where((state) => state.sound.id == id);
+
+    return sounds.isNotEmpty;
   }
 
   bool get isSelecting => selectingState.sound != null;

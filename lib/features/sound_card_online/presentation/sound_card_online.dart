@@ -63,6 +63,14 @@ class SoundCardOnline extends HookConsumerWidget {
       ],
     );
 
+    useEffect(() {
+      if (selectingId != bundle.soundType.id) {
+        audioOnlinePlayerNotifier.stop();
+      }
+
+      return () {};
+    }, [selectingId, bundle]);
+
     return BaseSoundCard(
       image: CachedNetworkImage(
         fit: BoxFit.cover,

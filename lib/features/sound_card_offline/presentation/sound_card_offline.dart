@@ -59,7 +59,7 @@ class SoundCardOffline extends HookConsumerWidget {
       }
 
       return () {};
-    }, [selectingId]);
+    }, [selectingId, item]);
 
     return BaseSoundCard(
       isPlaying: audioOfflinePlayerState.isPlaying,
