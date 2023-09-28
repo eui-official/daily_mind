@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
+import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
 import 'package:daily_mind/features/app_logo/presentation/app_logo.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_chord.dart';
@@ -17,49 +18,52 @@ class ListMix extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.watch(appProvider);
 
-    return Stack(
-      children: [
-        Background(image: appState.backgroundImage),
-        SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const AppLogo(),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: spacing(2),
-                    vertical: spacing(4),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'mixList'.tr(),
-                              style: context.textTheme.titleLarge,
-                            ),
-                            Flexible(
-                              child: Container(
-                                padding: EdgeInsets.only(top: spacing(5)),
-                                child: const ListChord(),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Background(image: appState.backgroundImage),
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const AppLogo(),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: spacing(2),
+                      vertical: spacing(4),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'mixList'.tr(),
+                                style: context.textTheme.titleLarge,
                               ),
-                            )
-                          ],
+                              Flexible(
+                                child: Container(
+                                  padding: EdgeInsets.only(top: spacing(5)),
+                                  child: const ListChord(),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
+      floatingActionButton: const AddNewMixButton(),
     );
   }
 }
