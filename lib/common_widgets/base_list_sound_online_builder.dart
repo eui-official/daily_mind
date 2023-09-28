@@ -5,12 +5,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class BaseListSoundOnlineBuilder extends StatelessWidget {
   final PostgrestFilterBuilder<dynamic> queryBuilder;
-  final OnListSoundBuilder onListSoundBuilder;
+  final OnListItemBuilder<SoundOnlineItem> onListItemBuilder;
 
   const BaseListSoundOnlineBuilder({
     super.key,
     required this.queryBuilder,
-    required this.onListSoundBuilder,
+    required this.onListItemBuilder,
   });
 
   @override
@@ -20,13 +20,13 @@ class BaseListSoundOnlineBuilder extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<SoundOnlineItem> listSoundOnlineItem = [];
-          final listSounds = snapshot.data as List<dynamic>;
+          final list = snapshot.data as List<dynamic>;
 
-          for (final sound in listSounds) {
+          for (final sound in list) {
             listSoundOnlineItem.add(SoundOnlineItem.fromJson(sound));
           }
 
-          return onListSoundBuilder(
+          return onListItemBuilder(
             context,
             listSoundOnlineItem,
           );

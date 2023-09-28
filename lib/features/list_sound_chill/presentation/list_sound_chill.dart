@@ -16,7 +16,7 @@ class ListSoundChill extends HookWidget {
             'category',
             'ac25d14e-a1f8-463a-9581-ee88526c04bd',
           ),
-      onListSoundBuilder: (context, listSound) {
+      onListItemBuilder: (context, listSound) {
         return BaseListSoundOnline(
           items: listSound,
           title: 'Chill',
