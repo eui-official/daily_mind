@@ -40,6 +40,8 @@ class TimerPicker extends HookConsumerWidget {
                 onChange: playMixNotifier.updateTimer,
                 is24HrFormat: true,
                 iosStylePicker: Platform.isIOS,
+                cancelText: 'cancel'.tr(),
+                okText: 'ok'.tr(),
               ),
             );
           },

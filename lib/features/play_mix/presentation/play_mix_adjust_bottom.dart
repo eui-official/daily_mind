@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/features/play_mix/presentation/play_mix_bottom_drag_indicator.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix_list_item.dart';
 import 'package:daily_mind/features/timer_picker/presentation/timer_picker.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -31,7 +32,7 @@ class PlayMixAdjustBottom extends HookWidget {
     return Container(
       padding: EdgeInsets.all(spacing(2)),
       decoration: BoxDecoration(
-        color: context.theme.colorScheme.background.withOpacity(0.6),
+        color: context.theme.colorScheme.background.withOpacity(0.9),
       ),
       child: SingleChildScrollView(
         controller: scrollController,
@@ -40,6 +41,7 @@ class PlayMixAdjustBottom extends HookWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: space(
             [
+              const Center(child: PlayMixBottomDragIndicator()),
               const TimerPicker(),
               BaseContentHeader(
                 title: 'name'.tr(),
