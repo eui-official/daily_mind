@@ -24,6 +24,9 @@ class ListChord extends HookConsumerWidget {
     }
 
     return ListView.separated(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: playlists.length,
       itemBuilder: (context, index) {
         final playlist = playlists[index];

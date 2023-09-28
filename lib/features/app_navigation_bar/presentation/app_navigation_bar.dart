@@ -29,6 +29,7 @@ class AppNavigationBar extends HookConsumerWidget {
       ],
       showSelectedLabels: false,
       showUnselectedLabels: false,
+      selectedItemColor: context.theme.primaryColor,
       backgroundColor: context.theme.scaffoldBackgroundColor,
       currentIndex: appNavigationBarState.index,
       onTap: appNavigationBarNotifier.onTap,
