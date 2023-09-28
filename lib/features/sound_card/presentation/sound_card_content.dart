@@ -22,7 +22,6 @@ class SoundCardContent extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        height: spacing(3),
         padding: EdgeInsets.symmetric(horizontal: spacing(2)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,7 +31,9 @@ class SoundCardContent extends StatelessWidget {
                 padding: EdgeInsets.only(right: spacing()),
                 child: Text(
                   name,
-                  style: context.textTheme.bodyMedium,
+                  style: context.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

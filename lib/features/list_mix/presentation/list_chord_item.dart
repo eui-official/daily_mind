@@ -45,49 +45,48 @@ class ListChordItem extends StatelessWidget {
         ],
         child: OpenContainerTransition(
           openChild: PlayMix(playlistId: playlist.id),
-          closeChild: Row(
-            children: [
-              Flexible(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SoundImagesStack(
-                      items: items,
-                      width: 112,
-                      height: 112,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(spacing()),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (title.isNotEmpty)
+          closeChild: Container(
+            color: context.theme.primaryColor.withOpacity(0.1),
+            child: Row(
+              children: [
+                Flexible(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SoundImagesStack(items: items),
+                      Container(
+                        padding: EdgeInsets.all(spacing()),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (title.isNotEmpty)
+                              Text(
+                                title,
+                                style: context.textTheme.bodyLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
                             Text(
-                              title,
-                              style: context.textTheme.bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              names,
+                              style: context.textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          Text(
-                            names,
-                            style: context.textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.only(right: spacing()),
-                child: Icon(
-                  Icons.play_circle_fill_outlined,
-                  size: spacing(5),
-                  color: context.theme.primaryColor,
+                Container(
+                  padding: EdgeInsets.only(right: spacing()),
+                  child: Icon(
+                    Icons.play_circle_fill_outlined,
+                    size: spacing(5),
+                    color: context.theme.primaryColor,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

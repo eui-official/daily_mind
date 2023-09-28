@@ -13,7 +13,7 @@ class SoundCardItemBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacing(3)),
+        borderRadius: BorderRadius.circular(spacing(2)),
         image: DecorationImage(
           image: imageProvider,
           fit: BoxFit.cover,

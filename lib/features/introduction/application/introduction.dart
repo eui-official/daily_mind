@@ -29,9 +29,9 @@ PageViewModel createPageViewModel(
         image: DecorationImage(
           image: AssetImage(image),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            context.theme.primaryColor,
-            BlendMode.overlay,
+          colorFilter: const ColorFilter.mode(
+            Colors.black87,
+            BlendMode.darken,
           ),
         ),
       ),

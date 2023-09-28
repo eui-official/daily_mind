@@ -39,7 +39,8 @@ class BaseListSound<T> extends StatelessWidget {
         Flexible(
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
+              childAspectRatio: 3,
               mainAxisSpacing: spacing(),
               crossAxisSpacing: spacing(),
             ),

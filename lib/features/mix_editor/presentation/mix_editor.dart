@@ -85,23 +85,28 @@ class MixEditor extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(top: spacing(4)),
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return MixEditorItem(
-                          volumeKey:
-                              index == 0 ? mixEditorVolumeKey : ValueKey(index),
-                          onItemVolumeChanged:
-                              mixEditorNotifier.onItemVolumeChanged,
-                          itemState: mixEditorState.itemStates[index],
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return SizedBox(height: spacing(2));
-                      },
-                      itemCount: mixEditorState.itemStates.length,
+                  Flexible(
+                    child: Container(
+                      padding: EdgeInsets.only(top: spacing(4)),
+                      child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1,
+                          childAspectRatio: 3,
+                          mainAxisSpacing: spacing(),
+                          crossAxisSpacing: spacing(),
+                        ),
+                        itemBuilder: (context, index) {
+                          return MixEditorItem(
+                            volumeKey: index == 0
+                                ? mixEditorVolumeKey
+                                : ValueKey(index),
+                            onItemVolumeChanged:
+                                mixEditorNotifier.onItemVolumeChanged,
+                            itemState: mixEditorState.itemStates[index],
+                          );
+                        },
+                        itemCount: mixEditorState.itemStates.length,
+                      ),
                     ),
                   ),
                 ],

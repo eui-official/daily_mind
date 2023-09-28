@@ -16,7 +16,9 @@ class BaseMixEditorContent extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: spacing(2)),
       child: Text(
         name,
-        style: context.textTheme.titleMedium,
+        style: context.textTheme.titleMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
