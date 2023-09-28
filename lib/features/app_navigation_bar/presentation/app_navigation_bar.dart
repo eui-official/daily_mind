@@ -1,4 +1,3 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -13,15 +12,25 @@ class AppNavigationBar extends HookConsumerWidget {
     final appNavigationBarNotifier =
         ref.read(appNavigationBarProvider.notifier);
 
-    return AnimatedBottomNavigationBar(
-      icons: const [
-        Icons.music_note,
-        Icons.settings,
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.music_note),
+          label: 'Âm thanh',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.book_rounded),
+          label: 'Truyện',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          label: 'Cấu hình',
+        ),
       ],
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
       backgroundColor: context.theme.scaffoldBackgroundColor,
-      activeIndex: appNavigationBarState.index,
-      gapLocation: GapLocation.center,
-      notchSmoothness: NotchSmoothness.verySmoothEdge,
+      currentIndex: appNavigationBarState.index,
       onTap: appNavigationBarNotifier.onTap,
     );
   }

@@ -3,6 +3,7 @@ import 'package:daily_mind/features/introduction/presentation/introduction.dart'
 import 'package:daily_mind/features/mix_editor/presentation/mix_editor.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix.dart';
 import 'package:daily_mind/features/play_mix/presentation/play_mix.dart';
+import 'package:daily_mind/features/stories/presentation/stories.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
@@ -18,6 +19,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/new-mix',
       builder: (context, state) => const NewMix(),
+    ),
+    GoRoute(
+      path: '/stories',
+      builder: (context, state) => const Stories(),
     ),
     GoRoute(
       path: '/mix-editor',

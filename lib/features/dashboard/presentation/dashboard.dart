@@ -2,6 +2,7 @@ import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigati
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/list_mix/presentation/list_mix.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
+import 'package:daily_mind/features/stories/presentation/stories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,6 +20,8 @@ class Dashboard extends HookConsumerWidget {
     final body = useMemoized(() {
       if (appNavigationBarState.index == 0) {
         return const ListMix();
+      } else if (appNavigationBarState.index == 1) {
+        return const Stories();
       }
 
       return const Settings();
