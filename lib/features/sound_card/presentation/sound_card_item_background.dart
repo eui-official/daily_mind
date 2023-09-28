@@ -1,4 +1,3 @@
-import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +12,6 @@ class SoundCardItemBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: itemHeight,
-      width: itemWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(spacing(3)),
         image: DecorationImage(

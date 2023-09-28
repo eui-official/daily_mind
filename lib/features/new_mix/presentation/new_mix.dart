@@ -1,12 +1,10 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/list_sound_offline/presentation/list_sound_offline.dart';
-import 'package:daily_mind/features/list_sound_online/presentation/list_sound_chill.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
-import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -65,15 +63,7 @@ class NewMix extends HookConsumerWidget {
               image: appState.backgroundImage,
               child: Container(
                 padding: EdgeInsets.only(bottom: spacing(10)),
-                child: Column(
-                  children: space(
-                    [
-                      const ListSoundOffline(),
-                      const ListSoundChill(),
-                    ],
-                    height: spacing(4),
-                  ),
-                ),
+                child: const ListSoundOffline(),
               ),
             ),
             Positioned(

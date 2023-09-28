@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_widgets/base_background_gradient.dart';
-import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_content.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_delete_button.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_overlay.dart';
@@ -33,22 +32,19 @@ class BaseSoundCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(spacing(2)),
-      child: SizedBox(
-        width: itemWidth,
-        child: Stack(
-          children: [
-            image,
-            const BaseBackgroundGradient(),
-            SoundCardContent(
-              name: name,
-              isPlaying: isPlaying,
-              isLoading: isLoading,
-            ),
-            SoundCardOverlay(onTap: onTap),
-            if (isSelected) const SoundCardSelectedState(),
-            if (isSelected) SoundCardDeleteButton(onPressed: onDeleted),
-          ],
-        ),
+      child: Stack(
+        children: [
+          image,
+          const BaseBackgroundGradient(),
+          SoundCardContent(
+            name: name,
+            isPlaying: isPlaying,
+            isLoading: isLoading,
+          ),
+          SoundCardOverlay(onTap: onTap),
+          if (isSelected) const SoundCardSelectedState(),
+          if (isSelected) SoundCardDeleteButton(onPressed: onDeleted),
+        ],
       ),
     );
   }

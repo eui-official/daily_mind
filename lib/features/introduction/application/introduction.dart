@@ -1,5 +1,4 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -36,9 +35,6 @@ PageViewModel createPageViewModel(
           ),
         ),
       ),
-    ).blurred(
-      blurColor: Colors.black87,
-      colorOpacity: 0.6,
     ),
     decoration: const PageDecoration(
       fullScreen: true,

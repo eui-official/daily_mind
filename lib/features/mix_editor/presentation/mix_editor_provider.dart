@@ -1,22 +1,23 @@
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
 import 'package:daily_mind/features/mix_editor/domain/mix_editor_state.dart';
+import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixEditorNotifier extends StateNotifier<MixEditorState> {
-  final List<dynamic> ids;
+  final List<SelectingState> selectingStates;
 
   MixEditorNotifier({
-    required this.ids,
+    required this.selectingStates,
   }) : super(const MixEditorState(itemStates: [])) {
     init();
   }
 
   void init() {
-    final itemStates = ids
+    final itemStates = selectingStates
         .map(
-          (id) => MixEditorItemState(
-            id: id,
+          (state) => MixEditorItemState(
+            id: state.sound.id,
             volume: 0.5,
           ),
         )
@@ -42,6 +43,6 @@ class MixEditorNotifier extends StateNotifier<MixEditorState> {
 }
 
 final mixEditorProvider = StateNotifierProvider.family<MixEditorNotifier,
-    MixEditorState, List<dynamic>>((ref, ids) {
-  return MixEditorNotifier(ids: ids);
+    MixEditorState, List<SelectingState>>((ref, selectingStates) {
+  return MixEditorNotifier(selectingStates: selectingStates);
 });

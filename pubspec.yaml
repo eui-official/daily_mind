@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   flex_color_scheme: ^7.2.0
   get: ^4.6.5
-  blur: ^3.1.0
   go_router: ^10.1.0
   flutter_hooks: ^0.20.0
   hooks_riverpod: ^2.3.8

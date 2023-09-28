@@ -17,14 +17,12 @@ class StackBackground extends StatelessWidget {
     return Stack(
       children: [
         Background(image: image),
-        SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              vertical: spacing(4),
-              horizontal: spacing(2),
-            ),
-            child: SafeArea(child: child),
+        Container(
+          padding: EdgeInsets.symmetric(
+            vertical: spacing(4),
+            horizontal: spacing(2),
           ),
+          child: SafeArea(child: child),
         ),
       ],
     );

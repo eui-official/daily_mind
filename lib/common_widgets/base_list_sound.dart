@@ -1,5 +1,4 @@
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:daily_mind/types/common.dart';
@@ -24,31 +23,32 @@ class BaseListSound<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
       children: [
-        ListHeader(
-          trailing: headerTrailing,
-          child: Text(
-            title,
-            style: context.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w700,
+        Container(
+          padding: EdgeInsets.only(bottom: spacing(3)),
+          child: ListHeader(
+            trailing: headerTrailing,
+            child: Text(
+              title,
+              style: context.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ),
         Flexible(
-          child: Container(
-            height: itemHeight,
-            padding: EdgeInsets.only(top: spacing()),
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemCount: items.length,
-              scrollDirection: Axis.horizontal,
-              separatorBuilder: (context, index) => SizedBox(width: spacing()),
-              itemBuilder: (context, index) => onSoundBuilder(
-                context,
-                index,
-                items[index],
-              ),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: spacing(),
+              crossAxisSpacing: spacing(),
+            ),
+            physics: const BouncingScrollPhysics(),
+            itemCount: items.length,
+            itemBuilder: (context, index) => onSoundBuilder(
+              context,
+              index,
+              items[index],
             ),
           ),
         ),
