@@ -62,7 +62,7 @@ class NewMix extends HookConsumerWidget {
             StackBackground(
               image: appState.backgroundImage,
               child: Container(
-                padding: EdgeInsets.only(bottom: spacing(10)),
+                padding: EdgeInsets.only(bottom: spacing(3)),
                 child: const ListSoundOffline(),
               ),
             ),

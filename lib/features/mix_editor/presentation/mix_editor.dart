@@ -92,8 +92,8 @@ class MixEditor extends HookConsumerWidget {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 1,
                           childAspectRatio: 3,
-                          mainAxisSpacing: spacing(),
-                          crossAxisSpacing: spacing(),
+                          mainAxisSpacing: spacing(2),
+                          crossAxisSpacing: spacing(2),
                         ),
                         itemBuilder: (context, index) {
                           return MixEditorItem(

@@ -41,8 +41,8 @@ class BaseListSound<T> extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
               childAspectRatio: 3,
-              mainAxisSpacing: spacing(),
-              crossAxisSpacing: spacing(),
+              mainAxisSpacing: spacing(2),
+              crossAxisSpacing: spacing(2),
             ),
             physics: const BouncingScrollPhysics(),
             itemCount: items.length,
