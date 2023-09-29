@@ -1,6 +1,5 @@
 import 'package:daily_mind/common_widgets/base_list_stories_builder.dart';
 import 'package:daily_mind/features/stories_category/presentation/stories_category.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class StoriesList extends StatelessWidget {
@@ -10,19 +9,13 @@ class StoriesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseListStories(
       onListItemBuilder: (context, listStoryCategory) {
-        return Container(
-          padding: EdgeInsets.symmetric(
-            vertical: spacing(2),
-            horizontal: spacing(2),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: listStoryCategory.map(
-              (storyCategory) {
-                return StoriesCategory(storyCategory: storyCategory);
-              },
-            ).toList(),
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: listStoryCategory.map(
+            (storyCategory) {
+              return StoriesCategory(storyCategory: storyCategory);
+            },
+          ).toList(),
         );
       },
     );
