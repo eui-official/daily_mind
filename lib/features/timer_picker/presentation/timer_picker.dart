@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:daily_mind/common_widgets/base_content_header.dart';
-import 'package:daily_mind/features/play_mix/presentation/play_mix_provider.dart';
+import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class TimerPicker extends HookConsumerWidget {
               showPicker(
                 context: context,
                 value: Time(hour: now.hour, minute: now.minute),
-                onChange: playMixNotifier.updateTimer,
+                onChange: playMixNotifier.onUpdateTimer,
                 is24HrFormat: true,
                 iosStylePicker: Platform.isIOS,
                 cancelText: 'cancel'.tr(),

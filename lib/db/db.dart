@@ -2,7 +2,7 @@ import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
-import 'package:daily_mind/features/mix_editor/domain/mix_editor_item_state.dart';
+import 'package:daily_mind/features/offline_mix_editor/domain/offline_mix_editor_item_state.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -142,7 +142,7 @@ class Db {
     );
   }
 
-  void addANewMix(List<MixEditorItemState> itemStates) {
+  void onAddANewOfflineMix(List<OfflineMixEditorItemState> itemStates) {
     final items = itemStates.map((item) {
       return PlaylistItem()
         ..id = item.id

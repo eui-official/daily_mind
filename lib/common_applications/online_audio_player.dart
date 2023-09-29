@@ -1,16 +1,16 @@
 import 'package:just_audio/just_audio.dart';
 
 class OnlineAudioPlayer {
-  final audioPlayer = AudioPlayer();
+  final player = AudioPlayer();
 
-  void play(String source) async {
+  void onInitSource(String source, [LoopMode loopMode = LoopMode.all]) async {
     final audioSource = LockCachingAudioSource(Uri.parse(source));
-    await audioPlayer.setAudioSource(audioSource);
-    await audioPlayer.setLoopMode(LoopMode.all);
-    await audioPlayer.play();
+    await player.setAudioSource(audioSource);
+    await player.setLoopMode(loopMode);
+    await player.play();
   }
 
-  void stop() async {
-    await audioPlayer.stop();
+  void onStop() async {
+    await player.stop();
   }
 }

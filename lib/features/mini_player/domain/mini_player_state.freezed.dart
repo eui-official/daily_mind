@@ -1,0 +1,169 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'mini_player_state.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$MiniPlayerState {
+  bool get isShow => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  VoidCallback get onPressed => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MiniPlayerStateCopyWith<MiniPlayerState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MiniPlayerStateCopyWith<$Res> {
+  factory $MiniPlayerStateCopyWith(
+          MiniPlayerState value, $Res Function(MiniPlayerState) then) =
+      _$MiniPlayerStateCopyWithImpl<$Res, MiniPlayerState>;
+  @useResult
+  $Res call({bool isShow, String title, VoidCallback onPressed});
+}
+
+/// @nodoc
+class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
+    implements $MiniPlayerStateCopyWith<$Res> {
+  _$MiniPlayerStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isShow = null,
+    Object? title = null,
+    Object? onPressed = null,
+  }) {
+    return _then(_value.copyWith(
+      isShow: null == isShow
+          ? _value.isShow
+          : isShow // ignore: cast_nullable_to_non_nullable
+              as bool,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      onPressed: null == onPressed
+          ? _value.onPressed
+          : onPressed // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MiniPlayerStateCopyWith<$Res>
+    implements $MiniPlayerStateCopyWith<$Res> {
+  factory _$$_MiniPlayerStateCopyWith(
+          _$_MiniPlayerState value, $Res Function(_$_MiniPlayerState) then) =
+      __$$_MiniPlayerStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isShow, String title, VoidCallback onPressed});
+}
+
+/// @nodoc
+class __$$_MiniPlayerStateCopyWithImpl<$Res>
+    extends _$MiniPlayerStateCopyWithImpl<$Res, _$_MiniPlayerState>
+    implements _$$_MiniPlayerStateCopyWith<$Res> {
+  __$$_MiniPlayerStateCopyWithImpl(
+      _$_MiniPlayerState _value, $Res Function(_$_MiniPlayerState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isShow = null,
+    Object? title = null,
+    Object? onPressed = null,
+  }) {
+    return _then(_$_MiniPlayerState(
+      isShow: null == isShow
+          ? _value.isShow
+          : isShow // ignore: cast_nullable_to_non_nullable
+              as bool,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      onPressed: null == onPressed
+          ? _value.onPressed
+          : onPressed // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MiniPlayerState implements _MiniPlayerState {
+  const _$_MiniPlayerState(
+      {required this.isShow, required this.title, required this.onPressed});
+
+  @override
+  final bool isShow;
+  @override
+  final String title;
+  @override
+  final VoidCallback onPressed;
+
+  @override
+  String toString() {
+    return 'MiniPlayerState(isShow: $isShow, title: $title, onPressed: $onPressed)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MiniPlayerState &&
+            (identical(other.isShow, isShow) || other.isShow == isShow) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isShow, title, onPressed);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MiniPlayerStateCopyWith<_$_MiniPlayerState> get copyWith =>
+      __$$_MiniPlayerStateCopyWithImpl<_$_MiniPlayerState>(this, _$identity);
+}
+
+abstract class _MiniPlayerState implements MiniPlayerState {
+  const factory _MiniPlayerState(
+      {required final bool isShow,
+      required final String title,
+      required final VoidCallback onPressed}) = _$_MiniPlayerState;
+
+  @override
+  bool get isShow;
+  @override
+  String get title;
+  @override
+  VoidCallback get onPressed;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MiniPlayerStateCopyWith<_$_MiniPlayerState> get copyWith =>
+      throw _privateConstructorUsedError;
+}

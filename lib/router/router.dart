@@ -1,8 +1,8 @@
 import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
 import 'package:daily_mind/features/introduction/presentation/introduction.dart';
-import 'package:daily_mind/features/mix_editor/presentation/mix_editor.dart';
+import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix.dart';
-import 'package:daily_mind/features/play_mix/presentation/play_mix.dart';
+import 'package:daily_mind/features/offline_player/presentation/offline_player.dart';
 import 'package:daily_mind/features/stories/presentation/stories.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,12 +25,12 @@ final routerConfig = GoRouter(
       builder: (context, state) => const Stories(),
     ),
     GoRoute(
-      path: '/mix-editor',
-      builder: (context, state) => const MixEditor(),
+      path: '/offline-mix-editor',
+      builder: (context, state) => const OfflineMixEditor(),
     ),
     GoRoute(
-      path: '/play-mix',
-      builder: (context, state) => PlayMix(
+      path: '/offline-player',
+      builder: (context, state) => OfflinePlayer(
         playlistId: state.pathParameters['id'] as int,
       ),
     ),
