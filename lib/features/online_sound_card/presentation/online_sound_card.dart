@@ -50,9 +50,9 @@ class OnlineSoundCard extends HookConsumerWidget {
         );
 
         if (audioOnlinePlayerState.isPlaying) {
-          audioOnlinePlayerNotifier.stop();
+          audioOnlinePlayerNotifier.onPause();
         } else {
-          audioOnlinePlayerNotifier.play(sound.source);
+          audioOnlinePlayerNotifier.onPlay(sound.source);
         }
       },
       [
@@ -64,7 +64,7 @@ class OnlineSoundCard extends HookConsumerWidget {
 
     useEffect(() {
       if (selectingId != bundle.soundType.id) {
-        audioOnlinePlayerNotifier.stop();
+        audioOnlinePlayerNotifier.onPause();
       }
 
       return () {};

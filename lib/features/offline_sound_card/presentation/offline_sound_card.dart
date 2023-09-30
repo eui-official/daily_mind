@@ -44,9 +44,9 @@ class OfflineSoundCard extends HookConsumerWidget {
       );
 
       if (audioOfflinePlayerState.isPlaying) {
-        audioOfflinePlayerNotifier.stop();
+        audioOfflinePlayerNotifier.onPause();
       } else {
-        audioOfflinePlayerNotifier.play(item.id);
+        audioOfflinePlayerNotifier.onPlay(item.id);
       }
     }, [
       audioOfflinePlayerState.isPlaying,
@@ -55,7 +55,7 @@ class OfflineSoundCard extends HookConsumerWidget {
 
     useEffect(() {
       if (selectingId != item.id) {
-        audioOfflinePlayerNotifier.stop();
+        audioOfflinePlayerNotifier.onPause();
       }
 
       return () {};

@@ -13,7 +13,7 @@ class GaplessAudioPlayer {
 
   bool get isPlaying => audioPlayer.playing;
 
-  void setSource(String id) async {
+  void onSetSource(String id) async {
     children = [];
     final paths = sounds[id] ?? [];
 
@@ -35,7 +35,7 @@ class GaplessAudioPlayer {
     );
   }
 
-  void play() async {
+  void onPlay() async {
     try {
       await audioPlayer.setLoopMode(LoopMode.all);
     } catch (error) {
@@ -45,11 +45,11 @@ class GaplessAudioPlayer {
     await audioPlayer.play();
   }
 
-  void stop() async {
-    await audioPlayer.stop();
+  void onPause() async {
+    await audioPlayer.pause();
   }
 
-  void setVolume(double volume) async {
+  void onSetVolume(double volume) async {
     await audioPlayer.setVolume(volume);
   }
 

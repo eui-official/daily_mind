@@ -29,14 +29,14 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
     });
   }
 
-  void play(String source) {
+  void onPlay(String source) {
     state = state.copyWith(isLoading: true);
 
     onlineAudioPlayer.onInitSource(source);
   }
 
-  void stop() {
-    onlineAudioPlayer.onStop();
+  void onPause() {
+    onlineAudioPlayer.onPause();
   }
 }
 

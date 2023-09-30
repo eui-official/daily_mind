@@ -18,7 +18,7 @@ class OfflinePlayerToggleButton extends HookConsumerWidget {
     return TogglePlayModeButton(
       isPlaying: isPlaying,
       onPlay: playMixNotifier.audioHandler.play,
-      onStop: playMixNotifier.audioHandler.pause,
+      onPause: playMixNotifier.audioHandler.pause,
       size: 40,
     );
   }

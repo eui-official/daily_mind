@@ -8,10 +8,14 @@ class OnlineAudioPlayer {
     final audioSource = LockCachingAudioSource(Uri.parse(source));
     await player.setAudioSource(audioSource);
     await player.setLoopMode(loopMode);
+    player.play();
+  }
+
+  void onPlay() async {
     await player.play();
   }
 
-  void onStop() async {
-    await player.stop();
+  void onPause() async {
+    await player.pause();
   }
 }

@@ -31,16 +31,16 @@ class MixEditorItem extends HookWidget {
 
     final onInit = useCallback(
       () {
-        player.setSource(offlineMixEditorItemState.id);
-        player.setVolume(offlineMixEditorItemState.volume);
-        player.play();
+        player.onSetSource(offlineMixEditorItemState.id);
+        player.onSetVolume(offlineMixEditorItemState.volume);
+        player.onPlay();
       },
       [],
     );
 
     final onVolumeChanged = useCallback(
       (double volume) {
-        player.setVolume(volume);
+        player.onSetVolume(volume);
         onItemVolumeChanged(offlineMixEditorItemState, volume);
       },
       [player, offlineMixEditorItemState],
@@ -60,8 +60,8 @@ class MixEditorItem extends HookWidget {
       onVolumeChanged: onVolumeChanged,
       prefixChild: TogglePlayModeButton(
         isPlaying: isPlaying,
-        onStop: player.stop,
-        onPlay: player.play,
+        onPause: player.onPause,
+        onPlay: player.onPlay,
       ),
     );
   }

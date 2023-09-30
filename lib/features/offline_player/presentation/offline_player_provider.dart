@@ -38,7 +38,7 @@ class OfflinePlayerNotifier extends StateNotifier<PlayMixState> {
     state = state.copyWith(time: time);
 
     onStartTimer(time);
-    audioHandler.startTimer(time);
+    audioHandler.onStartTimer(time);
   }
 }
 

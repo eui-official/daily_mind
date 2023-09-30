@@ -13,14 +13,14 @@ class MiniPlayerToggleButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final storyCardNotifier = ref.read(storyCardProvider.notifier);
-    final playBackState =
-        useStream(storyCardNotifier.audioHandler.playbackState);
-    final isPlaying = playBackState.data?.playing ?? false;
+    final playBackState = useStream(
+        storyCardNotifier.audioHandler.onlinePlayer.player.playingStream);
+    final isPlaying = playBackState.data ?? false;
 
     return TogglePlayModeButton(
       isPlaying: isPlaying,
       onPlay: storyCardNotifier.audioHandler.play,
-      onStop: storyCardNotifier.audioHandler.pause,
+      onPause: storyCardNotifier.audioHandler.pause,
       size: spacing(3),
     );
   }

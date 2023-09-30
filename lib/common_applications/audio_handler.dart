@@ -15,12 +15,12 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   List<OfflinePlayerItem> playerItems = [];
   final onlinePlayer = OnlineAudioPlayer();
 
-  void startTimer(Time time) {
+  void onStartTimer(Time time) {
     timer?.cancel();
 
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (isBefore(time)) {
-        onStopMix();
+        onPauseMix();
         timer.cancel();
       }
     });
@@ -30,8 +30,8 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     for (var item in items) {
       final player = GaplessAudioPlayer();
 
-      player.setSource(item.id);
-      player.setVolume(item.volume);
+      player.onSetSource(item.id);
+      player.onSetVolume(item.volume);
 
       playerItems.add(OfflinePlayerItem(
         player: player,
@@ -44,23 +44,23 @@ class DailyMindAudioHandler extends BaseAudioHandler {
 
   void onUpdateVolume(double volume, String itemId, int playlistId) {
     final playerItem = playerItems.firstWhere((item) => item.id == itemId);
-    playerItem.player.setVolume(volume);
+    playerItem.player.onSetVolume(volume);
   }
 
   void onPlayMix() {
     for (var playerItme in playerItems) {
-      playerItme.player.play();
+      playerItme.player.onPlay();
     }
   }
 
-  void onStopMix() {
+  void onPauseMix() {
     for (var playerItem in playerItems) {
-      playerItem.player.stop();
+      playerItem.player.onPause();
     }
   }
 
-  void onStopStory() {
-    onlinePlayer.onStop();
+  void onPauseStory() {
+    onlinePlayer.onPause();
   }
 
   void onPlayStory() {
@@ -68,16 +68,18 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void onInitStory(Story story) async {
-    await onlinePlayer.onInitSource(story.source, LoopMode.off);
+    await onlinePlayer.onInitSource(story.source, LoopMode.one);
+
     mediaItem.add(
       MediaItem(
-        id: story.id,
+        id: story.source,
         title: story.name,
-        artUri: Uri.parse(story.source),
+        artUri: Uri.parse(story.image),
         duration: onlinePlayer.player.duration,
       ),
     );
-    onUpdatePlaybackState();
+
+    onInitPlaybackState();
   }
 
   void onDispose() {
@@ -86,13 +88,10 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     }
   }
 
-  void onUpdatePlaybackState() async {
+  void onInitPlaybackState() async {
     playbackState.add(
       playbackState.value.copyWith(
         playing: true,
-        processingState: AudioProcessingState.ready,
-        repeatMode: AudioServiceRepeatMode.none,
-        shuffleMode: AudioServiceShuffleMode.none,
         controls: [
           MediaControl.pause,
           MediaControl.play,
@@ -101,25 +100,19 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     );
   }
 
-  void onPausePlaybackState() {
-    playbackState.add(
-      playbackState.value.copyWith(
-        playing: false,
-      ),
-    );
-  }
-
   @override
   Future<void> play() async {
-    onUpdatePlaybackState();
     onPlayMix();
     onPlayStory();
+
+    return super.play();
   }
 
   @override
   Future<void> pause() async {
-    onPausePlaybackState();
-    onStopMix();
-    onStopStory();
+    onPauseMix();
+    onPauseStory();
+
+    return super.pause();
   }
 }

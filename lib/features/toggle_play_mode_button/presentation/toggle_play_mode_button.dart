@@ -4,14 +4,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class TogglePlayModeButton extends HookWidget {
   final bool isPlaying;
-  final VoidCallback onStop;
+  final VoidCallback onPause;
   final VoidCallback onPlay;
   final double? size;
 
   const TogglePlayModeButton({
     super.key,
     required this.isPlaying,
-    required this.onStop,
+    required this.onPause,
     required this.onPlay,
     this.size,
   });
@@ -25,13 +25,13 @@ class TogglePlayModeButton extends HookWidget {
       () {
         if (isPlaying) {
           animationController.forward();
-          onStop();
+          onPause();
         } else {
           animationController.reverse();
           onPlay();
         }
       },
-      [isPlaying, onPlay, onStop],
+      [isPlaying, onPlay, onPause],
     );
 
     useEffect(() {
