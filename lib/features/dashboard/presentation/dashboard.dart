@@ -1,6 +1,6 @@
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
-import 'package:daily_mind/features/mini_player/presentation/mini_player.dart';
+import 'package:daily_mind/features/mini_player/presentation/mini_player_switcher.dart';
 import 'package:daily_mind/features/offline_list/presentation/offline_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
 import 'package:daily_mind/features/stories/presentation/stories.dart';
@@ -38,7 +38,7 @@ class Dashboard extends HookConsumerWidget {
               duration: kThemeChangeDuration,
               child: body,
             ),
-            const MiniPlayer(),
+            const MiniPlayerSwitcher(),
           ],
         ),
       ),

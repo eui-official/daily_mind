@@ -33,16 +33,17 @@ class MiniPlayer extends HookConsumerWidget {
                 size: 5,
               ),
             ),
-          Flexible(
-            child: Marquee(
-              text: miniPlayerState.title,
-              blankSpace: spacing(3),
-              fadingEdgeEndFraction: 1,
-              style: context.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+          if (miniPlayerState.title.isNotEmpty)
+            Flexible(
+              child: Marquee(
+                text: miniPlayerState.title,
+                blankSpace: spacing(3),
+                fadingEdgeEndFraction: 1,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
           const MiniPlayerToggleButton(),
         ], width: spacing(2)),
       ),
