@@ -45,7 +45,10 @@ class StoriesCategory extends StatelessWidget {
                 transform:
                     Transform.translate(offset: Offset(-spacing(2.75), 0))
                         .transform,
-                child: StoriesCategoryColumn(stories: stories),
+                child: StoriesCategoryColumn(
+                  category: storyCategory.category,
+                  stories: stories,
+                ),
               );
             },
             itemCount: storiesGroup.length,

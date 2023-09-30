@@ -25,6 +25,7 @@ class BaseListStories extends HookConsumerWidget {
         useMemoized(() => supabase.from('stories').select(), []);
     final storiesSnapshot = useFuture(storiesQuery);
     final configState = ref.watch(configProvider);
+    final Widget child;
 
     if (storiesSnapshot.hasData) {
       List<Story> listStory = [];
@@ -51,12 +52,17 @@ class BaseListStories extends HookConsumerWidget {
         );
       });
 
-      return onListItemBuilder(
+      child = onListItemBuilder(
         context,
         listStoryCategory,
       );
+    } else {
+      child = const BaseLinearProgressIndicator();
     }
 
-    return const BaseLinearProgressIndicator();
+    return AnimatedSwitcher(
+      duration: kThemeAnimationDuration,
+      child: child,
+    );
   }
 }

@@ -2,15 +2,15 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+final initState = MiniPlayerState(
+  isShow: false,
+  onPressed: () {},
+  title: emptyString,
+  image: emptyString,
+);
+
 class MiniPlayerProvider extends StateNotifier<MiniPlayerState> {
-  MiniPlayerProvider()
-      : super(
-          MiniPlayerState(
-            isShow: false,
-            onPressed: () {},
-            title: emptyString,
-          ),
-        );
+  MiniPlayerProvider() : super(initState);
 
   void onUpdateState(MiniPlayerState newState) {
     state = newState;

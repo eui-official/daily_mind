@@ -67,8 +67,17 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     onlinePlayer.player.play();
   }
 
-  void onInitStory(Story story) {
-    onlinePlayer.onInitSource(story.source, LoopMode.off);
+  void onInitStory(Story story) async {
+    await onlinePlayer.onInitSource(story.source, LoopMode.off);
+    mediaItem.add(
+      MediaItem(
+        id: story.id,
+        title: story.name,
+        artUri: Uri.parse(story.source),
+        duration: onlinePlayer.player.duration,
+      ),
+    );
+    onUpdatePlaybackState();
   }
 
   void onDispose() {
@@ -104,6 +113,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   Future<void> play() async {
     onUpdatePlaybackState();
     onPlayMix();
+    onPlayStory();
   }
 
   @override

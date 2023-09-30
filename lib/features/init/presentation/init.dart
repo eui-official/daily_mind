@@ -5,6 +5,7 @@ import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
 import 'package:daily_mind/features/setting_watcher/presentation/setting_watcher.dart';
 import 'package:daily_mind/features/settings/application/settings.dart';
+import 'package:daily_mind/features/story_card/presentation/story_card_provider.dart';
 import 'package:daily_mind/router/router.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -26,9 +27,11 @@ class Init extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.read(configProvider);
     final playMixNotifier = ref.read(playMixProvider.notifier);
+    final storyCardNotifier = ref.read(storyCardProvider.notifier);
 
     useEffect(() {
       playMixNotifier.onSetAudioHandler(audioHandler);
+      storyCardNotifier.onSetAudioHandler(audioHandler);
 
       db.streamSetting('language').listen((setting) {
         if (setting.isNotEmpty) {

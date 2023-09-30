@@ -1,5 +1,5 @@
 import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix.dart';
-import 'package:daily_mind/features/offline_list/presentation/list_chord_item.dart';
+import 'package:daily_mind/features/offline_list/presentation/offline_list_chord_item.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chore_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -25,13 +25,13 @@ class OfflineListChord extends HookConsumerWidget {
 
     return ListView.separated(
       shrinkWrap: true,
-      padding: EdgeInsets.zero,
+      padding: EdgeInsets.only(top: spacing(3)),
       physics: const NeverScrollableScrollPhysics(),
       itemCount: playlists.length,
       itemBuilder: (context, index) {
         final playlist = playlists[index];
 
-        return ListChordItem(
+        return OfflineListChordItem(
           key: ValueKey(playlist.id),
           playlist: playlist,
         );

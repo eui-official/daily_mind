@@ -7,6 +7,7 @@ part 'mini_player_state.freezed.dart';
 class MiniPlayerState with _$MiniPlayerState {
   const factory MiniPlayerState({
     required bool isShow,
+    required String image,
     required String title,
     required VoidCallback onPressed,
   }) = _MiniPlayerState;

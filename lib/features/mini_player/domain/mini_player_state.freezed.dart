@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MiniPlayerState {
   bool get isShow => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   VoidCallback get onPressed => throw _privateConstructorUsedError;
 
@@ -31,7 +32,7 @@ abstract class $MiniPlayerStateCopyWith<$Res> {
           MiniPlayerState value, $Res Function(MiniPlayerState) then) =
       _$MiniPlayerStateCopyWithImpl<$Res, MiniPlayerState>;
   @useResult
-  $Res call({bool isShow, String title, VoidCallback onPressed});
+  $Res call({bool isShow, String image, String title, VoidCallback onPressed});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
   @override
   $Res call({
     Object? isShow = null,
+    Object? image = null,
     Object? title = null,
     Object? onPressed = null,
   }) {
@@ -56,6 +58,10 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -76,7 +82,7 @@ abstract class _$$_MiniPlayerStateCopyWith<$Res>
       __$$_MiniPlayerStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isShow, String title, VoidCallback onPressed});
+  $Res call({bool isShow, String image, String title, VoidCallback onPressed});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isShow = null,
+    Object? image = null,
     Object? title = null,
     Object? onPressed = null,
   }) {
@@ -99,6 +106,10 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -115,10 +126,15 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
 
 class _$_MiniPlayerState implements _MiniPlayerState {
   const _$_MiniPlayerState(
-      {required this.isShow, required this.title, required this.onPressed});
+      {required this.isShow,
+      required this.image,
+      required this.title,
+      required this.onPressed});
 
   @override
   final bool isShow;
+  @override
+  final String image;
   @override
   final String title;
   @override
@@ -126,7 +142,7 @@ class _$_MiniPlayerState implements _MiniPlayerState {
 
   @override
   String toString() {
-    return 'MiniPlayerState(isShow: $isShow, title: $title, onPressed: $onPressed)';
+    return 'MiniPlayerState(isShow: $isShow, image: $image, title: $title, onPressed: $onPressed)';
   }
 
   @override
@@ -135,13 +151,14 @@ class _$_MiniPlayerState implements _MiniPlayerState {
         (other.runtimeType == runtimeType &&
             other is _$_MiniPlayerState &&
             (identical(other.isShow, isShow) || other.isShow == isShow) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.onPressed, onPressed) ||
                 other.onPressed == onPressed));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isShow, title, onPressed);
+  int get hashCode => Object.hash(runtimeType, isShow, image, title, onPressed);
 
   @JsonKey(ignore: true)
   @override
@@ -153,11 +170,14 @@ class _$_MiniPlayerState implements _MiniPlayerState {
 abstract class _MiniPlayerState implements MiniPlayerState {
   const factory _MiniPlayerState(
       {required final bool isShow,
+      required final String image,
       required final String title,
       required final VoidCallback onPressed}) = _$_MiniPlayerState;
 
   @override
   bool get isShow;
+  @override
+  String get image;
   @override
   String get title;
   @override

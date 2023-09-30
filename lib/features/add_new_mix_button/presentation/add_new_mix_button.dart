@@ -1,5 +1,5 @@
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
-import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -16,13 +16,11 @@ class AddNewMixButton extends HookWidget {
       [],
     );
 
-    return FloatingActionButton(
+    return ElevatedButton.icon(
       key: addNewMixKey,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(spacing(5)),
-      ),
       onPressed: onOpenCreateNewMix,
-      child: const Icon(Icons.playlist_add),
+      icon: const Icon(Icons.playlist_add),
+      label: Text('createNewMix'.tr()),
     );
   }
 }

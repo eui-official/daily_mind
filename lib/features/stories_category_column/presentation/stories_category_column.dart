@@ -1,13 +1,16 @@
+import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/story.dart';
 import 'package:daily_mind/features/story_card/presentation/story_card.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class StoriesCategoryColumn extends StatelessWidget {
+  final Category category;
   final List<Story> stories;
 
   const StoriesCategoryColumn({
     super.key,
+    required this.category,
     required this.stories,
   }) : assert(stories.length <= 3);
 
@@ -23,7 +26,10 @@ class StoriesCategoryColumn extends StatelessWidget {
       itemBuilder: (context, index) {
         final story = stories[index];
 
-        return StoryCard(story: story);
+        return StoryCard(
+          category: category,
+          story: story,
+        );
       },
     );
   }

@@ -1,9 +1,8 @@
 import 'dart:math';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_providers/audio_online_player_provider.dart';
+import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
-import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/online_list_sound/domain/online_sound_bundle.dart';
 import 'package:daily_mind/features/new_mix/constant/network_type.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
@@ -72,11 +71,9 @@ class OnlineSoundCard extends HookConsumerWidget {
     }, [selectingId, bundle]);
 
     return BaseSoundCard(
-      image: CachedNetworkImage(
-        fit: BoxFit.cover,
-        height: itemHeight,
-        imageUrl: firstSound.image,
-        width: itemWidth,
+      image: BaseNetworkImage(
+        image: firstSound.image,
+        size: 20,
       ),
       isPlaying: audioOnlinePlayerState.isPlaying,
       isLoading: audioOnlinePlayerState.isLoading,

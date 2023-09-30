@@ -4,6 +4,7 @@ import 'package:daily_mind/features/offline_list_chord/presentation/offline_list
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' hide Trans;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfflineList extends HookConsumerWidget {
@@ -14,20 +15,39 @@ class OfflineList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: AppBarScrollview(
-        title: 'mixList'.tr(),
+      body: Stack(
         children: [
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(
-              horizontal: spacing(2),
-              vertical: spacing(3),
-            ),
-            child: const OfflineListChord(),
-          )
+          AppBarScrollview(
+            title: 'naturalSounds'.tr(),
+            children: [
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.symmetric(
+                  horizontal: spacing(2),
+                  vertical: spacing(2),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'mixList'.tr(),
+                          style: context.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const AddNewMixButton(),
+                      ],
+                    ),
+                    const OfflineListChord(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
-      floatingActionButton: const AddNewMixButton(),
     );
   }
 }
