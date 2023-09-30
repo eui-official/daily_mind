@@ -6,6 +6,7 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:marquee/marquee.dart';
 
 class MiniPlayer extends HookConsumerWidget {
   const MiniPlayer({super.key});
@@ -15,8 +16,9 @@ class MiniPlayer extends HookConsumerWidget {
     final miniPlayerState = ref.watch(miniPlayerProvider);
 
     return Container(
+      height: spacing(8),
       margin: EdgeInsets.all(spacing(2)),
-      padding: EdgeInsets.all(spacing()),
+      padding: EdgeInsets.symmetric(horizontal: spacing()),
       decoration: BoxDecoration(
         color: context.theme.focusColor,
         borderRadius: BorderRadius.circular(spacing()),
@@ -32,13 +34,13 @@ class MiniPlayer extends HookConsumerWidget {
               ),
             ),
           Flexible(
-            child: Text(
-              miniPlayerState.title,
+            child: Marquee(
+              text: miniPlayerState.title,
+              blankSpace: spacing(3),
+              fadingEdgeEndFraction: 1,
               style: context.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
           ),
           const MiniPlayerToggleButton(),
