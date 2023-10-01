@@ -1,15 +1,14 @@
 import 'package:daily_mind/common_applications/audio_handler.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfflineListChoreItemNotifier extends StateNotifier<void> {
-  late DailyMindAudioHandler audioHandler;
+  final DailyMindAudioHandler audioHandler;
 
-  OfflineListChoreItemNotifier() : super({});
-
-  void onSetAudioHandler(DailyMindAudioHandler newAudioHandler) {
-    audioHandler = newAudioHandler;
-  }
+  OfflineListChoreItemNotifier({
+    required this.audioHandler,
+  }) : super({});
 
   void onPlayChore(List<PlaylistItem> items) {
     audioHandler.onInitPlaylist(items);
@@ -18,5 +17,9 @@ class OfflineListChoreItemNotifier extends StateNotifier<void> {
 
 final offlineListChoreItemProvider =
     StateNotifierProvider<OfflineListChoreItemNotifier, void>((ref) {
-  return OfflineListChoreItemNotifier();
+  final baseAudioHandlerNotifier = ref.read(baseAudioHandlerProvider.notifier);
+
+  return OfflineListChoreItemNotifier(
+    audioHandler: baseAudioHandlerNotifier.audioHandler,
+  );
 });

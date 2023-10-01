@@ -1,12 +1,10 @@
 import 'package:daily_mind/common_applications/audio_handler.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/extensions/string.dart';
-import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chore_item_provider.dart';
-import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
 import 'package:daily_mind/features/setting_watcher/presentation/setting_watcher.dart';
 import 'package:daily_mind/features/settings/application/settings.dart';
-import 'package:daily_mind/features/story_card/presentation/story_card_provider.dart';
 import 'package:daily_mind/router/router.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -27,15 +25,11 @@ class Init extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.read(configProvider);
-    final playMixNotifier = ref.read(playMixProvider.notifier);
-    final storyCardNotifier = ref.read(storyCardProvider.notifier);
-    final offlineListChoreItemNotifier =
-        ref.read(offlineListChoreItemProvider.notifier);
+    final baseAudioHandlerNotifier =
+        ref.read(baseAudioHandlerProvider.notifier);
 
     useEffect(() {
-      playMixNotifier.onSetAudioHandler(audioHandler);
-      storyCardNotifier.onSetAudioHandler(audioHandler);
-      offlineListChoreItemNotifier.onSetAudioHandler(audioHandler);
+      baseAudioHandlerNotifier.onSetAudioHandler(audioHandler);
 
       db.streamSetting('language').listen((setting) {
         if (setting.isNotEmpty) {
