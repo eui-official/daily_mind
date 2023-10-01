@@ -4,7 +4,7 @@ import 'package:daily_mind/extensions/string.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
-Future<Uri> getSoundImageFromAsset(String id) async {
+Future<Uri> onGetSoundImageFromAsset(String id) async {
   final soundOfflineItem = id.soundOfflineItem;
 
   final byteData = await rootBundle.load(soundOfflineItem.image);

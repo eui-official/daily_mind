@@ -10,8 +10,14 @@ class OfflineListChoreItemNotifier extends StateNotifier<void> {
     required this.audioHandler,
   }) : super({});
 
-  void onPlayChore(List<PlaylistItem> items) {
-    audioHandler.onInitPlaylist(items);
+  void onPlayChore(
+    Playlist playlist,
+    List<PlaylistItem> items,
+  ) {
+    audioHandler.onInitPlaylist(
+      playlist,
+      items,
+    );
   }
 }
 

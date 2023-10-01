@@ -20,21 +20,10 @@ class OfflinePlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final playlist = useMemoized(() => db.getPlaylistById(playlistId));
-    final items = playlist?.items ?? [];
 
     final playMixNotifier = ref.read(playMixProvider.notifier);
     final playBackState = useStream(playMixNotifier.audioHandler.playbackState);
     final isPlaying = playBackState.data?.playing ?? false;
-
-    useEffect(() {
-      Future(() {
-        playMixNotifier.audioHandler.onInitPlaylist(items);
-      });
-
-      return () {
-        playMixNotifier.audioHandler.onDispose();
-      };
-    }, [items]);
 
     return EmptyWidgetBuilder(
       data: playlist,

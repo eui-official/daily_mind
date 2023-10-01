@@ -36,7 +36,7 @@ class OfflineListChordItem extends HookConsumerWidget {
 
     final onPlayChord = useCallback(
       () {
-        offlineListChoreItemNotifier.onPlayChore(items);
+        offlineListChoreItemNotifier.onPlayChore(playlist, items);
 
         miniPlayerNotifier.onUpdateState(
           MiniPlayerState(
