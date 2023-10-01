@@ -19,7 +19,7 @@ class StackBackground extends StatelessWidget {
         Background(image: image),
         Container(
           padding: EdgeInsets.symmetric(
-            vertical: spacing(4),
+            vertical: kToolbarHeight,
             horizontal: spacing(2),
           ),
           child: SafeArea(child: child),

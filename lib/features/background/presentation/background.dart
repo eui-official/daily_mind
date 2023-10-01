@@ -28,12 +28,8 @@ class Background extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                context.theme.primaryColor.withOpacity(0.12),
-                context.theme.primaryColor.withOpacity(0.26),
-                context.theme.primaryColor.withOpacity(0.38),
-                context.theme.primaryColor.withOpacity(0.45),
-                context.theme.primaryColor.withOpacity(0.54),
-                context.theme.primaryColor.withOpacity(0.87),
+                context.theme.colorScheme.background.withOpacity(0.12),
+                context.theme.colorScheme.background.withOpacity(0.87),
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,

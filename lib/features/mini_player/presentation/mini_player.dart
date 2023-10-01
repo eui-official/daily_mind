@@ -15,29 +15,37 @@ class MiniPlayer extends HookConsumerWidget {
     final miniPlayerState = ref.watch(miniPlayerProvider);
 
     return Container(
-      height: spacing(8),
       margin: EdgeInsets.all(spacing(2)),
-      padding: EdgeInsets.symmetric(horizontal: spacing()),
-      decoration: BoxDecoration(
-        color: context.theme.focusColor,
-        borderRadius: BorderRadius.circular(spacing()),
-      ),
-      child: Row(
-        children: space([
-          miniPlayerState.image,
-          if (miniPlayerState.title.isNotEmpty)
-            Flexible(
-              child: Marquee(
-                text: miniPlayerState.title,
-                blankSpace: spacing(3),
-                fadingEdgeEndFraction: 1,
-                style: context.textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+      child: Material(
+        child: InkWell(
+          onTap: miniPlayerState.onPressed,
+          borderRadius: BorderRadius.circular(spacing()),
+          child: Container(
+            height: spacing(8),
+            padding: EdgeInsets.symmetric(horizontal: spacing()),
+            decoration: BoxDecoration(
+              color: context.theme.focusColor,
+              borderRadius: BorderRadius.circular(spacing()),
             ),
-          const MiniPlayerToggleButton(),
-        ], width: spacing(2)),
+            child: Row(
+              children: space([
+                miniPlayerState.image,
+                if (miniPlayerState.title.isNotEmpty)
+                  Flexible(
+                    child: Marquee(
+                      text: miniPlayerState.title,
+                      blankSpace: spacing(3),
+                      fadingEdgeEndFraction: 1,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                const MiniPlayerToggleButton(),
+              ], width: spacing(2)),
+            ),
+          ),
+        ),
       ),
     );
   }

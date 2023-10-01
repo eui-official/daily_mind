@@ -14,6 +14,14 @@ final initState = MiniPlayerState(
 class MiniPlayerProvider extends StateNotifier<MiniPlayerState> {
   MiniPlayerProvider() : super(initState);
 
+  void onHide() {
+    state = state.copyWith(isShow: false);
+  }
+
+  void onShow() {
+    state = state.copyWith(isShow: true);
+  }
+
   void onUpdateState(MiniPlayerState newState) {
     state = newState;
   }

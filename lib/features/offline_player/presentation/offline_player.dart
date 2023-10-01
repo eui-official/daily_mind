@@ -4,7 +4,6 @@ import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/empty_widget_builder/presentation/empty_widget_builder.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_adjust_bottom.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
-import 'package:daily_mind/features/offline_player_appbar/presentation/offline_player_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -32,7 +31,6 @@ class OfflinePlayer extends HookConsumerWidget {
         final image = items.first.id.soundOfflineItem.image;
 
         return BasePlayerControl(
-          preferredSizeWidget: OfflinePlayerAppBar(playlistId: safePlaylist.id),
           image: image,
           isPlaying: isPlaying,
           bottomChildBuilder: (context, scrollController) {
