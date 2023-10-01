@@ -30,18 +30,21 @@ class OfflinePlayer extends HookConsumerWidget {
         final items = safePlaylist.items ?? [];
         final image = items.first.id.soundOfflineItem.image;
 
-        return BasePlayerControl(
-          image: image,
-          isPlaying: isPlaying,
-          bottomChildBuilder: (context, scrollController) {
-            return OfflinePlayerAdjustBottom(
-              items: items,
+        return DraggableScrollableSheet(
+          initialChildSize: 1,
+          builder: (context, scrollController) {
+            return BasePlayerControl(
+              image: image,
+              isPlaying: isPlaying,
               scrollController: scrollController,
-              playlistId: safePlaylist.id,
-              initialTitle: safePlaylist.title,
-              onChanged: (newName) => db.onUpdatePlaylistTitle(
-                safePlaylist.id,
-                newName,
+              child: OfflinePlayerAdjustBottom(
+                items: items,
+                playlistId: safePlaylist.id,
+                initialTitle: safePlaylist.title,
+                onChanged: (newName) => db.onUpdatePlaylistTitle(
+                  safePlaylist.id,
+                  newName,
+                ),
               ),
             );
           },

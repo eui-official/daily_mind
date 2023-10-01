@@ -41,11 +41,13 @@ class OfflineListChordItem extends HookConsumerWidget {
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         builder: (context) {
           return OfflinePlayer(playlistId: playlist.id);
         },
       ).then((value) => miniPlayerNotifier.onShow());
-    }, [playlist]);
+    }, [context, playlist]);
 
     final onPlayChord = useCallback(
       () {

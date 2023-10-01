@@ -2,8 +2,8 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class OfflinePlayerBottomDragIndicator extends StatelessWidget {
-  const OfflinePlayerBottomDragIndicator({super.key});
+class BaseBottomDragIndicator extends StatelessWidget {
+  const BaseBottomDragIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {

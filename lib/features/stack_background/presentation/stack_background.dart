@@ -1,5 +1,4 @@
 import 'package:daily_mind/features/background/presentation/background.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class StackBackground extends StatelessWidget {
@@ -17,13 +16,7 @@ class StackBackground extends StatelessWidget {
     return Stack(
       children: [
         Background(image: image),
-        Container(
-          padding: EdgeInsets.symmetric(
-            vertical: kToolbarHeight,
-            horizontal: spacing(2),
-          ),
-          child: SafeArea(child: child),
-        ),
+        child,
       ],
     );
   }

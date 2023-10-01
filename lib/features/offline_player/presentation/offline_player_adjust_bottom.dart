@@ -1,7 +1,6 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
-import 'package:daily_mind/features/offline_player/presentation/offline_player_bottom_drag_indicator.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_list_item.dart';
 import 'package:daily_mind/features/timer_picker/presentation/timer_picker.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -14,14 +13,12 @@ import 'package:get/utils.dart' hide Trans;
 class OfflinePlayerAdjustBottom extends HookWidget {
   final int playlistId;
   final List<PlaylistItem> items;
-  final ScrollController scrollController;
   final ValueChanged<String>? onChanged;
   final String? initialTitle;
 
   const OfflinePlayerAdjustBottom({
     super.key,
     required this.items,
-    required this.scrollController,
     required this.playlistId,
     this.initialTitle,
     this.onChanged,
@@ -30,18 +27,19 @@ class OfflinePlayerAdjustBottom extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(spacing(2)),
+      padding: EdgeInsets.symmetric(
+        horizontal: spacing(2),
+        vertical: spacing(4),
+      ),
       decoration: BoxDecoration(
         color: context.theme.colorScheme.background.withOpacity(0.9),
       ),
-      child: SingleChildScrollView(
-        controller: scrollController,
+      child: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: space(
             [
-              const Center(child: OfflinePlayerBottomDragIndicator()),
               const TimerPicker(),
               BaseContentHeader(
                 title: 'name'.tr(),

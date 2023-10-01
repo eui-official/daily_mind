@@ -27,7 +27,7 @@ class BaseMixEditorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: spacing(15),
+      height: spacing(20),
       width: context.width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(spacing(2)),
