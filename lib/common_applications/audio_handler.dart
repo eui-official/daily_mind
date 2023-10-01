@@ -5,6 +5,7 @@ import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player.dart';
 import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_domains/story.dart';
+import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
@@ -13,7 +14,8 @@ import 'package:just_audio/just_audio.dart';
 class DailyMindAudioHandler extends BaseAudioHandler {
   Timer? timer;
   List<OfflinePlayerItem> playerItems = [];
-  final onlinePlayer = OnlineAudioPlayer();
+  OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
+  NetworkType networkType = NetworkType.none;
 
   void onStartTimer(Time time) {
     timer?.cancel();
@@ -27,6 +29,8 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void onInitPlaylist(List<PlaylistItem> items) {
+    pause();
+
     for (var item in items) {
       final player = GaplessAudioPlayer();
 
@@ -38,8 +42,31 @@ class DailyMindAudioHandler extends BaseAudioHandler {
         id: item.id,
       ));
 
+      networkType = NetworkType.offline;
+
       play();
+      onInitPlaybackState();
     }
+  }
+
+  void onInitStory(Story story) async {
+    pause();
+
+    await onlinePlayer.onInitSource(story.source, LoopMode.one);
+
+    mediaItem.add(
+      MediaItem(
+        id: story.source,
+        title: story.name,
+        artUri: Uri.parse(story.image),
+        duration: onlinePlayer.player.duration,
+      ),
+    );
+
+    networkType = NetworkType.online;
+
+    play();
+    onInitPlaybackState();
   }
 
   void onUpdateVolume(double volume, String itemId, int playlistId) {
@@ -59,6 +86,12 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     }
   }
 
+  void onClearMix() {}
+
+  void onClearStory() {
+    onlinePlayer.onDispose();
+  }
+
   void onPauseStory() {
     onlinePlayer.onPause();
   }
@@ -67,24 +100,9 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     onlinePlayer.player.play();
   }
 
-  void onInitStory(Story story) async {
-    await onlinePlayer.onInitSource(story.source, LoopMode.one);
-
-    mediaItem.add(
-      MediaItem(
-        id: story.source,
-        title: story.name,
-        artUri: Uri.parse(story.image),
-        duration: onlinePlayer.player.duration,
-      ),
-    );
-
-    onInitPlaybackState();
-  }
-
   void onDispose() {
     for (var playerItem in playerItems) {
-      playerItem.player.dispose();
+      playerItem.player.onDispose();
     }
   }
 
@@ -102,8 +120,12 @@ class DailyMindAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> play() async {
-    onPlayMix();
-    onPlayStory();
+    if (networkType == NetworkType.offline) {
+      onPlayMix();
+    } else {
+      onPlayStory();
+    }
+    playbackState.add(playbackState.value.copyWith(playing: true));
 
     return super.play();
   }
@@ -112,6 +134,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   Future<void> pause() async {
     onPauseMix();
     onPauseStory();
+    playbackState.add(playbackState.value.copyWith(playing: false));
 
     return super.pause();
   }

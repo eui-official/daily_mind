@@ -3,7 +3,9 @@ import 'package:daily_mind/features/stories_category/presentation/stories_catego
 import 'package:flutter/material.dart';
 
 class StoriesList extends StatelessWidget {
-  const StoriesList({super.key});
+  const StoriesList({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

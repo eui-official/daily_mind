@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const appDescription = 'DailyMind - Soothe, Sleep, Relax';
+
 const emptyString = '';
 
 const empty = null;

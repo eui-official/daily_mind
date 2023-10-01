@@ -1,7 +1,7 @@
 import 'package:daily_mind/common_domains/sound_offline_item.dart';
 import 'package:daily_mind/common_providers/audio_offline_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
-import 'package:daily_mind/features/new_mix/constant/network_type.dart';
+import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_item_background.dart';
 import 'package:easy_localization/easy_localization.dart';

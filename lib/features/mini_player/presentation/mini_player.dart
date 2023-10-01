@@ -1,4 +1,3 @@
-import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/features/mini_player/presentation/mini_player_provider.dart';
 import 'package:daily_mind/features/mini_player/presentation/mini_player_toggle_button.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -25,14 +24,7 @@ class MiniPlayer extends HookConsumerWidget {
       ),
       child: Row(
         children: space([
-          if (miniPlayerState.image.isNotEmpty)
-            Container(
-              padding: EdgeInsets.only(left: spacing()),
-              child: BaseNetworkImage(
-                image: miniPlayerState.image,
-                size: 5,
-              ),
-            ),
+          miniPlayerState.image,
           if (miniPlayerState.title.isNotEmpty)
             Flexible(
               child: Marquee(

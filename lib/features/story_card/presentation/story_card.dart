@@ -1,8 +1,10 @@
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/story.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
+import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/features/mini_player/presentation/mini_player_provider.dart';
+import 'package:daily_mind/features/story_card/presentation/story_card_image.dart';
 import 'package:daily_mind/features/story_card/presentation/story_card_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +32,9 @@ class StoryCard extends HookConsumerWidget {
       miniPlayerNotifier.onUpdateState(
         MiniPlayerState(
           isShow: true,
-          image: story.image,
+          image: StoryCardImage(image: story.image),
           title: story.name,
+          networkType: NetworkType.online,
           onPressed: () {},
         ),
       );

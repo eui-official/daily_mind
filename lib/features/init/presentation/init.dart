@@ -2,6 +2,7 @@ import 'package:daily_mind/common_applications/audio_handler.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/extensions/string.dart';
+import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chore_item_provider.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
 import 'package:daily_mind/features/setting_watcher/presentation/setting_watcher.dart';
 import 'package:daily_mind/features/settings/application/settings.dart';
@@ -28,10 +29,13 @@ class Init extends HookConsumerWidget {
     ref.read(configProvider);
     final playMixNotifier = ref.read(playMixProvider.notifier);
     final storyCardNotifier = ref.read(storyCardProvider.notifier);
+    final offlineListChoreItemNotifier =
+        ref.read(offlineListChoreItemProvider.notifier);
 
     useEffect(() {
       playMixNotifier.onSetAudioHandler(audioHandler);
       storyCardNotifier.onSetAudioHandler(audioHandler);
+      offlineListChoreItemNotifier.onSetAudioHandler(audioHandler);
 
       db.streamSetting('language').listen((setting) {
         if (setting.isNotEmpty) {

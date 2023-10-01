@@ -49,7 +49,7 @@ class MixEditorItem extends HookWidget {
     useEffect(() {
       onInit();
 
-      return player.dispose;
+      return player.onDispose;
     }, []);
 
     return BaseMixEditorItem(

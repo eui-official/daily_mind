@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/new_mix/constant/network_type.dart';
+import 'package:daily_mind/constants/enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'selecting_state.freezed.dart';

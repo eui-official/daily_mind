@@ -17,9 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MiniPlayerState {
   bool get isShow => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  Widget get image => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   VoidCallback get onPressed => throw _privateConstructorUsedError;
+  NetworkType get networkType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MiniPlayerStateCopyWith<MiniPlayerState> get copyWith =>
@@ -32,7 +33,12 @@ abstract class $MiniPlayerStateCopyWith<$Res> {
           MiniPlayerState value, $Res Function(MiniPlayerState) then) =
       _$MiniPlayerStateCopyWithImpl<$Res, MiniPlayerState>;
   @useResult
-  $Res call({bool isShow, String image, String title, VoidCallback onPressed});
+  $Res call(
+      {bool isShow,
+      Widget image,
+      String title,
+      VoidCallback onPressed,
+      NetworkType networkType});
 }
 
 /// @nodoc
@@ -52,6 +58,7 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
     Object? image = null,
     Object? title = null,
     Object? onPressed = null,
+    Object? networkType = null,
   }) {
     return _then(_value.copyWith(
       isShow: null == isShow
@@ -61,7 +68,7 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Widget,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -70,6 +77,10 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
           ? _value.onPressed
           : onPressed // ignore: cast_nullable_to_non_nullable
               as VoidCallback,
+      networkType: null == networkType
+          ? _value.networkType
+          : networkType // ignore: cast_nullable_to_non_nullable
+              as NetworkType,
     ) as $Val);
   }
 }
@@ -82,7 +93,12 @@ abstract class _$$_MiniPlayerStateCopyWith<$Res>
       __$$_MiniPlayerStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isShow, String image, String title, VoidCallback onPressed});
+  $Res call(
+      {bool isShow,
+      Widget image,
+      String title,
+      VoidCallback onPressed,
+      NetworkType networkType});
 }
 
 /// @nodoc
@@ -100,6 +116,7 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
     Object? image = null,
     Object? title = null,
     Object? onPressed = null,
+    Object? networkType = null,
   }) {
     return _then(_$_MiniPlayerState(
       isShow: null == isShow
@@ -109,7 +126,7 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Widget,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -118,6 +135,10 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
           ? _value.onPressed
           : onPressed // ignore: cast_nullable_to_non_nullable
               as VoidCallback,
+      networkType: null == networkType
+          ? _value.networkType
+          : networkType // ignore: cast_nullable_to_non_nullable
+              as NetworkType,
     ));
   }
 }
@@ -129,20 +150,23 @@ class _$_MiniPlayerState implements _MiniPlayerState {
       {required this.isShow,
       required this.image,
       required this.title,
-      required this.onPressed});
+      required this.onPressed,
+      required this.networkType});
 
   @override
   final bool isShow;
   @override
-  final String image;
+  final Widget image;
   @override
   final String title;
   @override
   final VoidCallback onPressed;
+  @override
+  final NetworkType networkType;
 
   @override
   String toString() {
-    return 'MiniPlayerState(isShow: $isShow, image: $image, title: $title, onPressed: $onPressed)';
+    return 'MiniPlayerState(isShow: $isShow, image: $image, title: $title, onPressed: $onPressed, networkType: $networkType)';
   }
 
   @override
@@ -154,11 +178,14 @@ class _$_MiniPlayerState implements _MiniPlayerState {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.onPressed, onPressed) ||
-                other.onPressed == onPressed));
+                other.onPressed == onPressed) &&
+            (identical(other.networkType, networkType) ||
+                other.networkType == networkType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isShow, image, title, onPressed);
+  int get hashCode =>
+      Object.hash(runtimeType, isShow, image, title, onPressed, networkType);
 
   @JsonKey(ignore: true)
   @override
@@ -170,18 +197,21 @@ class _$_MiniPlayerState implements _MiniPlayerState {
 abstract class _MiniPlayerState implements MiniPlayerState {
   const factory _MiniPlayerState(
       {required final bool isShow,
-      required final String image,
+      required final Widget image,
       required final String title,
-      required final VoidCallback onPressed}) = _$_MiniPlayerState;
+      required final VoidCallback onPressed,
+      required final NetworkType networkType}) = _$_MiniPlayerState;
 
   @override
   bool get isShow;
   @override
-  String get image;
+  Widget get image;
   @override
   String get title;
   @override
   VoidCallback get onPressed;
+  @override
+  NetworkType get networkType;
   @override
   @JsonKey(ignore: true)
   _$$_MiniPlayerStateCopyWith<_$_MiniPlayerState> get copyWith =>
