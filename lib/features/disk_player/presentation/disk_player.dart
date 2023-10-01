@@ -6,7 +6,7 @@ import 'package:get/utils.dart';
 
 class DiskPlayer extends StatelessWidget {
   final bool isPlaying;
-  final String image;
+  final ImageProvider image;
 
   const DiskPlayer({
     super.key,

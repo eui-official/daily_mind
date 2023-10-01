@@ -47,7 +47,10 @@ class OfflineListChordItem extends HookConsumerWidget {
           return OfflinePlayer(playlistId: playlist.id);
         },
       ).then((value) => miniPlayerNotifier.onShow());
-    }, [context, playlist]);
+    }, [
+      context,
+      playlist,
+    ]);
 
     final onPlayChord = useCallback(
       () {
@@ -66,7 +69,11 @@ class OfflineListChordItem extends HookConsumerWidget {
           ),
         );
       },
-      [title, items],
+      [
+        items,
+        onOpenOfflinePlayer,
+        title,
+      ],
     );
 
     return InkWell(

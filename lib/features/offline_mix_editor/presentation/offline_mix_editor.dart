@@ -72,7 +72,7 @@ class OfflineMixEditor extends HookConsumerWidget {
           alignment: Alignment.center,
           children: [
             StackBackground(
-              image: appState.backgroundImage,
+              image: AssetImage(appState.backgroundImage),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,

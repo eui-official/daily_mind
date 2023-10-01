@@ -4,6 +4,7 @@ import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/features/mini_player/presentation/mini_player_provider.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player.dart';
 import 'package:daily_mind/features/story_card/presentation/story_card_image.dart';
 import 'package:daily_mind/features/story_card/presentation/story_card_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -27,18 +28,33 @@ class StoryCard extends HookConsumerWidget {
     final storyCardNotifier = ref.read(storyCardProvider.notifier);
     final miniPlayerNotifier = ref.read(miniPlayerProvider.notifier);
 
+    final onOpenOnlinePlayer = useCallback(() {
+      miniPlayerNotifier.onHide();
+
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        builder: (context) {
+          return OnlinePlayer(image: story.image);
+        },
+      ).then((value) => miniPlayerNotifier.onShow());
+    }, [story, context]);
+
     final onTap = useCallback(() {
       storyCardNotifier.onPlayStory(story);
+
       miniPlayerNotifier.onUpdateState(
         MiniPlayerState(
           isShow: true,
           image: StoryCardImage(image: story.image),
           title: story.name,
           networkType: NetworkType.online,
-          onPressed: () {},
+          onPressed: onOpenOnlinePlayer,
         ),
       );
-    }, [story]);
+    }, [story, onOpenOnlinePlayer]);
 
     return ListTile(
       onTap: onTap,

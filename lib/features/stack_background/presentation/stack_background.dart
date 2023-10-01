@@ -2,7 +2,7 @@ import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:flutter/material.dart';
 
 class StackBackground extends StatelessWidget {
-  final String image;
+  final ImageProvider image;
   final Widget child;
 
   const StackBackground({

@@ -23,7 +23,11 @@ class AppBarScrollview extends HookConsumerWidget {
         SliverAppBar(
           leading: const AppLogo(),
           title: Text(title),
-          flexibleSpace: Background(image: appState.backgroundImage),
+          flexibleSpace: Background(
+            image: AssetImage(
+              appState.backgroundImage,
+            ),
+          ),
           expandedHeight: kToolbarHeight * 2,
         ),
         SliverList(delegate: SliverChildListDelegate(children))
