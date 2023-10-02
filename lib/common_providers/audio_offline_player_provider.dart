@@ -3,14 +3,15 @@ import 'package:daily_mind/common_providers/domain/audio_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
-class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
-  GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
+const initState = AudioPlayerState(
+  isLoading: false,
+  isPlaying: false,
+);
 
-  AudioOfflinePlayerNotifier()
-      : super(const AudioPlayerState(
-          isLoading: false,
-          isPlaying: false,
-        )) {
+class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
+  final GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
+
+  AudioOfflinePlayerNotifier() : super(initState) {
     onInit();
   }
 
@@ -37,9 +38,14 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   void onPause() {
     gaplessAudioPlayer.onPause();
   }
+
+  void onDispose() {
+    state = state;
+    gaplessAudioPlayer.onDispose();
+  }
 }
 
-final audioOfflinePlayerProvider = StateNotifierProvider.family<
-    AudioOfflinePlayerNotifier, AudioPlayerState, String>((ref, id) {
+final audioOfflinePlayerProvider = StateNotifierProvider.autoDispose
+    .family<AudioOfflinePlayerNotifier, AudioPlayerState, String>((ref, id) {
   return AudioOfflinePlayerNotifier();
 });

@@ -3,6 +3,7 @@ import 'package:daily_mind/common_providers/audio_offline_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
+import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_item_background.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class OfflineSoundCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
     final audioOfflinePlayerMemoized =
         useMemoized(() => audioOfflinePlayerProvider(item.id));
     final audioOfflinePlayerNotifier =
@@ -60,6 +62,15 @@ class OfflineSoundCard extends HookConsumerWidget {
 
       return () {};
     }, [selectingId, item]);
+
+    useEffect(() {
+      return () {
+        Future(() {
+          newMixSelectedNotifier.onDeleted(item.id);
+          audioOfflinePlayerNotifier.onDispose();
+        });
+      };
+    }, [item]);
 
     return BaseSoundCard(
       isPlaying: audioOfflinePlayerState.isPlaying,

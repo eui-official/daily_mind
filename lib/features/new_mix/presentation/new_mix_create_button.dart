@@ -17,7 +17,7 @@ class NewMixCreateButton extends HookConsumerWidget {
 
     final onPressed = useCallback(
       () {
-        context.push('/mix-editor');
+        context.push('/offline-mix-editor');
       },
       [],
     );

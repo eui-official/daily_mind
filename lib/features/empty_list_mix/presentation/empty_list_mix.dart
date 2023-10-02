@@ -29,9 +29,10 @@ class EmptyListMix extends StatelessWidget {
       ],
       child: Container(
         padding: EdgeInsets.all(spacing(2)),
+        margin: const EdgeInsets.symmetric(vertical: kToolbarHeight),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(spacing(2)),
-          color: context.theme.colorScheme.background.withOpacity(0.4),
+          color: context.theme.dividerColor,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -8,12 +8,10 @@ import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
-import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/utils.dart' hide Trans;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
@@ -47,7 +45,6 @@ class OfflineMixEditor extends HookConsumerWidget {
     );
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         forceMaterialTransparency: true,
         flexibleSpace: const AppBarFilter(),
@@ -73,51 +70,28 @@ class OfflineMixEditor extends HookConsumerWidget {
           children: [
             StackBackground(
               image: AssetImage(appState.backgroundImage),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ListHeader(
-                    child: Text(
-                      'soundList'.tr(),
-                      style: context.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Container(
-                      padding: EdgeInsets.only(top: spacing(4)),
-                      child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                          childAspectRatio: 3,
-                          mainAxisSpacing: spacing(2),
-                          crossAxisSpacing: spacing(2),
-                        ),
-                        itemBuilder: (context, index) {
-                          return MixEditorItem(
-                            volumeKey: index == 0
-                                ? mixEditorVolumeKey
-                                : ValueKey(index),
-                            onItemVolumeChanged:
-                                mixEditorNotifier.onItemVolumeChanged,
-                            offlineMixEditorItemState: mixEditorState
-                                .offlineMixEditorItemStates[index],
-                          );
-                        },
-                        itemCount:
-                            mixEditorState.offlineMixEditorItemStates.length,
-                      ),
-                    ),
-                  ),
-                ],
+              child: ListView.builder(
+                padding: const EdgeInsets.only(
+                  top: kBottomNavigationBarHeight,
+                  bottom: kBottomNavigationBarHeight * 2,
+                ),
+                itemBuilder: (context, index) {
+                  return MixEditorItem(
+                    volumeKey:
+                        index == 0 ? mixEditorVolumeKey : ValueKey(index),
+                    onItemVolumeChanged: mixEditorNotifier.onItemVolumeChanged,
+                    offlineMixEditorItemState:
+                        mixEditorState.offlineMixEditorItemStates[index],
+                  );
+                },
+                itemCount: mixEditorState.offlineMixEditorItemStates.length,
               ),
             ),
             Positioned(
               bottom: spacing(3),
-              child:
-                  OfflineNewMixEditorAddButton(onPressed: onAddANewOfflineMix),
+              child: OfflineNewMixEditorAddButton(
+                onPressed: onAddANewOfflineMix,
+              ),
             ),
           ],
         ),
