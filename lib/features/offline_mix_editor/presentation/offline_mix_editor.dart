@@ -45,6 +45,7 @@ class OfflineMixEditor extends HookConsumerWidget {
     );
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         forceMaterialTransparency: true,
         flexibleSpace: const AppBarFilter(),
@@ -70,21 +71,31 @@ class OfflineMixEditor extends HookConsumerWidget {
           children: [
             StackBackground(
               image: AssetImage(appState.backgroundImage),
-              child: ListView.builder(
-                padding: const EdgeInsets.only(
-                  top: kBottomNavigationBarHeight,
-                  bottom: kBottomNavigationBarHeight * 2,
+              child: SafeArea(
+                child: GridView.builder(
+                  padding: EdgeInsets.only(
+                    left: spacing(2),
+                    right: spacing(2),
+                    top: kBottomNavigationBarHeight,
+                    bottom: kBottomNavigationBarHeight * 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return MixEditorItem(
+                      volumeKey:
+                          index == 0 ? mixEditorVolumeKey : ValueKey(index),
+                      onItemVolumeChanged:
+                          mixEditorNotifier.onItemVolumeChanged,
+                      offlineMixEditorItemState:
+                          mixEditorState.offlineMixEditorItemStates[index],
+                    );
+                  },
+                  itemCount: mixEditorState.offlineMixEditorItemStates.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1,
+                    childAspectRatio: 2,
+                    mainAxisSpacing: spacing(2),
+                  ),
                 ),
-                itemBuilder: (context, index) {
-                  return MixEditorItem(
-                    volumeKey:
-                        index == 0 ? mixEditorVolumeKey : ValueKey(index),
-                    onItemVolumeChanged: mixEditorNotifier.onItemVolumeChanged,
-                    offlineMixEditorItemState:
-                        mixEditorState.offlineMixEditorItemStates[index],
-                  );
-                },
-                itemCount: mixEditorState.offlineMixEditorItemStates.length,
               ),
             ),
             Positioned(

@@ -11,6 +11,7 @@ class NewMixAddButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(newMixProvider);
     final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
     final soundItem = newMixSelectedNotifier.getSoundItem();
     String name = soundItem?.name ?? emptyString;

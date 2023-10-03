@@ -35,6 +35,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     List<PlaylistItem> items,
   ) async {
     pause();
+    onClearPlayerItems();
 
     for (var item in items) {
       final player = GaplessAudioPlayer();
@@ -97,6 +98,14 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     for (var playerItem in playerItems) {
       playerItem.player.onPause();
     }
+  }
+
+  void onClearPlayerItems() {
+    for (var playerItem in playerItems) {
+      playerItem.player.onDispose();
+    }
+
+    playerItems.clear();
   }
 
   void onClearMix() {}

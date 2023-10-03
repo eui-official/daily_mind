@@ -30,15 +30,16 @@ class BaseListSound<T> extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         if(title.isNotEmpty) ListHeader(
-            trailing: headerTrailing,
-            child: Text(
-              title,
-              style: context.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w700,
+          if (title.isNotEmpty)
+            ListHeader(
+              trailing: headerTrailing,
+              child: Text(
+                title,
+                style: context.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
           Flexible(
             child: GridView.builder(
               padding: gridPadding,
@@ -46,7 +47,6 @@ class BaseListSound<T> extends StatelessWidget {
                 crossAxisCount: 1,
                 childAspectRatio: 3,
                 mainAxisSpacing: spacing(2),
-                crossAxisSpacing: spacing(2),
               ),
               physics: const BouncingScrollPhysics(),
               itemCount: items.length,
