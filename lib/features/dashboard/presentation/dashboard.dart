@@ -2,8 +2,8 @@ import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigati
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/mini_player/presentation/mini_player_switcher.dart';
 import 'package:daily_mind/features/offline_list/presentation/offline_list.dart';
+import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
-import 'package:daily_mind/features/stories/presentation/stories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -22,7 +22,7 @@ class Dashboard extends HookConsumerWidget {
       if (appNavigationBarState.index == 0) {
         return const OfflineList();
       } else if (appNavigationBarState.index == 1) {
-        return const Stories();
+        return const OnlineList();
       }
 
       return const Settings();

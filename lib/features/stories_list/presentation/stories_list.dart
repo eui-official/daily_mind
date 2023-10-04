@@ -9,13 +9,13 @@ class StoriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseListStories(
-      onListItemBuilder: (context, listStoryCategory) {
+    return BaseListItems(
+      onListItemBuilder: (context, listItemCategory) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: listStoryCategory.map(
-            (storyCategory) {
-              return StoriesCategory(storyCategory: storyCategory);
+          children: listItemCategory.map(
+            (itemCategory) {
+              return StoriesCategory(itemCategory: itemCategory);
             },
           ).toList(),
         );

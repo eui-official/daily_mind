@@ -1,22 +1,22 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:collection/collection.dart';
-import 'package:daily_mind/common_domains/story_category.dart';
+import 'package:daily_mind/common_domains/item_category.dart';
 import 'package:daily_mind/features/stories_category_column/presentation/stories_category_column.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class StoriesCategory extends StatelessWidget {
-  final StoryCategory storyCategory;
+  final ItemCategory itemCategory;
 
   const StoriesCategory({
     super.key,
-    required this.storyCategory,
+    required this.itemCategory,
   });
 
   @override
   Widget build(BuildContext context) {
-    final storiesGroup = storyCategory.stories.slices(3).toList();
+    final itemsGroup = itemCategory.items.slices(3).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +28,7 @@ class StoriesCategory extends StatelessWidget {
             left: spacing(2),
           ),
           child: Text(
-            storyCategory.category.name,
+            itemCategory.category.name,
             style: context.textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -39,19 +39,19 @@ class StoriesCategory extends StatelessWidget {
           child: Swiper(
             viewportFraction: 0.9,
             itemBuilder: (context, index) {
-              final stories = storiesGroup[index];
+              final items = itemsGroup[index];
 
               return Container(
                 transform:
                     Transform.translate(offset: Offset(-spacing(2.75), 0))
                         .transform,
                 child: StoriesCategoryColumn(
-                  category: storyCategory.category,
-                  stories: stories,
+                  category: itemCategory.category,
+                  items: items,
                 ),
               );
             },
-            itemCount: storiesGroup.length,
+            itemCount: itemsGroup.length,
             loop: false,
           ),
         ),

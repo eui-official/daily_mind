@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'story.dart';
+part of 'item.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Story _$$_StoryFromJson(Map<String, dynamic> json) => _$_Story(
+_$_Item _$$_ItemFromJson(Map<String, dynamic> json) => _$_Item(
       id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
@@ -15,7 +15,7 @@ _$_Story _$$_StoryFromJson(Map<String, dynamic> json) => _$_Story(
       category: json['category'] as String,
     );
 
-Map<String, dynamic> _$$_StoryToJson(_$_Story instance) => <String, dynamic>{
+Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt,
       'name': instance.name,

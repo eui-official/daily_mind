@@ -5,7 +5,7 @@ import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player.dart';
 import 'package:daily_mind/common_applications/time.dart';
-import 'package:daily_mind/common_domains/story.dart';
+import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
@@ -63,16 +63,16 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     }
   }
 
-  void onInitStory(Story story) async {
+  void onInitItem(Item item) async {
     pause();
 
-    await onlinePlayer.onInitSource(story.source, LoopMode.one);
+    await onlinePlayer.onInitSource(item.source, LoopMode.one);
 
     mediaItem.add(
       MediaItem(
-        id: story.source,
-        title: story.name,
-        artUri: Uri.parse(story.image),
+        id: item.source,
+        title: item.name,
+        artUri: Uri.parse(item.image),
         duration: onlinePlayer.player.duration,
       ),
     );

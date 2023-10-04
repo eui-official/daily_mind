@@ -1,10 +1,18 @@
+import 'package:daily_mind/common_domains/item.dart';
 import 'package:flutter/material.dart';
 
 class OnlinePlayerAdjustBottom extends StatelessWidget {
-  const OnlinePlayerAdjustBottom({super.key});
+  final List<Item> items;
+
+  const OnlinePlayerAdjustBottom({
+    super.key,
+    required this.items,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Column(
+      children: [],
+    );
   }
 }

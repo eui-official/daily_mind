@@ -3,8 +3,8 @@ import 'package:daily_mind/features/stories_list/presentation/stories_list.dart'
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class Stories extends StatelessWidget {
-  const Stories({super.key});
+class OnlineList extends StatelessWidget {
+  const OnlineList({super.key});
 
   @override
   Widget build(BuildContext context) {

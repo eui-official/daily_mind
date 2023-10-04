@@ -3,7 +3,7 @@ import 'package:daily_mind/features/introduction/presentation/introduction.dart'
 import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player.dart';
-import 'package:daily_mind/features/stories/presentation/stories.dart';
+import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
@@ -21,8 +21,8 @@ final routerConfig = GoRouter(
       builder: (context, state) => const NewMix(),
     ),
     GoRoute(
-      path: '/stories',
-      builder: (context, state) => const Stories(),
+      path: '/online-list',
+      builder: (context, state) => const OnlineList(),
     ),
     GoRoute(
       path: '/offline-mix-editor',

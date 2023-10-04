@@ -1,18 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'story.freezed.dart';
-part 'story.g.dart';
+part 'item.freezed.dart';
+part 'item.g.dart';
 
 @freezed
-class Story with _$Story {
-  const factory Story({
+class Item with _$Item {
+  const factory Item({
     required String id,
     @JsonKey(name: 'created_at') required String createdAt,
     required String name,
     required String image,
     required String source,
     required String category,
-  }) = _Story;
+  }) = _Item;
 
-  factory Story.fromJson(Map<String, dynamic> json) => _$StoryFromJson(json);
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
 }

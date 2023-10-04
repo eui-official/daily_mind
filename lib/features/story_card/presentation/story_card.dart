@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_domains/category.dart';
-import 'package:daily_mind/common_domains/story.dart';
+import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
@@ -15,12 +15,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StoryCard extends HookConsumerWidget {
   final Category category;
-  final Story story;
+  final Item item;
+  final List<Item> items;
 
   const StoryCard({
     super.key,
     required this.category,
-    required this.story,
+    required this.items,
+    required this.item,
   });
 
   @override
@@ -37,34 +39,41 @@ class StoryCard extends HookConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         builder: (context) {
-          return OnlinePlayer(image: story.image);
+          return OnlinePlayer(
+            image: item.image,
+            items: items,
+          );
         },
       ).then((value) => miniPlayerNotifier.onShow());
-    }, [story, context]);
+    }, [
+      item,
+      items,
+      context,
+    ]);
 
     final onTap = useCallback(() {
-      storyCardNotifier.onPlayStory(story);
+      storyCardNotifier.onPlayItem(item);
 
       miniPlayerNotifier.onUpdateState(
         MiniPlayerState(
           isShow: true,
-          image: StoryCardImage(image: story.image),
-          title: story.name,
+          image: StoryCardImage(image: item.image),
+          title: item.name,
           networkType: NetworkType.online,
           onPressed: onOpenOnlinePlayer,
         ),
       );
-    }, [story, onOpenOnlinePlayer]);
+    }, [item, onOpenOnlinePlayer]);
 
     return ListTile(
       onTap: onTap,
       leading: SizedBox(
         width: spacing(8),
         height: spacing(6),
-        child: BaseNetworkImage(image: story.image),
+        child: BaseNetworkImage(image: item.image),
       ),
       title: Text(
-        story.name,
+        item.name,
         style: context.textTheme.bodyMedium,
       ),
     );
