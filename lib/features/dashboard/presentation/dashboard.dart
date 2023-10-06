@@ -51,7 +51,10 @@ class Dashboard extends HookConsumerWidget {
         ),
         bottomNavigationBar: const AppNavigationBar(),
       );
-    }, [configState.isLoading]);
+    }, [
+      appNavigationBarState,
+      configState.isLoading,
+    ]);
 
     return AnimatedSwitcher(
       duration: mediumDuration,
