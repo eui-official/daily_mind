@@ -10,13 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart' hide Trans;
 
-class OfflinePlayerAdjustBottom extends HookWidget {
+class OfflinePlayerBottom extends HookWidget {
   final int playlistId;
   final List<PlaylistItem> items;
   final ValueChanged<String>? onChanged;
   final String? initialTitle;
 
-  const OfflinePlayerAdjustBottom({
+  const OfflinePlayerBottom({
     super.key,
     required this.items,
     required this.playlistId,
@@ -36,7 +36,6 @@ class OfflinePlayerAdjustBottom extends HookWidget {
       ),
       child: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: space(
             [

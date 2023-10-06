@@ -26,30 +26,32 @@ class BasePlayerControl extends HookConsumerWidget {
         useStream(baseAudioHandlerNotifier.audioHandler.playbackState);
     final isPlaying = playBackState.data?.playing ?? false;
 
-    return Stack(
-      children: [
-        StackBackground(
-          image: image,
-          child: CustomScrollView(
-            controller: scrollController,
-            slivers: [
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                backgroundColor: Colors.transparent,
-                flexibleSpace: DiskPlayer(
-                  image: image,
-                  isPlaying: isPlaying,
-                ),
-                expandedHeight: context.height / 2,
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.only(top: kToolbarHeight),
-                sliver: SliverToBoxAdapter(child: child),
-              )
-            ],
+    return StackBackground(
+      image: image,
+      child: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: DiskPlayer(
+              image: image,
+              isPlaying: isPlaying,
+            ),
+            expandedHeight: context.height / 2,
           ),
-        ),
-      ],
+          SliverPadding(
+            padding: const EdgeInsets.only(top: kToolbarHeight),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  child,
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

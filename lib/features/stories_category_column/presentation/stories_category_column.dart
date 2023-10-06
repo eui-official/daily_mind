@@ -6,29 +6,31 @@ import 'package:flutter/material.dart';
 
 class StoriesCategoryColumn extends StatelessWidget {
   final Category category;
-  final List<Item> items;
+  final List<Item> fullItems;
+  final List<Item> itemsChunked;
 
   const StoriesCategoryColumn({
     super.key,
     required this.category,
-    required this.items,
-  }) : assert(items.length <= 3);
+    required this.itemsChunked,
+    required this.fullItems,
+  }) : assert(itemsChunked.length <= 3);
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: EdgeInsets.symmetric(vertical: spacing(3)),
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: items.length,
+      itemCount: itemsChunked.length,
       separatorBuilder: (context, index) {
         return SizedBox(height: spacing(2));
       },
       itemBuilder: (context, index) {
-        final item = items[index];
+        final item = itemsChunked[index];
 
         return StoryCard(
           category: category,
-          items: items,
+          fullItems: fullItems,
           item: item,
         );
       },

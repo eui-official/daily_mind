@@ -1,5 +1,6 @@
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_item_editor.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class OfflinePlayerListItem extends StatelessWidget {
@@ -29,9 +30,10 @@ class OfflinePlayerListItem extends StatelessWidget {
           item: item,
         );
       },
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 1,
         childAspectRatio: 2,
+        mainAxisSpacing: spacing(2),
       ),
     );
   }

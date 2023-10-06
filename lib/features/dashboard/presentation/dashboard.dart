@@ -18,15 +18,13 @@ class Dashboard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appNavigationBarState = ref.watch(appNavigationBarProvider);
 
-    final body = useMemoized(() {
-      if (appNavigationBarState.index == 0) {
-        return const OfflineList();
-      } else if (appNavigationBarState.index == 1) {
-        return const OnlineList();
-      }
-
-      return const Settings();
-    }, [appNavigationBarState.index]);
+    final children = useMemoized(
+        () => [
+              const OfflineList(),
+              const OnlineList(),
+              const Settings(),
+            ],
+        []);
 
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -34,9 +32,9 @@ class Dashboard extends HookConsumerWidget {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            AnimatedSwitcher(
-              duration: kThemeChangeDuration,
-              child: body,
+            IndexedStack(
+              index: appNavigationBarState.index,
+              children: children,
             ),
             const MiniPlayerSwitcher(),
           ],

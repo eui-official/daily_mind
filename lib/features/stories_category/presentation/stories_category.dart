@@ -39,7 +39,7 @@ class StoriesCategory extends StatelessWidget {
           child: Swiper(
             viewportFraction: 0.9,
             itemBuilder: (context, index) {
-              final items = itemsGroup[index];
+              final itemsChunked = itemsGroup[index];
 
               return Container(
                 transform:
@@ -47,7 +47,8 @@ class StoriesCategory extends StatelessWidget {
                         .transform,
                 child: StoriesCategoryColumn(
                   category: itemCategory.category,
-                  items: items,
+                  fullItems: itemCategory.items,
+                  itemsChunked: itemsChunked,
                 ),
               );
             },
