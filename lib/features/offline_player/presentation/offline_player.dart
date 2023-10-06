@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_player_control.dart';
+import 'package:daily_mind/common_widgets/base_player_details.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/empty_widget_builder/presentation/empty_widget_builder.dart';
@@ -28,7 +28,7 @@ class OfflinePlayer extends HookConsumerWidget {
         return DraggableScrollableSheet(
           initialChildSize: 1,
           builder: (context, scrollController) {
-            return BasePlayerControl(
+            return BasePlayerDetails(
               image: AssetImage(image),
               scrollController: scrollController,
               child: OfflinePlayerBottom(

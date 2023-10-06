@@ -15,6 +15,7 @@ class OnlineListRelated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         const OnlineListRelatedHeader(),
         ListView.separated(

@@ -6,12 +6,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BasePlayerControl extends HookConsumerWidget {
+class BasePlayerDetails extends HookConsumerWidget {
   final ImageProvider image;
   final Widget child;
   final ScrollController? scrollController;
 
-  const BasePlayerControl({
+  const BasePlayerDetails({
     super.key,
     required this.image,
     required this.child,
