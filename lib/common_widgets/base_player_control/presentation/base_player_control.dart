@@ -14,17 +14,17 @@ class BasePlayerControl extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final duration = audioHandler.onlinePlayer.player.duration;
-    final positionSnapshot =
-        useStream(audioHandler.onlinePlayer.player.positionStream);
+    final positionStream =
+        useMemoized(() => audioHandler.onlinePlayer.player.positionStream, []);
+    final positionSnapshot = useStream(positionStream);
     final seconds = duration?.inSeconds ?? 0;
 
     return Column(
       children: [
         BasePlayerTime(
-          value: positionSnapshot.data?.inSeconds ?? 0,
           max: seconds,
-          onChanged: (value) {},
-          onChangeEnd: (value) {},
+          onChangeEnd: audioHandler.onlinePlayer.onSeek,
+          value: positionSnapshot.data?.inSeconds ?? 0,
         ),
       ],
     );

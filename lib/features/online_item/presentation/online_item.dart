@@ -28,6 +28,9 @@ class OnlineItem extends StatelessWidget {
         name,
         style: context.textTheme.bodyMedium,
       ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(spacing()),
+      ),
     );
   }
 }

@@ -119,7 +119,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void onPlayStory() {
-    onlinePlayer.player.play();
+    onlinePlayer.onPlay();
   }
 
   void onDispose() {
@@ -147,6 +147,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     } else {
       onPlayStory();
     }
+
     playbackState.add(playbackState.value.copyWith(playing: true));
 
     return super.play();
