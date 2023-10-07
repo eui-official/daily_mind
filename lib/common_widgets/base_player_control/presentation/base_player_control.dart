@@ -6,16 +6,21 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class BasePlayerControl extends HookWidget {
   final DailyMindAudioHandler audioHandler;
+  final VoidCallback? onNext;
+  final VoidCallback? onPrevious;
 
   const BasePlayerControl({
     super.key,
     required this.audioHandler,
+    this.onNext,
+    this.onPrevious,
   });
 
   @override
   Widget build(BuildContext context) {
     final player = audioHandler.onlinePlayer.player;
     final duration = player.duration;
+
     final positionSnapshot = useStream(player.positionStream);
     final playingSnapshot = useStream(player.playingStream);
 
@@ -33,6 +38,8 @@ class BasePlayerControl extends HookWidget {
           isPlaying: isPlaying,
           onPlay: audioHandler.play,
           onPause: audioHandler.pause,
+          onNext: onNext,
+          onPrevious: onPrevious,
         ),
       ],
     );
