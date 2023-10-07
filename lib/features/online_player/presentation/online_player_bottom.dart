@@ -4,7 +4,6 @@ import 'package:daily_mind/common_widgets/base_player_control/presentation/base_
 import 'package:daily_mind/features/online_list_related/presentation/online_list_related.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlinePlayerBottom extends HookConsumerWidget {
@@ -22,7 +21,16 @@ class OnlinePlayerBottom extends HookConsumerWidget {
 
     return Container(
       padding: EdgeInsets.only(bottom: spacing(4)),
-      color: context.theme.colorScheme.background.withOpacity(0.9),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.black38,
+            Colors.black,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: SafeArea(
         child: Column(
           children: [
