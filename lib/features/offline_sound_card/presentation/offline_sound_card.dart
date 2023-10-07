@@ -30,6 +30,8 @@ class OfflineSoundCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useAutomaticKeepAlive();
+
     final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
     final audioOfflinePlayerMemoized =
         useMemoized(() => audioOfflinePlayerProvider(item.id));

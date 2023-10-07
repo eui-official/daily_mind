@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/common_widgets/base_slider_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -18,11 +18,8 @@ class VolumeSlider extends HookWidget {
 
     return RotatedBox(
       quarterTurns: 1,
-      child: SliderTheme(
-        data: SliderThemeData(
-          thumbShape: RoundSliderThumbShape(enabledThumbRadius: spacing()),
-        ),
-        child: Slider(
+      child: BaseSliderTheme(
+        slider: Slider(
           value: volume.value.toDouble(),
           min: 0,
           max: 1,

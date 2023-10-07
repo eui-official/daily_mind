@@ -45,7 +45,7 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   }
 }
 
-final audioOfflinePlayerProvider = StateNotifierProvider.autoDispose
-    .family<AudioOfflinePlayerNotifier, AudioPlayerState, String>((ref, id) {
+final audioOfflinePlayerProvider = StateNotifierProvider.family<
+    AudioOfflinePlayerNotifier, AudioPlayerState, String>((ref, id) {
   return AudioOfflinePlayerNotifier();
 });
