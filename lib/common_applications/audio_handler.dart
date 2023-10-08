@@ -11,7 +11,6 @@ import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:just_audio/just_audio.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler {
   Timer? timer;
@@ -72,7 +71,6 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     await onlinePlayer.onInitSource(
       item,
       fullItems: fullItems,
-      loopMode: LoopMode.off,
     );
 
     networkType = NetworkType.online;
@@ -83,9 +81,9 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void onWatchingItemsPlayState() {
-    onlinePlayer.player.positionStream.listen((duration) {
+    onlinePlayer.player.positionStream.listen((newDuration) {
       playbackState.add(
-        playbackState.value.copyWith(updatePosition: duration),
+        playbackState.value.copyWith(updatePosition: newDuration),
       );
     });
 

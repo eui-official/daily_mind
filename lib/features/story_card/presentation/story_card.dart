@@ -9,6 +9,7 @@ import 'package:daily_mind/features/story_card/presentation/story_card_image.dar
 import 'package:daily_mind/features/story_card/presentation/story_card_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StoryCard extends HookConsumerWidget {
@@ -37,10 +38,7 @@ class StoryCard extends HookConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         builder: (context) {
-          return OnlinePlayer(
-            image: item.image,
-            fullItems: fullItems,
-          );
+          return OnlinePlayer(fullItems: fullItems);
         },
       ).then((value) => miniPlayerNotifier.onShow());
     }, [context, fullItems]);
@@ -68,7 +66,12 @@ class StoryCard extends HookConsumerWidget {
     return OnlineItem(
       onTap: onTap,
       image: item.image,
-      name: item.name,
+      title: Text(
+        item.name,
+        style: context.textTheme.bodyMedium?.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
     );
   }
 }

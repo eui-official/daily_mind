@@ -15,7 +15,6 @@ class BaseSliderTheme extends StatelessWidget {
       data: SliderThemeData(
         activeTrackColor: context.theme.primaryColor,
         showValueIndicator: ShowValueIndicator.always,
-        thumbShape: SliderComponentShape.noThumb,
         overlayShape: SliderComponentShape.noThumb,
       ),
       child: slider,

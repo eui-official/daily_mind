@@ -37,5 +37,7 @@
   "mixEditorContent": "Điều chỉnh âm thanh để phù hợp với bạn",
   "cancel": "Thoát",
   "ok": "Đồng ý",
-  "stories": "Truyện"
+  "stories": "Truyện",
+  "currentPlaying": "Đang phát",
+  "playingNext": "Phát tiêp theo"
 }
