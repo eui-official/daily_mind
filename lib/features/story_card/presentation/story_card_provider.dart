@@ -10,8 +10,11 @@ class StoryCardNotifier extends StateNotifier<void> {
     required this.audioHandler,
   }) : super({});
 
-  void onPlayItem(Item item) {
-    audioHandler.onInitItem(item);
+  void onPlayItem(Item item, List<Item> fullItems) {
+    audioHandler.onInitItem(
+      item,
+      fullItems,
+    );
   }
 }
 

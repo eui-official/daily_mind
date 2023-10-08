@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/online_audio_player.dart';
+import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/common_providers/domain/audio_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
@@ -29,10 +30,10 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
     });
   }
 
-  void onPlay(String source) {
+  void onPlay(Item item) {
     state = state.copyWith(isLoading: true);
 
-    onlineAudioPlayer.onInitSource(source);
+    onlineAudioPlayer.onInitSource(item);
   }
 
   void onPause() {

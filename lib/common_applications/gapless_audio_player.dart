@@ -20,15 +20,14 @@ class GaplessAudioPlayer {
       children.add(AudioSource.asset(path));
     }
 
-    final playlist = ConcatenatingAudioSource(
-      shuffleOrder: DefaultShuffleOrder(),
+    final concatenatingAudioSource = ConcatenatingAudioSource(
       children: children,
     );
 
     final initialIndex = Random().nextInt(children.length);
 
     await player.setAudioSource(
-      playlist,
+      concatenatingAudioSource,
       initialIndex: initialIndex,
       initialPosition: Duration.zero,
     );

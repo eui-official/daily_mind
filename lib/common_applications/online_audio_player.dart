@@ -1,17 +1,36 @@
 import 'package:daily_mind/common_applications/logger.dart';
+import 'package:daily_mind/common_domains/item.dart';
 import 'package:just_audio/just_audio.dart';
 
 class OnlineAudioPlayer {
   final player = AudioPlayer();
 
   Future<void> onInitSource(
-    String source, [
+    Item item, {
+    List<Item> fullItems = const [],
     LoopMode loopMode = LoopMode.all,
-  ]) async {
+  }) async {
     try {
-      final audioSource = LockCachingAudioSource(Uri.parse(source));
-      await player.setAudioSource(audioSource);
+      final fullAudioSources = fullItems
+          .map(
+            (item) => LockCachingAudioSource(
+              Uri.parse(item.source),
+              tag: item,
+            ),
+          )
+          .toList();
+
+      final concatenatingAudioSource = ConcatenatingAudioSource(
+        children: fullAudioSources,
+      );
+
       await player.setLoopMode(loopMode);
+
+      await player.setAudioSource(
+        concatenatingAudioSource,
+        initialIndex: fullItems.indexOf(item),
+        initialPosition: Duration.zero,
+      );
     } catch (error) {
       logger.e(error);
     }

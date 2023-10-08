@@ -46,7 +46,10 @@ class StoryCard extends HookConsumerWidget {
     }, [context, fullItems]);
 
     final onTap = useCallback(() {
-      storyCardNotifier.onPlayItem(item);
+      storyCardNotifier.onPlayItem(
+        item,
+        fullItems,
+      );
 
       miniPlayerNotifier.onUpdateState(
         MiniPlayerState(

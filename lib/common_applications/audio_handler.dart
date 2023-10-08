@@ -63,24 +63,46 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     }
   }
 
-  void onInitItem(Item item) async {
+  void onInitItem(
+    Item item,
+    List<Item> fullItems,
+  ) async {
     pause();
 
-    await onlinePlayer.onInitSource(item.source, LoopMode.one);
-
-    mediaItem.add(
-      MediaItem(
-        id: item.source,
-        title: item.name,
-        artUri: Uri.parse(item.image),
-        duration: onlinePlayer.player.duration,
-      ),
+    await onlinePlayer.onInitSource(
+      item,
+      fullItems: fullItems,
+      loopMode: LoopMode.off,
     );
 
     networkType = NetworkType.online;
 
     play();
     onInitPlaybackState();
+    onWatchingItemsPlayState();
+  }
+
+  void onWatchingItemsPlayState() {
+    onlinePlayer.player.positionStream.listen((duration) {
+      playbackState.add(
+        playbackState.value.copyWith(updatePosition: duration),
+      );
+    });
+
+    onlinePlayer.player.currentIndexStream.listen((index) {
+      final currentIndex = index ?? 0;
+      final sequence = onlinePlayer.player.audioSource?.sequence ?? [];
+      final item = sequence[currentIndex];
+
+      mediaItem.add(
+        MediaItem(
+          id: item.tag.source,
+          title: item.tag.name,
+          artUri: Uri.parse(item.tag.image),
+          duration: onlinePlayer.player.duration,
+        ),
+      );
+    });
   }
 
   void onUpdateVolume(double volume, String itemId, int playlistId) {
@@ -114,11 +136,11 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     onlinePlayer.onDispose();
   }
 
-  void onPauseStory() {
+  void onPauseItem() {
     onlinePlayer.onPause();
   }
 
-  void onPlayStory() {
+  void onPlayItem() {
     onlinePlayer.onPlay();
   }
 
@@ -145,7 +167,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     if (networkType == NetworkType.offline) {
       onPlayMix();
     } else {
-      onPlayStory();
+      onPlayItem();
     }
 
     playbackState.add(playbackState.value.copyWith(playing: true));
@@ -156,7 +178,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   @override
   Future<void> pause() async {
     onPauseMix();
-    onPauseStory();
+    onPauseItem();
     playbackState.add(playbackState.value.copyWith(playing: false));
 
     return super.pause();
