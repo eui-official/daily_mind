@@ -1,9 +1,8 @@
+import 'package:daily_mind/common_hooks/use_playlist_from_audio_handler.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/sound_images_stack/presentation/sound_images_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,15 +18,8 @@ class OfflineMiniPlayer extends HookConsumerWidget {
     final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
     final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
-    final currentPlaylistSnapshot =
-        useStream(baseAudioHandler.streamCurrentPlaylist.stream);
     final playBackState = useStream(baseAudioHandler.playbackState);
-
-    final currentPlaylist = currentPlaylistSnapshot.data ?? Playlist();
-
-    final playlistSnapshot =
-        useStream(db.onStreamPlaylistById(currentPlaylist.id));
-    final playlist = playlistSnapshot.data ?? Playlist();
+    final playlist = usePlaylistFromAudioHandler(ref);
 
     final items = playlist.items ?? [];
     final isPlaying = playBackState.data?.playing ?? false;

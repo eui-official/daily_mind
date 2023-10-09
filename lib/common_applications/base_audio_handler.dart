@@ -18,7 +18,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   List<OfflinePlayerItem> offlinePlayerItems = [];
   NetworkType networkType = NetworkType.none;
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
-  StreamController<Playlist> streamCurrentPlaylist = BehaviorSubject();
+  StreamController<int> streamPlaylistId = BehaviorSubject();
   Timer? timer;
 
   void onStartTimer(Time time) {
@@ -36,7 +36,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     pause();
     onClearPlayerItems();
 
-    streamCurrentPlaylist.add(playlist);
+    streamPlaylistId.add(playlist.id);
 
     final items = playlist.items ?? [];
 
