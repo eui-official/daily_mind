@@ -29,7 +29,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     });
   }
 
-  void onInitPlaylist(
+  void onInitOfflinePlaylist(
     Playlist playlist,
     List<PlaylistItem> items,
   ) async {
@@ -76,11 +76,11 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     networkType = NetworkType.online;
 
     play();
-    onInitPlaybackState();
-    onWatchingItemsPlayState();
+    onInitPlaybackState(NetworkType.online);
+    onOnlinePlayerPlayStateChanged();
   }
 
-  void onWatchingItemsPlayState() {
+  void onOnlinePlayerPlayStateChanged() {
     onlinePlayer.player.positionStream.listen((newDuration) {
       playbackState.add(
         playbackState.value.copyWith(updatePosition: newDuration),
@@ -159,14 +159,23 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     }
   }
 
-  void onInitPlaybackState() async {
+  void onInitPlaybackState([NetworkType type = NetworkType.offline]) async {
+    final controls = [
+      MediaControl.pause,
+      MediaControl.play,
+    ];
+
+    if (type == NetworkType.online) {
+      controls.addAll([
+        MediaControl.skipToNext,
+        MediaControl.skipToPrevious,
+      ]);
+    }
+
     playbackState.add(
       playbackState.value.copyWith(
         playing: true,
-        controls: [
-          MediaControl.pause,
-          MediaControl.play,
-        ],
+        controls: controls,
       ),
     );
   }
@@ -191,5 +200,19 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     playbackState.add(playbackState.value.copyWith(playing: false));
 
     return super.pause();
+  }
+
+  @override
+  Future<void> skipToNext() {
+    onlinePlayer.player.seekToNext();
+
+    return super.skipToNext();
+  }
+
+  @override
+  Future<void> skipToPrevious() {
+    onlinePlayer.player.seekToPrevious();
+
+    return super.skipToPrevious();
   }
 }

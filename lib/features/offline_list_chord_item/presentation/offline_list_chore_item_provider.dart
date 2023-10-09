@@ -14,7 +14,7 @@ class OfflineListChoreItemNotifier extends StateNotifier<void> {
     Playlist playlist,
     List<PlaylistItem> items,
   ) {
-    audioHandler.onInitPlaylist(
+    audioHandler.onInitOfflinePlaylist(
       playlist,
       items,
     );
