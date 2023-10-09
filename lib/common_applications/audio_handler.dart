@@ -90,16 +90,19 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     onlinePlayer.player.currentIndexStream.listen((index) {
       final currentIndex = index ?? 0;
       final sequence = onlinePlayer.player.audioSource?.sequence ?? [];
-      final item = sequence[currentIndex];
 
-      mediaItem.add(
-        MediaItem(
-          id: item.tag.source,
-          title: item.tag.name,
-          artUri: Uri.parse(item.tag.image),
-          duration: onlinePlayer.player.duration,
-        ),
-      );
+      if (sequence.isNotEmpty) {
+        final item = sequence[currentIndex];
+
+        mediaItem.add(
+          MediaItem(
+            id: item.tag.source,
+            title: item.tag.name,
+            artUri: Uri.parse(item.tag.image),
+            duration: onlinePlayer.player.duration,
+          ),
+        );
+      }
     });
   }
 

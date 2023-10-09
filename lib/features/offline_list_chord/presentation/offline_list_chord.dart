@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
 import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix.dart';
 import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chord_item.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chore_provider.dart';
@@ -16,7 +17,7 @@ class OfflineListChord extends HookConsumerWidget {
     final playlists = offlineListChoreState.playlists;
 
     if (offlineListChoreState.isLoading) {
-      return const CircularProgressIndicator();
+      return const BaseCircularIndicator();
     }
 
     if (playlists.isEmpty) {

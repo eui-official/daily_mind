@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_domains/sound_online_item.dart';
+import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
 import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -32,7 +33,7 @@ class BaseListSoundOnlineBuilder extends StatelessWidget {
           );
         }
 
-        return const CircularProgressIndicator();
+        return const BaseCircularIndicator();
       },
     );
   }

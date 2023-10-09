@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/item.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/features/mini_player/presentation/mini_player_provider.dart';
@@ -26,6 +27,8 @@ class StoryCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final baseAudioHandlerNotifier =
+        ref.read(baseAudioHandlerProvider.notifier);
     final storyCardNotifier = ref.read(storyCardProvider.notifier);
     final miniPlayerNotifier = ref.read(miniPlayerProvider.notifier);
 
@@ -56,6 +59,8 @@ class StoryCard extends HookConsumerWidget {
           networkType: NetworkType.online,
           onPressed: onOpenPlayerOnline,
           title: item.name,
+          processingStateStream: baseAudioHandlerNotifier
+              .audioHandler.onlinePlayer.player.processingStateStream,
         ),
       );
     }, [

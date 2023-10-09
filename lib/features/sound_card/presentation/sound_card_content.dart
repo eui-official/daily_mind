@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
 import 'package:daily_mind/features/music_playing/presentation/music_playing.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -38,12 +39,7 @@ class SoundCardContent extends StatelessWidget {
                 ),
               ),
             ),
-            if (isLoading)
-              SizedBox(
-                height: spacing(),
-                width: spacing(),
-                child: const CircularProgressIndicator(strokeWidth: 2),
-              ),
+            if (isLoading) const BaseCircularIndicator(size: 1),
             if (isPlaying) const MusicPlaying(),
           ],
         ),

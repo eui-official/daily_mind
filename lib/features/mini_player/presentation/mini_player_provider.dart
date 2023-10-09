@@ -4,11 +4,12 @@ import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final initState = MiniPlayerState(
-  isShow: false,
-  onPressed: () {},
-  title: emptyString,
   image: emptyWidget,
+  isShow: false,
   networkType: NetworkType.none,
+  onPressed: () {},
+  processingStateStream: const Stream.empty(),
+  title: emptyString,
 );
 
 class MiniPlayerProvider extends StateNotifier<MiniPlayerState> {

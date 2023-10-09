@@ -67,6 +67,7 @@ dependencies:
   card_swiper: ^3.0.1
   marquee: ^2.2.3
   uuid: ^4.1.0
+  flutter_spinkit: ^5.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

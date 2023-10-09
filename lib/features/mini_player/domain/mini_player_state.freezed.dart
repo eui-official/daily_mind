@@ -21,6 +21,8 @@ mixin _$MiniPlayerState {
   String get title => throw _privateConstructorUsedError;
   VoidCallback get onPressed => throw _privateConstructorUsedError;
   NetworkType get networkType => throw _privateConstructorUsedError;
+  Stream<ProcessingState> get processingStateStream =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MiniPlayerStateCopyWith<MiniPlayerState> get copyWith =>
@@ -38,7 +40,8 @@ abstract class $MiniPlayerStateCopyWith<$Res> {
       Widget image,
       String title,
       VoidCallback onPressed,
-      NetworkType networkType});
+      NetworkType networkType,
+      Stream<ProcessingState> processingStateStream});
 }
 
 /// @nodoc
@@ -59,6 +62,7 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
     Object? title = null,
     Object? onPressed = null,
     Object? networkType = null,
+    Object? processingStateStream = null,
   }) {
     return _then(_value.copyWith(
       isShow: null == isShow
@@ -81,6 +85,10 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
           ? _value.networkType
           : networkType // ignore: cast_nullable_to_non_nullable
               as NetworkType,
+      processingStateStream: null == processingStateStream
+          ? _value.processingStateStream
+          : processingStateStream // ignore: cast_nullable_to_non_nullable
+              as Stream<ProcessingState>,
     ) as $Val);
   }
 }
@@ -98,7 +106,8 @@ abstract class _$$_MiniPlayerStateCopyWith<$Res>
       Widget image,
       String title,
       VoidCallback onPressed,
-      NetworkType networkType});
+      NetworkType networkType,
+      Stream<ProcessingState> processingStateStream});
 }
 
 /// @nodoc
@@ -117,6 +126,7 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
     Object? title = null,
     Object? onPressed = null,
     Object? networkType = null,
+    Object? processingStateStream = null,
   }) {
     return _then(_$_MiniPlayerState(
       isShow: null == isShow
@@ -139,6 +149,10 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
           ? _value.networkType
           : networkType // ignore: cast_nullable_to_non_nullable
               as NetworkType,
+      processingStateStream: null == processingStateStream
+          ? _value.processingStateStream
+          : processingStateStream // ignore: cast_nullable_to_non_nullable
+              as Stream<ProcessingState>,
     ));
   }
 }
@@ -151,7 +165,8 @@ class _$_MiniPlayerState implements _MiniPlayerState {
       required this.image,
       required this.title,
       required this.onPressed,
-      required this.networkType});
+      required this.networkType,
+      this.processingStateStream = const Stream.empty()});
 
   @override
   final bool isShow;
@@ -163,10 +178,13 @@ class _$_MiniPlayerState implements _MiniPlayerState {
   final VoidCallback onPressed;
   @override
   final NetworkType networkType;
+  @override
+  @JsonKey()
+  final Stream<ProcessingState> processingStateStream;
 
   @override
   String toString() {
-    return 'MiniPlayerState(isShow: $isShow, image: $image, title: $title, onPressed: $onPressed, networkType: $networkType)';
+    return 'MiniPlayerState(isShow: $isShow, image: $image, title: $title, onPressed: $onPressed, networkType: $networkType, processingStateStream: $processingStateStream)';
   }
 
   @override
@@ -180,12 +198,14 @@ class _$_MiniPlayerState implements _MiniPlayerState {
             (identical(other.onPressed, onPressed) ||
                 other.onPressed == onPressed) &&
             (identical(other.networkType, networkType) ||
-                other.networkType == networkType));
+                other.networkType == networkType) &&
+            (identical(other.processingStateStream, processingStateStream) ||
+                other.processingStateStream == processingStateStream));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isShow, image, title, onPressed, networkType);
+  int get hashCode => Object.hash(runtimeType, isShow, image, title, onPressed,
+      networkType, processingStateStream);
 
   @JsonKey(ignore: true)
   @override
@@ -196,11 +216,13 @@ class _$_MiniPlayerState implements _MiniPlayerState {
 
 abstract class _MiniPlayerState implements MiniPlayerState {
   const factory _MiniPlayerState(
-      {required final bool isShow,
-      required final Widget image,
-      required final String title,
-      required final VoidCallback onPressed,
-      required final NetworkType networkType}) = _$_MiniPlayerState;
+          {required final bool isShow,
+          required final Widget image,
+          required final String title,
+          required final VoidCallback onPressed,
+          required final NetworkType networkType,
+          final Stream<ProcessingState> processingStateStream}) =
+      _$_MiniPlayerState;
 
   @override
   bool get isShow;
@@ -212,6 +234,8 @@ abstract class _MiniPlayerState implements MiniPlayerState {
   VoidCallback get onPressed;
   @override
   NetworkType get networkType;
+  @override
+  Stream<ProcessingState> get processingStateStream;
   @override
   @JsonKey(ignore: true)
   _$$_MiniPlayerStateCopyWith<_$_MiniPlayerState> get copyWith =>
