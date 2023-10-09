@@ -1,9 +1,9 @@
 import 'package:daily_mind/common_widgets/base_list_stories_builder.dart';
-import 'package:daily_mind/features/stories_category/presentation/stories_category.dart';
+import 'package:daily_mind/features/online_category/presentation/online_category.dart';
 import 'package:flutter/material.dart';
 
-class StoriesList extends StatelessWidget {
-  const StoriesList({
+class OnlineStoriesList extends StatelessWidget {
+  const OnlineStoriesList({
     super.key,
   });
 
@@ -15,7 +15,7 @@ class StoriesList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: listItemCategory.map(
             (itemCategory) {
-              return StoriesCategory(itemCategory: itemCategory);
+              return OnlineCategory(itemCategory: itemCategory);
             },
           ).toList(),
         );

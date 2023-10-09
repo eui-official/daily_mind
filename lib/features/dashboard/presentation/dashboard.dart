@@ -3,7 +3,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/bird_loading/presentation/bird_loading.dart';
-import 'package:daily_mind/features/mini_player/presentation/mini_player_switcher.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_switcher.dart';
 import 'package:daily_mind/features/offline_list/presentation/offline_list.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
@@ -45,7 +45,7 @@ class Dashboard extends HookConsumerWidget {
                 index: appNavigationBarState.index,
                 children: children,
               ),
-              const MiniPlayerSwitcher(),
+              const BaseMiniPlayerSwitcher(),
             ],
           ),
         ),

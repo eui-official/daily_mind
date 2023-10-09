@@ -1,15 +1,15 @@
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/item.dart';
-import 'package:daily_mind/features/story_card/presentation/story_card.dart';
+import 'package:daily_mind/features/online_card/presentation/online_card.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class StoriesCategoryColumn extends StatelessWidget {
+class OnlineCategoryColumn extends StatelessWidget {
   final Category category;
   final List<Item> fullItems;
   final List<Item> itemsChunked;
 
-  const StoriesCategoryColumn({
+  const OnlineCategoryColumn({
     super.key,
     required this.category,
     required this.itemsChunked,
@@ -28,7 +28,7 @@ class StoriesCategoryColumn extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = itemsChunked[index];
 
-        return StoryCard(
+        return OnlineCard(
           category: category,
           fullItems: fullItems,
           item: item,

@@ -1,24 +1,22 @@
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/item.dart';
-import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/constants/enum.dart';
-import 'package:daily_mind/features/mini_player/domain/mini_player_state.dart';
-import 'package:daily_mind/features/mini_player/presentation/mini_player_provider.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player.dart';
-import 'package:daily_mind/features/story_card/presentation/story_card_image.dart';
-import 'package:daily_mind/features/story_card/presentation/story_card_provider.dart';
+import 'package:daily_mind/features/online_card/presentation/online_card_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class StoryCard extends HookConsumerWidget {
+class OnlineCard extends HookConsumerWidget {
   final Category category;
   final Item item;
   final List<Item> fullItems;
 
-  const StoryCard({
+  const OnlineCard({
     super.key,
     required this.category,
     required this.fullItems,
@@ -27,13 +25,11 @@ class StoryCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandlerNotifier =
-        ref.read(baseAudioHandlerProvider.notifier);
-    final storyCardNotifier = ref.read(storyCardProvider.notifier);
-    final miniPlayerNotifier = ref.read(miniPlayerProvider.notifier);
+    final onlineCardNotifier = ref.read(onlineCardProvider.notifier);
+    final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
 
     final onOpenPlayerOnline = useCallback(() {
-      miniPlayerNotifier.onHide();
+      baseMiniPlayerNotifier.onHide();
 
       showModalBottomSheet(
         context: context,
@@ -43,29 +39,26 @@ class StoryCard extends HookConsumerWidget {
         builder: (context) {
           return OnlinePlayer(fullItems: fullItems);
         },
-      ).then((value) => miniPlayerNotifier.onShow());
+      ).then((value) => baseMiniPlayerNotifier.onShow());
     }, [context, fullItems]);
 
     final onTap = useCallback(() {
-      storyCardNotifier.onPlayItem(
+      onlineCardNotifier.onPlayItem(
         item,
         fullItems,
       );
 
-      miniPlayerNotifier.onUpdateState(
+      baseMiniPlayerNotifier.onUpdateState(
         MiniPlayerState(
-          image: StoryCardImage(image: item.image),
           isShow: true,
           networkType: NetworkType.online,
-          onPressed: onOpenPlayerOnline,
-          title: item.name,
-          processingStateStream: baseAudioHandlerNotifier
-              .audioHandler.onlinePlayer.player.processingStateStream,
+          onTap: onOpenPlayerOnline,
         ),
       );
     }, [
       item,
       fullItems,
+      onOpenPlayerOnline,
     ]);
 
     return OnlineItem(

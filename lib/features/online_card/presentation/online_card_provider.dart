@@ -3,14 +3,17 @@ import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class StoryCardNotifier extends StateNotifier<void> {
+class OnlineCardNotifier extends StateNotifier<void> {
   final DailyMindAudioHandler audioHandler;
 
-  StoryCardNotifier({
+  OnlineCardNotifier({
     required this.audioHandler,
   }) : super({});
 
-  void onPlayItem(Item item, List<Item> fullItems) {
+  void onPlayItem(
+    Item item,
+    List<Item> fullItems,
+  ) {
     audioHandler.onInitItem(
       item,
       fullItems,
@@ -18,8 +21,10 @@ class StoryCardNotifier extends StateNotifier<void> {
   }
 }
 
-final storyCardProvider = StateNotifierProvider<StoryCardNotifier, void>((ref) {
+final onlineCardProvider =
+    StateNotifierProvider<OnlineCardNotifier, void>((ref) {
   final baseAudioHandlerNotifier = ref.read(baseAudioHandlerProvider.notifier);
 
-  return StoryCardNotifier(audioHandler: baseAudioHandlerNotifier.audioHandler);
+  return OnlineCardNotifier(
+      audioHandler: baseAudioHandlerNotifier.audioHandler);
 });

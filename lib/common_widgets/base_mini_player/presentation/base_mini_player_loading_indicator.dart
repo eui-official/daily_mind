@@ -2,8 +2,8 @@ import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class MiniPlayerLoadingIndicator extends StatelessWidget {
-  const MiniPlayerLoadingIndicator({super.key});
+class BaseMiniPlayerLoadingIndicator extends StatelessWidget {
+  const BaseMiniPlayerLoadingIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,15 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_domains/item_category.dart';
-import 'package:daily_mind/features/stories_category_column/presentation/stories_category_column.dart';
+import 'package:daily_mind/features/online_category_column/presentation/online_category_column.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class StoriesCategory extends StatelessWidget {
+class OnlineCategory extends StatelessWidget {
   final ItemCategory itemCategory;
 
-  const StoriesCategory({
+  const OnlineCategory({
     super.key,
     required this.itemCategory,
   });
@@ -45,7 +45,7 @@ class StoriesCategory extends StatelessWidget {
                 transform:
                     Transform.translate(offset: Offset(-spacing(2.75), 0))
                         .transform,
-                child: StoriesCategoryColumn(
+                child: OnlineCategoryColumn(
                   category: itemCategory.category,
                   fullItems: itemCategory.items,
                   itemsChunked: itemsChunked,
