@@ -40,9 +40,9 @@ class OfflinePlayerNotifier extends StateNotifier<PlayMixState> {
 
 final playMixProvider =
     StateNotifierProvider<OfflinePlayerNotifier, PlayMixState>((ref) {
-  final baseAudioHandlerNotifier = ref.read(baseAudioHandlerProvider.notifier);
+  final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
   return OfflinePlayerNotifier(
-    audioHandler: baseAudioHandlerNotifier.audioHandler,
+    audioHandler: baseAudioHandler,
   );
 });

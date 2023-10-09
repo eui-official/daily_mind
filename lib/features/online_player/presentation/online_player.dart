@@ -17,12 +17,10 @@ class OnlinePlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandlerNotifier =
-        ref.read(baseAudioHandlerProvider.notifier);
-    final audioHandler = baseAudioHandlerNotifier.audioHandler;
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
     final currentIndexSnapshot =
-        useStream(audioHandler.onlinePlayer.currentIndexStream);
+        useStream(baseAudioHandler.onlinePlayer.currentIndexStream);
     final currentIndex = currentIndexSnapshot.data ?? 0;
     final item = fullItems[currentIndex];
 
@@ -35,7 +33,7 @@ class OnlinePlayer extends HookConsumerWidget {
           image: imageProvider,
           scrollController: scrollController,
           child: OnlinePlayerBottom(
-            audioHandler: audioHandler,
+            audioHandler: baseAudioHandler,
             fullItems: fullItems,
             item: item,
           ),

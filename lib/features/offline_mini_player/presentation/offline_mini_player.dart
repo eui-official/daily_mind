@@ -17,14 +17,11 @@ class OfflineMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
-
-    final baseAudioHandlerNotifier =
-        ref.read(baseAudioHandlerProvider.notifier);
-    final audioHandler = baseAudioHandlerNotifier.audioHandler;
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
     final currentPlaylistSnapshot =
-        useStream(audioHandler.streamCurrentPlaylist.stream);
-    final playBackState = useStream(audioHandler.playbackState);
+        useStream(baseAudioHandler.streamCurrentPlaylist.stream);
+    final playBackState = useStream(baseAudioHandler.playbackState);
 
     final currentPlaylist = currentPlaylistSnapshot.data ?? Playlist();
 
@@ -48,8 +45,8 @@ class OfflineMiniPlayer extends HookConsumerWidget {
       ),
       isLoading: false,
       isPlaying: isPlaying,
-      onPause: audioHandler.pause,
-      onPlay: audioHandler.play,
+      onPause: baseAudioHandler.pause,
+      onPlay: baseAudioHandler.play,
       title: title.isEmpty ? appDescription : title,
     );
   }

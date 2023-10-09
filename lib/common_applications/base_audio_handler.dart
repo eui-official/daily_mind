@@ -46,10 +46,12 @@ class DailyMindAudioHandler extends BaseAudioHandler {
       player.onSetSource(item.id);
       player.setVolume(item.volume);
 
-      offlinePlayerItems.add(OfflinePlayerItem(
-        player: player,
-        id: item.id,
-      ));
+      offlinePlayerItems.add(
+        OfflinePlayerItem(
+          player: player,
+          id: item.id,
+        ),
+      );
 
       mediaItem.add(
         MediaItem(
@@ -118,11 +120,16 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     db.onUpdateVolume(volume, itemId, playlistId);
   }
 
-  void onUpdateOfflinePlaylistName(
-    double volume,
-    String itemId,
+  void onUpdateOfflinePlaylistTitle(
+    String name,
     int playlistId,
-  ) {}
+  ) {
+    final updatedMediaItem = mediaItem.value?.copyWith(title: name);
+
+    mediaItem.add(updatedMediaItem);
+
+    db.onUpdatePlaylistTitle(name, playlistId);
+  }
 
   void onPlayOffline() {
     for (var offlinePlayerItem in offlinePlayerItems) {

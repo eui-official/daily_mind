@@ -101,7 +101,7 @@ class Db {
     });
   }
 
-  void onUpdatePlaylistTitle(int playlistId, String title) {
+  void onUpdatePlaylistTitle(String title, int playlistId) {
     final playlist =
         isar.playlists.where().idEqualTo(playlistId).findFirstSync();
 

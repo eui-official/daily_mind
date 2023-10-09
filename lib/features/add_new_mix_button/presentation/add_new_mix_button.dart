@@ -11,15 +11,14 @@ class AddNewMixButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandlerNotifier =
-        ref.read(baseAudioHandlerProvider.notifier);
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
     final onOpenCreateNewMix = useCallback(
       () {
-        baseAudioHandlerNotifier.audioHandler.pause();
+        baseAudioHandler.pause();
 
         context.push('/new-mix').then((value) {
-          baseAudioHandlerNotifier.audioHandler.play();
+          baseAudioHandler.play();
         });
       },
       [],

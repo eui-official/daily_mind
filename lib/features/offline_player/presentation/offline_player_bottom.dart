@@ -29,7 +29,9 @@ class OfflinePlayerBottom extends HookConsumerWidget {
     final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
     final onChanged = useCallback(
-      (String name) {},
+      (String name) {
+        baseAudioHandler.onUpdateOfflinePlaylistTitle(name, playlistId);
+      },
       [playlistId],
     );
 

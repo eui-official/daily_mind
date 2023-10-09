@@ -23,8 +23,9 @@ class OnlineCardNotifier extends StateNotifier<void> {
 
 final onlineCardProvider =
     StateNotifierProvider<OnlineCardNotifier, void>((ref) {
-  final baseAudioHandlerNotifier = ref.read(baseAudioHandlerProvider.notifier);
+  final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
   return OnlineCardNotifier(
-      audioHandler: baseAudioHandlerNotifier.audioHandler);
+    audioHandler: baseAudioHandler,
+  );
 });

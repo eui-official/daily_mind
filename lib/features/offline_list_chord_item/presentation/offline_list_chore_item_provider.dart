@@ -17,9 +17,9 @@ class OfflineListChoreItemNotifier extends StateNotifier<void> {
 
 final offlineListChoreItemProvider =
     StateNotifierProvider<OfflineListChoreItemNotifier, void>((ref) {
-  final baseAudioHandlerNotifier = ref.read(baseAudioHandlerProvider.notifier);
+  final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
   return OfflineListChoreItemNotifier(
-    audioHandler: baseAudioHandlerNotifier.audioHandler,
+    audioHandler: baseAudioHandler,
   );
 });

@@ -16,16 +16,14 @@ class OnlineMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
-    final baseAudioHandlerNotifier =
-        ref.read(baseAudioHandlerProvider.notifier);
-    final audioHandler = baseAudioHandlerNotifier.audioHandler;
-    final onlinePlayer = audioHandler.onlinePlayer;
+    final onlinePlayer = baseAudioHandler.onlinePlayer;
 
     final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
     final processingStateSnapshot =
         useStream(onlinePlayer.processingStateStream);
-    final playBackState = useStream(audioHandler.playbackState);
+    final playBackState = useStream(baseAudioHandler.playbackState);
 
     final sequence = onlinePlayer.audioSource?.sequence ?? [];
     final currentIndex = currentIndexSnapshot.data ?? 0;
@@ -42,8 +40,8 @@ class OnlineMiniPlayer extends HookConsumerWidget {
         image: OnlineCardImage(image: tag.image),
         isLoading: isLoading,
         isPlaying: isPlaying,
-        onPause: audioHandler.pause,
-        onPlay: audioHandler.play,
+        onPause: baseAudioHandler.pause,
+        onPlay: baseAudioHandler.play,
         title: tag.name,
       );
     }
