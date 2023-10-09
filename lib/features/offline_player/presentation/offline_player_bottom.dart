@@ -1,9 +1,9 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
+import 'package:daily_mind/common_widgets/base_time_picker/presentation/base_time_picker.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player_list_item.dart';
-import 'package:daily_mind/features/timer_picker/presentation/timer_picker.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -48,7 +48,7 @@ class OfflinePlayerBottom extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: space(
             [
-              const TimerPicker(),
+              const BaseTimerPicker(),
               BaseContentHeader(
                 title: 'name'.tr(),
                 child: BaseTextField(
