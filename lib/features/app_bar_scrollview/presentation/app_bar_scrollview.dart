@@ -2,6 +2,7 @@ import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/features/app_logo/presentation/app_logo.dart';
 import 'package:daily_mind/features/background/presentation/background.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AppBarScrollview extends HookConsumerWidget {
@@ -28,9 +29,9 @@ class AppBarScrollview extends HookConsumerWidget {
               appState.backgroundImage,
             ),
           ),
-          expandedHeight: kToolbarHeight * 2,
+          expandedHeight: context.height * 0.2,
         ),
-        SliverList(delegate: SliverChildListDelegate(children))
+        SliverList(delegate: SliverChildListDelegate(children)),
       ],
     );
   }

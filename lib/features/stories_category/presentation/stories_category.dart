@@ -24,7 +24,7 @@ class StoriesCategory extends StatelessWidget {
       children: [
         Container(
           padding: EdgeInsets.only(
-            top: spacing(2),
+            top: spacing(3.5),
             left: spacing(2),
           ),
           child: Text(
