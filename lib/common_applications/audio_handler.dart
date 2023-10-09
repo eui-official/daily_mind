@@ -14,11 +14,11 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler {
-  Timer? timer;
   List<OfflinePlayerItem> playerItems = [];
-  OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
   NetworkType networkType = NetworkType.none;
-  StreamController<Playlist> streamPlaylist = BehaviorSubject();
+  OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
+  StreamController<Playlist> streamCurrentPlaylist = BehaviorSubject();
+  Timer? timer;
 
   void onStartTimer(Time time) {
     timer?.cancel();
@@ -35,7 +35,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     pause();
     onClearPlayerItems();
 
-    streamPlaylist.add(playlist);
+    streamCurrentPlaylist.add(playlist);
 
     final items = playlist.items ?? [];
 
@@ -43,7 +43,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
       final player = GaplessAudioPlayer();
 
       player.onSetSource(item.id);
-      player.onSetVolume(item.volume);
+      player.setVolume(item.volume);
 
       playerItems.add(OfflinePlayerItem(
         player: player,
@@ -84,15 +84,15 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   }
 
   void onOnlinePlayerPlayStateChanged() {
-    onlinePlayer.player.positionStream.listen((newDuration) {
+    onlinePlayer.positionStream.listen((newDuration) {
       playbackState.add(
         playbackState.value.copyWith(updatePosition: newDuration),
       );
     });
 
-    onlinePlayer.player.currentIndexStream.listen((index) {
+    onlinePlayer.currentIndexStream.listen((index) {
       final currentIndex = index ?? 0;
-      final sequence = onlinePlayer.player.audioSource?.sequence ?? [];
+      final sequence = onlinePlayer.audioSource?.sequence ?? [];
 
       if (sequence.isNotEmpty) {
         final item = sequence[currentIndex];
@@ -102,7 +102,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
             id: item.tag.source,
             title: item.tag.name,
             artUri: Uri.parse(item.tag.image),
-            duration: onlinePlayer.player.duration,
+            duration: onlinePlayer.duration,
           ),
         );
       }
@@ -111,24 +111,24 @@ class DailyMindAudioHandler extends BaseAudioHandler {
 
   void onUpdateVolume(double volume, String itemId, int playlistId) {
     final playerItem = playerItems.firstWhere((item) => item.id == itemId);
-    playerItem.player.onSetVolume(volume);
+    playerItem.player.setVolume(volume);
   }
 
   void onPlayMix() {
-    for (var playerItme in playerItems) {
-      playerItme.player.onPlay();
+    for (var playerItem in playerItems) {
+      playerItem.player.play();
     }
   }
 
   void onPauseMix() {
     for (var playerItem in playerItems) {
-      playerItem.player.onPause();
+      playerItem.player.pause();
     }
   }
 
   void onClearPlayerItems() {
     for (var playerItem in playerItems) {
-      playerItem.player.onDispose();
+      playerItem.player.dispose();
     }
 
     playerItems.clear();
@@ -137,28 +137,28 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   void onClearMix() {}
 
   void onClearStory() {
-    onlinePlayer.onDispose();
+    onlinePlayer.dispose();
   }
 
   void onPauseItem() {
-    onlinePlayer.onPause();
+    onlinePlayer.pause();
   }
 
   void onPlayItem() {
-    onlinePlayer.onPlay();
+    onlinePlayer.play();
   }
 
   void onNextItem() {
-    onlinePlayer.player.seekToNext();
+    onlinePlayer.seekToNext();
   }
 
   void onPreviousItem() {
-    onlinePlayer.player.seekToPrevious();
+    onlinePlayer.seekToPrevious();
   }
 
   void onDispose() {
     for (var playerItem in playerItems) {
-      playerItem.player.onDispose();
+      playerItem.player.dispose();
     }
   }
 
@@ -207,14 +207,14 @@ class DailyMindAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> skipToNext() {
-    onlinePlayer.player.seekToNext();
+    onlinePlayer.seekToNext();
 
     return super.skipToNext();
   }
 
   @override
   Future<void> skipToPrevious() {
-    onlinePlayer.player.seekToPrevious();
+    onlinePlayer.seekToPrevious();
 
     return super.skipToPrevious();
   }

@@ -2,9 +2,7 @@ import 'package:daily_mind/common_applications/logger.dart';
 import 'package:daily_mind/common_domains/item.dart';
 import 'package:just_audio/just_audio.dart';
 
-class OnlineAudioPlayer {
-  final player = AudioPlayer();
-
+class OnlineAudioPlayer extends AudioPlayer {
   Future<void> onInitSource(
     Item item, {
     List<Item> fullItems = const [],
@@ -24,9 +22,9 @@ class OnlineAudioPlayer {
         children: fullAudioSources,
       );
 
-      await player.setLoopMode(loopMode);
+      await setLoopMode(loopMode);
 
-      await player.setAudioSource(
+      await setAudioSource(
         concatenatingAudioSource,
         initialIndex: fullItems.indexOf(item),
         initialPosition: Duration.zero,
@@ -34,21 +32,5 @@ class OnlineAudioPlayer {
     } catch (error) {
       logger.e(error);
     }
-  }
-
-  void onSeek(Duration position) async {
-    await player.seek(position);
-  }
-
-  void onPlay() {
-    player.play();
-  }
-
-  void onPause() async {
-    await player.pause();
-  }
-
-  void onDispose() async {
-    await player.dispose();
   }
 }

@@ -22,7 +22,7 @@ class OnlinePlayer extends HookConsumerWidget {
     final audioHandler = baseAudioHandlerNotifier.audioHandler;
 
     final currentIndexSnapshot =
-        useStream(audioHandler.onlinePlayer.player.currentIndexStream);
+        useStream(audioHandler.onlinePlayer.currentIndexStream);
     final currentIndex = currentIndexSnapshot.data ?? 0;
     final item = fullItems[currentIndex];
 

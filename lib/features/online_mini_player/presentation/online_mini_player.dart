@@ -22,13 +22,12 @@ class OnlineMiniPlayer extends HookConsumerWidget {
     final audioHandler = baseAudioHandlerNotifier.audioHandler;
     final onlinePlayer = audioHandler.onlinePlayer;
 
-    final currentIndexSnapshot =
-        useStream(onlinePlayer.player.currentIndexStream);
+    final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
     final processingStateSnapshot =
-        useStream(onlinePlayer.player.processingStateStream);
+        useStream(onlinePlayer.processingStateStream);
     final playBackState = useStream(audioHandler.playbackState);
 
-    final sequence = onlinePlayer.player.audioSource?.sequence ?? [];
+    final sequence = onlinePlayer.audioSource?.sequence ?? [];
     final currentIndex = currentIndexSnapshot.data ?? 0;
 
     final isLoading = processingStateSnapshot.data != ProcessingState.ready;

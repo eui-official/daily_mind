@@ -16,14 +16,14 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   }
 
   void init() {
-    onlineAudioPlayer.player.processingStateStream.listen((processingState) {
+    onlineAudioPlayer.processingStateStream.listen((processingState) {
       final isLoading = processingState == ProcessingState.buffering ||
           processingState == ProcessingState.loading;
 
       state = state.copyWith(isLoading: isLoading);
     });
 
-    onlineAudioPlayer.player.playingStream.listen((isPlaying) {
+    onlineAudioPlayer.playingStream.listen((isPlaying) {
       state = state.copyWith(
         isPlaying: isPlaying,
       );
@@ -37,7 +37,7 @@ class AudioOnlinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   }
 
   void onPause() {
-    onlineAudioPlayer.onPause();
+    onlineAudioPlayer.pause();
   }
 }
 
