@@ -61,7 +61,11 @@ class OnlinePlayerBottom extends HookConsumerWidget {
       child: SafeArea(
         child: Column(
           children: [
-            BasePlayerControl(audioHandler: audioHandler),
+            BasePlayerControl(
+              audioHandler: audioHandler,
+              onNext: audioHandler.onNextItem,
+              onPrevious: audioHandler.onPreviousItem,
+            ),
             BasePlayerCurrentItem(item: item),
             OnlineListRelated(items: items)
           ],

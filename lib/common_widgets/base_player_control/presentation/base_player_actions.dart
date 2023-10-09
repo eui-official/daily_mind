@@ -40,7 +40,7 @@ class BasePlayerActions extends HookWidget {
     final onNextChild = useMemoized(
       () {
         if (onNext is VoidCallback) {
-          IconButton(
+          return IconButton(
             onPressed: onNext,
             icon: const Icon(Icons.chevron_right_rounded),
             iconSize: spacing(5),

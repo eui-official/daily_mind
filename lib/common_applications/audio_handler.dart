@@ -142,6 +142,14 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     onlinePlayer.onPlay();
   }
 
+  void onNextItem() {
+    onlinePlayer.player.seekToNext();
+  }
+
+  void onPreviousItem() {
+    onlinePlayer.player.seekToPrevious();
+  }
+
   void onDispose() {
     for (var playerItem in playerItems) {
       playerItem.player.onDispose();

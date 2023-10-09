@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:transparent_image/transparent_image.dart';
 
-class Background extends StatelessWidget {
+class Background extends HookWidget {
   final ImageProvider image;
 
   const Background({
@@ -11,26 +12,24 @@ class Background extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fadeInImage = useMemoized(() {
+      return FadeInImage(
+        placeholder: MemoryImage(kTransparentImage),
+        image: image,
+        fit: BoxFit.cover,
+        placeholderFit: BoxFit.cover,
+      );
+    }, [image]);
+
     return Stack(
       children: [
+        Positioned.fill(child: fadeInImage),
         Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: image,
-              fit: BoxFit.cover,
-              colorFilter: const ColorFilter.mode(
-                Colors.black38,
-                BlendMode.darken,
-              ),
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                context.theme.colorScheme.background.withOpacity(0.12),
-                context.theme.colorScheme.background.withOpacity(0.87),
+                Colors.black12,
+                Colors.black87,
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
