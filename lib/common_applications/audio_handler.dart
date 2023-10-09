@@ -11,12 +11,14 @@ import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:rxdart/rxdart.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler {
   Timer? timer;
   List<OfflinePlayerItem> playerItems = [];
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
   NetworkType networkType = NetworkType.none;
+  StreamController<Playlist> streamPlaylist = BehaviorSubject();
 
   void onStartTimer(Time time) {
     timer?.cancel();
@@ -29,12 +31,13 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     });
   }
 
-  void onInitOfflinePlaylist(
-    Playlist playlist,
-    List<PlaylistItem> items,
-  ) async {
+  void onInitOfflinePlaylist(Playlist playlist) async {
     pause();
     onClearPlayerItems();
+
+    streamPlaylist.add(playlist);
+
+    final items = playlist.items ?? [];
 
     for (var item in items) {
       final player = GaplessAudioPlayer();

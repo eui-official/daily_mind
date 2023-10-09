@@ -1,3 +1,4 @@
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,9 @@ class BaseSliderTheme extends StatelessWidget {
       data: SliderThemeData(
         activeTrackColor: context.theme.primaryColor,
         showValueIndicator: ShowValueIndicator.always,
-        overlayShape: SliderComponentShape.noThumb,
+        overlayShape: SliderComponentShape.noOverlay,
+        thumbShape: SliderComponentShape.noThumb,
+        trackHeight: spacing(),
       ),
       child: slider,
     );

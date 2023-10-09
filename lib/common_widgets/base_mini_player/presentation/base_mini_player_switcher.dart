@@ -1,5 +1,6 @@
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
+import 'package:daily_mind/features/offline_mini_player/presentation/offline_mini_player.dart';
 import 'package:daily_mind/features/online_mini_player/presentation/online_mini_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -17,7 +18,7 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
         return const OnlineMiniPlayer();
       }
 
-      return const OnlineMiniPlayer();
+      return const OfflineMiniPlayer();
     }, [baseMiniPlayerState]);
 
     return AnimatedCrossFade(

@@ -1,11 +1,12 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
-import 'package:daily_mind/features/online_card/presentation/online_card_image.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/features/sound_images_stack/presentation/sound_images_stack.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:just_audio/just_audio.dart';
 
 class OfflineMiniPlayer extends HookConsumerWidget {
   const OfflineMiniPlayer({
@@ -19,31 +20,30 @@ class OfflineMiniPlayer extends HookConsumerWidget {
     final baseAudioHandlerNotifier =
         ref.read(baseAudioHandlerProvider.notifier);
     final audioHandler = baseAudioHandlerNotifier.audioHandler;
-    final onlinePlayer = audioHandler.onlinePlayer;
 
-    final currentIndexSnapshot =
-        useStream(onlinePlayer.player.currentIndexStream);
-    final processingStateSnapshot =
-        useStream(onlinePlayer.player.processingStateStream);
+    final playlistSnapshot = useStream(audioHandler.streamPlaylist.stream);
     final playBackState = useStream(audioHandler.playbackState);
 
-    final sequence = onlinePlayer.player.audioSource?.sequence ?? [];
-    final currentIndex = currentIndexSnapshot.data ?? 0;
-
-    final isLoading = processingStateSnapshot.data != ProcessingState.ready;
+    final playlist = playlistSnapshot.data ?? Playlist();
+    final items = playlist.items ?? [];
     final isPlaying = playBackState.data?.playing ?? false;
+    final title = playlist.title ?? emptyString;
 
-    final item = sequence[currentIndex];
-    final tag = item.tag;
+    if (items.isEmpty) {
+      return emptyWidget;
+    }
 
     return BaseMiniPlayer(
       onTap: baseMiniPlayerState.onTap,
-      image: OnlineCardImage(image: tag.image),
-      isLoading: isLoading,
+      image: SoundImagesStack(
+        items: items,
+        size: 6,
+      ),
+      isLoading: false,
       isPlaying: isPlaying,
       onPause: audioHandler.pause,
       onPlay: audioHandler.play,
-      title: tag.name,
+      title: title.isEmpty ? appDescription : title,
     );
   }
 }

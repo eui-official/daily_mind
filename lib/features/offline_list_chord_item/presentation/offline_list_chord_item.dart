@@ -54,19 +54,19 @@ class OfflineListChordItem extends HookConsumerWidget {
 
     final onPlayChord = useCallback(
       () {
-        offlineListChoreItemNotifier.onPlayChore(playlist, items);
+        offlineListChoreItemNotifier.onPlayChore(playlist);
 
         baseMiniPlayerNotifier.onUpdateState(
-          const MiniPlayerState(
+          MiniPlayerState(
             isShow: true,
             networkType: NetworkType.offline,
+            onTap: onOpenOfflinePlayer,
           ),
         );
       },
       [
-        items,
+        playlist,
         onOpenOfflinePlayer,
-        title,
       ],
     );
 
