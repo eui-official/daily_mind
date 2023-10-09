@@ -19,7 +19,7 @@ class SettingsLanguageWatcher extends StatelessWidget {
             value: language,
             borderRadius: BorderRadius.circular(spacing(2)),
             onChanged: (value) {
-              db.addSetting(value, "language");
+              db.onAddSetting(value, "language");
             },
             items: const [
               DropdownMenuItem(

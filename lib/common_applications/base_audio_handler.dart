@@ -8,13 +8,14 @@ import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler {
-  List<OfflinePlayerItem> playerItems = [];
+  List<OfflinePlayerItem> offlinePlayerItems = [];
   NetworkType networkType = NetworkType.none;
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
   StreamController<Playlist> streamCurrentPlaylist = BehaviorSubject();
@@ -25,13 +26,13 @@ class DailyMindAudioHandler extends BaseAudioHandler {
 
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (isBefore(time)) {
-        onPauseMix();
+        onPauseOffline();
         timer.cancel();
       }
     });
   }
 
-  void onInitOfflinePlaylist(Playlist playlist) async {
+  void onInitOffline(Playlist playlist) async {
     pause();
     onClearPlayerItems();
 
@@ -45,7 +46,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
       player.onSetSource(item.id);
       player.setVolume(item.volume);
 
-      playerItems.add(OfflinePlayerItem(
+      offlinePlayerItems.add(OfflinePlayerItem(
         player: player,
         id: item.id,
       ));
@@ -65,7 +66,7 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     }
   }
 
-  void onInitItem(
+  void onInitOnline(
     Item item,
     List<Item> fullItems,
   ) async {
@@ -109,56 +110,63 @@ class DailyMindAudioHandler extends BaseAudioHandler {
     });
   }
 
-  void onUpdateVolume(double volume, String itemId, int playlistId) {
-    final playerItem = playerItems.firstWhere((item) => item.id == itemId);
-    playerItem.player.setVolume(volume);
+  void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {
+    final offlinePlayerItem =
+        offlinePlayerItems.firstWhere((item) => item.id == itemId);
+    offlinePlayerItem.player.setVolume(volume);
+
+    db.onUpdateVolume(volume, itemId, playlistId);
   }
 
-  void onPlayMix() {
-    for (var playerItem in playerItems) {
-      playerItem.player.play();
+  void onUpdateOfflinePlaylistName(
+    double volume,
+    String itemId,
+    int playlistId,
+  ) {}
+
+  void onPlayOffline() {
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.play();
     }
   }
 
-  void onPauseMix() {
-    for (var playerItem in playerItems) {
-      playerItem.player.pause();
+  void onPauseOffline() {
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.pause();
     }
   }
 
   void onClearPlayerItems() {
-    for (var playerItem in playerItems) {
-      playerItem.player.dispose();
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.dispose();
     }
 
-    playerItems.clear();
+    offlinePlayerItems.clear();
   }
 
-  void onClearMix() {}
-
-  void onClearStory() {
+  void onClearOnline() {
     onlinePlayer.dispose();
   }
 
-  void onPauseItem() {
+  void onPauseOnline() {
     onlinePlayer.pause();
   }
 
-  void onPlayItem() {
+  void onPlayOnline() {
     onlinePlayer.play();
   }
 
-  void onNextItem() {
+  void onNextOnline() {
     onlinePlayer.seekToNext();
   }
 
-  void onPreviousItem() {
+  void onPreviousOnline() {
     onlinePlayer.seekToPrevious();
   }
 
   void onDispose() {
-    for (var playerItem in playerItems) {
-      playerItem.player.dispose();
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.dispose();
     }
   }
 
@@ -186,9 +194,9 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   @override
   Future<void> play() async {
     if (networkType == NetworkType.offline) {
-      onPlayMix();
+      onPlayOffline();
     } else {
-      onPlayItem();
+      onPlayOnline();
     }
 
     playbackState.add(playbackState.value.copyWith(playing: true));
@@ -198,8 +206,8 @@ class DailyMindAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> pause() async {
-    onPauseMix();
-    onPauseItem();
+    onPauseOffline();
+    onPauseOnline();
     playbackState.add(playbackState.value.copyWith(playing: false));
 
     return super.pause();

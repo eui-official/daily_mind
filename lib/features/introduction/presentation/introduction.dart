@@ -14,7 +14,7 @@ class Introduction extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firstTime = useMemoized(() => db.getFirstTime("introduction"), []);
+    final firstTime = useMemoized(() => db.onGetFirstTime("introduction"), []);
 
     return EmptyWidgetBuilder(
       data: firstTime,

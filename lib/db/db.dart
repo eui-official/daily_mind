@@ -9,7 +9,7 @@ import 'package:path_provider/path_provider.dart';
 class Db {
   late Isar isar;
 
-  Future<void> init() async {
+  Future<void> onInit() async {
     final dir = await getApplicationDocumentsDirectory();
 
     isar = await Isar.open(
@@ -22,23 +22,23 @@ class Db {
     );
   }
 
-  Stream<List<Playlist>> streamAllPlaylists() {
+  Stream<List<Playlist>> onStreamAllPlaylists() {
     return isar.playlists.where().watch();
   }
 
-  Stream<Playlist?> streamPlaylistById(int id) {
+  Stream<Playlist?> onStreamPlaylistById(int id) {
     return isar.playlists.watchObject(id, fireImmediately: true);
   }
 
-  Playlist? getPlaylistById(int id) {
+  Playlist? onGetPlaylistById(int id) {
     return isar.playlists.getSync(id);
   }
 
-  List<Playlist> getAllPlaylists() {
+  List<Playlist> onGetAllPlaylists() {
     return isar.playlists.where().findAllSync();
   }
 
-  void addSetting(String? value, String type) {
+  void onAddSetting(String? value, String type) {
     final setting = isar.settings.filter().typeEqualTo(type).findFirstSync();
 
     isar.writeTxnSync(() {
@@ -59,7 +59,7 @@ class Db {
     });
   }
 
-  Settings? getSetting(String type) {
+  Settings? onGetSetting(String type) {
     return isar.settings.filter().typeEqualTo(type).findFirstSync();
   }
 
@@ -75,7 +75,7 @@ class Db {
     return isar.firstTimes.filter().taskEqualTo(task).isEmptySync();
   }
 
-  FirstTime? getFirstTime(String task) {
+  FirstTime? onGetFirstTime(String task) {
     final firstTime =
         isar.firstTimes.filter().taskEqualTo(task).findFirstSync();
 
@@ -83,7 +83,7 @@ class Db {
   }
 
   void addFirstTime(String task) {
-    final firstTime = getFirstTime(task);
+    final firstTime = onGetFirstTime(task);
 
     safeValueBuilder(firstTime, (safeFirstTime) {
       isar.firstTimes.putSync(safeFirstTime);
@@ -95,7 +95,7 @@ class Db {
     });
   }
 
-  void deletePlaylist(int id) {
+  void onDeletePlaylist(int id) {
     isar.writeTxnSync(() {
       isar.playlists.deleteSync(id);
     });
@@ -114,7 +114,7 @@ class Db {
     });
   }
 
-  void updateVolume(
+  void onUpdateVolume(
     double volume,
     String itemId,
     int playlistId,

@@ -1,5 +1,5 @@
 import 'package:audio_service/audio_service.dart';
-import 'package:daily_mind/common_applications/audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/env.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/init/presentation/init.dart';
@@ -18,7 +18,7 @@ void main() async {
     anonKey: Env.supaBaseAnonKey,
   );
 
-  await db.init();
+  await db.onInit();
 
   final audioHandler = await AudioService.init(
     builder: () => DailyMindAudioHandler(),

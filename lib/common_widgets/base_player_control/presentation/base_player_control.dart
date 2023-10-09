@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_actions.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time.dart';
 import 'package:flutter/material.dart';

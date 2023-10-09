@@ -21,7 +21,7 @@ class BasePlayerDetails extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseAudioHandlerNotifier =
-        ref.read(baseAudioHandlerProvider.notifier);
+        ref.watch(baseAudioHandlerProvider.notifier);
     final playBackState =
         useStream(baseAudioHandlerNotifier.audioHandler.playbackState);
     final isPlaying = playBackState.data?.playing ?? false;

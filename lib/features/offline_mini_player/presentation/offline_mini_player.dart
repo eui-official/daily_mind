@@ -29,7 +29,7 @@ class OfflineMiniPlayer extends HookConsumerWidget {
     final currentPlaylist = currentPlaylistSnapshot.data ?? Playlist();
 
     final playlistSnapshot =
-        useStream(db.streamPlaylistById(currentPlaylist.id));
+        useStream(db.onStreamPlaylistById(currentPlaylist.id));
     final playlist = playlistSnapshot.data ?? Playlist();
 
     final items = playlist.items ?? [];

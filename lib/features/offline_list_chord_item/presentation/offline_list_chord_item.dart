@@ -78,12 +78,12 @@ class OfflineListChordItem extends HookConsumerWidget {
         child: ItemDismissible(
           key: key,
           dismissible: DismissiblePane(onDismissed: () {
-            db.deletePlaylist(playlist.id);
+            db.onDeletePlaylist(playlist.id);
           }),
           endActionPaneChildren: [
             SlidableAction(
               onPressed: (context) {
-                db.deletePlaylist(playlist.id);
+                db.onDeletePlaylist(playlist.id);
               },
               backgroundColor: context.theme.colorScheme.error,
               label: 'delete'.tr(),

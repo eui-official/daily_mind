@@ -12,7 +12,7 @@ class SettingWatcherProvider extends StateNotifier<Settings?> {
   }
 
   void init() {
-    final setting = db.getSetting(type);
+    final setting = db.onGetSetting(type);
 
     state = setting;
 

@@ -20,7 +20,7 @@ class SettingsThemeBottomSheet extends StatelessWidget {
           children: supportedThemes.map((theme) {
             return ListTile(
               onTap: () {
-                db.addSetting(theme.id, "theme");
+                db.onAddSetting(theme.id, "theme");
                 context.pop();
               },
               leading: SettingsThemeColorBox(scheme: theme.scheme),

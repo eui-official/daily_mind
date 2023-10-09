@@ -14,14 +14,14 @@ class OfflineListChoreNotifier extends StateNotifier<OfflineListChoreState> {
   }
 
   void init() {
-    final playlists = db.getAllPlaylists();
+    final playlists = db.onGetAllPlaylists();
 
     state = state.copyWith(
       playlists: playlists,
       isLoading: false,
     );
 
-    db.streamAllPlaylists().listen((playlists) {
+    db.onStreamAllPlaylists().listen((playlists) {
       state = state.copyWith(
         playlists: playlists,
       );

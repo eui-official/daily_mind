@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/db/db.dart';

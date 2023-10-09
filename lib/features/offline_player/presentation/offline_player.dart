@@ -17,7 +17,7 @@ class OfflinePlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final playlist = useMemoized(() => db.getPlaylistById(playlistId));
+    final playlist = useMemoized(() => db.onGetPlaylistById(playlistId));
 
     return EmptyWidgetBuilder(
       data: playlist,
@@ -35,10 +35,6 @@ class OfflinePlayer extends HookConsumerWidget {
                 items: items,
                 playlistId: safePlaylist.id,
                 initialTitle: safePlaylist.title,
-                onChanged: (newName) => db.onUpdatePlaylistTitle(
-                  safePlaylist.id,
-                  newName,
-                ),
               ),
             );
           },
