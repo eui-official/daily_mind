@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
-import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
+import 'package:daily_mind/common_widgets/base_time_picker/presentation/base_time_picker_provider.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -15,36 +16,51 @@ class BaseTimerPicker extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final playBackState = ref.watch(playMixProvider);
-    final playMixNotifier = ref.read(playMixProvider.notifier);
+    final baseTimePickerState = ref.watch(baseTimePickerProvider);
+    final baseTimePickerNotifier = ref.read(baseTimePickerProvider.notifier);
 
     final display = useMemoized(() {
-      final time = playBackState.time;
+      final time = baseTimePickerState.time;
 
       return time?.format(context) ?? 'pickTime'.tr();
-    }, [playBackState.time]);
+    }, [context, baseTimePickerState.time]);
+
+    final onDeleted = useMemoized(() {
+      if (baseTimePickerState.time is Time) {
+        return baseTimePickerNotifier.onDeletedTimer;
+      } else {
+        return empty;
+      }
+    }, [baseTimePickerState.time]);
 
     return BaseContentHeader(
       title: 'turnOffTime'.tr(),
       child: Container(
         padding: EdgeInsets.only(top: spacing()),
-        child: ElevatedButton(
+        child: RawChip(
           onPressed: () {
             final now = DateTime.now();
 
             Navigator.of(context).push(
               showPicker(
-                context: context,
-                value: Time(hour: now.hour, minute: now.minute),
-                onChange: playMixNotifier.onUpdateTimer,
-                is24HrFormat: true,
-                cancelText: 'cancel'.tr(),
-                okText: 'ok'.tr(),
                 accentColor: context.theme.primaryColor,
+                blurredBackground: true,
+                cancelText: 'cancel'.tr(),
+                context: context,
+                iosStylePicker: true,
+                is24HrFormat: true,
+                okText: 'ok'.tr(),
+                onChange: baseTimePickerNotifier.onUpdateTimer,
+                unselectedColor: context.theme.disabledColor,
+                value: Time(
+                  hour: now.hour,
+                  minute: now.minute,
+                ),
               ),
             );
           },
-          child: Text(display),
+          label: Text(display),
+          onDeleted: onDeleted,
         ),
       ),
     );

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'play_mix_state.dart';
+part of 'base_time_picker_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,27 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PlayMixState {
+mixin _$BaseTimePickerState {
   Time? get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PlayMixStateCopyWith<PlayMixState> get copyWith =>
+  $BaseTimePickerStateCopyWith<BaseTimePickerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PlayMixStateCopyWith<$Res> {
-  factory $PlayMixStateCopyWith(
-          PlayMixState value, $Res Function(PlayMixState) then) =
-      _$PlayMixStateCopyWithImpl<$Res, PlayMixState>;
+abstract class $BaseTimePickerStateCopyWith<$Res> {
+  factory $BaseTimePickerStateCopyWith(
+          BaseTimePickerState value, $Res Function(BaseTimePickerState) then) =
+      _$BaseTimePickerStateCopyWithImpl<$Res, BaseTimePickerState>;
   @useResult
   $Res call({Time? time});
 }
 
 /// @nodoc
-class _$PlayMixStateCopyWithImpl<$Res, $Val extends PlayMixState>
-    implements $PlayMixStateCopyWith<$Res> {
-  _$PlayMixStateCopyWithImpl(this._value, this._then);
+class _$BaseTimePickerStateCopyWithImpl<$Res, $Val extends BaseTimePickerState>
+    implements $BaseTimePickerStateCopyWith<$Res> {
+  _$BaseTimePickerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,22 +57,22 @@ class _$PlayMixStateCopyWithImpl<$Res, $Val extends PlayMixState>
 }
 
 /// @nodoc
-abstract class _$$_PlayMixStateCopyWith<$Res>
-    implements $PlayMixStateCopyWith<$Res> {
-  factory _$$_PlayMixStateCopyWith(
-          _$_PlayMixState value, $Res Function(_$_PlayMixState) then) =
-      __$$_PlayMixStateCopyWithImpl<$Res>;
+abstract class _$$_BaseTimePickerStateCopyWith<$Res>
+    implements $BaseTimePickerStateCopyWith<$Res> {
+  factory _$$_BaseTimePickerStateCopyWith(_$_BaseTimePickerState value,
+          $Res Function(_$_BaseTimePickerState) then) =
+      __$$_BaseTimePickerStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Time? time});
 }
 
 /// @nodoc
-class __$$_PlayMixStateCopyWithImpl<$Res>
-    extends _$PlayMixStateCopyWithImpl<$Res, _$_PlayMixState>
-    implements _$$_PlayMixStateCopyWith<$Res> {
-  __$$_PlayMixStateCopyWithImpl(
-      _$_PlayMixState _value, $Res Function(_$_PlayMixState) _then)
+class __$$_BaseTimePickerStateCopyWithImpl<$Res>
+    extends _$BaseTimePickerStateCopyWithImpl<$Res, _$_BaseTimePickerState>
+    implements _$$_BaseTimePickerStateCopyWith<$Res> {
+  __$$_BaseTimePickerStateCopyWithImpl(_$_BaseTimePickerState _value,
+      $Res Function(_$_BaseTimePickerState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_PlayMixStateCopyWithImpl<$Res>
   $Res call({
     Object? time = freezed,
   }) {
-    return _then(_$_PlayMixState(
+    return _then(_$_BaseTimePickerState(
       time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -91,22 +91,22 @@ class __$$_PlayMixStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlayMixState implements _PlayMixState {
-  const _$_PlayMixState({this.time});
+class _$_BaseTimePickerState implements _BaseTimePickerState {
+  const _$_BaseTimePickerState({this.time});
 
   @override
   final Time? time;
 
   @override
   String toString() {
-    return 'PlayMixState(time: $time)';
+    return 'BaseTimePickerState(time: $time)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayMixState &&
+            other is _$_BaseTimePickerState &&
             (identical(other.time, time) || other.time == time));
   }
 
@@ -116,17 +116,19 @@ class _$_PlayMixState implements _PlayMixState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayMixStateCopyWith<_$_PlayMixState> get copyWith =>
-      __$$_PlayMixStateCopyWithImpl<_$_PlayMixState>(this, _$identity);
+  _$$_BaseTimePickerStateCopyWith<_$_BaseTimePickerState> get copyWith =>
+      __$$_BaseTimePickerStateCopyWithImpl<_$_BaseTimePickerState>(
+          this, _$identity);
 }
 
-abstract class _PlayMixState implements PlayMixState {
-  const factory _PlayMixState({final Time? time}) = _$_PlayMixState;
+abstract class _BaseTimePickerState implements BaseTimePickerState {
+  const factory _BaseTimePickerState({final Time? time}) =
+      _$_BaseTimePickerState;
 
   @override
   Time? get time;
   @override
   @JsonKey(ignore: true)
-  _$$_PlayMixStateCopyWith<_$_PlayMixState> get copyWith =>
+  _$$_BaseTimePickerStateCopyWith<_$_BaseTimePickerState> get copyWith =>
       throw _privateConstructorUsedError;
 }

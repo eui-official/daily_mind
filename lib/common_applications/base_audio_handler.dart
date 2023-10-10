@@ -24,12 +24,16 @@ class DailyMindAudioHandler extends BaseAudioHandler {
   void onStartTimer(Time time) {
     timer?.cancel();
 
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (currentTimer) {
       if (isBefore(time)) {
-        onPauseOffline();
-        timer.cancel();
+        pause();
+        timer?.cancel();
       }
     });
+  }
+
+  void onDeletedTimer() {
+    timer?.cancel();
   }
 
   void onInitOffline(Playlist playlist) async {
