@@ -1,5 +1,8 @@
+import 'package:blur/blur.dart';
 import 'package:daily_mind/common_widgets/base_animated_opacity.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Background extends StatelessWidget {
   final ImageProvider image;
@@ -22,6 +25,9 @@ class Background extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+          ).blurred(
+            blurColor: context.theme.colorScheme.background,
+            colorOpacity: 0.8,
           ),
         ),
         Container(

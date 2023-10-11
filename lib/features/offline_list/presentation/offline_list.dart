@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chord.dart';
@@ -17,6 +18,7 @@ class OfflineList extends HookConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
+          const BaseBackground(),
           AppBarScrollview(
             title: 'naturalSounds'.tr(),
             children: [

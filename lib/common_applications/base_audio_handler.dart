@@ -14,7 +14,8 @@ import 'package:daily_mind/features/offline_player/domain/offline_player_item.da
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
 
-class DailyMindAudioHandler extends BaseAudioHandler {
+class DailyMindAudioHandler extends BaseAudioHandler
+    with QueueHandler, SeekHandler {
   List<OfflinePlayerItem> offlinePlayerItems = [];
   NetworkType networkType = NetworkType.none;
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
