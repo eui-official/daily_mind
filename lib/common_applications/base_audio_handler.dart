@@ -14,8 +14,7 @@ import 'package:daily_mind/features/offline_player/domain/offline_player_item.da
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
 
-class DailyMindAudioHandler extends BaseAudioHandler
-    with QueueHandler, SeekHandler {
+class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   List<OfflinePlayerItem> offlinePlayerItems = [];
   NetworkType networkType = NetworkType.none;
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
@@ -187,18 +186,28 @@ class DailyMindAudioHandler extends BaseAudioHandler
       MediaControl.pause,
       MediaControl.play,
     ];
+    final Set<MediaAction> actions = {};
 
     if (type == NetworkType.online) {
       controls.addAll([
         MediaControl.skipToNext,
         MediaControl.skipToPrevious,
       ]);
+
+      actions.addAll(
+        [
+          MediaAction.seek,
+          MediaAction.seekBackward,
+          MediaAction.seekForward,
+        ],
+      );
     }
 
     playbackState.add(
       playbackState.value.copyWith(
         playing: true,
         controls: controls,
+        systemActions: actions,
       ),
     );
   }
@@ -237,5 +246,11 @@ class DailyMindAudioHandler extends BaseAudioHandler
     onlinePlayer.seekToPrevious();
 
     return super.skipToPrevious();
+  }
+
+  @override
+  Future<void> seek(Duration position) {
+    onlinePlayer.seek(position);
+    return super.seek(position);
   }
 }
