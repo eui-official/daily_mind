@@ -1,8 +1,5 @@
-import 'package:blur/blur.dart';
 import 'package:daily_mind/common_widgets/base_animated_opacity.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Background extends StatelessWidget {
   final ImageProvider image;
@@ -18,23 +15,24 @@ class Background extends StatelessWidget {
       children: [
         BaseAnimatedOpacity(
           valueKey: ValueKey(image),
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: image,
-                fit: BoxFit.cover,
+          child: Opacity(
+            opacity: 0.6,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: image,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ).blurred(
-            blurColor: context.theme.colorScheme.background,
           ),
         ),
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.black12,
-                Colors.black87,
+                Colors.black54,
+                Colors.black,
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
