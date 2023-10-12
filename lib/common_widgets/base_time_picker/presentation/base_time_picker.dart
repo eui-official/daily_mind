@@ -10,8 +10,11 @@ import 'package:get/utils.dart' hide Trans;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BaseTimerPicker extends HookConsumerWidget {
+  final EdgeInsetsGeometry? padding;
+
   const BaseTimerPicker({
     super.key,
+    this.padding,
   });
 
   @override
@@ -33,34 +36,37 @@ class BaseTimerPicker extends HookConsumerWidget {
       }
     }, [baseTimePickerState.time]);
 
-    return BaseContentHeader(
-      title: 'turnOffTime'.tr(),
-      child: Container(
-        padding: EdgeInsets.only(top: spacing()),
-        child: RawChip(
-          onPressed: () {
-            final now = DateTime.now();
+    return Container(
+      padding: padding,
+      child: BaseContentHeader(
+        title: 'turnOffTime'.tr(),
+        child: Container(
+          padding: EdgeInsets.only(top: spacing()),
+          child: RawChip(
+            onPressed: () {
+              final now = DateTime.now();
 
-            Navigator.of(context).push(
-              showPicker(
-                accentColor: context.theme.primaryColor,
-                blurredBackground: true,
-                cancelText: 'cancel'.tr(),
-                context: context,
-                iosStylePicker: true,
-                is24HrFormat: true,
-                okText: 'ok'.tr(),
-                onChange: baseTimePickerNotifier.onUpdateTimer,
-                unselectedColor: context.theme.disabledColor,
-                value: Time(
-                  hour: now.hour,
-                  minute: now.minute,
+              Navigator.of(context).push(
+                showPicker(
+                  accentColor: context.theme.primaryColor,
+                  blurredBackground: true,
+                  cancelText: 'cancel'.tr(),
+                  context: context,
+                  iosStylePicker: true,
+                  is24HrFormat: true,
+                  okText: 'ok'.tr(),
+                  onChange: baseTimePickerNotifier.onUpdateTimer,
+                  unselectedColor: context.theme.disabledColor,
+                  value: Time(
+                    hour: now.hour,
+                    minute: now.minute,
+                  ),
                 ),
-              ),
-            );
-          },
-          label: Text(display),
-          onDeleted: onDeleted,
+              );
+            },
+            label: Text(display),
+            onDeleted: onDeleted,
+          ),
         ),
       ),
     );
