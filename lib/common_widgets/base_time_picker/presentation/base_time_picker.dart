@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_chip.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_time_picker/presentation/base_time_picker_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -42,7 +43,7 @@ class BaseTimerPicker extends HookConsumerWidget {
         title: 'turnOffTime'.tr(),
         child: Container(
           padding: EdgeInsets.only(top: spacing()),
-          child: RawChip(
+          child: BaseChip(
             onPressed: () {
               final now = DateTime.now();
 
@@ -58,13 +59,13 @@ class BaseTimerPicker extends HookConsumerWidget {
                   onChange: baseTimePickerNotifier.onUpdateTimer,
                   unselectedColor: context.theme.disabledColor,
                   value: Time(
-                    hour: now.hour,
-                    minute: now.minute,
+                    hour: baseTimePickerState.time?.hour ?? now.hour,
+                    minute: baseTimePickerState.time?.minute ?? now.minute,
                   ),
                 ),
               );
             },
-            label: Text(display),
+            display: display,
             onDeleted: onDeleted,
           ),
         ),
