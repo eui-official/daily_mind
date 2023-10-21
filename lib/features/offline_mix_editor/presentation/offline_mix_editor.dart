@@ -1,6 +1,5 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/features/app_bar_filter/presentation/app_bar_filter.dart';
 import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor_add_button.dart';
 import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor_provider.dart';
 import 'package:daily_mind/features/offline_mix_editor_item/presentation/mix_editor_item.dart';
@@ -48,7 +47,6 @@ class OfflineMixEditor extends HookConsumerWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         forceMaterialTransparency: true,
-        flexibleSpace: const AppBarFilter(),
         title: Text('soundEditor'.tr()),
       ),
       body: Tutorial(

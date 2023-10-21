@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix.dart';
@@ -22,34 +23,41 @@ class OfflineList extends HookConsumerWidget {
       return const EmptyListMix();
     }
 
-    return AppBarScrollview(
-      title: 'naturalSounds'.tr(),
-      children: [
-        Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(
-            horizontal: spacing(2),
-            vertical: spacing(2),
-          ),
-          child: Column(
+    return Scaffold(
+      body: Stack(
+        children: [
+          const BaseBackground(),
+          AppBarScrollview(
+            title: 'naturalSounds'.tr(),
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'mixList'.tr(),
-                    style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.symmetric(
+                  horizontal: spacing(2),
+                  vertical: spacing(2),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'mixList'.tr(),
+                          style: context.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const AddNewMixButton(),
+                      ],
                     ),
-                  ),
-                  const AddNewMixButton(),
-                ],
+                    const OfflineListChord(),
+                  ],
+                ),
               ),
-              const OfflineListChord(),
             ],
-          ),
-        ),
-      ],
+          )
+        ],
+      ),
     );
   }
 }

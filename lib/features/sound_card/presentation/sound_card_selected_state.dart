@@ -7,12 +7,14 @@ class SoundCardSelectedState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacing(2)),
-        border: Border.all(
-          width: 2,
-          color: context.theme.primaryColor,
+    return Positioned.fill(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(spacing(2)),
+          border: Border.all(
+            width: 2,
+            color: context.theme.primaryColor,
+          ),
         ),
       ),
     );

@@ -18,32 +18,24 @@ class SoundCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: spacing(2),
-      left: 0,
-      right: 0,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Container(
-                padding: EdgeInsets.only(right: spacing()),
-                child: Text(
-                  name,
-                  style: context.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Container(
+            padding: EdgeInsets.only(right: spacing()),
+            child: Text(
+              name,
+              style: context.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
               ),
+              overflow: TextOverflow.ellipsis,
             ),
-            if (isLoading) const BaseCircularIndicator(size: 1),
-            if (isPlaying) const MusicPlaying(),
-          ],
+          ),
         ),
-      ),
+        if (isLoading) const BaseCircularIndicator(size: 1),
+        if (isPlaying) const MusicPlaying(),
+      ],
     );
   }
 }

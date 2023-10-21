@@ -4,7 +4,6 @@ import 'package:daily_mind/common_widgets/base_sound_card.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
-import 'package:daily_mind/features/sound_card/presentation/sound_card_item_background.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -75,15 +74,13 @@ class OfflineSoundCard extends HookConsumerWidget {
     }, [item]);
 
     return BaseSoundCard(
+      key: backgroundKey,
       isPlaying: audioOfflinePlayerState.isPlaying,
       isLoading: audioOfflinePlayerState.isLoading,
       isSelected: isSelected,
       onTap: onTap,
       onDeleted: () => onDeleted(item.id),
-      image: SoundCardItemBackground(
-        key: backgroundKey,
-        imageProvider: AssetImage(item.image),
-      ),
+      image: AssetImage(item.image),
       name: item.name.tr(),
     );
   }

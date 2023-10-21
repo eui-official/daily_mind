@@ -1,7 +1,6 @@
-import 'package:daily_mind/common_widgets/base_background_gradient.dart';
+import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_content.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_delete_button.dart';
-import 'package:daily_mind/features/sound_card/presentation/sound_card_overlay.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_selected_state.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,7 @@ class BaseSoundCard extends StatelessWidget {
   final String name;
   final VoidCallback onDeleted;
   final VoidCallback onTap;
-  final Widget image;
+  final ImageProvider image;
 
   const BaseSoundCard({
     super.key,
@@ -30,22 +29,25 @@ class BaseSoundCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(spacing(2)),
-      child: Stack(
-        children: [
-          image,
-          const BaseBackgroundGradient(),
-          SoundCardContent(
-            name: name,
-            isPlaying: isPlaying,
-            isLoading: isLoading,
+    return Stack(
+      children: [
+        BaseCard(
+          image: image,
+          imageHeight: spacing(16),
+          onTap: onTap,
+          child: Stack(
+            children: [
+              SoundCardContent(
+                name: name,
+                isPlaying: isPlaying,
+                isLoading: isLoading,
+              ),
+            ],
           ),
-          SoundCardOverlay(onTap: onTap),
-          if (isSelected) const SoundCardSelectedState(),
-          if (isSelected) SoundCardDeleteButton(onPressed: onDeleted),
-        ],
-      ),
+        ),
+        if (isSelected) const SoundCardSelectedState(),
+        if (isSelected) SoundCardDeleteButton(onPressed: onDeleted),
+      ],
     );
   }
 }

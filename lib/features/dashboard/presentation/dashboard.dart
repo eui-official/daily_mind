@@ -36,6 +36,8 @@ class Dashboard extends HookConsumerWidget {
       }
 
       return Scaffold(
+        extendBody: true,
+        extendBodyBehindAppBar: true,
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: Stack(

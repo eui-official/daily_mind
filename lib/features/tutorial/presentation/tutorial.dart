@@ -35,8 +35,8 @@ class Tutorial extends HookWidget {
               focusAnimationDuration: defaultDuration,
               unFocusAnimationDuration: defaultDuration,
               imageFilter: ImageFilter.blur(
-                sigmaX: spacing(),
-                sigmaY: spacing(),
+                sigmaX: spacing(0.5),
+                sigmaY: spacing(0.5),
               ),
               targets: targets,
               textSkip: 'skip'.tr(),

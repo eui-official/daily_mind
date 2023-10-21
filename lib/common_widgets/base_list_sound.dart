@@ -3,6 +3,7 @@ import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/utils.dart' hide Trans;
 
 class BaseListSound<T> extends StatelessWidget {
@@ -28,6 +29,7 @@ class BaseListSound<T> extends StatelessWidget {
     return Container(
       padding: padding,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (title.isNotEmpty)
@@ -41,20 +43,19 @@ class BaseListSound<T> extends StatelessWidget {
               ),
             ),
           Flexible(
-            child: GridView.builder(
-              padding: gridPadding,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                childAspectRatio: 2,
-                mainAxisSpacing: spacing(2),
-              ),
-              physics: const BouncingScrollPhysics(),
-              itemCount: items.length,
-              itemBuilder: (context, index) => onSoundBuilder(
-                context,
-                index,
-                items[index],
-              ),
+            child: StaggeredGrid.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: spacing(2),
+              crossAxisSpacing: spacing(2),
+              children: items.map((item) {
+                final index = items.indexOf(item);
+
+                return onSoundBuilder(
+                  context,
+                  index,
+                  item,
+                );
+              }).toList(),
             ),
           ),
         ],

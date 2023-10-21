@@ -3,7 +3,7 @@ import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/features/sound_images_stack/presentation/sound_images_stack.dart';
+import 'package:daily_mind/features/sound_images/presentation/sound_images_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,10 +31,7 @@ class OfflineMiniPlayer extends HookConsumerWidget {
 
     return BaseMiniPlayer(
       onTap: baseMiniPlayerState.onTap,
-      image: SoundImagesStack(
-        items: items,
-        size: 6,
-      ),
+      image: SoundImages(items: items, size: 4),
       isLoading: false,
       isPlaying: isPlaying,
       onPause: baseAudioHandler.pause,

@@ -30,17 +30,20 @@ class BaseMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      margin: EdgeInsets.all(spacing(2)),
+      height: spacing(6),
+      margin: EdgeInsets.symmetric(
+        vertical: kBottomNavigationBarHeight * 2,
+        horizontal: spacing(2),
+      ),
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(spacing()),
           child: Container(
-            height: spacing(8),
             padding: EdgeInsets.symmetric(horizontal: spacing()),
             decoration: BoxDecoration(
-              color: context.theme.focusColor,
+              color: context.theme.colorScheme.background,
               borderRadius: BorderRadius.circular(spacing()),
             ),
             child: Row(
@@ -53,7 +56,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
                 Flexible(
                   child: BaseMarquee(
                     text: title,
-                    style: context.textTheme.bodyMedium?.copyWith(
+                    style: context.textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 const primary = Color(0xFFD7FFF1);
 const secondary = Color(0xFF77AF9C);
-const background = Color(0xFF2E1F27);
 
 ThemeData createDarkTheme(SupportedTheme theme) {
   return FlexThemeData.dark(

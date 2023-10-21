@@ -1,7 +1,7 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_providers/audio_online_player_provider.dart';
-import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/common_widgets/base_sound_card.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/online_list_sound/domain/online_sound_bundle.dart';
@@ -39,6 +39,9 @@ class OnlineSoundCard extends HookConsumerWidget {
     final audioOnlinePlayerNotifier =
         ref.watch(audioOnlinePlayerMemoized.notifier);
     final audioOnlinePlayerState = ref.watch(audioOnlinePlayerMemoized);
+    final image = CachedNetworkImageProvider(
+      firstSound.image,
+    );
 
     final onTap = useCallback(
       () {
@@ -71,10 +74,7 @@ class OnlineSoundCard extends HookConsumerWidget {
     }, [selectingId, bundle]);
 
     return BaseSoundCard(
-      image: BaseNetworkImage(
-        image: firstSound.image,
-        size: 20,
-      ),
+      image: image,
       isPlaying: audioOnlinePlayerState.isPlaying,
       isLoading: audioOnlinePlayerState.isLoading,
       isSelected: isSelected,

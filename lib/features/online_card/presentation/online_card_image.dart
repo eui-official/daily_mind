@@ -16,7 +16,7 @@ class OnlineCardImage extends StatelessWidget {
       padding: EdgeInsets.only(left: spacing()),
       child: BaseNetworkImage(
         image: image,
-        size: 6,
+        size: 4,
       ),
     );
   }

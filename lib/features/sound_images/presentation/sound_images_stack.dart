@@ -3,12 +3,12 @@ import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class SoundImagesStack extends StatelessWidget {
+class SoundImages extends StatelessWidget {
   final List<PlaylistItem> items;
   final double size;
   final double radiusSize;
 
-  const SoundImagesStack({
+  const SoundImages({
     super.key,
     required this.items,
     this.size = 12,

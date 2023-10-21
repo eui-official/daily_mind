@@ -11,8 +11,8 @@ class MusicPlaying extends StatelessWidget {
   Widget build(BuildContext context) {
     return Lottie.asset(
       'assets/lottie/music-playing.json',
-      width: spacing(3),
-      height: spacing(3),
+      width: spacing(2),
+      height: spacing(2),
     );
   }
 }

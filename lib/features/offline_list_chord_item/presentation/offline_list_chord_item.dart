@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
@@ -8,7 +9,6 @@ import 'package:daily_mind/features/item_dismissible/presentation/dismissible.da
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chore_item_provider.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player.dart';
-import 'package:daily_mind/features/sound_images_stack/presentation/sound_images_stack.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +34,9 @@ class OfflineListChordItem extends HookConsumerWidget {
     final offlineListChoreItemNotifier =
         ref.read(offlineListChoreItemProvider.notifier);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
+
+    final item = items.first;
+    final soundItem = item.id.soundOfflineItem;
 
     final onOpenOfflinePlayer = useCallback(() {
       baseMiniPlayerNotifier.onHide();
@@ -70,71 +73,59 @@ class OfflineListChordItem extends HookConsumerWidget {
       ],
     );
 
-    return InkWell(
-      onTap: onPlayChord,
-      borderRadius: BorderRadius.circular(spacing(2)),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(spacing(2)),
-        child: ItemDismissible(
-          key: key,
-          dismissible: DismissiblePane(onDismissed: () {
+    return ItemDismissible(
+      key: key,
+      dismissible: DismissiblePane(onDismissed: () {
+        db.onDeletePlaylist(playlist.id);
+      }),
+      endActionPaneChildren: [
+        SlidableAction(
+          onPressed: (context) {
             db.onDeletePlaylist(playlist.id);
-          }),
-          endActionPaneChildren: [
-            SlidableAction(
-              onPressed: (context) {
-                db.onDeletePlaylist(playlist.id);
-              },
-              backgroundColor: context.theme.colorScheme.error,
-              label: 'delete'.tr(),
-            ),
-          ],
-          child: Container(
-            color: context.theme.primaryColor.withOpacity(0.1),
-            child: Row(
-              children: [
-                Flexible(
-                  child: Row(
+          },
+          backgroundColor: context.theme.colorScheme.error,
+          label: 'delete'.tr(),
+        ),
+      ],
+      child: BaseCard(
+        onTap: onPlayChord,
+        imageHeight: spacing(30),
+        image: AssetImage(soundItem.image),
+        child: Row(
+          children: [
+            Flexible(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SoundImagesStack(
-                        items: items,
-                        radiusSize: 0,
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(spacing()),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (title.isNotEmpty)
-                              Text(
-                                title,
-                                style: context.textTheme.bodyLarge
-                                    ?.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                            Text(
-                              names,
-                              style: context.textTheme.bodyMedium?.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
+                      if (title.isNotEmpty)
+                        Text(
+                          title,
+                          style: context.textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      Text(
+                        names,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(right: spacing()),
-                  child: Icon(
-                    Icons.play_circle_fill_outlined,
-                    size: spacing(5),
-                    color: context.theme.primaryColor,
-                  ),
-                ),
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
+            Container(
+              padding: EdgeInsets.only(right: spacing()),
+              child: Icon(
+                Icons.play_circle_fill_outlined,
+                size: spacing(5),
+                color: context.theme.primaryColor,
+              ),
+            ),
+          ],
         ),
       ),
     );

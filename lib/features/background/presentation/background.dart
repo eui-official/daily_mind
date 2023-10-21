@@ -28,8 +28,8 @@ class Background extends StatelessWidget {
             ),
             child: BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: spacing(),
-                sigmaY: spacing(),
+                sigmaX: spacing(0.5),
+                sigmaY: spacing(0.5),
               ),
               child: Container(),
             ),

@@ -1,4 +1,3 @@
-import 'package:daily_mind/features/app_logo/presentation/app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -18,12 +17,22 @@ class AppBarScrollview extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
-            leading: const AppLogo(),
-            title: Text(title),
+            title: Text(
+              title,
+              style: context.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             expandedHeight: context.height * 0.15,
             forceMaterialTransparency: true,
+            centerTitle: false,
           ),
-          SliverList(delegate: SliverChildListDelegate(children)),
+          SliverPadding(
+            padding: const EdgeInsets.only(
+              bottom: kBottomNavigationBarHeight * 3,
+            ),
+            sliver: SliverList(delegate: SliverChildListDelegate(children)),
+          ),
         ],
       ),
     );
