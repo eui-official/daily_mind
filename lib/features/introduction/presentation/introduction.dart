@@ -26,7 +26,7 @@ class Introduction extends HookWidget {
           pages: [
             createPageViewModel(
               context,
-              title: 'welcome'.tr(),
+              title: 'hello'.tr(),
               bodyWidget: const SettingsLanguage(),
               image: 'assets/images/wonderful-day.png',
             ),
@@ -39,7 +39,7 @@ class Introduction extends HookWidget {
             createPageViewModel(
               context,
               title: 'moreRelaxing'.tr(),
-              body: 'naturalSoundsHelpRelaxingAndReduceStress'.tr(),
+              body: 'relaxMoreWithStories'.tr(),
               image: 'assets/images/relax.png',
             ),
           ],

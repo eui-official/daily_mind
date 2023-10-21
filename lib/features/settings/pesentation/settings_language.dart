@@ -8,6 +8,7 @@ class SettingsLanguage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
       title: Text('language'.tr()),
       trailing: const SettingsLanguageWatcher(),
     );

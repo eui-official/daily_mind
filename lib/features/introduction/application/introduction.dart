@@ -1,4 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:blur/blur.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -15,7 +17,7 @@ PageViewModel createPageViewModel(
       animatedTexts: [
         TyperAnimatedText(
           title,
-          textStyle: context.textTheme.headlineSmall?.copyWith(
+          textStyle: context.textTheme.headlineLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -24,22 +26,25 @@ PageViewModel createPageViewModel(
     ),
     body: body,
     bodyWidget: bodyWidget,
-    image: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.cover,
-          colorFilter: const ColorFilter.mode(
-            Colors.black87,
-            BlendMode.darken,
+    image: Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(image),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-      ),
+        Container().frosted(
+          blur: spacing(),
+          frostColor: context.theme.colorScheme.background,
+          frostOpacity: 0.5,
+        )
+      ],
     ),
     decoration: const PageDecoration(
       fullScreen: true,
-      bodyPadding: EdgeInsets.zero,
-      imagePadding: EdgeInsets.zero,
     ),
   );
 }

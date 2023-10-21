@@ -20,7 +20,7 @@
   "name": "Name",
   "nameOfTheMix": "Name of this mix",
   "naturalSounds": "Natural sounds",
-  "naturalSoundsHelpRelaxingAndReduceStress": "The sounds of nature help relax and reduce stress",
+  "relaxMoreWithStories": "Explore our stories about buddhism, and meditation",
   "newMix": "New mix",
   "newMixTutorialContent1": "Choose one or more sounds from the list to create a new mix",
   "newMixTutorialContent2": "After choosing your favorite sounds. Click here to continue",
@@ -39,6 +39,6 @@
   "turnOffTime": "Turn off timer",
   "version": "Version",
   "water": "Water",
-  "welcome": "Wishing you a wonderful day!",
+  "hello": "Hello,",
   "wind": "Wind"
 }

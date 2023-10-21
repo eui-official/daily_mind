@@ -20,7 +20,7 @@
   "name": "Tên",
   "nameOfTheMix": "Tên của bản mix này",
   "naturalSounds": "Âm thanh thiên nhiên",
-  "naturalSoundsHelpRelaxingAndReduceStress": "Âm thanh của thiên nhiên giúp thư giãn và giảm đi sự căng thẳng",
+  "relaxMoreWithStories": "Khám phá các câu truyện về phật giáo, và thiền định",
   "newMix": "Âm thanh mới",
   "newMixTutorialContent1": "Chọn một hoặc nhiều âm thanh để tạo một bản mix",
   "newMixTutorialContent2": "Sau khi chọn những âm thanh bạn yêu thích. Bấm vào đây để tiếp tục",
@@ -39,6 +39,6 @@
   "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "water": "Nước",
-  "welcome": "Chúc bạn có một ngày tuyệt vời!",
+  "hello": "Xin chào,",
   "wind": "Gió"
 }
