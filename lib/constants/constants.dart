@@ -4,6 +4,8 @@ const appDescription = 'DailyMind - Soothe, Sleep, Relax';
 
 const emptyString = '';
 
+double blur = 4;
+
 const empty = null;
 
 const emptyWidget = SizedBox.shrink();

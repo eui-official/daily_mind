@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -34,10 +33,7 @@ class Tutorial extends HookWidget {
             TutorialCoachMark(
               focusAnimationDuration: defaultDuration,
               unFocusAnimationDuration: defaultDuration,
-              imageFilter: ImageFilter.blur(
-                sigmaX: spacing(0.5),
-                sigmaY: spacing(0.5),
-              ),
+              imageFilter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
               targets: targets,
               textSkip: 'skip'.tr(),
               onFinish: () {
