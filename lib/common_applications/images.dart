@@ -5,7 +5,6 @@ final listBackground = [
   'assets/images/forest-with-birds.png',
   'assets/images/forest.png',
   'assets/images/rain-forest.png',
-  'assets/images/red-forest.png',
   'assets/images/sky.png',
   'assets/images/water.png',
   'assets/images/wind-and-peaceful.png',

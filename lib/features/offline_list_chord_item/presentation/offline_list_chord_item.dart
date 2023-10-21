@@ -2,6 +2,7 @@ import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart'
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/extensions/string.dart';
@@ -89,7 +90,7 @@ class OfflineListChordItem extends HookConsumerWidget {
       ],
       child: BaseCard(
         onTap: onPlayChord,
-        imageHeight: spacing(30),
+        imageHeight: imageHeight,
         image: AssetImage(soundItem.image),
         child: Row(
           children: [

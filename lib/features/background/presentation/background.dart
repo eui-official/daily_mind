@@ -27,10 +27,7 @@ class Background extends StatelessWidget {
               ),
             ),
             child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: spacing(0.5),
-                sigmaY: spacing(0.5),
-              ),
+              filter: ImageFilter.blur(sigmaX: spacing(0.25), sigmaY: 2),
               child: Container(),
             ),
           ),
@@ -39,7 +36,7 @@ class Background extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                context.theme.colorScheme.background.withOpacity(0.8),
+                context.theme.colorScheme.background.withOpacity(0.6),
                 context.theme.colorScheme.background,
               ],
               begin: Alignment.bottomCenter,

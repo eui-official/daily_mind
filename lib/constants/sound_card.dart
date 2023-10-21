@@ -1,4 +1,4 @@
 import 'package:daily_mind/theme/theme.dart';
 
-final itemWidth = spacing(20);
-final itemHeight = spacing(20);
+final imageHeight = spacing(30);
+final miniImageHeight = spacing(16);
