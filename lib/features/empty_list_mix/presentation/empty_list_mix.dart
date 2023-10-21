@@ -1,10 +1,10 @@
+import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
+import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix_box.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
-import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart' hide Trans;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class EmptyListMix extends StatelessWidget {
@@ -27,35 +27,18 @@ class EmptyListMix extends StatelessWidget {
           ],
         ),
       ],
-      child: Container(
-        padding: EdgeInsets.all(spacing(2)),
-        margin: const EdgeInsets.symmetric(vertical: kToolbarHeight),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(spacing(2)),
-          color: context.theme.dividerColor,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: space(
-            [
-              Text(
-                "mixLisEmpty".tr(),
-                style: context.textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Image.asset(
-                'assets/images/playlist.png',
-                width: 128,
-                height: 128,
-                color: context.theme.primaryColor,
-              ),
-            ],
-            height: spacing(2),
+      child: AppBarScrollview(
+        title: 'naturalSounds'.tr(),
+        children: [
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(
+              horizontal: spacing(2),
+              vertical: spacing(2),
+            ),
+            child: const EmptyListMixBox(),
           ),
-        ),
+        ],
       ),
     );
   }

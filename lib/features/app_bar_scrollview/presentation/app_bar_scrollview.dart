@@ -14,16 +14,18 @@ class AppBarScrollview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          leading: const AppLogo(),
-          title: Text(title),
-          expandedHeight: context.height * 0.2,
-          forceMaterialTransparency: true,
-        ),
-        SliverList(delegate: SliverChildListDelegate(children)),
-      ],
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            leading: const AppLogo(),
+            title: Text(title),
+            expandedHeight: context.height * 0.15,
+            forceMaterialTransparency: true,
+          ),
+          SliverList(delegate: SliverChildListDelegate(children)),
+        ],
+      ),
     );
   }
 }

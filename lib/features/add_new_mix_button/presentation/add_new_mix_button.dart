@@ -24,11 +24,10 @@ class AddNewMixButton extends HookConsumerWidget {
       [],
     );
 
-    return ElevatedButton.icon(
+    return ElevatedButton(
       key: addNewMixKey,
       onPressed: onOpenCreateNewMix,
-      icon: const Icon(Icons.playlist_add),
-      label: Text('createNewMix'.tr()),
+      child: Text('createNewMix'.tr()),
     );
   }
 }

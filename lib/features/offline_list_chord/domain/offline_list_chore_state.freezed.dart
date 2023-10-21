@@ -103,10 +103,11 @@ class __$$_OfflineListChoreStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OfflineListChoreState implements _OfflineListChoreState {
+class _$_OfflineListChoreState extends _OfflineListChoreState {
   const _$_OfflineListChoreState(
       {required this.isLoading, required final List<Playlist> playlists})
-      : _playlists = playlists;
+      : _playlists = playlists,
+        super._();
 
   @override
   final bool isLoading;
@@ -146,10 +147,11 @@ class _$_OfflineListChoreState implements _OfflineListChoreState {
           this, _$identity);
 }
 
-abstract class _OfflineListChoreState implements OfflineListChoreState {
+abstract class _OfflineListChoreState extends OfflineListChoreState {
   const factory _OfflineListChoreState(
       {required final bool isLoading,
       required final List<Playlist> playlists}) = _$_OfflineListChoreState;
+  const _OfflineListChoreState._() : super._();
 
   @override
   bool get isLoading;
