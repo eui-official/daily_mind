@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
 import 'package:daily_mind/features/empty_widget_builder/presentation/empty_widget_builder.dart';
@@ -11,11 +12,21 @@ import 'package:go_router/go_router.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class Introduction extends HookWidget {
-  const Introduction({super.key});
+  final player = GaplessAudioPlayer();
+
+  Introduction({super.key});
 
   @override
   Widget build(BuildContext context) {
     final firstTime = useMemoized(() => db.onGetFirstTime("introduction"), []);
+
+    useEffect(() {
+      player.onSetSource('water');
+      player.setVolume(0.1);
+      player.play();
+
+      return player.dispose;
+    }, []);
 
     return EmptyWidgetBuilder(
       data: firstTime,
@@ -31,7 +42,9 @@ class Introduction extends HookWidget {
                 createPageViewModel(
                   context,
                   title: 'hello'.tr(),
-                  bodyWidget: const SettingsLanguage(),
+                  bodyWidget: const SettingsLanguage(
+                    contentPadding: EdgeInsets.zero,
+                  ),
                   image: 'assets/images/wonderful-day.png',
                 ),
                 createPageViewModel(

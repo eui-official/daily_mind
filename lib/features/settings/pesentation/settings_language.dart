@@ -3,12 +3,17 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SettingsLanguage extends StatelessWidget {
-  const SettingsLanguage({super.key});
+  final EdgeInsetsGeometry? contentPadding;
+
+  const SettingsLanguage({
+    super.key,
+    this.contentPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.zero,
+      contentPadding: contentPadding,
       title: Text('language'.tr()),
       trailing: const SettingsLanguageWatcher(),
     );
