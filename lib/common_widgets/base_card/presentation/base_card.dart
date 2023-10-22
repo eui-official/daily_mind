@@ -22,8 +22,9 @@ class BaseCard extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final resizedImage = ResizeImage(image, width: 8, height: 8);
     final paletteGeneratorMemoized =
-        useMemoized(() => PaletteGenerator.fromImageProvider(image));
+        useMemoized(() => PaletteGenerator.fromImageProvider(resizedImage));
     final paletteGenerator = useFuture(paletteGeneratorMemoized);
 
     return BaseNullBuilder(
