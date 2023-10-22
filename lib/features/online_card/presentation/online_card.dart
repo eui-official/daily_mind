@@ -66,7 +66,7 @@ class OnlineCard extends HookConsumerWidget {
       image: item.image,
       title: Text(
         item.name,
-        style: context.textTheme.bodyMedium?.copyWith(
+        style: context.textTheme.bodySmall?.copyWith(
           fontWeight: FontWeight.w500,
         ),
       ),

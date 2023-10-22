@@ -31,7 +31,7 @@ class OfflineMiniPlayer extends HookConsumerWidget {
 
     return BaseMiniPlayer(
       onTap: baseMiniPlayerState.onTap,
-      image: SoundImages(items: items, size: 4),
+      image: SoundImages(items: items, size: 5),
       isLoading: false,
       isPlaying: isPlaying,
       onPause: baseAudioHandler.pause,

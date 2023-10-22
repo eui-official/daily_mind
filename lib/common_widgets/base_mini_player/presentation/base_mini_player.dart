@@ -30,7 +30,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      height: spacing(6),
+      height: spacing(7),
       margin: EdgeInsets.symmetric(
         vertical: kBottomNavigationBarHeight * 2,
         horizontal: spacing(2),
@@ -43,8 +43,8 @@ class BaseMiniPlayer extends HookConsumerWidget {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: spacing()),
             decoration: BoxDecoration(
-              color: context.theme.colorScheme.background,
               borderRadius: BorderRadius.circular(spacing()),
+              color: context.theme.primaryColorDark.withOpacity(0.6),
             ),
             child: Row(
               children: space([

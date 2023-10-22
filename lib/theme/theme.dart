@@ -6,9 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 const primary = Color(0xFFD7FFF1);
 const secondary = Color(0xFF77AF9C);
 
+final fontFamily = GoogleFonts.inter().fontFamily;
+
 ThemeData createDarkTheme(SupportedTheme theme) {
   return FlexThemeData.dark(
-    fontFamily: GoogleFonts.inter().fontFamily,
+    fontFamily: fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
     useMaterial3ErrorColors: true,

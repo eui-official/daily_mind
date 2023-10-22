@@ -1,6 +1,4 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:blur/blur.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -36,11 +34,7 @@ PageViewModel createPageViewModel(
             ),
           ),
         ),
-        Container().frosted(
-          blur: spacing(),
-          frostColor: context.theme.colorScheme.background,
-          frostOpacity: 0.5,
-        )
+        Container(color: Colors.black87),
       ],
     ),
     decoration: const PageDecoration(

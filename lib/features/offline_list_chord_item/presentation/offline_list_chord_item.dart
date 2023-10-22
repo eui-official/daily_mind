@@ -104,12 +104,12 @@ class OfflineListChordItem extends HookConsumerWidget {
                       if (title.isNotEmpty)
                         Text(
                           title,
-                          style: context.textTheme.bodyLarge
+                          style: context.textTheme.bodyMedium
                               ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       Text(
                         names,
-                        style: context.textTheme.bodyMedium?.copyWith(
+                        style: context.textTheme.bodySmall?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
                       ),

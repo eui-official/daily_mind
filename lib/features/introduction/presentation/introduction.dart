@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
 import 'package:daily_mind/features/empty_widget_builder/presentation/empty_widget_builder.dart';
@@ -21,11 +22,19 @@ class Introduction extends HookWidget {
     final firstTime = useMemoized(() => db.onGetFirstTime("introduction"), []);
 
     useEffect(() {
-      player.onSetSource('water');
-      player.setVolume(0.1);
-      player.play();
+      safeValueBuilder(
+        firstTime,
+        (safeFirstTime) {},
+        () {
+          player.onSetSource('water');
+          player.setVolume(0.1);
+          player.play();
+        },
+      );
 
-      return player.dispose;
+      return () {
+        player.dispose();
+      };
     }, []);
 
     return EmptyWidgetBuilder(
