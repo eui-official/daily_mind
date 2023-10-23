@@ -42,8 +42,6 @@ class BaseListItems extends HookConsumerWidget {
         final category = configState.categories
             .firstWhere((category) => category.id == categoryId);
 
-        items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
-
         listItemCategory.add(
           ItemCategory(
             category: category,

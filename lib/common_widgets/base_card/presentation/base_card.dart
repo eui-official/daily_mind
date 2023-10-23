@@ -30,7 +30,7 @@ class BaseCard extends HookWidget {
     return BaseNullBuilder(
       value: paletteGenerator.data,
       builder: (palette) {
-        final color = palette.dominantColor?.color ??
+        final color = palette.darkMutedColor?.color.withOpacity(0.6) ??
             context.theme.colorScheme.background;
 
         return ClipRRect(

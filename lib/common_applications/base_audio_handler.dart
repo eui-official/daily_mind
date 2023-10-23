@@ -116,6 +116,10 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     });
   }
 
+  void onOnlinePlayerPlayFromIndex(int index) {
+    onlinePlayer.seek(Duration.zero, index: index);
+  }
+
   void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {
     final offlinePlayerItem =
         offlinePlayerItems.firstWhere((item) => item.id == itemId);
