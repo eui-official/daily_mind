@@ -4,19 +4,14 @@ import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
-import 'package:daily_mind/constants/sound_card.dart';
-import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/extensions/string.dart';
-import 'package:daily_mind/features/item_dismissible/presentation/dismissible.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chore_item_provider.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/utils.dart' hide Trans;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfflineListChordItem extends HookConsumerWidget {
@@ -29,6 +24,8 @@ class OfflineListChordItem extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useAutomaticKeepAlive(wantKeepAlive: true);
+
     final items = playlist.items ?? [];
     final names =
         items.map((item) => item.id.soundOfflineItem.name.tr()).join(', ');
@@ -75,30 +72,14 @@ class OfflineListChordItem extends HookConsumerWidget {
       ],
     );
 
-    return ItemDismissible(
-      key: key,
-      dismissible: DismissiblePane(onDismissed: () {
-        db.onDeletePlaylist(playlist.id);
-      }),
-      endActionPaneChildren: [
-        SlidableAction(
-          onPressed: (context) {
-            db.onDeletePlaylist(playlist.id);
-          },
-          backgroundColor: context.theme.colorScheme.error,
-          label: 'delete'.tr(),
-        ),
-      ],
-      child: BaseCard(
-        onTap: onPlayChord,
-        imageHeight: imageHeight,
-        image: AssetImage(soundItem.image),
-        child: BaseContentWithPlayIcon(
-          child: Flexible(
-            child: BaseHeaderWithDescription(
-              name: title,
-              description: names,
-            ),
+    return BaseCard(
+      onTap: onPlayChord,
+      image: AssetImage(soundItem.image),
+      child: BaseContentWithPlayIcon(
+        child: Flexible(
+          child: BaseHeaderWithDescription(
+            name: title,
+            description: names,
           ),
         ),
       ),

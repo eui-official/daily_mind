@@ -37,19 +37,19 @@ class BaseCard extends HookWidget {
           borderRadius: BorderRadius.circular(spacing(2)),
           child: Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BaseCardImage(
-                    imageHeight: imageHeight,
-                    image: image,
-                  ),
-                  Container(
-                    color: color,
-                    padding: EdgeInsets.all(spacing(2)),
-                    child: child,
-                  ),
-                ],
+              SizedBox(
+                height: imageHeight,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(child: BaseCardImage(image: image)),
+                    Container(
+                      color: color,
+                      padding: EdgeInsets.all(spacing(2)),
+                      child: child,
+                    ),
+                  ],
+                ),
               ),
               BaseNullBuilder(
                 value: onTap,

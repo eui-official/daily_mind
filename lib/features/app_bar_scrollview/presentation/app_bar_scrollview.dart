@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class AppBarScrollview extends StatelessWidget {
-  final String title;
   final List<Widget> children;
+  final ScrollPhysics? physics;
+  final String title;
 
   const AppBarScrollview({
     super.key,
-    required this.title,
     required this.children,
+    required this.title,
+    this.physics,
   });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
+        physics: physics,
         slivers: [
           SliverAppBar(
             title: Text(

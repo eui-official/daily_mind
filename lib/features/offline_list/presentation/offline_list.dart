@@ -31,12 +31,9 @@ class OfflineList extends HookConsumerWidget {
             title: 'naturalSounds'.tr(),
             children: [
               Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(
-                  horizontal: spacing(2),
-                  vertical: spacing(2),
-                ),
+                padding: EdgeInsets.symmetric(horizontal: spacing(2)),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
