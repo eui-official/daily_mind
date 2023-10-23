@@ -1,8 +1,8 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
-import 'package:daily_mind/features/online_card/presentation/online_card_image.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -37,7 +37,10 @@ class OnlineMiniPlayer extends HookConsumerWidget {
 
       return BaseMiniPlayer(
         onTap: baseMiniPlayerState.onTap,
-        image: OnlineCardImage(image: tag.image),
+        image: BaseNetworkImage(
+          image: tag.image,
+          size: 5,
+        ),
         isLoading: isLoading,
         isPlaying: isPlaying,
         onPause: baseAudioHandler.pause,

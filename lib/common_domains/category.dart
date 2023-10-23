@@ -9,6 +9,7 @@ class Category with _$Category {
     required String id,
     @JsonKey(name: 'created_at') required String createdAt,
     required String name,
+    required String description,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>

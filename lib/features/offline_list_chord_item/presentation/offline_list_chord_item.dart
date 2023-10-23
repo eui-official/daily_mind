@@ -1,4 +1,6 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
+import 'package:daily_mind/common_widgets/base_content_with_play_icon.dart';
+import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
@@ -10,7 +12,6 @@ import 'package:daily_mind/features/item_dismissible/presentation/dismissible.da
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chore_item_provider.dart';
 import 'package:daily_mind/features/offline_player/presentation/offline_player.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -92,41 +93,13 @@ class OfflineListChordItem extends HookConsumerWidget {
         onTap: onPlayChord,
         imageHeight: imageHeight,
         image: AssetImage(soundItem.image),
-        child: Row(
-          children: [
-            Flexible(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (title.isNotEmpty)
-                        Text(
-                          title,
-                          style: context.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      Text(
-                        names,
-                        style: context.textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+        child: BaseContentWithPlayIcon(
+          child: Flexible(
+            child: BaseHeaderWithDescription(
+              name: title,
+              description: names,
             ),
-            Container(
-              padding: EdgeInsets.only(right: spacing()),
-              child: Icon(
-                Icons.play_circle_fill_outlined,
-                size: spacing(5),
-                color: context.theme.primaryColor,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -10,6 +10,7 @@ _$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
       id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
+      description: json['description'] as String,
     );
 
 Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
@@ -17,4 +18,5 @@ Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
       'id': instance.id,
       'created_at': instance.createdAt,
       'name': instance.name,
+      'description': instance.description,
     };

@@ -1,12 +1,20 @@
-import 'package:card_swiper/card_swiper.dart';
-import 'package:collection/collection.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_domains/item_category.dart';
-import 'package:daily_mind/features/online_category_column/presentation/online_category_column.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
+import 'package:daily_mind/common_widgets/base_content_with_play_icon.dart';
+import 'package:daily_mind/common_widgets/base_header_with_description.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
+import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/sound_card.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OnlineCategory extends StatelessWidget {
+class OnlineCategory extends HookConsumerWidget {
   final ItemCategory itemCategory;
 
   const OnlineCategory({
@@ -15,48 +23,61 @@ class OnlineCategory extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final itemsGroup = itemCategory.items.slices(3).toList();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          padding: EdgeInsets.only(
-            top: spacing(3.5),
-            left: spacing(2),
-          ),
-          child: Text(
-            itemCategory.category.name,
-            style: context.textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
+    final fullItems = itemCategory.items;
+    final item = fullItems.first;
+
+    final onOpenPlayerOnline = useCallback(() {
+      baseMiniPlayerNotifier.onHide();
+
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        builder: (context) {
+          return OnlinePlayer(fullItems: fullItems);
+        },
+      ).then((value) => baseMiniPlayerNotifier.onShow());
+    }, [context, fullItems]);
+
+    final onTap = useCallback(() {
+      baseAudioHandler.onInitOnline(
+        item,
+        fullItems,
+      );
+
+      baseMiniPlayerNotifier.onUpdateState(
+        MiniPlayerState(
+          isShow: true,
+          networkType: NetworkType.online,
+          onTap: onOpenPlayerOnline,
+        ),
+      );
+    }, [
+      item,
+      fullItems,
+      onOpenPlayerOnline,
+    ]);
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+      child: BaseCard(
+        onTap: onTap,
+        imageHeight: imageHeight,
+        image: CachedNetworkImageProvider(itemCategory.items.first.image),
+        child: BaseContentWithPlayIcon(
+          child: Flexible(
+            child: BaseHeaderWithDescription(
+              name: itemCategory.category.name,
+              description: itemCategory.category.description,
             ),
           ),
         ),
-        SizedBox(
-          height: spacing(30),
-          child: Swiper(
-            viewportFraction: 0.9,
-            itemBuilder: (context, index) {
-              final itemsChunked = itemsGroup[index];
-
-              return Container(
-                transform:
-                    Transform.translate(offset: Offset(-spacing(2.75), 0))
-                        .transform,
-                child: OnlineCategoryColumn(
-                  category: itemCategory.category,
-                  fullItems: itemCategory.items,
-                  itemsChunked: itemsChunked,
-                ),
-              );
-            },
-            itemCount: itemsGroup.length,
-            loop: false,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
