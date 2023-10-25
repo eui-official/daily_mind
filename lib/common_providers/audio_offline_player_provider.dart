@@ -38,14 +38,9 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   void onPause() {
     gaplessAudioPlayer.pause();
   }
-
-  void onDispose() {
-    state = state;
-    gaplessAudioPlayer.dispose();
-  }
 }
 
-final audioOfflinePlayerProvider = StateNotifierProvider.family<
-    AudioOfflinePlayerNotifier, AudioPlayerState, String>((ref, id) {
+final audioOfflinePlayerProvider = StateNotifierProvider.autoDispose
+    .family<AudioOfflinePlayerNotifier, AudioPlayerState, String>((ref, id) {
   return AudioOfflinePlayerNotifier();
 });

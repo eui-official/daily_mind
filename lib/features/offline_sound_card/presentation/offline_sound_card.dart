@@ -68,7 +68,6 @@ class OfflineSoundCard extends HookConsumerWidget {
       return () {
         Future(() {
           newMixSelectedNotifier.onDeleted(item.id);
-          audioOfflinePlayerNotifier.onDispose();
         });
       };
     }, [item]);
