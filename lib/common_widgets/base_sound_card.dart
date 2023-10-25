@@ -3,7 +3,9 @@ import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_content.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_delete_button.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_selected_state.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class BaseSoundCard extends StatelessWidget {
   final bool isLoading;
@@ -31,21 +33,30 @@ class BaseSoundCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BaseCard(
-          image: image,
-          imageHeight: miniImageHeight,
-          onTap: onTap,
-          child: Stack(
-            children: [
-              SoundCardContent(
-                name: name,
-                isPlaying: isPlaying,
-                isLoading: isLoading,
-              ),
-            ],
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(spacing(2)),
+            border: Border.all(
+              width: 2,
+              color:
+                  isSelected ? context.theme.primaryColor : Colors.transparent,
+            ),
+          ),
+          child: BaseCard(
+            image: image,
+            imageHeight: miniImageHeight,
+            onTap: onTap,
+            child: Stack(
+              children: [
+                SoundCardContent(
+                  name: name,
+                  isPlaying: isPlaying,
+                  isLoading: isLoading,
+                ),
+              ],
+            ),
           ),
         ),
-        if (isSelected) const SoundCardSelectedState(),
         if (isSelected) SoundCardDeleteButton(onPressed: onDeleted),
       ],
     );
