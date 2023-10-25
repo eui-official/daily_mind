@@ -74,13 +74,13 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
 
   void onInitOnline(
     Item item,
-    List<Item> fullItems,
+    List<Item> items,
   ) async {
     pause();
 
     await onlinePlayer.onInitSource(
       item,
-      fullItems: fullItems,
+      items: items,
     );
 
     networkType = NetworkType.online;
@@ -117,7 +117,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   }
 
   void onOnlinePlayerPlayFromIndex(int index) {
-    onlinePlayer.seek(Duration.zero, index: index);
+    onlinePlayer.onSeekToIndex(index);
   }
 
   void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {

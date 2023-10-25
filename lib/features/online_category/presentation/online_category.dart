@@ -27,8 +27,8 @@ class OnlineCategory extends HookConsumerWidget {
     final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
 
-    final fullItems = itemCategory.items;
-    final item = fullItems.first;
+    final items = itemCategory.items;
+    final item = items.first;
 
     final onOpenPlayerOnline = useCallback(() {
       baseMiniPlayerNotifier.onHide();
@@ -39,15 +39,15 @@ class OnlineCategory extends HookConsumerWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         builder: (context) {
-          return OnlinePlayer(fullItems: fullItems);
+          return const OnlinePlayer();
         },
       ).then((value) => baseMiniPlayerNotifier.onShow());
-    }, [context, fullItems]);
+    }, [context]);
 
     final onTap = useCallback(() {
       baseAudioHandler.onInitOnline(
         item,
-        fullItems,
+        items,
       );
 
       baseMiniPlayerNotifier.onUpdateState(
@@ -59,7 +59,7 @@ class OnlineCategory extends HookConsumerWidget {
       );
     }, [
       item,
-      fullItems,
+      items,
       onOpenPlayerOnline,
     ]);
 
