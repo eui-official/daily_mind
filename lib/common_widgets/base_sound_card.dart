@@ -2,7 +2,6 @@ import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart'
 import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_content.dart';
 import 'package:daily_mind/features/sound_card/presentation/sound_card_delete_button.dart';
-import 'package:daily_mind/features/sound_card/presentation/sound_card_selected_state.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
