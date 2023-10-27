@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/online_audio_player.dart';
+import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/common_providers/domain/audio_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

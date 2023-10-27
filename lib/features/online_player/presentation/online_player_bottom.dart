@@ -38,8 +38,8 @@ class OnlinePlayerBottom extends HookConsumerWidget {
           children: [
             BasePlayerControl(
               audioHandler: audioHandler,
-              onNext: audioHandler.onNextOnline,
-              onPrevious: audioHandler.onPreviousOnline,
+              onNext: audioHandler.skipToNext,
+              onPrevious: audioHandler.skipToPrevious,
             ),
             BaseTimerPicker(
               padding: EdgeInsets.all(spacing(2)),

@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/logger.dart';
+import 'package:daily_mind/common_applications/online_audio_player/domain/online_audio_player_index_state.dart';
 import 'package:daily_mind/common_domains/item.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -19,7 +20,17 @@ class OnlineAudioPlayer extends AudioPlayer {
     }
   }
 
-  onSetAudioSource(
+  OnlineAudioPlayerIndexState onGetIndexState() {
+    int index = currentIndex ?? 0;
+    int sequenceLength = sequence?.length ?? 0;
+
+    return OnlineAudioPlayerIndexState(
+      index: index,
+      sequenceLength: sequenceLength,
+    );
+  }
+
+  void onSetAudioSource(
     List<Item> items, {
     int initialIndex = 0,
   }) async {
@@ -53,7 +64,27 @@ class OnlineAudioPlayer extends AudioPlayer {
     backupItems = newItems;
   }
 
-  onSeekToIndex(int index) async {
+  void onSeekToIndex(int index) async {
     onSetAudioSource(backupItems, initialIndex: index);
+  }
+
+  void onSeekNext() {
+    final indexState = onGetIndexState();
+
+    if (indexState.isCanMoveNext) {
+      onSeekToIndex(indexState.nextIndex);
+    } else {
+      onSeekToIndex(indexState.firstIndex);
+    }
+  }
+
+  void onSeekPrevious() {
+    final indexState = onGetIndexState();
+
+    if (indexState.isCanMovePrevious) {
+      onSeekToIndex(indexState.previousIndex);
+    } else {
+      onSeekToIndex(indexState.lastIndex);
+    }
   }
 }

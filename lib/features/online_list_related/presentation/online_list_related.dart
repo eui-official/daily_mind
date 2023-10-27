@@ -19,7 +19,7 @@ class OnlineListRelated extends HookConsumerWidget {
     final sequence = sequenceSnapshot.data ?? [];
 
     final onTap = useCallback((int index) {
-      baseAudioHandler.onOnlinePlayerPlayFromIndex(index);
+      baseAudioHandler.onlinePlayer.onSeekToIndex(index);
     }, [
       sequence,
     ]);

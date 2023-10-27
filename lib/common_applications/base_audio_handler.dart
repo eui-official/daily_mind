@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
-import 'package:daily_mind/common_applications/online_audio_player.dart';
+import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -116,10 +116,6 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     });
   }
 
-  void onOnlinePlayerPlayFromIndex(int index) {
-    onlinePlayer.onSeekToIndex(index);
-  }
-
   void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {
     final offlinePlayerItem =
         offlinePlayerItems.firstWhere((item) => item.id == itemId);
@@ -169,14 +165,6 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
 
   void onPlayOnline() {
     onlinePlayer.play();
-  }
-
-  void onNextOnline() {
-    onlinePlayer.seekToNext();
-  }
-
-  void onPreviousOnline() {
-    onlinePlayer.seekToPrevious();
   }
 
   void onDispose() {
@@ -240,14 +228,14 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
 
   @override
   Future<void> skipToNext() {
-    onlinePlayer.seekToNext();
+    onlinePlayer.onSeekNext();
 
     return super.skipToNext();
   }
 
   @override
   Future<void> skipToPrevious() {
-    onlinePlayer.seekToPrevious();
+    onlinePlayer.onSeekPrevious();
 
     return super.skipToPrevious();
   }
