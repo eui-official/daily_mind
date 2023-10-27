@@ -228,6 +228,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
 
   @override
   Future<void> skipToNext() {
+    onPauseOnline();
     onlinePlayer.onSeekNext();
 
     return super.skipToNext();
@@ -235,6 +236,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
 
   @override
   Future<void> skipToPrevious() {
+    onPauseOnline();
     onlinePlayer.onSeekPrevious();
 
     return super.skipToPrevious();
@@ -243,6 +245,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   @override
   Future<void> seek(Duration position) {
     onlinePlayer.seek(position);
+
     return super.seek(position);
   }
 }

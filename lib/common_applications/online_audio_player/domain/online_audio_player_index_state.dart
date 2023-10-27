@@ -18,20 +18,4 @@ class OnlineAudioPlayerIndexState with _$OnlineAudioPlayerIndexState {
   int get firstIndex => 0;
 
   int get lastIndex => sequenceLength - 1;
-
-  bool get isCanMoveNext {
-    if (nextIndex < sequenceLength) {
-      return true;
-    }
-
-    return false;
-  }
-
-  bool get isCanMovePrevious {
-    if (previousIndex > 0) {
-      return true;
-    }
-
-    return false;
-  }
 }

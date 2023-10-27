@@ -12,7 +12,12 @@ class OfflinePlayerToggleButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final playMixNotifier = ref.read(playMixProvider.notifier);
-    final playBackState = useStream(playMixNotifier.audioHandler.playbackState);
+
+    final playbackStateMemoized =
+        useMemoized(() => playMixNotifier.audioHandler.playbackState, []);
+
+    final playBackState = useStream(playbackStateMemoized);
+
     final isPlaying = playBackState.data?.playing ?? false;
 
     return TogglePlayModeButton(

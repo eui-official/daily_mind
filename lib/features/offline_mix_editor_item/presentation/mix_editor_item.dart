@@ -26,7 +26,10 @@ class MixEditorItem extends HookWidget {
     final soundItem = soundOfflineItems
         .firstWhere((item) => item.id == offlineMixEditorItemState.id);
 
-    final playingSnapshot = useStream(player.playingStream);
+    final playingStreamMemoized = useMemoized(() => player.playingStream, []);
+
+    final playingSnapshot = useStream(playingStreamMemoized);
+
     final isPlaying = playingSnapshot.data ?? false;
 
     final onInit = useCallback(

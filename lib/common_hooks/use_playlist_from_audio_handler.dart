@@ -7,13 +7,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 Playlist usePlaylistFromAudioHandler(WidgetRef ref) {
   final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
-  final currentPlaylistIdSnapshot =
-      useStream(baseAudioHandler.streamPlaylistId.stream);
+  final currentPlaylistIdStreamMemoized =
+      useMemoized(() => baseAudioHandler.streamPlaylistId.stream, []);
+
+  final currentPlaylistIdSnapshot = useStream(currentPlaylistIdStreamMemoized);
 
   final currentPlaylistId = currentPlaylistIdSnapshot.data ?? 0;
 
-  final playlistSnapshot =
-      useStream(db.onStreamPlaylistById(currentPlaylistId));
+  final onStreamPlaylistMemoized =
+      useMemoized(() => db.onStreamPlaylistById(currentPlaylistId), []);
+
+  final playlistSnapshot = useStream(onStreamPlaylistMemoized);
 
   final playlist = playlistSnapshot.data ?? Playlist();
 

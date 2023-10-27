@@ -18,7 +18,10 @@ class OfflineMiniPlayer extends HookConsumerWidget {
     final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
     final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
-    final playBackState = useStream(baseAudioHandler.playbackState);
+    final playbackStateMemoized =
+        useMemoized(() => baseAudioHandler.playbackState, []);
+
+    final playBackState = useStream(playbackStateMemoized);
     final playlist = usePlaylistFromAudioHandler(ref);
 
     final items = playlist.items ?? [];

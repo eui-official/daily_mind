@@ -20,10 +20,20 @@ class OnlineMiniPlayer extends HookConsumerWidget {
 
     final onlinePlayer = baseAudioHandler.onlinePlayer;
 
-    final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
-    final processingStateSnapshot =
-        useStream(onlinePlayer.processingStateStream);
-    final playBackState = useStream(baseAudioHandler.playbackState);
+    final currentIndexStreamMemoized =
+        useMemoized(() => onlinePlayer.currentIndexStream, []);
+
+    final currentIndexSnapshot = useStream(currentIndexStreamMemoized);
+
+    final processingStateStreamMemoized =
+        useMemoized(() => onlinePlayer.processingStateStream, []);
+
+    final processingStateSnapshot = useStream(processingStateStreamMemoized);
+
+    final playbackStateMemoized =
+        useMemoized(() => baseAudioHandler.playbackState, []);
+
+    final playBackState = useStream(playbackStateMemoized);
 
     final sequence = onlinePlayer.audioSource?.sequence ?? [];
     final currentIndex = currentIndexSnapshot.data ?? 0;
