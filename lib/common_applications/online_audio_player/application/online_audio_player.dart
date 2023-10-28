@@ -33,7 +33,7 @@ class OnlineAudioPlayer extends AudioPlayer {
   void onSetAudioSource(
     List<Item> newList, {
     int initialIndex = 0,
-    LoopMode loopMode = LoopMode.all,
+    LoopMode loopMode = LoopMode.one,
   }) async {
     try {
       await pause();
@@ -54,6 +54,7 @@ class OnlineAudioPlayer extends AudioPlayer {
       await setAudioSource(
         concatenatingAudioSource,
         initialIndex: initialIndex,
+        preload: false,
       );
 
       await setLoopMode(loopMode);

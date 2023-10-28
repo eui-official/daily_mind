@@ -17,10 +17,13 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
+  bool isAutoPlayNext = true;
   List<OfflinePlayerItem> offlinePlayerItems = [];
   NetworkType networkType = NetworkType.none;
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
   StreamController<int> streamPlaylistId = BehaviorSubject();
+  StreamSubscription<Duration?>? durationStreamSubscription;
+  StreamSubscription<Duration>? positionStreamSubscription;
   Timer? timer;
 
   DailyMindAudioHandler() {
@@ -97,13 +100,25 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   }
 
   void onOnlinePlayerPlayStateChanged() {
-    onlinePlayer.positionStream.listen((newDuration) {
+    positionStreamSubscription?.cancel();
+    durationStreamSubscription?.cancel();
+
+    positionStreamSubscription =
+        onlinePlayer.positionStream.listen((newDuration) {
       playbackState.add(
         playbackState.value.copyWith(updatePosition: newDuration),
       );
+
+      final duration = onlinePlayer.duration;
+
+      safeValueBuilder(duration, (value) {
+        if (value <= newDuration && isAutoPlayNext) {
+          skipToNext();
+        }
+      });
     });
 
-    onlinePlayer.durationStream.listen((duration) {
+    durationStreamSubscription = onlinePlayer.durationStream.listen((duration) {
       safeValueBuilder(duration, (value) {
         if (value != Duration.zero) {
           final tag = onlinePlayer.sequenceState?.currentSource?.tag;
@@ -209,6 +224,10 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
         systemActions: actions,
       ),
     );
+  }
+
+  void onUpdateAutoPlayNext(bool newIsAutoPlayNext) {
+    isAutoPlayNext = newIsAutoPlayNext;
   }
 
   @override
