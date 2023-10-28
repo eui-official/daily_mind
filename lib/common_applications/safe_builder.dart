@@ -8,6 +8,6 @@ void safeValueBuilder<T>(
   if (data != null) {
     return cb(data);
   } else {
-    orElse?.call();
+    return orElse?.call();
   }
 }
