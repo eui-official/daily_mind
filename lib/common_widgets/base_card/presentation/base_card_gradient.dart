@@ -16,7 +16,7 @@ class BaseCardGradient extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               color.withOpacity(0.9),
-              color.withOpacity(0.1),
+              color.withOpacity(0.3),
             ],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
