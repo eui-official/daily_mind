@@ -11,11 +11,17 @@ class BirdLoading extends StatelessWidget {
     return Container(
       color: context.theme.colorScheme.background,
       alignment: Alignment.center,
-      child: Lottie.asset(
-        'assets/lottie/bird.json',
-        fit: BoxFit.contain,
-        width: spacing(20),
-        height: spacing(20),
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          context.theme.primaryColor,
+          BlendMode.modulate,
+        ),
+        child: Lottie.asset(
+          'assets/lottie/bird.json',
+          fit: BoxFit.contain,
+          width: spacing(20),
+          height: spacing(20),
+        ),
       ),
     );
   }
