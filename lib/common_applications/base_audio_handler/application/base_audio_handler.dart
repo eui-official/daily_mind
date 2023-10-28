@@ -51,8 +51,8 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   }
 
   void onInitOffline(Playlist playlist) async {
+    onClearOfflinePlayerItems();
     onPauseOnline();
-    onClearPlayerItems();
 
     streamPlaylistId.add(playlist.id);
 
@@ -117,7 +117,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     }
   }
 
-  void onClearPlayerItems() {
+  void onClearOfflinePlayerItems() {
     for (var offlinePlayerItem in offlinePlayerItems) {
       offlinePlayerItem.player.dispose();
     }
@@ -125,10 +125,16 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     offlinePlayerItems.clear();
   }
 
+  void onOfflineDispose() {
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.dispose();
+    }
+  }
+
   void onInitOnline(List<Item> items) async {
     onPauseOffline();
 
-    await onlinePlayer.onInitSource(items);
+    onlinePlayer.onInitSource(items);
 
     networkType = NetworkType.online;
 
@@ -187,10 +193,8 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     onlinePlayer.play();
   }
 
-  void onDispose() {
-    for (var offlinePlayerItem in offlinePlayerItems) {
-      offlinePlayerItem.player.dispose();
-    }
+  void onOnlineUpdateAutoPlayNext(bool newIsAutoPlayNext) {
+    isAutoPlayNext = newIsAutoPlayNext;
   }
 
   void onInitPlaybackState([NetworkType type = NetworkType.offline]) async {
@@ -222,10 +226,6 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
         systemActions: actions,
       ),
     );
-  }
-
-  void onUpdateAutoPlayNext(bool newIsAutoPlayNext) {
-    isAutoPlayNext = newIsAutoPlayNext;
   }
 
   @override

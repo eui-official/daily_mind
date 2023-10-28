@@ -11,7 +11,7 @@ class OnlineAutoPlayNextSwitchNotifier extends StateNotifier<bool> {
 
   void onChanged(bool isAutoPlayNext) {
     state = isAutoPlayNext;
-    baseAudioHandler.onUpdateAutoPlayNext(isAutoPlayNext);
+    baseAudioHandler.onOnlineUpdateAutoPlayNext(isAutoPlayNext);
   }
 }
 

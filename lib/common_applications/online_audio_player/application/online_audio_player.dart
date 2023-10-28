@@ -21,7 +21,7 @@ class OnlineAudioPlayer extends AudioPlayer {
     return currentSequence.map((s) => s.tag as Item).toList();
   }
 
-  Future<void> onInitSource(List<Item> items) async {
+  void onInitSource(List<Item> items) {
     final newItems = List<Item>.from(items);
     final playItem = newItems.removeAt(0);
     final newList = [...newItems, playItem];
@@ -75,7 +75,7 @@ class OnlineAudioPlayer extends AudioPlayer {
     onSetAudioSource(newList, initialIndex: initialIndex);
   }
 
-  void onSeekNext() async {
+  void onSeekNext() {
     final currentItems = previousItems;
     final playItem = currentItems.removeAt(0);
     final newList = [...currentItems, playItem];
@@ -84,7 +84,7 @@ class OnlineAudioPlayer extends AudioPlayer {
     onSetAudioSource(newList, initialIndex: initialIndex);
   }
 
-  void onSeekPrevious() async {
+  void onSeekPrevious() {
     final currentItems = previousItems;
     final lastItem = currentItems.removeLast();
 
