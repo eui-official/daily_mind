@@ -38,7 +38,7 @@ class OnlineAudioPlayer extends AudioPlayer {
     try {
       await pause();
 
-      final fullAudioSources = newList
+      final children = newList
           .map(
             (item) => LockCachingAudioSource(
               Uri.parse(item.source),
@@ -47,14 +47,11 @@ class OnlineAudioPlayer extends AudioPlayer {
           )
           .toList();
 
-      final concatenatingAudioSource = ConcatenatingAudioSource(
-        children: fullAudioSources,
-      );
+      final source = ConcatenatingAudioSource(children: children);
 
       await setAudioSource(
-        concatenatingAudioSource,
+        source,
         initialIndex: initialIndex,
-        preload: false,
       );
 
       await setLoopMode(loopMode);

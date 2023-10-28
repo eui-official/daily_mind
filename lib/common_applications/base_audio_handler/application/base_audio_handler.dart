@@ -51,7 +51,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   }
 
   void onInitOffline(Playlist playlist) async {
-    pause();
+    onPauseOnline();
     onClearPlayerItems();
 
     streamPlaylistId.add(playlist.id);
@@ -86,15 +86,52 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     }
   }
 
-  void onInitOnline(
-    Item item,
-    List<Item> items,
-  ) async {
+  void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {
+    final offlinePlayerItem =
+        offlinePlayerItems.firstWhere((item) => item.id == itemId);
+    offlinePlayerItem.player.setVolume(volume);
+
+    db.onUpdateVolume(volume, itemId, playlistId);
+  }
+
+  void onUpdateOfflinePlaylistTitle(
+    String name,
+    int playlistId,
+  ) {
+    final updatedMediaItem = mediaItem.value?.copyWith(title: name);
+
+    mediaItem.add(updatedMediaItem);
+
+    db.onUpdatePlaylistTitle(name, playlistId);
+  }
+
+  void onPlayOffline() {
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.play();
+    }
+  }
+
+  void onPauseOffline() {
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.pause();
+    }
+  }
+
+  void onClearPlayerItems() {
+    for (var offlinePlayerItem in offlinePlayerItems) {
+      offlinePlayerItem.player.dispose();
+    }
+
+    offlinePlayerItems.clear();
+  }
+
+  void onInitOnline(List<Item> items) async {
+    onPauseOffline();
+
     await onlinePlayer.onInitSource(items);
 
     networkType = NetworkType.online;
 
-    play();
     onInitPlaybackState(NetworkType.online);
     onOnlinePlayerPlayStateChanged();
   }
@@ -136,45 +173,6 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
         }
       });
     });
-  }
-
-  void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {
-    final offlinePlayerItem =
-        offlinePlayerItems.firstWhere((item) => item.id == itemId);
-    offlinePlayerItem.player.setVolume(volume);
-
-    db.onUpdateVolume(volume, itemId, playlistId);
-  }
-
-  void onUpdateOfflinePlaylistTitle(
-    String name,
-    int playlistId,
-  ) {
-    final updatedMediaItem = mediaItem.value?.copyWith(title: name);
-
-    mediaItem.add(updatedMediaItem);
-
-    db.onUpdatePlaylistTitle(name, playlistId);
-  }
-
-  void onPlayOffline() {
-    for (var offlinePlayerItem in offlinePlayerItems) {
-      offlinePlayerItem.player.play();
-    }
-  }
-
-  void onPauseOffline() {
-    for (var offlinePlayerItem in offlinePlayerItems) {
-      offlinePlayerItem.player.pause();
-    }
-  }
-
-  void onClearPlayerItems() {
-    for (var offlinePlayerItem in offlinePlayerItems) {
-      offlinePlayerItem.player.dispose();
-    }
-
-    offlinePlayerItems.clear();
   }
 
   void onClearOnline() {

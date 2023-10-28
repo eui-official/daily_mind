@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:daily_mind/common_applications/base_audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_time_picker/domain/base_time_picker_state.dart';

@@ -26,9 +26,7 @@ class OnlineCategory extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
-
     final items = itemCategory.items;
-    final item = items.first;
 
     final onOpenPlayerOnline = useCallback(() {
       baseMiniPlayerNotifier.onHide();
@@ -45,10 +43,7 @@ class OnlineCategory extends HookConsumerWidget {
     }, [context]);
 
     final onTap = useCallback(() {
-      baseAudioHandler.onInitOnline(
-        item,
-        items,
-      );
+      baseAudioHandler.onInitOnline(items);
 
       baseMiniPlayerNotifier.onUpdateState(
         MiniPlayerState(
@@ -58,7 +53,6 @@ class OnlineCategory extends HookConsumerWidget {
         ),
       );
     }, [
-      item,
       items,
       onOpenPlayerOnline,
     ]);

@@ -42,26 +42,29 @@ class BaseMixEditorItem extends StatelessWidget {
               ),
             ),
             const BaseBackgroundGradient(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: spacing(2)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      prefixChild,
-                      BaseMixEditorContent(name: name),
-                    ],
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: spacing(2)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        prefixChild,
+                        BaseMixEditorContent(name: name),
+                      ],
+                    ),
                   ),
-                ),
-                VolumeSlider(
-                  key: volumeKey,
-                  onVolumeChanged: onVolumeChanged,
-                  initVolume: initVolume,
-                )
-              ],
+                  VolumeSlider(
+                    key: volumeKey,
+                    onVolumeChanged: onVolumeChanged,
+                    initVolume: initVolume,
+                  )
+                ],
+              ),
             )
           ],
         ),
