@@ -21,43 +21,47 @@ class OnlineAudioPlayer extends AudioPlayer {
     return currentSequence.map((s) => s.tag as Item).toList();
   }
 
-  Future<void> onInitSource(
-    List<Item> items, {
-    LoopMode loopMode = LoopMode.all,
-  }) async {
-    try {
-      final newItems = List<Item>.from(items);
-      final playItem = newItems.removeAt(0);
-      final newList = [...newItems, playItem];
-      final initialIndex = newList.indexOf(playItem);
+  Future<void> onInitSource(List<Item> items) async {
+    final newItems = List<Item>.from(items);
+    final playItem = newItems.removeAt(0);
+    final newList = [...newItems, playItem];
+    final initialIndex = newList.indexOf(playItem);
 
-      onSetAudioSource(newList, initialIndex: initialIndex);
-    } catch (error) {
-      logger.e(error);
-    }
+    onSetAudioSource(newList, initialIndex: initialIndex);
   }
 
   void onSetAudioSource(
     List<Item> newList, {
     int initialIndex = 0,
+    LoopMode loopMode = LoopMode.all,
   }) async {
-    final fullAudioSources = newList
-        .map(
-          (item) => LockCachingAudioSource(
-            Uri.parse(item.source),
-            tag: item,
-          ),
-        )
-        .toList();
+    try {
+      await pause();
 
-    final concatenatingAudioSource = ConcatenatingAudioSource(
-      children: fullAudioSources,
-    );
+      final fullAudioSources = newList
+          .map(
+            (item) => LockCachingAudioSource(
+              Uri.parse(item.source),
+              tag: item,
+            ),
+          )
+          .toList();
 
-    await setAudioSource(
-      concatenatingAudioSource,
-      initialIndex: initialIndex,
-    );
+      final concatenatingAudioSource = ConcatenatingAudioSource(
+        children: fullAudioSources,
+      );
+
+      await setAudioSource(
+        concatenatingAudioSource,
+        initialIndex: initialIndex,
+      );
+
+      await setLoopMode(loopMode);
+
+      await play();
+    } catch (error) {
+      logger.e(error);
+    }
   }
 
   void onSeekToIndex(int index) async {

@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:audio_service/audio_service.dart';
+import 'package:audio_session/audio_session.dart';
 import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
+import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_domains/item.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -20,6 +22,15 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
   StreamController<int> streamPlaylistId = BehaviorSubject();
   Timer? timer;
+
+  DailyMindAudioHandler() {
+    onInit();
+  }
+
+  void onInit() async {
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.music());
+  }
 
   void onStartTimer(Time time) {
     timer?.cancel();
@@ -76,8 +87,6 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     Item item,
     List<Item> items,
   ) async {
-    pause();
-
     await onlinePlayer.onInitSource(items);
 
     networkType = NetworkType.online;
@@ -94,22 +103,23 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
       );
     });
 
-    onlinePlayer.currentIndexStream.listen((index) {
-      final currentIndex = index ?? 0;
-      final sequence = onlinePlayer.audioSource?.sequence ?? [];
+    onlinePlayer.durationStream.listen((duration) {
+      safeValueBuilder(duration, (value) {
+        if (value != Duration.zero) {
+          final tag = onlinePlayer.sequenceState?.currentSource?.tag;
 
-      if (sequence.isNotEmpty) {
-        final item = sequence[currentIndex];
-
-        mediaItem.add(
-          MediaItem(
-            id: item.tag.source,
-            title: item.tag.name,
-            artUri: Uri.parse(item.tag.image),
-            duration: onlinePlayer.duration,
-          ),
-        );
-      }
+          safeValueBuilder<dynamic>(tag, (item) {
+            mediaItem.add(
+              MediaItem(
+                id: item.source,
+                title: item.name,
+                artUri: Uri.parse(item.image),
+                duration: value,
+              ),
+            );
+          });
+        }
+      });
     });
   }
 
