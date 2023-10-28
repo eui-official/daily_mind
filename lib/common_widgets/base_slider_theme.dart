@@ -16,7 +16,8 @@ class BaseSliderTheme extends StatelessWidget {
       data: SliderThemeData(
         activeTrackColor: context.theme.primaryColor,
         showValueIndicator: ShowValueIndicator.always,
-        trackHeight: spacing(),
+        overlayShape: SliderComponentShape.noOverlay,
+        trackHeight: spacing(2),
       ),
       child: slider,
     );

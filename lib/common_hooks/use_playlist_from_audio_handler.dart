@@ -14,8 +14,10 @@ Playlist usePlaylistFromAudioHandler(WidgetRef ref) {
 
   final currentPlaylistId = currentPlaylistIdSnapshot.data ?? 0;
 
-  final onStreamPlaylistMemoized =
-      useMemoized(() => db.onStreamPlaylistById(currentPlaylistId), []);
+  final onStreamPlaylistMemoized = useMemoized(
+    () => db.onStreamPlaylistById(currentPlaylistId),
+    [currentPlaylistId],
+  );
 
   final playlistSnapshot = useStream(onStreamPlaylistMemoized);
 
