@@ -6,6 +6,7 @@ import 'package:daily_mind/features/offline_mix_editor_item/presentation/mix_edi
 import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
 import 'package:daily_mind/features/stack_background/presentation/stack_background.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
+import 'package:daily_mind/features/tutorial/constant/tasks.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -50,7 +51,7 @@ class OfflineMixEditor extends HookConsumerWidget {
         title: Text('soundEditor'.tr()),
       ),
       body: Tutorial(
-        task: 'mixEditorTutorial',
+        task: mixEditorTutorial,
         targets: [
           TargetFocus(
             keyTarget: mixEditorVolumeKey,

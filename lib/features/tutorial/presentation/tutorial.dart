@@ -8,10 +8,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class Tutorial extends HookWidget {
+  final bool condition;
+  final List<TargetFocus> targets;
   final String task;
   final Widget child;
-  final List<TargetFocus> targets;
-  final bool condition;
 
   const Tutorial({
     super.key,

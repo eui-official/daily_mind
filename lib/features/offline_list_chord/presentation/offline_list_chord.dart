@@ -3,6 +3,7 @@ import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
 import 'package:daily_mind/features/offline_list_chord_item/presentation/offline_list_chord_item.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chore_provider.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
+import 'package:daily_mind/features/tutorial/constant/tasks.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -41,7 +42,7 @@ class OfflineListChord extends HookConsumerWidget {
                 ],
               )
             ],
-            task: 'removeChordItemTutorial',
+            task: removeChordItemTutorial,
             child: CarouselSlider.builder(
               key: removeChordItem,
               itemCount: playlists.length,

@@ -1,6 +1,7 @@
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix_box.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
+import 'package:daily_mind/features/tutorial/constant/tasks.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -15,7 +16,7 @@ class EmptyListMix extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tutorial(
-      task: 'addANewMixTutorial',
+      task: addNewMixTutorial,
       targets: [
         TargetFocus(
           keyTarget: addNewMixKey,
