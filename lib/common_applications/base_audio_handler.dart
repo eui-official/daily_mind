@@ -78,10 +78,7 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   ) async {
     pause();
 
-    await onlinePlayer.onInitSource(
-      item,
-      items: items,
-    );
+    await onlinePlayer.onInitSource(items);
 
     networkType = NetworkType.online;
 

@@ -11,11 +11,5 @@ class OnlineAudioPlayerIndexState with _$OnlineAudioPlayerIndexState {
     required int sequenceLength,
   }) = _OnlineAudioPlayerIndexState;
 
-  int get nextIndex => index + 1;
-
-  int get previousIndex => index - 1;
-
-  int get firstIndex => 0;
-
   int get lastIndex => sequenceLength - 1;
 }
