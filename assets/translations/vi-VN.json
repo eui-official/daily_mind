@@ -12,6 +12,7 @@
   "delete": "Xóa",
   "fire": "Lửa",
   "forest": "Rừng",
+  "hello": "Xin chào,",
   "language": "Ngôn ngữ",
   "mixEditorContent": "Điều chỉnh âm thanh để phù hợp với bạn",
   "mixLisEmpty": "Bạn chưa có bản mix nào",
@@ -20,7 +21,6 @@
   "name": "Tên",
   "nameOfTheMix": "Tên của bản mix này",
   "naturalSounds": "Âm thanh thiên nhiên",
-  "relaxMoreWithStories": "Khám phá các câu truyện về phật giáo, và thiền định",
   "newMix": "Âm thanh mới",
   "newMixTutorialContent1": "Chọn một hoặc nhiều âm thanh để tạo một bản mix",
   "newMixTutorialContent2": "Sau khi chọn những âm thanh bạn yêu thích. Bấm vào đây để tiếp tục",
@@ -30,6 +30,8 @@
   "pickTime": "Chọn giờ",
   "playingNext": "Phát tiếp theo",
   "rain": "Mưa",
+  "relaxMoreWithStories": "Khám phá các câu truyện về phật giáo, và thiền định",
+  "removeChordItemTutorial": "Kẹo thẻ xuống dưới để xóa",
   "settings": "Cấu hình",
   "skip": "Bỏ qua",
   "soundEditor": "Chỉnh sửa âm thanh",
@@ -39,6 +41,5 @@
   "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "water": "Nước",
-  "hello": "Xin chào,",
   "wind": "Gió"
 }

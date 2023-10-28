@@ -12,6 +12,7 @@
   "delete": "Delete",
   "fire": "Fire",
   "forest": "Forest",
+  "hello": "Hello,",
   "language": "Language",
   "mixEditorContent": "Adjust the volume of each sound to suit you",  
   "mixLisEmpty": "You don't have any mix yet",
@@ -20,7 +21,6 @@
   "name": "Name",
   "nameOfTheMix": "Name of this mix",
   "naturalSounds": "Natural sounds",
-  "relaxMoreWithStories": "Explore our stories about buddhism, and meditation",
   "newMix": "New mix",
   "newMixTutorialContent1": "Choose one or more sounds from the list to create a new mix",
   "newMixTutorialContent2": "After choosing your favorite sounds. Click here to continue",
@@ -30,6 +30,8 @@
   "pickTime": "Pick time",
   "playingNext": "Playing next",
   "rain": "Rain",
+  "relaxMoreWithStories": "Explore our stories about buddhism, and meditation",
+  "removeChordItemTutorial": "Drag down the card to delete",
   "settings": "Settings",
   "skip": "Skip",
   "soundEditor": "Sound Editor",
@@ -39,6 +41,5 @@
   "turnOffTime": "Turn off timer",
   "version": "Version",
   "water": "Water",
-  "hello": "Hello,",
   "wind": "Wind"
 }

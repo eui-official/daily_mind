@@ -7,6 +7,7 @@ import 'package:daily_mind/features/offline_list_chord/presentation/offline_list
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart' hide Trans;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -23,38 +24,46 @@ class OfflineList extends HookConsumerWidget {
       return const EmptyListMix();
     }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          const BaseBackground(),
-          AppBarScrollview(
-            title: 'naturalSounds'.tr(),
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'mixList'.tr(),
-                          style: context.textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
+    final child = useMemoized(() {
+      if (offlineListChoreState.isEmptyPlaylists) {
+        return const EmptyListMix();
+      }
+
+      return Scaffold(
+        body: Stack(
+          children: [
+            const BaseBackground(),
+            AppBarScrollview(
+              title: 'naturalSounds'.tr(),
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'mixList'.tr(),
+                            style: context.textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const AddNewMixButton(),
-                      ],
-                    ),
-                    const OfflineListChord(),
-                  ],
+                          const AddNewMixButton(),
+                        ],
+                      ),
+                      const OfflineListChord(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
+              ],
+            )
+          ],
+        ),
+      );
+    }, [offlineListChoreState]);
+
+    return AnimatedSwitcher(duration: kThemeChangeDuration, child: child);
   }
 }
