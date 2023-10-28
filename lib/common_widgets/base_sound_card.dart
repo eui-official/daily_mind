@@ -45,14 +45,10 @@ class BaseSoundCard extends StatelessWidget {
             image: image,
             imageHeight: miniImageHeight,
             onTap: onTap,
-            child: Stack(
-              children: [
-                SoundCardContent(
-                  name: name,
-                  isPlaying: isPlaying,
-                  isLoading: isLoading,
-                ),
-              ],
+            child: SoundCardContent(
+              name: name,
+              isPlaying: isPlaying,
+              isLoading: isLoading,
             ),
           ),
         ),

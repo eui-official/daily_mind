@@ -102,8 +102,9 @@ class __$$_SelectingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectingState implements _SelectingState {
-  const _$_SelectingState({required this.sound, required this.networkType});
+class _$_SelectingState extends _SelectingState {
+  const _$_SelectingState({required this.sound, required this.networkType})
+      : super._();
 
   @override
   final dynamic sound;
@@ -136,10 +137,11 @@ class _$_SelectingState implements _SelectingState {
       __$$_SelectingStateCopyWithImpl<_$_SelectingState>(this, _$identity);
 }
 
-abstract class _SelectingState implements SelectingState {
+abstract class _SelectingState extends SelectingState {
   const factory _SelectingState(
       {required final dynamic sound,
       required final NetworkType networkType}) = _$_SelectingState;
+  const _SelectingState._() : super._();
 
   @override
   dynamic get sound;

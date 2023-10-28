@@ -31,7 +31,6 @@ class BaseHeaderWithDescription extends StatelessWidget {
               description,
               style: context.textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.w500,
-                color: context.theme.hintColor,
               ),
             ),
           )

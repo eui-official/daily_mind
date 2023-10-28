@@ -13,9 +13,10 @@ class OfflineSoundCard extends HookConsumerWidget {
   final bool isSelected;
   final Key? backgroundKey;
   final SoundOfflineItem item;
-  final String selectingId;
+  final SelectingState selectingState;
   final ValueChanged<String> onDeleted;
   final ValueChanged<SelectingState> onSelecting;
+  final VoidCallback onUnSelecting;
 
   const OfflineSoundCard({
     super.key,
@@ -23,32 +24,34 @@ class OfflineSoundCard extends HookConsumerWidget {
     required this.item,
     required this.onDeleted,
     required this.onSelecting,
-    required this.selectingId,
+    required this.onUnSelecting,
+    required this.selectingState,
     this.backgroundKey,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useAutomaticKeepAlive();
-
     final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
-    final audioOfflinePlayerMemoized =
-        useMemoized(() => audioOfflinePlayerProvider(item.id));
+    final audioOfflinePlayerMemoized = useMemoized(
+      () => audioOfflinePlayerProvider(item.id),
+      [item.id],
+    );
     final audioOfflinePlayerNotifier =
         ref.watch(audioOfflinePlayerMemoized.notifier);
     final audioOfflinePlayerState = ref.watch(audioOfflinePlayerMemoized);
 
     final onTap = useCallback(() {
-      onSelecting(
-        SelectingState(
-          sound: item,
-          networkType: NetworkType.offline,
-        ),
-      );
-
       if (audioOfflinePlayerState.isPlaying) {
+        onUnSelecting();
         audioOfflinePlayerNotifier.onPause();
       } else {
+        onSelecting(
+          SelectingState(
+            sound: item,
+            networkType: NetworkType.offline,
+          ),
+        );
+
         audioOfflinePlayerNotifier.onPlay(item.id);
       }
     }, [
@@ -57,12 +60,12 @@ class OfflineSoundCard extends HookConsumerWidget {
     ]);
 
     useEffect(() {
-      if (selectingId != item.id) {
+      if (selectingState.isEmpty) {
         audioOfflinePlayerNotifier.onPause();
       }
 
       return () {};
-    }, [selectingId, item]);
+    }, [selectingState, item]);
 
     useEffect(() {
       return () {

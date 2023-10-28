@@ -21,16 +21,14 @@ class SoundCardContent extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
-          child: Container(
-            padding: EdgeInsets.only(right: spacing()),
-            child: Text(
-              name,
-              style: context.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-              overflow: TextOverflow.ellipsis,
+        Container(
+          padding: EdgeInsets.only(right: spacing()),
+          child: Text(
+            name,
+            style: context.textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.bold,
             ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         if (isLoading) const BaseCircularIndicator(size: 1),

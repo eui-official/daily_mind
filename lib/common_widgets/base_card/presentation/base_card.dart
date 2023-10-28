@@ -1,3 +1,5 @@
+import 'package:daily_mind/common_widgets/base_card/presentation/base_card_content.dart';
+import 'package:daily_mind/common_widgets/base_card/presentation/base_card_gradient.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card_image.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -36,21 +38,14 @@ class BaseCard extends HookWidget {
         return ClipRRect(
           borderRadius: BorderRadius.circular(spacing(2)),
           child: Stack(
+            alignment: Alignment.bottomCenter,
             children: [
-              SizedBox(
-                height: imageHeight,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(child: BaseCardImage(image: image)),
-                    Container(
-                      color: color,
-                      padding: EdgeInsets.all(spacing(2)),
-                      child: child,
-                    ),
-                  ],
-                ),
+              BaseCardImage(
+                image: image,
+                imageHeight: imageHeight,
               ),
+              BaseCardGradient(color: color),
+              BaseCardContent(child: child),
               BaseNullBuilder(
                 value: onTap,
                 builder: (onTap) {

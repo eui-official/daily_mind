@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_widgets/base_list_sound.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/sound_items.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
 import 'package:daily_mind/features/offline_sound_card/presentation/offline_sound_card.dart';
@@ -30,8 +29,8 @@ class OfflineListSound extends HookConsumerWidget {
           item: item,
           onDeleted: newMixSelectedNotifier.onDeleted,
           onSelecting: newMixSelectedNotifier.onSelecting,
-          selectingId:
-              newMixSelectedState.selectingState.sound?.id ?? emptyString,
+          onUnSelecting: newMixSelectedNotifier.onUnSelecting,
+          selectingState: newMixSelectedState.selectingState,
         );
       },
     );

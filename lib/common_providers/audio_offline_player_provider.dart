@@ -9,7 +9,7 @@ const initState = AudioPlayerState(
 );
 
 class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
-  final GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
+  GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
 
   AudioOfflinePlayerNotifier() : super(initState) {
     onInit();
@@ -37,6 +37,12 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
 
   void onPause() {
     gaplessAudioPlayer.pause();
+  }
+
+  @override
+  void dispose() {
+    gaplessAudioPlayer.dispose();
+    super.dispose();
   }
 }
 

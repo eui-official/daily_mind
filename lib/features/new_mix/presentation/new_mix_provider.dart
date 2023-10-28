@@ -21,11 +21,11 @@ class NewMixdNotifier extends StateNotifier<NewMixState> {
   }
 
   void onSelecting(SelectingState newSelectingState) {
-    if (state.selectingState == newSelectingState) {
-      onResetSelectingId();
-    } else {
-      state = state.copyWith(selectingState: newSelectingState);
-    }
+    state = state.copyWith(selectingState: newSelectingState);
+  }
+
+  void onUnSelecting() {
+    state = state.copyWith(selectingState: initSelectingState);
   }
 
   void onDeleted(String id) {
@@ -44,7 +44,9 @@ class NewMixdNotifier extends StateNotifier<NewMixState> {
     final newSelectedStates = List<SelectingState>.from(state.selectedStates);
     newSelectedStates.add(state.selectingState);
 
-    state = state.copyWith(selectedStates: newSelectedStates);
+    state = state.copyWith(
+      selectedStates: newSelectedStates,
+    );
 
     onResetSelectingId();
   }

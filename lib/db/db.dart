@@ -23,7 +23,7 @@ class Db {
   }
 
   Stream<List<Playlist>> onStreamAllPlaylists() {
-    return isar.playlists.where().watch();
+    return isar.playlists.where(sort: Sort.desc).anyId().watch();
   }
 
   Stream<Playlist?> onStreamPlaylistById(int id) {
@@ -35,7 +35,7 @@ class Db {
   }
 
   List<Playlist> onGetAllPlaylists() {
-    return isar.playlists.where().findAllSync();
+    return isar.playlists.where(sort: Sort.desc).anyId().findAllSync();
   }
 
   void onAddSetting(String? value, String type) {
