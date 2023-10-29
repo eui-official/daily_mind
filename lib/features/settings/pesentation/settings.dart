@@ -1,6 +1,5 @@
 import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/settings/pesentation/settings_language.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_theme.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_version.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -24,7 +23,6 @@ class Settings extends StatelessWidget {
                 child: const Column(
                   children: [
                     SettingsTheme(),
-                    SettingsLanguage(),
                     SettingsVersion(),
                   ],
                 ),

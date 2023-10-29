@@ -2,8 +2,6 @@ import 'package:daily_mind/common_applications/base_audio_handler/application/ba
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
-import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/setting_watcher/presentation/setting_watcher.dart';
 import 'package:daily_mind/features/settings/application/settings.dart';
 import 'package:daily_mind/router/router.dart';
@@ -30,15 +28,6 @@ class Init extends HookConsumerWidget {
 
     useEffectDelayed(() {
       baseAudioHandlerNotifier.onSetAudioHandler(audioHandler);
-
-      db.streamSetting('language').listen((setting) {
-        if (setting.isNotEmpty) {
-          final language = getLanguage(setting.first, context).toMapLocale;
-
-          context.setLocale(Locale(language.first, language.last));
-          engine.performReassemble();
-        }
-      });
     }, [context, audioHandler]);
 
     return SettingWatcher(

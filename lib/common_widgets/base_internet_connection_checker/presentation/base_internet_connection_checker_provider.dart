@@ -1,11 +1,12 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:daily_mind/common_widgets/base_internet_check/domain/base_internet_check_state.dart';
+import 'package:daily_mind/common_widgets/base_internet_connection_checker/domain/base_internet_check_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'base_internet_check_provider.g.dart';
+part 'base_internet_connection_checker_provider.g.dart';
 
 @riverpod
-class BaseInternetCheckNotifier extends _$BaseInternetCheckNotifier {
+class BaseInternetConnectionCheckerNotifier
+    extends _$BaseInternetConnectionCheckerNotifier {
   @override
   Future<BaseInternetCheckState> build() async {
     final connectivityResult = await Connectivity().checkConnectivity();

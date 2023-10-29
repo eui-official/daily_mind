@@ -13,7 +13,6 @@ class Localization extends StatelessWidget {
   Widget build(BuildContext context) {
     return EasyLocalization(
       supportedLocales: const [
-        Locale('en', 'US'),
         Locale('vi', 'VN'),
       ],
       fallbackLocale: const Locale('vi', 'VN'),

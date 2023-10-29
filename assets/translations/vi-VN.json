@@ -12,8 +12,6 @@
   "delete": "Xóa",
   "fire": "Lửa",
   "forest": "Rừng",
-  "hello": "Xin chào,",
-  "language": "Ngôn ngữ",
   "mixEditorContent": "Điều chỉnh âm thanh để phù hợp với bạn",
   "mixLisEmpty": "Bạn chưa có bản mix nào",
   "mixList": "Danh sách âm thanh",
@@ -41,5 +39,7 @@
   "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "water": "Nước",
-  "wind": "Gió"
+  "wind": "Gió",
+  "noInternetConnection": "Không có kết nối internet",
+  "noInternetNotice": "Điều này có thể gây ảnh hưởng đến trãi nghiệm của bạn"
 }
