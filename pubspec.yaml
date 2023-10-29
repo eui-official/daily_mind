@@ -72,6 +72,10 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   carousel_slider: ^4.2.1
   audio_session: ^0.1.16
+  connectivity_plus: ^5.0.1
+  riverpod: ^2.4.5
+  riverpod_annotation: ^2.3.0
+  flutter_riverpod: ^2.4.5
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -88,6 +92,8 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   envied_generator: ^0.3.0+3
   json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.5
+  custom_lint: ^0.5.5
 
 flutter_launcher_icons:
   android: 'launcher_icon'
