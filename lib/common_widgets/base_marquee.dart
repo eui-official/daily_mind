@@ -17,7 +17,8 @@ class BaseMarquee extends StatelessWidget {
     return Marquee(
       text: text,
       blankSpace: spacing(3),
-      fadingEdgeEndFraction: 1,
+      fadingEdgeEndFraction: 0.25,
+      fadingEdgeStartFraction: 0.5,
       style: style,
     );
   }

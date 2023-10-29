@@ -22,17 +22,20 @@ class InternetWatcherContent extends StatelessWidget {
           end: Alignment.topCenter,
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: space(
-          [
-            const Flexible(child: BaseCircularIndicator(size: 4)),
-            SizedBox(
-              height: spacing(3),
-              child: const BaseMarquee(text: 'Không có kết nối'),
-            ),
-          ],
-          height: spacing(2),
+      child: FractionallySizedBox(
+        widthFactor: 0.5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: space(
+            [
+              const Flexible(child: BaseCircularIndicator(size: 4)),
+              SizedBox(
+                height: spacing(3),
+                child: const BaseMarquee(text: 'Không có kết nối'),
+              ),
+            ],
+            height: spacing(2),
+          ),
         ),
       ),
     );
