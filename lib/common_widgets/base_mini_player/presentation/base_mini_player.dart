@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -42,10 +43,6 @@ class BaseMiniPlayer extends HookConsumerWidget {
           borderRadius: BorderRadius.circular(spacing()),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: spacing()),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(spacing()),
-              color: context.theme.primaryColorDark.withOpacity(0.6),
-            ),
             child: Row(
               children: space([
                 AnimatedSwitcher(
@@ -69,6 +66,9 @@ class BaseMiniPlayer extends HookConsumerWidget {
                 ),
               ], width: spacing(2)),
             ),
+          ).frosted(
+            borderRadius: BorderRadius.circular(spacing()),
+            frostColor: context.theme.primaryColorDark,
           ),
         ),
       ),

@@ -76,6 +76,7 @@ dependencies:
   riverpod: ^2.4.5
   riverpod_annotation: ^2.3.0
   flutter_riverpod: ^2.4.5
+  blur: ^3.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
