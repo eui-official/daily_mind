@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:daily_mind/common_widgets/base_animated_opacity.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -18,7 +17,7 @@ class DiskPlayerCircle extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final animation = useAnimationController(duration: diskDuration)..repeat();
+    final animation = useAnimationController(duration: diskDuration);
 
     useEffect(() {
       if (isPlaying) {
@@ -38,20 +37,18 @@ class DiskPlayerCircle extends HookWidget {
           child: child,
         );
       },
-      child: BaseAnimatedOpacity(
-        valueKey: ValueKey(image),
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: kElevationToShadow[4],
-            image: DecorationImage(
-              image: image,
-              fit: BoxFit.cover,
-            ),
+      child: AnimatedContainer(
+        duration: kThemeChangeDuration,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: kElevationToShadow[4],
+          image: DecorationImage(
+            image: image,
+            fit: BoxFit.cover,
           ),
-          width: context.width,
-          height: context.height / 2.75,
         ),
+        width: context.width,
+        height: context.height / 2.75,
       ),
     );
   }

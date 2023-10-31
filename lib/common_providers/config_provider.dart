@@ -1,10 +1,8 @@
+import 'package:daily_mind/common_applications/supabase.dart';
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/config_state.dart';
 import 'package:daily_mind/common_domains/sound_type.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-final supabase = Supabase.instance.client;
 
 class ConfigNotifier extends StateNotifier<ConfigState> {
   ConfigNotifier()

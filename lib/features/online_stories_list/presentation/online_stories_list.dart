@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_list_stories_builder.dart';
+import 'package:daily_mind/common_widgets/base_list_stories_builder/presentation/base_list_stories_builder.dart';
 import 'package:daily_mind/features/online_category/presentation/online_category.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
