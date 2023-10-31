@@ -20,7 +20,8 @@ class BaseListStoriesBuilderNotifier extends _$BaseListStoriesBuilderNotifier {
 
   Future<List<ItemCategory>> onGetItemCategory() async {
     final configState = ref.read(configProvider);
-    final items = await supabase.from('items').select();
+
+    final items = await supabase.from('items').select().order('created_at');
 
     List<Item> listItem = [];
 

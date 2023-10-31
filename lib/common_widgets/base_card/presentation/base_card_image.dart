@@ -24,6 +24,7 @@ class BaseCardImage extends StatelessWidget {
         image: DecorationImage(
           image: image,
           fit: BoxFit.cover,
+          alignment: Alignment.topCenter,
         ),
       ),
     );

@@ -18,19 +18,19 @@ class OnlineList extends HookConsumerWidget {
 
     return InternetConnectionChecker(
       child: Scaffold(
-        body: Stack(
-          children: [
-            const BaseBackground(),
-            BaseRefresh(
-              onRefresh: baseListStoriesBuilderNotifier.onRefreshItemsCategory,
-              child: AppBarScrollview(
+        body: BaseRefresh(
+          onRefresh: baseListStoriesBuilderNotifier.onRefreshItemsCategory,
+          child: Stack(
+            children: [
+              const BaseBackground(),
+              AppBarScrollview(
                 title: 'stories'.tr(),
                 children: const [
                   OnlineStoriesList(),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
