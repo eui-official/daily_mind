@@ -3,16 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class MusicPlaying extends StatelessWidget {
+  final Color? color;
+  final double? width;
+  final double? height;
+
   const MusicPlaying({
     super.key,
+    this.width,
+    this.height,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.asset(
-      'assets/lottie/music-playing.json',
-      width: spacing(2),
-      height: spacing(2),
+    return ColorFiltered(
+      colorFilter: ColorFilter.mode(
+        color ?? Colors.white,
+        BlendMode.modulate,
+      ),
+      child: Lottie.asset(
+        'assets/lottie/music-playing.json',
+        width: width ?? spacing(4),
+        height: height ?? spacing(4),
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

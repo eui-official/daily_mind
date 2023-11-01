@@ -13,18 +13,21 @@ class BaseContentWithPlayIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: space(
-        [
-          child,
-          Icon(
-            Icons.play_circle_fill_outlined,
-            size: spacing(5),
-            color: context.theme.primaryColor,
-          )
-        ],
-        width: spacing(2),
+    return Container(
+      padding: EdgeInsets.all(spacing(2)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: space(
+          [
+            child,
+            Icon(
+              Icons.play_circle_fill_outlined,
+              size: spacing(5),
+              color: context.theme.primaryColor,
+            )
+          ],
+          width: spacing(2),
+        ),
       ),
     );
   }

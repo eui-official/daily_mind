@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/features/music_playing/presentation/music_playing.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SoundCardContent extends StatelessWidget {
@@ -19,13 +20,22 @@ class SoundCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseHeaderWithDescription(
-      name: name,
-      description: description,
-      headerAction: Row(
+    return Container(
+      padding: EdgeInsets.all(spacing(2)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (isLoading) const BaseCircularIndicator(size: 1),
-          if (isPlaying) const MusicPlaying(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              if (isLoading) const BaseCircularIndicator(size: 1),
+              if (isPlaying) const MusicPlaying(),
+            ],
+          ),
+          BaseHeaderWithDescription(
+            name: name,
+            description: description,
+          )
         ],
       ),
     );
