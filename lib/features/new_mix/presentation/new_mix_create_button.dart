@@ -13,17 +13,19 @@ class NewMixCreateButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final newMixSelectedState = ref.watch(newMixProvider);
+    final newMixNotifier = ref.watch(newMixProvider.notifier);
+    final newMixState = ref.watch(newMixProvider);
 
     final onPressed = useCallback(
       () {
+        newMixNotifier.onUnSelecting();
         context.push('/offline-mix-editor');
       },
       [],
     );
 
     return ElevatedButton(
-      onPressed: newMixSelectedState.isNoSound ? empty : onPressed,
+      onPressed: newMixState.isNoSound ? empty : onPressed,
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(200, 48),
       ),

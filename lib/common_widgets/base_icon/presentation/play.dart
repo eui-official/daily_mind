@@ -1,0 +1,21 @@
+import 'package:daily_mind/theme/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
+
+class PlayIcon extends StatelessWidget {
+  final double size;
+
+  const PlayIcon({
+    super.key,
+    this.size = 4,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      Icons.play_circle_fill_outlined,
+      size: spacing(size),
+      color: context.theme.primaryColor,
+    );
+  }
+}

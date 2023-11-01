@@ -1,3 +1,4 @@
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SoundCardDeleteButton extends StatelessWidget {
@@ -11,8 +12,8 @@ class SoundCardDeleteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 0,
-      right: 0,
+      top: spacing(2),
+      right: spacing(2),
       child: IconButton(
         icon: const Icon(Icons.delete_rounded),
         onPressed: onPressed,

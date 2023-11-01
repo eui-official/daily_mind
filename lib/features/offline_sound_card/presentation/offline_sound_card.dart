@@ -76,15 +76,15 @@ class OfflineSoundCard extends HookConsumerWidget {
     }, [item]);
 
     return BaseSoundCard(
-      key: backgroundKey,
-      isPlaying: audioOfflinePlayerState.isPlaying,
-      isLoading: audioOfflinePlayerState.isLoading,
-      isSelected: isSelected,
-      onTap: onTap,
-      onDeleted: () => onDeleted(item.id),
-      image: AssetImage(item.image),
-      name: item.name.tr(),
       description: item.description.tr(),
+      image: AssetImage(item.image),
+      isLoading: audioOfflinePlayerState.isLoading,
+      isPlaying: audioOfflinePlayerState.isPlaying,
+      isSelected: isSelected,
+      key: backgroundKey,
+      name: item.name.tr(),
+      onDeleted: () => onDeleted(item.id),
+      onTap: onTap,
     );
   }
 }

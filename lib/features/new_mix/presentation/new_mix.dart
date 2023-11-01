@@ -17,61 +17,63 @@ class NewMix extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Tutorial(
-      task: newMixTutorial,
-      targets: [
-        TargetFocus(
-          keyTarget: soundKey,
-          shape: ShapeLightFocus.RRect,
-          radius: spacing(2),
-          contents: [
-            TargetContent(
-              child: Text(
-                'newMixTutorialContent1'.tr(),
+    return Scaffold(
+      body: Tutorial(
+        task: newMixTutorial,
+        targets: [
+          TargetFocus(
+            keyTarget: soundKey,
+            shape: ShapeLightFocus.RRect,
+            radius: spacing(2),
+            contents: [
+              TargetContent(
+                child: Text(
+                  'newMixTutorialContent1'.tr(),
+                ),
+              ),
+            ],
+          ),
+          TargetFocus(
+            keyTarget: newMixButtonSwitcherKey,
+            shape: ShapeLightFocus.RRect,
+            radius: spacing(2),
+            contents: [
+              TargetContent(
+                align: ContentAlign.top,
+                child: Text(
+                  'newMixTutorialContent2'.tr(),
+                ),
+              ),
+            ],
+          )
+        ],
+        child: Stack(
+          children: [
+            const BaseBackground(),
+            Container(
+              margin: const EdgeInsets.only(
+                bottom: kBottomNavigationBarHeight * 1.5,
+              ),
+              child: AppBarScrollview(
+                title: 'newMix'.tr(),
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+                    child: const OfflineListSound(),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: spacing(2),
+              child: NewMixButtonSwitcher(
+                key: newMixButtonSwitcherKey,
               ),
             ),
           ],
         ),
-        TargetFocus(
-          keyTarget: newMixButtonSwitcherKey,
-          shape: ShapeLightFocus.RRect,
-          radius: spacing(2),
-          contents: [
-            TargetContent(
-              align: ContentAlign.top,
-              child: Text(
-                'newMixTutorialContent2'.tr(),
-              ),
-            ),
-          ],
-        )
-      ],
-      child: Stack(
-        children: [
-          const BaseBackground(),
-          Container(
-            margin: const EdgeInsets.only(
-              bottom: kBottomNavigationBarHeight * 1.5,
-            ),
-            child: AppBarScrollview(
-              title: 'newMix'.tr(),
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-                  child: const OfflineListSound(),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: spacing(2),
-            child: NewMixButtonSwitcher(
-              key: newMixButtonSwitcherKey,
-            ),
-          ),
-        ],
       ),
     );
   }
