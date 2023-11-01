@@ -118,16 +118,14 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   }
 
   void onClearOfflinePlayerItems() {
-    for (var offlinePlayerItem in offlinePlayerItems) {
-      offlinePlayerItem.player.dispose();
-    }
+    onOfflineDispose();
 
     offlinePlayerItems.clear();
   }
 
   void onOfflineDispose() {
     for (var offlinePlayerItem in offlinePlayerItems) {
-      offlinePlayerItem.player.dispose();
+      offlinePlayerItem.player.onDispose();
     }
   }
 

@@ -33,9 +33,9 @@ class MixEditorItem extends HookWidget {
     final isPlaying = playingSnapshot.data ?? false;
 
     final onInit = useCallback(
-      () {
-        player.onSetSource(offlineMixEditorItemState.id);
-        player.setVolume(offlineMixEditorItemState.volume);
+      () async {
+        await player.onSetSource(offlineMixEditorItemState.id);
+        await player.setVolume(offlineMixEditorItemState.volume);
         player.play();
       },
       [],
@@ -52,7 +52,9 @@ class MixEditorItem extends HookWidget {
     useEffect(() {
       onInit();
 
-      return player.dispose;
+      return () {
+        player.onDispose();
+      };
     }, []);
 
     return BaseMixEditorItem(

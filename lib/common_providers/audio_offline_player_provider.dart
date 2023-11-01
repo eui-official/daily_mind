@@ -28,10 +28,11 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
     });
   }
 
-  void onPlay(String id) {
+  void onPlay(String id) async {
     state = state.copyWith(isLoading: true);
 
-    gaplessAudioPlayer.onSetSource(id);
+    await gaplessAudioPlayer.onSetSource(id);
+
     gaplessAudioPlayer.play();
   }
 
@@ -41,7 +42,7 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
 
   @override
   void dispose() {
-    gaplessAudioPlayer.dispose();
+    gaplessAudioPlayer.onDispose();
     super.dispose();
   }
 }

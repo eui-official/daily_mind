@@ -23,15 +23,15 @@ class Introduction extends HookWidget {
       safeValueBuilder(
         firstTime,
         (safeFirstTime) {},
-        () {
-          player.onSetSource('water');
-          player.setVolume(0.1);
+        () async {
+          await player.onSetSource('water');
+          await player.setVolume(0.2);
           player.play();
         },
       );
 
       return () {
-        player.dispose();
+        player.onDispose();
       };
     }, []);
 
