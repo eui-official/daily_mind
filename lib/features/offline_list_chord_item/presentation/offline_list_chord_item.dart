@@ -1,5 +1,6 @@
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
-import 'package:daily_mind/common_widgets/base_content_with_play_icon.dart';
+import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -27,16 +28,21 @@ class OfflineListChordItem extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive(wantKeepAlive: true);
 
-    final items = playlist.items ?? [];
-    final names =
-        items.map((item) => item.id.soundOfflineItem.name.tr()).join(', ');
-    final title = playlist.title ?? emptyString;
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
     final offlineListChoreItemNotifier =
         ref.read(offlineListChoreItemProvider.notifier);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
 
+    final mediaItemMemoized = useMemoized(() => baseAudioHandler.mediaItem, []);
+    final mediaItemSnapshot = useStream(mediaItemMemoized);
+
+    final items = playlist.items ?? [];
+    final names =
+        items.map((item) => item.id.soundOfflineItem.name.tr()).join(', ');
+    final title = playlist.title ?? emptyString;
     final item = items.first;
     final soundItem = item.id.soundOfflineItem;
+    final isPlaying = mediaItemSnapshot.data?.id == playlist.id.toString();
 
     final onOpenOfflinePlayer = useCallback(() {
       baseMiniPlayerNotifier.onHide();
@@ -83,6 +89,7 @@ class OfflineListChordItem extends HookConsumerWidget {
         onTap: onPlayChord,
         image: AssetImage(soundItem.image),
         content: BaseContentWithPlayIcon(
+          isPlaying: isPlaying,
           child: Flexible(
             child: BaseHeaderWithDescription(
               name: title,

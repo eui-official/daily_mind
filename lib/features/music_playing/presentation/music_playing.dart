@@ -23,8 +23,8 @@ class MusicPlaying extends StatelessWidget {
       ),
       child: Lottie.asset(
         'assets/lottie/music-playing.json',
-        width: width ?? spacing(4),
-        height: height ?? spacing(4),
+        width: width ?? spacing(3),
+        height: height ?? spacing(3),
         fit: BoxFit.cover,
       ),
     );

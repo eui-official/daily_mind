@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_domains/item_category.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
-import 'package:daily_mind/common_widgets/base_content_with_play_icon.dart';
+import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';

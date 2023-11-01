@@ -28,31 +28,33 @@ class BasePlayerDetails extends HookConsumerWidget {
 
     final isPlaying = playBackState.data?.playing ?? false;
 
-    return StackBackground(
-      image: image,
-      child: CustomScrollView(
-        controller: scrollController,
-        slivers: [
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            flexibleSpace: DiskPlayer(
-              image: image,
-              isPlaying: isPlaying,
-            ),
-            expandedHeight: context.height / 2,
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(top: kToolbarHeight),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  child,
-                ],
+    return Scaffold(
+      body: StackBackground(
+        image: image,
+        child: CustomScrollView(
+          controller: scrollController,
+          slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: DiskPlayer(
+                image: image,
+                isPlaying: isPlaying,
               ),
+              expandedHeight: context.height / 2,
             ),
-          )
-        ],
+            SliverPadding(
+              padding: const EdgeInsets.only(top: kToolbarHeight),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    child,
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
