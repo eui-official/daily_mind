@@ -45,7 +45,7 @@ class BaseSoundCard extends StatelessWidget {
           ),
           child: BaseCard(
             image: image,
-            imageHeight: miniImageHeight,
+            imageHeight: mediumImageHeight,
             onTap: onTap,
             child: SoundCardContent(
               name: name,

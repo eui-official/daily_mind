@@ -14,7 +14,7 @@ class EmptyListMixBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseCard(
       image: const AssetImage('assets/images/empty_nature.png'),
-      imageHeight: imageHeight,
+      imageHeight: smallImageHeight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

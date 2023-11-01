@@ -14,16 +14,14 @@ class GaplessAudioPlayer extends AudioPlayer {
       children.add(AudioSource.asset(path));
     }
 
-    final concatenatingAudioSource = ConcatenatingAudioSource(
-      children: children,
-    );
+    final source = ConcatenatingAudioSource(children: children);
 
     final initialIndex = Random().nextInt(children.length);
 
     await setLoopMode(LoopMode.all);
 
     await setAudioSource(
-      concatenatingAudioSource,
+      source,
       initialIndex: initialIndex,
       initialPosition: Duration.zero,
     );
