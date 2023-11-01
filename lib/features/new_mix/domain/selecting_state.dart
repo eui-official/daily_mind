@@ -11,6 +11,4 @@ class SelectingState with _$SelectingState {
     required dynamic sound,
     required NetworkType networkType,
   }) = _SelectingState;
-
-  bool get isEmpty => sound == null;
 }

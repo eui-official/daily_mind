@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix_box.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
@@ -28,18 +29,25 @@ class EmptyListMix extends StatelessWidget {
           ],
         ),
       ],
-      child: AppBarScrollview(
-        title: 'naturalSounds'.tr(),
-        children: [
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(
-              horizontal: spacing(2),
-              vertical: spacing(2),
-            ),
-            child: const EmptyListMixBox(),
-          ),
-        ],
+      child: Scaffold(
+        body: Stack(
+          children: [
+            const BaseBackground(),
+            AppBarScrollview(
+              title: 'naturalSounds'.tr(),
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: spacing(2),
+                    vertical: spacing(2),
+                  ),
+                  child: const EmptyListMixBox(),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

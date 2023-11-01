@@ -7,7 +7,7 @@ part of 'base_list_stories_builder_provider.dart';
 // **************************************************************************
 
 String _$baseListStoriesBuilderNotifierHash() =>
-    r'1a5ceb755e523dba36120db8149fde30ee0003fa';
+    r'7d40753075e9af96e15cf8cb2e600b78583e57c9';
 
 /// See also [BaseListStoriesBuilderNotifier].
 @ProviderFor(BaseListStoriesBuilderNotifier)

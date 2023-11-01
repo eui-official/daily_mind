@@ -60,7 +60,7 @@ class OfflineSoundCard extends HookConsumerWidget {
     ]);
 
     useEffect(() {
-      if (selectingState.isEmpty) {
+      if (selectingState.sound?.id != item.id) {
         audioOfflinePlayerNotifier.onPause();
       }
 
@@ -84,6 +84,7 @@ class OfflineSoundCard extends HookConsumerWidget {
       onDeleted: () => onDeleted(item.id),
       image: AssetImage(item.image),
       name: item.name.tr(),
+      description: item.description.tr(),
     );
   }
 }

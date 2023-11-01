@@ -44,7 +44,7 @@ class BaseListSound<T> extends StatelessWidget {
             ),
           Flexible(
             child: StaggeredGrid.count(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               mainAxisSpacing: spacing(2),
               crossAxisSpacing: spacing(2),
               children: items.map((item) {

@@ -49,19 +49,24 @@ class NewMix extends StatelessWidget {
       child: Stack(
         children: [
           const BaseBackground(),
-          AppBarScrollview(
-            title: 'newMix'.tr(),
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-                child: const OfflineListSound(),
-              ),
-            ],
+          Container(
+            margin: const EdgeInsets.only(
+              bottom: kBottomNavigationBarHeight * 1.5,
+            ),
+            child: AppBarScrollview(
+              title: 'newMix'.tr(),
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+                  child: const OfflineListSound(),
+                ),
+              ],
+            ),
           ),
           Positioned(
             left: 0,
             right: 0,
-            bottom: spacing(4),
+            bottom: spacing(2),
             child: NewMixButtonSwitcher(
               key: newMixButtonSwitcherKey,
             ),

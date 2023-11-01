@@ -12,6 +12,7 @@ class BaseSoundCard extends StatelessWidget {
   final bool isSelected;
   final Key? backgroundKey;
   final String name;
+  final String description;
   final VoidCallback onDeleted;
   final VoidCallback onTap;
   final ImageProvider image;
@@ -23,6 +24,7 @@ class BaseSoundCard extends StatelessWidget {
     required this.isPlaying,
     required this.isSelected,
     required this.name,
+    required this.description,
     required this.onDeleted,
     required this.onTap,
     this.backgroundKey,
@@ -47,6 +49,7 @@ class BaseSoundCard extends StatelessWidget {
             onTap: onTap,
             child: SoundCardContent(
               name: name,
+              description: description,
               isPlaying: isPlaying,
               isLoading: isLoading,
             ),

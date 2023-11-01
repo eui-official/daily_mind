@@ -35,29 +35,34 @@ class BaseCard extends HookWidget {
         final color = palette.darkMutedColor?.color.withOpacity(0.6) ??
             context.theme.colorScheme.background;
 
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(spacing(2)),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              BaseCardImage(
-                image: image,
-                imageHeight: imageHeight,
-              ),
-              BaseCardGradient(color: color),
-              BaseCardContent(child: child),
-              BaseNullBuilder(
-                value: onTap,
-                builder: (onTap) {
-                  return Positioned.fill(
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: InkWell(onTap: onTap),
-                    ),
-                  );
-                },
-              ),
-            ],
+        return Container(
+          decoration: BoxDecoration(
+            boxShadow: kElevationToShadow[24],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(spacing(2)),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                BaseCardImage(
+                  image: image,
+                  imageHeight: imageHeight,
+                ),
+                BaseCardGradient(color: color),
+                BaseCardContent(child: child),
+                BaseNullBuilder(
+                  value: onTap,
+                  builder: (onTap) {
+                    return Positioned.fill(
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: InkWell(onTap: onTap),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },
