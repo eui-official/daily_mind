@@ -7,15 +7,15 @@ class PlayIcon extends StatelessWidget {
 
   const PlayIcon({
     super.key,
-    this.size = 4,
+    this.size = 5,
   });
 
   @override
   Widget build(BuildContext context) {
     return Icon(
+      color: context.theme.primaryColor,
       Icons.play_circle_fill_outlined,
       size: spacing(size),
-      color: context.theme.primaryColor,
     );
   }
 }

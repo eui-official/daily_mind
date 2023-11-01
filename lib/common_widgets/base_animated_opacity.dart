@@ -30,7 +30,7 @@ class BaseAnimatedOpacity extends HookWidget {
     }, [valueKey]);
 
     return AnimatedSwitcher(
-      duration: kThemeChangeDuration,
+      duration: defaultDuration,
       child: isVisible.value ? child : emptyWidget,
     );
   }

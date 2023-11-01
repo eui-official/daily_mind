@@ -13,6 +13,10 @@ class OfflineListChoreItemNotifier extends StateNotifier<void> {
   void onPlayChore(Playlist playlist) {
     audioHandler.onInitOffline(playlist);
   }
+
+  void onDispose() {
+    audioHandler.onOfflineDispose();
+  }
 }
 
 final offlineListChoreItemProvider =

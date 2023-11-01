@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_background.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix.dart';
@@ -19,10 +20,6 @@ class OfflineList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final offlineListChoreState = ref.watch(offlineListChoreProvider);
-
-    if (offlineListChoreState.isEmptyPlaylists) {
-      return const EmptyListMix();
-    }
 
     final child = useMemoized(() {
       if (offlineListChoreState.isEmptyPlaylists) {
@@ -64,6 +61,9 @@ class OfflineList extends HookConsumerWidget {
       );
     }, [offlineListChoreState]);
 
-    return AnimatedSwitcher(duration: kThemeChangeDuration, child: child);
+    return AnimatedSwitcher(
+      duration: defaultDuration,
+      child: child,
+    );
   }
 }

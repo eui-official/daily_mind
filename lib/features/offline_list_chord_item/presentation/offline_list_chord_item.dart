@@ -83,6 +83,7 @@ class OfflineListChordItem extends HookConsumerWidget {
       key: ValueKey(soundItem.id),
       direction: DismissDirection.down,
       onDismissed: (direction) {
+        offlineListChoreItemNotifier.onDispose();
         db.onDeletePlaylist(playlist.id);
       },
       child: BaseCard(

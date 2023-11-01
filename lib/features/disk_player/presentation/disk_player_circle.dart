@@ -38,7 +38,7 @@ class DiskPlayerCircle extends HookWidget {
         );
       },
       child: AnimatedContainer(
-        duration: kThemeChangeDuration,
+        duration: defaultDuration,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           boxShadow: kElevationToShadow[4],

@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_loading_indicator.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/toggle_play_mode_button/presentation/toggle_play_mode_button.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class BaseMiniPlayerToggleButton extends HookWidget {
     }, [isLoading, isPlaying]);
 
     return AnimatedSwitcher(
-      duration: kThemeChangeDuration,
+      duration: defaultDuration,
       child: child,
     );
   }

@@ -1,3 +1,4 @@
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/features/offline_mini_player/presentation/offline_mini_player.dart';
@@ -27,7 +28,7 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
       crossFadeState: baseMiniPlayerState.isShow
           ? CrossFadeState.showSecond
           : CrossFadeState.showFirst,
-      duration: kThemeChangeDuration,
+      duration: defaultDuration,
     );
   }
 }
