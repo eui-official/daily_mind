@@ -92,4 +92,9 @@ class OnlineAudioPlayer extends AudioPlayer {
 
     onSetAudioSource(newList, initialIndex: indexState.lastIndex);
   }
+
+  Future<void> onDispose() async {
+    await stop();
+    await dispose();
+  }
 }

@@ -84,6 +84,7 @@ class OfflineListChordItem extends HookConsumerWidget {
       direction: DismissDirection.down,
       onDismissed: (direction) {
         offlineListChoreItemNotifier.onDispose();
+
         db.onDeletePlaylist(playlist.id);
       },
       child: BaseCard(

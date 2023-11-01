@@ -32,7 +32,7 @@ class GaplessAudioPlayer extends AudioPlayer {
     }
   }
 
-  void onDispose() async {
+  Future<void> onDispose() async {
     await stop();
     await dispose();
   }
