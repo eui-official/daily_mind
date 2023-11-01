@@ -26,10 +26,7 @@ class Background extends StatelessWidget {
             ),
           ),
         ),
-        Container().frosted(
-          frostOpacity: 0.6,
-          frostColor: context.theme.colorScheme.background,
-        )
+        Container(color: Colors.black87)
       ],
     );
   }

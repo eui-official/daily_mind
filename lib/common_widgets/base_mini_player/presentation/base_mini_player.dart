@@ -33,7 +33,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
     return Container(
       height: spacing(7),
       margin: EdgeInsets.symmetric(
-        vertical: kBottomNavigationBarHeight * 1.5,
+        vertical: kBottomNavigationBarHeight * 1.75,
         horizontal: spacing(2),
       ),
       child: Material(
