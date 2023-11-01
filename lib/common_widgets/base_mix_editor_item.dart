@@ -1,8 +1,8 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
+import 'package:daily_mind/common_widgets/base_container.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/common_widgets/base_mix_editor_content.dart';
 import 'package:daily_mind/features/volume_slider/presentation/volume_slider.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BaseMixEditorItem extends StatelessWidget {
@@ -27,8 +27,7 @@ class BaseMixEditorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseCard(
       image: AssetImage(image),
-      child: Container(
-        padding: EdgeInsets.all(spacing(2)),
+      child: BaseContainer(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

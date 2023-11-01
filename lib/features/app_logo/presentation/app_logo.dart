@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/common_widgets/base_container.dart';
 import 'package:flutter/material.dart';
 
 class AppLogo extends StatelessWidget {
@@ -6,8 +6,7 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(spacing(2)),
+    return BaseContainer(
       child: Image.asset(
         'assets/images/dove.png',
         color: Colors.white,

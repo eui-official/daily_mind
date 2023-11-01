@@ -1,7 +1,7 @@
 import 'package:daily_mind/common_widgets/base_circular_indicator.dart';
+import 'package:daily_mind/common_widgets/base_container.dart';
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/features/music_playing/presentation/music_playing.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SoundCardContent extends StatelessWidget {
@@ -20,8 +20,7 @@ class SoundCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(spacing(2)),
+    return BaseContainer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/date_formatter.dart';
+import 'package:daily_mind/common_widgets/base_container.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
 import 'package:daily_mind/common_widgets/base_slider_theme.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -62,8 +63,7 @@ class BasePlayerTime extends HookWidget {
       return () {};
     }, [value, onUpdatedSlider]);
 
-    return Container(
-      padding: EdgeInsets.all(spacing(2)),
+    return BaseContainer(
       child: Column(
         children: [
           Container(

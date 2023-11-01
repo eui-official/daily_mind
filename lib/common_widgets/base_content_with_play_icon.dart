@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_container.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,7 @@ class BaseContentWithPlayIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(spacing(2)),
+    return BaseContainer(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: space(

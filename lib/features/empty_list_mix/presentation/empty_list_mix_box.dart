@@ -1,7 +1,7 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
+import 'package:daily_mind/common_widgets/base_container.dart';
 import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart' hide Trans;
@@ -16,8 +16,7 @@ class EmptyListMixBox extends StatelessWidget {
     return BaseCard(
       image: const AssetImage('assets/images/empty_nature.png'),
       imageHeight: smallImageHeight,
-      child: Container(
-        padding: EdgeInsets.all(spacing(2)),
+      child: BaseContainer(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
