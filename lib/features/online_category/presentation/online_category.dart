@@ -63,7 +63,7 @@ class OnlineCategory extends HookConsumerWidget {
         onTap: onTap,
         imageHeight: imageHeight,
         image: CachedNetworkImageProvider(itemCategory.items.first.image),
-        child: BaseContentWithPlayIcon(
+        content: BaseContentWithPlayIcon(
           child: Flexible(
             child: BaseHeaderWithDescription(
               name: itemCategory.category.name,

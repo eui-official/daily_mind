@@ -82,7 +82,7 @@ class OfflineListChordItem extends HookConsumerWidget {
       child: BaseCard(
         onTap: onPlayChord,
         image: AssetImage(soundItem.image),
-        child: BaseContentWithPlayIcon(
+        content: BaseContentWithPlayIcon(
           child: Flexible(
             child: BaseHeaderWithDescription(
               name: title,

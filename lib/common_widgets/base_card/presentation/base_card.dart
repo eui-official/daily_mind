@@ -11,11 +11,11 @@ class BaseCard extends HookWidget {
   final double? imageHeight;
   final ImageProvider image;
   final VoidCallback? onTap;
-  final Widget child;
+  final Widget content;
 
   const BaseCard({
     super.key,
-    required this.child,
+    required this.content,
     required this.image,
     this.imageHeight,
     this.onTap,
@@ -48,7 +48,7 @@ class BaseCard extends HookWidget {
                   imageHeight: imageHeight,
                 ),
                 BaseCardGradient(color: color),
-                child,
+                content,
                 BaseNullBuilder(
                   value: onTap,
                   builder: (onTap) {

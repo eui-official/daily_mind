@@ -27,7 +27,7 @@ class BaseMixEditorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseCard(
       image: AssetImage(image),
-      child: BaseContainer(
+      content: BaseContainer(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
