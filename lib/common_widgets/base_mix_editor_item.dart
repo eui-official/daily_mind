@@ -29,11 +29,12 @@ class BaseMixEditorItem extends StatelessWidget {
       image: AssetImage(image),
       content: BaseContainer(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 prefixChild,
                 BaseMixEditorContent(name: name),
