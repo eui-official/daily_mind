@@ -5,10 +5,10 @@ import 'package:daily_mind/common_domains/item_category.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'base_list_stories_builder_provider.g.dart';
+part 'base_list_items_builder_provider.g.dart';
 
 @riverpod
-class BaseListStoriesBuilderNotifier extends _$BaseListStoriesBuilderNotifier {
+class BaseListItemsBuilderNotifier extends _$BaseListItemsBuilderNotifier {
   @override
   Future<List<ItemCategory>> build() => onGetItemCategory();
 

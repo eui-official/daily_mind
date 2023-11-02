@@ -19,8 +19,8 @@ class AppNavigationBar extends HookConsumerWidget {
           label: 'Âm thanh',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book_rounded),
-          label: 'Truyện',
+          icon: Icon(Icons.explore),
+          label: 'Khám phá',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
@@ -33,7 +33,6 @@ class AppNavigationBar extends HookConsumerWidget {
       backgroundColor: Colors.transparent,
       currentIndex: appNavigationBarState.index,
       onTap: appNavigationBarNotifier.onTap,
-      elevation: 0,
     );
   }
 }
