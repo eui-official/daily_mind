@@ -10,6 +10,7 @@
   "currentPlaying": "Đang phát",
   "dashboard": "Trang chủ",
   "delete": "Xóa",
+  "explore": "Khám phá",
   "fire": "Lửa",
   "fireDescription": "Âm thanh lửa giúp tạo cảm giác ấm áp, giảm căng thẳng, và thư thái, tạo không khí yên bình và tâm linh",
   "forest": "Rừng",
@@ -26,6 +27,8 @@
   "newMixTutorialContent2": "Sau khi chọn những âm thanh bạn yêu thích. Bấm vào đây để tiếp tục",
   "next": "Tiếp theo",
   "nextStep": "Bước tiếp theo",
+  "noInternetConnection": "Không có kết nối internet",
+  "noInternetNotice": "Điều này có thể gây ảnh hưởng đến trãi nghiệm của bạn",
   "ok": "Đồng ý",
   "pickTime": "Chọn giờ",
   "playingNext": "Phát tiếp theo",
@@ -39,13 +42,12 @@
   "soundList": "Danh sách âm thanh",
   "space": "Không gian",
   "spaceDescription": "Âm thanh không gian giúp giảm căng thẳng, tăng tập trung, và tạo không khí yên bình và thư thái",
-  "explore": "Khám phá",
   "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "water": "Nước",
   "waterDescription": "Âm thanh nước giúp giảm căng thẳng, tạo cảm giác yên bình, thư thái, và hỗ trợ quá trình thư giãn và ngủ",
+  "whiteNoise": "Âm thanh trắng",
+  "whiteNoiseDescription": "Âm thanh trắng giúp giảm tiếng ồn, tăng sự tập trung, và tạo ra một môi trường yên bình và thư thái",
   "wind": "Gió",
-  "windDescription": "Âm thanh gió giúp giảm căng thẳng, tạo cảm giác yên bình, thư thái và tăng cường trạng thái tâm trí tích cực",
-  "noInternetConnection": "Không có kết nối internet",
-  "noInternetNotice": "Điều này có thể gây ảnh hưởng đến trãi nghiệm của bạn"
+  "windDescription": "Âm thanh gió giúp giảm căng thẳng, tạo cảm giác yên bình, thư thái và tăng cường trạng thái tâm trí tích cực"
 }

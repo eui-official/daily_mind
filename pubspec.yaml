@@ -125,6 +125,7 @@ flutter:
     - assets/sounds/space/
     - assets/sounds/water/
     - assets/sounds/wind/
+    - assets/sounds/white-noise/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

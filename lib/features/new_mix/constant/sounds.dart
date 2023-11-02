@@ -29,4 +29,9 @@ final sounds = {
     'assets/sounds/wind/wind-2.mp3',
     'assets/sounds/wind/wind-3.mp3',
   ],
+  'whiteNoise': [
+    'assets/sounds/white-noise/white-noise-1.mp3',
+    'assets/sounds/white-noise/white-noise-2.mp3',
+    'assets/sounds/white-noise/white-noise-3.mp3',
+  ],
 };

@@ -37,4 +37,10 @@ final List<SoundOfflineItem> soundOfflineItems = [
     description: 'spaceDescription',
     image: 'assets/images/sky.png',
   ),
+  SoundOfflineItem(
+    id: 'whiteNoise',
+    name: 'whiteNoise',
+    description: 'whiteNoiseDescription',
+    image: 'assets/images/white-noise.png',
+  ),
 ];
