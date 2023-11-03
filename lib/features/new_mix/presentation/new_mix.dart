@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_background.dart';
+import 'package:daily_mind/common_widgets/base_stack_with_bottom_action.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/offline_list_sound/presentation/offline_list_sound.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_button_switcher.dart';
@@ -50,26 +51,15 @@ class NewMix extends StatelessWidget {
         child: Stack(
           children: [
             const BaseBackground(),
-            Container(
-              margin: const EdgeInsets.only(
-                bottom: kBottomNavigationBarHeight * 1.5,
-              ),
+            BaseStackWithBottomAction(
+              bottom: NewMixButtonSwitcher(key: newMixButtonSwitcherKey),
               child: AppBarScrollview(
                 title: 'newMix'.tr(),
                 children: [
-                  Container(
+                  OfflineListSound(
                     padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-                    child: const OfflineListSound(),
                   ),
                 ],
-              ),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: spacing(2),
-              child: NewMixButtonSwitcher(
-                key: newMixButtonSwitcherKey,
               ),
             ),
           ],

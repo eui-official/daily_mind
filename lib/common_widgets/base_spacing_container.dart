@@ -1,10 +1,10 @@
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class BaseContainer extends StatelessWidget {
+class BaseSpacingContainer extends StatelessWidget {
   final Widget child;
 
-  const BaseContainer({
+  const BaseSpacingContainer({
     super.key,
     required this.child,
   });

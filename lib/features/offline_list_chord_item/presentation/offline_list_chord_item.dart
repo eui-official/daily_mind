@@ -1,3 +1,4 @@
+import 'package:advanced_in_app_review/advanced_in_app_review.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
@@ -72,6 +73,8 @@ class OfflineListChordItem extends HookConsumerWidget {
             onTap: onOpenOfflinePlayer,
           ),
         );
+
+        AdvancedInAppReview().monitor();
       },
       [
         playlist,

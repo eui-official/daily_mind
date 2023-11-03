@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_container.dart';
+import 'package:daily_mind/common_widgets/base_spacing_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class BaseListViewHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BaseContainer(
+        BaseSpacingContainer(
           child: Text(
             title,
             style: context.textTheme.bodySmall?.copyWith(

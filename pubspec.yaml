@@ -78,6 +78,7 @@ dependencies:
   flutter_riverpod: ^2.4.5
   blur: ^3.1.0
   liquid_pull_to_refresh: ^3.0.1
+  advanced_in_app_review: ^1.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

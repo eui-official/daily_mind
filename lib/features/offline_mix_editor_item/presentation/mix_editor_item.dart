@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class MixEditorItem extends HookWidget {
-  final OfflineMixEditorItemState offlineMixEditorItemState;
+  final OfflineMixEditorItemState item;
   final OnItemVolumeChanged onItemVolumeChanged;
   final Key? volumeKey;
 
   const MixEditorItem({
     super.key,
-    required this.offlineMixEditorItemState,
+    required this.item,
     required this.onItemVolumeChanged,
     this.volumeKey,
   });
@@ -23,8 +23,8 @@ class MixEditorItem extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final player = useMemoized(() => GaplessAudioPlayer());
-    final soundItem = soundOfflineItems
-        .firstWhere((item) => item.id == offlineMixEditorItemState.id);
+    final soundItem =
+        soundOfflineItems.firstWhere((item) => item.id == item.id);
 
     final playingStreamMemoized = useMemoized(() => player.playingStream, []);
 
@@ -34,8 +34,8 @@ class MixEditorItem extends HookWidget {
 
     final onInit = useCallback(
       () async {
-        await player.onSetSource(offlineMixEditorItemState.id);
-        await player.setVolume(offlineMixEditorItemState.volume);
+        await player.onSetSource(item.id);
+        await player.setVolume(item.volume);
         player.play();
       },
       [],
@@ -44,9 +44,9 @@ class MixEditorItem extends HookWidget {
     final onVolumeChanged = useCallback(
       (double volume) {
         player.setVolume(volume);
-        onItemVolumeChanged(offlineMixEditorItemState, volume);
+        onItemVolumeChanged(item, volume);
       },
-      [player, offlineMixEditorItemState],
+      [player, item],
     );
 
     useEffect(() {
@@ -58,11 +58,11 @@ class MixEditorItem extends HookWidget {
     }, []);
 
     return BaseMixEditorItem(
-      volumeKey: volumeKey,
       image: soundItem.image,
-      initVolume: offlineMixEditorItemState.volume,
+      initVolume: item.volume,
       name: soundItem.name.tr(),
       onVolumeChanged: onVolumeChanged,
+      volumeKey: volumeKey,
       prefixChild: TogglePlayModeButton(
         isPlaying: isPlaying,
         onPause: player.pause,

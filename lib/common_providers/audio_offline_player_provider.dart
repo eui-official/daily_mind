@@ -20,11 +20,15 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
       final isLoading = processingState == ProcessingState.buffering ||
           processingState == ProcessingState.loading;
 
-      state = state.copyWith(isLoading: isLoading);
+      if (mounted) {
+        state = state.copyWith(isLoading: isLoading);
+      }
     });
 
     gaplessAudioPlayer.playingStream.listen((isPlaying) {
-      state = state.copyWith(isPlaying: isPlaying);
+      if (mounted) {
+        state = state.copyWith(isPlaying: isPlaying);
+      }
     });
   }
 

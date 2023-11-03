@@ -17,7 +17,7 @@ typedef OnListItemBuilder<T> = Widget Function(
   List<T>,
 );
 
-typedef OnSoundBuilder<T> = Widget Function(
+typedef OnItemBuilder<T> = Widget Function(
   BuildContext context,
   int index,
   T item,

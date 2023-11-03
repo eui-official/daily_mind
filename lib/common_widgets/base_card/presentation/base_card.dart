@@ -35,9 +35,7 @@ class BaseCard extends HookWidget {
             context.theme.colorScheme.background;
 
         return Container(
-          decoration: BoxDecoration(
-            boxShadow: kElevationToShadow[24],
-          ),
+          decoration: BoxDecoration(boxShadow: kElevationToShadow[24]),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(spacing(2)),
             child: Stack(

@@ -1,5 +1,8 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
+import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items_render.dart';
+import 'package:daily_mind/common_widgets/base_stack_with_bottom_action.dart';
 import 'package:daily_mind/db/db.dart';
+import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor_add_button.dart';
 import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor_provider.dart';
 import 'package:daily_mind/features/offline_mix_editor_item/presentation/mix_editor_item.dart';
@@ -45,11 +48,6 @@ class OfflineMixEditor extends HookConsumerWidget {
     );
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-        title: Text('soundEditor'.tr()),
-      ),
       body: Tutorial(
         task: mixEditorTutorial,
         targets: [
@@ -65,45 +63,33 @@ class OfflineMixEditor extends HookConsumerWidget {
             ],
           ),
         ],
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            StackBackground(
-              image: AssetImage(appState.backgroundImage),
-              child: SafeArea(
-                child: GridView.builder(
-                  padding: EdgeInsets.only(
-                    left: spacing(2),
-                    right: spacing(2),
-                    top: kBottomNavigationBarHeight,
-                    bottom: kBottomNavigationBarHeight * 2,
-                  ),
-                  itemBuilder: (context, index) {
-                    return MixEditorItem(
-                      volumeKey:
-                          index == 0 ? mixEditorVolumeKey : ValueKey(index),
-                      onItemVolumeChanged:
-                          mixEditorNotifier.onItemVolumeChanged,
-                      offlineMixEditorItemState:
-                          mixEditorState.offlineMixEditorItemStates[index],
-                    );
-                  },
-                  itemCount: mixEditorState.offlineMixEditorItemStates.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    childAspectRatio: 2,
-                    mainAxisSpacing: spacing(2),
-                  ),
-                ),
-              ),
+        child: StackBackground(
+          image: AssetImage(appState.backgroundImage),
+          child: BaseStackWithBottomAction(
+            bottom: OfflineNewMixEditorAddButton(
+              onPressed: onAddANewOfflineMix,
             ),
-            Positioned(
-              bottom: spacing(3),
-              child: OfflineNewMixEditorAddButton(
-                onPressed: onAddANewOfflineMix,
-              ),
+            child: AppBarScrollview(
+              title: 'soundEditor'.tr(),
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+                  child: BaseGridItemsRender(
+                    items: mixEditorState.offlineMixEditorItemStates,
+                    onItemBuilder: (context, index, item) {
+                      return MixEditorItem(
+                        volumeKey:
+                            index == 0 ? mixEditorVolumeKey : ValueKey(index),
+                        onItemVolumeChanged:
+                            mixEditorNotifier.onItemVolumeChanged,
+                        item: item,
+                      );
+                    },
+                  ),
+                )
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

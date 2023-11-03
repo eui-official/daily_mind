@@ -1,7 +1,8 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
-import 'package:daily_mind/common_widgets/base_container.dart';
+import 'package:daily_mind/common_widgets/base_spacing_container.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/common_widgets/base_mix_editor_content.dart';
+import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/volume_slider/presentation/volume_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -25,27 +26,30 @@ class BaseMixEditorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseCard(
-      image: AssetImage(image),
-      content: BaseContainer(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                prefixChild,
-                BaseMixEditorContent(name: name),
-              ],
-            ),
-            VolumeSlider(
-              key: volumeKey,
-              onVolumeChanged: onVolumeChanged,
-              initVolume: initVolume,
-            )
-          ],
+    return SizedBox(
+      height: smallImageHeight,
+      child: BaseCard(
+        image: AssetImage(image),
+        content: BaseSpacingContainer(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  prefixChild,
+                  BaseMixEditorContent(name: name),
+                ],
+              ),
+              VolumeSlider(
+                key: volumeKey,
+                onVolumeChanged: onVolumeChanged,
+                initVolume: initVolume,
+              )
+            ],
+          ),
         ),
       ),
     );
