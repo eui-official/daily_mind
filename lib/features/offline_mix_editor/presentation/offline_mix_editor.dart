@@ -76,13 +76,13 @@ class OfflineMixEditor extends HookConsumerWidget {
                   padding: EdgeInsets.symmetric(horizontal: spacing(2)),
                   child: BaseGridItemsRender(
                     items: mixEditorState.offlineMixEditorItemStates,
-                    onItemBuilder: (context, index, item) {
+                    onItemBuilder: (context, index, offlineMixEditorItemState) {
                       return MixEditorItem(
                         volumeKey:
                             index == 0 ? mixEditorVolumeKey : ValueKey(index),
                         onItemVolumeChanged:
                             mixEditorNotifier.onItemVolumeChanged,
-                        item: item,
+                        offlineMixEditorItemState: offlineMixEditorItemState,
                       );
                     },
                   ),

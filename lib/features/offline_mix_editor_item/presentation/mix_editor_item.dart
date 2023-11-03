@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class MixEditorItem extends HookWidget {
-  final OfflineMixEditorItemState item;
+  final OfflineMixEditorItemState offlineMixEditorItemState;
   final OnItemVolumeChanged onItemVolumeChanged;
   final Key? volumeKey;
 
   const MixEditorItem({
     super.key,
-    required this.item,
+    required this.offlineMixEditorItemState,
     required this.onItemVolumeChanged,
     this.volumeKey,
   });
@@ -23,8 +23,8 @@ class MixEditorItem extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final player = useMemoized(() => GaplessAudioPlayer());
-    final soundItem =
-        soundOfflineItems.firstWhere((item) => item.id == item.id);
+    final soundItem = soundOfflineItems
+        .firstWhere((item) => item.id == offlineMixEditorItemState.id);
 
     final playingStreamMemoized = useMemoized(() => player.playingStream, []);
 
@@ -34,8 +34,8 @@ class MixEditorItem extends HookWidget {
 
     final onInit = useCallback(
       () async {
-        await player.onSetSource(item.id);
-        await player.setVolume(item.volume);
+        await player.onSetSource(offlineMixEditorItemState.id);
+        await player.setVolume(offlineMixEditorItemState.volume);
         player.play();
       },
       [],
@@ -44,9 +44,9 @@ class MixEditorItem extends HookWidget {
     final onVolumeChanged = useCallback(
       (double volume) {
         player.setVolume(volume);
-        onItemVolumeChanged(item, volume);
+        onItemVolumeChanged(offlineMixEditorItemState, volume);
       },
-      [player, item],
+      [player, offlineMixEditorItemState],
     );
 
     useEffect(() {
@@ -59,7 +59,7 @@ class MixEditorItem extends HookWidget {
 
     return BaseMixEditorItem(
       image: soundItem.image,
-      initVolume: item.volume,
+      initVolume: offlineMixEditorItemState.volume,
       name: soundItem.name.tr(),
       onVolumeChanged: onVolumeChanged,
       volumeKey: volumeKey,
