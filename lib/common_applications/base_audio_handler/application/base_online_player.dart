@@ -1,7 +1,5 @@
 part of 'base_audio_handler.dart';
 
-OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
-
 extension BaseOnlinePlayer on DailyMindAudioHandler {
   void onInitOnline(List<Item> items) async {
     onOfflineDispose();
