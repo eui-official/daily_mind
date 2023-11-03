@@ -74,7 +74,12 @@ class OfflineListChordItem extends HookConsumerWidget {
           ),
         );
 
-        AdvancedInAppReview().monitor();
+        AdvancedInAppReview()
+          ..setMinDaysBeforeRemind(7)
+          ..setMinDaysAfterInstall(2)
+          ..setMinLaunchTimes(2)
+          ..setMinSecondsBeforeShowDialog(4)
+          ..monitor();
       },
       [
         playlist,
