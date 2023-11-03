@@ -41,6 +41,8 @@ class Tutorial extends HookWidget {
               },
               onSkip: () {
                 db.addFirstTime(task);
+
+                return true;
               },
             ).show(context: context);
           },

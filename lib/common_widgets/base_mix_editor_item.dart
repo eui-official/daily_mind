@@ -27,7 +27,7 @@ class BaseMixEditorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: smallImageHeight,
+      height: mediumImageHeight,
       child: BaseCard(
         image: AssetImage(image),
         content: BaseSpacingContainer(
