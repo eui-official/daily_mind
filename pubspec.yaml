@@ -80,6 +80,8 @@ dependencies:
   liquid_pull_to_refresh: ^3.0.1
   advanced_in_app_review: ^1.2.1
   in_app_review: ^2.0.8
+  settings_ui: ^2.0.2
+  url_launcher: ^6.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

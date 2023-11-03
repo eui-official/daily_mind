@@ -50,5 +50,10 @@
   "whiteNoiseDescription": "Âm thanh trắng giúp giảm tiếng ồn, tăng sự tập trung, và tạo ra một môi trường yên bình và thư thái",
   "wind": "Gió",
   "windDescription": "Âm thanh gió giúp giảm căng thẳng, tạo cảm giác yên bình, thư thái và tăng cường trạng thái tâm trí tích cực",
-  "rating": "Đánh giá trên cửa hàng"
+  "rating": "Đánh giá trên cửa hàng",
+  "sendFeedback": "Gửi phản hồi",
+  "sendFeedbackDescription": "Xin cảm ơn, bạn đã dành thời gian giúp chúng tôi phát triển ứng dụng tốt hơn",
+  "styling": "Kiểu dáng",
+  "feedback": "Phản hồi",
+  "system": "Hệ thống"
 }

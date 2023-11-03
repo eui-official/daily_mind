@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_list_tile.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class SettingsVersion extends HookWidget {
     return FutureBuilder(
       future: PackageInfo.fromPlatform(),
       builder: (context, snapshot) {
-        return ListTile(
+        return BaseListTile(
           title: Text('version'.tr()),
           trailing: Text(appVersion),
         );
