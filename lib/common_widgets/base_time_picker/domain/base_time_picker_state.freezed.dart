@@ -57,22 +57,22 @@ class _$BaseTimePickerStateCopyWithImpl<$Res, $Val extends BaseTimePickerState>
 }
 
 /// @nodoc
-abstract class _$$_BaseTimePickerStateCopyWith<$Res>
+abstract class _$$BaseTimePickerStateImplCopyWith<$Res>
     implements $BaseTimePickerStateCopyWith<$Res> {
-  factory _$$_BaseTimePickerStateCopyWith(_$_BaseTimePickerState value,
-          $Res Function(_$_BaseTimePickerState) then) =
-      __$$_BaseTimePickerStateCopyWithImpl<$Res>;
+  factory _$$BaseTimePickerStateImplCopyWith(_$BaseTimePickerStateImpl value,
+          $Res Function(_$BaseTimePickerStateImpl) then) =
+      __$$BaseTimePickerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Time? time});
 }
 
 /// @nodoc
-class __$$_BaseTimePickerStateCopyWithImpl<$Res>
-    extends _$BaseTimePickerStateCopyWithImpl<$Res, _$_BaseTimePickerState>
-    implements _$$_BaseTimePickerStateCopyWith<$Res> {
-  __$$_BaseTimePickerStateCopyWithImpl(_$_BaseTimePickerState _value,
-      $Res Function(_$_BaseTimePickerState) _then)
+class __$$BaseTimePickerStateImplCopyWithImpl<$Res>
+    extends _$BaseTimePickerStateCopyWithImpl<$Res, _$BaseTimePickerStateImpl>
+    implements _$$BaseTimePickerStateImplCopyWith<$Res> {
+  __$$BaseTimePickerStateImplCopyWithImpl(_$BaseTimePickerStateImpl _value,
+      $Res Function(_$BaseTimePickerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_BaseTimePickerStateCopyWithImpl<$Res>
   $Res call({
     Object? time = freezed,
   }) {
-    return _then(_$_BaseTimePickerState(
+    return _then(_$BaseTimePickerStateImpl(
       time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_BaseTimePickerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BaseTimePickerState implements _BaseTimePickerState {
-  const _$_BaseTimePickerState({this.time});
+class _$BaseTimePickerStateImpl implements _BaseTimePickerState {
+  const _$BaseTimePickerStateImpl({this.time});
 
   @override
   final Time? time;
@@ -106,7 +106,7 @@ class _$_BaseTimePickerState implements _BaseTimePickerState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BaseTimePickerState &&
+            other is _$BaseTimePickerStateImpl &&
             (identical(other.time, time) || other.time == time));
   }
 
@@ -116,19 +116,19 @@ class _$_BaseTimePickerState implements _BaseTimePickerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BaseTimePickerStateCopyWith<_$_BaseTimePickerState> get copyWith =>
-      __$$_BaseTimePickerStateCopyWithImpl<_$_BaseTimePickerState>(
+  _$$BaseTimePickerStateImplCopyWith<_$BaseTimePickerStateImpl> get copyWith =>
+      __$$BaseTimePickerStateImplCopyWithImpl<_$BaseTimePickerStateImpl>(
           this, _$identity);
 }
 
 abstract class _BaseTimePickerState implements BaseTimePickerState {
   const factory _BaseTimePickerState({final Time? time}) =
-      _$_BaseTimePickerState;
+      _$BaseTimePickerStateImpl;
 
   @override
   Time? get time;
   @override
   @JsonKey(ignore: true)
-  _$$_BaseTimePickerStateCopyWith<_$_BaseTimePickerState> get copyWith =>
+  _$$BaseTimePickerStateImplCopyWith<_$BaseTimePickerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

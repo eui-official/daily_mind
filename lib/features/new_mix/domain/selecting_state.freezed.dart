@@ -63,22 +63,22 @@ class _$SelectingStateCopyWithImpl<$Res, $Val extends SelectingState>
 }
 
 /// @nodoc
-abstract class _$$_SelectingStateCopyWith<$Res>
+abstract class _$$SelectingStateImplCopyWith<$Res>
     implements $SelectingStateCopyWith<$Res> {
-  factory _$$_SelectingStateCopyWith(
-          _$_SelectingState value, $Res Function(_$_SelectingState) then) =
-      __$$_SelectingStateCopyWithImpl<$Res>;
+  factory _$$SelectingStateImplCopyWith(_$SelectingStateImpl value,
+          $Res Function(_$SelectingStateImpl) then) =
+      __$$SelectingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic sound, NetworkType networkType});
 }
 
 /// @nodoc
-class __$$_SelectingStateCopyWithImpl<$Res>
-    extends _$SelectingStateCopyWithImpl<$Res, _$_SelectingState>
-    implements _$$_SelectingStateCopyWith<$Res> {
-  __$$_SelectingStateCopyWithImpl(
-      _$_SelectingState _value, $Res Function(_$_SelectingState) _then)
+class __$$SelectingStateImplCopyWithImpl<$Res>
+    extends _$SelectingStateCopyWithImpl<$Res, _$SelectingStateImpl>
+    implements _$$SelectingStateImplCopyWith<$Res> {
+  __$$SelectingStateImplCopyWithImpl(
+      _$SelectingStateImpl _value, $Res Function(_$SelectingStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_SelectingStateCopyWithImpl<$Res>
     Object? sound = freezed,
     Object? networkType = null,
   }) {
-    return _then(_$_SelectingState(
+    return _then(_$SelectingStateImpl(
       sound: freezed == sound
           ? _value.sound
           : sound // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_SelectingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectingState extends _SelectingState {
-  const _$_SelectingState({required this.sound, required this.networkType})
+class _$SelectingStateImpl extends _SelectingState {
+  const _$SelectingStateImpl({required this.sound, required this.networkType})
       : super._();
 
   @override
@@ -120,7 +120,7 @@ class _$_SelectingState extends _SelectingState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SelectingState &&
+            other is _$SelectingStateImpl &&
             const DeepCollectionEquality().equals(other.sound, sound) &&
             (identical(other.networkType, networkType) ||
                 other.networkType == networkType));
@@ -133,14 +133,15 @@ class _$_SelectingState extends _SelectingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectingStateCopyWith<_$_SelectingState> get copyWith =>
-      __$$_SelectingStateCopyWithImpl<_$_SelectingState>(this, _$identity);
+  _$$SelectingStateImplCopyWith<_$SelectingStateImpl> get copyWith =>
+      __$$SelectingStateImplCopyWithImpl<_$SelectingStateImpl>(
+          this, _$identity);
 }
 
 abstract class _SelectingState extends SelectingState {
   const factory _SelectingState(
       {required final dynamic sound,
-      required final NetworkType networkType}) = _$_SelectingState;
+      required final NetworkType networkType}) = _$SelectingStateImpl;
   const _SelectingState._() : super._();
 
   @override
@@ -149,6 +150,6 @@ abstract class _SelectingState extends SelectingState {
   NetworkType get networkType;
   @override
   @JsonKey(ignore: true)
-  _$$_SelectingStateCopyWith<_$_SelectingState> get copyWith =>
+  _$$SelectingStateImplCopyWith<_$SelectingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

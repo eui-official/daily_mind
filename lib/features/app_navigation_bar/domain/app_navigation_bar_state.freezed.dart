@@ -58,22 +58,24 @@ class _$AppNavigationBarStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AppNavigationBarStateCopyWith<$Res>
+abstract class _$$AppNavigationBarStateImplCopyWith<$Res>
     implements $AppNavigationBarStateCopyWith<$Res> {
-  factory _$$_AppNavigationBarStateCopyWith(_$_AppNavigationBarState value,
-          $Res Function(_$_AppNavigationBarState) then) =
-      __$$_AppNavigationBarStateCopyWithImpl<$Res>;
+  factory _$$AppNavigationBarStateImplCopyWith(
+          _$AppNavigationBarStateImpl value,
+          $Res Function(_$AppNavigationBarStateImpl) then) =
+      __$$AppNavigationBarStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$_AppNavigationBarStateCopyWithImpl<$Res>
-    extends _$AppNavigationBarStateCopyWithImpl<$Res, _$_AppNavigationBarState>
-    implements _$$_AppNavigationBarStateCopyWith<$Res> {
-  __$$_AppNavigationBarStateCopyWithImpl(_$_AppNavigationBarState _value,
-      $Res Function(_$_AppNavigationBarState) _then)
+class __$$AppNavigationBarStateImplCopyWithImpl<$Res>
+    extends _$AppNavigationBarStateCopyWithImpl<$Res,
+        _$AppNavigationBarStateImpl>
+    implements _$$AppNavigationBarStateImplCopyWith<$Res> {
+  __$$AppNavigationBarStateImplCopyWithImpl(_$AppNavigationBarStateImpl _value,
+      $Res Function(_$AppNavigationBarStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +83,7 @@ class __$$_AppNavigationBarStateCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$_AppNavigationBarState(
+    return _then(_$AppNavigationBarStateImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -92,8 +94,8 @@ class __$$_AppNavigationBarStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppNavigationBarState implements _AppNavigationBarState {
-  const _$_AppNavigationBarState({required this.index});
+class _$AppNavigationBarStateImpl implements _AppNavigationBarState {
+  const _$AppNavigationBarStateImpl({required this.index});
 
   @override
   final int index;
@@ -107,7 +109,7 @@ class _$_AppNavigationBarState implements _AppNavigationBarState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppNavigationBarState &&
+            other is _$AppNavigationBarStateImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -117,19 +119,19 @@ class _$_AppNavigationBarState implements _AppNavigationBarState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppNavigationBarStateCopyWith<_$_AppNavigationBarState> get copyWith =>
-      __$$_AppNavigationBarStateCopyWithImpl<_$_AppNavigationBarState>(
-          this, _$identity);
+  _$$AppNavigationBarStateImplCopyWith<_$AppNavigationBarStateImpl>
+      get copyWith => __$$AppNavigationBarStateImplCopyWithImpl<
+          _$AppNavigationBarStateImpl>(this, _$identity);
 }
 
 abstract class _AppNavigationBarState implements AppNavigationBarState {
   const factory _AppNavigationBarState({required final int index}) =
-      _$_AppNavigationBarState;
+      _$AppNavigationBarStateImpl;
 
   @override
   int get index;
   @override
   @JsonKey(ignore: true)
-  _$$_AppNavigationBarStateCopyWith<_$_AppNavigationBarState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AppNavigationBarStateImplCopyWith<_$AppNavigationBarStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

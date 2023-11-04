@@ -74,11 +74,11 @@ class _$NewMixStateCopyWithImpl<$Res, $Val extends NewMixState>
 }
 
 /// @nodoc
-abstract class _$$_NewMixStateCopyWith<$Res>
+abstract class _$$NewMixStateImplCopyWith<$Res>
     implements $NewMixStateCopyWith<$Res> {
-  factory _$$_NewMixStateCopyWith(
-          _$_NewMixState value, $Res Function(_$_NewMixState) then) =
-      __$$_NewMixStateCopyWithImpl<$Res>;
+  factory _$$NewMixStateImplCopyWith(
+          _$NewMixStateImpl value, $Res Function(_$NewMixStateImpl) then) =
+      __$$NewMixStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -89,11 +89,11 @@ abstract class _$$_NewMixStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NewMixStateCopyWithImpl<$Res>
-    extends _$NewMixStateCopyWithImpl<$Res, _$_NewMixState>
-    implements _$$_NewMixStateCopyWith<$Res> {
-  __$$_NewMixStateCopyWithImpl(
-      _$_NewMixState _value, $Res Function(_$_NewMixState) _then)
+class __$$NewMixStateImplCopyWithImpl<$Res>
+    extends _$NewMixStateCopyWithImpl<$Res, _$NewMixStateImpl>
+    implements _$$NewMixStateImplCopyWith<$Res> {
+  __$$NewMixStateImplCopyWithImpl(
+      _$NewMixStateImpl _value, $Res Function(_$NewMixStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_NewMixStateCopyWithImpl<$Res>
     Object? selectingState = null,
     Object? selectedStates = null,
   }) {
-    return _then(_$_NewMixState(
+    return _then(_$NewMixStateImpl(
       selectingState: null == selectingState
           ? _value.selectingState
           : selectingState // ignore: cast_nullable_to_non_nullable
@@ -117,8 +117,8 @@ class __$$_NewMixStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NewMixState extends _NewMixState {
-  const _$_NewMixState(
+class _$NewMixStateImpl extends _NewMixState {
+  const _$NewMixStateImpl(
       {required this.selectingState,
       required final List<SelectingState> selectedStates})
       : _selectedStates = selectedStates,
@@ -143,7 +143,7 @@ class _$_NewMixState extends _NewMixState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewMixState &&
+            other is _$NewMixStateImpl &&
             (identical(other.selectingState, selectingState) ||
                 other.selectingState == selectingState) &&
             const DeepCollectionEquality()
@@ -157,14 +157,14 @@ class _$_NewMixState extends _NewMixState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewMixStateCopyWith<_$_NewMixState> get copyWith =>
-      __$$_NewMixStateCopyWithImpl<_$_NewMixState>(this, _$identity);
+  _$$NewMixStateImplCopyWith<_$NewMixStateImpl> get copyWith =>
+      __$$NewMixStateImplCopyWithImpl<_$NewMixStateImpl>(this, _$identity);
 }
 
 abstract class _NewMixState extends NewMixState {
   const factory _NewMixState(
       {required final SelectingState selectingState,
-      required final List<SelectingState> selectedStates}) = _$_NewMixState;
+      required final List<SelectingState> selectedStates}) = _$NewMixStateImpl;
   const _NewMixState._() : super._();
 
   @override
@@ -173,6 +173,6 @@ abstract class _NewMixState extends NewMixState {
   List<SelectingState> get selectedStates;
   @override
   @JsonKey(ignore: true)
-  _$$_NewMixStateCopyWith<_$_NewMixState> get copyWith =>
+  _$$NewMixStateImplCopyWith<_$NewMixStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

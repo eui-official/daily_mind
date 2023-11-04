@@ -64,25 +64,25 @@ class _$OfflineMixEditorItemStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OfflineMixEditorItemStateCopyWith<$Res>
+abstract class _$$OfflineMixEditorItemStateImplCopyWith<$Res>
     implements $OfflineMixEditorItemStateCopyWith<$Res> {
-  factory _$$_OfflineMixEditorItemStateCopyWith(
-          _$_OfflineMixEditorItemState value,
-          $Res Function(_$_OfflineMixEditorItemState) then) =
-      __$$_OfflineMixEditorItemStateCopyWithImpl<$Res>;
+  factory _$$OfflineMixEditorItemStateImplCopyWith(
+          _$OfflineMixEditorItemStateImpl value,
+          $Res Function(_$OfflineMixEditorItemStateImpl) then) =
+      __$$OfflineMixEditorItemStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, double volume});
 }
 
 /// @nodoc
-class __$$_OfflineMixEditorItemStateCopyWithImpl<$Res>
+class __$$OfflineMixEditorItemStateImplCopyWithImpl<$Res>
     extends _$OfflineMixEditorItemStateCopyWithImpl<$Res,
-        _$_OfflineMixEditorItemState>
-    implements _$$_OfflineMixEditorItemStateCopyWith<$Res> {
-  __$$_OfflineMixEditorItemStateCopyWithImpl(
-      _$_OfflineMixEditorItemState _value,
-      $Res Function(_$_OfflineMixEditorItemState) _then)
+        _$OfflineMixEditorItemStateImpl>
+    implements _$$OfflineMixEditorItemStateImplCopyWith<$Res> {
+  __$$OfflineMixEditorItemStateImplCopyWithImpl(
+      _$OfflineMixEditorItemStateImpl _value,
+      $Res Function(_$OfflineMixEditorItemStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +91,7 @@ class __$$_OfflineMixEditorItemStateCopyWithImpl<$Res>
     Object? id = null,
     Object? volume = null,
   }) {
-    return _then(_$_OfflineMixEditorItemState(
+    return _then(_$OfflineMixEditorItemStateImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -106,8 +106,9 @@ class __$$_OfflineMixEditorItemStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OfflineMixEditorItemState implements _OfflineMixEditorItemState {
-  const _$_OfflineMixEditorItemState({required this.id, required this.volume});
+class _$OfflineMixEditorItemStateImpl implements _OfflineMixEditorItemState {
+  const _$OfflineMixEditorItemStateImpl(
+      {required this.id, required this.volume});
 
   @override
   final String id;
@@ -123,7 +124,7 @@ class _$_OfflineMixEditorItemState implements _OfflineMixEditorItemState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OfflineMixEditorItemState &&
+            other is _$OfflineMixEditorItemStateImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.volume, volume) || other.volume == volume));
   }
@@ -134,15 +135,15 @@ class _$_OfflineMixEditorItemState implements _OfflineMixEditorItemState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OfflineMixEditorItemStateCopyWith<_$_OfflineMixEditorItemState>
-      get copyWith => __$$_OfflineMixEditorItemStateCopyWithImpl<
-          _$_OfflineMixEditorItemState>(this, _$identity);
+  _$$OfflineMixEditorItemStateImplCopyWith<_$OfflineMixEditorItemStateImpl>
+      get copyWith => __$$OfflineMixEditorItemStateImplCopyWithImpl<
+          _$OfflineMixEditorItemStateImpl>(this, _$identity);
 }
 
 abstract class _OfflineMixEditorItemState implements OfflineMixEditorItemState {
   const factory _OfflineMixEditorItemState(
       {required final String id,
-      required final double volume}) = _$_OfflineMixEditorItemState;
+      required final double volume}) = _$OfflineMixEditorItemStateImpl;
 
   @override
   String get id;
@@ -150,6 +151,6 @@ abstract class _OfflineMixEditorItemState implements OfflineMixEditorItemState {
   double get volume;
   @override
   @JsonKey(ignore: true)
-  _$$_OfflineMixEditorItemStateCopyWith<_$_OfflineMixEditorItemState>
+  _$$OfflineMixEditorItemStateImplCopyWith<_$OfflineMixEditorItemStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

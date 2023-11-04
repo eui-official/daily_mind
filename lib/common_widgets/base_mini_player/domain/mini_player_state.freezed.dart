@@ -69,22 +69,22 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
 }
 
 /// @nodoc
-abstract class _$$_MiniPlayerStateCopyWith<$Res>
+abstract class _$$MiniPlayerStateImplCopyWith<$Res>
     implements $MiniPlayerStateCopyWith<$Res> {
-  factory _$$_MiniPlayerStateCopyWith(
-          _$_MiniPlayerState value, $Res Function(_$_MiniPlayerState) then) =
-      __$$_MiniPlayerStateCopyWithImpl<$Res>;
+  factory _$$MiniPlayerStateImplCopyWith(_$MiniPlayerStateImpl value,
+          $Res Function(_$MiniPlayerStateImpl) then) =
+      __$$MiniPlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isShow, NetworkType networkType, VoidCallback? onTap});
 }
 
 /// @nodoc
-class __$$_MiniPlayerStateCopyWithImpl<$Res>
-    extends _$MiniPlayerStateCopyWithImpl<$Res, _$_MiniPlayerState>
-    implements _$$_MiniPlayerStateCopyWith<$Res> {
-  __$$_MiniPlayerStateCopyWithImpl(
-      _$_MiniPlayerState _value, $Res Function(_$_MiniPlayerState) _then)
+class __$$MiniPlayerStateImplCopyWithImpl<$Res>
+    extends _$MiniPlayerStateCopyWithImpl<$Res, _$MiniPlayerStateImpl>
+    implements _$$MiniPlayerStateImplCopyWith<$Res> {
+  __$$MiniPlayerStateImplCopyWithImpl(
+      _$MiniPlayerStateImpl _value, $Res Function(_$MiniPlayerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
     Object? networkType = null,
     Object? onTap = freezed,
   }) {
-    return _then(_$_MiniPlayerState(
+    return _then(_$MiniPlayerStateImpl(
       isShow: null == isShow
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_MiniPlayerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MiniPlayerState implements _MiniPlayerState {
-  const _$_MiniPlayerState(
+class _$MiniPlayerStateImpl implements _MiniPlayerState {
+  const _$MiniPlayerStateImpl(
       {required this.isShow, required this.networkType, this.onTap});
 
   @override
@@ -133,7 +133,7 @@ class _$_MiniPlayerState implements _MiniPlayerState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MiniPlayerState &&
+            other is _$MiniPlayerStateImpl &&
             (identical(other.isShow, isShow) || other.isShow == isShow) &&
             (identical(other.networkType, networkType) ||
                 other.networkType == networkType) &&
@@ -146,15 +146,16 @@ class _$_MiniPlayerState implements _MiniPlayerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MiniPlayerStateCopyWith<_$_MiniPlayerState> get copyWith =>
-      __$$_MiniPlayerStateCopyWithImpl<_$_MiniPlayerState>(this, _$identity);
+  _$$MiniPlayerStateImplCopyWith<_$MiniPlayerStateImpl> get copyWith =>
+      __$$MiniPlayerStateImplCopyWithImpl<_$MiniPlayerStateImpl>(
+          this, _$identity);
 }
 
 abstract class _MiniPlayerState implements MiniPlayerState {
   const factory _MiniPlayerState(
       {required final bool isShow,
       required final NetworkType networkType,
-      final VoidCallback? onTap}) = _$_MiniPlayerState;
+      final VoidCallback? onTap}) = _$MiniPlayerStateImpl;
 
   @override
   bool get isShow;
@@ -164,6 +165,6 @@ abstract class _MiniPlayerState implements MiniPlayerState {
   VoidCallback? get onTap;
   @override
   @JsonKey(ignore: true)
-  _$$_MiniPlayerStateCopyWith<_$_MiniPlayerState> get copyWith =>
+  _$$MiniPlayerStateImplCopyWith<_$MiniPlayerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

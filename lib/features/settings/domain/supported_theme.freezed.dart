@@ -69,22 +69,22 @@ class _$SupportedThemeCopyWithImpl<$Res, $Val extends SupportedTheme>
 }
 
 /// @nodoc
-abstract class _$$_SupportedThemeCopyWith<$Res>
+abstract class _$$SupportedThemeImplCopyWith<$Res>
     implements $SupportedThemeCopyWith<$Res> {
-  factory _$$_SupportedThemeCopyWith(
-          _$_SupportedTheme value, $Res Function(_$_SupportedTheme) then) =
-      __$$_SupportedThemeCopyWithImpl<$Res>;
+  factory _$$SupportedThemeImplCopyWith(_$SupportedThemeImpl value,
+          $Res Function(_$SupportedThemeImpl) then) =
+      __$$SupportedThemeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String title, FlexScheme scheme});
 }
 
 /// @nodoc
-class __$$_SupportedThemeCopyWithImpl<$Res>
-    extends _$SupportedThemeCopyWithImpl<$Res, _$_SupportedTheme>
-    implements _$$_SupportedThemeCopyWith<$Res> {
-  __$$_SupportedThemeCopyWithImpl(
-      _$_SupportedTheme _value, $Res Function(_$_SupportedTheme) _then)
+class __$$SupportedThemeImplCopyWithImpl<$Res>
+    extends _$SupportedThemeCopyWithImpl<$Res, _$SupportedThemeImpl>
+    implements _$$SupportedThemeImplCopyWith<$Res> {
+  __$$SupportedThemeImplCopyWithImpl(
+      _$SupportedThemeImpl _value, $Res Function(_$SupportedThemeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_SupportedThemeCopyWithImpl<$Res>
     Object? title = null,
     Object? scheme = null,
   }) {
-    return _then(_$_SupportedTheme(
+    return _then(_$SupportedThemeImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_SupportedThemeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SupportedTheme implements _SupportedTheme {
-  const _$_SupportedTheme(
+class _$SupportedThemeImpl implements _SupportedTheme {
+  const _$SupportedThemeImpl(
       {required this.id, required this.title, required this.scheme});
 
   @override
@@ -133,7 +133,7 @@ class _$_SupportedTheme implements _SupportedTheme {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SupportedTheme &&
+            other is _$SupportedThemeImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.scheme, scheme) || other.scheme == scheme));
@@ -145,15 +145,16 @@ class _$_SupportedTheme implements _SupportedTheme {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SupportedThemeCopyWith<_$_SupportedTheme> get copyWith =>
-      __$$_SupportedThemeCopyWithImpl<_$_SupportedTheme>(this, _$identity);
+  _$$SupportedThemeImplCopyWith<_$SupportedThemeImpl> get copyWith =>
+      __$$SupportedThemeImplCopyWithImpl<_$SupportedThemeImpl>(
+          this, _$identity);
 }
 
 abstract class _SupportedTheme implements SupportedTheme {
   const factory _SupportedTheme(
       {required final String id,
       required final String title,
-      required final FlexScheme scheme}) = _$_SupportedTheme;
+      required final FlexScheme scheme}) = _$SupportedThemeImpl;
 
   @override
   String get id;
@@ -163,6 +164,6 @@ abstract class _SupportedTheme implements SupportedTheme {
   FlexScheme get scheme;
   @override
   @JsonKey(ignore: true)
-  _$$_SupportedThemeCopyWith<_$_SupportedTheme> get copyWith =>
+  _$$SupportedThemeImplCopyWith<_$SupportedThemeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

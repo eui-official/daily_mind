@@ -3,11 +3,11 @@ import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class BaseGridItemsVertical<T> extends StatelessWidget {
+class BaseGridItems<T> extends StatelessWidget {
   final List<T> items;
   final OnItemBuilder<T> onItemBuilder;
 
-  const BaseGridItemsVertical({
+  const BaseGridItems({
     super.key,
     required this.items,
     required this.onItemBuilder,

@@ -6,8 +6,9 @@ part of 'sound_online_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SoundOnlineItem _$$_SoundOnlineItemFromJson(Map<String, dynamic> json) =>
-    _$_SoundOnlineItem(
+_$SoundOnlineItemImpl _$$SoundOnlineItemImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SoundOnlineItemImpl(
       id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
@@ -17,7 +18,8 @@ _$_SoundOnlineItem _$$_SoundOnlineItemFromJson(Map<String, dynamic> json) =>
       category: json['category'] as String,
     );
 
-Map<String, dynamic> _$$_SoundOnlineItemToJson(_$_SoundOnlineItem instance) =>
+Map<String, dynamic> _$$SoundOnlineItemImplToJson(
+        _$SoundOnlineItemImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt,

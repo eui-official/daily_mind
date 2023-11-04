@@ -66,25 +66,25 @@ class _$OnlineAudioPlayerIndexStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OnlineAudioPlayerIndexStateCopyWith<$Res>
+abstract class _$$OnlineAudioPlayerIndexStateImplCopyWith<$Res>
     implements $OnlineAudioPlayerIndexStateCopyWith<$Res> {
-  factory _$$_OnlineAudioPlayerIndexStateCopyWith(
-          _$_OnlineAudioPlayerIndexState value,
-          $Res Function(_$_OnlineAudioPlayerIndexState) then) =
-      __$$_OnlineAudioPlayerIndexStateCopyWithImpl<$Res>;
+  factory _$$OnlineAudioPlayerIndexStateImplCopyWith(
+          _$OnlineAudioPlayerIndexStateImpl value,
+          $Res Function(_$OnlineAudioPlayerIndexStateImpl) then) =
+      __$$OnlineAudioPlayerIndexStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int index, int sequenceLength});
 }
 
 /// @nodoc
-class __$$_OnlineAudioPlayerIndexStateCopyWithImpl<$Res>
+class __$$OnlineAudioPlayerIndexStateImplCopyWithImpl<$Res>
     extends _$OnlineAudioPlayerIndexStateCopyWithImpl<$Res,
-        _$_OnlineAudioPlayerIndexState>
-    implements _$$_OnlineAudioPlayerIndexStateCopyWith<$Res> {
-  __$$_OnlineAudioPlayerIndexStateCopyWithImpl(
-      _$_OnlineAudioPlayerIndexState _value,
-      $Res Function(_$_OnlineAudioPlayerIndexState) _then)
+        _$OnlineAudioPlayerIndexStateImpl>
+    implements _$$OnlineAudioPlayerIndexStateImplCopyWith<$Res> {
+  __$$OnlineAudioPlayerIndexStateImplCopyWithImpl(
+      _$OnlineAudioPlayerIndexStateImpl _value,
+      $Res Function(_$OnlineAudioPlayerIndexStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_OnlineAudioPlayerIndexStateCopyWithImpl<$Res>
     Object? index = null,
     Object? sequenceLength = null,
   }) {
-    return _then(_$_OnlineAudioPlayerIndexState(
+    return _then(_$OnlineAudioPlayerIndexStateImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -108,8 +108,8 @@ class __$$_OnlineAudioPlayerIndexStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnlineAudioPlayerIndexState extends _OnlineAudioPlayerIndexState {
-  const _$_OnlineAudioPlayerIndexState(
+class _$OnlineAudioPlayerIndexStateImpl extends _OnlineAudioPlayerIndexState {
+  const _$OnlineAudioPlayerIndexStateImpl(
       {required this.index, required this.sequenceLength})
       : super._();
 
@@ -127,7 +127,7 @@ class _$_OnlineAudioPlayerIndexState extends _OnlineAudioPlayerIndexState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnlineAudioPlayerIndexState &&
+            other is _$OnlineAudioPlayerIndexStateImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.sequenceLength, sequenceLength) ||
                 other.sequenceLength == sequenceLength));
@@ -139,16 +139,16 @@ class _$_OnlineAudioPlayerIndexState extends _OnlineAudioPlayerIndexState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnlineAudioPlayerIndexStateCopyWith<_$_OnlineAudioPlayerIndexState>
-      get copyWith => __$$_OnlineAudioPlayerIndexStateCopyWithImpl<
-          _$_OnlineAudioPlayerIndexState>(this, _$identity);
+  _$$OnlineAudioPlayerIndexStateImplCopyWith<_$OnlineAudioPlayerIndexStateImpl>
+      get copyWith => __$$OnlineAudioPlayerIndexStateImplCopyWithImpl<
+          _$OnlineAudioPlayerIndexStateImpl>(this, _$identity);
 }
 
 abstract class _OnlineAudioPlayerIndexState
     extends OnlineAudioPlayerIndexState {
   const factory _OnlineAudioPlayerIndexState(
       {required final int index,
-      required final int sequenceLength}) = _$_OnlineAudioPlayerIndexState;
+      required final int sequenceLength}) = _$OnlineAudioPlayerIndexStateImpl;
   const _OnlineAudioPlayerIndexState._() : super._();
 
   @override
@@ -157,6 +157,6 @@ abstract class _OnlineAudioPlayerIndexState
   int get sequenceLength;
   @override
   @JsonKey(ignore: true)
-  _$$_OnlineAudioPlayerIndexStateCopyWith<_$_OnlineAudioPlayerIndexState>
+  _$$OnlineAudioPlayerIndexStateImplCopyWith<_$OnlineAudioPlayerIndexStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

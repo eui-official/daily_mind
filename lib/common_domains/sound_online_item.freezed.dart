@@ -107,11 +107,11 @@ class _$SoundOnlineItemCopyWithImpl<$Res, $Val extends SoundOnlineItem>
 }
 
 /// @nodoc
-abstract class _$$_SoundOnlineItemCopyWith<$Res>
+abstract class _$$SoundOnlineItemImplCopyWith<$Res>
     implements $SoundOnlineItemCopyWith<$Res> {
-  factory _$$_SoundOnlineItemCopyWith(
-          _$_SoundOnlineItem value, $Res Function(_$_SoundOnlineItem) then) =
-      __$$_SoundOnlineItemCopyWithImpl<$Res>;
+  factory _$$SoundOnlineItemImplCopyWith(_$SoundOnlineItemImpl value,
+          $Res Function(_$SoundOnlineItemImpl) then) =
+      __$$SoundOnlineItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -125,11 +125,11 @@ abstract class _$$_SoundOnlineItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SoundOnlineItemCopyWithImpl<$Res>
-    extends _$SoundOnlineItemCopyWithImpl<$Res, _$_SoundOnlineItem>
-    implements _$$_SoundOnlineItemCopyWith<$Res> {
-  __$$_SoundOnlineItemCopyWithImpl(
-      _$_SoundOnlineItem _value, $Res Function(_$_SoundOnlineItem) _then)
+class __$$SoundOnlineItemImplCopyWithImpl<$Res>
+    extends _$SoundOnlineItemCopyWithImpl<$Res, _$SoundOnlineItemImpl>
+    implements _$$SoundOnlineItemImplCopyWith<$Res> {
+  __$$SoundOnlineItemImplCopyWithImpl(
+      _$SoundOnlineItemImpl _value, $Res Function(_$SoundOnlineItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -143,7 +143,7 @@ class __$$_SoundOnlineItemCopyWithImpl<$Res>
     Object? soundType = null,
     Object? category = null,
   }) {
-    return _then(_$_SoundOnlineItem(
+    return _then(_$SoundOnlineItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -178,8 +178,8 @@ class __$$_SoundOnlineItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SoundOnlineItem implements _SoundOnlineItem {
-  const _$_SoundOnlineItem(
+class _$SoundOnlineItemImpl implements _SoundOnlineItem {
+  const _$SoundOnlineItemImpl(
       {required this.id,
       @JsonKey(name: 'created_at') required this.createdAt,
       required this.name,
@@ -188,8 +188,8 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
       @JsonKey(name: 'sound_type') required this.soundType,
       required this.category});
 
-  factory _$_SoundOnlineItem.fromJson(Map<String, dynamic> json) =>
-      _$$_SoundOnlineItemFromJson(json);
+  factory _$SoundOnlineItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoundOnlineItemImplFromJson(json);
 
   @override
   final String id;
@@ -217,7 +217,7 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SoundOnlineItem &&
+            other is _$SoundOnlineItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -238,12 +238,13 @@ class _$_SoundOnlineItem implements _SoundOnlineItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SoundOnlineItemCopyWith<_$_SoundOnlineItem> get copyWith =>
-      __$$_SoundOnlineItemCopyWithImpl<_$_SoundOnlineItem>(this, _$identity);
+  _$$SoundOnlineItemImplCopyWith<_$SoundOnlineItemImpl> get copyWith =>
+      __$$SoundOnlineItemImplCopyWithImpl<_$SoundOnlineItemImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SoundOnlineItemToJson(
+    return _$$SoundOnlineItemImplToJson(
       this,
     );
   }
@@ -257,10 +258,10 @@ abstract class _SoundOnlineItem implements SoundOnlineItem {
       required final String image,
       required final String source,
       @JsonKey(name: 'sound_type') required final String soundType,
-      required final String category}) = _$_SoundOnlineItem;
+      required final String category}) = _$SoundOnlineItemImpl;
 
   factory _SoundOnlineItem.fromJson(Map<String, dynamic> json) =
-      _$_SoundOnlineItem.fromJson;
+      _$SoundOnlineItemImpl.fromJson;
 
   @override
   String get id;
@@ -280,6 +281,6 @@ abstract class _SoundOnlineItem implements SoundOnlineItem {
   String get category;
   @override
   @JsonKey(ignore: true)
-  _$$_SoundOnlineItemCopyWith<_$_SoundOnlineItem> get copyWith =>
+  _$$SoundOnlineItemImplCopyWith<_$SoundOnlineItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

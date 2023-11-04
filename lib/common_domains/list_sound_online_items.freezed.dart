@@ -64,22 +64,22 @@ class _$ListSoundOnlineItemsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ListSoundOnlineItemsCopyWith<$Res>
+abstract class _$$ListSoundOnlineItemsImplCopyWith<$Res>
     implements $ListSoundOnlineItemsCopyWith<$Res> {
-  factory _$$_ListSoundOnlineItemsCopyWith(_$_ListSoundOnlineItems value,
-          $Res Function(_$_ListSoundOnlineItems) then) =
-      __$$_ListSoundOnlineItemsCopyWithImpl<$Res>;
+  factory _$$ListSoundOnlineItemsImplCopyWith(_$ListSoundOnlineItemsImpl value,
+          $Res Function(_$ListSoundOnlineItemsImpl) then) =
+      __$$ListSoundOnlineItemsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<SoundOnlineItem> soundOnlineItems});
 }
 
 /// @nodoc
-class __$$_ListSoundOnlineItemsCopyWithImpl<$Res>
-    extends _$ListSoundOnlineItemsCopyWithImpl<$Res, _$_ListSoundOnlineItems>
-    implements _$$_ListSoundOnlineItemsCopyWith<$Res> {
-  __$$_ListSoundOnlineItemsCopyWithImpl(_$_ListSoundOnlineItems _value,
-      $Res Function(_$_ListSoundOnlineItems) _then)
+class __$$ListSoundOnlineItemsImplCopyWithImpl<$Res>
+    extends _$ListSoundOnlineItemsCopyWithImpl<$Res, _$ListSoundOnlineItemsImpl>
+    implements _$$ListSoundOnlineItemsImplCopyWith<$Res> {
+  __$$ListSoundOnlineItemsImplCopyWithImpl(_$ListSoundOnlineItemsImpl _value,
+      $Res Function(_$ListSoundOnlineItemsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ListSoundOnlineItemsCopyWithImpl<$Res>
   $Res call({
     Object? soundOnlineItems = null,
   }) {
-    return _then(_$_ListSoundOnlineItems(
+    return _then(_$ListSoundOnlineItemsImpl(
       soundOnlineItems: null == soundOnlineItems
           ? _value._soundOnlineItems
           : soundOnlineItems // ignore: cast_nullable_to_non_nullable
@@ -98,13 +98,13 @@ class __$$_ListSoundOnlineItemsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ListSoundOnlineItems implements _ListSoundOnlineItems {
-  const _$_ListSoundOnlineItems(
+class _$ListSoundOnlineItemsImpl implements _ListSoundOnlineItems {
+  const _$ListSoundOnlineItemsImpl(
       {required final List<SoundOnlineItem> soundOnlineItems})
       : _soundOnlineItems = soundOnlineItems;
 
-  factory _$_ListSoundOnlineItems.fromJson(Map<String, dynamic> json) =>
-      _$$_ListSoundOnlineItemsFromJson(json);
+  factory _$ListSoundOnlineItemsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ListSoundOnlineItemsImplFromJson(json);
 
   final List<SoundOnlineItem> _soundOnlineItems;
   @override
@@ -124,7 +124,7 @@ class _$_ListSoundOnlineItems implements _ListSoundOnlineItems {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ListSoundOnlineItems &&
+            other is _$ListSoundOnlineItemsImpl &&
             const DeepCollectionEquality()
                 .equals(other._soundOnlineItems, _soundOnlineItems));
   }
@@ -137,13 +137,14 @@ class _$_ListSoundOnlineItems implements _ListSoundOnlineItems {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ListSoundOnlineItemsCopyWith<_$_ListSoundOnlineItems> get copyWith =>
-      __$$_ListSoundOnlineItemsCopyWithImpl<_$_ListSoundOnlineItems>(
-          this, _$identity);
+  _$$ListSoundOnlineItemsImplCopyWith<_$ListSoundOnlineItemsImpl>
+      get copyWith =>
+          __$$ListSoundOnlineItemsImplCopyWithImpl<_$ListSoundOnlineItemsImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ListSoundOnlineItemsToJson(
+    return _$$ListSoundOnlineItemsImplToJson(
       this,
     );
   }
@@ -152,15 +153,15 @@ class _$_ListSoundOnlineItems implements _ListSoundOnlineItems {
 abstract class _ListSoundOnlineItems implements ListSoundOnlineItems {
   const factory _ListSoundOnlineItems(
           {required final List<SoundOnlineItem> soundOnlineItems}) =
-      _$_ListSoundOnlineItems;
+      _$ListSoundOnlineItemsImpl;
 
   factory _ListSoundOnlineItems.fromJson(Map<String, dynamic> json) =
-      _$_ListSoundOnlineItems.fromJson;
+      _$ListSoundOnlineItemsImpl.fromJson;
 
   @override
   List<SoundOnlineItem> get soundOnlineItems;
   @override
   @JsonKey(ignore: true)
-  _$$_ListSoundOnlineItemsCopyWith<_$_ListSoundOnlineItems> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ListSoundOnlineItemsImplCopyWith<_$ListSoundOnlineItemsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

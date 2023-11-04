@@ -59,23 +59,25 @@ class _$BaseInternetCheckStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BaseInternetCheckStateCopyWith<$Res>
+abstract class _$$BaseInternetCheckStateImplCopyWith<$Res>
     implements $BaseInternetCheckStateCopyWith<$Res> {
-  factory _$$_BaseInternetCheckStateCopyWith(_$_BaseInternetCheckState value,
-          $Res Function(_$_BaseInternetCheckState) then) =
-      __$$_BaseInternetCheckStateCopyWithImpl<$Res>;
+  factory _$$BaseInternetCheckStateImplCopyWith(
+          _$BaseInternetCheckStateImpl value,
+          $Res Function(_$BaseInternetCheckStateImpl) then) =
+      __$$BaseInternetCheckStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ConnectivityResult connectivityResult});
 }
 
 /// @nodoc
-class __$$_BaseInternetCheckStateCopyWithImpl<$Res>
+class __$$BaseInternetCheckStateImplCopyWithImpl<$Res>
     extends _$BaseInternetCheckStateCopyWithImpl<$Res,
-        _$_BaseInternetCheckState>
-    implements _$$_BaseInternetCheckStateCopyWith<$Res> {
-  __$$_BaseInternetCheckStateCopyWithImpl(_$_BaseInternetCheckState _value,
-      $Res Function(_$_BaseInternetCheckState) _then)
+        _$BaseInternetCheckStateImpl>
+    implements _$$BaseInternetCheckStateImplCopyWith<$Res> {
+  __$$BaseInternetCheckStateImplCopyWithImpl(
+      _$BaseInternetCheckStateImpl _value,
+      $Res Function(_$BaseInternetCheckStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +85,7 @@ class __$$_BaseInternetCheckStateCopyWithImpl<$Res>
   $Res call({
     Object? connectivityResult = null,
   }) {
-    return _then(_$_BaseInternetCheckState(
+    return _then(_$BaseInternetCheckStateImpl(
       connectivityResult: null == connectivityResult
           ? _value.connectivityResult
           : connectivityResult // ignore: cast_nullable_to_non_nullable
@@ -94,8 +96,8 @@ class __$$_BaseInternetCheckStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BaseInternetCheckState extends _BaseInternetCheckState {
-  const _$_BaseInternetCheckState({required this.connectivityResult})
+class _$BaseInternetCheckStateImpl extends _BaseInternetCheckState {
+  const _$BaseInternetCheckStateImpl({required this.connectivityResult})
       : super._();
 
   @override
@@ -110,7 +112,7 @@ class _$_BaseInternetCheckState extends _BaseInternetCheckState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BaseInternetCheckState &&
+            other is _$BaseInternetCheckStateImpl &&
             (identical(other.connectivityResult, connectivityResult) ||
                 other.connectivityResult == connectivityResult));
   }
@@ -121,21 +123,21 @@ class _$_BaseInternetCheckState extends _BaseInternetCheckState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BaseInternetCheckStateCopyWith<_$_BaseInternetCheckState> get copyWith =>
-      __$$_BaseInternetCheckStateCopyWithImpl<_$_BaseInternetCheckState>(
-          this, _$identity);
+  _$$BaseInternetCheckStateImplCopyWith<_$BaseInternetCheckStateImpl>
+      get copyWith => __$$BaseInternetCheckStateImplCopyWithImpl<
+          _$BaseInternetCheckStateImpl>(this, _$identity);
 }
 
 abstract class _BaseInternetCheckState extends BaseInternetCheckState {
   const factory _BaseInternetCheckState(
           {required final ConnectivityResult connectivityResult}) =
-      _$_BaseInternetCheckState;
+      _$BaseInternetCheckStateImpl;
   const _BaseInternetCheckState._() : super._();
 
   @override
   ConnectivityResult get connectivityResult;
   @override
   @JsonKey(ignore: true)
-  _$$_BaseInternetCheckStateCopyWith<_$_BaseInternetCheckState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BaseInternetCheckStateImplCopyWith<_$BaseInternetCheckStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

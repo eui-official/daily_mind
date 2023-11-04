@@ -73,11 +73,11 @@ class _$ItemCategoryCopyWithImpl<$Res, $Val extends ItemCategory>
 }
 
 /// @nodoc
-abstract class _$$_ItemCategoryCopyWith<$Res>
+abstract class _$$ItemCategoryImplCopyWith<$Res>
     implements $ItemCategoryCopyWith<$Res> {
-  factory _$$_ItemCategoryCopyWith(
-          _$_ItemCategory value, $Res Function(_$_ItemCategory) then) =
-      __$$_ItemCategoryCopyWithImpl<$Res>;
+  factory _$$ItemCategoryImplCopyWith(
+          _$ItemCategoryImpl value, $Res Function(_$ItemCategoryImpl) then) =
+      __$$ItemCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Category category, List<Item> items});
@@ -87,11 +87,11 @@ abstract class _$$_ItemCategoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ItemCategoryCopyWithImpl<$Res>
-    extends _$ItemCategoryCopyWithImpl<$Res, _$_ItemCategory>
-    implements _$$_ItemCategoryCopyWith<$Res> {
-  __$$_ItemCategoryCopyWithImpl(
-      _$_ItemCategory _value, $Res Function(_$_ItemCategory) _then)
+class __$$ItemCategoryImplCopyWithImpl<$Res>
+    extends _$ItemCategoryCopyWithImpl<$Res, _$ItemCategoryImpl>
+    implements _$$ItemCategoryImplCopyWith<$Res> {
+  __$$ItemCategoryImplCopyWithImpl(
+      _$ItemCategoryImpl _value, $Res Function(_$ItemCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_ItemCategoryCopyWithImpl<$Res>
     Object? category = null,
     Object? items = null,
   }) {
-    return _then(_$_ItemCategory(
+    return _then(_$ItemCategoryImpl(
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_ItemCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ItemCategory implements _ItemCategory {
-  const _$_ItemCategory(
+class _$ItemCategoryImpl implements _ItemCategory {
+  const _$ItemCategoryImpl(
       {required this.category, required final List<Item> items})
       : _items = items;
 
@@ -139,7 +139,7 @@ class _$_ItemCategory implements _ItemCategory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ItemCategory &&
+            other is _$ItemCategoryImpl &&
             (identical(other.category, category) ||
                 other.category == category) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -152,14 +152,14 @@ class _$_ItemCategory implements _ItemCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ItemCategoryCopyWith<_$_ItemCategory> get copyWith =>
-      __$$_ItemCategoryCopyWithImpl<_$_ItemCategory>(this, _$identity);
+  _$$ItemCategoryImplCopyWith<_$ItemCategoryImpl> get copyWith =>
+      __$$ItemCategoryImplCopyWithImpl<_$ItemCategoryImpl>(this, _$identity);
 }
 
 abstract class _ItemCategory implements ItemCategory {
   const factory _ItemCategory(
       {required final Category category,
-      required final List<Item> items}) = _$_ItemCategory;
+      required final List<Item> items}) = _$ItemCategoryImpl;
 
   @override
   Category get category;
@@ -167,6 +167,6 @@ abstract class _ItemCategory implements ItemCategory {
   List<Item> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_ItemCategoryCopyWith<_$_ItemCategory> get copyWith =>
+  _$$ItemCategoryImplCopyWith<_$ItemCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_providers/app_provider.dart';
-import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items_vertical.dart';
+import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items.dart';
 import 'package:daily_mind/common_widgets/base_stack_with_bottom_action.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
@@ -74,7 +74,7 @@ class OfflineMixEditor extends HookConsumerWidget {
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-                  child: BaseGridItemsVertical(
+                  child: BaseGridItems(
                     items: mixEditorState.offlineMixEditorItemStates,
                     onItemBuilder: (context, index, offlineMixEditorItemState) {
                       return MixEditorItem(

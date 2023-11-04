@@ -75,10 +75,11 @@ class _$SoundTypeCopyWithImpl<$Res, $Val extends SoundType>
 }
 
 /// @nodoc
-abstract class _$$_SoundTypeCopyWith<$Res> implements $SoundTypeCopyWith<$Res> {
-  factory _$$_SoundTypeCopyWith(
-          _$_SoundType value, $Res Function(_$_SoundType) then) =
-      __$$_SoundTypeCopyWithImpl<$Res>;
+abstract class _$$SoundTypeImplCopyWith<$Res>
+    implements $SoundTypeCopyWith<$Res> {
+  factory _$$SoundTypeImplCopyWith(
+          _$SoundTypeImpl value, $Res Function(_$SoundTypeImpl) then) =
+      __$$SoundTypeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +87,11 @@ abstract class _$$_SoundTypeCopyWith<$Res> implements $SoundTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SoundTypeCopyWithImpl<$Res>
-    extends _$SoundTypeCopyWithImpl<$Res, _$_SoundType>
-    implements _$$_SoundTypeCopyWith<$Res> {
-  __$$_SoundTypeCopyWithImpl(
-      _$_SoundType _value, $Res Function(_$_SoundType) _then)
+class __$$SoundTypeImplCopyWithImpl<$Res>
+    extends _$SoundTypeCopyWithImpl<$Res, _$SoundTypeImpl>
+    implements _$$SoundTypeImplCopyWith<$Res> {
+  __$$SoundTypeImplCopyWithImpl(
+      _$SoundTypeImpl _value, $Res Function(_$SoundTypeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +101,7 @@ class __$$_SoundTypeCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? name = null,
   }) {
-    return _then(_$_SoundType(
+    return _then(_$SoundTypeImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -119,14 +120,14 @@ class __$$_SoundTypeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SoundType implements _SoundType {
-  const _$_SoundType(
+class _$SoundTypeImpl implements _SoundType {
+  const _$SoundTypeImpl(
       {required this.id,
       @JsonKey(name: 'created_at') required this.createdAt,
       required this.name});
 
-  factory _$_SoundType.fromJson(Map<String, dynamic> json) =>
-      _$$_SoundTypeFromJson(json);
+  factory _$SoundTypeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoundTypeImplFromJson(json);
 
   @override
   final String id;
@@ -145,7 +146,7 @@ class _$_SoundType implements _SoundType {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SoundType &&
+            other is _$SoundTypeImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -159,12 +160,12 @@ class _$_SoundType implements _SoundType {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SoundTypeCopyWith<_$_SoundType> get copyWith =>
-      __$$_SoundTypeCopyWithImpl<_$_SoundType>(this, _$identity);
+  _$$SoundTypeImplCopyWith<_$SoundTypeImpl> get copyWith =>
+      __$$SoundTypeImplCopyWithImpl<_$SoundTypeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SoundTypeToJson(
+    return _$$SoundTypeImplToJson(
       this,
     );
   }
@@ -174,10 +175,10 @@ abstract class _SoundType implements SoundType {
   const factory _SoundType(
       {required final String id,
       @JsonKey(name: 'created_at') required final String createdAt,
-      required final String name}) = _$_SoundType;
+      required final String name}) = _$SoundTypeImpl;
 
   factory _SoundType.fromJson(Map<String, dynamic> json) =
-      _$_SoundType.fromJson;
+      _$SoundTypeImpl.fromJson;
 
   @override
   String get id;
@@ -188,6 +189,6 @@ abstract class _SoundType implements SoundType {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_SoundTypeCopyWith<_$_SoundType> get copyWith =>
+  _$$SoundTypeImplCopyWith<_$SoundTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

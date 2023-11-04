@@ -63,22 +63,22 @@ class _$OfflinePlayerItemCopyWithImpl<$Res, $Val extends OfflinePlayerItem>
 }
 
 /// @nodoc
-abstract class _$$_OfflinePlayerItemCopyWith<$Res>
+abstract class _$$OfflinePlayerItemImplCopyWith<$Res>
     implements $OfflinePlayerItemCopyWith<$Res> {
-  factory _$$_OfflinePlayerItemCopyWith(_$_OfflinePlayerItem value,
-          $Res Function(_$_OfflinePlayerItem) then) =
-      __$$_OfflinePlayerItemCopyWithImpl<$Res>;
+  factory _$$OfflinePlayerItemImplCopyWith(_$OfflinePlayerItemImpl value,
+          $Res Function(_$OfflinePlayerItemImpl) then) =
+      __$$OfflinePlayerItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({GaplessAudioPlayer player, String id});
 }
 
 /// @nodoc
-class __$$_OfflinePlayerItemCopyWithImpl<$Res>
-    extends _$OfflinePlayerItemCopyWithImpl<$Res, _$_OfflinePlayerItem>
-    implements _$$_OfflinePlayerItemCopyWith<$Res> {
-  __$$_OfflinePlayerItemCopyWithImpl(
-      _$_OfflinePlayerItem _value, $Res Function(_$_OfflinePlayerItem) _then)
+class __$$OfflinePlayerItemImplCopyWithImpl<$Res>
+    extends _$OfflinePlayerItemCopyWithImpl<$Res, _$OfflinePlayerItemImpl>
+    implements _$$OfflinePlayerItemImplCopyWith<$Res> {
+  __$$OfflinePlayerItemImplCopyWithImpl(_$OfflinePlayerItemImpl _value,
+      $Res Function(_$OfflinePlayerItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_OfflinePlayerItemCopyWithImpl<$Res>
     Object? player = null,
     Object? id = null,
   }) {
-    return _then(_$_OfflinePlayerItem(
+    return _then(_$OfflinePlayerItemImpl(
       player: null == player
           ? _value.player
           : player // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_OfflinePlayerItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OfflinePlayerItem implements _OfflinePlayerItem {
-  const _$_OfflinePlayerItem({required this.player, required this.id});
+class _$OfflinePlayerItemImpl implements _OfflinePlayerItem {
+  const _$OfflinePlayerItemImpl({required this.player, required this.id});
 
   @override
   final GaplessAudioPlayer player;
@@ -119,7 +119,7 @@ class _$_OfflinePlayerItem implements _OfflinePlayerItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OfflinePlayerItem &&
+            other is _$OfflinePlayerItemImpl &&
             (identical(other.player, player) || other.player == player) &&
             (identical(other.id, id) || other.id == id));
   }
@@ -130,15 +130,15 @@ class _$_OfflinePlayerItem implements _OfflinePlayerItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OfflinePlayerItemCopyWith<_$_OfflinePlayerItem> get copyWith =>
-      __$$_OfflinePlayerItemCopyWithImpl<_$_OfflinePlayerItem>(
+  _$$OfflinePlayerItemImplCopyWith<_$OfflinePlayerItemImpl> get copyWith =>
+      __$$OfflinePlayerItemImplCopyWithImpl<_$OfflinePlayerItemImpl>(
           this, _$identity);
 }
 
 abstract class _OfflinePlayerItem implements OfflinePlayerItem {
   const factory _OfflinePlayerItem(
       {required final GaplessAudioPlayer player,
-      required final String id}) = _$_OfflinePlayerItem;
+      required final String id}) = _$OfflinePlayerItemImpl;
 
   @override
   GaplessAudioPlayer get player;
@@ -146,6 +146,6 @@ abstract class _OfflinePlayerItem implements OfflinePlayerItem {
   String get id;
   @override
   @JsonKey(ignore: true)
-  _$$_OfflinePlayerItemCopyWith<_$_OfflinePlayerItem> get copyWith =>
+  _$$OfflinePlayerItemImplCopyWith<_$OfflinePlayerItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

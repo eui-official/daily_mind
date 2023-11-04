@@ -59,22 +59,24 @@ class _$OfflineMixEditorStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OfflineMixEditorStateCopyWith<$Res>
+abstract class _$$OfflineMixEditorStateImplCopyWith<$Res>
     implements $OfflineMixEditorStateCopyWith<$Res> {
-  factory _$$_OfflineMixEditorStateCopyWith(_$_OfflineMixEditorState value,
-          $Res Function(_$_OfflineMixEditorState) then) =
-      __$$_OfflineMixEditorStateCopyWithImpl<$Res>;
+  factory _$$OfflineMixEditorStateImplCopyWith(
+          _$OfflineMixEditorStateImpl value,
+          $Res Function(_$OfflineMixEditorStateImpl) then) =
+      __$$OfflineMixEditorStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<OfflineMixEditorItemState> offlineMixEditorItemStates});
 }
 
 /// @nodoc
-class __$$_OfflineMixEditorStateCopyWithImpl<$Res>
-    extends _$OfflineMixEditorStateCopyWithImpl<$Res, _$_OfflineMixEditorState>
-    implements _$$_OfflineMixEditorStateCopyWith<$Res> {
-  __$$_OfflineMixEditorStateCopyWithImpl(_$_OfflineMixEditorState _value,
-      $Res Function(_$_OfflineMixEditorState) _then)
+class __$$OfflineMixEditorStateImplCopyWithImpl<$Res>
+    extends _$OfflineMixEditorStateCopyWithImpl<$Res,
+        _$OfflineMixEditorStateImpl>
+    implements _$$OfflineMixEditorStateImplCopyWith<$Res> {
+  __$$OfflineMixEditorStateImplCopyWithImpl(_$OfflineMixEditorStateImpl _value,
+      $Res Function(_$OfflineMixEditorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -82,7 +84,7 @@ class __$$_OfflineMixEditorStateCopyWithImpl<$Res>
   $Res call({
     Object? offlineMixEditorItemStates = null,
   }) {
-    return _then(_$_OfflineMixEditorState(
+    return _then(_$OfflineMixEditorStateImpl(
       offlineMixEditorItemStates: null == offlineMixEditorItemStates
           ? _value._offlineMixEditorItemStates
           : offlineMixEditorItemStates // ignore: cast_nullable_to_non_nullable
@@ -93,8 +95,8 @@ class __$$_OfflineMixEditorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OfflineMixEditorState implements _OfflineMixEditorState {
-  const _$_OfflineMixEditorState(
+class _$OfflineMixEditorStateImpl implements _OfflineMixEditorState {
+  const _$OfflineMixEditorStateImpl(
       {required final List<OfflineMixEditorItemState>
           offlineMixEditorItemStates})
       : _offlineMixEditorItemStates = offlineMixEditorItemStates;
@@ -117,7 +119,7 @@ class _$_OfflineMixEditorState implements _OfflineMixEditorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OfflineMixEditorState &&
+            other is _$OfflineMixEditorStateImpl &&
             const DeepCollectionEquality().equals(
                 other._offlineMixEditorItemStates,
                 _offlineMixEditorItemStates));
@@ -130,20 +132,20 @@ class _$_OfflineMixEditorState implements _OfflineMixEditorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OfflineMixEditorStateCopyWith<_$_OfflineMixEditorState> get copyWith =>
-      __$$_OfflineMixEditorStateCopyWithImpl<_$_OfflineMixEditorState>(
-          this, _$identity);
+  _$$OfflineMixEditorStateImplCopyWith<_$OfflineMixEditorStateImpl>
+      get copyWith => __$$OfflineMixEditorStateImplCopyWithImpl<
+          _$OfflineMixEditorStateImpl>(this, _$identity);
 }
 
 abstract class _OfflineMixEditorState implements OfflineMixEditorState {
   const factory _OfflineMixEditorState(
       {required final List<OfflineMixEditorItemState>
-          offlineMixEditorItemStates}) = _$_OfflineMixEditorState;
+          offlineMixEditorItemStates}) = _$OfflineMixEditorStateImpl;
 
   @override
   List<OfflineMixEditorItemState> get offlineMixEditorItemStates;
   @override
   @JsonKey(ignore: true)
-  _$$_OfflineMixEditorStateCopyWith<_$_OfflineMixEditorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OfflineMixEditorStateImplCopyWith<_$OfflineMixEditorStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

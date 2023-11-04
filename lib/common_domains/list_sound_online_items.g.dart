@@ -6,16 +6,16 @@ part of 'list_sound_online_items.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ListSoundOnlineItems _$$_ListSoundOnlineItemsFromJson(
+_$ListSoundOnlineItemsImpl _$$ListSoundOnlineItemsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ListSoundOnlineItems(
+    _$ListSoundOnlineItemsImpl(
       soundOnlineItems: (json['soundOnlineItems'] as List<dynamic>)
           .map((e) => SoundOnlineItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ListSoundOnlineItemsToJson(
-        _$_ListSoundOnlineItems instance) =>
+Map<String, dynamic> _$$ListSoundOnlineItemsImplToJson(
+        _$ListSoundOnlineItemsImpl instance) =>
     <String, dynamic>{
       'soundOnlineItems': instance.soundOnlineItems,
     };

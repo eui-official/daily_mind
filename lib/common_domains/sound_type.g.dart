@@ -6,13 +6,14 @@ part of 'sound_type.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SoundType _$$_SoundTypeFromJson(Map<String, dynamic> json) => _$_SoundType(
+_$SoundTypeImpl _$$SoundTypeImplFromJson(Map<String, dynamic> json) =>
+    _$SoundTypeImpl(
       id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_SoundTypeToJson(_$_SoundType instance) =>
+Map<String, dynamic> _$$SoundTypeImplToJson(_$SoundTypeImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt,

@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items_vertical.dart';
+import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/typography/presentation/list_header.dart';
 import 'package:daily_mind/types/common.dart';
@@ -40,7 +40,7 @@ class BaseGridItemsHeader<T> extends StatelessWidget {
               ),
             ),
           Flexible(
-            child: BaseGridItemsVertical(
+            child: BaseGridItems(
               items: items,
               onItemBuilder: (context, index, item) {
                 final index = items.indexOf(item);

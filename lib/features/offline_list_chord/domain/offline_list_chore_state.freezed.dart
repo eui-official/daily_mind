@@ -64,22 +64,24 @@ class _$OfflineListChoreStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OfflineListChoreStateCopyWith<$Res>
+abstract class _$$OfflineListChoreStateImplCopyWith<$Res>
     implements $OfflineListChoreStateCopyWith<$Res> {
-  factory _$$_OfflineListChoreStateCopyWith(_$_OfflineListChoreState value,
-          $Res Function(_$_OfflineListChoreState) then) =
-      __$$_OfflineListChoreStateCopyWithImpl<$Res>;
+  factory _$$OfflineListChoreStateImplCopyWith(
+          _$OfflineListChoreStateImpl value,
+          $Res Function(_$OfflineListChoreStateImpl) then) =
+      __$$OfflineListChoreStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isLoading, List<Playlist> playlists});
 }
 
 /// @nodoc
-class __$$_OfflineListChoreStateCopyWithImpl<$Res>
-    extends _$OfflineListChoreStateCopyWithImpl<$Res, _$_OfflineListChoreState>
-    implements _$$_OfflineListChoreStateCopyWith<$Res> {
-  __$$_OfflineListChoreStateCopyWithImpl(_$_OfflineListChoreState _value,
-      $Res Function(_$_OfflineListChoreState) _then)
+class __$$OfflineListChoreStateImplCopyWithImpl<$Res>
+    extends _$OfflineListChoreStateCopyWithImpl<$Res,
+        _$OfflineListChoreStateImpl>
+    implements _$$OfflineListChoreStateImplCopyWith<$Res> {
+  __$$OfflineListChoreStateImplCopyWithImpl(_$OfflineListChoreStateImpl _value,
+      $Res Function(_$OfflineListChoreStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +90,7 @@ class __$$_OfflineListChoreStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? playlists = null,
   }) {
-    return _then(_$_OfflineListChoreState(
+    return _then(_$OfflineListChoreStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -103,8 +105,8 @@ class __$$_OfflineListChoreStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OfflineListChoreState extends _OfflineListChoreState {
-  const _$_OfflineListChoreState(
+class _$OfflineListChoreStateImpl extends _OfflineListChoreState {
+  const _$OfflineListChoreStateImpl(
       {required this.isLoading, required final List<Playlist> playlists})
       : _playlists = playlists,
         super._();
@@ -128,7 +130,7 @@ class _$_OfflineListChoreState extends _OfflineListChoreState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OfflineListChoreState &&
+            other is _$OfflineListChoreStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
@@ -142,15 +144,15 @@ class _$_OfflineListChoreState extends _OfflineListChoreState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OfflineListChoreStateCopyWith<_$_OfflineListChoreState> get copyWith =>
-      __$$_OfflineListChoreStateCopyWithImpl<_$_OfflineListChoreState>(
-          this, _$identity);
+  _$$OfflineListChoreStateImplCopyWith<_$OfflineListChoreStateImpl>
+      get copyWith => __$$OfflineListChoreStateImplCopyWithImpl<
+          _$OfflineListChoreStateImpl>(this, _$identity);
 }
 
 abstract class _OfflineListChoreState extends OfflineListChoreState {
   const factory _OfflineListChoreState(
       {required final bool isLoading,
-      required final List<Playlist> playlists}) = _$_OfflineListChoreState;
+      required final List<Playlist> playlists}) = _$OfflineListChoreStateImpl;
   const _OfflineListChoreState._() : super._();
 
   @override
@@ -159,6 +161,6 @@ abstract class _OfflineListChoreState extends OfflineListChoreState {
   List<Playlist> get playlists;
   @override
   @JsonKey(ignore: true)
-  _$$_OfflineListChoreStateCopyWith<_$_OfflineListChoreState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OfflineListChoreStateImplCopyWith<_$OfflineListChoreStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
