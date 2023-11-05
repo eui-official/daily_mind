@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_applications/date_formatter.dart';
-import 'package:daily_mind/common_widgets/base_spacing_container.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
 import 'package:daily_mind/common_widgets/base_slider_theme.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -63,33 +62,31 @@ class BasePlayerTime extends HookWidget {
       return () {};
     }, [value, onUpdatedSlider]);
 
-    return BaseSpacingContainer(
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: spacing(2)),
-            child: BaseSliderTheme(
-              slider: Slider(
-                max: max.toDouble(),
-                min: 0,
-                onChanged: onSliderChanged,
-                onChangeStart: onSliderChangeStart,
-                onChangeEnd: onSliderChangedEnd,
-                value: trackValueState.value.toDouble(),
-                label: dateFormatter.onFormatDuration(
-                    Duration(seconds: trackValueState.value.toInt())),
-              ),
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: spacing(2)),
+          child: BaseSliderTheme(
+            slider: Slider(
+              max: max.toDouble(),
+              min: 0,
+              onChanged: onSliderChanged,
+              onChangeStart: onSliderChangeStart,
+              onChangeEnd: onSliderChangedEnd,
+              value: trackValueState.value.toDouble(),
+              label: dateFormatter.onFormatDuration(
+                  Duration(seconds: trackValueState.value.toInt())),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BasePlayerTimeDisplay(seconds: trackValueState.value.toInt()),
-              BasePlayerTimeDisplay(seconds: remainingTime.toInt()),
-            ],
-          )
-        ],
-      ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            BasePlayerTimeDisplay(seconds: trackValueState.value.toInt()),
+            BasePlayerTimeDisplay(seconds: remainingTime.toInt()),
+          ],
+        )
+      ],
     );
   }
 }

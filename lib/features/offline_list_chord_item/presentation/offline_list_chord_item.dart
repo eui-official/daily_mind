@@ -1,4 +1,5 @@
 import 'package:advanced_in_app_review/advanced_in_app_review.dart';
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
@@ -48,14 +49,10 @@ class OfflineListChordItem extends HookConsumerWidget {
     final onOpenOfflinePlayer = useCallback(() {
       baseMiniPlayerNotifier.onHide();
 
-      showModalBottomSheet(
-        context: context,
+      onShowBottomSheet(
+        context,
         isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        builder: (context) {
-          return OfflinePlayer(playlistId: playlist.id);
-        },
+        child: OfflinePlayer(playlistId: playlist.id),
       ).then((value) => baseMiniPlayerNotifier.onShow());
     }, [
       context,

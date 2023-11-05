@@ -19,6 +19,7 @@ class OnlineItem extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: ListTile(
+        contentPadding: EdgeInsets.zero,
         onTap: onTap,
         leading: SizedBox(
           width: spacing(6),

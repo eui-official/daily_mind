@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_widgets/base_list_tile.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_theme_bottomsheet.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -21,11 +22,10 @@ class SettingsColor extends StatelessWidget {
         ),
       ),
       onTap: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return const SettingsThemeBottomSheet();
-          },
+        onShowBottomSheet(
+          context,
+          backgroundColor: context.theme.colorScheme.background,
+          child: const SettingsThemeBottomSheet(),
         );
       },
     );

@@ -24,7 +24,7 @@ class Tutorial extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      final isFirstTime = db.isFirstTime(task);
+      final isFirstTime = db.onIsFirstTime(task);
 
       if (isFirstTime) {
         Future.delayed(
@@ -37,10 +37,10 @@ class Tutorial extends HookWidget {
               targets: targets,
               textSkip: 'skip'.tr(),
               onFinish: () {
-                db.addFirstTime(task);
+                db.onAddFirstTime(task);
               },
               onSkip: () {
-                db.addFirstTime(task);
+                db.onAddFirstTime(task);
 
                 return true;
               },

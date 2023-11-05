@@ -42,7 +42,7 @@ class Db {
     final setting = isar.settings.filter().typeEqualTo(type).findFirstSync();
 
     isar.writeTxnSync(() {
-      safeValueBuilder(
+      onSafeValueBuilder(
         setting,
         (safeSetting) {
           safeSetting.value = value;
@@ -63,7 +63,7 @@ class Db {
     return isar.settings.filter().typeEqualTo(type).findFirstSync();
   }
 
-  Stream<List<Settings>> streamSetting(String type,
+  Stream<List<Settings>> onStreamSetting(String type,
       [bool fireImmediately = true]) {
     return isar.settings
         .filter()
@@ -71,7 +71,7 @@ class Db {
         .watch(fireImmediately: fireImmediately);
   }
 
-  bool isFirstTime(String task) {
+  bool onIsFirstTime(String task) {
     return isar.firstTimes.filter().taskEqualTo(task).isEmptySync();
   }
 
@@ -82,10 +82,10 @@ class Db {
     return firstTime;
   }
 
-  void addFirstTime(String task) {
+  void onAddFirstTime(String task) {
     final firstTime = onGetFirstTime(task);
 
-    safeValueBuilder(firstTime, (safeFirstTime) {
+    onSafeValueBuilder(firstTime, (safeFirstTime) {
       isar.firstTimes.putSync(safeFirstTime);
     }, () {
       isar.writeTxnSync(() {
@@ -105,7 +105,7 @@ class Db {
     final playlist =
         isar.playlists.where().idEqualTo(playlistId).findFirstSync();
 
-    safeValueBuilder(playlist, (safePlaylist) {
+    onSafeValueBuilder(playlist, (safePlaylist) {
       safePlaylist.title = title;
 
       isar.writeTxnSync(() {
@@ -122,7 +122,7 @@ class Db {
     final playlist =
         isar.playlists.where().idEqualTo(playlistId).findFirstSync();
 
-    safeValueBuilder(
+    onSafeValueBuilder(
       playlist,
       (safePlaylist) {
         final items = safePlaylist.items ?? [];

@@ -20,7 +20,7 @@ class Introduction extends HookWidget {
     final firstTime = useMemoized(() => db.onGetFirstTime("introduction"), []);
 
     useEffect(() {
-      safeValueBuilder(
+      onSafeValueBuilder(
         firstTime,
         (safeFirstTime) {},
         () async {
@@ -57,7 +57,7 @@ class Introduction extends HookWidget {
             ),
           ],
           onDone: () {
-            db.addFirstTime("introduction");
+            db.onAddFirstTime("introduction");
             context.pushReplacement("/dashboard");
           },
           next: Text('next'.tr()),

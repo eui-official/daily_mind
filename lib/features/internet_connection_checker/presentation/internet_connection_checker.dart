@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_internet_connection_checker/presentation/base_internet_connection_checker_provider.dart';
@@ -24,19 +25,16 @@ class InternetConnectionChecker extends HookConsumerWidget {
 
     final onShowInternetDisconnected = useCallback(
       () {
-        safeValueBuilder(
+        onSafeValueBuilder(
           baseInternetCheckState.value,
           (state) async {
             if (state.isDisconnected) {
               isOpen.value = true;
 
-              await showModalBottomSheet(
-                context: context,
+              await onShowBottomSheet(
+                context,
                 backgroundColor: context.theme.colorScheme.background,
-                elevation: 0,
-                builder: (context) {
-                  return const InternetConnectionNotice();
-                },
+                child: const InternetConnectionNotice(),
               );
 
               isOpen.value = false;

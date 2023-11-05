@@ -27,7 +27,7 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
 
       final duration = onlinePlayer.duration;
 
-      safeValueBuilder(duration, (value) {
+      onSafeValueBuilder(duration, (value) {
         if (value <= newDuration && isAutoPlayNext) {
           skipToNext();
         }
@@ -35,11 +35,11 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
     });
 
     durationStreamSubscription = onlinePlayer.durationStream.listen((duration) {
-      safeValueBuilder(duration, (value) {
+      onSafeValueBuilder(duration, (value) {
         if (value != Duration.zero) {
           final tag = onlinePlayer.sequenceState?.currentSource?.tag;
 
-          safeValueBuilder<dynamic>(tag, (item) {
+          onSafeValueBuilder<dynamic>(tag, (item) {
             mediaItem.add(
               MediaItem(
                 id: item.source,

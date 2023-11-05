@@ -16,7 +16,7 @@ class SettingWatcherProvider extends StateNotifier<Settings?> {
 
     state = setting;
 
-    db.streamSetting(type).listen((settings) {
+    db.onStreamSetting(type).listen((settings) {
       if (settings.isNotEmpty) {
         state = settings.first;
       }

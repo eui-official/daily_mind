@@ -47,7 +47,10 @@ class Settings extends StatelessWidget {
                       launchUrl(Uri.parse('https://m.me/eui.dailymind'));
                     },
                     title: Text('sendFeedback'.tr()),
-                    subtitle: Text('sendFeedbackDescription'.tr()),
+                    subtitle: Text(
+                      'sendFeedbackDescription'.tr(),
+                      style: TextStyle(color: secondaryTextColor),
+                    ),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(spacing(2)),
                       bottomRight: Radius.circular(spacing(2)),

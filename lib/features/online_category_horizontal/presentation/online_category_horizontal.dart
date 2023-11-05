@@ -38,12 +38,12 @@ class OnlineCategoryHorizontal extends HookWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(spacing(2)),
                 child: BaseInkWell(
-                  color: color,
                   onTap: onTap,
                   child: Stack(
                     children: [
                       Container(
                         decoration: BoxDecoration(
+                          color: color,
                           boxShadow: kElevationToShadow[24],
                         ),
                         child: Row(

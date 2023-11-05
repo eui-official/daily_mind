@@ -5,7 +5,7 @@ extension BasePlayerTimer on DailyMindAudioHandler {
     timer?.cancel();
 
     timer = Timer.periodic(const Duration(seconds: 1), (currentTimer) {
-      if (isBefore(time)) {
+      if (onIsBefore(time)) {
         pause();
         timer?.cancel();
       }

@@ -20,7 +20,7 @@ class BaseTimePickerNotifier extends StateNotifier<BaseTimePickerState> {
     timer?.cancel();
 
     timer = Timer.periodic(const Duration(seconds: 1), (currentTimer) {
-      if (isBefore(time)) {
+      if (onIsBefore(time)) {
         state = state.copyWith(time: empty);
         timer?.cancel();
       }

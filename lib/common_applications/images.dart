@@ -11,7 +11,7 @@ final listBackground = [
 ];
 
 class Images {
-  String get randomBackground =>
+  String get onGetRandomBackground =>
       listBackground[Random().nextInt(listBackground.length)];
 }
 

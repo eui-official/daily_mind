@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_player_details.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -8,7 +9,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlinePlayer extends HookConsumerWidget {
-  const OnlinePlayer({super.key});
+  final Category category;
+
+  const OnlinePlayer({
+    super.key,
+    required this.category,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,6 +51,7 @@ class OnlinePlayer extends HookConsumerWidget {
           scrollController: scrollController,
           child: OnlinePlayerBottom(
             audioHandler: baseAudioHandler,
+            category: category,
             item: tag,
           ),
         );
