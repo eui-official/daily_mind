@@ -41,8 +41,8 @@ class OfflinePlayerBottom extends HookConsumerWidget {
         horizontal: spacing(2),
         vertical: spacing(4),
       ),
-      decoration: BoxDecoration(
-        color: context.theme.colorScheme.background.withOpacity(0.9),
+      decoration: const BoxDecoration(
+        gradient: baseLinearGradient,
       ),
       child: SafeArea(
         child: Column(

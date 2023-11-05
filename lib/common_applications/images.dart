@@ -1,13 +1,11 @@
 import 'dart:math';
 
 final listBackground = [
-  'assets/images/firecamp.png',
-  'assets/images/forest-with-birds.png',
-  'assets/images/forest.png',
-  'assets/images/rain-forest.png',
-  'assets/images/sky.png',
-  'assets/images/water.png',
-  'assets/images/wind-and-peaceful.png',
+  'assets/images/background/1.jpg',
+  'assets/images/background/2.jpg',
+  'assets/images/background/3.jpg',
+  'assets/images/background/4.jpg',
+  'assets/images/background/5.jpg',
 ];
 
 class Images {

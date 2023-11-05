@@ -31,14 +31,7 @@ class OnlinePlayerBottom extends HookConsumerWidget {
         horizontal: spacing(2),
       ),
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.black38,
-            Colors.black,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
+        gradient: baseLinearGradient,
       ),
       child: SafeArea(
         child: Column(

@@ -17,3 +17,12 @@ List<Widget> space(
       .skip(1)
       .toList();
 }
+
+const baseLinearGradient = LinearGradient(
+  colors: [
+    Colors.black45,
+    Colors.black,
+  ],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+);

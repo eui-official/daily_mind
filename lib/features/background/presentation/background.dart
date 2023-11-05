@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_animated_opacity.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
@@ -24,7 +25,11 @@ class Background extends StatelessWidget {
             ),
           ),
         ),
-        Container(color: Colors.black87)
+        Container(
+          decoration: const BoxDecoration(
+            gradient: baseLinearGradient,
+          ),
+        )
       ],
     );
   }
