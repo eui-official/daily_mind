@@ -30,7 +30,7 @@ class BaseContainerList<T> extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                color: context.theme.colorScheme.background.withOpacity(0.5),
+                color: context.theme.cardColor.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(spacing(2)),
               ),
               child: ListView.separated(
