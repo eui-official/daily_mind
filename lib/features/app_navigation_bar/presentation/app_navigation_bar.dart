@@ -2,6 +2,7 @@ import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigati
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:line_icons/line_icons.dart';
 
 class AppNavigationBar extends HookConsumerWidget {
   const AppNavigationBar({super.key});
@@ -15,8 +16,12 @@ class AppNavigationBar extends HookConsumerWidget {
     return BottomNavigationBar(
       items: const [
         BottomNavigationBarItem(
+          icon: Icon(LineIcons.clock),
+          label: 'Tập trung',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.music_note),
-          label: 'Âm thanh',
+          label: 'Âm thanh tự nhiên',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.explore),
@@ -29,6 +34,7 @@ class AppNavigationBar extends HookConsumerWidget {
       ],
       showSelectedLabels: false,
       showUnselectedLabels: false,
+      unselectedItemColor: context.theme.hintColor,
       selectedItemColor: context.theme.primaryColor,
       backgroundColor: Colors.transparent,
       currentIndex: appNavigationBarState.index,
