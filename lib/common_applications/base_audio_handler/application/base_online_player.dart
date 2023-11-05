@@ -3,6 +3,8 @@ part of 'base_audio_handler.dart';
 extension BaseOnlinePlayer on DailyMindAudioHandler {
   void onInitOnline(List<Item> items) async {
     onOfflineDispose();
+    onOnlineDispose();
+
     onlinePlayer = OnlineAudioPlayer();
 
     onlinePlayer.onInitSource(items);
@@ -52,7 +54,7 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
     });
   }
 
-  void onClearOnline() {
+  void onOnlineDispose() {
     onlinePlayer.dispose();
   }
 

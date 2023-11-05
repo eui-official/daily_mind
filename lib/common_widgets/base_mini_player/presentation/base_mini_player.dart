@@ -1,4 +1,5 @@
 import 'package:blur/blur.dart';
+import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -36,40 +37,37 @@ class BaseMiniPlayer extends HookConsumerWidget {
         vertical: kBottomNavigationBarHeight * 1.75,
         horizontal: spacing(2),
       ),
-      child: Material(
-        type: MaterialType.transparency,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(spacing()),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: spacing()),
-            child: Row(
-              children: space([
-                AnimatedSwitcher(
-                  key: ValueKey(image.hashCode),
-                  duration: defaultDuration,
-                  child: image,
-                ),
-                Flexible(
-                  child: BaseMarquee(
-                    text: title,
-                    style: context.textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+      child: BaseInkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(spacing(2)),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: spacing()),
+          child: Row(
+            children: space([
+              AnimatedSwitcher(
+                key: ValueKey(image.hashCode),
+                duration: defaultDuration,
+                child: image,
+              ),
+              Flexible(
+                child: BaseMarquee(
+                  text: title,
+                  style: context.textTheme.bodySmall?.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                BaseMiniPlayerToggleButton(
-                  isLoading: isLoading,
-                  isPlaying: isPlaying,
-                  onPause: onPause,
-                  onPlay: onPlay,
-                ),
-              ], width: spacing(2)),
-            ),
-          ).frosted(
-            borderRadius: BorderRadius.circular(spacing()),
-            frostColor: context.theme.primaryColorDark,
+              ),
+              BaseMiniPlayerToggleButton(
+                isLoading: isLoading,
+                isPlaying: isPlaying,
+                onPause: onPause,
+                onPlay: onPlay,
+              ),
+            ], width: spacing(2)),
           ),
+        ).frosted(
+          borderRadius: BorderRadius.circular(spacing()),
+          frostColor: context.theme.primaryColorDark,
         ),
       ),
     );

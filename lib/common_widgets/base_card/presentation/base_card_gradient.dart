@@ -1,3 +1,4 @@
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BaseCardGradient extends StatelessWidget {
@@ -13,6 +14,7 @@ class BaseCardGradient extends StatelessWidget {
     return Positioned.fill(
       child: Container(
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(spacing(2)),
           gradient: LinearGradient(
             colors: [
               color.withOpacity(0.9),

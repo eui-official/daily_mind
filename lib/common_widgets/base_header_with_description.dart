@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class BaseHeaderWithDescription extends StatelessWidget {
+  final int? maxLines;
   final String description;
   final String name;
+  final TextOverflow? overflow;
   final Widget headerAction;
 
   const BaseHeaderWithDescription({
@@ -14,6 +16,8 @@ class BaseHeaderWithDescription extends StatelessWidget {
     required this.description,
     required this.name,
     this.headerAction = emptyWidget,
+    this.maxLines,
+    this.overflow,
   });
 
   @override
@@ -23,21 +27,17 @@ class BaseHeaderWithDescription extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: space(
         [
-          Flexible(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (name.isNotEmpty)
-                  Flexible(
-                    child: Text(
-                      name,
-                      style: context.textTheme.bodyLarge
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                headerAction,
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (name.isNotEmpty)
+                Text(
+                  name,
+                  style: context.textTheme.bodyLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+              headerAction,
+            ],
           ),
           Flexible(
             child: Text(
@@ -46,6 +46,8 @@ class BaseHeaderWithDescription extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 color: secondaryTextColor,
               ),
+              maxLines: maxLines,
+              overflow: overflow,
             ),
           )
         ],

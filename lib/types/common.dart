@@ -28,3 +28,5 @@ typedef OnSoundOfflineStateBuilder = Function(
   bool isLoading,
   bool isPlaying,
 );
+
+typedef OnOnlineHandlerBuilder = Widget Function(VoidCallback onTap);

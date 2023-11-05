@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card_gradient.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card_image.dart';
+import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -51,10 +52,7 @@ class BaseCard extends HookWidget {
                   value: onTap,
                   builder: (onTap) {
                     return Positioned.fill(
-                      child: Material(
-                        type: MaterialType.transparency,
-                        child: InkWell(onTap: onTap),
-                      ),
+                      child: BaseInkWell(onTap: onTap),
                     );
                   },
                 ),
