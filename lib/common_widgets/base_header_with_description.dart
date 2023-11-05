@@ -31,10 +31,14 @@ class BaseHeaderWithDescription extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (name.isNotEmpty)
-                Text(
-                  name,
-                  style: context.textTheme.bodyLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                Flexible(
+                  child: Text(
+                    name,
+                    style: context.textTheme.bodyLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               headerAction,
             ],

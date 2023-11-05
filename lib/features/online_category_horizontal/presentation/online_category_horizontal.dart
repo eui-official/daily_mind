@@ -27,7 +27,7 @@ class OnlineCategoryHorizontal extends HookWidget {
     return BaseNullBuilder(
       value: paletteGenerator.data,
       builder: (palette) {
-        final color = palette.darkMutedColor?.color.withOpacity(0.6) ??
+        final color = palette.dominantColor?.color.withOpacity(0.6) ??
             context.theme.colorScheme.background;
 
         return BaseOnlineHandler(
