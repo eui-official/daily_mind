@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_domains/item_category.dart';
+import 'package:daily_mind/common_hooks/use_image_palette.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_online_handler.dart';
@@ -9,7 +10,6 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
-import 'package:palette_generator/palette_generator.dart';
 
 class OnlineCategoryHorizontal extends HookWidget {
   final ItemCategory itemCategory;
@@ -22,11 +22,7 @@ class OnlineCategoryHorizontal extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final image = CachedNetworkImageProvider(itemCategory.items.first.image);
-
-    final resizedImage = ResizeImage(image, width: 8, height: 8);
-    final paletteGeneratorMemoized =
-        useMemoized(() => PaletteGenerator.fromImageProvider(resizedImage));
-    final paletteGenerator = useFuture(paletteGeneratorMemoized);
+    final paletteGenerator = useImagePallete(image);
 
     return BaseNullBuilder(
       value: paletteGenerator.data,
