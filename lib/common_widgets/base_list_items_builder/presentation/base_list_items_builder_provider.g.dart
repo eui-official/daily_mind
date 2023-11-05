@@ -7,7 +7,7 @@ part of 'base_list_items_builder_provider.dart';
 // **************************************************************************
 
 String _$baseListItemsBuilderNotifierHash() =>
-    r'eb543dbd434efc6e38be42ee9b747894b0404062';
+    r'7bf32a6a588946a739e9fd56ea7e36a845b4d0ac';
 
 /// See also [BaseListItemsBuilderNotifier].
 @ProviderFor(BaseListItemsBuilderNotifier)

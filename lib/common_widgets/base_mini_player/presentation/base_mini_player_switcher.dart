@@ -14,21 +14,22 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
 
-    final secondChild = useMemoized(() {
-      if (baseMiniPlayerState.networkType == NetworkType.online) {
-        return const OnlineMiniPlayer();
+    final child = useMemoized(() {
+      if (baseMiniPlayerState.isShow) {
+        if (baseMiniPlayerState.networkType == NetworkType.online) {
+          return const OnlineMiniPlayer();
+        }
+
+        return const OfflineMiniPlayer();
       }
 
-      return const OfflineMiniPlayer();
+      return emptyWidget;
     }, [baseMiniPlayerState]);
 
-    return AnimatedCrossFade(
-      firstChild: const SizedBox.shrink(),
-      secondChild: secondChild,
-      crossFadeState: baseMiniPlayerState.isShow
-          ? CrossFadeState.showSecond
-          : CrossFadeState.showFirst,
+    return AnimatedSwitcher(
+      key: ValueKey(baseMiniPlayerState),
       duration: defaultDuration,
+      child: child,
     );
   }
 }

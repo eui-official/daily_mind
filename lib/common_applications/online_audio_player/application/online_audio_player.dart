@@ -56,7 +56,7 @@ class OnlineAudioPlayer extends AudioPlayer {
 
       await setLoopMode(loopMode);
 
-      await play();
+      play();
     } catch (error) {
       logger.e(error);
     }

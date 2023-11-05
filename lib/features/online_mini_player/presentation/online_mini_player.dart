@@ -25,8 +25,10 @@ class OnlineMiniPlayer extends HookConsumerWidget {
 
     final currentIndexSnapshot = useStream(currentIndexStreamMemoized);
 
-    final processingStateStreamMemoized =
-        useMemoized(() => onlinePlayer.processingStateStream, []);
+    final processingStateStreamMemoized = useMemoized(
+      () => onlinePlayer.processingStateStream,
+      [],
+    );
 
     final processingStateSnapshot = useStream(processingStateStreamMemoized);
 
