@@ -1,4 +1,3 @@
-import 'package:blur/blur.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
@@ -37,6 +36,10 @@ class BaseMiniPlayer extends HookConsumerWidget {
         vertical: kBottomNavigationBarHeight * 1.75,
         horizontal: spacing(2),
       ),
+      decoration: BoxDecoration(
+        color: context.theme.primaryColorDark.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(spacing(2)),
+      ),
       child: BaseInkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(spacing(2)),
@@ -65,9 +68,6 @@ class BaseMiniPlayer extends HookConsumerWidget {
               ),
             ], width: spacing(2)),
           ),
-        ).frosted(
-          borderRadius: BorderRadius.circular(spacing()),
-          frostColor: context.theme.primaryColorDark,
         ),
       ),
     );
