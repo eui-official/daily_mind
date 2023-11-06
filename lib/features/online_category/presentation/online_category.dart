@@ -22,7 +22,7 @@ class OnlineCategory extends StatelessWidget {
       builder: (onTap) {
         return BaseCard(
           onTap: onTap,
-          imageHeight: imageHeight,
+          imageHeight: largeCard,
           image: CachedNetworkImageProvider(itemCategory.items.first.image),
           content: BaseContentWithPlayIcon(
             child: Flexible(

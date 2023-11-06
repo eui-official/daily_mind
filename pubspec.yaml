@@ -81,6 +81,7 @@ dependencies:
   in_app_review: ^2.0.8
   settings_ui: ^2.0.2
   url_launcher: ^6.2.1
+  skeletons: ^0.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

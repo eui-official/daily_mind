@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_domains/item_category.dart';
-import 'package:daily_mind/common_widgets/base_linear_progress_indicator.dart';
 import 'package:daily_mind/common_widgets/base_list_items_builder/presentation/base_list_items_builder_provider.dart';
+import 'package:daily_mind/common_widgets/base_list_items_builder/presentation/base_list_items_skeleton.dart';
 import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,7 +23,7 @@ class BaseListItemsBuilder extends HookConsumerWidget {
       final itemCategories = baseListItemsBuilderState.value ?? [];
 
       if (baseListItemsBuilderState.isLoading) {
-        return const BaseLinearProgressIndicator();
+        return const BaseListItemsSkeleton();
       }
 
       return onListItemBuilder(
