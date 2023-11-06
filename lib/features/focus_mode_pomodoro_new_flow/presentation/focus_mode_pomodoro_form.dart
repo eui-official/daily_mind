@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_reactive_text_field.dart';
 import 'package:daily_mind/common_widgets/base_spacing_container.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/focus_mode_pomodoro_new_flow/presentation/focus_mode_pomodoro_icon.dart';
@@ -19,7 +20,8 @@ class FocusModePomodoroForm extends HookWidget {
         'title': FormControl<String>(value: emptyString),
         'shortBreak': FormControl<int>(value: 5),
         'longBreak': FormControl<int>(value: 15),
-        'workingSessions': FormControl<int>(value: 2),
+        'workingSessions': FormControl<int>(value: 0),
+        'icon': FormControl<String>(value: ''),
       });
     }, []);
 
@@ -35,37 +37,43 @@ class FocusModePomodoroForm extends HookWidget {
         ),
         child: ReactiveForm(
           formGroup: formGroup,
-          child: Column(
-            children: space(
-              [
-                const FocusModePomodoroWorkingSessions(),
-                ReactiveTextField(
-                  formControlName: 'title',
-                  decoration: const InputDecoration(
-                    labelText: 'Tiêu đề',
+          child: ReactiveFormConsumer(builder: (context, formGroup, child) {
+            final value = formGroup.value;
+            final workingSessions = value['workingSessions'] as int;
+
+            return Column(
+              children: space(
+                [
+                  FocusModePomodoroWorkingSessions(
+                    workingSessions: workingSessions,
                   ),
-                ),
-                ReactiveTextField(
-                  formControlName: 'shortBreak',
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Thời gian nghỉ giữa các pomodoro',
-                    suffix: Text('phút'),
+                  const BaseReactiveTextField(
+                    title: 'Tiêu đề',
+                    formControlName: 'title',
+                    decoration: InputDecoration(
+                      hintText: 'Có thể là: working, reading, yoya',
+                    ),
                   ),
-                ),
-                ReactiveTextField(
-                  formControlName: 'longBreak',
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Thời gian nghỉ sau 4 pomodoro',
-                    suffix: Text('phút'),
+                  const BaseReactiveTextField(
+                    title: 'Thời gian nghỉ giữa các pomodoro',
+                    formControlName: 'shortBreak',
+                    decoration: InputDecoration(
+                      suffix: Text('phút'),
+                    ),
                   ),
-                ),
-                const FocusModePomodoroIcon(),
-              ],
-              height: spacing(4),
-            ),
-          ),
+                  const BaseReactiveTextField(
+                    title: 'Thời gian nghỉ sau 4 pomodoro',
+                    formControlName: 'longBreak',
+                    decoration: InputDecoration(
+                      suffix: Text('phút'),
+                    ),
+                  ),
+                  FocusModePomodoroIcon(),
+                ],
+                height: spacing(4),
+              ),
+            );
+          }),
         ),
       ),
     );

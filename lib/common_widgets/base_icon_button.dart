@@ -1,17 +1,26 @@
+import 'package:daily_mind/common_domains/focus_icon.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class BaseIconButton extends StatelessWidget {
-  final String icon;
+  final bool isSelected;
+  final FocusIcon focusIcon;
+  final VoidCallback onTap;
 
   const BaseIconButton({
     super.key,
-    required this.icon,
+    required this.focusIcon,
+    required this.isSelected,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: isSelected
+          ? context.theme.primaryColorDark
+          : context.theme.colorScheme.background,
       borderRadius: BorderRadius.circular(
         spacing(5),
       ),
@@ -19,13 +28,13 @@ class BaseIconButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           spacing(5),
         ),
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           height: spacing(10),
           width: spacing(10),
           alignment: Alignment.center,
           child: ImageIcon(
-            AssetImage(icon),
+            AssetImage(focusIcon.icon),
           ),
         ),
       ),

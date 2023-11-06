@@ -18,10 +18,14 @@ class BaseSliderTheme extends StatelessWidget {
         inactiveTrackColor: context.theme.primaryColorLight.withOpacity(0.4),
         showValueIndicator: ShowValueIndicator.always,
         overlayShape: SliderComponentShape.noOverlay,
-        trackHeight: spacing(),
+        thumbShape: SliderComponentShape.noThumb,
+        trackHeight: spacing(2),
         tickMarkShape: SliderTickMarkShape.noTickMark,
       ),
-      child: slider,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(spacing(2)),
+        child: slider,
+      ),
     );
   }
 }

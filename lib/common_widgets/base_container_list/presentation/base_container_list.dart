@@ -25,7 +25,7 @@ class BaseContainerList<T> extends StatelessWidget {
               title,
               style: context.textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.w500,
-                color: context.theme.hintColor,
+                color: context.theme.colorScheme.background,
               ),
             ),
             Container(
