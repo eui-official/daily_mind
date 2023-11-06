@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class BaseReactiveTextField extends StatelessWidget {
@@ -24,6 +25,10 @@ class BaseReactiveTextField extends StatelessWidget {
         formControlName: formControlName,
         keyboardType: textInputType,
         decoration: decoration,
+        validationMessages: {
+          ValidationMessage.required: (control) => 'Không thể trống',
+        },
+        scrollPadding: context.mediaQueryViewInsets,
       ),
     );
   }
