@@ -7,7 +7,7 @@ import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_
 import 'package:daily_mind/constants/sound_card.dart';
 import 'package:daily_mind/features/online_category_horizontal/presentation/online_category_horizontal_content.dart';
 import 'package:daily_mind/features/online_category_horizontal/presentation/online_category_horizontal_image.dart';
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
@@ -37,7 +37,7 @@ class OnlineCategoryHorizontal extends HookWidget {
             return SizedBox(
               height: tinyCard,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(spacing(2)),
+                borderRadius: circularRadius(2),
                 child: BaseInkWell(
                   onTap: onTap,
                   child: Stack(

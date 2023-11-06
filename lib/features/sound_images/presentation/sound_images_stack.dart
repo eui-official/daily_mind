@@ -1,5 +1,6 @@
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/extensions/string.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class SoundImages extends StatelessWidget {
     final soundItem = item.id.soundOfflineItem;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(spacing(radiusSize)),
+      borderRadius: circularRadius(radiusSize),
       child: Container(
         height: spacing(size),
         width: spacing(size),

@@ -1,3 +1,4 @@
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -11,7 +12,7 @@ class BaseBottomDragIndicator extends StatelessWidget {
       height: spacing(),
       width: spacing(10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacing()),
+        borderRadius: circularRadius(),
         color: context.theme.hintColor,
       ),
     );

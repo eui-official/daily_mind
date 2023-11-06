@@ -1,31 +1,47 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_icon_button.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
-import 'package:flutter/material.dart';
-import 'package:group_button/group_button.dart';
+import 'package:daily_mind/theme/theme.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
-class FocusModePomodoroIcon extends StatelessWidget {
-  FocusModePomodoroIcon({super.key});
-  final controller = GroupButtonController();
+class FocusModePomodoroIcon extends ReactiveFormField<String, String> {
+  FocusModePomodoroIcon({
+    super.key,
+    required String formControlName,
+  }) : super(
+          formControlName: formControlName,
+          builder: (ReactiveFormFieldState<String, String> field) {
+            final selectedId = field.value ?? 'cleaning';
 
-  @override
-  Widget build(BuildContext context) {
-    return BaseContentHeader(
-      title: 'Ảnh đại diện',
-      spacingSize: 3,
-      child: GroupButton(
-        controller: controller,
-        buttons: focusIcons,
-        buttonBuilder: (selected, focusIcon, context) {
-          final index = focusIcons.indexOf(focusIcon);
+            return BaseContentHeader(
+              title: 'Ảnh đại diện',
+              spacingSize: 3,
+              child: StaggeredGrid.count(
+                crossAxisCount: 4,
+                mainAxisSpacing: spacing(2),
+                crossAxisSpacing: spacing(2),
+                children: focusIcons.map((focusIcon) {
+                  final isSelected = focusIcon.id == selectedId;
 
-          return BaseIconButton(
-            focusIcon: focusIcon,
-            isSelected: selected,
-            onTap: () => controller.selectIndex(index),
-          );
-        },
-      ),
-    );
-  }
+                  return BaseIconButton(
+                    focusIcon: focusIcon,
+                    isSelected: isSelected,
+                    onTap: () => field.didChange(focusIcon.id),
+                  );
+                }).toList(),
+              ),
+            );
+          },
+        );
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   final controller = useMemoized(
+  //     () => GroupButtonController(selectedIndex: selectedIndex),
+  //     [selectedIndex],
+  //   );
+
+  //
+  // }
 }

@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 
 class BaseListTile extends StatelessWidget {
@@ -20,7 +20,7 @@ class BaseListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: borderRadius ?? BorderRadius.circular(spacing(2)),
+      borderRadius: borderRadius ?? circularRadius(2),
       child: Material(
         type: MaterialType.transparency,
         child: ListTile(

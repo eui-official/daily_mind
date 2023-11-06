@@ -38,11 +38,11 @@ class BaseMiniPlayer extends HookConsumerWidget {
       ),
       decoration: BoxDecoration(
         color: context.theme.primaryColorDark.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(spacing(2)),
+        borderRadius: circularRadius(2),
       ),
       child: BaseInkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(spacing(2)),
+        borderRadius: circularRadius(2),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: spacing()),
           child: Row(

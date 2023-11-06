@@ -17,11 +17,11 @@ class FocusModePomodoroForm extends HookWidget {
   Widget build(BuildContext context) {
     final formGroup = useMemoized(() {
       return FormGroup({
+        'workingSessions': FormControl<int>(value: 0),
         'title': FormControl<String>(value: emptyString),
         'shortBreak': FormControl<int>(value: 5),
         'longBreak': FormControl<int>(value: 15),
-        'workingSessions': FormControl<int>(value: 0),
-        'icon': FormControl<String>(value: ''),
+        'iconID': FormControl<String>(value: 'learning'),
       });
     }, []);
 
@@ -32,7 +32,7 @@ class FocusModePomodoroForm extends HookWidget {
           horizontal: spacing(2),
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(spacing(2)),
+          borderRadius: circularRadius(2),
           color: context.theme.hoverColor,
         ),
         child: ReactiveForm(
@@ -68,7 +68,7 @@ class FocusModePomodoroForm extends HookWidget {
                       suffix: Text('phút'),
                     ),
                   ),
-                  FocusModePomodoroIcon(),
+                  FocusModePomodoroIcon(formControlName: 'iconID'),
                 ],
                 height: spacing(4),
               ),

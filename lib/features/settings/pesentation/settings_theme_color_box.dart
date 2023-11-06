@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -21,7 +21,7 @@ class SettingsThemeColorBox extends StatelessWidget {
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(spacing()),
+              borderRadius: circularRadius(),
               color: context.theme.primaryColor,
             ),
           );

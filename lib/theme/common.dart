@@ -1,3 +1,4 @@
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> space(
@@ -26,3 +27,6 @@ const baseLinearGradient = LinearGradient(
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
 );
+
+BorderRadius circularRadius([double size = 1]) =>
+    BorderRadius.circular(spacing(size));

@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletons/skeletons.dart';
 
@@ -18,7 +18,7 @@ class BaseSkeletonBox extends StatelessWidget {
       style: SkeletonLineStyle(
         height: height,
         width: width,
-        borderRadius: BorderRadius.circular(spacing(2)),
+        borderRadius: circularRadius(2),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class BaseSliderTheme extends StatelessWidget {
         tickMarkShape: SliderTickMarkShape.noTickMark,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(spacing(2)),
+        borderRadius: circularRadius(2),
         child: slider,
       ),
     );

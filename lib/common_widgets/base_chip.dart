@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -20,7 +20,7 @@ class BaseChip extends StatelessWidget {
       onPressed: onPressed,
       side: BorderSide.none,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(spacing(2)),
+        borderRadius: circularRadius(2),
       ),
       backgroundColor: context.theme.primaryColorDark,
       label: Text(display),

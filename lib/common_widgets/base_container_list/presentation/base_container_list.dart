@@ -25,13 +25,13 @@ class BaseContainerList<T> extends StatelessWidget {
               title,
               style: context.textTheme.bodyLarge?.copyWith(
                 fontWeight: FontWeight.w500,
-                color: context.theme.colorScheme.background,
+                color: context.theme.hintColor,
               ),
             ),
             Container(
               decoration: BoxDecoration(
-                color: context.theme.cardColor.withOpacity(0.7),
-                borderRadius: BorderRadius.circular(spacing(2)),
+                color: context.theme.colorScheme.background.withOpacity(0.5),
+                borderRadius: circularRadius(2),
               ),
               child: ListView.separated(
                 itemBuilder: (context, index) => items[index],

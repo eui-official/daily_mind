@@ -2,6 +2,10 @@ import 'package:daily_mind/common_domains/focus_icon.dart';
 
 final focusIcons = [
   const FocusIcon(
+    id: 'learning',
+    icon: 'assets/icons/learning.png',
+  ),
+  const FocusIcon(
     id: 'cleaning',
     icon: 'assets/icons/cleaning.png',
   ),
@@ -20,10 +24,6 @@ final focusIcons = [
   const FocusIcon(
     id: 'exercise',
     icon: 'assets/icons/exercise.png',
-  ),
-  const FocusIcon(
-    id: 'learning',
-    icon: 'assets/icons/learning.png',
   ),
   const FocusIcon(
     id: 'meditation',
