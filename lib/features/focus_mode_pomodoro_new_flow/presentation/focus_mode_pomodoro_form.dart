@@ -18,9 +18,24 @@ class FocusModePomodoroForm extends HookWidget {
     final formGroup = useMemoized(() {
       return FormGroup({
         'workingSessions': FormControl<int>(value: 0),
-        'title': FormControl<String>(value: emptyString),
-        'shortBreak': FormControl<int>(value: 5),
-        'longBreak': FormControl<int>(value: 15),
+        'title': FormControl<String>(
+          value: emptyString,
+          validators: [
+            Validators.required,
+          ],
+        ),
+        'shortBreak': FormControl<int>(
+          value: 5,
+          validators: [
+            Validators.required,
+          ],
+        ),
+        'longBreak': FormControl<int>(
+          value: 15,
+          validators: [
+            Validators.required,
+          ],
+        ),
         'iconID': FormControl<String>(value: 'learning'),
       });
     }, []);
@@ -38,14 +53,11 @@ class FocusModePomodoroForm extends HookWidget {
         child: ReactiveForm(
           formGroup: formGroup,
           child: ReactiveFormConsumer(builder: (context, formGroup, child) {
-            final value = formGroup.value;
-            final workingSessions = value['workingSessions'] as int;
-
             return Column(
               children: space(
                 [
                   FocusModePomodoroWorkingSessions(
-                    workingSessions: workingSessions,
+                    formControlName: 'workingSessions',
                   ),
                   const BaseReactiveTextField(
                     title: 'Tiêu đề',
