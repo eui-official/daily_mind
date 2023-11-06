@@ -20,11 +20,14 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 13,
     subThemesData: const FlexSubThemesData(
-      blendOnLevel: 20,
-      useTextTheme: true,
-      useM2StyleDividerInM3: true,
       alignedDropdown: true,
+      blendOnLevel: 20,
+      inputDecoratorIsFilled: false,
+      inputDecoratorUnfocusedBorderIsColored: false,
       useInputDecoratorThemeInDialogs: true,
+      inputDecoratorBorderType: FlexInputBorderType.underline,
+      useM2StyleDividerInM3: true,
+      useTextTheme: true,
     ),
   );
 }
