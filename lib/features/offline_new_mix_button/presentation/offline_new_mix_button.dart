@@ -6,8 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AddNewMixButton extends HookConsumerWidget {
-  const AddNewMixButton({super.key});
+class OfflineNewMixButton extends HookConsumerWidget {
+  const OfflineNewMixButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

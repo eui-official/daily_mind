@@ -1,8 +1,8 @@
 import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/features/add_new_mix_button/presentation/add_new_mix_button.dart';
+import 'package:daily_mind/features/offline_new_mix_button/presentation/offline_new_mix_button.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/empty_list_mix/presentation/empty_list_mix.dart';
+import 'package:daily_mind/features/offline_empty_list/presentation/offline_empty_list.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chord.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chore_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -23,7 +23,7 @@ class OfflineList extends HookConsumerWidget {
 
     final child = useMemoized(() {
       if (offlineListChoreState.isEmptyPlaylists) {
-        return const EmptyListMix();
+        return const OfflineEmptyList();
       }
 
       return Scaffold(
@@ -47,7 +47,7 @@ class OfflineList extends HookConsumerWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const AddNewMixButton(),
+                          const OfflineNewMixButton(),
                         ],
                       ),
                       const OfflineListChord(),

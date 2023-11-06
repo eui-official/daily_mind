@@ -15,7 +15,17 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     background: background,
     scaffoldBackground: background,
     useMaterial3: true,
+    swapLegacyOnMaterial3: true,
     useMaterial3ErrorColors: true,
+    surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+    blendLevel: 13,
+    subThemesData: const FlexSubThemesData(
+      blendOnLevel: 20,
+      useTextTheme: true,
+      useM2StyleDividerInM3: true,
+      alignedDropdown: true,
+      useInputDecoratorThemeInDialogs: true,
+    ),
   );
 }
 
