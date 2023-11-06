@@ -47,6 +47,7 @@ class FocusModePomodoroForm extends HookWidget {
                 ),
                 ReactiveTextField(
                   formControlName: 'shortBreak',
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Thời gian nghỉ giữa các pomodoro',
                     suffix: Text('phút'),
@@ -54,6 +55,7 @@ class FocusModePomodoroForm extends HookWidget {
                 ),
                 ReactiveTextField(
                   formControlName: 'longBreak',
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Thời gian nghỉ sau 4 pomodoro',
                     suffix: Text('phút'),
