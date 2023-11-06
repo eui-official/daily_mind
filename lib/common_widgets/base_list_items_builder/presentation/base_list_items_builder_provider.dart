@@ -14,7 +14,7 @@ class BaseListItemsBuilderNotifier extends _$BaseListItemsBuilderNotifier {
 
   Future<void> onRefreshItemsCategory() async {
     final configNotifier = ref.read(configProvider.notifier);
-    await configNotifier.onInit();
+    await configNotifier.onGetBaseConfig();
     final itemCategories = await onGetItemCategory();
 
     update((state) => itemCategories);

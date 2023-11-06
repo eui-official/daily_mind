@@ -16,13 +16,16 @@ class BaseRefresh extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LiquidPullToRefresh(
-      onRefresh: onRefresh,
-      showChildOpacityTransition: false,
-      springAnimationDurationInMilliseconds: defaultDuration.inMilliseconds,
-      backgroundColor: context.theme.primaryColor,
-      color: context.theme.colorScheme.background.withOpacity(0.8),
-      child: child,
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: kToolbarHeight),
+      child: LiquidPullToRefresh(
+        onRefresh: onRefresh,
+        showChildOpacityTransition: false,
+        springAnimationDurationInMilliseconds: defaultDuration.inMilliseconds,
+        backgroundColor: context.theme.primaryColor,
+        color: context.theme.colorScheme.background.withOpacity(0.8),
+        child: child,
+      ),
     );
   }
 }

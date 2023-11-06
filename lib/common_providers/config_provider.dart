@@ -13,10 +13,10 @@ class ConfigNotifier extends StateNotifier<ConfigState> {
             soundTypes: [],
           ),
         ) {
-    onInit();
+    onGetBaseConfig();
   }
 
-  Future<void> onInit() async {
+  Future<void> onGetBaseConfig() async {
     final List<Category> categories = [];
     final List<SoundType> soundTypes = [];
 
