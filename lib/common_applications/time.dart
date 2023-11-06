@@ -12,5 +12,5 @@ bool onIsBefore(Time time) {
     time.second,
   );
 
-  return combinedDate.isAtSameMomentAs(now);
+  return now.hour == combinedDate.hour && now.minute == combinedDate.minute;
 }
