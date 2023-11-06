@@ -1,4 +1,5 @@
 import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
+import 'package:daily_mind/features/focus_mode_pomodoro_new_flow/presentation/focus_mode_pomodoro_new_flow.dart';
 import 'package:daily_mind/features/introduction/presentation/introduction.dart';
 import 'package:daily_mind/features/offline_mix_editor/presentation/offline_mix_editor.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix.dart';
@@ -34,5 +35,9 @@ final routerConfig = GoRouter(
         playlistId: state.pathParameters['id'] as int,
       ),
     ),
+    GoRoute(
+      path: '/focus-mode/pomodoro/new',
+      builder: (context, state) => const FocusModePomodoroNewFlow(),
+    )
   ],
 );

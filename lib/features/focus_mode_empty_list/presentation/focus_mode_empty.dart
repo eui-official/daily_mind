@@ -11,9 +11,10 @@ class FocusModeEmptyList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseSpacingContainer(
       child: BaseEmptyListBox(
-        imageUrl: 'assets/images/sessions_working.png',
-        title: "focusEmpty".tr(),
         action: const FocusModeNewSessionButton(),
+        imageUrl: 'assets/images/sessions_working.png',
+        subTitle: 'focusEmpty'.tr(),
+        title: "pomodoro".tr(),
       ),
     );
   }
