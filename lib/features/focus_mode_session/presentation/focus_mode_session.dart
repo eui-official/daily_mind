@@ -1,5 +1,6 @@
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/features/focus_mode_timer/presentation/focus_mode_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -25,6 +26,7 @@ class FocusModeSession extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const FocusModeTimer(),
           ],
         ),
       ),

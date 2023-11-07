@@ -84,6 +84,7 @@ dependencies:
   line_icons: ^2.0.3
   reactive_forms: ^16.1.1
   group_button: ^5.3.3
+  timer_count_down: ^2.2.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
