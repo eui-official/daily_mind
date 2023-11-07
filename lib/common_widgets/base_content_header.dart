@@ -23,7 +23,7 @@ class BaseContentHeader extends StatelessWidget {
         [
           Text(
             title,
-            style: context.textTheme.bodyMedium?.copyWith(
+            style: context.textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),

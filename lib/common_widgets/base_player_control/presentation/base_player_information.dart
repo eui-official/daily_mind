@@ -26,8 +26,9 @@ class BasePlayerInformation extends StatelessWidget {
           [
             Text(
               category.name,
-              style: context.textTheme.bodyLarge
-                  ?.copyWith(fontWeight: FontWeight.bold),
+              style: context.textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Text(
               category.description,

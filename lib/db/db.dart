@@ -158,6 +158,14 @@ class Db {
     });
   }
 
+  Stream<List<Pomodoro>> onStreamPomodoros() {
+    return isar.pomodoros.where(sort: Sort.desc).anyId().watch();
+  }
+
+  List<Pomodoro> onGetPomodoros() {
+    return isar.pomodoros.where(sort: Sort.desc).anyId().findAllSync();
+  }
+
   void onAddANewPomodoro(Pomodoro pomodoro) {
     isar.writeTxnSync(() {
       isar.pomodoros.putSync(pomodoro);
