@@ -6,15 +6,15 @@ part 'pomodoro.g.dart';
 class Pomodoro {
   Id id = Isar.autoIncrement;
 
-  String? title;
-
-  String? iconId;
-
-  int? workingSessions;
+  int? longBreak;
 
   int? shortBreak;
 
-  int? longBreak;
+  int? workingSessions;
 
   String? audioId;
+
+  String? iconId;
+
+  String? title;
 }
