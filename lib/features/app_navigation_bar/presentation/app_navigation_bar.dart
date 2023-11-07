@@ -1,3 +1,4 @@
+import 'package:daily_mind/features/app_navigation_bar/application/app_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -14,21 +15,21 @@ class AppNavigationBar extends HookConsumerWidget {
         ref.read(appNavigationBarProvider.notifier);
 
     return BottomNavigationBar(
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(LineIcons.clock),
+      items: [
+        onGetBottomNavigationBarItem(
+          icon: const Icon(LineIcons.clock),
           label: 'Tập trung',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.music_note),
+        onGetBottomNavigationBarItem(
+          icon: const Icon(Icons.music_note),
           label: 'Âm thanh tự nhiên',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.explore),
+        onGetBottomNavigationBarItem(
+          icon: const Icon(Icons.explore),
           label: 'Khám phá',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
+        onGetBottomNavigationBarItem(
+          icon: const Icon(Icons.settings),
           label: 'Cấu hình',
         ),
       ],
@@ -36,7 +37,6 @@ class AppNavigationBar extends HookConsumerWidget {
       showUnselectedLabels: false,
       unselectedItemColor: context.theme.hintColor,
       selectedItemColor: context.theme.primaryColor,
-      backgroundColor: Colors.transparent,
       currentIndex: appNavigationBarState.index,
       onTap: appNavigationBarNotifier.onTap,
     );
