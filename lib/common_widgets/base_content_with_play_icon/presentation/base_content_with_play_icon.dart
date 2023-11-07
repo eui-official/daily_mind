@@ -17,15 +17,15 @@ class BaseContentWithPlayIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseSpacingContainer(
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          child,
           BaseContentStatusIcon(
             isPlaying: isPlaying,
             iconColor: iconColor,
           ),
+          child,
         ],
       ),
     );

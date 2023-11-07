@@ -4,4 +4,5 @@ final baseCarouselOptions = CarouselOptions(
   aspectRatio: 1,
   enlargeCenterPage: true,
   padEnds: false,
+  enableInfiniteScroll: false,
 );

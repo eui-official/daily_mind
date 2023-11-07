@@ -12,8 +12,8 @@ class AudioCardDeleteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: spacing(2),
-      right: spacing(2),
+      top: spacing(),
+      right: spacing(),
       child: IconButton(
         icon: const Icon(Icons.delete_rounded),
         onPressed: onPressed,

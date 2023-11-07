@@ -25,6 +25,7 @@ class BaseEmptyListBox extends StatelessWidget {
       image: AssetImage(imageUrl),
       imageHeight: smallCard,
       content: BaseSpacingContainer(
+        alignment: Alignment.bottomCenter,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

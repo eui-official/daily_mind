@@ -38,7 +38,7 @@ class BaseAudioCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: circularRadius(2),
             border: Border.all(
-              width: 2,
+              width: 3,
               color:
                   isSelected ? context.theme.primaryColor : Colors.transparent,
             ),
@@ -47,13 +47,11 @@ class BaseAudioCard extends StatelessWidget {
             image: image,
             imageHeight: mediumCard,
             onTap: onTap,
-            content: Positioned.fill(
-              child: AudioCardContent(
-                name: name,
-                description: description,
-                isPlaying: isPlaying,
-                isLoading: isLoading,
-              ),
+            content: AudioCardContent(
+              name: name,
+              description: description,
+              isPlaying: isPlaying,
+              isLoading: isLoading,
             ),
           ),
         ),

@@ -29,7 +29,7 @@ class BaseCard extends HookWidget {
     return BaseNullBuilder(
       value: paletteGenerator.data,
       builder: (palette) {
-        final color = palette.dominantColor?.color.withOpacity(0.6) ??
+        final backgroundColor = palette.darkVibrantColor?.color ??
             context.theme.colorScheme.background;
 
         return Container(
@@ -45,8 +45,8 @@ class BaseCard extends HookWidget {
                   image: image,
                   imageHeight: imageHeight,
                 ),
-                BaseCardGradient(color: color),
-                content,
+                BaseCardGradient(color: backgroundColor),
+                Positioned.fill(child: content),
                 BaseNullBuilder(
                   value: onTap,
                   builder: (onTap) {

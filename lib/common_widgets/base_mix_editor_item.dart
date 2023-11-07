@@ -37,7 +37,6 @@ class BaseMixEditorItem extends StatelessWidget {
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   prefixChild,
                   BaseMixEditorContent(name: name),
