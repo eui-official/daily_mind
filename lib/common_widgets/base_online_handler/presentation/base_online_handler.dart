@@ -15,11 +15,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class BaseOnlineHandler extends HookConsumerWidget {
   final AudioCategory audioCategory;
   final OnOnlineHandlerBuilder builder;
+  final EdgeInsets? padding;
 
   const BaseOnlineHandler({
     super.key,
     required this.audioCategory,
     required this.builder,
+    this.padding,
   });
 
   @override
@@ -55,7 +57,7 @@ class BaseOnlineHandler extends HookConsumerWidget {
     ]);
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: spacing(2)),
       child: builder(onTap),
     );
   }

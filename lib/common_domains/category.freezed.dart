@@ -26,6 +26,7 @@ mixin _$Category {
   String get name => throw _privateConstructorUsedError;
   String get layout => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get group => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $CategoryCopyWith<$Res> {
       @JsonKey(name: 'created_at') String createdAt,
       String name,
       String layout,
-      String description});
+      String description,
+      String group});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? name = null,
     Object? layout = null,
     Object? description = null,
+    Object? group = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,6 +89,10 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      group: null == group
+          ? _value.group
+          : group // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$CategoryImplCopyWith<$Res>
       @JsonKey(name: 'created_at') String createdAt,
       String name,
       String layout,
-      String description});
+      String description,
+      String group});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? name = null,
     Object? layout = null,
     Object? description = null,
+    Object? group = null,
   }) {
     return _then(_$CategoryImpl(
       id: null == id
@@ -144,6 +153,10 @@ class __$$CategoryImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      group: null == group
+          ? _value.group
+          : group // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -156,7 +169,8 @@ class _$CategoryImpl implements _Category {
       @JsonKey(name: 'created_at') required this.createdAt,
       required this.name,
       required this.layout,
-      required this.description});
+      required this.description,
+      required this.group});
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
@@ -172,10 +186,12 @@ class _$CategoryImpl implements _Category {
   final String layout;
   @override
   final String description;
+  @override
+  final String group;
 
   @override
   String toString() {
-    return 'Category(id: $id, createdAt: $createdAt, name: $name, layout: $layout, description: $description)';
+    return 'Category(id: $id, createdAt: $createdAt, name: $name, layout: $layout, description: $description, group: $group)';
   }
 
   @override
@@ -189,13 +205,14 @@ class _$CategoryImpl implements _Category {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.group, group) || other.group == group));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, createdAt, name, layout, description);
+      Object.hash(runtimeType, id, createdAt, name, layout, description, group);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +234,8 @@ abstract class _Category implements Category {
       @JsonKey(name: 'created_at') required final String createdAt,
       required final String name,
       required final String layout,
-      required final String description}) = _$CategoryImpl;
+      required final String description,
+      required final String group}) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;
@@ -233,6 +251,8 @@ abstract class _Category implements Category {
   String get layout;
   @override
   String get description;
+  @override
+  String get group;
   @override
   @JsonKey(ignore: true)
   _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>

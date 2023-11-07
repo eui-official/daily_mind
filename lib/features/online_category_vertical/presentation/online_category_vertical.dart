@@ -7,22 +7,27 @@ import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_
 import 'package:daily_mind/constants/audio_card.dart';
 import 'package:flutter/material.dart';
 
-class OnlineCategory extends StatelessWidget {
+class OnlineCategoryVertical extends StatelessWidget {
   final AudioCategory audioCategory;
+  final double? imageHeight;
+  final EdgeInsets? padding;
 
-  const OnlineCategory({
+  const OnlineCategoryVertical({
     super.key,
     required this.audioCategory,
+    this.imageHeight,
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return BaseOnlineHandler(
       audioCategory: audioCategory,
+      padding: padding,
       builder: (onTap) {
         return BaseCard(
           onTap: onTap,
-          imageHeight: largeCard,
+          imageHeight: imageHeight ?? largeCard,
           image: CachedNetworkImageProvider(audioCategory.audios.first.image),
           content: BaseContentWithPlayIcon(
             child: Flexible(

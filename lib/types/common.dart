@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
 import 'package:daily_mind/features/offline_mix_editor/domain/offline_mix_editor_item_state.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,11 @@ typedef OnListItemBuilder<T> = Widget Function(
 
 typedef OnItemBuilder<T> = Widget Function(
   BuildContext context,
+  T item,
+);
+
+typedef OnItemIndexBuilder<T> = Widget Function(
+  BuildContext context,
   int index,
   T item,
 );
@@ -30,3 +36,5 @@ typedef OnSoundOfflineStateBuilder = Function(
 );
 
 typedef OnOnlineHandlerBuilder = Widget Function(VoidCallback onTap);
+
+typedef AudioCategoryGroup = Map<String, List<AudioCategory>>;

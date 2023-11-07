@@ -5,12 +5,12 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class BaseGridItems<T> extends StatelessWidget {
   final List<T> items;
-  final OnItemBuilder<T> onItemBuilder;
+  final OnItemIndexBuilder<T> onItemIndexBuilder;
 
   const BaseGridItems({
     super.key,
     required this.items,
-    required this.onItemBuilder,
+    required this.onItemIndexBuilder,
   });
 
   @override
@@ -22,7 +22,7 @@ class BaseGridItems<T> extends StatelessWidget {
       children: items.map((item) {
         final index = items.indexOf(item);
 
-        return onItemBuilder(
+        return onItemIndexBuilder(
           context,
           index,
           item,

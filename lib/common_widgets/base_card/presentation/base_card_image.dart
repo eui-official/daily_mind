@@ -1,4 +1,3 @@
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BaseCardImage extends StatelessWidget {
@@ -17,10 +16,6 @@ class BaseCardImage extends StatelessWidget {
     return Container(
       height: imageHeight,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(spacing(2)),
-          topRight: Radius.circular(spacing(2)),
-        ),
         image: DecorationImage(
           image: image,
           fit: BoxFit.cover,

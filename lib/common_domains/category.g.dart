@@ -13,6 +13,7 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       layout: json['layout'] as String,
       description: json['description'] as String,
+      group: json['group'] as String,
     );
 
 Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
       'name': instance.name,
       'layout': instance.layout,
       'description': instance.description,
+      'group': instance.group,
     };

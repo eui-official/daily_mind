@@ -9,13 +9,13 @@ class BaseGridItemsHeader<T> extends StatelessWidget {
   final List<T> items;
   final String title;
   final Widget headerTrailing;
-  final OnItemBuilder<T> onItemBuilder;
+  final OnItemIndexBuilder<T> onItemIndexBuilder;
   final EdgeInsetsGeometry? padding;
 
   const BaseGridItemsHeader({
     super.key,
     required this.items,
-    required this.onItemBuilder,
+    required this.onItemIndexBuilder,
     this.headerTrailing = emptyWidget,
     this.padding,
     this.title = emptyString,
@@ -42,10 +42,10 @@ class BaseGridItemsHeader<T> extends StatelessWidget {
           Flexible(
             child: BaseGridItems(
               items: items,
-              onItemBuilder: (context, index, item) {
+              onItemIndexBuilder: (context, index, item) {
                 final index = items.indexOf(item);
 
-                return onItemBuilder(
+                return onItemIndexBuilder(
                   context,
                   index,
                   item,

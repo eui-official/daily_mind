@@ -22,7 +22,7 @@ class OfflineListAudio extends HookConsumerWidget {
     return BaseGridItemsHeader(
       padding: padding,
       items: offlineAudios,
-      onItemBuilder: (context, index, audio) {
+      onItemIndexBuilder: (context, index, audio) {
         final isSelected = newMixSelectedState.isContain(audio.id);
 
         return OfflineAudioCard(

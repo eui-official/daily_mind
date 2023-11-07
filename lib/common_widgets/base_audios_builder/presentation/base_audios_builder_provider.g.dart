@@ -7,12 +7,12 @@ part of 'base_audios_builder_provider.dart';
 // **************************************************************************
 
 String _$baseAudiosBuilderNotifierHash() =>
-    r'e277e5ed437144190add43202382ee7a74458255';
+    r'673ebbeab245297f4846102d0bb3c8ee4ec8d776';
 
 /// See also [BaseAudiosBuilderNotifier].
 @ProviderFor(BaseAudiosBuilderNotifier)
 final baseAudiosBuilderNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    BaseAudiosBuilderNotifier, List<AudioCategory>>.internal(
+    BaseAudiosBuilderNotifier, AudioCategoryGroup>.internal(
   BaseAudiosBuilderNotifier.new,
   name: r'baseAudiosBuilderNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -23,6 +23,6 @@ final baseAudiosBuilderNotifierProvider = AutoDisposeAsyncNotifierProvider<
 );
 
 typedef _$BaseAudiosBuilderNotifier
-    = AutoDisposeAsyncNotifier<List<AudioCategory>>;
+    = AutoDisposeAsyncNotifier<AudioCategoryGroup>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

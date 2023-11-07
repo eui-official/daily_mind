@@ -7,7 +7,7 @@ part of 'focus_mode_list_provider.dart';
 // **************************************************************************
 
 String _$focusModeListNotifierHash() =>
-    r'f8a9fc52de323a8aa6eb4b142091530d9094917c';
+    r'56ddeb8875242bb7c26918cc94428d2e746c3342';
 
 /// See also [FocusModeListNotifier].
 @ProviderFor(FocusModeListNotifier)
