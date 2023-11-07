@@ -5,6 +5,7 @@ import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scro
 import 'package:daily_mind/features/offline_empty_list/presentation/offline_empty_list.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chord.dart';
 import 'package:daily_mind/features/offline_list_chord/presentation/offline_list_chore_provider.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -37,21 +38,24 @@ class OfflineList extends HookConsumerWidget {
                   padding: EdgeInsets.symmetric(horizontal: spacing(2)),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'mixList'.tr(),
-                            style: context.textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
+                    children: space(
+                      [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'mixList'.tr(),
+                              style: context.textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          const OfflineNewMixButton(),
-                        ],
-                      ),
-                      const OfflineListChord(),
-                    ],
+                            const OfflineNewMixButton(),
+                          ],
+                        ),
+                        const OfflineListChord(),
+                      ],
+                      height: spacing(4),
+                    ),
                   ),
                 ),
               ],

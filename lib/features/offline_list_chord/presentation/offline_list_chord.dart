@@ -25,44 +25,37 @@ class OfflineListChord extends HookConsumerWidget {
       return const BaseCircularIndicator();
     }
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Container(
-          padding: EdgeInsets.symmetric(vertical: spacing(4)),
-          child: Tutorial(
-            targets: [
-              TargetFocus(
-                keyTarget: removeChordItem,
-                shape: ShapeLightFocus.RRect,
-                radius: spacing(2),
-                contents: [
-                  TargetContent(
-                    child: Text('removeChordItemTutorial'.tr()),
-                  ),
-                ],
-              )
-            ],
-            task: removeChordItemTutorial,
-            child: CarouselSlider.builder(
-              key: removeChordItem,
-              itemCount: playlists.length,
-              options: CarouselOptions(
-                aspectRatio: 1,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-              ),
-              itemBuilder: (context, index, realIndex) {
-                final playlist = playlists[index];
-
-                return OfflineListChordItem(
-                  key: ValueKey(playlist.id),
-                  playlist: playlist,
-                );
-              },
+    return Tutorial(
+      targets: [
+        TargetFocus(
+          keyTarget: removeChordItem,
+          shape: ShapeLightFocus.RRect,
+          radius: spacing(2),
+          contents: [
+            TargetContent(
+              child: Text('removeChordItemTutorial'.tr()),
             ),
-          ),
-        );
-      },
+          ],
+        )
+      ],
+      task: removeChordItemTutorial,
+      child: CarouselSlider.builder(
+        key: removeChordItem,
+        itemCount: playlists.length,
+        options: CarouselOptions(
+          aspectRatio: 1,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false,
+        ),
+        itemBuilder: (context, index, realIndex) {
+          final playlist = playlists[index];
+
+          return OfflineListChordItem(
+            key: ValueKey(playlist.id),
+            playlist: playlist,
+          );
+        },
+      ),
     );
   }
 }
