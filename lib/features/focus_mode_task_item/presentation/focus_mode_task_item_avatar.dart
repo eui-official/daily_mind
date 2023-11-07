@@ -13,9 +13,7 @@ class FocusModeTaskItemAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: spacing(8),
-      height: spacing(8),
-      padding: EdgeInsets.all(spacing(1.75)),
+      padding: EdgeInsets.all(spacing(1.5)),
       decoration: BoxDecoration(
         color: context.theme.primaryColorDark,
         borderRadius: BorderRadius.circular(spacing(2)),

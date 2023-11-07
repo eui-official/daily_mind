@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
@@ -27,33 +28,37 @@ class FocusModeTaskItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.theme.hoverColor,
         ),
-        height: spacing(12),
-        width: spacing(12),
+        height: spacing(10),
+        width: spacing(10),
         padding: EdgeInsets.all(spacing(2)),
         child: Row(
-          children: space(
-            [
-              FocusModeTaskItemAvatar(icon: focusIcon.icon),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: space(
-                  [
-                    Text(
-                      pomodoro.title ?? emptyString,
-                      style: context.textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: space(
+                [
+                  FocusModeTaskItemAvatar(icon: focusIcon.icon),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        pomodoro.title ?? emptyString,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    FocusModeTaskItemWorkingSession(
-                      workingSessions: pomodoro.workingSessions ?? 0,
-                    )
-                  ],
-                  height: spacing(),
-                ),
-              )
-            ],
-            width: spacing(2),
-          ),
+                      FocusModeTaskItemWorkingSession(
+                        workingSessions: pomodoro.workingSessions ?? 0,
+                      )
+                    ],
+                  )
+                ],
+                width: spacing(2),
+              ),
+            ),
+            const PlayIcon(),
+          ],
         ),
       ),
     );

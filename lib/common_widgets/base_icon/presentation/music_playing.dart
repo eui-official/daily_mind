@@ -9,7 +9,7 @@ class MusicPlaying extends StatelessWidget {
 
   const MusicPlaying({
     super.key,
-    this.size = 4,
+    this.size = 3,
     this.color,
   });
 
