@@ -85,6 +85,7 @@ dependencies:
   reactive_forms: ^16.1.1
   group_button: ^5.3.3
   timer_count_down: ^2.2.2
+  percent_indicator: ^4.2.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
