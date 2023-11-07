@@ -1,6 +1,8 @@
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class FocusModeTaskItemWorkingSession extends StatelessWidget {
+class FocusModeTaskItemWorkingSession extends HookWidget {
   final int workingSessions;
 
   const FocusModeTaskItemWorkingSession({
@@ -10,10 +12,19 @@ class FocusModeTaskItemWorkingSession extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (workingSessions == 0) {
-      return const Text('Không giới hạn phiên làm việc');
-    }
+    final title = useMemoized(() {
+      if (workingSessions == 0) {
+        return 'Không giới hạn phiên làm việc';
+      }
 
-    return Text('$workingSessions phiên làm việc');
+      return '$workingSessions phiên làm việc';
+    }, [workingSessions]);
+
+    return Text(
+      title,
+      style: TextStyle(
+        color: secondaryTextColor,
+      ),
+    );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_avatar.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_working_session.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -23,39 +24,32 @@ class FocusModeTaskItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: circularRadius(2),
       child: Container(
-        decoration: BoxDecoration(color: context.theme.colorScheme.background),
+        decoration: BoxDecoration(
+          color: context.theme.hoverColor,
+        ),
         height: spacing(12),
         width: spacing(12),
         padding: EdgeInsets.all(spacing(2)),
         child: Row(
           children: space(
             [
-              Container(
-                width: spacing(8),
-                height: spacing(8),
-                padding: EdgeInsets.all(spacing(2)),
-                decoration: BoxDecoration(
-                  color: context.theme.primaryColorDark,
-                  borderRadius: BorderRadius.circular(spacing(2)),
-                ),
-                child: Image.asset(
-                  focusIcon.icon,
-                  color: Colors.white,
-                ),
-              ),
+              FocusModeTaskItemAvatar(icon: focusIcon.icon),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    pomodoro.title ?? emptyString,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+                children: space(
+                  [
+                    Text(
+                      pomodoro.title ?? emptyString,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  FocusModeTaskItemWorkingSession(
-                    workingSessions: pomodoro.workingSessions ?? 0,
-                  )
-                ],
+                    FocusModeTaskItemWorkingSession(
+                      workingSessions: pomodoro.workingSessions ?? 0,
+                    )
+                  ],
+                  height: spacing(),
+                ),
               )
             ],
             width: spacing(2),
