@@ -16,10 +16,10 @@ class AppNavigationBar extends HookConsumerWidget {
 
     return BottomNavigationBar(
       items: [
-        onGetBottomNavigationBarItem(
-          icon: const Icon(LineIcons.clock),
-          label: 'Tập trung',
-        ),
+        // onGetBottomNavigationBarItem(
+        //   icon: const Icon(LineIcons.clock),
+        //   label: 'Tập trung',
+        // ),
         onGetBottomNavigationBarItem(
           icon: const Icon(Icons.music_note),
           label: 'Âm thanh tự nhiên',

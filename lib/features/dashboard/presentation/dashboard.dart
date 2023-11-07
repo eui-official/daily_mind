@@ -25,7 +25,7 @@ class Dashboard extends HookConsumerWidget {
 
     final children = useMemoized(
         () => [
-              const FocusMode(),
+              // const FocusMode(),
               const OfflineList(),
               const OnlineList(),
               const Settings(),
