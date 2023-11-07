@@ -16,8 +16,9 @@ import 'package:daily_mind/features/offline_player/domain/offline_player_item.da
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'base_online_player.dart';
+part 'base_audio_on_hold.dart';
 part 'base_offline_player.dart';
+part 'base_online_player.dart';
 part 'base_player_timer.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
