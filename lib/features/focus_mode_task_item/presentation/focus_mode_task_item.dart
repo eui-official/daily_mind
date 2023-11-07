@@ -1,7 +1,9 @@
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/features/focus_mode_session/presentation/focus_mode_session.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_avatar.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_working_session.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -24,8 +26,14 @@ class FocusModeTaskItem extends HookWidget {
         focusIcons.firstWhere((icon) => icon.id == pomodoro.iconId);
 
     final onOpenPomodoro = useCallback(
-      () {},
-      [],
+      () {
+        onShowBottomSheet(
+          context,
+          child: FocusModeSession(pomodoro: pomodoro),
+          isScrollControlled: true,
+        );
+      },
+      [context, pomodoro],
     );
 
     return ClipRRect(
