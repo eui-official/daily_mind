@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_applications/logger.dart';
 import 'package:daily_mind/common_applications/online_audio_player/domain/online_audio_player_index_state.dart';
-import 'package:daily_mind/common_domains/item.dart';
+import 'package:daily_mind/common_domains/audio.dart';
 import 'package:just_audio/just_audio.dart';
 
 class OnlineAudioPlayer extends AudioPlayer {
@@ -15,14 +15,14 @@ class OnlineAudioPlayer extends AudioPlayer {
     );
   }
 
-  List<Item> get previousItems {
+  List<Audio> get previousAudios {
     final currentSequence = sequence ?? [];
 
-    return currentSequence.map((s) => s.tag as Item).toList();
+    return currentSequence.map((s) => s.tag as Audio).toList();
   }
 
-  void onInitSource(List<Item> items) {
-    final newItems = List<Item>.from(items);
+  void onInitSource(List<Audio> audios) {
+    final newItems = List<Audio>.from(audios);
     final playItem = newItems.removeAt(0);
     final newList = [...newItems, playItem];
     final initialIndex = newList.indexOf(playItem);
@@ -31,18 +31,18 @@ class OnlineAudioPlayer extends AudioPlayer {
   }
 
   void onSetAudioSource(
-    List<Item> newList, {
+    List<Audio> audios, {
     int initialIndex = 0,
     LoopMode loopMode = LoopMode.one,
   }) async {
     try {
       await pause();
 
-      final children = newList
+      final children = audios
           .map(
-            (item) => LockCachingAudioSource(
-              Uri.parse(item.source),
-              tag: item,
+            (audio) => LockCachingAudioSource(
+              Uri.parse(audio.source),
+              tag: audio,
             ),
           )
           .toList();
@@ -63,34 +63,37 @@ class OnlineAudioPlayer extends AudioPlayer {
   }
 
   void onSeekToIndex(int index) async {
-    final currentItems = previousItems;
-    final topItems = currentItems.sublist(0, index);
-    final restItems = currentItems.whereNot((element) {
-      return topItems.contains(element);
-    }).toList();
-    final playItem = restItems.removeAt(0);
-    final newList = [...restItems, ...topItems, playItem];
-    final initialIndex = newList.indexOf(playItem);
+    final currentAudios = previousAudios;
 
-    onSetAudioSource(newList, initialIndex: initialIndex);
+    final topAudios = currentAudios.sublist(0, index);
+    final restAudios = currentAudios.whereNot((element) {
+      return topAudios.contains(element);
+    }).toList();
+
+    final playAudio = restAudios.removeAt(0);
+    final audios = [...restAudios, ...topAudios, playAudio];
+    final initialIndex = audios.indexOf(playAudio);
+
+    onSetAudioSource(audios, initialIndex: initialIndex);
   }
 
   void onSeekNext() {
-    final currentItems = previousItems;
-    final playItem = currentItems.removeAt(0);
-    final newList = [...currentItems, playItem];
-    final initialIndex = newList.indexOf(playItem);
+    final currentAudios = previousAudios;
 
-    onSetAudioSource(newList, initialIndex: initialIndex);
+    final playAudio = currentAudios.removeAt(0);
+    final audios = [...currentAudios, playAudio];
+    final initialIndex = audios.indexOf(playAudio);
+
+    onSetAudioSource(audios, initialIndex: initialIndex);
   }
 
   void onSeekPrevious() {
-    final currentItems = previousItems;
-    final lastItem = currentItems.removeLast();
+    final currentItems = previousAudios;
+    final lastAudio = currentItems.removeLast();
 
-    final newList = [lastItem, ...currentItems];
+    final audios = [lastAudio, ...currentItems];
 
-    onSetAudioSource(newList, initialIndex: indexState.lastIndex);
+    onSetAudioSource(audios, initialIndex: indexState.lastIndex);
   }
 
   Future<void> onDispose() async {

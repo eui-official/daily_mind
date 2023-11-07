@@ -1,10 +1,10 @@
-class AudioOfflineItem {
+class AudioOffline {
   final String id;
   final String name;
   final String image;
   final String description;
 
-  AudioOfflineItem({
+  AudioOffline({
     required this.id,
     required this.name,
     required this.description,

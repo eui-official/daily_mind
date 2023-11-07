@@ -1,43 +1,43 @@
-import 'package:daily_mind/common_domains/audio_offline_item.dart';
+import 'package:daily_mind/common_domains/audio_offline.dart';
 
-final List<AudioOfflineItem> offlineAudioItems = [
-  AudioOfflineItem(
+final List<AudioOffline> offlineAudios = [
+  AudioOffline(
     id: 'rain',
     name: 'rain',
     description: 'rainDescription',
     image: 'assets/images/rain-forest.png',
   ),
-  AudioOfflineItem(
+  AudioOffline(
     id: 'forest',
     name: 'forest',
     description: 'forestDescription',
     image: 'assets/images/forest-with-birds.png',
   ),
-  AudioOfflineItem(
+  AudioOffline(
     id: 'wind',
     name: 'wind',
     description: 'windDescription',
     image: 'assets/images/wind-and-peaceful.png',
   ),
-  AudioOfflineItem(
+  AudioOffline(
     id: 'fire',
     name: 'fire',
     description: 'fireDescription',
     image: 'assets/images/firecamp.png',
   ),
-  AudioOfflineItem(
+  AudioOffline(
     id: 'water',
     name: 'water',
     description: 'waterDescription',
     image: 'assets/images/water.png',
   ),
-  AudioOfflineItem(
+  AudioOffline(
     id: 'space',
     name: 'space',
     description: 'spaceDescription',
     image: 'assets/images/sky.png',
   ),
-  AudioOfflineItem(
+  AudioOffline(
     id: 'whiteNoise',
     name: 'whiteNoise',
     description: 'whiteNoiseDescription',

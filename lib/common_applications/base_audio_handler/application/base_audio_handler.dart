@@ -7,7 +7,7 @@ import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_applications/time.dart';
-import 'package:daily_mind/common_domains/item.dart';
+import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/db.dart';

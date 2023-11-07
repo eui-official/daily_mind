@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'item.dart';
+part of 'audio.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Item _$ItemFromJson(Map<String, dynamic> json) {
-  return _Item.fromJson(json);
+Audio _$AudioFromJson(Map<String, dynamic> json) {
+  return _Audio.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Item {
+mixin _$Audio {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
@@ -30,13 +30,13 @@ mixin _$Item {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
+  $AudioCopyWith<Audio> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemCopyWith<$Res> {
-  factory $ItemCopyWith(Item value, $Res Function(Item) then) =
-      _$ItemCopyWithImpl<$Res, Item>;
+abstract class $AudioCopyWith<$Res> {
+  factory $AudioCopyWith(Audio value, $Res Function(Audio) then) =
+      _$AudioCopyWithImpl<$Res, Audio>;
   @useResult
   $Res call(
       {String id,
@@ -48,9 +48,9 @@ abstract class $ItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ItemCopyWithImpl<$Res, $Val extends Item>
-    implements $ItemCopyWith<$Res> {
-  _$ItemCopyWithImpl(this._value, this._then);
+class _$AudioCopyWithImpl<$Res, $Val extends Audio>
+    implements $AudioCopyWith<$Res> {
+  _$AudioCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,10 +97,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
 }
 
 /// @nodoc
-abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$$ItemImplCopyWith(
-          _$ItemImpl value, $Res Function(_$ItemImpl) then) =
-      __$$ItemImplCopyWithImpl<$Res>;
+abstract class _$$AudioImplCopyWith<$Res> implements $AudioCopyWith<$Res> {
+  factory _$$AudioImplCopyWith(
+          _$AudioImpl value, $Res Function(_$AudioImpl) then) =
+      __$$AudioImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -113,10 +113,11 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ItemImplCopyWithImpl<$Res>
-    extends _$ItemCopyWithImpl<$Res, _$ItemImpl>
-    implements _$$ItemImplCopyWith<$Res> {
-  __$$ItemImplCopyWithImpl(_$ItemImpl _value, $Res Function(_$ItemImpl) _then)
+class __$$AudioImplCopyWithImpl<$Res>
+    extends _$AudioCopyWithImpl<$Res, _$AudioImpl>
+    implements _$$AudioImplCopyWith<$Res> {
+  __$$AudioImplCopyWithImpl(
+      _$AudioImpl _value, $Res Function(_$AudioImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -129,7 +130,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? source = null,
     Object? category = null,
   }) {
-    return _then(_$ItemImpl(
+    return _then(_$AudioImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -160,8 +161,8 @@ class __$$ItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ItemImpl implements _Item {
-  const _$ItemImpl(
+class _$AudioImpl implements _Audio {
+  const _$AudioImpl(
       {required this.id,
       @JsonKey(name: 'created_at') required this.createdAt,
       required this.name,
@@ -169,8 +170,8 @@ class _$ItemImpl implements _Item {
       required this.source,
       required this.category});
 
-  factory _$ItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ItemImplFromJson(json);
+  factory _$AudioImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AudioImplFromJson(json);
 
   @override
   final String id;
@@ -188,14 +189,14 @@ class _$ItemImpl implements _Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, category: $category)';
+    return 'Audio(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, category: $category)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ItemImpl &&
+            other is _$AudioImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -214,27 +215,27 @@ class _$ItemImpl implements _Item {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
-      __$$ItemImplCopyWithImpl<_$ItemImpl>(this, _$identity);
+  _$$AudioImplCopyWith<_$AudioImpl> get copyWith =>
+      __$$AudioImplCopyWithImpl<_$AudioImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ItemImplToJson(
+    return _$$AudioImplToJson(
       this,
     );
   }
 }
 
-abstract class _Item implements Item {
-  const factory _Item(
+abstract class _Audio implements Audio {
+  const factory _Audio(
       {required final String id,
       @JsonKey(name: 'created_at') required final String createdAt,
       required final String name,
       required final String image,
       required final String source,
-      required final String category}) = _$ItemImpl;
+      required final String category}) = _$AudioImpl;
 
-  factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
+  factory _Audio.fromJson(Map<String, dynamic> json) = _$AudioImpl.fromJson;
 
   @override
   String get id;
@@ -251,6 +252,6 @@ abstract class _Item implements Item {
   String get category;
   @override
   @JsonKey(ignore: true)
-  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
+  _$$AudioImplCopyWith<_$AudioImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

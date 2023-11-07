@@ -16,7 +16,7 @@ const initNewMixState = NewMixState(
 class NewMixdNotifier extends StateNotifier<NewMixState> {
   NewMixdNotifier() : super(initNewMixState);
 
-  dynamic getAudioItem() {
+  dynamic onGetAudio() {
     return state.selectingState.audio;
   }
 

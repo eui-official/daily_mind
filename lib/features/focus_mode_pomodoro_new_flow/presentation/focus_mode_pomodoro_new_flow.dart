@@ -41,9 +41,7 @@ class FocusModePomodoroNewFlow extends HookWidget {
     }, []);
 
     final onCreateANewPomodoro = useCallback(
-      () {
-        print(formGroup.value);
-      },
+      () {},
       [formGroup],
     );
 

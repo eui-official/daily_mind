@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daily_mind/common_domains/item_category.dart';
+import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_hooks/use_image_palette.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
@@ -13,16 +13,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
 class OnlineCategoryHorizontal extends HookWidget {
-  final ItemCategory itemCategory;
+  final AudioCategory audioCategory;
 
   const OnlineCategoryHorizontal({
     super.key,
-    required this.itemCategory,
+    required this.audioCategory,
   });
 
   @override
   Widget build(BuildContext context) {
-    final image = CachedNetworkImageProvider(itemCategory.items.first.image);
+    final image = CachedNetworkImageProvider(audioCategory.audios.first.image);
     final paletteGenerator = useImagePallete(image);
 
     return BaseNullBuilder(
@@ -32,7 +32,7 @@ class OnlineCategoryHorizontal extends HookWidget {
             context.theme.colorScheme.background;
 
         return BaseOnlineHandler(
-          itemCategory: itemCategory,
+          audioCategory: audioCategory,
           builder: (onTap) {
             return SizedBox(
               height: tinyCard,
@@ -50,12 +50,12 @@ class OnlineCategoryHorizontal extends HookWidget {
                         child: Row(
                           children: [
                             OnlineCategoryHorizontalImage(
-                              imageUrl: itemCategory.items.first.image,
+                              imageUrl: audioCategory.audios.first.image,
                             ),
                             Flexible(
                               child: OnlineCategoryHorizontalContent(
-                                name: itemCategory.category.name,
-                                description: itemCategory.category.description,
+                                name: audioCategory.category.name,
+                                description: audioCategory.category.description,
                               ),
                             ),
                           ],

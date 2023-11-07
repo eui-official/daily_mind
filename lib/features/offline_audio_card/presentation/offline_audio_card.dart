@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_domains/audio_offline_item.dart';
+import 'package:daily_mind/common_domains/audio_offline.dart';
 import 'package:daily_mind/common_providers/audio_offline_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_audio_card.dart';
 import 'package:daily_mind/constants/enum.dart';
@@ -12,7 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class OfflineAudioCard extends HookConsumerWidget {
   final bool isSelected;
   final Key? backgroundKey;
-  final AudioOfflineItem item;
+  final AudioOffline audio;
   final SelectingState selectingState;
   final ValueChanged<String> onDeleted;
   final ValueChanged<SelectingState> onSelecting;
@@ -21,7 +21,7 @@ class OfflineAudioCard extends HookConsumerWidget {
   const OfflineAudioCard({
     super.key,
     required this.isSelected,
-    required this.item,
+    required this.audio,
     required this.onDeleted,
     required this.onSelecting,
     required this.onUnSelecting,
@@ -33,8 +33,8 @@ class OfflineAudioCard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
     final audioOfflinePlayerMemoized = useMemoized(
-      () => audioOfflinePlayerProvider(item.id),
-      [item.id],
+      () => audioOfflinePlayerProvider(audio.id),
+      [audio.id],
     );
     final audioOfflinePlayerNotifier =
         ref.watch(audioOfflinePlayerMemoized.notifier);
@@ -47,43 +47,43 @@ class OfflineAudioCard extends HookConsumerWidget {
       } else {
         onSelecting(
           SelectingState(
-            audio: item,
+            audio: audio,
             networkType: NetworkType.offline,
           ),
         );
 
-        audioOfflinePlayerNotifier.onPlay(item.id);
+        audioOfflinePlayerNotifier.onPlay(audio.id);
       }
     }, [
       audioOfflinePlayerState.isPlaying,
-      item,
+      audio,
     ]);
 
     useEffect(() {
-      if (selectingState.audio?.id != item.id) {
+      if (selectingState.audio?.id != audio.id) {
         audioOfflinePlayerNotifier.onPause();
       }
 
       return () {};
-    }, [selectingState, item]);
+    }, [selectingState, audio]);
 
     useEffect(() {
       return () {
         Future(() {
-          newMixSelectedNotifier.onDeleted(item.id);
+          newMixSelectedNotifier.onDeleted(audio.id);
         });
       };
-    }, [item]);
+    }, [audio]);
 
     return BaseAudioCard(
-      description: item.description.tr(),
-      image: AssetImage(item.image),
+      description: audio.description.tr(),
+      image: AssetImage(audio.image),
       isLoading: audioOfflinePlayerState.isLoading,
       isPlaying: audioOfflinePlayerState.isPlaying,
       isSelected: isSelected,
       key: backgroundKey,
-      name: item.name.tr(),
-      onDeleted: () => onDeleted(item.id),
+      name: audio.name.tr(),
+      onDeleted: () => onDeleted(audio.id),
       onTap: onTap,
     );
   }

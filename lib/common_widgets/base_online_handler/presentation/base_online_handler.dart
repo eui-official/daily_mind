@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
-import 'package:daily_mind/common_domains/item_category.dart';
+import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
@@ -13,12 +13,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BaseOnlineHandler extends HookConsumerWidget {
-  final ItemCategory itemCategory;
+  final AudioCategory audioCategory;
   final OnOnlineHandlerBuilder builder;
 
   const BaseOnlineHandler({
     super.key,
-    required this.itemCategory,
+    required this.audioCategory,
     required this.builder,
   });
 
@@ -26,8 +26,8 @@ class BaseOnlineHandler extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
-    final items = itemCategory.items;
-    final category = itemCategory.category;
+    final audios = audioCategory.audios;
+    final category = audioCategory.category;
 
     final onOpenPlayerOnline = useCallback(() {
       baseMiniPlayerNotifier.onHide();
@@ -40,7 +40,7 @@ class BaseOnlineHandler extends HookConsumerWidget {
     }, [category, context]);
 
     final onTap = useCallback(() {
-      baseAudioHandler.onInitOnline(items);
+      baseAudioHandler.onInitOnline(audios);
 
       baseMiniPlayerNotifier.onUpdateState(
         MiniPlayerState(
@@ -50,7 +50,7 @@ class BaseOnlineHandler extends HookConsumerWidget {
         ),
       );
     }, [
-      items,
+      audios,
       onOpenPlayerOnline,
     ]);
 

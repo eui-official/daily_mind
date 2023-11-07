@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_widgets/base_background.dart';
-import 'package:daily_mind/common_widgets/base_list_items_builder/presentation/base_list_items_builder_provider.dart';
+import 'package:daily_mind/common_widgets/base_audios_builder/presentation/base_audios_builder_provider.dart';
 import 'package:daily_mind/common_widgets/base_refresh/presentation/base_refresh.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/internet_connection_checker/presentation/internet_connection_checker.dart';
@@ -13,13 +13,13 @@ class OnlineList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseListItemsBuilderNotifier =
-        ref.read(baseListItemsBuilderNotifierProvider.notifier);
+    final baseAudiosBuilderNotifier =
+        ref.read(baseAudiosBuilderNotifierProvider.notifier);
 
     return InternetConnectionChecker(
       child: Scaffold(
         body: BaseRefresh(
-          onRefresh: baseListItemsBuilderNotifier.onRefreshItemsCategory,
+          onRefresh: baseAudiosBuilderNotifier.onRefreshAudioCategories,
           child: Stack(
             children: [
               const BaseBackground(),

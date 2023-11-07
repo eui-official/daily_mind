@@ -40,10 +40,11 @@ class OfflineListChordItem extends HookConsumerWidget {
 
     final items = playlist.items ?? [];
     final names =
-        items.map((item) => item.id.offlineAudioItem.name.tr()).join(', ');
+        items.map((item) => item.id.onGetOfflineAudio.name.tr()).join(', ');
+
     final title = playlist.title ?? emptyString;
     final item = items.first;
-    final soundItem = item.id.offlineAudioItem;
+    final offlineAudio = item.id.onGetOfflineAudio;
     final isPlaying = mediaItemSnapshot.data?.id == playlist.id.toString();
 
     final onOpenOfflinePlayer = useCallback(() {
@@ -85,7 +86,7 @@ class OfflineListChordItem extends HookConsumerWidget {
     );
 
     return Dismissible(
-      key: ValueKey(soundItem.id),
+      key: ValueKey(offlineAudio.id),
       direction: DismissDirection.down,
       onDismissed: (direction) {
         offlineListChoreItemNotifier.onDispose();
@@ -94,7 +95,7 @@ class OfflineListChordItem extends HookConsumerWidget {
       },
       child: BaseCard(
         onTap: onPlayChord,
-        image: AssetImage(soundItem.image),
+        image: AssetImage(offlineAudio.image),
         content: BaseContentWithPlayIcon(
           isPlaying: isPlaying,
           child: Flexible(

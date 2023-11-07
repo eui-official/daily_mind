@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daily_mind/common_domains/item_category.dart';
+import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
@@ -8,27 +8,27 @@ import 'package:daily_mind/constants/audio_card.dart';
 import 'package:flutter/material.dart';
 
 class OnlineCategory extends StatelessWidget {
-  final ItemCategory itemCategory;
+  final AudioCategory audioCategory;
 
   const OnlineCategory({
     super.key,
-    required this.itemCategory,
+    required this.audioCategory,
   });
 
   @override
   Widget build(BuildContext context) {
     return BaseOnlineHandler(
-      itemCategory: itemCategory,
+      audioCategory: audioCategory,
       builder: (onTap) {
         return BaseCard(
           onTap: onTap,
           imageHeight: largeCard,
-          image: CachedNetworkImageProvider(itemCategory.items.first.image),
+          image: CachedNetworkImageProvider(audioCategory.audios.first.image),
           content: BaseContentWithPlayIcon(
             child: Flexible(
               child: BaseHeaderWithDescription(
-                name: itemCategory.category.name,
-                description: itemCategory.category.description,
+                name: audioCategory.category.name,
+                description: audioCategory.category.description,
               ),
             ),
           ),

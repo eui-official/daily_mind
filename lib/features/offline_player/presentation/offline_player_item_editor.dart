@@ -20,7 +20,7 @@ class OfflinePlayerItemEditor extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final playMixNotifier = ref.read(playMixProvider.notifier);
-    final offlineAudioItem = item.id.offlineAudioItem;
+    final offlineAudio = item.id.onGetOfflineAudio;
 
     final onVolumeChanged = useCallback(
       (double volume) {
@@ -30,8 +30,8 @@ class OfflinePlayerItemEditor extends HookConsumerWidget {
     );
 
     return BaseMixEditorItem(
-      name: offlineAudioItem.name.tr(),
-      image: offlineAudioItem.image,
+      name: offlineAudio.name.tr(),
+      image: offlineAudio.image,
       initVolume: item.volume,
       onVolumeChanged: onVolumeChanged,
     );

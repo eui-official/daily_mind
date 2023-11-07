@@ -4,8 +4,8 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class BaseListItemsSkeleton extends StatelessWidget {
-  const BaseListItemsSkeleton({
+class BaseAudiosSkeleton extends StatelessWidget {
+  const BaseAudiosSkeleton({
     super.key,
   });
 

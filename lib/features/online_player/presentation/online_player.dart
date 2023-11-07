@@ -52,7 +52,7 @@ class OnlinePlayer extends HookConsumerWidget {
           child: OnlinePlayerBottom(
             audioHandler: baseAudioHandler,
             category: category,
-            item: tag,
+            audio: tag,
           ),
         );
       },

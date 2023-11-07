@@ -1,18 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'item.freezed.dart';
-part 'item.g.dart';
+part 'audio.freezed.dart';
+part 'audio.g.dart';
 
 @freezed
-class Item with _$Item {
-  const factory Item({
+class Audio with _$Audio {
+  const factory Audio({
     required String id,
     @JsonKey(name: 'created_at') required String createdAt,
     required String name,
     required String image,
     required String source,
     required String category,
-  }) = _Item;
+  }) = _Audio;
 
-  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+  factory Audio.fromJson(Map<String, dynamic> json) => _$AudioFromJson(json);
 }

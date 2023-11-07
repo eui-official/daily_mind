@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'item.dart';
+part of 'audio.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
+_$AudioImpl _$$AudioImplFromJson(Map<String, dynamic> json) => _$AudioImpl(
       id: json['id'] as String,
       createdAt: json['created_at'] as String,
       name: json['name'] as String,
@@ -15,7 +15,7 @@ _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
       category: json['category'] as String,
     );
 
-Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
+Map<String, dynamic> _$$AudioImplToJson(_$AudioImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created_at': instance.createdAt,

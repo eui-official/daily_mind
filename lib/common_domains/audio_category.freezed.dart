@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'item_category.dart';
+part of 'audio_category.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ItemCategory {
+mixin _$AudioCategory {
   Category get category => throw _privateConstructorUsedError;
-  List<Item> get items => throw _privateConstructorUsedError;
+  List<Audio> get audios => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ItemCategoryCopyWith<ItemCategory> get copyWith =>
+  $AudioCategoryCopyWith<AudioCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemCategoryCopyWith<$Res> {
-  factory $ItemCategoryCopyWith(
-          ItemCategory value, $Res Function(ItemCategory) then) =
-      _$ItemCategoryCopyWithImpl<$Res, ItemCategory>;
+abstract class $AudioCategoryCopyWith<$Res> {
+  factory $AudioCategoryCopyWith(
+          AudioCategory value, $Res Function(AudioCategory) then) =
+      _$AudioCategoryCopyWithImpl<$Res, AudioCategory>;
   @useResult
-  $Res call({Category category, List<Item> items});
+  $Res call({Category category, List<Audio> audios});
 
   $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
-class _$ItemCategoryCopyWithImpl<$Res, $Val extends ItemCategory>
-    implements $ItemCategoryCopyWith<$Res> {
-  _$ItemCategoryCopyWithImpl(this._value, this._then);
+class _$AudioCategoryCopyWithImpl<$Res, $Val extends AudioCategory>
+    implements $AudioCategoryCopyWith<$Res> {
+  _$AudioCategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -49,17 +49,17 @@ class _$ItemCategoryCopyWithImpl<$Res, $Val extends ItemCategory>
   @override
   $Res call({
     Object? category = null,
-    Object? items = null,
+    Object? audios = null,
   }) {
     return _then(_value.copyWith(
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
+      audios: null == audios
+          ? _value.audios
+          : audios // ignore: cast_nullable_to_non_nullable
+              as List<Audio>,
     ) as $Val);
   }
 
@@ -73,100 +73,100 @@ class _$ItemCategoryCopyWithImpl<$Res, $Val extends ItemCategory>
 }
 
 /// @nodoc
-abstract class _$$ItemCategoryImplCopyWith<$Res>
-    implements $ItemCategoryCopyWith<$Res> {
-  factory _$$ItemCategoryImplCopyWith(
-          _$ItemCategoryImpl value, $Res Function(_$ItemCategoryImpl) then) =
-      __$$ItemCategoryImplCopyWithImpl<$Res>;
+abstract class _$$AudioCategoryImplCopyWith<$Res>
+    implements $AudioCategoryCopyWith<$Res> {
+  factory _$$AudioCategoryImplCopyWith(
+          _$AudioCategoryImpl value, $Res Function(_$AudioCategoryImpl) then) =
+      __$$AudioCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Category category, List<Item> items});
+  $Res call({Category category, List<Audio> audios});
 
   @override
   $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
-class __$$ItemCategoryImplCopyWithImpl<$Res>
-    extends _$ItemCategoryCopyWithImpl<$Res, _$ItemCategoryImpl>
-    implements _$$ItemCategoryImplCopyWith<$Res> {
-  __$$ItemCategoryImplCopyWithImpl(
-      _$ItemCategoryImpl _value, $Res Function(_$ItemCategoryImpl) _then)
+class __$$AudioCategoryImplCopyWithImpl<$Res>
+    extends _$AudioCategoryCopyWithImpl<$Res, _$AudioCategoryImpl>
+    implements _$$AudioCategoryImplCopyWith<$Res> {
+  __$$AudioCategoryImplCopyWithImpl(
+      _$AudioCategoryImpl _value, $Res Function(_$AudioCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? category = null,
-    Object? items = null,
+    Object? audios = null,
   }) {
-    return _then(_$ItemCategoryImpl(
+    return _then(_$AudioCategoryImpl(
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
+      audios: null == audios
+          ? _value._audios
+          : audios // ignore: cast_nullable_to_non_nullable
+              as List<Audio>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ItemCategoryImpl implements _ItemCategory {
-  const _$ItemCategoryImpl(
-      {required this.category, required final List<Item> items})
-      : _items = items;
+class _$AudioCategoryImpl implements _AudioCategory {
+  const _$AudioCategoryImpl(
+      {required this.category, required final List<Audio> audios})
+      : _audios = audios;
 
   @override
   final Category category;
-  final List<Item> _items;
+  final List<Audio> _audios;
   @override
-  List<Item> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
+  List<Audio> get audios {
+    if (_audios is EqualUnmodifiableListView) return _audios;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(_audios);
   }
 
   @override
   String toString() {
-    return 'ItemCategory(category: $category, items: $items)';
+    return 'AudioCategory(category: $category, audios: $audios)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ItemCategoryImpl &&
+            other is _$AudioCategoryImpl &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other._audios, _audios));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, category, const DeepCollectionEquality().hash(_items));
+      runtimeType, category, const DeepCollectionEquality().hash(_audios));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ItemCategoryImplCopyWith<_$ItemCategoryImpl> get copyWith =>
-      __$$ItemCategoryImplCopyWithImpl<_$ItemCategoryImpl>(this, _$identity);
+  _$$AudioCategoryImplCopyWith<_$AudioCategoryImpl> get copyWith =>
+      __$$AudioCategoryImplCopyWithImpl<_$AudioCategoryImpl>(this, _$identity);
 }
 
-abstract class _ItemCategory implements ItemCategory {
-  const factory _ItemCategory(
+abstract class _AudioCategory implements AudioCategory {
+  const factory _AudioCategory(
       {required final Category category,
-      required final List<Item> items}) = _$ItemCategoryImpl;
+      required final List<Audio> audios}) = _$AudioCategoryImpl;
 
   @override
   Category get category;
   @override
-  List<Item> get items;
+  List<Audio> get audios;
   @override
   @JsonKey(ignore: true)
-  _$$ItemCategoryImplCopyWith<_$ItemCategoryImpl> get copyWith =>
+  _$$AudioCategoryImplCopyWith<_$AudioCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

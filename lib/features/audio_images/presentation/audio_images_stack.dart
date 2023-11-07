@@ -19,7 +19,7 @@ class AudioImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final item = items.first;
-    final offlineAudioItem = item.id.offlineAudioItem;
+    final offlineAudio = item.id.onGetOfflineAudio;
 
     return ClipRRect(
       borderRadius: circularRadius(radiusSize),
@@ -28,7 +28,7 @@ class AudioImages extends StatelessWidget {
         width: spacing(size),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(offlineAudioItem.image),
+            image: AssetImage(offlineAudio.image),
             fit: BoxFit.cover,
           ),
         ),

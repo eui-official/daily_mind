@@ -23,7 +23,7 @@ class OfflinePlayer extends HookConsumerWidget {
       data: playlist,
       builder: (safePlaylist) {
         final items = safePlaylist.items ?? [];
-        final image = items.first.id.offlineAudioItem.image;
+        final image = items.first.id.onGetOfflineAudio.image;
 
         return DraggableScrollableSheet(
           initialChildSize: 1,

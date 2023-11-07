@@ -12,10 +12,11 @@ class NewMixAddButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(newMixProvider);
-    final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
-    final offlineAudioItem = newMixSelectedNotifier.getAudioItem();
 
-    String name = offlineAudioItem?.name ?? emptyString;
+    final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
+    final audio = newMixSelectedNotifier.onGetAudio();
+
+    String name = audio?.name ?? emptyString;
 
     return ElevatedButton(
       onPressed: newMixSelectedNotifier.onAddCurrentId,

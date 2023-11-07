@@ -1,13 +1,13 @@
 part of 'base_audio_handler.dart';
 
 extension BaseOnlinePlayer on DailyMindAudioHandler {
-  void onInitOnline(List<Item> items) async {
+  void onInitOnline(List<Audio> audios) async {
     onOfflineDispose();
     onOnlineDispose();
 
     onlinePlayer = OnlineAudioPlayer();
 
-    onlinePlayer.onInitSource(items);
+    onlinePlayer.onInitSource(audios);
 
     onSetNetwork(NetworkType.online);
 
