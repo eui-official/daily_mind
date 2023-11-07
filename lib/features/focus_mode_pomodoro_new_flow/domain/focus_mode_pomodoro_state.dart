@@ -6,7 +6,7 @@ part 'focus_mode_pomodoro_state.freezed.dart';
 class FocusModePomodoroState with _$FocusModePomodoroState {
   const factory FocusModePomodoroState({
     required String title,
-    required String icon,
+    required String iconId,
     required int workingSessions,
     required int shortBreak,
     required int longBreak,

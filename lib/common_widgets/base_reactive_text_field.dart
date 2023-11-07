@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 import 'package:reactive_forms/reactive_forms.dart';
 
 class BaseReactiveTextField extends StatelessWidget {
@@ -26,7 +27,7 @@ class BaseReactiveTextField extends StatelessWidget {
         keyboardType: textInputType,
         decoration: decoration,
         validationMessages: {
-          ValidationMessage.required: (control) => 'Không thể trống',
+          ValidationMessage.required: (control) => 'required'.tr(),
         },
         scrollPadding: context.mediaQueryViewInsets,
       ),

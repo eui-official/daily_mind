@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ConfigState {
   List<Category> get categories => throw _privateConstructorUsedError;
-  List<SoundType> get soundTypes => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,8 +30,7 @@ abstract class $ConfigStateCopyWith<$Res> {
           ConfigState value, $Res Function(ConfigState) then) =
       _$ConfigStateCopyWithImpl<$Res, ConfigState>;
   @useResult
-  $Res call(
-      {List<Category> categories, List<SoundType> soundTypes, bool isLoading});
+  $Res call({List<Category> categories, bool isLoading});
 }
 
 /// @nodoc
@@ -49,7 +47,6 @@ class _$ConfigStateCopyWithImpl<$Res, $Val extends ConfigState>
   @override
   $Res call({
     Object? categories = null,
-    Object? soundTypes = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -57,10 +54,6 @@ class _$ConfigStateCopyWithImpl<$Res, $Val extends ConfigState>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      soundTypes: null == soundTypes
-          ? _value.soundTypes
-          : soundTypes // ignore: cast_nullable_to_non_nullable
-              as List<SoundType>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -77,8 +70,7 @@ abstract class _$$ConfigStateImplCopyWith<$Res>
       __$$ConfigStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<Category> categories, List<SoundType> soundTypes, bool isLoading});
+  $Res call({List<Category> categories, bool isLoading});
 }
 
 /// @nodoc
@@ -93,7 +85,6 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categories = null,
-    Object? soundTypes = null,
     Object? isLoading = null,
   }) {
     return _then(_$ConfigStateImpl(
@@ -101,10 +92,6 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      soundTypes: null == soundTypes
-          ? _value._soundTypes
-          : soundTypes // ignore: cast_nullable_to_non_nullable
-              as List<SoundType>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -117,11 +104,8 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
 
 class _$ConfigStateImpl implements _ConfigState {
   const _$ConfigStateImpl(
-      {required final List<Category> categories,
-      required final List<SoundType> soundTypes,
-      required this.isLoading})
-      : _categories = categories,
-        _soundTypes = soundTypes;
+      {required final List<Category> categories, required this.isLoading})
+      : _categories = categories;
 
   final List<Category> _categories;
   @override
@@ -131,20 +115,12 @@ class _$ConfigStateImpl implements _ConfigState {
     return EqualUnmodifiableListView(_categories);
   }
 
-  final List<SoundType> _soundTypes;
-  @override
-  List<SoundType> get soundTypes {
-    if (_soundTypes is EqualUnmodifiableListView) return _soundTypes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_soundTypes);
-  }
-
   @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'ConfigState(categories: $categories, soundTypes: $soundTypes, isLoading: $isLoading)';
+    return 'ConfigState(categories: $categories, isLoading: $isLoading)';
   }
 
   @override
@@ -154,18 +130,13 @@ class _$ConfigStateImpl implements _ConfigState {
             other is _$ConfigStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            const DeepCollectionEquality()
-                .equals(other._soundTypes, _soundTypes) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(_soundTypes),
-      isLoading);
+      runtimeType, const DeepCollectionEquality().hash(_categories), isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -177,13 +148,10 @@ class _$ConfigStateImpl implements _ConfigState {
 abstract class _ConfigState implements ConfigState {
   const factory _ConfigState(
       {required final List<Category> categories,
-      required final List<SoundType> soundTypes,
       required final bool isLoading}) = _$ConfigStateImpl;
 
   @override
   List<Category> get categories;
-  @override
-  List<SoundType> get soundTypes;
   @override
   bool get isLoading;
   @override

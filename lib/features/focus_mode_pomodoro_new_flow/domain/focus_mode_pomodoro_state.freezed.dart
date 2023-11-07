@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FocusModePomodoroState {
   String get title => throw _privateConstructorUsedError;
-  String get icon => throw _privateConstructorUsedError;
+  String get iconId => throw _privateConstructorUsedError;
   int get workingSessions => throw _privateConstructorUsedError;
   int get shortBreak => throw _privateConstructorUsedError;
   int get longBreak => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $FocusModePomodoroStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      String icon,
+      String iconId,
       int workingSessions,
       int shortBreak,
       int longBreak});
@@ -56,7 +56,7 @@ class _$FocusModePomodoroStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? title = null,
-    Object? icon = null,
+    Object? iconId = null,
     Object? workingSessions = null,
     Object? shortBreak = null,
     Object? longBreak = null,
@@ -66,9 +66,9 @@ class _$FocusModePomodoroStateCopyWithImpl<$Res,
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
+      iconId: null == iconId
+          ? _value.iconId
+          : iconId // ignore: cast_nullable_to_non_nullable
               as String,
       workingSessions: null == workingSessions
           ? _value.workingSessions
@@ -97,7 +97,7 @@ abstract class _$$FocusModePomodoroStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      String icon,
+      String iconId,
       int workingSessions,
       int shortBreak,
       int longBreak});
@@ -117,7 +117,7 @@ class __$$FocusModePomodoroStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? icon = null,
+    Object? iconId = null,
     Object? workingSessions = null,
     Object? shortBreak = null,
     Object? longBreak = null,
@@ -127,9 +127,9 @@ class __$$FocusModePomodoroStateImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
+      iconId: null == iconId
+          ? _value.iconId
+          : iconId // ignore: cast_nullable_to_non_nullable
               as String,
       workingSessions: null == workingSessions
           ? _value.workingSessions
@@ -152,7 +152,7 @@ class __$$FocusModePomodoroStateImplCopyWithImpl<$Res>
 class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
   const _$FocusModePomodoroStateImpl(
       {required this.title,
-      required this.icon,
+      required this.iconId,
       required this.workingSessions,
       required this.shortBreak,
       required this.longBreak});
@@ -160,7 +160,7 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
   @override
   final String title;
   @override
-  final String icon;
+  final String iconId;
   @override
   final int workingSessions;
   @override
@@ -170,7 +170,7 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
 
   @override
   String toString() {
-    return 'FocusModePomodoroState(title: $title, icon: $icon, workingSessions: $workingSessions, shortBreak: $shortBreak, longBreak: $longBreak)';
+    return 'FocusModePomodoroState(title: $title, iconId: $iconId, workingSessions: $workingSessions, shortBreak: $shortBreak, longBreak: $longBreak)';
   }
 
   @override
@@ -179,7 +179,7 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
         (other.runtimeType == runtimeType &&
             other is _$FocusModePomodoroStateImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.iconId, iconId) || other.iconId == iconId) &&
             (identical(other.workingSessions, workingSessions) ||
                 other.workingSessions == workingSessions) &&
             (identical(other.shortBreak, shortBreak) ||
@@ -190,7 +190,7 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, title, icon, workingSessions, shortBreak, longBreak);
+      runtimeType, title, iconId, workingSessions, shortBreak, longBreak);
 
   @JsonKey(ignore: true)
   @override
@@ -203,7 +203,7 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
 abstract class _FocusModePomodoroState implements FocusModePomodoroState {
   const factory _FocusModePomodoroState(
       {required final String title,
-      required final String icon,
+      required final String iconId,
       required final int workingSessions,
       required final int shortBreak,
       required final int longBreak}) = _$FocusModePomodoroStateImpl;
@@ -211,7 +211,7 @@ abstract class _FocusModePomodoroState implements FocusModePomodoroState {
   @override
   String get title;
   @override
-  String get icon;
+  String get iconId;
   @override
   int get workingSessions;
   @override
