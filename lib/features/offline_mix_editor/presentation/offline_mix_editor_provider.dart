@@ -17,7 +17,7 @@ class OfflineMixEditorNotifier extends StateNotifier<OfflineMixEditorState> {
     final offlineMixEditorItemStates = selectingStates
         .map(
           (state) => OfflineMixEditorItemState(
-            id: state.sound.id,
+            id: state.audio.id,
             volume: 0.5,
           ),
         )

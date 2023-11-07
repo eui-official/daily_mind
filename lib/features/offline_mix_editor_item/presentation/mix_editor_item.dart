@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_widgets/base_mix_editor_item.dart';
-import 'package:daily_mind/constants/sound_items.dart';
+import 'package:daily_mind/constants/offline_audio_items.dart';
 import 'package:daily_mind/features/offline_mix_editor/domain/offline_mix_editor_item_state.dart';
 import 'package:daily_mind/features/toggle_play_mode_button/presentation/toggle_play_mode_button.dart';
 import 'package:daily_mind/types/common.dart';
@@ -23,7 +23,7 @@ class MixEditorItem extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final player = useMemoized(() => GaplessAudioPlayer());
-    final soundItem = soundOfflineItems
+    final offlineAudioItem = offlineAudioItems
         .firstWhere((item) => item.id == offlineMixEditorItemState.id);
 
     final playingStreamMemoized = useMemoized(() => player.playingStream, []);
@@ -58,9 +58,9 @@ class MixEditorItem extends HookWidget {
     }, []);
 
     return BaseMixEditorItem(
-      image: soundItem.image,
+      image: offlineAudioItem.image,
       initVolume: offlineMixEditorItemState.volume,
-      name: soundItem.name.tr(),
+      name: offlineAudioItem.name.tr(),
       onVolumeChanged: onVolumeChanged,
       volumeKey: volumeKey,
       prefixChild: TogglePlayModeButton(

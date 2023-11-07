@@ -1,12 +1,12 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
-import 'package:daily_mind/constants/sound_card.dart';
-import 'package:daily_mind/features/sound_card/presentation/sound_card_content.dart';
-import 'package:daily_mind/features/sound_card/presentation/sound_card_delete_button.dart';
+import 'package:daily_mind/constants/audio_card.dart';
+import 'package:daily_mind/features/audio_card/presentation/audio_card_content.dart';
+import 'package:daily_mind/features/audio_card/presentation/audio_card_delete_button.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class BaseSoundCard extends StatelessWidget {
+class BaseAudioCard extends StatelessWidget {
   final bool isLoading;
   final bool isPlaying;
   final bool isSelected;
@@ -17,7 +17,7 @@ class BaseSoundCard extends StatelessWidget {
   final VoidCallback onTap;
   final ImageProvider image;
 
-  const BaseSoundCard({
+  const BaseAudioCard({
     super.key,
     required this.image,
     required this.isLoading,
@@ -48,7 +48,7 @@ class BaseSoundCard extends StatelessWidget {
             imageHeight: mediumCard,
             onTap: onTap,
             content: Positioned.fill(
-              child: SoundCardContent(
+              child: AudioCardContent(
                 name: name,
                 description: description,
                 isPlaying: isPlaying,
@@ -57,7 +57,7 @@ class BaseSoundCard extends StatelessWidget {
             ),
           ),
         ),
-        if (isSelected) SoundCardDeleteButton(onPressed: onDeleted),
+        if (isSelected) AudioCardDeleteButton(onPressed: onDeleted),
       ],
     );
   }

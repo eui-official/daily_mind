@@ -1,6 +1,6 @@
-import 'package:daily_mind/common_domains/sound_offline_item.dart';
+import 'package:daily_mind/common_domains/audio_offline_item.dart';
 import 'package:daily_mind/common_providers/audio_offline_player_provider.dart';
-import 'package:daily_mind/common_widgets/base_sound_card.dart';
+import 'package:daily_mind/common_widgets/base_audio_card.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:daily_mind/features/new_mix/presentation/new_mix_provider.dart';
@@ -9,16 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OfflineSoundCard extends HookConsumerWidget {
+class OfflineAudioCard extends HookConsumerWidget {
   final bool isSelected;
   final Key? backgroundKey;
-  final SoundOfflineItem item;
+  final AudioOfflineItem item;
   final SelectingState selectingState;
   final ValueChanged<String> onDeleted;
   final ValueChanged<SelectingState> onSelecting;
   final VoidCallback onUnSelecting;
 
-  const OfflineSoundCard({
+  const OfflineAudioCard({
     super.key,
     required this.isSelected,
     required this.item,
@@ -47,7 +47,7 @@ class OfflineSoundCard extends HookConsumerWidget {
       } else {
         onSelecting(
           SelectingState(
-            sound: item,
+            audio: item,
             networkType: NetworkType.offline,
           ),
         );
@@ -60,7 +60,7 @@ class OfflineSoundCard extends HookConsumerWidget {
     ]);
 
     useEffect(() {
-      if (selectingState.sound?.id != item.id) {
+      if (selectingState.audio?.id != item.id) {
         audioOfflinePlayerNotifier.onPause();
       }
 
@@ -75,7 +75,7 @@ class OfflineSoundCard extends HookConsumerWidget {
       };
     }, [item]);
 
-    return BaseSoundCard(
+    return BaseAudioCard(
       description: item.description.tr(),
       image: AssetImage(item.image),
       isLoading: audioOfflinePlayerState.isLoading,

@@ -2,7 +2,7 @@ import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart'
 import 'package:daily_mind/common_widgets/base_spacing_container.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/common_widgets/base_mix_editor_content.dart';
-import 'package:daily_mind/constants/sound_card.dart';
+import 'package:daily_mind/constants/audio_card.dart';
 import 'package:daily_mind/features/volume_slider/presentation/volume_slider.dart';
 import 'package:flutter/material.dart';
 

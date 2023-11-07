@@ -13,18 +13,18 @@ class NewMixState with _$NewMixState {
   }) = _NewMixState;
 
   bool isContain(String id) {
-    if (isNoSound) {
+    if (isNoAudio) {
       return false;
     }
 
-    final sounds = selectedStates.where((state) => state.sound.id == id);
+    final sounds = selectedStates.where((state) => state.audio.id == id);
 
     return sounds.isNotEmpty;
   }
 
-  bool get isSelecting => selectingState.sound != null;
+  bool get isSelecting => selectingState.audio != null;
 
   bool get isCanAdd => isSelecting && !selectedStates.contains(selectingState);
 
-  bool get isNoSound => selectedStates.isEmpty;
+  bool get isNoAudio => selectedStates.isEmpty;
 }

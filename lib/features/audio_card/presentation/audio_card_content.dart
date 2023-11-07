@@ -4,13 +4,13 @@ import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/music_playing.dart';
 import 'package:flutter/material.dart';
 
-class SoundCardContent extends StatelessWidget {
+class AudioCardContent extends StatelessWidget {
   final bool isLoading;
   final bool isPlaying;
   final String description;
   final String name;
 
-  const SoundCardContent({
+  const AudioCardContent({
     super.key,
     required this.name,
     required this.description,

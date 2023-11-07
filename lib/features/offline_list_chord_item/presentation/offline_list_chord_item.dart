@@ -40,10 +40,10 @@ class OfflineListChordItem extends HookConsumerWidget {
 
     final items = playlist.items ?? [];
     final names =
-        items.map((item) => item.id.soundOfflineItem.name.tr()).join(', ');
+        items.map((item) => item.id.offlineAudioItem.name.tr()).join(', ');
     final title = playlist.title ?? emptyString;
     final item = items.first;
-    final soundItem = item.id.soundOfflineItem;
+    final soundItem = item.id.offlineAudioItem;
     final isPlaying = mediaItemSnapshot.data?.id == playlist.id.toString();
 
     final onOpenOfflinePlayer = useCallback(() {

@@ -4,7 +4,7 @@ import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const initSelectingState = SelectingState(
-  sound: null,
+  audio: null,
   networkType: NetworkType.offline,
 );
 
@@ -16,8 +16,8 @@ const initNewMixState = NewMixState(
 class NewMixdNotifier extends StateNotifier<NewMixState> {
   NewMixdNotifier() : super(initNewMixState);
 
-  dynamic getSoundItem() {
-    return state.selectingState.sound;
+  dynamic getAudioItem() {
+    return state.selectingState.audio;
   }
 
   void onSelecting(SelectingState newSelectingState) {
@@ -31,7 +31,7 @@ class NewMixdNotifier extends StateNotifier<NewMixState> {
   void onDeleted(String id) {
     final cloneSelectingStates =
         List<SelectingState>.from(state.selectedStates);
-    cloneSelectingStates.removeWhere((element) => element.sound.id == id);
+    cloneSelectingStates.removeWhere((element) => element.audio.id == id);
 
     state = state.copyWith(selectedStates: cloneSelectingStates);
   }

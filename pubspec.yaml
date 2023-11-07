@@ -126,14 +126,14 @@ flutter:
     - assets/images/
     - assets/images/background/
     - assets/lottie/
-    - assets/sounds/
-    - assets/sounds/fire/
-    - assets/sounds/forest/
-    - assets/sounds/rain/
-    - assets/sounds/space/
-    - assets/sounds/water/
-    - assets/sounds/white-noise/
-    - assets/sounds/wind/
+    - assets/audios/
+    - assets/audios/fire/
+    - assets/audios/forest/
+    - assets/audios/rain/
+    - assets/audios/space/
+    - assets/audios/water/
+    - assets/audios/white-noise/
+    - assets/audios/wind/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -4,12 +4,12 @@ import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class SoundImages extends StatelessWidget {
+class AudioImages extends StatelessWidget {
   final List<PlaylistItem> items;
   final double size;
   final double radiusSize;
 
-  const SoundImages({
+  const AudioImages({
     super.key,
     required this.items,
     this.size = 12,
@@ -19,7 +19,7 @@ class SoundImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final item = items.first;
-    final soundItem = item.id.soundOfflineItem;
+    final offlineAudioItem = item.id.offlineAudioItem;
 
     return ClipRRect(
       borderRadius: circularRadius(radiusSize),
@@ -28,7 +28,7 @@ class SoundImages extends StatelessWidget {
         width: spacing(size),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(soundItem.image),
+            image: AssetImage(offlineAudioItem.image),
             fit: BoxFit.cover,
           ),
         ),
