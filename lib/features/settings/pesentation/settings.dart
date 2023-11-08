@@ -49,7 +49,7 @@ class Settings extends StatelessWidget {
                     title: Text('sendFeedback'.tr()),
                     subtitle: Text(
                       'sendFeedbackDescription'.tr(),
-                      style: TextStyle(color: secondaryTextColor),
+                      style: const TextStyle(color: secondaryTextColor),
                     ),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(spacing(2)),

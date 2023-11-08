@@ -17,7 +17,7 @@ class BasePlayerInformation extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(spacing(2)),
       decoration: BoxDecoration(
-        color: context.theme.cardColor,
+        color: context.theme.colorScheme.background,
         borderRadius: circularRadius(2),
       ),
       child: Column(
@@ -32,7 +32,7 @@ class BasePlayerInformation extends StatelessWidget {
             ),
             Text(
               category.description,
-              style: TextStyle(color: secondaryTextColor),
+              style: const TextStyle(color: secondaryTextColor),
             ),
           ],
           height: spacing(),

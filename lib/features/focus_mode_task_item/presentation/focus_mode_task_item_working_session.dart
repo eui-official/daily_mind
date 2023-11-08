@@ -22,7 +22,7 @@ class FocusModeTaskItemWorkingSession extends HookWidget {
 
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         color: secondaryTextColor,
       ),
     );

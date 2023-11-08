@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
+import 'package:daily_mind/common_widgets/base_shadow.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
@@ -36,15 +37,15 @@ class FocusModeTaskItem extends HookWidget {
       [context, pomodoro],
     );
 
-    return ClipRRect(
+    return BaseShadow(
       borderRadius: circularRadius(2),
+      color: context.theme.highlightColor,
       child: Material(
-        color: context.theme.hoverColor,
+        type: MaterialType.transparency,
         child: InkWell(
           onTap: onOpenPomodoro,
           child: Container(
             height: spacing(10),
-            width: spacing(10),
             padding: EdgeInsets.all(spacing(2)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
