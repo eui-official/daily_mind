@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
+double blur = 4;
+
 const appDescription = 'DailyMind - Soothe, Sleep, Relax';
 
 const emptyString = '';
-
-double blur = 4;
 
 const empty = null;
 

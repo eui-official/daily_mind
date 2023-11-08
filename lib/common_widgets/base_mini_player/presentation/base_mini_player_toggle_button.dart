@@ -1,7 +1,6 @@
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_loading_indicator.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/toggle_play_mode_button/presentation/toggle_play_mode_button.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -30,7 +29,7 @@ class BaseMiniPlayerToggleButton extends HookWidget {
         isPlaying: isPlaying,
         onPlay: onPlay,
         onPause: onPause,
-        size: spacing(3),
+        size: 3,
       );
     }, [isLoading, isPlaying]);
 

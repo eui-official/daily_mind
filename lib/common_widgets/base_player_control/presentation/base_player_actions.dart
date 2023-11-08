@@ -62,7 +62,7 @@ class BasePlayerActions extends HookWidget {
             isPlaying: isPlaying,
             onPause: onPause,
             onPlay: onPlay,
-            size: spacing(6),
+            size: 6,
           ),
           onNextChild,
         ],

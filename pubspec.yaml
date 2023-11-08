@@ -86,6 +86,7 @@ dependencies:
   group_button: ^5.3.3
   timer_count_down: ^2.2.2
   percent_indicator: ^4.2.3
+  flutter_local_notifications: ^16.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
