@@ -75,10 +75,6 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
     });
   }
 
-  void onOnlineDispose() {
-    onlinePlayer.dispose();
-  }
-
   void onPauseOnline() {
     onlinePlayer.pause();
   }
@@ -87,8 +83,8 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
     onlinePlayer.play();
   }
 
-  void onDisposeOnline() async {
-    await onlinePlayer.onDispose();
+  void onOnlineDispose() {
+    onlinePlayer.dispose();
   }
 
   void onOnlineUpdateAutoPlayNext(bool newIsAutoPlayNext) {

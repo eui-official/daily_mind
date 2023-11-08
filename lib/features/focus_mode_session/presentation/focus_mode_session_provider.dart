@@ -1,3 +1,5 @@
+import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:daily_mind/features/focus_mode_session/domain/focus_mode_session_state.dart';
@@ -19,11 +21,15 @@ class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
   }
 
   void onPlay() async {
+    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
+
     if (state.isNone) {
       state = state.copyWith(
         currentStep: FocusModeSessionSteps.ready,
         isPlaying: true,
       );
+
+      baseAudioHandler.onStartTask(pomodoro);
     } else {
       onResume();
     }

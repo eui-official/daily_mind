@@ -3,7 +3,7 @@ part of 'base_audio_handler.dart';
 extension BaseOfflinePlayer on DailyMindAudioHandler {
   void onInitOffline(Playlist playlist) async {
     onClearOffline();
-    onDisposeOnline();
+    onOnlineDispose();
 
     onStreamPlaylistId.add(playlist.id);
 

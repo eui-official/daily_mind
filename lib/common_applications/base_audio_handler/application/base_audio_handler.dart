@@ -12,6 +12,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/pomodoro.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:rxdart/rxdart.dart';
@@ -20,11 +21,14 @@ part 'base_audio_on_hold.dart';
 part 'base_offline_player.dart';
 part 'base_online_player.dart';
 part 'base_timer_player.dart';
+part 'base_task_player.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   bool isAutoPlayNext = true;
+
   List<OfflinePlayerItem> offlinePlayerItems = [];
   AudioTypes audioType = AudioTypes.none;
+
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
 
   BehaviorSubject<int> onStreamPlaylistId = BehaviorSubject();
