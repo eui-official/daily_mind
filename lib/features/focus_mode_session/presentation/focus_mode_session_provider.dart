@@ -15,7 +15,7 @@ class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
     return FocusModeSessionState(
       currentSession: 1,
       currentStep: FocusModeSessionSteps.none,
-      currentStepSeconds: sessionSeconds,
+      currentStepSeconds: startSessionSeconds,
       isPlaying: false,
       pomodoro: pomodoro,
     );
@@ -24,13 +24,24 @@ class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
   void onPlay() async {
     if (state.isNone) {
       state = state.copyWith(
-        currentStep: FocusModeSessionSteps.running,
+        currentStep: FocusModeSessionSteps.ready,
         isPlaying: true,
       );
 
       countdownController.start();
     } else {
       onResume();
+    }
+  }
+
+  void onNext() {
+    if (state.currentStep == FocusModeSessionSteps.ready) {
+      state = state.copyWith(
+        currentStep: FocusModeSessionSteps.running,
+        currentStepSeconds: sessionSeconds,
+      );
+
+      countdownController.restart();
     }
   }
 
@@ -42,5 +53,9 @@ class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
   void onPause() {
     state = state.copyWith(isPlaying: false);
     countdownController.pause();
+  }
+
+  void onFinished() {
+    onNext();
   }
 }

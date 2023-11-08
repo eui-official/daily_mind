@@ -59,6 +59,7 @@ class FocusModeSession extends HookConsumerWidget {
               isPlaying: focusModeState.isPlaying,
               seconds: focusModeState.currentStepSeconds,
               countdownController: focusModeNotifier.countdownController,
+              onFinished: focusModeNotifier.onFinished,
             ),
             FocusModeActions(
               isPlaying: focusModeState.isPlaying,

@@ -7,3 +7,5 @@ enum FocusModeSessionSteps {
 }
 
 const sessionSeconds = 1500;
+
+const startSessionSeconds = 3;
