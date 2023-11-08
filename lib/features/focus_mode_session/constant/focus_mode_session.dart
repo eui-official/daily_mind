@@ -6,6 +6,5 @@ enum FocusModeSessionSteps {
   finish,
 }
 
-const sessionSeconds = 1500;
-
-const startSessionSeconds = 3;
+const pomodoroSessionSeconds = 1500;
+const readySessionSeconds = 3;

@@ -9,18 +9,39 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
 
     onlinePlayer.onInitSource(audios);
 
-    onSetNetwork(NetworkType.online);
+    audioType = AudioTypes.online;
 
-    onInitPlaybackState(NetworkType.online);
+    onInitPlaybackState();
     onOnlinePlayerPlayStateChanged();
   }
 
-  void onOnlinePlayerPlayStateChanged() {
-    positionStreamSubscription?.cancel();
-    durationStreamSubscription?.cancel();
+  void onInitPlaybackState() async {
+    final controls = [
+      MediaControl.pause,
+      MediaControl.play,
+      MediaControl.skipToNext,
+      MediaControl.skipToPrevious,
+    ];
+    final Set<MediaAction> actions = {
+      MediaAction.seek,
+      MediaAction.seekBackward,
+      MediaAction.seekForward,
+    };
 
-    positionStreamSubscription =
-        onlinePlayer.positionStream.listen((newDuration) {
+    playbackState.add(
+      playbackState.value.copyWith(
+        playing: true,
+        controls: controls,
+        systemActions: actions,
+      ),
+    );
+  }
+
+  void onOnlinePlayerPlayStateChanged() {
+    onStreamPosition?.cancel();
+    onStreamDuration?.cancel();
+
+    onStreamPosition = onlinePlayer.positionStream.listen((newDuration) {
       playbackState.add(
         playbackState.value.copyWith(updatePosition: newDuration),
       );
@@ -34,7 +55,7 @@ extension BaseOnlinePlayer on DailyMindAudioHandler {
       });
     });
 
-    durationStreamSubscription = onlinePlayer.durationStream.listen((duration) {
+    onStreamDuration = onlinePlayer.durationStream.listen((duration) {
       onSafeValueBuilder(duration, (value) {
         if (value != Duration.zero) {
           final tag = onlinePlayer.sequenceState?.currentSource?.tag;

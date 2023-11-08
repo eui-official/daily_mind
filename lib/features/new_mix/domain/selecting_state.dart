@@ -9,6 +9,6 @@ class SelectingState with _$SelectingState {
 
   const factory SelectingState({
     required dynamic audio,
-    required NetworkType networkType,
+    required AudioTypes audioType,
   }) = _SelectingState;
 }

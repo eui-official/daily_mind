@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const initSelectingState = SelectingState(
   audio: null,
-  networkType: NetworkType.offline,
+  audioType: AudioTypes.offline,
 );
 
 const initNewMixState = NewMixState(

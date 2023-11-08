@@ -67,7 +67,7 @@ class OfflineListChordItem extends HookConsumerWidget {
         baseMiniPlayerNotifier.onUpdateState(
           MiniPlayerState(
             isShow: true,
-            networkType: NetworkType.offline,
+            audioType: AudioTypes.offline,
             onTap: onOpenOfflinePlayer,
           ),
         );

@@ -130,6 +130,7 @@ flutter:
     - assets/images/background/
     - assets/lottie/
     - assets/audios/
+    - assets/audios/blank/
     - assets/audios/fire/
     - assets/audios/forest/
     - assets/audios/rain/

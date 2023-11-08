@@ -19,16 +19,18 @@ import 'package:rxdart/rxdart.dart';
 part 'base_audio_on_hold.dart';
 part 'base_offline_player.dart';
 part 'base_online_player.dart';
-part 'base_player_timer.dart';
+part 'base_timer_player.dart';
 
 class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
   bool isAutoPlayNext = true;
   List<OfflinePlayerItem> offlinePlayerItems = [];
-  NetworkType networkType = NetworkType.none;
+  AudioTypes audioType = AudioTypes.none;
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
-  StreamController<int> streamPlaylistId = BehaviorSubject();
-  StreamSubscription<Duration?>? durationStreamSubscription;
-  StreamSubscription<Duration>? positionStreamSubscription;
+
+  BehaviorSubject<int> onStreamPlaylistId = BehaviorSubject();
+  StreamSubscription<Duration?>? onStreamDuration;
+  StreamSubscription<Duration>? onStreamPosition;
+
   Timer? timer;
 
   DailyMindAudioHandler() {
@@ -40,47 +42,17 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
     await session.configure(const AudioSessionConfiguration.music());
   }
 
-  void onInitPlaybackState([NetworkType type = NetworkType.offline]) async {
-    final controls = [
-      MediaControl.pause,
-      MediaControl.play,
-    ];
-    final Set<MediaAction> actions = {};
-
-    if (type == NetworkType.online) {
-      controls.addAll([
-        MediaControl.skipToNext,
-        MediaControl.skipToPrevious,
-      ]);
-
-      actions.addAll(
-        [
-          MediaAction.seek,
-          MediaAction.seekBackward,
-          MediaAction.seekForward,
-        ],
-      );
-    }
-
-    playbackState.add(
-      playbackState.value.copyWith(
-        playing: true,
-        controls: controls,
-        systemActions: actions,
-      ),
-    );
-  }
-
-  void onSetNetwork(NetworkType newNetworkType) {
-    networkType = newNetworkType;
-  }
-
   @override
   Future<void> play() async {
-    if (networkType == NetworkType.offline) {
-      onPlayOffline();
-    } else {
-      onPlayOnline();
+    switch (audioType) {
+      case AudioTypes.none:
+      case AudioTypes.task:
+      case AudioTypes.offline:
+        onPlayOffline();
+        break;
+      case AudioTypes.online:
+        onPlayOnline();
+        break;
     }
 
     playbackState.add(playbackState.value.copyWith(playing: true));
@@ -90,8 +62,17 @@ class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
 
   @override
   Future<void> pause() async {
-    onPauseOffline();
-    onPauseOnline();
+    switch (audioType) {
+      case AudioTypes.none:
+      case AudioTypes.task:
+      case AudioTypes.offline:
+        onPauseOffline();
+        break;
+      case AudioTypes.online:
+        onPauseOnline();
+        break;
+    }
+
     playbackState.add(playbackState.value.copyWith(playing: false));
 
     return super.pause();

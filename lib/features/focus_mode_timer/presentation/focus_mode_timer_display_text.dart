@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FocusModeTimerDisplayText extends StatelessWidget {
-  final double seconds;
+  final int seconds;
 
   const FocusModeTimerDisplayText({
     super.key,
@@ -15,9 +15,7 @@ class FocusModeTimerDisplayText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       dateFormatter.onFormatDuration(
-        Duration(
-          seconds: seconds.toInt(),
-        ),
+        Duration(seconds: seconds),
       ),
       style: context.textTheme.displayLarge?.copyWith(
         fontWeight: FontWeight.bold,

@@ -5,7 +5,7 @@ extension BaseOfflinePlayer on DailyMindAudioHandler {
     onClearOffline();
     onDisposeOnline();
 
-    streamPlaylistId.add(playlist.id);
+    onStreamPlaylistId.add(playlist.id);
 
     final items = playlist.items ?? [];
     final firstItem = items.first;
@@ -32,10 +32,24 @@ extension BaseOfflinePlayer on DailyMindAudioHandler {
       ),
     );
 
-    onSetNetwork(NetworkType.offline);
+    audioType = AudioTypes.offline;
 
     play();
     onInitPlaybackState();
+  }
+
+  void onInitPlaybackState() async {
+    final controls = [
+      MediaControl.pause,
+      MediaControl.play,
+    ];
+
+    playbackState.add(
+      playbackState.value.copyWith(
+        playing: true,
+        controls: controls,
+      ),
+    );
   }
 
   void onUpdateOfflineVolume(double volume, String itemId, int playlistId) {

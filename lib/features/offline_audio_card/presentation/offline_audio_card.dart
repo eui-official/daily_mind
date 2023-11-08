@@ -48,7 +48,7 @@ class OfflineAudioCard extends HookConsumerWidget {
         onSelecting(
           SelectingState(
             audio: audio,
-            networkType: NetworkType.offline,
+            audioType: AudioTypes.offline,
           ),
         );
 

@@ -8,7 +8,7 @@ Playlist usePlaylistFromAudioHandler(WidgetRef ref) {
   final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
 
   final currentPlaylistIdStreamMemoized =
-      useMemoized(() => baseAudioHandler.streamPlaylistId.stream, []);
+      useMemoized(() => baseAudioHandler.onStreamPlaylistId, []);
 
   final currentPlaylistIdSnapshot = useStream(currentPlaylistIdStreamMemoized);
 

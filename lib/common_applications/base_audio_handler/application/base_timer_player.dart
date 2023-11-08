@@ -1,6 +1,6 @@
 part of 'base_audio_handler.dart';
 
-extension BasePlayerTimer on DailyMindAudioHandler {
+extension BaseTimerPlayer on DailyMindAudioHandler {
   void onStartTimer(Time time) {
     timer?.cancel();
 

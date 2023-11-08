@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SelectingState {
   dynamic get audio => throw _privateConstructorUsedError;
-  NetworkType get networkType => throw _privateConstructorUsedError;
+  AudioTypes get audioType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SelectingStateCopyWith<SelectingState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $SelectingStateCopyWith<$Res> {
           SelectingState value, $Res Function(SelectingState) then) =
       _$SelectingStateCopyWithImpl<$Res, SelectingState>;
   @useResult
-  $Res call({dynamic audio, NetworkType networkType});
+  $Res call({dynamic audio, AudioTypes audioType});
 }
 
 /// @nodoc
@@ -47,17 +47,17 @@ class _$SelectingStateCopyWithImpl<$Res, $Val extends SelectingState>
   @override
   $Res call({
     Object? audio = freezed,
-    Object? networkType = null,
+    Object? audioType = null,
   }) {
     return _then(_value.copyWith(
       audio: freezed == audio
           ? _value.audio
           : audio // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      networkType: null == networkType
-          ? _value.networkType
-          : networkType // ignore: cast_nullable_to_non_nullable
-              as NetworkType,
+      audioType: null == audioType
+          ? _value.audioType
+          : audioType // ignore: cast_nullable_to_non_nullable
+              as AudioTypes,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$SelectingStateImplCopyWith<$Res>
       __$$SelectingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic audio, NetworkType networkType});
+  $Res call({dynamic audio, AudioTypes audioType});
 }
 
 /// @nodoc
@@ -85,17 +85,17 @@ class __$$SelectingStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? audio = freezed,
-    Object? networkType = null,
+    Object? audioType = null,
   }) {
     return _then(_$SelectingStateImpl(
       audio: freezed == audio
           ? _value.audio
           : audio // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      networkType: null == networkType
-          ? _value.networkType
-          : networkType // ignore: cast_nullable_to_non_nullable
-              as NetworkType,
+      audioType: null == audioType
+          ? _value.audioType
+          : audioType // ignore: cast_nullable_to_non_nullable
+              as AudioTypes,
     ));
   }
 }
@@ -103,17 +103,17 @@ class __$$SelectingStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectingStateImpl extends _SelectingState {
-  const _$SelectingStateImpl({required this.audio, required this.networkType})
+  const _$SelectingStateImpl({required this.audio, required this.audioType})
       : super._();
 
   @override
   final dynamic audio;
   @override
-  final NetworkType networkType;
+  final AudioTypes audioType;
 
   @override
   String toString() {
-    return 'SelectingState(audio: $audio, networkType: $networkType)';
+    return 'SelectingState(audio: $audio, audioType: $audioType)';
   }
 
   @override
@@ -122,13 +122,13 @@ class _$SelectingStateImpl extends _SelectingState {
         (other.runtimeType == runtimeType &&
             other is _$SelectingStateImpl &&
             const DeepCollectionEquality().equals(other.audio, audio) &&
-            (identical(other.networkType, networkType) ||
-                other.networkType == networkType));
+            (identical(other.audioType, audioType) ||
+                other.audioType == audioType));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(audio), networkType);
+      runtimeType, const DeepCollectionEquality().hash(audio), audioType);
 
   @JsonKey(ignore: true)
   @override
@@ -141,13 +141,13 @@ class _$SelectingStateImpl extends _SelectingState {
 abstract class _SelectingState extends SelectingState {
   const factory _SelectingState(
       {required final dynamic audio,
-      required final NetworkType networkType}) = _$SelectingStateImpl;
+      required final AudioTypes audioType}) = _$SelectingStateImpl;
   const _SelectingState._() : super._();
 
   @override
   dynamic get audio;
   @override
-  NetworkType get networkType;
+  AudioTypes get audioType;
   @override
   @JsonKey(ignore: true)
   _$$SelectingStateImplCopyWith<_$SelectingStateImpl> get copyWith =>

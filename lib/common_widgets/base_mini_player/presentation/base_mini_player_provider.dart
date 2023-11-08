@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const initState = MiniPlayerState(
   isShow: false,
-  networkType: NetworkType.none,
+  audioType: AudioTypes.none,
 );
 
 class BaseMiniPlayerProvider extends StateNotifier<MiniPlayerState> {

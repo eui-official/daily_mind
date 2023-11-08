@@ -8,7 +8,7 @@ part 'mini_player_state.freezed.dart';
 class MiniPlayerState with _$MiniPlayerState {
   const factory MiniPlayerState({
     required bool isShow,
-    required NetworkType networkType,
+    required AudioTypes audioType,
     VoidCallback? onTap,
   }) = _MiniPlayerState;
 }

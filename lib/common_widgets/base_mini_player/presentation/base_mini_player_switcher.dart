@@ -16,7 +16,7 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
 
     final child = useMemoized(() {
       if (baseMiniPlayerState.isShow) {
-        if (baseMiniPlayerState.networkType == NetworkType.online) {
+        if (baseMiniPlayerState.audioType == AudioTypes.online) {
           return const OnlineMiniPlayer();
         }
 

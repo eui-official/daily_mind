@@ -38,3 +38,5 @@ typedef OnSoundOfflineStateBuilder = Function(
 typedef OnOnlineHandlerBuilder = Widget Function(VoidCallback onTap);
 
 typedef AudioCategoryGroup = Map<String, List<AudioCategory>>;
+
+typedef OnCounting = Function(int remainingSeconds);

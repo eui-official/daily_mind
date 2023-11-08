@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MiniPlayerState {
   bool get isShow => throw _privateConstructorUsedError;
-  NetworkType get networkType => throw _privateConstructorUsedError;
+  AudioTypes get audioType => throw _privateConstructorUsedError;
   VoidCallback? get onTap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $MiniPlayerStateCopyWith<$Res> {
           MiniPlayerState value, $Res Function(MiniPlayerState) then) =
       _$MiniPlayerStateCopyWithImpl<$Res, MiniPlayerState>;
   @useResult
-  $Res call({bool isShow, NetworkType networkType, VoidCallback? onTap});
+  $Res call({bool isShow, AudioTypes audioType, VoidCallback? onTap});
 }
 
 /// @nodoc
@@ -48,7 +48,7 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
   @override
   $Res call({
     Object? isShow = null,
-    Object? networkType = null,
+    Object? audioType = null,
     Object? onTap = freezed,
   }) {
     return _then(_value.copyWith(
@@ -56,10 +56,10 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
-      networkType: null == networkType
-          ? _value.networkType
-          : networkType // ignore: cast_nullable_to_non_nullable
-              as NetworkType,
+      audioType: null == audioType
+          ? _value.audioType
+          : audioType // ignore: cast_nullable_to_non_nullable
+              as AudioTypes,
       onTap: freezed == onTap
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,7 @@ abstract class _$$MiniPlayerStateImplCopyWith<$Res>
       __$$MiniPlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isShow, NetworkType networkType, VoidCallback? onTap});
+  $Res call({bool isShow, AudioTypes audioType, VoidCallback? onTap});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$MiniPlayerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isShow = null,
-    Object? networkType = null,
+    Object? audioType = null,
     Object? onTap = freezed,
   }) {
     return _then(_$MiniPlayerStateImpl(
@@ -99,10 +99,10 @@ class __$$MiniPlayerStateImplCopyWithImpl<$Res>
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
-      networkType: null == networkType
-          ? _value.networkType
-          : networkType // ignore: cast_nullable_to_non_nullable
-              as NetworkType,
+      audioType: null == audioType
+          ? _value.audioType
+          : audioType // ignore: cast_nullable_to_non_nullable
+              as AudioTypes,
       onTap: freezed == onTap
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
@@ -115,18 +115,18 @@ class __$$MiniPlayerStateImplCopyWithImpl<$Res>
 
 class _$MiniPlayerStateImpl implements _MiniPlayerState {
   const _$MiniPlayerStateImpl(
-      {required this.isShow, required this.networkType, this.onTap});
+      {required this.isShow, required this.audioType, this.onTap});
 
   @override
   final bool isShow;
   @override
-  final NetworkType networkType;
+  final AudioTypes audioType;
   @override
   final VoidCallback? onTap;
 
   @override
   String toString() {
-    return 'MiniPlayerState(isShow: $isShow, networkType: $networkType, onTap: $onTap)';
+    return 'MiniPlayerState(isShow: $isShow, audioType: $audioType, onTap: $onTap)';
   }
 
   @override
@@ -135,13 +135,13 @@ class _$MiniPlayerStateImpl implements _MiniPlayerState {
         (other.runtimeType == runtimeType &&
             other is _$MiniPlayerStateImpl &&
             (identical(other.isShow, isShow) || other.isShow == isShow) &&
-            (identical(other.networkType, networkType) ||
-                other.networkType == networkType) &&
+            (identical(other.audioType, audioType) ||
+                other.audioType == audioType) &&
             (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isShow, networkType, onTap);
+  int get hashCode => Object.hash(runtimeType, isShow, audioType, onTap);
 
   @JsonKey(ignore: true)
   @override
@@ -154,13 +154,13 @@ class _$MiniPlayerStateImpl implements _MiniPlayerState {
 abstract class _MiniPlayerState implements MiniPlayerState {
   const factory _MiniPlayerState(
       {required final bool isShow,
-      required final NetworkType networkType,
+      required final AudioTypes audioType,
       final VoidCallback? onTap}) = _$MiniPlayerStateImpl;
 
   @override
   bool get isShow;
   @override
-  NetworkType get networkType;
+  AudioTypes get audioType;
   @override
   VoidCallback? get onTap;
   @override
