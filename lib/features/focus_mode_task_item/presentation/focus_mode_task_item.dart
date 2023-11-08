@@ -1,4 +1,6 @@
+import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
 import 'package:daily_mind/common_widgets/base_shadow.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -12,8 +14,9 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class FocusModeTaskItem extends HookWidget {
+class FocusModeTaskItem extends HookConsumerWidget {
   final Pomodoro pomodoro;
 
   const FocusModeTaskItem({
@@ -22,17 +25,23 @@ class FocusModeTaskItem extends HookWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+
     final focusIcon =
         focusIcons.firstWhere((icon) => icon.id == pomodoro.iconId);
 
     final onOpenPomodoro = useCallback(
       () {
+        baseAudioHandler.onHold();
+
         onShowBottomSheet(
           context,
           child: FocusModeSession(pomodoro: pomodoro),
           isScrollControlled: true,
-        );
+        ).then((value) {
+          baseAudioHandler.onStopHolding();
+        });
       },
       [context, pomodoro],
     );
