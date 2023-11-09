@@ -11,7 +11,8 @@ class FocusModeSessionState with _$FocusModeSessionState {
   const factory FocusModeSessionState({
     required FocusModeSessionSteps currentStep,
     required int currentSession,
-    required int currentStepSeconds,
+    required int totalSeconds,
+    required int remainingSeconds,
     required Pomodoro pomodoro,
     required bool isPlaying,
   }) = _FocusModeSessionState;

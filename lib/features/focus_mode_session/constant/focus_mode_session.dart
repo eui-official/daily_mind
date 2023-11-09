@@ -7,4 +7,5 @@ enum FocusModeSessionSteps {
 }
 
 const pomodoroSessionSeconds = 1500;
-const readySessionSeconds = 3;
+
+const tick = Duration(seconds: 1);

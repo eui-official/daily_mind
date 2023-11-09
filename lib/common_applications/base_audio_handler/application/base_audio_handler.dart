@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
 import 'package:daily_mind/common_applications/assets.dart';
+import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler_variable.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
@@ -13,9 +14,9 @@ import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:rxdart/rxdart.dart';
 
 part 'base_audio_on_hold.dart';
 part 'base_offline_player.dart';
@@ -23,20 +24,8 @@ part 'base_online_player.dart';
 part 'base_timer_player.dart';
 part 'base_task_player.dart';
 
-class DailyMindAudioHandler extends BaseAudioHandler with SeekHandler {
-  bool isAutoPlayNext = true;
-
-  List<OfflinePlayerItem> offlinePlayerItems = [];
-  AudioTypes audioType = AudioTypes.none;
-
-  OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
-
-  BehaviorSubject<int> onStreamPlaylistId = BehaviorSubject();
-  StreamSubscription<Duration?>? onStreamDuration;
-  StreamSubscription<Duration>? onStreamPosition;
-
-  Timer? timer;
-
+class DailyMindAudioHandler extends BaseAudioHandler
+    with SeekHandler, BaseAudioHandlerVariable {
   DailyMindAudioHandler() {
     onInit();
   }

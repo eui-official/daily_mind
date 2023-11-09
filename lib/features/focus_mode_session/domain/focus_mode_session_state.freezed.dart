@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FocusModeSessionState {
   FocusModeSessionSteps get currentStep => throw _privateConstructorUsedError;
   int get currentSession => throw _privateConstructorUsedError;
-  int get currentStepSeconds => throw _privateConstructorUsedError;
+  int get totalSeconds => throw _privateConstructorUsedError;
+  int get remainingSeconds => throw _privateConstructorUsedError;
   Pomodoro get pomodoro => throw _privateConstructorUsedError;
   bool get isPlaying => throw _privateConstructorUsedError;
 
@@ -36,7 +37,8 @@ abstract class $FocusModeSessionStateCopyWith<$Res> {
   $Res call(
       {FocusModeSessionSteps currentStep,
       int currentSession,
-      int currentStepSeconds,
+      int totalSeconds,
+      int remainingSeconds,
       Pomodoro pomodoro,
       bool isPlaying});
 }
@@ -57,7 +59,8 @@ class _$FocusModeSessionStateCopyWithImpl<$Res,
   $Res call({
     Object? currentStep = null,
     Object? currentSession = null,
-    Object? currentStepSeconds = null,
+    Object? totalSeconds = null,
+    Object? remainingSeconds = null,
     Object? pomodoro = null,
     Object? isPlaying = null,
   }) {
@@ -70,9 +73,13 @@ class _$FocusModeSessionStateCopyWithImpl<$Res,
           ? _value.currentSession
           : currentSession // ignore: cast_nullable_to_non_nullable
               as int,
-      currentStepSeconds: null == currentStepSeconds
-          ? _value.currentStepSeconds
-          : currentStepSeconds // ignore: cast_nullable_to_non_nullable
+      totalSeconds: null == totalSeconds
+          ? _value.totalSeconds
+          : totalSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      remainingSeconds: null == remainingSeconds
+          ? _value.remainingSeconds
+          : remainingSeconds // ignore: cast_nullable_to_non_nullable
               as int,
       pomodoro: null == pomodoro
           ? _value.pomodoro
@@ -98,7 +105,8 @@ abstract class _$$FocusModeSessionStateImplCopyWith<$Res>
   $Res call(
       {FocusModeSessionSteps currentStep,
       int currentSession,
-      int currentStepSeconds,
+      int totalSeconds,
+      int remainingSeconds,
       Pomodoro pomodoro,
       bool isPlaying});
 }
@@ -117,7 +125,8 @@ class __$$FocusModeSessionStateImplCopyWithImpl<$Res>
   $Res call({
     Object? currentStep = null,
     Object? currentSession = null,
-    Object? currentStepSeconds = null,
+    Object? totalSeconds = null,
+    Object? remainingSeconds = null,
     Object? pomodoro = null,
     Object? isPlaying = null,
   }) {
@@ -130,9 +139,13 @@ class __$$FocusModeSessionStateImplCopyWithImpl<$Res>
           ? _value.currentSession
           : currentSession // ignore: cast_nullable_to_non_nullable
               as int,
-      currentStepSeconds: null == currentStepSeconds
-          ? _value.currentStepSeconds
-          : currentStepSeconds // ignore: cast_nullable_to_non_nullable
+      totalSeconds: null == totalSeconds
+          ? _value.totalSeconds
+          : totalSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      remainingSeconds: null == remainingSeconds
+          ? _value.remainingSeconds
+          : remainingSeconds // ignore: cast_nullable_to_non_nullable
               as int,
       pomodoro: null == pomodoro
           ? _value.pomodoro
@@ -152,7 +165,8 @@ class _$FocusModeSessionStateImpl extends _FocusModeSessionState {
   const _$FocusModeSessionStateImpl(
       {required this.currentStep,
       required this.currentSession,
-      required this.currentStepSeconds,
+      required this.totalSeconds,
+      required this.remainingSeconds,
       required this.pomodoro,
       required this.isPlaying})
       : super._();
@@ -162,7 +176,9 @@ class _$FocusModeSessionStateImpl extends _FocusModeSessionState {
   @override
   final int currentSession;
   @override
-  final int currentStepSeconds;
+  final int totalSeconds;
+  @override
+  final int remainingSeconds;
   @override
   final Pomodoro pomodoro;
   @override
@@ -170,7 +186,7 @@ class _$FocusModeSessionStateImpl extends _FocusModeSessionState {
 
   @override
   String toString() {
-    return 'FocusModeSessionState(currentStep: $currentStep, currentSession: $currentSession, currentStepSeconds: $currentStepSeconds, pomodoro: $pomodoro, isPlaying: $isPlaying)';
+    return 'FocusModeSessionState(currentStep: $currentStep, currentSession: $currentSession, totalSeconds: $totalSeconds, remainingSeconds: $remainingSeconds, pomodoro: $pomodoro, isPlaying: $isPlaying)';
   }
 
   @override
@@ -182,8 +198,10 @@ class _$FocusModeSessionStateImpl extends _FocusModeSessionState {
                 other.currentStep == currentStep) &&
             (identical(other.currentSession, currentSession) ||
                 other.currentSession == currentSession) &&
-            (identical(other.currentStepSeconds, currentStepSeconds) ||
-                other.currentStepSeconds == currentStepSeconds) &&
+            (identical(other.totalSeconds, totalSeconds) ||
+                other.totalSeconds == totalSeconds) &&
+            (identical(other.remainingSeconds, remainingSeconds) ||
+                other.remainingSeconds == remainingSeconds) &&
             (identical(other.pomodoro, pomodoro) ||
                 other.pomodoro == pomodoro) &&
             (identical(other.isPlaying, isPlaying) ||
@@ -192,7 +210,7 @@ class _$FocusModeSessionStateImpl extends _FocusModeSessionState {
 
   @override
   int get hashCode => Object.hash(runtimeType, currentStep, currentSession,
-      currentStepSeconds, pomodoro, isPlaying);
+      totalSeconds, remainingSeconds, pomodoro, isPlaying);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +224,8 @@ abstract class _FocusModeSessionState extends FocusModeSessionState {
   const factory _FocusModeSessionState(
       {required final FocusModeSessionSteps currentStep,
       required final int currentSession,
-      required final int currentStepSeconds,
+      required final int totalSeconds,
+      required final int remainingSeconds,
       required final Pomodoro pomodoro,
       required final bool isPlaying}) = _$FocusModeSessionStateImpl;
   const _FocusModeSessionState._() : super._();
@@ -216,7 +235,9 @@ abstract class _FocusModeSessionState extends FocusModeSessionState {
   @override
   int get currentSession;
   @override
-  int get currentStepSeconds;
+  int get totalSeconds;
+  @override
+  int get remainingSeconds;
   @override
   Pomodoro get pomodoro;
   @override

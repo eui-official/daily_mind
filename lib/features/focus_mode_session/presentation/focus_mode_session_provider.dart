@@ -11,13 +11,28 @@ part 'focus_mode_session_provider.g.dart';
 class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
   @override
   FocusModeSessionState build(Pomodoro pomodoro) {
+    onInit();
+
     return FocusModeSessionState(
       currentSession: 1,
       currentStep: FocusModeSessionSteps.none,
-      currentStepSeconds: pomodoroSessionSeconds,
+      totalSeconds: pomodoroSessionSeconds,
+      remainingSeconds: pomodoroSessionSeconds,
       isPlaying: false,
       pomodoro: pomodoro,
     );
+  }
+
+  void onInit() {
+    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
+
+    baseAudioHandler.onStreamTaskTotalSeconds.listen((totalSeconds) {
+      state = state.copyWith(totalSeconds: totalSeconds);
+    });
+
+    baseAudioHandler.onStreamTaskRemainingSeconds.listen((remainingSeconds) {
+      state = state.copyWith(remainingSeconds: remainingSeconds);
+    });
   }
 
   void onPlay() async {
@@ -29,26 +44,27 @@ class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
         isPlaying: true,
       );
 
-      baseAudioHandler.onStartTask(pomodoro);
+      baseAudioHandler.onTaskInit(pomodoro);
     } else {
       onResume();
     }
   }
 
-  void onNext() {
-    if (state.currentStep == FocusModeSessionSteps.ready) {
-      state = state.copyWith(
-        currentStep: FocusModeSessionSteps.running,
-        currentStepSeconds: readySessionSeconds,
-      );
-    }
-  }
+  void onNext() {}
 
   void onResume() {
+    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
+
+    baseAudioHandler.onTaskResume();
+
     state = state.copyWith(isPlaying: true);
   }
 
   void onPause() {
+    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
+
+    baseAudioHandler.onTaskPause();
+
     state = state.copyWith(isPlaying: false);
   }
 

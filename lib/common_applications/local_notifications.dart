@@ -15,24 +15,27 @@ class LocalNotifications {
     await flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 
-  void onShowLocalNotification(String title, String body) {
-    const androidNotificationDetail = AndroidNotificationDetails(
-      '0',
+  void onShowLocalNotification({
+    required int id,
+    required String title,
+    required String body,
+  }) {
+    final androidNotificationDetail = AndroidNotificationDetails(
+      '$id',
       'general',
-      importance: Importance.max,
     );
 
-    const iosNotificatonDetail = DarwinNotificationDetails(
-      interruptionLevel: InterruptionLevel.critical,
+    final iosNotificatonDetail = DarwinNotificationDetails(
+      threadIdentifier: '$id',
     );
 
-    const notificationDetails = NotificationDetails(
+    final notificationDetails = NotificationDetails(
       iOS: iosNotificatonDetail,
       android: androidNotificationDetail,
     );
 
     flutterLocalNotificationsPlugin.show(
-      0,
+      id,
       title,
       body,
       notificationDetails,
