@@ -27,10 +27,17 @@ extension BaseTask on DailyMindBackgroundHandler {
       seconds: seconds,
       duration: tick,
       onCounting: (remainingSeconds) {
+        onPlaySounds(remainingSeconds);
         onStreamTaskRemainingSeconds.add(remainingSeconds);
       },
       onFinished: onTaskFinished,
     );
+  }
+
+  void onPlaySounds(int remainingSeconds) {
+    if (remainingSeconds <= 2) {
+      soundEffectAudioPlayer.onPlayDing();
+    }
   }
 
   void onTaskFinished() {
@@ -42,12 +49,7 @@ extension BaseTask on DailyMindBackgroundHandler {
       }
     } else if (taskCurrentStep == FocusModeSessionSteps.breakTime) {
       ++taskCurrentSession;
-
-      if (taskCurrentSession <= workingSessions) {
-        onTaskStart();
-      } else {
-        onTaskCompleted();
-      }
+      onTaskStart();
     }
   }
 
@@ -78,5 +80,6 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskCompleted() {
     taskCurrentSession = 1;
     onTaskUpdateStep(FocusModeSessionSteps.finish);
+    soundEffectAudioPlayer.onPlayLevelUp();
   }
 }

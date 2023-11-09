@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:daily_mind/common_applications/logger.dart';
-import 'package:daily_mind/features/new_mix/constant/offline_audios.dart';
+import 'package:daily_mind/features/new_mix/constant/offline_audio_sources.dart';
 import 'package:just_audio/just_audio.dart';
 
 class GaplessAudioPlayer extends AudioPlayer {
@@ -10,7 +10,7 @@ class GaplessAudioPlayer extends AudioPlayer {
   Future<void> onSetSource(String id) async {
     try {
       children = [];
-      final paths = offlineAudios[id] ?? [];
+      final paths = offlineAudioSources[id] ?? [];
 
       for (var path in paths) {
         children.add(AudioSource.asset(path));
