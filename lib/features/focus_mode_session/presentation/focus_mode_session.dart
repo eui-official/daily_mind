@@ -44,6 +44,16 @@ class FocusModeSession extends HookConsumerWidget {
     final taskCurrentStep =
         taskCurrentStepSnapshot.data ?? FocusModeSessionSteps.ready;
 
+    final onClose = useCallback(
+      () {},
+      [],
+    );
+
+    final onSettings = useCallback(
+      () {},
+      [],
+    );
+
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -80,6 +90,8 @@ class FocusModeSession extends HookConsumerWidget {
               onPause: focusModeNotifier.onTaskPause,
               onPlay: focusModeNotifier.onTaskPlay,
               step: taskCurrentStep,
+              onClose: onClose,
+              onSettings: onSettings,
             ),
           ],
         ),
