@@ -40,6 +40,7 @@ class FocusModeTaskItem extends HookConsumerWidget {
           child: FocusModeSession(pomodoro: pomodoro),
           isScrollControlled: true,
           isDismissible: false,
+          enableDrag: false,
         ).then((value) {
           baseBackgroundHandler.onStopHolding();
         });
