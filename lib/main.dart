@@ -23,10 +23,10 @@ void main() async {
 
   await db.onInit();
 
-  final audioHandler = await AudioService.init(
-    builder: () => DailyMindAudioHandler(),
+  final backgroundHandler = await AudioService.init(
+    builder: () => DailyMindBackgroundHandler(),
     config: const AudioServiceConfig(
-      androidNotificationChannelId: 'dev.andyng.dailymind.channel.audio',
+      androidNotificationChannelId: 'dev.andyng.dailymind.channel.background',
       androidNotificationChannelName: 'Music Playback',
     ),
   );
@@ -37,7 +37,7 @@ void main() async {
         child: BaseInternetConnectionChecker(
           child: Init(
             engine: engine,
-            audioHandler: audioHandler,
+            backgroundHandler: backgroundHandler,
           ),
         ),
       ),

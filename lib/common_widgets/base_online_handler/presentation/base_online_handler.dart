@@ -26,7 +26,7 @@ class BaseOnlineHandler extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final audios = audioCategory.audios;
@@ -43,7 +43,7 @@ class BaseOnlineHandler extends HookConsumerWidget {
     }, [category, context]);
 
     final onTap = useCallback(() {
-      baseAudioHandler.onInitOnline(audios);
+      baseBackgroundHandler.onInitOnline(audios);
 
       baseMiniPlayerNotifier.onUpdateState(
         MiniPlayerState(

@@ -26,21 +26,21 @@ class FocusModeTaskItem extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final focusIcon =
         focusIcons.firstWhere((icon) => icon.id == pomodoro.iconId);
 
     final onOpenPomodoro = useCallback(
       () {
-        baseAudioHandler.onHold();
+        baseBackgroundHandler.onHold();
 
         onShowBottomSheet(
           context,
           child: FocusModeSession(pomodoro: pomodoro),
           isScrollControlled: true,
         ).then((value) {
-          baseAudioHandler.onStopHolding();
+          baseBackgroundHandler.onStopHolding();
         });
       },
       [context, pomodoro],

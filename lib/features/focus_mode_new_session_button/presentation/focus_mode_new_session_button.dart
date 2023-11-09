@@ -11,14 +11,14 @@ class FocusModeNewSessionButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final onOpenCreateNewSession = useCallback(
       () {
-        baseAudioHandler.onHold();
+        baseBackgroundHandler.onHold();
 
         context.push('/focus-mode/pomodoro/new').then((value) {
-          baseAudioHandler.onStopHolding();
+          baseBackgroundHandler.onStopHolding();
         });
       },
       [],

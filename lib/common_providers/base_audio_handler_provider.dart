@@ -1,16 +1,16 @@
 import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class BaseAudioHandlerNotifier extends StateNotifier<DailyMindAudioHandler> {
-  BaseAudioHandlerNotifier() : super(DailyMindAudioHandler());
+class BaseBackgroundHandlerNotifier
+    extends StateNotifier<DailyMindBackgroundHandler> {
+  BaseBackgroundHandlerNotifier() : super(DailyMindBackgroundHandler());
 
-  void onSetAudioHandler(DailyMindAudioHandler newAudioHandler) {
-    state = newAudioHandler;
+  void onSetAudioHandler(DailyMindBackgroundHandler newBackgroundHandler) {
+    state = newBackgroundHandler;
   }
 }
 
-final baseAudioHandlerProvider =
-    StateNotifierProvider<BaseAudioHandlerNotifier, DailyMindAudioHandler>(
-        (ref) {
-  return BaseAudioHandlerNotifier();
+final baseBackgroundHandlerProvider = StateNotifierProvider<
+    BaseBackgroundHandlerNotifier, DailyMindBackgroundHandler>((ref) {
+  return BaseBackgroundHandlerNotifier();
 });

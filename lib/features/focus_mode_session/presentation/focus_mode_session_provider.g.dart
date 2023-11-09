@@ -7,7 +7,7 @@ part of 'focus_mode_session_provider.dart';
 // **************************************************************************
 
 String _$focusModeSessionNotifierHash() =>
-    r'a058b690444c3b7cf22bfc36d51c6ea66126f408';
+    r'6b3c085a9ff91eb686334fbe1c37e1d17b2d49fc';
 
 /// Copied from Dart SDK
 class _SystemHash {

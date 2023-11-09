@@ -10,10 +10,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class BaseTimePickerNotifier extends StateNotifier<BaseTimePickerState> {
   Timer? timer;
-  final DailyMindAudioHandler audioHandler;
+  final DailyMindBackgroundHandler backgroundHandler;
 
   BaseTimePickerNotifier({
-    required this.audioHandler,
+    required this.backgroundHandler,
   }) : super(const BaseTimePickerState());
 
   void onStartTimer(Time time) {
@@ -31,22 +31,22 @@ class BaseTimePickerNotifier extends StateNotifier<BaseTimePickerState> {
     state = state.copyWith(time: time);
 
     onStartTimer(time);
-    audioHandler.onStartTimer(time);
+    backgroundHandler.onStartTimer(time);
   }
 
   void onDeletedTimer() {
     timer?.cancel();
     state = state.copyWith(time: empty);
 
-    audioHandler.onDeletedTimer();
+    backgroundHandler.onDeletedTimer();
   }
 }
 
 final baseTimePickerProvider =
     StateNotifierProvider<BaseTimePickerNotifier, BaseTimePickerState>((ref) {
-  final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+  final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
   return BaseTimePickerNotifier(
-    audioHandler: baseAudioHandler,
+    backgroundHandler: baseBackgroundHandler,
   );
 });

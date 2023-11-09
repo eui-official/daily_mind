@@ -30,12 +30,15 @@ class OfflineListChordItem extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive(wantKeepAlive: true);
 
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final offlineListChoreItemNotifier =
         ref.read(offlineListChoreItemProvider.notifier);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
 
-    final mediaItemMemoized = useMemoized(() => baseAudioHandler.mediaItem, []);
+    final mediaItemMemoized = useMemoized(
+      () => baseBackgroundHandler.mediaItem,
+      [],
+    );
     final mediaItemSnapshot = useStream(mediaItemMemoized);
 
     final items = playlist.items ?? [];

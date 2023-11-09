@@ -13,17 +13,19 @@ class OnlineListRelated extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
-    final sequenceStreamMemoized =
-        useMemoized(() => baseAudioHandler.onlinePlayer.sequenceStream, []);
+    final sequenceStreamMemoized = useMemoized(
+      () => baseBackgroundHandler.onlinePlayer.sequenceStream,
+      [],
+    );
 
     final sequenceSnapshot = useStream(sequenceStreamMemoized);
 
     final sequence = sequenceSnapshot.data ?? [];
 
     final onTap = useCallback((int index) {
-      baseAudioHandler.onlinePlayer.onSeekToIndex(index);
+      baseBackgroundHandler.onlinePlayer.onSeekToIndex(index);
     }, [
       sequence,
     ]);

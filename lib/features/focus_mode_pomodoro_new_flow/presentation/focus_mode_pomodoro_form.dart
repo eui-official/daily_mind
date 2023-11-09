@@ -34,6 +34,7 @@ class FocusModePomodoroForm extends HookWidget {
               const BaseReactiveTextField(
                 title: 'Tiêu đề',
                 formControlName: 'title',
+                autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Có thể là: working, reading, yoya',
                 ),

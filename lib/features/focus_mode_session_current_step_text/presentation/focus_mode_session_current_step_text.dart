@@ -1,4 +1,4 @@
-import 'package:daily_mind/constants/constants.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,28 +21,35 @@ class FocusModeSessionCurrentStepText extends HookWidget {
     final text = useMemoized(
       () {
         switch (step) {
-          case FocusModeSessionSteps.none:
-            return emptyString;
           case FocusModeSessionSteps.ready:
-            return 'Chuẩn bị bắt đầu';
-          case FocusModeSessionSteps.running:
+            return 'Sẵn sàng';
+          case FocusModeSessionSteps.focusing:
             if (workingSessions == 0) {
               return 'Phiên $currentSession';
             } else {
               return 'Phiên $currentSession của $workingSessions';
             }
           case FocusModeSessionSteps.breakTime:
-            return 'Thời gian nghỉ ngơi';
+            return 'Nghỉ ngơi';
           case FocusModeSessionSteps.finish:
-            return 'Đã kết thúc phiên làm việc';
+            return 'Kết thúc';
         }
       },
       [step, workingSessions],
     );
 
-    return Text(
-      text,
-      style: context.textTheme.bodyLarge,
+    return AnimatedTextKit(
+      key: ValueKey(text),
+      isRepeatingAnimation: false,
+      animatedTexts: [
+        TypewriterAnimatedText(
+          text,
+          textStyle: context.textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: context.theme.primaryColor,
+          ),
+        ),
+      ],
     );
   }
 }

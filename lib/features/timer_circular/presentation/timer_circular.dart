@@ -22,7 +22,7 @@ class TimerCircular extends StatelessWidget {
         return CircularPercentIndicator(
           radius: min(
             constraints.maxWidth,
-            constraints.maxWidth * 0.4,
+            constraints.maxWidth * 0.425,
           ),
           lineWidth: spacing(3),
           percent: percent,

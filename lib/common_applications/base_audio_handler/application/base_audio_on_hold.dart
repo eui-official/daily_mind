@@ -1,8 +1,6 @@
 part of 'base_audio_handler.dart';
 
-bool isPreviousPlaying = true;
-
-extension BaseAudioOnHold on DailyMindAudioHandler {
+extension BaseAudioOnHold on DailyMindBackgroundHandler {
   void onHold() {
     if (playbackState.value.playing) {
       pause();

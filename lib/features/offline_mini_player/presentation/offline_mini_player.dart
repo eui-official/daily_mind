@@ -16,10 +16,10 @@ class OfflineMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final playbackStateMemoized = useMemoized(
-      () => baseAudioHandler.playbackState,
+      () => baseBackgroundHandler.playbackState,
       [],
     );
 
@@ -40,8 +40,8 @@ class OfflineMiniPlayer extends HookConsumerWidget {
       image: AudioImages(items: items, size: 5),
       isLoading: false,
       isPlaying: isPlaying,
-      onPause: baseAudioHandler.pause,
-      onPlay: baseAudioHandler.play,
+      onPause: baseBackgroundHandler.pause,
+      onPlay: baseBackgroundHandler.play,
       title: title.isEmpty ? appDescription : title,
     );
   }

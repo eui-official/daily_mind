@@ -20,9 +20,11 @@ class BasePlayerDetails extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
-    final playbackStateMemoized =
-        useMemoized(() => baseAudioHandler.playbackState, []);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final playbackStateMemoized = useMemoized(
+      () => baseBackgroundHandler.playbackState,
+      [],
+    );
 
     final playBackState = useStream(playbackStateMemoized);
 

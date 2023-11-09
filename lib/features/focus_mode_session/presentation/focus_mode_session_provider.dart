@@ -11,64 +11,35 @@ part 'focus_mode_session_provider.g.dart';
 class FocusModeSessionNotifier extends _$FocusModeSessionNotifier {
   @override
   FocusModeSessionState build(Pomodoro pomodoro) {
-    onInit();
+    final baseBackgroundHandler = ref.read(baseBackgroundHandlerProvider);
+    baseBackgroundHandler.onTaskInit(pomodoro);
 
-    return FocusModeSessionState(
-      currentSession: 1,
-      currentStep: FocusModeSessionSteps.none,
-      totalSeconds: pomodoroSessionSeconds,
-      remainingSeconds: pomodoroSessionSeconds,
-      isPlaying: false,
-      pomodoro: pomodoro,
-    );
+    return const FocusModeSessionState(isPlaying: false);
   }
 
-  void onInit() {
-    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
+  void onTaskPlay() async {
+    final baseBackgroundHandler = ref.read(baseBackgroundHandlerProvider);
 
-    baseAudioHandler.onStreamTaskTotalSeconds.listen((totalSeconds) {
-      state = state.copyWith(totalSeconds: totalSeconds);
-    });
-
-    baseAudioHandler.onStreamTaskRemainingSeconds.listen((remainingSeconds) {
-      state = state.copyWith(remainingSeconds: remainingSeconds);
-    });
-  }
-
-  void onPlay() async {
-    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
-
-    if (state.isNone) {
-      state = state.copyWith(
-        currentStep: FocusModeSessionSteps.ready,
-        isPlaying: true,
-      );
-
-      baseAudioHandler.onTaskInit(pomodoro);
+    if (baseBackgroundHandler.onStreamTaskCurrentStep.value ==
+        FocusModeSessionSteps.ready) {
+      state = state.copyWith(isPlaying: true);
+      baseBackgroundHandler.onTaskStart();
     } else {
-      onResume();
+      onTaskResume();
     }
   }
 
-  void onNext() {}
+  void onTaskResume() {
+    final baseBackgroundHandler = ref.read(baseBackgroundHandlerProvider);
 
-  void onResume() {
-    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
-
-    baseAudioHandler.onTaskResume();
-
+    baseBackgroundHandler.onTaskResume();
     state = state.copyWith(isPlaying: true);
   }
 
-  void onPause() {
-    final baseAudioHandler = ref.read(baseAudioHandlerProvider);
+  void onTaskPause() {
+    final baseBackgroundHandler = ref.read(baseBackgroundHandlerProvider);
 
-    baseAudioHandler.onTaskPause();
-
+    baseBackgroundHandler.onTaskPause();
     state = state.copyWith(isPlaying: false);
-  }
-
-  void onFinished() {
-    onNext();
   }
 }

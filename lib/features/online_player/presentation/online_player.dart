@@ -18,17 +18,21 @@ class OnlinePlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
-    final currentIndexStreamMemoized =
-        useMemoized(() => baseAudioHandler.onlinePlayer.currentIndexStream, []);
+    final currentIndexStreamMemoized = useMemoized(
+      () => baseBackgroundHandler.onlinePlayer.currentIndexStream,
+      [],
+    );
 
     final currentIndexSnapshot = useStream(currentIndexStreamMemoized);
 
     final currentIndex = currentIndexSnapshot.data ?? 0;
 
-    final sequenceStreamMemoized =
-        useMemoized(() => baseAudioHandler.onlinePlayer.sequenceStream, []);
+    final sequenceStreamMemoized = useMemoized(
+      () => baseBackgroundHandler.onlinePlayer.sequenceStream,
+      [],
+    );
 
     final sequenceSnapshot = useStream(sequenceStreamMemoized);
 
@@ -50,7 +54,7 @@ class OnlinePlayer extends HookConsumerWidget {
           image: imageProvider,
           scrollController: scrollController,
           child: OnlinePlayerBottom(
-            audioHandler: baseAudioHandler,
+            backgroundHandler: baseBackgroundHandler,
             category: category,
             audio: tag,
           ),

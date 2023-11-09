@@ -1,6 +1,6 @@
 part of 'base_audio_handler.dart';
 
-extension BaseOnlinePlayer on DailyMindAudioHandler {
+extension BaseOnlinePlayer on DailyMindBackgroundHandler {
   void onInitOnline(List<Audio> audios) async {
     onOfflineDispose();
     onOnlineDispose();

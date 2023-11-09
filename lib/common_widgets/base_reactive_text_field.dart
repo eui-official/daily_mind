@@ -5,17 +5,19 @@ import 'package:get/utils.dart' hide Trans;
 import 'package:reactive_forms/reactive_forms.dart';
 
 class BaseReactiveTextField extends StatelessWidget {
-  final String title;
-  final String formControlName;
-  final TextInputType? textInputType;
+  final bool autofocus;
   final InputDecoration decoration;
+  final String formControlName;
+  final String title;
+  final TextInputType? textInputType;
 
   const BaseReactiveTextField({
     super.key,
-    required this.title,
     required this.formControlName,
-    this.textInputType,
+    required this.title,
+    this.autofocus = false,
     this.decoration = const InputDecoration(),
+    this.textInputType,
   });
 
   @override
@@ -23,6 +25,7 @@ class BaseReactiveTextField extends StatelessWidget {
     return BaseContentHeader(
       title: title,
       child: ReactiveTextField(
+        autofocus: autofocus,
         formControlName: formControlName,
         keyboardType: textInputType,
         decoration: decoration,

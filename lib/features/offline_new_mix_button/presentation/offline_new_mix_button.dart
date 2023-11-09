@@ -12,14 +12,14 @@ class OfflineNewMixButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final onOpenCreateNewMix = useCallback(
       () {
-        baseAudioHandler.onHold();
+        baseBackgroundHandler.onHold();
 
         context.push('/new-mix').then((value) {
-          baseAudioHandler.onStopHolding();
+          baseBackgroundHandler.onStopHolding();
         });
       },
       [],

@@ -4,22 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class FocusModeTimer extends HookWidget {
-  final int remainingSeconds;
-  final int totalSeconds;
   final bool isPlaying;
-  final VoidCallback? onFinished;
+  final int remainingSeconds;
+  final int seconds;
 
   const FocusModeTimer({
     super.key,
-    required this.remainingSeconds,
-    required this.totalSeconds,
     required this.isPlaying,
-    this.onFinished,
+    required this.remainingSeconds,
+    required this.seconds,
   });
 
   @override
   Widget build(BuildContext context) {
-    final percent = (remainingSeconds / totalSeconds);
+    final percent = (remainingSeconds / seconds);
 
     return TimerCircularAnimate(
       percent: percent,

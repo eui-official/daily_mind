@@ -1,11 +1,10 @@
 enum FocusModeSessionSteps {
-  none,
   ready,
-  running,
+  focusing,
   breakTime,
   finish,
 }
 
-const pomodoroSessionSeconds = 1500;
+const pomodoroSessionMaxSeconds = 10;
 
 const tick = Duration(seconds: 1);

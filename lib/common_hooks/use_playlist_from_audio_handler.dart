@@ -5,10 +5,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Playlist usePlaylistFromAudioHandler(WidgetRef ref) {
-  final baseAudioHandler = ref.watch(baseAudioHandlerProvider);
+  final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
-  final currentPlaylistIdStreamMemoized =
-      useMemoized(() => baseAudioHandler.onStreamPlaylistId, []);
+  final currentPlaylistIdStreamMemoized = useMemoized(
+    () => baseBackgroundHandler.onStreamPlaylistId,
+    [],
+  );
 
   final currentPlaylistIdSnapshot = useStream(currentPlaylistIdStreamMemoized);
 

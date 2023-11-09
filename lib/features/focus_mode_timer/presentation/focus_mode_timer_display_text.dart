@@ -19,7 +19,7 @@ class FocusModeTimerDisplayText extends StatelessWidget {
       ),
       style: context.textTheme.displayLarge?.copyWith(
         fontWeight: FontWeight.bold,
-        letterSpacing: spacing(),
+        letterSpacing: spacing(0.5),
       ),
     );
   }
