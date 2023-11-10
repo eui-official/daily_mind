@@ -34,8 +34,8 @@ class MixEditorItem extends HookWidget {
 
     final onInit = useCallback(
       () async {
-        await player.onSetSource(offlineMixEditorItemState.id);
-        await player.setVolume(offlineMixEditorItemState.volume);
+        player.onSetSource(offlineMixEditorItemState.id);
+        player.setVolume(offlineMixEditorItemState.volume);
         player.play();
       },
       [],

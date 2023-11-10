@@ -89,6 +89,7 @@ dependencies:
   flutter_local_notifications: ^16.1.0
   pausable_timer: ^3.1.0+3
   adaptive_dialog: ^1.10.0
+  bottom_sheet: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

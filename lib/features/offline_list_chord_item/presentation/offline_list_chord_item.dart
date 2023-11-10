@@ -6,7 +6,7 @@ import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentati
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/extensions/string.dart';

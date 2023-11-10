@@ -4,7 +4,7 @@ import 'package:daily_mind/common_hooks/use_image_palette.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_online_handler.dart';
-import 'package:daily_mind/constants/audio_card.dart';
+import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:daily_mind/features/online_category_horizontal/presentation/online_category_horizontal_content.dart';
 import 'package:daily_mind/features/online_category_horizontal/presentation/online_category_horizontal_image.dart';
 import 'package:daily_mind/theme/common.dart';

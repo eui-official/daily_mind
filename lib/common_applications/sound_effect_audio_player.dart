@@ -14,14 +14,14 @@ class SoundEffectAudioPlayer {
     );
   }
 
-  void onPlayDing() async {
-    await dingPlayer.seek(Duration.zero);
-    await dingPlayer.play();
+  void onPlayDing() {
+    dingPlayer.seek(Duration.zero);
+    dingPlayer.play();
   }
 
-  void onPlayLevelUp() async {
-    await levelUpPlayer.seek(Duration.zero);
-    await levelUpPlayer.play();
+  void onPlayLevelUp() {
+    levelUpPlayer.seek(Duration.zero);
+    levelUpPlayer.play();
   }
 }
 

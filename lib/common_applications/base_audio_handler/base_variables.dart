@@ -4,9 +4,8 @@ import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/base_count_down.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/schemas/task.dart';
-import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:rxdart/rxdart.dart';
 

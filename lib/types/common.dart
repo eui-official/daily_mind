@@ -40,3 +40,5 @@ typedef OnOnlineHandlerBuilder = Widget Function(VoidCallback onTap);
 typedef AudioCategoryGroup = Map<String, List<AudioCategory>>;
 
 typedef OnCounting = Function(int remainingSeconds);
+
+typedef OnAudioSelected = Function(dynamic audio, String audioFrom);

@@ -1,4 +1,4 @@
-import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/new_mix/domain/new_mix_state.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

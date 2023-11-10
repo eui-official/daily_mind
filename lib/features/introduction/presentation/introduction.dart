@@ -24,8 +24,8 @@ class Introduction extends HookWidget {
         firstTime,
         (safeFirstTime) {},
         () async {
-          await player.onSetSource('water');
-          await player.setVolume(0.2);
+          player.onSetSource('water');
+          player.setVolume(0.2);
           player.play();
         },
       );

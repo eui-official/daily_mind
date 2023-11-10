@@ -1,4 +1,4 @@
-import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

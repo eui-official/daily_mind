@@ -87,6 +87,7 @@ extension BaseOfflinePlayer on DailyMindBackgroundHandler {
     for (var offlinePlayerItem in offlinePlayerItems) {
       await offlinePlayerItem.player.onDispose();
     }
+
     offlinePlayerItems.clear();
   }
 }

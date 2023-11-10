@@ -17,33 +17,38 @@ const TaskSchema = CollectionSchema(
   name: r'Task',
   id: 2998003626758701373,
   properties: {
-    r'audioId': PropertySchema(
+    r'audioFrom': PropertySchema(
       id: 0,
+      name: r'audioFrom',
+      type: IsarType.string,
+    ),
+    r'audioId': PropertySchema(
+      id: 1,
       name: r'audioId',
       type: IsarType.string,
     ),
     r'iconId': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'iconId',
       type: IsarType.string,
     ),
     r'longBreak': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'longBreak',
       type: IsarType.long,
     ),
     r'shortBreak': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'shortBreak',
       type: IsarType.long,
     ),
     r'title': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'title',
       type: IsarType.string,
     ),
     r'workingSessions': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'workingSessions',
       type: IsarType.long,
     )
@@ -68,6 +73,12 @@ int _taskEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  {
+    final value = object.audioFrom;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   {
     final value = object.audioId;
     if (value != null) {
@@ -95,12 +106,13 @@ void _taskSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.audioId);
-  writer.writeString(offsets[1], object.iconId);
-  writer.writeLong(offsets[2], object.longBreak);
-  writer.writeLong(offsets[3], object.shortBreak);
-  writer.writeString(offsets[4], object.title);
-  writer.writeLong(offsets[5], object.workingSessions);
+  writer.writeString(offsets[0], object.audioFrom);
+  writer.writeString(offsets[1], object.audioId);
+  writer.writeString(offsets[2], object.iconId);
+  writer.writeLong(offsets[3], object.longBreak);
+  writer.writeLong(offsets[4], object.shortBreak);
+  writer.writeString(offsets[5], object.title);
+  writer.writeLong(offsets[6], object.workingSessions);
 }
 
 Task _taskDeserialize(
@@ -110,13 +122,14 @@ Task _taskDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = Task();
-  object.audioId = reader.readStringOrNull(offsets[0]);
-  object.iconId = reader.readStringOrNull(offsets[1]);
+  object.audioFrom = reader.readStringOrNull(offsets[0]);
+  object.audioId = reader.readStringOrNull(offsets[1]);
+  object.iconId = reader.readStringOrNull(offsets[2]);
   object.id = id;
-  object.longBreak = reader.readLongOrNull(offsets[2]);
-  object.shortBreak = reader.readLongOrNull(offsets[3]);
-  object.title = reader.readStringOrNull(offsets[4]);
-  object.workingSessions = reader.readLongOrNull(offsets[5]);
+  object.longBreak = reader.readLongOrNull(offsets[3]);
+  object.shortBreak = reader.readLongOrNull(offsets[4]);
+  object.title = reader.readStringOrNull(offsets[5]);
+  object.workingSessions = reader.readLongOrNull(offsets[6]);
   return object;
 }
 
@@ -132,12 +145,14 @@ P _taskDeserializeProp<P>(
     case 1:
       return (reader.readStringOrNull(offset)) as P;
     case 2:
-      return (reader.readLongOrNull(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 3:
       return (reader.readLongOrNull(offset)) as P;
     case 4:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 5:
+      return (reader.readStringOrNull(offset)) as P;
+    case 6:
       return (reader.readLongOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -232,6 +247,152 @@ extension TaskQueryWhere on QueryBuilder<Task, Task, QWhereClause> {
 }
 
 extension TaskQueryFilter on QueryBuilder<Task, Task, QFilterCondition> {
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'audioFrom',
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'audioFrom',
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'audioFrom',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'audioFrom',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'audioFrom',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'audioFrom',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'audioFrom',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'audioFrom',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromContains(
+      String value,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'audioFrom',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromMatches(
+      String pattern,
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'audioFrom',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'audioFrom',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterFilterCondition> audioFromIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'audioFrom',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<Task, Task, QAfterFilterCondition> audioIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -928,6 +1089,18 @@ extension TaskQueryObject on QueryBuilder<Task, Task, QFilterCondition> {}
 extension TaskQueryLinks on QueryBuilder<Task, Task, QFilterCondition> {}
 
 extension TaskQuerySortBy on QueryBuilder<Task, Task, QSortBy> {
+  QueryBuilder<Task, Task, QAfterSortBy> sortByAudioFrom() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioFrom', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterSortBy> sortByAudioFromDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioFrom', Sort.desc);
+    });
+  }
+
   QueryBuilder<Task, Task, QAfterSortBy> sortByAudioId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.asc);
@@ -1002,6 +1175,18 @@ extension TaskQuerySortBy on QueryBuilder<Task, Task, QSortBy> {
 }
 
 extension TaskQuerySortThenBy on QueryBuilder<Task, Task, QSortThenBy> {
+  QueryBuilder<Task, Task, QAfterSortBy> thenByAudioFrom() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioFrom', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Task, Task, QAfterSortBy> thenByAudioFromDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'audioFrom', Sort.desc);
+    });
+  }
+
   QueryBuilder<Task, Task, QAfterSortBy> thenByAudioId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.asc);
@@ -1088,6 +1273,13 @@ extension TaskQuerySortThenBy on QueryBuilder<Task, Task, QSortThenBy> {
 }
 
 extension TaskQueryWhereDistinct on QueryBuilder<Task, Task, QDistinct> {
+  QueryBuilder<Task, Task, QDistinct> distinctByAudioFrom(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'audioFrom', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<Task, Task, QDistinct> distinctByAudioId(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1132,6 +1324,12 @@ extension TaskQueryProperty on QueryBuilder<Task, Task, QQueryProperty> {
   QueryBuilder<Task, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<Task, String?, QQueryOperations> audioFromProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'audioFrom');
     });
   }
 

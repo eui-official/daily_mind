@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
-import 'package:daily_mind/constants/audio_card.dart';
+import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:daily_mind/features/audio_card/presentation/audio_card_content.dart';
 import 'package:daily_mind/features/audio_card/presentation/audio_card_delete_button.dart';
 import 'package:daily_mind/theme/common.dart';

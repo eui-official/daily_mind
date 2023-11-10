@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 Future<T?> onShowBottomSheet<T>(
   BuildContext context, {
   required Widget child,
-  backgroundColor = Colors.transparent,
-  isScrollControlled = false,
-  isDismissible = true,
-  enableDrag = true,
+  Color backgroundColor = Colors.transparent,
+  bool isScrollControlled = false,
+  bool isDismissible = true,
+  bool enableDrag = true,
 }) {
   return showModalBottomSheet<T>(
-    context: context,
     backgroundColor: backgroundColor,
-    isScrollControlled: isScrollControlled,
+    context: context,
     elevation: 0,
-    isDismissible: isDismissible,
     enableDrag: enableDrag,
+    isDismissible: isDismissible,
+    isScrollControlled: isScrollControlled,
     builder: (BuildContext context) {
       return child;
     },

@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_widgets/base_skeleton_box.dart';
-import 'package:daily_mind/constants/audio_card.dart';
+import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

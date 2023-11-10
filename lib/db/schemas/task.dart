@@ -14,6 +14,8 @@ class Task {
 
   String? audioId;
 
+  String? audioFrom;
+
   String? iconId;
 
   String? title;

@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
-import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/focus_mode_session/domain/task_data.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

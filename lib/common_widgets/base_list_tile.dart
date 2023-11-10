@@ -5,6 +5,7 @@ class BaseListTile extends StatelessWidget {
   final BorderRadius? borderRadius;
   final VoidCallback? onTap;
   final Widget title;
+  final Widget? leading;
   final Widget? subtitle;
   final Widget? trailing;
 
@@ -12,6 +13,7 @@ class BaseListTile extends StatelessWidget {
     super.key,
     required this.title,
     this.borderRadius,
+    this.leading,
     this.onTap,
     this.subtitle,
     this.trailing,
@@ -24,6 +26,7 @@ class BaseListTile extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: ListTile(
+          leading: leading,
           onTap: onTap,
           subtitle: subtitle,
           title: title,

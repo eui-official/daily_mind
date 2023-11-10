@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
+import 'package:daily_mind/constants/enums.dart';
 
 class TaskBackgroundData {
   final String taskTitle;

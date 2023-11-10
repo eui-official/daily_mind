@@ -4,7 +4,7 @@ import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart'
 import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
 import 'package:daily_mind/common_widgets/base_header_with_description.dart';
 import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_online_handler.dart';
-import 'package:daily_mind/constants/audio_card.dart';
+import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:flutter/material.dart';
 
 class OnlineCategoryVertical extends StatelessWidget {

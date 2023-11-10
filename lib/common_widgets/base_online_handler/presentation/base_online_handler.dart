@@ -4,7 +4,7 @@ import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
-import 'package:daily_mind/constants/enum.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:daily_mind/types/common.dart';
