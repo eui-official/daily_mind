@@ -5,8 +5,8 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class FocusModePomodoroIcon extends ReactiveFormField<String, String> {
-  FocusModePomodoroIcon({
+class FocusModeTaskIcon extends ReactiveFormField<String, String> {
+  FocusModeTaskIcon({
     super.key,
     required String formControlName,
   }) : super(

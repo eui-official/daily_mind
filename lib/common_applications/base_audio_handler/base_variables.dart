@@ -5,7 +5,7 @@ import 'package:daily_mind/common_applications/base_count_down.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
-import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:rxdart/rxdart.dart';
@@ -30,7 +30,7 @@ mixin BaseAudioOnHoldVariables on BaseAudioHandler {
 mixin BaseTaskVariables on BaseAudioHandler {
   BaseCountdown taskCountdown = BaseCountdown();
   int taskCurrentSession = 1;
-  Pomodoro taskCurrentPomodoro = Pomodoro();
+  Task taskCurrent = Task();
 
   BehaviorSubject<bool> onStreamTaskPlaying = BehaviorSubject();
   BehaviorSubject<int> onStreamTaskRemainingSeconds = BehaviorSubject();
@@ -41,10 +41,10 @@ mixin BaseTaskVariables on BaseAudioHandler {
   bool get isShouldTakeALongBreak => taskCurrentSession % 4 == 0;
   bool get isTaskCompleting => taskCurrentSession >= taskWorkingSessions;
   FocusModeSessionSteps get taskCurrentStep => onStreamTaskCurrentStep.value;
-  int get taskLongBreak => taskCurrentPomodoro.longBreak ?? 0;
+  int get taskLongBreak => taskCurrent.longBreak ?? 0;
   int get taskLongBreakInSeconds => taskLongBreak * 1;
-  int get taskShortBreak => taskCurrentPomodoro.shortBreak ?? 0;
+  int get taskShortBreak => taskCurrent.shortBreak ?? 0;
   int get taskShortBreakInSeconds => taskShortBreak * 1;
-  int get taskWorkingSessions => taskCurrentPomodoro.workingSessions ?? 0;
-  String get taskTitle => taskCurrentPomodoro.title ?? emptyString;
+  int get taskWorkingSessions => taskCurrent.workingSessions ?? 0;
+  String get taskTitle => taskCurrent.title ?? emptyString;
 }

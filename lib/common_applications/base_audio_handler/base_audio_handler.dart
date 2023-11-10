@@ -15,7 +15,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enum.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
-import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';

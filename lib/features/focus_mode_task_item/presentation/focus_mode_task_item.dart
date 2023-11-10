@@ -5,7 +5,7 @@ import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
 import 'package:daily_mind/common_widgets/base_shadow.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
-import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/features/focus_mode_session/presentation/focus_mode_session.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_avatar.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_working_session.dart';
@@ -17,24 +17,23 @@ import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FocusModeTaskItem extends HookConsumerWidget {
-  final Pomodoro pomodoro;
+  final Task task;
 
   const FocusModeTaskItem({
     super.key,
-    required this.pomodoro,
+    required this.task,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
-    final focusIcon =
-        focusIcons.firstWhere((icon) => icon.id == pomodoro.iconId);
+    final focusIcon = focusIcons.firstWhere((icon) => icon.id == task.iconId);
 
     final onOpenPomodoro = useCallback(
       () async {
         baseBackgroundHandler.onHold();
-        baseBackgroundHandler.onTaskInit(pomodoro);
+        baseBackgroundHandler.onTaskInit(task);
 
         await onShowBottomSheet(
           context,
@@ -46,7 +45,7 @@ class FocusModeTaskItem extends HookConsumerWidget {
 
         baseBackgroundHandler.onStopHolding();
       },
-      [context, pomodoro],
+      [context, task],
     );
 
     return BaseShadow(
@@ -71,13 +70,13 @@ class FocusModeTaskItem extends HookConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            pomodoro.title ?? emptyString,
+                            task.title ?? emptyString,
                             style: context.textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           FocusModeTaskItemWorkingSession(
-                            workingSessions: pomodoro.workingSessions ?? 0,
+                            workingSessions: task.workingSessions ?? 0,
                           )
                         ],
                       )

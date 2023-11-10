@@ -2,17 +2,17 @@ import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/common_widgets/base_stack_with_bottom_action.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/pomodoro.dart';
+import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/focus_mode_pomodoro_new_flow/presentation/focus_mode_pomodoro_form.dart';
+import 'package:daily_mind/features/focus_mode_task_new_flow/presentation/focus_mode_task_form.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class FocusModePomodoroNewFlow extends HookWidget {
-  const FocusModePomodoroNewFlow({
+class FocusModeTaskNewFlow extends HookWidget {
+  const FocusModeTaskNewFlow({
     super.key,
   });
 
@@ -43,7 +43,7 @@ class FocusModePomodoroNewFlow extends HookWidget {
       });
     }, []);
 
-    final onCreateANewPomodoro = useCallback(
+    final onCreateANewTask = useCallback(
       () {
         final value = formGroup.value;
         final title = value['title'] as String;
@@ -52,14 +52,14 @@ class FocusModePomodoroNewFlow extends HookWidget {
         final longBreak = value['longBreak'] as int;
         final iconID = value['iconID'] as String;
 
-        final newPomodoro = Pomodoro()
+        final newTask = Task()
           ..workingSessions = workingSessions
           ..title = title
           ..shortBreak = shortBreak
           ..longBreak = longBreak
           ..iconId = iconID;
 
-        db.onAddANewPomodoro(newPomodoro);
+        db.onAddANewPomodoro(newTask);
 
         context.pop();
       },
@@ -77,18 +77,18 @@ class FocusModePomodoroNewFlow extends HookWidget {
               bottom: ReactiveFormConsumer(
                 builder: (context, formGroup, child) {
                   return ElevatedButton(
-                    onPressed: formGroup.valid ? onCreateANewPomodoro : empty,
+                    onPressed: formGroup.valid ? onCreateANewTask : empty,
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size.fromHeight(48),
                     ),
-                    child: const Text('Tạo mới Pomodoro'),
+                    child: const Text('Tạo mới nhiệm vụ'),
                   );
                 },
               ),
               child: AppBarScrollview(
-                title: 'pomodoro'.tr(),
+                title: 'task'.tr(),
                 children: const [
-                  FocusModePomodoroForm(),
+                  FocusModeTaskForm(),
                 ],
               ),
             ),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'focus_mode_pomodoro_state.dart';
+part of 'focus_mode_task_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FocusModePomodoroState {
+mixin _$FocusModeTaskState {
   String get title => throw _privateConstructorUsedError;
   String get iconId => throw _privateConstructorUsedError;
   int get workingSessions => throw _privateConstructorUsedError;
@@ -23,15 +23,15 @@ mixin _$FocusModePomodoroState {
   int get longBreak => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FocusModePomodoroStateCopyWith<FocusModePomodoroState> get copyWith =>
+  $FocusModeTaskStateCopyWith<FocusModeTaskState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FocusModePomodoroStateCopyWith<$Res> {
-  factory $FocusModePomodoroStateCopyWith(FocusModePomodoroState value,
-          $Res Function(FocusModePomodoroState) then) =
-      _$FocusModePomodoroStateCopyWithImpl<$Res, FocusModePomodoroState>;
+abstract class $FocusModeTaskStateCopyWith<$Res> {
+  factory $FocusModeTaskStateCopyWith(
+          FocusModeTaskState value, $Res Function(FocusModeTaskState) then) =
+      _$FocusModeTaskStateCopyWithImpl<$Res, FocusModeTaskState>;
   @useResult
   $Res call(
       {String title,
@@ -42,10 +42,9 @@ abstract class $FocusModePomodoroStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FocusModePomodoroStateCopyWithImpl<$Res,
-        $Val extends FocusModePomodoroState>
-    implements $FocusModePomodoroStateCopyWith<$Res> {
-  _$FocusModePomodoroStateCopyWithImpl(this._value, this._then);
+class _$FocusModeTaskStateCopyWithImpl<$Res, $Val extends FocusModeTaskState>
+    implements $FocusModeTaskStateCopyWith<$Res> {
+  _$FocusModeTaskStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,12 +86,11 @@ class _$FocusModePomodoroStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$FocusModePomodoroStateImplCopyWith<$Res>
-    implements $FocusModePomodoroStateCopyWith<$Res> {
-  factory _$$FocusModePomodoroStateImplCopyWith(
-          _$FocusModePomodoroStateImpl value,
-          $Res Function(_$FocusModePomodoroStateImpl) then) =
-      __$$FocusModePomodoroStateImplCopyWithImpl<$Res>;
+abstract class _$$FocusModeTaskStateImplCopyWith<$Res>
+    implements $FocusModeTaskStateCopyWith<$Res> {
+  factory _$$FocusModeTaskStateImplCopyWith(_$FocusModeTaskStateImpl value,
+          $Res Function(_$FocusModeTaskStateImpl) then) =
+      __$$FocusModeTaskStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,13 +102,11 @@ abstract class _$$FocusModePomodoroStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FocusModePomodoroStateImplCopyWithImpl<$Res>
-    extends _$FocusModePomodoroStateCopyWithImpl<$Res,
-        _$FocusModePomodoroStateImpl>
-    implements _$$FocusModePomodoroStateImplCopyWith<$Res> {
-  __$$FocusModePomodoroStateImplCopyWithImpl(
-      _$FocusModePomodoroStateImpl _value,
-      $Res Function(_$FocusModePomodoroStateImpl) _then)
+class __$$FocusModeTaskStateImplCopyWithImpl<$Res>
+    extends _$FocusModeTaskStateCopyWithImpl<$Res, _$FocusModeTaskStateImpl>
+    implements _$$FocusModeTaskStateImplCopyWith<$Res> {
+  __$$FocusModeTaskStateImplCopyWithImpl(_$FocusModeTaskStateImpl _value,
+      $Res Function(_$FocusModeTaskStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +118,7 @@ class __$$FocusModePomodoroStateImplCopyWithImpl<$Res>
     Object? shortBreak = null,
     Object? longBreak = null,
   }) {
-    return _then(_$FocusModePomodoroStateImpl(
+    return _then(_$FocusModeTaskStateImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -149,8 +145,8 @@ class __$$FocusModePomodoroStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
-  const _$FocusModePomodoroStateImpl(
+class _$FocusModeTaskStateImpl implements _FocusModeTaskState {
+  const _$FocusModeTaskStateImpl(
       {required this.title,
       required this.iconId,
       required this.workingSessions,
@@ -170,14 +166,14 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
 
   @override
   String toString() {
-    return 'FocusModePomodoroState(title: $title, iconId: $iconId, workingSessions: $workingSessions, shortBreak: $shortBreak, longBreak: $longBreak)';
+    return 'FocusModeTaskState(title: $title, iconId: $iconId, workingSessions: $workingSessions, shortBreak: $shortBreak, longBreak: $longBreak)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FocusModePomodoroStateImpl &&
+            other is _$FocusModeTaskStateImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.iconId, iconId) || other.iconId == iconId) &&
             (identical(other.workingSessions, workingSessions) ||
@@ -195,18 +191,18 @@ class _$FocusModePomodoroStateImpl implements _FocusModePomodoroState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FocusModePomodoroStateImplCopyWith<_$FocusModePomodoroStateImpl>
-      get copyWith => __$$FocusModePomodoroStateImplCopyWithImpl<
-          _$FocusModePomodoroStateImpl>(this, _$identity);
+  _$$FocusModeTaskStateImplCopyWith<_$FocusModeTaskStateImpl> get copyWith =>
+      __$$FocusModeTaskStateImplCopyWithImpl<_$FocusModeTaskStateImpl>(
+          this, _$identity);
 }
 
-abstract class _FocusModePomodoroState implements FocusModePomodoroState {
-  const factory _FocusModePomodoroState(
+abstract class _FocusModeTaskState implements FocusModeTaskState {
+  const factory _FocusModeTaskState(
       {required final String title,
       required final String iconId,
       required final int workingSessions,
       required final int shortBreak,
-      required final int longBreak}) = _$FocusModePomodoroStateImpl;
+      required final int longBreak}) = _$FocusModeTaskStateImpl;
 
   @override
   String get title;
@@ -220,6 +216,6 @@ abstract class _FocusModePomodoroState implements FocusModePomodoroState {
   int get longBreak;
   @override
   @JsonKey(ignore: true)
-  _$$FocusModePomodoroStateImplCopyWith<_$FocusModePomodoroStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$FocusModeTaskStateImplCopyWith<_$FocusModeTaskStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

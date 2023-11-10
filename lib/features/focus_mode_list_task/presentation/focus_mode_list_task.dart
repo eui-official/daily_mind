@@ -15,8 +15,8 @@ class FocusModeListTask extends HookConsumerWidget {
     return StaggeredGrid.count(
       crossAxisCount: 1,
       mainAxisSpacing: spacing(3),
-      children: focusModeListState.map((pomodoro) {
-        return FocusModeTaskItem(pomodoro: pomodoro);
+      children: focusModeListState.map((task) {
+        return FocusModeTaskItem(task: task);
       }).toList(),
     );
   }

@@ -1,8 +1,8 @@
 part of 'base_audio_handler.dart';
 
 extension BaseTask on DailyMindBackgroundHandler {
-  void onTaskInit(Pomodoro newPomodoro) {
-    taskCurrentPomodoro = newPomodoro;
+  void onTaskInit(Task newTask) {
+    taskCurrent = newTask;
     onStreamTaskCurrentStep.add(FocusModeSessionSteps.ready);
     onStreamTaskSeconds.add(pomodoroSessionMaxSeconds);
     onStreamTaskRemainingSeconds.add(pomodoroSessionMaxSeconds);

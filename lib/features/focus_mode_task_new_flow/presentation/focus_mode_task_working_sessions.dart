@@ -5,8 +5,8 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class FocusModePomodoroWorkingSessions extends ReactiveFormField<int, int> {
-  FocusModePomodoroWorkingSessions({
+class FocusModeTaskWorkingSessions extends ReactiveFormField<int, int> {
+  FocusModeTaskWorkingSessions({
     super.key,
     required String formControlName,
   }) : super(

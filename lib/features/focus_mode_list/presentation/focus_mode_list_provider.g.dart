@@ -7,12 +7,12 @@ part of 'focus_mode_list_provider.dart';
 // **************************************************************************
 
 String _$focusModeListNotifierHash() =>
-    r'56ddeb8875242bb7c26918cc94428d2e746c3342';
+    r'770030630b9b5a6416b034cad321f9165532eb51';
 
 /// See also [FocusModeListNotifier].
 @ProviderFor(FocusModeListNotifier)
 final focusModeListNotifierProvider =
-    AutoDisposeNotifierProvider<FocusModeListNotifier, List<Pomodoro>>.internal(
+    AutoDisposeNotifierProvider<FocusModeListNotifier, List<Task>>.internal(
   FocusModeListNotifier.new,
   name: r'focusModeListNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final focusModeListNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$FocusModeListNotifier = AutoDisposeNotifier<List<Pomodoro>>;
+typedef _$FocusModeListNotifier = AutoDisposeNotifier<List<Task>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

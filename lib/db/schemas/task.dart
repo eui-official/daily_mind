@@ -1,9 +1,9 @@
 import 'package:isar/isar.dart';
 
-part 'pomodoro.g.dart';
+part 'task.g.dart';
 
 @collection
-class Pomodoro {
+class Task {
   Id id = Isar.autoIncrement;
 
   int? longBreak;

@@ -1,9 +1,11 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/features/focus_mode_actions/presentation/focus_mode_actions.dart';
 import 'package:daily_mind/features/focus_mode_session/hook/useBackgroundTaskData.dart';
 import 'package:daily_mind/features/focus_mode_session_current_step_text/presentation/focus_mode_session_current_step_text.dart';
+import 'package:daily_mind/features/focus_mode_settings/presentation/focus_mode_settings.dart';
 import 'package:daily_mind/features/focus_mode_timer/presentation/focus_mode_timer.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -41,7 +43,12 @@ class FocusModeSession extends HookConsumerWidget {
     );
 
     final onSettings = useCallback(
-      () {},
+      () {
+        onShowBottomSheet(
+          context,
+          child: const FocusModeSettings(),
+        );
+      },
       [],
     );
 

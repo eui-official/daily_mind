@@ -17,7 +17,7 @@ class FocusModeNewSessionButton extends HookConsumerWidget {
       () {
         baseBackgroundHandler.onHold();
 
-        context.push('/focus-mode/pomodoro/new').then((value) {
+        context.push('/focus-mode/task/new').then((value) {
           baseBackgroundHandler.onStopHolding();
         });
       },

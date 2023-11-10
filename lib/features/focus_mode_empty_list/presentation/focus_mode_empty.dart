@@ -14,7 +14,7 @@ class FocusModeEmptyList extends StatelessWidget {
         action: const FocusModeNewSessionButton(),
         imageUrl: 'assets/images/sessions_working.png',
         subTitle: 'focusEmpty'.tr(),
-        title: "pomodoro".tr(),
+        title: "task".tr(),
       ),
     );
   }
