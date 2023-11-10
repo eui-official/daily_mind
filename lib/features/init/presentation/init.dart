@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
@@ -28,7 +28,7 @@ class Init extends HookConsumerWidget {
 
     useEffectDelayed(
       () {
-        baseBackgroundHandlerNotifier.onSetAudioHandler(backgroundHandler);
+        baseBackgroundHandlerNotifier.onSetBackgroundHandler(backgroundHandler);
       },
       [context, backgroundHandler],
     );

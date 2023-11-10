@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
@@ -34,10 +34,11 @@ class FocusModeTaskItem extends HookConsumerWidget {
     final onOpenPomodoro = useCallback(
       () {
         baseBackgroundHandler.onHold();
+        baseBackgroundHandler.onTaskInit(pomodoro);
 
         onShowBottomSheet(
           context,
-          child: FocusModeSession(pomodoro: pomodoro),
+          child: const FocusModeSession(),
           isScrollControlled: true,
           isDismissible: false,
           enableDrag: false,

@@ -15,6 +15,7 @@ extension BaseTask on DailyMindBackgroundHandler {
 
     onTaskUpdateStep(FocusModeSessionSteps.focusing);
     onTaskStartTimer(pomodoroSessionMaxSeconds);
+    onTaskUpdatePlaying(true);
   }
 
   void onTaskStartTimer(int seconds) {
@@ -42,7 +43,7 @@ extension BaseTask on DailyMindBackgroundHandler {
 
   void onTaskFinished() {
     if (taskCurrentStep == FocusModeSessionSteps.focusing) {
-      if (taskCurrentSession >= workingSessions) {
+      if (isTaskCompleting) {
         onTaskCompleted();
       } else {
         onTaskBreakTime();
@@ -57,23 +58,27 @@ extension BaseTask on DailyMindBackgroundHandler {
     onStreamTaskCurrentStep.add(newCurrentTaskStep);
   }
 
+  void onTaskUpdatePlaying(bool isPlaying) {
+    onStreamTaskPlaying.add(isPlaying);
+  }
+
   void onTaskPause() {
     taskCountdown.onPause();
+    onTaskUpdatePlaying(false);
   }
 
   void onTaskResume() {
     taskCountdown.onResume();
+    onTaskUpdatePlaying(true);
   }
 
   void onTaskBreakTime() {
     onTaskUpdateStep(FocusModeSessionSteps.breakTime);
 
-    bool isCircleFourSessions = taskCurrentSession % 4 == 0;
-
-    if (isCircleFourSessions) {
-      onTaskStartTimer(longBreakInSeconds);
+    if (isShouldTakeALongBreak) {
+      onTaskStartTimer(taskLongBreakInSeconds);
     } else {
-      onTaskStartTimer(shortBreakInSeconds);
+      onTaskStartTimer(taskShortBreakInSeconds);
     }
   }
 

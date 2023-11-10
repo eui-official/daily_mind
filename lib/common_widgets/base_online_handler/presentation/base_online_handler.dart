@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/base_audio_handler/application/base_audio_handler.dart';
+import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
