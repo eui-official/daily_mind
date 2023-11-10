@@ -85,6 +85,15 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskCompleted() {
     taskCurrentSession = 1;
     onTaskUpdateStep(FocusModeSessionSteps.finish);
+    onTaskUpdatePlaying(false);
+    taskCountdown.onCancel();
     soundEffectAudioPlayer.onPlayLevelUp();
+  }
+
+  void onTaskReset() {
+    taskCurrentSession = 1;
+    onTaskUpdateStep(FocusModeSessionSteps.ready);
+    onTaskUpdatePlaying(false);
+    taskCountdown.onCancel();
   }
 }

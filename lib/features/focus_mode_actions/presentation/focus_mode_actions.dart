@@ -29,7 +29,7 @@ class FocusModeActions extends HookWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconButton(
-          onPressed: onClose,
+          onPressed: onSettings,
           padding: EdgeInsets.all(spacing(2)),
           icon: const Icon(Icons.settings),
           style: IconButton.styleFrom(
@@ -45,7 +45,7 @@ class FocusModeActions extends HookWidget {
           size: 8,
         ),
         IconButton(
-          onPressed: onSettings,
+          onPressed: onClose,
           padding: EdgeInsets.all(spacing(2)),
           icon: const Icon(Icons.close),
           style: IconButton.styleFrom(

@@ -88,6 +88,7 @@ dependencies:
   percent_indicator: ^4.2.3
   flutter_local_notifications: ^16.1.0
   pausable_timer: ^3.1.0+3
+  adaptive_dialog: ^1.10.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

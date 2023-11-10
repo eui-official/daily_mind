@@ -5,7 +5,7 @@ import 'package:pausable_timer/pausable_timer.dart';
 class BaseCountdown {
   late PausableTimer timer;
 
-  onStart({
+  void onStart({
     required int seconds,
     required Duration duration,
     required OnCounting onCounting,
@@ -25,11 +25,15 @@ class BaseCountdown {
     timer.start();
   }
 
-  onPause() {
+  void onPause() {
     timer.pause();
   }
 
-  onResume() {
+  void onResume() {
     timer.start();
+  }
+
+  void onCancel() {
+    timer.cancel();
   }
 }
