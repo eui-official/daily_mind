@@ -28,7 +28,6 @@ class FocusModeSession extends HookConsumerWidget {
         final result = await showOkCancelAlertDialog(
           context: context,
           title: 'Bạn có chắc chắn muốn thoát?',
-          message: 'Quá trình làm việc sẽ mất',
         );
 
         if (context.mounted) {

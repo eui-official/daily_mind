@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pausable_timer/pausable_timer.dart';
 
 class BaseCountdown {
-  late PausableTimer timer;
+  PausableTimer? timer;
 
   void onStart({
     required int seconds,
@@ -18,22 +18,22 @@ class BaseCountdown {
         onCounting(remainingSeconds);
       } else {
         onFinished?.call();
-        timer.cancel();
+        timer?.cancel();
       }
     });
 
-    timer.start();
+    timer?.start();
   }
 
   void onPause() {
-    timer.pause();
+    timer?.pause();
   }
 
   void onResume() {
-    timer.start();
+    timer?.start();
   }
 
   void onCancel() {
-    timer.cancel();
+    timer?.cancel();
   }
 }

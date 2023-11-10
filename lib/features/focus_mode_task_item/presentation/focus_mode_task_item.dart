@@ -32,19 +32,19 @@ class FocusModeTaskItem extends HookConsumerWidget {
         focusIcons.firstWhere((icon) => icon.id == pomodoro.iconId);
 
     final onOpenPomodoro = useCallback(
-      () {
+      () async {
         baseBackgroundHandler.onHold();
         baseBackgroundHandler.onTaskInit(pomodoro);
 
-        onShowBottomSheet(
+        await onShowBottomSheet(
           context,
           child: const FocusModeSession(),
           isScrollControlled: true,
           isDismissible: false,
           enableDrag: false,
-        ).then((value) {
-          baseBackgroundHandler.onStopHolding();
-        });
+        );
+
+        baseBackgroundHandler.onStopHolding();
       },
       [context, pomodoro],
     );
