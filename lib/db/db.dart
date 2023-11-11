@@ -166,10 +166,23 @@ class Db {
     return isar.tasks.where(sort: Sort.desc).anyId().findAllSync();
   }
 
-  void onAddANewPomodoro(Task task) {
+  void onAddANewTask(Task task) {
     isar.writeTxnSync(() {
       isar.tasks.putSync(task);
     });
+  }
+
+  void onUpdateAudioId(Task currentTask, String audioId, String audioFrom) {
+    currentTask.audioId = audioId;
+    currentTask.audioFrom = audioFrom;
+
+    isar.writeTxnSync(() {
+      isar.tasks.putSync(currentTask);
+    });
+  }
+
+  Stream<Task?> onStreamTask(int id) {
+    return isar.tasks.watchObject(id);
   }
 }
 

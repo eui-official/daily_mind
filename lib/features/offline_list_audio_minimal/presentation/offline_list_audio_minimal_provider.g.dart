@@ -7,7 +7,7 @@ part of 'offline_list_audio_minimal_provider.dart';
 // **************************************************************************
 
 String _$offlineListAudioMinimalNotifierHash() =>
-    r'86de14564b5292d86463b5b875a7f15f30dfe3b4';
+    r'58acfb8a4c28b8b817a9cf0ebfbf0028032c11e2';
 
 /// See also [OfflineListAudioMinimalNotifier].
 @ProviderFor(OfflineListAudioMinimalNotifier)

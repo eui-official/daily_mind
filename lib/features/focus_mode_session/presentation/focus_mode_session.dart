@@ -10,9 +10,10 @@ import 'package:daily_mind/features/focus_mode_settings/presentation/focus_mode_
 import 'package:daily_mind/features/focus_mode_timer/presentation/focus_mode_timer.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -53,11 +54,6 @@ class FocusModeSession extends HookConsumerWidget {
       [],
     );
 
-    final onAudioSelected = useCallback(
-      (dynamic audio, String audioFrom) {},
-      [],
-    );
-
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -88,7 +84,10 @@ class FocusModeSession extends HookConsumerWidget {
               remainingSeconds: taskBackgroundData.taskRemainingSeconds,
               seconds: taskBackgroundData.taskSeconds,
             ),
-            FocusModeAudio(onAudioSelected: onAudioSelected),
+            FocusModeAudio(
+              onAudioSelected: baseBackgroundHandler.onUpdateAudioId,
+              title: taskBackgroundData.taskAudioOffline?.name.tr(),
+            ),
             FocusModeActions(
               isPlaying: taskBackgroundData.taskIsPlaying,
               onClose: onClose,

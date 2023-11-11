@@ -59,7 +59,7 @@ class FocusModeTaskNewFlow extends HookWidget {
           ..longBreak = longBreak
           ..iconId = iconID;
 
-        db.onAddANewPomodoro(newTask);
+        db.onAddANewTask(newTask);
 
         context.pop();
       },

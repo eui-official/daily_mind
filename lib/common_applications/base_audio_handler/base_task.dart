@@ -2,10 +2,25 @@ part of 'base_audio_handler.dart';
 
 extension BaseTask on DailyMindBackgroundHandler {
   void onTaskInit(Task newTask) {
-    taskCurrent = newTask;
+    onStreamTaskCurrent.add(newTask);
     onStreamTaskCurrentStep.add(FocusModeSessionSteps.ready);
-    onStreamTaskSeconds.add(pomodoroSessionMaxSeconds);
     onStreamTaskRemainingSeconds.add(pomodoroSessionMaxSeconds);
+    onStreamTaskSeconds.add(pomodoroSessionMaxSeconds);
+
+    onInitBackgroundAudio();
+    onWatchForAudioChanged();
+  }
+
+  void onWatchForAudioChanged() {
+    db.onStreamTask(taskCurrent.id).listen((newTask) {
+      onSafeValueBuilder(
+        newTask,
+        (safeNewTask) {
+          onStreamTaskCurrent.add(safeNewTask);
+          onInitBackgroundAudio();
+        },
+      );
+    });
   }
 
   void onTaskStart() {
@@ -30,6 +45,7 @@ extension BaseTask on DailyMindBackgroundHandler {
       onCounting: (remainingSeconds) {
         onPlaySounds(remainingSeconds);
         onStreamTaskRemainingSeconds.add(remainingSeconds);
+        onPlayBackgroundAudio();
       },
       onFinished: onTaskFinished,
     );
@@ -38,6 +54,37 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onPlaySounds(int remainingSeconds) {
     if (remainingSeconds <= 2) {
       soundEffectAudioPlayer.onPlayDing();
+    }
+  }
+
+  void onUpdateAudioId(dynamic audio, String audioFrom) {
+    if (audio is AudioOffline) {
+      db.onUpdateAudioId(
+        taskCurrent,
+        audio.id,
+        audioFrom,
+      );
+    }
+  }
+
+  void onInitBackgroundAudio() {
+    final audioId = taskCurrent.audioId;
+
+    onSafeValueBuilder(audioId, (safeAudioId) {
+      taskBackgroundAudioGaplessAudioPlayer.onSetSource(safeAudioId);
+      taskBackgroundAudioGaplessAudioPlayer.setVolume(0.7);
+    });
+  }
+
+  void onPlayBackgroundAudio() {
+    if (taskBackgroundAudioGaplessAudioPlayer.playing) return;
+
+    taskBackgroundAudioGaplessAudioPlayer.play();
+  }
+
+  void onPauseBackgroundAudio() {
+    if (taskBackgroundAudioGaplessAudioPlayer.playing) {
+      taskBackgroundAudioGaplessAudioPlayer.pause();
     }
   }
 
@@ -65,6 +112,7 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskPause() {
     taskCountdown.onPause();
     onTaskUpdatePlaying(false);
+    onPauseBackgroundAudio();
   }
 
   void onTaskResume() {
@@ -88,6 +136,7 @@ extension BaseTask on DailyMindBackgroundHandler {
     onTaskUpdatePlaying(false);
     taskCountdown.onCancel();
     soundEffectAudioPlayer.onPlayLevelUp();
+    onPauseBackgroundAudio();
   }
 
   void onTaskReset() {

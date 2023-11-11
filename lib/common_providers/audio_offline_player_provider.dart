@@ -9,14 +9,14 @@ const initState = AudioPlayerState(
 );
 
 class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
-  GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
+  GaplessAudioPlayer offlineGaplessAudioPlayer = GaplessAudioPlayer();
 
   AudioOfflinePlayerNotifier() : super(initState) {
     onInit();
   }
 
   void onInit() {
-    gaplessAudioPlayer.processingStateStream.listen((processingState) {
+    offlineGaplessAudioPlayer.processingStateStream.listen((processingState) {
       final isLoading = processingState == ProcessingState.buffering ||
           processingState == ProcessingState.loading;
 
@@ -25,7 +25,7 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
       }
     });
 
-    gaplessAudioPlayer.playingStream.listen((isPlaying) {
+    offlineGaplessAudioPlayer.playingStream.listen((isPlaying) {
       if (mounted) {
         state = state.copyWith(isPlaying: isPlaying);
       }
@@ -35,18 +35,18 @@ class AudioOfflinePlayerNotifier extends StateNotifier<AudioPlayerState> {
   void onPlay(String id) async {
     state = state.copyWith(isLoading: true);
 
-    await gaplessAudioPlayer.onSetSource(id);
+    await offlineGaplessAudioPlayer.onSetSource(id);
 
-    gaplessAudioPlayer.play();
+    offlineGaplessAudioPlayer.play();
   }
 
   void onPause() {
-    gaplessAudioPlayer.pause();
+    offlineGaplessAudioPlayer.pause();
   }
 
   @override
   void dispose() {
-    gaplessAudioPlayer.onDispose();
+    offlineGaplessAudioPlayer.onDispose();
     super.dispose();
   }
 }

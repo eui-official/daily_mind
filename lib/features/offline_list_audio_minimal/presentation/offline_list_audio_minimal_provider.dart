@@ -7,12 +7,12 @@ part 'offline_list_audio_minimal_provider.g.dart';
 @riverpod
 class OfflineListAudioMinimalNotifier
     extends _$OfflineListAudioMinimalNotifier {
-  GaplessAudioPlayer gaplessAudioPlayer = GaplessAudioPlayer();
+  GaplessAudioPlayer minimalGaplessAudioPlayer = GaplessAudioPlayer();
 
   @override
   int build() {
     ref.onDispose(() {
-      gaplessAudioPlayer.dispose();
+      minimalGaplessAudioPlayer.dispose();
     });
 
     return -1;
@@ -22,13 +22,13 @@ class OfflineListAudioMinimalNotifier
 
   void onSelected(int newIndex) async {
     final audio = offlineAudios[newIndex];
-    await gaplessAudioPlayer.onSetSource(audio.id);
+    await minimalGaplessAudioPlayer.onSetSource(audio.id);
 
     if (newIndex == state) {
-      gaplessAudioPlayer.pause();
+      minimalGaplessAudioPlayer.pause();
       state = -1;
     } else {
-      gaplessAudioPlayer.play();
+      minimalGaplessAudioPlayer.play();
       state = newIndex;
     }
   }

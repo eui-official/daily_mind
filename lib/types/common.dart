@@ -30,7 +30,7 @@ typedef OnItemIndexBuilder<T> = Widget Function(
 );
 
 typedef OnSoundOfflineStateBuilder = Function(
-  GaplessAudioPlayer audioPlayer,
+  GaplessAudioPlayer gaplessAudioPlayer,
   bool isLoading,
   bool isPlaying,
 );

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/base_count_down.dart';
+import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
@@ -28,9 +29,11 @@ mixin BaseAudioOnHoldVariables on BaseAudioHandler {
 
 mixin BaseTaskVariables on BaseAudioHandler {
   BaseCountdown taskCountdown = BaseCountdown();
+  GaplessAudioPlayer taskBackgroundAudioGaplessAudioPlayer =
+      GaplessAudioPlayer();
   int taskCurrentSession = 1;
-  Task taskCurrent = Task();
 
+  BehaviorSubject<Task> onStreamTaskCurrent = BehaviorSubject();
   BehaviorSubject<bool> onStreamTaskPlaying = BehaviorSubject();
   BehaviorSubject<int> onStreamTaskRemainingSeconds = BehaviorSubject();
   BehaviorSubject<int> onStreamTaskSeconds = BehaviorSubject();
@@ -46,4 +49,5 @@ mixin BaseTaskVariables on BaseAudioHandler {
   int get taskShortBreakInSeconds => taskShortBreak * 1;
   int get taskWorkingSessions => taskCurrent.workingSessions ?? 0;
   String get taskTitle => taskCurrent.title ?? emptyString;
+  Task get taskCurrent => onStreamTaskCurrent.value;
 }

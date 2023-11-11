@@ -7,10 +7,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class FocusModeAudio extends HookWidget {
   final OnAudioSelected onAudioSelected;
+  final String? title;
 
   const FocusModeAudio({
     super.key,
     required this.onAudioSelected,
+    this.title,
   });
 
   @override
@@ -35,7 +37,7 @@ class FocusModeAudio extends HookWidget {
 
     return ElevatedButton.icon(
       icon: const Icon(Icons.music_note),
-      label: const Text('Chọn âm thanh'),
+      label: Text(title ?? 'Chọn âm thanh'),
       onPressed: onPickAudio,
     );
   }
