@@ -44,9 +44,9 @@ mixin BaseTaskVariables on BaseAudioHandler {
   bool get isTaskCompleting => taskCurrentSession >= taskWorkingSessions;
   FocusModeSessionSteps get taskCurrentStep => onStreamTaskCurrentStep.value;
   int get taskLongBreak => taskCurrent.longBreak ?? 0;
-  int get taskLongBreakInSeconds => taskLongBreak * 1;
+  int get taskLongBreakInSeconds => taskLongBreak * 60;
   int get taskShortBreak => taskCurrent.shortBreak ?? 0;
-  int get taskShortBreakInSeconds => taskShortBreak * 1;
+  int get taskShortBreakInSeconds => taskShortBreak * 60;
   int get taskWorkingSessions => taskCurrent.workingSessions ?? 0;
   String get taskTitle => taskCurrent.title ?? emptyString;
   Task get taskCurrent => onStreamTaskCurrent.value;

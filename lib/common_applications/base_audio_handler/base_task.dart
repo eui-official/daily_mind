@@ -3,10 +3,8 @@ part of 'base_audio_handler.dart';
 extension BaseTask on DailyMindBackgroundHandler {
   void onTaskInit(Task newTask) {
     onStreamTaskCurrent.add(newTask);
-    onStreamTaskCurrentStep.add(FocusModeSessionSteps.ready);
-    onStreamTaskRemainingSeconds.add(pomodoroSessionMaxSeconds);
-    onStreamTaskSeconds.add(pomodoroSessionMaxSeconds);
 
+    onTaskReset();
     onInitBackgroundAudio();
     onWatchForAudioChanged();
   }
@@ -162,6 +160,8 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskReset() {
     taskCurrentSession = 1;
     onTaskUpdateStep(FocusModeSessionSteps.ready);
+    onStreamTaskRemainingSeconds.add(pomodoroSessionMaxSeconds);
+    onStreamTaskSeconds.add(pomodoroSessionMaxSeconds);
     onTaskUpdatePlaying(false);
     taskCountdown.onCancel();
   }

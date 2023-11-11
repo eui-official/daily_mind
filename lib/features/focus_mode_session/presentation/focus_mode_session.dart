@@ -1,6 +1,8 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
+import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/focus_mode_actions/presentation/focus_mode_actions.dart';
 import 'package:daily_mind/features/focus_mode_audio/presentation/focus_mode_audio.dart';
 import 'package:daily_mind/features/focus_mode_session/hook/useBackgroundTaskData.dart';
@@ -30,6 +32,7 @@ class FocusModeSession extends HookConsumerWidget {
         final result = await showOkCancelAlertDialog(
           context: context,
           title: 'Bạn có chắc chắn muốn thoát?',
+          okLabel: 'Thoát',
         );
 
         if (context.mounted) {
@@ -58,6 +61,33 @@ class FocusModeSession extends HookConsumerWidget {
       [],
     );
 
+    final onFinish = useCallback(
+      () async {
+        final result = await showOkCancelAlertDialog(
+          context: context,
+          title: 'Hòa thành',
+          message: 'Bạn có muốn tiếp tục?',
+          cancelLabel: 'Thoát',
+          okLabel: 'Tiếp tục',
+        );
+
+        if (context.mounted) {
+          if (result == OkCancelResult.ok) {
+            baseBackgroundHandler.onTaskReset();
+          } else {
+            context.pop();
+          }
+        }
+      },
+      [],
+    );
+
+    useEffectDelayed(() {
+      if (taskBackgroundData.taskCurrentStep == FocusModeSessionSteps.finish) {
+        onFinish();
+      }
+    }, [taskBackgroundData.taskCurrentStep]);
+
     useEffect(() {
       return () {
         baseBackgroundHandler.onTaskDisposeBackgroundAudio();
@@ -67,7 +97,10 @@ class FocusModeSession extends HookConsumerWidget {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: kToolbarHeight),
+        padding: EdgeInsets.symmetric(
+          vertical: kToolbarHeight,
+          horizontal: spacing(2),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
