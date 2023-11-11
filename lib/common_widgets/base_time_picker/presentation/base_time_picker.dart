@@ -23,7 +23,7 @@ class BaseTimerPicker extends HookConsumerWidget {
     final baseTimePickerState = ref.watch(baseTimePickerProvider);
     final baseTimePickerNotifier = ref.read(baseTimePickerProvider.notifier);
 
-    final display = useMemoized(() {
+    final title = useMemoized(() {
       final time = baseTimePickerState.time;
 
       return time?.format(context) ?? 'pickTime'.tr();
@@ -32,9 +32,9 @@ class BaseTimerPicker extends HookConsumerWidget {
     final onDeleted = useMemoized(() {
       if (baseTimePickerState.time is Time) {
         return baseTimePickerNotifier.onDeletedTimer;
-      } else {
-        return empty;
       }
+
+      return emptyNull;
     }, [baseTimePickerState.time]);
 
     return Container(
@@ -65,7 +65,7 @@ class BaseTimerPicker extends HookConsumerWidget {
                 ),
               );
             },
-            display: display,
+            title: title,
             onDeleted: onDeleted,
           ),
         ),

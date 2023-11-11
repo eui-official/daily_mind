@@ -39,7 +39,7 @@ class OfflineListAudioMinimal extends HookConsumerWidget {
         };
       }
 
-      return empty;
+      return emptyNull;
     }, [offlineListAudioMinimalNotifier.isSelected]);
 
     return Scaffold(

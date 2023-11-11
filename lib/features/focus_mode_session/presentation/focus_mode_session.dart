@@ -86,6 +86,7 @@ class FocusModeSession extends HookConsumerWidget {
             ),
             FocusModeAudio(
               onAudioSelected: baseBackgroundHandler.onUpdateAudioId,
+              onAudioDeleted: baseBackgroundHandler.onDeleteAudioId,
               title: taskBackgroundData.taskAudioOffline?.name.tr(),
             ),
             FocusModeActions(

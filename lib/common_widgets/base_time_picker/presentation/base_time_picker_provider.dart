@@ -21,7 +21,7 @@ class BaseTimePickerNotifier extends StateNotifier<BaseTimePickerState> {
 
     timer = Timer.periodic(const Duration(seconds: 1), (currentTimer) {
       if (onIsBefore(time)) {
-        state = state.copyWith(time: empty);
+        state = state.copyWith(time: emptyNull);
         timer?.cancel();
       }
     });
@@ -36,7 +36,7 @@ class BaseTimePickerNotifier extends StateNotifier<BaseTimePickerState> {
 
   void onDeletedTimer() {
     timer?.cancel();
-    state = state.copyWith(time: empty);
+    state = state.copyWith(time: emptyNull);
 
     backgroundHandler.onDeletedTimer();
   }

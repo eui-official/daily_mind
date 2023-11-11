@@ -25,7 +25,7 @@ class NewMixCreateButton extends HookConsumerWidget {
     );
 
     return ElevatedButton(
-      onPressed: newMixState.isNoAudio ? empty : onPressed,
+      onPressed: newMixState.isNoAudio ? emptyNull : onPressed,
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(200, 48),
       ),

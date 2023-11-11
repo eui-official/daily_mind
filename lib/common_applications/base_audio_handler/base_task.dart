@@ -67,18 +67,28 @@ extension BaseTask on DailyMindBackgroundHandler {
     }
   }
 
+  void onDeleteAudioId() {
+    db.onDeleteAudioId(taskCurrent);
+  }
+
   void onInitBackgroundAudio() {
     final audioId = taskCurrent.audioId;
 
-    onSafeValueBuilder(audioId, (safeAudioId) {
-      taskBackgroundAudioGaplessAudioPlayer.onSetSource(safeAudioId);
-      taskBackgroundAudioGaplessAudioPlayer.setVolume(0.7);
-    });
+    onSafeValueBuilder(
+      audioId,
+      (safeAudioId) {
+        taskBackgroundAudioGaplessAudioPlayer = GaplessAudioPlayer();
+        taskBackgroundAudioGaplessAudioPlayer.onSetSource(safeAudioId);
+        taskBackgroundAudioGaplessAudioPlayer.setVolume(backgroundVolume);
+      },
+      () {
+        taskBackgroundAudioGaplessAudioPlayer.dispose();
+      },
+    );
   }
 
   void onPlayBackgroundAudio() {
     if (taskBackgroundAudioGaplessAudioPlayer.playing) return;
-
     taskBackgroundAudioGaplessAudioPlayer.play();
   }
 

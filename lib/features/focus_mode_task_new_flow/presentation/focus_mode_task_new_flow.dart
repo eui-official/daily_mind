@@ -77,7 +77,7 @@ class FocusModeTaskNewFlow extends HookWidget {
               bottom: ReactiveFormConsumer(
                 builder: (context, formGroup, child) {
                   return ElevatedButton(
-                    onPressed: formGroup.valid ? onCreateANewTask : empty,
+                    onPressed: formGroup.valid ? onCreateANewTask : emptyNull,
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size.fromHeight(48),
                     ),

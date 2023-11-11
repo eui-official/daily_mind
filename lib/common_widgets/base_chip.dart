@@ -4,14 +4,16 @@ import 'package:get/utils.dart';
 
 class BaseChip extends StatelessWidget {
   final Color? backgroundColor;
-  final String display;
+  final String title;
   final VoidCallback onPressed;
   final VoidCallback? onDeleted;
+  final Widget? avatar;
 
   const BaseChip({
     super.key,
-    required this.display,
     required this.onPressed,
+    required this.title,
+    this.avatar,
     this.backgroundColor,
     this.onDeleted,
   });
@@ -24,10 +26,11 @@ class BaseChip extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: circularRadius(2),
       ),
+      avatar: avatar,
       backgroundColor:
-          backgroundColor ?? context.theme.primaryColorDark.withOpacity(0.5),
+          backgroundColor ?? context.theme.primaryColorDark.withOpacity(0.3),
       label: Text(
-        display,
+        title,
         style: TextStyle(
           color: context.theme.primaryColor,
         ),
