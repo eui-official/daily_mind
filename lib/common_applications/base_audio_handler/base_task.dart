@@ -45,7 +45,7 @@ extension BaseTask on DailyMindBackgroundHandler {
       onCounting: (remainingSeconds) {
         onPlaySounds(remainingSeconds);
         onStreamTaskRemainingSeconds.add(remainingSeconds);
-        onPlayBackgroundAudio();
+        onTaskPlayBackgroundAudio();
       },
       onFinished: onTaskFinished,
     );
@@ -82,20 +82,24 @@ extension BaseTask on DailyMindBackgroundHandler {
         taskBackgroundAudioGaplessAudioPlayer.setVolume(backgroundVolume);
       },
       () {
-        taskBackgroundAudioGaplessAudioPlayer.dispose();
+        onTaskDisposeBackgroundAudio();
       },
     );
   }
 
-  void onPlayBackgroundAudio() {
+  void onTaskPlayBackgroundAudio() {
     if (taskBackgroundAudioGaplessAudioPlayer.playing) return;
     taskBackgroundAudioGaplessAudioPlayer.play();
   }
 
-  void onPauseBackgroundAudio() {
+  void onTaskPauseBackgroundAudio() {
     if (taskBackgroundAudioGaplessAudioPlayer.playing) {
       taskBackgroundAudioGaplessAudioPlayer.pause();
     }
+  }
+
+  void onTaskDisposeBackgroundAudio() {
+    taskBackgroundAudioGaplessAudioPlayer.dispose();
   }
 
   void onTaskFinished() {
@@ -122,7 +126,7 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskPause() {
     taskCountdown.onPause();
     onTaskUpdatePlaying(false);
-    onPauseBackgroundAudio();
+    onTaskPauseBackgroundAudio();
   }
 
   void onTaskResume() {
@@ -146,7 +150,13 @@ extension BaseTask on DailyMindBackgroundHandler {
     onTaskUpdatePlaying(false);
     taskCountdown.onCancel();
     soundEffectAudioPlayer.onPlayLevelUp();
-    onPauseBackgroundAudio();
+    onTaskPauseBackgroundAudio();
+  }
+
+  void onTaskRestart() {
+    taskCurrentSession = 1;
+    taskCountdown.onCancel();
+    onTaskStart();
   }
 
   void onTaskReset() {

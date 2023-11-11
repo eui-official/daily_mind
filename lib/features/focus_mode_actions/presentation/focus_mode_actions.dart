@@ -31,7 +31,7 @@ class FocusModeActions extends HookWidget {
         IconButton(
           onPressed: onSettings,
           padding: EdgeInsets.all(spacing(2)),
-          icon: const Icon(Icons.settings),
+          icon: const Icon(Icons.restart_alt_rounded),
           style: IconButton.styleFrom(
             backgroundColor: context.theme.cardColor,
           ),
