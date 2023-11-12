@@ -173,6 +173,8 @@ extension BaseTask on DailyMindBackgroundHandler {
         title: 'Hãy tập trung',
         body: 'Vui lòng quay lại ứng dụng để tiếp tục công việc',
       );
+    } else {
+      localNotifications.onCancelNotification(taskCurrent.id);
     }
 
     taskIsInBackground = isInBackground;

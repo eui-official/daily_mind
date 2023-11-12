@@ -15,6 +15,10 @@ class LocalNotifications {
     await flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 
+  void onCancelNotification(int id) {
+    flutterLocalNotificationsPlugin.cancel(id);
+  }
+
   void onShowLocalNotification({
     required int id,
     required String title,

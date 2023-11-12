@@ -83,8 +83,7 @@ class FocusModeSession extends HookConsumerWidget {
     );
 
     useOnAppLifecycleStateChange((previous, current) {
-      if (current == AppLifecycleState.paused ||
-          current == AppLifecycleState.inactive) {
+      if (current == AppLifecycleState.paused) {
         baseBackgroundHandler.onTaskUpdateIsInBackground(true);
       } else {
         baseBackgroundHandler.onTaskUpdateIsInBackground(false);
