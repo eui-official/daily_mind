@@ -2,6 +2,7 @@ import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_icon_button.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -24,24 +25,17 @@ class FocusModeTaskIcon extends ReactiveFormField<String, String> {
                 children: focusIcons.map((focusIcon) {
                   final isSelected = focusIcon.id == selectedId;
 
-                  return BaseIconButton(
-                    focusIcon: focusIcon,
-                    isSelected: isSelected,
-                    onTap: () => field.didChange(focusIcon.id),
+                  return AspectRatio(
+                    aspectRatio: 1,
+                    child: BaseIconButton(
+                      focusIcon: focusIcon,
+                      isSelected: isSelected,
+                      onTap: () => field.didChange(focusIcon.id),
+                    ),
                   );
                 }).toList(),
               ),
             );
           },
         );
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   final controller = useMemoized(
-  //     () => GroupButtonController(selectedIndex: selectedIndex),
-  //     [selectedIndex],
-  //   );
-
-  //
-  // }
 }
