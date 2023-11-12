@@ -50,8 +50,8 @@ extension BaseTask on DailyMindBackgroundHandler {
       duration: tick,
       onCounting: (remainingSeconds) {
         onPlaySounds(remainingSeconds);
-        onStreamTaskRemainingSeconds.add(remainingSeconds);
         onTaskPlayBackgroundAudio();
+        onStreamTaskRemainingSeconds.add(remainingSeconds);
       },
       onFinished: onTaskFinished,
     );

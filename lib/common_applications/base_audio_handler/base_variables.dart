@@ -42,7 +42,8 @@ mixin BaseTaskVariables on BaseAudioHandler {
       BehaviorSubject();
 
   bool get isShouldTakeALongBreak => taskCurrentSession % 4 == 0;
-  bool get isTaskCompleting => taskCurrentSession >= taskWorkingSessions;
+  bool get isTaskCompleting =>
+      taskCurrentSession >= taskWorkingSessions && taskWorkingSessions > 0;
   FocusModeSessionSteps get taskCurrentStep => onStreamTaskCurrentStep.value;
   int get taskLongBreak => taskCurrent.longBreak ?? 0;
   int get taskLongBreakInSeconds => taskLongBreak * 60;
