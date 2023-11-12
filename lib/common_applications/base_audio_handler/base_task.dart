@@ -80,6 +80,8 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onInitBackgroundAudio() {
     final audioId = taskCurrent.audioId ?? defaultAudioId;
 
+    onTaskDisposeBackgroundAudio();
+
     taskBackgroundAudioGaplessAudioPlayer = GaplessAudioPlayer();
     taskBackgroundAudioGaplessAudioPlayer.onSetSource(audioId);
     taskBackgroundAudioGaplessAudioPlayer.setVolume(backgroundVolume);
@@ -97,7 +99,7 @@ extension BaseTask on DailyMindBackgroundHandler {
   }
 
   void onTaskDisposeBackgroundAudio() {
-    taskBackgroundAudioGaplessAudioPlayer.dispose();
+    taskBackgroundAudioGaplessAudioPlayer.onDispose();
   }
 
   void onTaskFinished() {

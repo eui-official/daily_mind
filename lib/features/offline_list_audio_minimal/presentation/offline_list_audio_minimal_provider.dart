@@ -12,7 +12,7 @@ class OfflineListAudioMinimalNotifier
   @override
   int build() {
     ref.onDispose(() {
-      minimalGaplessAudioPlayer.dispose();
+      minimalGaplessAudioPlayer.onDispose();
     });
 
     return -1;

@@ -84,7 +84,7 @@ extension BaseOnlinePlayer on DailyMindBackgroundHandler {
   }
 
   void onOnlineDispose() {
-    onlinePlayer.dispose();
+    onlinePlayer.onDispose();
   }
 
   void onOnlineUpdateAutoPlayNext(bool newIsAutoPlayNext) {
