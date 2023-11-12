@@ -32,6 +32,7 @@ mixin BaseTaskVariables on BaseAudioHandler {
   GaplessAudioPlayer taskBackgroundAudioGaplessAudioPlayer =
       GaplessAudioPlayer();
   int taskCurrentSession = 1;
+  bool taskIsInBackground = false;
 
   BehaviorSubject<Task> onStreamTaskCurrent = BehaviorSubject();
   BehaviorSubject<bool> onStreamTaskPlaying = BehaviorSubject();

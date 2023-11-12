@@ -6,6 +6,7 @@ import 'package:daily_mind/common_applications/assets.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_variables.dart';
 import 'package:daily_mind/common_applications/base_count_down.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
+import 'package:daily_mind/common_applications/local_notifications.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_applications/sound_effect_audio_player.dart';

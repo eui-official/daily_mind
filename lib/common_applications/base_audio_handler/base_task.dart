@@ -165,4 +165,16 @@ extension BaseTask on DailyMindBackgroundHandler {
     onTaskUpdatePlaying(false);
     taskCountdown.onCancel();
   }
+
+  void onTaskUpdateIsInBackground(bool isInBackground) {
+    if (isInBackground) {
+      localNotifications.onShowLocalNotification(
+        id: taskCurrent.id,
+        title: 'Hãy tập trung',
+        body: 'Vui lòng quay lại ứng dụng để tiếp tục công việc',
+      );
+    }
+
+    taskIsInBackground = isInBackground;
+  }
 }
