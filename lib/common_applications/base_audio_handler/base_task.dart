@@ -21,6 +21,14 @@ extension BaseTask on DailyMindBackgroundHandler {
     });
   }
 
+  void onTaskStartOrResume() {
+    if (taskCurrentStep == FocusModeSessionSteps.ready) {
+      onTaskStart();
+    } else {
+      onTaskResume();
+    }
+  }
+
   void onTaskStart() {
     onOnlineDispose();
     onOfflineDispose();

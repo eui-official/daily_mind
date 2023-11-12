@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:daily_mind/common_applications/logger.dart';
-import 'package:daily_mind/features/new_mix/constant/offline_audio_sources.dart';
+import 'package:daily_mind/constants/offline_audio_sources.dart';
 import 'package:just_audio/just_audio.dart';
 
 class GaplessAudioPlayer extends AudioPlayer {

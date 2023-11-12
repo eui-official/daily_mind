@@ -136,7 +136,7 @@ class FocusModeSession extends HookConsumerWidget {
               isPlaying: taskBackgroundData.taskIsPlaying,
               onClose: onClose,
               onPause: baseBackgroundHandler.onTaskPause,
-              onPlay: baseBackgroundHandler.onTaskStart,
+              onPlay: baseBackgroundHandler.onTaskStartOrResume,
               onSettings: onSettings,
               step: taskBackgroundData.taskCurrentStep,
             ),
