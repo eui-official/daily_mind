@@ -4,6 +4,8 @@ import 'package:daily_mind/db/schemas/settings.dart';
 import 'package:daily_mind/features/offline_mix_editor/domain/offline_mix_editor_item_state.dart';
 import 'package:flutter/material.dart';
 
+typedef OfflineAudioSources = Map<String, List<String>>;
+
 typedef OnItemVolumeChanged = Function(
   OfflineMixEditorItemState offlineMixEditorItemState,
   double volume,

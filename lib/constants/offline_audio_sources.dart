@@ -1,4 +1,11 @@
-final offlineAudioSources = {
+import 'package:daily_mind/types/common.dart';
+
+const defaultAudioId = 'silient';
+
+OfflineAudioSources offlineAudioSources = {
+  'silient': [
+    'assets/audios/silients/1-second-of-silence.mp3',
+  ],
   'fire': [
     'assets/audios/fires/fire-1.mp3',
     'assets/audios/fires/fire-2.mp3',
