@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/db/migration/v1.dart';
 import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
@@ -7,6 +8,7 @@ import 'package:daily_mind/db/schemas/settings.dart';
 import 'package:daily_mind/features/offline_mix_editor/domain/offline_mix_editor_item_state.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Db {
   late Isar isar;
@@ -23,6 +25,27 @@ class Db {
       ],
       directory: dir.path,
     );
+
+    await performMigrationIfNeeded(isar);
+  }
+
+  Future<void> performMigrationIfNeeded(Isar isar) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('dbVersion');
+
+    final currentVersion = prefs.getInt('dbVersion') ?? 1;
+
+    switch (currentVersion) {
+      case 1:
+        migrationV1(isar);
+        break;
+      case 2:
+        return;
+      default:
+        throw Exception('Unknown version: $currentVersion');
+    }
+
+    // await prefs.setInt('dbVersion', 1);
   }
 
   Stream<List<Playlist>> onStreamAllPlaylists() {

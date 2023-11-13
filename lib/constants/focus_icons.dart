@@ -14,8 +14,8 @@ final focusIcons = [
     icon: 'assets/icons/creative.png',
   ),
   const FocusIcon(
-    id: 'reading',
-    icon: 'assets/icons/reading.png',
+    id: 'learning',
+    icon: 'assets/icons/learning.png',
   ),
   const FocusIcon(
     id: 'work',
