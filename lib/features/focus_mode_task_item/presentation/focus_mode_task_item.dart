@@ -1,11 +1,11 @@
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
-import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
 import 'package:daily_mind/common_widgets/base_shadow.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/focus_icons.dart';
 import 'package:daily_mind/db/schemas/task.dart';
+import 'package:daily_mind/features/focus_mode_edit/presentation/focus_mode_edit.dart';
 import 'package:daily_mind/features/focus_mode_session/presentation/focus_mode_session.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_avatar.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_working_session.dart';
@@ -84,7 +84,18 @@ class FocusModeTaskItem extends HookConsumerWidget {
                     width: spacing(2),
                   ),
                 ),
-                const PlayIcon(),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return FocusModeEdit(task: task);
+                        },
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.edit),
+                ),
               ],
             ),
           ),

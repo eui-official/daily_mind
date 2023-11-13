@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
-class FocusModeTaskForm extends HookWidget {
-  const FocusModeTaskForm({
+class BaseTaskFormContent extends HookWidget {
+  const BaseTaskFormContent({
     super.key,
   });
 
@@ -53,7 +53,7 @@ class FocusModeTaskForm extends HookWidget {
                   suffix: Text('phút'),
                 ),
               ),
-              FocusModeTaskIcon(formControlName: 'iconID'),
+              FocusModeTaskIcon(formControlName: 'iconId'),
             ],
             height: spacing(4),
           ),

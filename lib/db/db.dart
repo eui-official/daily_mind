@@ -196,6 +196,12 @@ class Db {
     });
   }
 
+  void onUpdateTask(Task task) {
+    isar.writeTxnSync(() {
+      isar.tasks.putSync(task);
+    });
+  }
+
   void onUpdateAudioId(Task task, String audioId, String audioFrom) {
     task.audioId = audioId;
     task.audioFrom = audioFrom;

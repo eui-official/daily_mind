@@ -7,14 +7,17 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class FocusModeTaskNewFlow extends HookWidget {
-  const FocusModeTaskNewFlow({
+class FocusModeEdit extends HookWidget {
+  final Task task;
+
+  const FocusModeEdit({
     super.key,
+    required this.task,
   });
 
   @override
   Widget build(BuildContext context) {
-    final onCreateANewTask = useCallback(
+    final onEditTask = useCallback(
       (FormGroup formGroup) {
         final value = formGroup.value;
         final title = value['title'] as String;
@@ -23,26 +26,34 @@ class FocusModeTaskNewFlow extends HookWidget {
         final longBreak = value['longBreak'] as int;
         final iconId = value['iconId'] as String;
 
-        final newTask = Task()
-          ..workingSessions = workingSessions
-          ..title = title
-          ..shortBreak = shortBreak
-          ..longBreak = longBreak
-          ..iconId = iconId;
+        task.title = title;
+        task.workingSessions = workingSessions;
+        task.shortBreak = shortBreak;
+        task.longBreak = longBreak;
+        task.iconId = iconId;
 
-        db.onAddANewTask(newTask);
+        db.onUpdateTask(task);
 
         context.pop();
       },
-      [],
+      [task],
     );
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: BaseTaskForm(
-        title: 'task'.tr(),
-        buttonTitle: 'Tạo mới',
-        onPressed: onCreateANewTask,
+        title: 'Cập nhật nhiệm vụ'.tr(),
+        buttonTitle: 'Cập nhật'.tr(),
+        onPressed: onEditTask,
+        onUpdateValue: (formGroup) {
+          formGroup.updateValue({
+            'workingSessions': task.workingSessions,
+            'title': task.title,
+            'shortBreak': task.shortBreak,
+            'longBreak': task.longBreak,
+            'iconId': task.iconId,
+          });
+        },
       ),
     );
   }

@@ -13,7 +13,7 @@ class FocusModeTaskIcon extends ReactiveFormField<String, String> {
   }) : super(
           formControlName: formControlName,
           builder: (ReactiveFormFieldState<String, String> field) {
-            final selectedId = field.value ?? 'meeting';
+            final selectedId = field.value;
 
             return BaseContentHeader(
               title: 'Ảnh đại diện',
