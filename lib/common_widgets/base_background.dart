@@ -10,8 +10,6 @@ class BaseBackground extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appState = ref.watch(appProvider);
 
-    return Background(
-      image: AssetImage(appState.backgroundImage),
-    );
+    return Background(image: AssetImage(appState.backgroundImage));
   }
 }

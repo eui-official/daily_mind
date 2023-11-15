@@ -40,9 +40,7 @@ class OfflinePlayerBottom extends HookConsumerWidget {
         horizontal: spacing(2),
         vertical: spacing(4),
       ),
-      decoration: const BoxDecoration(
-        gradient: baseLinearGradient,
-      ),
+      decoration: const BoxDecoration(gradient: baseLinearGradient),
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
