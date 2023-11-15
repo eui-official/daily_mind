@@ -1,6 +1,7 @@
 enum AudioTypes {
   none,
   task,
+  mix,
   offline,
   online,
 }

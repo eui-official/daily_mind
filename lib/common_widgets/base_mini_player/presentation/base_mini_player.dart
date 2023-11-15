@@ -15,11 +15,11 @@ class BaseMiniPlayer extends HookConsumerWidget {
   final VoidCallback onPause;
   final VoidCallback onPlay;
   final VoidCallback? onTap;
-  final Widget image;
+  final Widget leading;
 
   const BaseMiniPlayer({
     super.key,
-    required this.image,
+    required this.leading,
     required this.isLoading,
     required this.isPlaying,
     required this.onPause,
@@ -48,9 +48,9 @@ class BaseMiniPlayer extends HookConsumerWidget {
           child: Row(
             children: space([
               AnimatedSwitcher(
-                key: ValueKey(image.hashCode),
+                key: ValueKey(leading.hashCode),
                 duration: defaultDuration,
-                child: image,
+                child: leading,
               ),
               Flexible(
                 child: BaseMarquee(

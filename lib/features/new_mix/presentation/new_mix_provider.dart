@@ -1,3 +1,5 @@
+import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/new_mix/domain/new_mix_state.dart';
 import 'package:daily_mind/features/new_mix/domain/selecting_state.dart';
@@ -10,22 +12,39 @@ const initSelectingState = SelectingState(
 
 const initNewMixState = NewMixState(
   selectedStates: [],
-  selectingState: initSelectingState,
 );
 
 class NewMixdNotifier extends StateNotifier<NewMixState> {
-  NewMixdNotifier() : super(initNewMixState);
+  final BaseMiniPlayerProvider baseMiniPlayerNotifier;
 
-  dynamic onGetAudio() {
-    return state.selectingState.audio;
+  NewMixdNotifier({
+    required this.baseMiniPlayerNotifier,
+  }) : super(initNewMixState);
+
+  void onSelect(SelectingState newSelectingState) {
+    baseMiniPlayerNotifier.onUpdateState(
+      const MiniPlayerState(
+        isShow: true,
+        audioType: AudioTypes.mix,
+      ),
+    );
+
+    final newSelectedStates = List<SelectingState>.from(state.selectedStates);
+    newSelectedStates.add(newSelectingState);
+
+    state = state.copyWith(selectedStates: newSelectedStates);
   }
 
-  void onSelecting(SelectingState newSelectingState) {
-    state = state.copyWith(selectingState: newSelectingState);
-  }
+  // Remove selecting state from selected states, and update the state
+  void onUnSelecting(SelectingState selectingState) {
+    final newSelectedStates = List<SelectingState>.from(state.selectedStates);
+    newSelectedStates.remove(selectingState);
 
-  void onUnSelecting() {
-    state = state.copyWith(selectingState: initSelectingState);
+    if (newSelectedStates.isEmpty) {
+      baseMiniPlayerNotifier.onHide();
+    }
+
+    state = state.copyWith(selectedStates: newSelectedStates);
   }
 
   void onDeleted(String id) {
@@ -35,24 +54,13 @@ class NewMixdNotifier extends StateNotifier<NewMixState> {
 
     state = state.copyWith(selectedStates: cloneSelectingStates);
   }
-
-  void onResetSelectingId() {
-    state = state.copyWith(selectingState: initSelectingState);
-  }
-
-  void onAddCurrentId() {
-    final newSelectedStates = List<SelectingState>.from(state.selectedStates);
-    newSelectedStates.add(state.selectingState);
-
-    state = state.copyWith(
-      selectedStates: newSelectedStates,
-    );
-
-    onResetSelectingId();
-  }
 }
 
 final newMixProvider =
     StateNotifierProvider<NewMixdNotifier, NewMixState>((ref) {
-  return NewMixdNotifier();
+  final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
+
+  return NewMixdNotifier(
+    baseMiniPlayerNotifier: baseMiniPlayerNotifier,
+  );
 });

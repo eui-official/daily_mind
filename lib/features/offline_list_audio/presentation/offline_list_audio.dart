@@ -16,23 +16,21 @@ class OfflineListAudio extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final newMixSelectedNotifier = ref.read(newMixProvider.notifier);
-    final newMixSelectedState = ref.watch(newMixProvider);
+    final newMixNotifier = ref.read(newMixProvider.notifier);
+    final newMixState = ref.watch(newMixProvider);
 
     return BaseGridItemsHeader(
       padding: padding,
       items: offlineAudios,
       onItemIndexBuilder: (context, index, audio) {
-        final isSelected = newMixSelectedState.isContain(audio.id);
+        final isSelected = newMixState.isContain(audio.id);
 
         return OfflineAudioCard(
           backgroundKey: index == 0 ? soundKey : ValueKey(audio.id),
           isSelected: isSelected,
           audio: audio,
-          onDeleted: newMixSelectedNotifier.onDeleted,
-          onSelecting: newMixSelectedNotifier.onSelecting,
-          onUnSelecting: newMixSelectedNotifier.onUnSelecting,
-          selectingState: newMixSelectedState.selectingState,
+          onSelecting: newMixNotifier.onSelect,
+          onUnSelecting: newMixNotifier.onUnSelecting,
         );
       },
     );

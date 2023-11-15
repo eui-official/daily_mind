@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewMixState {
-  SelectingState get selectingState => throw _privateConstructorUsedError;
   List<SelectingState> get selectedStates => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,10 +29,7 @@ abstract class $NewMixStateCopyWith<$Res> {
           NewMixState value, $Res Function(NewMixState) then) =
       _$NewMixStateCopyWithImpl<$Res, NewMixState>;
   @useResult
-  $Res call(
-      {SelectingState selectingState, List<SelectingState> selectedStates});
-
-  $SelectingStateCopyWith<$Res> get selectingState;
+  $Res call({List<SelectingState> selectedStates});
 }
 
 /// @nodoc
@@ -49,27 +45,14 @@ class _$NewMixStateCopyWithImpl<$Res, $Val extends NewMixState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectingState = null,
     Object? selectedStates = null,
   }) {
     return _then(_value.copyWith(
-      selectingState: null == selectingState
-          ? _value.selectingState
-          : selectingState // ignore: cast_nullable_to_non_nullable
-              as SelectingState,
       selectedStates: null == selectedStates
           ? _value.selectedStates
           : selectedStates // ignore: cast_nullable_to_non_nullable
               as List<SelectingState>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SelectingStateCopyWith<$Res> get selectingState {
-    return $SelectingStateCopyWith<$Res>(_value.selectingState, (value) {
-      return _then(_value.copyWith(selectingState: value) as $Val);
-    });
   }
 }
 
@@ -81,11 +64,7 @@ abstract class _$$NewMixStateImplCopyWith<$Res>
       __$$NewMixStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {SelectingState selectingState, List<SelectingState> selectedStates});
-
-  @override
-  $SelectingStateCopyWith<$Res> get selectingState;
+  $Res call({List<SelectingState> selectedStates});
 }
 
 /// @nodoc
@@ -99,14 +78,9 @@ class __$$NewMixStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectingState = null,
     Object? selectedStates = null,
   }) {
     return _then(_$NewMixStateImpl(
-      selectingState: null == selectingState
-          ? _value.selectingState
-          : selectingState // ignore: cast_nullable_to_non_nullable
-              as SelectingState,
       selectedStates: null == selectedStates
           ? _value._selectedStates
           : selectedStates // ignore: cast_nullable_to_non_nullable
@@ -118,14 +92,10 @@ class __$$NewMixStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NewMixStateImpl extends _NewMixState {
-  const _$NewMixStateImpl(
-      {required this.selectingState,
-      required final List<SelectingState> selectedStates})
+  const _$NewMixStateImpl({required final List<SelectingState> selectedStates})
       : _selectedStates = selectedStates,
         super._();
 
-  @override
-  final SelectingState selectingState;
   final List<SelectingState> _selectedStates;
   @override
   List<SelectingState> get selectedStates {
@@ -136,7 +106,7 @@ class _$NewMixStateImpl extends _NewMixState {
 
   @override
   String toString() {
-    return 'NewMixState(selectingState: $selectingState, selectedStates: $selectedStates)';
+    return 'NewMixState(selectedStates: $selectedStates)';
   }
 
   @override
@@ -144,15 +114,13 @@ class _$NewMixStateImpl extends _NewMixState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewMixStateImpl &&
-            (identical(other.selectingState, selectingState) ||
-                other.selectingState == selectingState) &&
             const DeepCollectionEquality()
                 .equals(other._selectedStates, _selectedStates));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectingState,
-      const DeepCollectionEquality().hash(_selectedStates));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_selectedStates));
 
   @JsonKey(ignore: true)
   @override
@@ -163,12 +131,9 @@ class _$NewMixStateImpl extends _NewMixState {
 
 abstract class _NewMixState extends NewMixState {
   const factory _NewMixState(
-      {required final SelectingState selectingState,
-      required final List<SelectingState> selectedStates}) = _$NewMixStateImpl;
+      {required final List<SelectingState> selectedStates}) = _$NewMixStateImpl;
   const _NewMixState._() : super._();
 
-  @override
-  SelectingState get selectingState;
   @override
   List<SelectingState> get selectedStates;
   @override

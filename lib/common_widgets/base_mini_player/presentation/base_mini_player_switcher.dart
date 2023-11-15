@@ -1,6 +1,7 @@
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
+import 'package:daily_mind/features/new_mix_mini_player/presentation/new_mix_mini_player.dart';
 import 'package:daily_mind/features/offline_mini_player/presentation/offline_mini_player.dart';
 import 'package:daily_mind/features/online_mini_player/presentation/online_mini_player.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,11 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
       if (baseMiniPlayerState.isShow) {
         if (baseMiniPlayerState.audioType == AudioTypes.online) {
           return const OnlineMiniPlayer();
+        } else if (baseMiniPlayerState.audioType == AudioTypes.offline) {
+          return const OfflineMiniPlayer();
+        } else if (baseMiniPlayerState.audioType == AudioTypes.mix) {
+          return const NewMixMiniPlayer();
         }
-
-        return const OfflineMiniPlayer();
       }
 
       return emptyWidget;

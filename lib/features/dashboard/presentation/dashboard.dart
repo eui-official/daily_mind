@@ -5,7 +5,7 @@ import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigati
 import 'package:daily_mind/features/bird_loading/presentation/bird_loading.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_switcher.dart';
 import 'package:daily_mind/features/focus_mode/presentation/focus_mode.dart';
-import 'package:daily_mind/features/offline_list/presentation/offline_list.dart';
+import 'package:daily_mind/features/new_mix/presentation/new_mix.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +26,7 @@ class Dashboard extends HookConsumerWidget {
     final children = useMemoized(
         () => [
               const FocusMode(),
-              const OfflineList(),
+              const NewMix(),
               const OnlineList(),
               const Settings(),
             ],

@@ -47,15 +47,10 @@ class DailyMindBackgroundHandler extends BaseAudioHandler
 
   @override
   Future<void> play() async {
-    switch (audioType) {
-      case AudioTypes.none:
-      case AudioTypes.task:
-      case AudioTypes.offline:
-        onPlayOffline();
-        break;
-      case AudioTypes.online:
-        onPlayOnline();
-        break;
+    if (audioType == AudioTypes.task || audioType == AudioTypes.offline) {
+      onPlayOffline();
+    } else if (audioType == AudioTypes.online) {
+      onPlayOnline();
     }
 
     playbackState.add(playbackState.value.copyWith(playing: true));
@@ -65,15 +60,10 @@ class DailyMindBackgroundHandler extends BaseAudioHandler
 
   @override
   Future<void> pause() async {
-    switch (audioType) {
-      case AudioTypes.none:
-      case AudioTypes.task:
-      case AudioTypes.offline:
-        onPauseOffline();
-        break;
-      case AudioTypes.online:
-        onPauseOnline();
-        break;
+    if (audioType == AudioTypes.task || audioType == AudioTypes.offline) {
+      onPauseOffline();
+    } else if (audioType == AudioTypes.online) {
+      onPauseOnline();
     }
 
     playbackState.add(playbackState.value.copyWith(playing: false));

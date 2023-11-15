@@ -8,7 +8,6 @@ class NewMixState with _$NewMixState {
   const NewMixState._();
 
   const factory NewMixState({
-    required SelectingState selectingState,
     required List<SelectingState> selectedStates,
   }) = _NewMixState;
 
@@ -21,10 +20,6 @@ class NewMixState with _$NewMixState {
 
     return sounds.isNotEmpty;
   }
-
-  bool get isSelecting => selectingState.audio != null;
-
-  bool get isCanAdd => isSelecting && !selectedStates.contains(selectingState);
 
   bool get isNoAudio => selectedStates.isEmpty;
 }

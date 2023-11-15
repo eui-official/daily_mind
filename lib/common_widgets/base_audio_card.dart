@@ -1,7 +1,5 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
-import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:daily_mind/features/audio_card/presentation/audio_card_content.dart';
-import 'package:daily_mind/features/audio_card/presentation/audio_card_delete_button.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -12,8 +10,6 @@ class BaseAudioCard extends StatelessWidget {
   final bool isSelected;
   final Key? backgroundKey;
   final String name;
-  final String description;
-  final VoidCallback onDeleted;
   final VoidCallback onTap;
   final ImageProvider image;
 
@@ -24,8 +20,6 @@ class BaseAudioCard extends StatelessWidget {
     required this.isPlaying,
     required this.isSelected,
     required this.name,
-    required this.description,
-    required this.onDeleted,
     required this.onTap,
     this.backgroundKey,
   });
@@ -45,17 +39,10 @@ class BaseAudioCard extends StatelessWidget {
           ),
           child: BaseCard(
             image: image,
-            imageHeight: mediumCard,
             onTap: onTap,
-            content: AudioCardContent(
-              name: name,
-              description: description,
-              isPlaying: isPlaying,
-              isLoading: isLoading,
-            ),
+            content: AudioCardContent(name: name),
           ),
         ),
-        if (isSelected) AudioCardDeleteButton(onPressed: onDeleted),
       ],
     );
   }

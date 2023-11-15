@@ -5,7 +5,6 @@ import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
-import 'package:daily_mind/features/offline_mix_editor/domain/offline_mix_editor_item_state.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -168,19 +167,19 @@ class Db {
     );
   }
 
-  void onAddANewOfflineMix(List<OfflineMixEditorItemState> itemStates) {
-    final items = itemStates.map((item) {
-      return PlaylistItem()
-        ..id = item.id
-        ..volume = item.volume;
-    }).toList();
+  // void onAddANewOfflineMix(List<OfflineMixEditorItemState> itemStates) {
+  //   final items = itemStates.map((item) {
+  //     return PlaylistItem()
+  //       ..id = item.id
+  //       ..volume = item.volume;
+  //   }).toList();
 
-    Playlist playlist = Playlist()..items = items;
+  //   Playlist playlist = Playlist()..items = items;
 
-    isar.writeTxnSync(() {
-      isar.playlists.putSync(playlist);
-    });
-  }
+  //   isar.writeTxnSync(() {
+  //     isar.playlists.putSync(playlist);
+  //   });
+  // }
 
   Stream<List<Task>> onStreamTasks() {
     return isar.tasks.where(sort: Sort.desc).anyId().watch();

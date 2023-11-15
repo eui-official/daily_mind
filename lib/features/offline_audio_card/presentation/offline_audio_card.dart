@@ -13,19 +13,15 @@ class OfflineAudioCard extends HookConsumerWidget {
   final bool isSelected;
   final Key? backgroundKey;
   final AudioOffline audio;
-  final SelectingState selectingState;
-  final ValueChanged<String> onDeleted;
   final ValueChanged<SelectingState> onSelecting;
-  final VoidCallback onUnSelecting;
+  final ValueChanged<SelectingState> onUnSelecting;
 
   const OfflineAudioCard({
     super.key,
     required this.isSelected,
     required this.audio,
-    required this.onDeleted,
     required this.onSelecting,
     required this.onUnSelecting,
-    required this.selectingState,
     this.backgroundKey,
   });
 
@@ -41,17 +37,16 @@ class OfflineAudioCard extends HookConsumerWidget {
     final audioOfflinePlayerState = ref.watch(audioOfflinePlayerMemoized);
 
     final onTap = useCallback(() {
+      final selectingState = SelectingState(
+        audio: audio,
+        audioType: AudioTypes.offline,
+      );
+
       if (audioOfflinePlayerState.isPlaying) {
-        onUnSelecting();
+        onUnSelecting(selectingState);
         audioOfflinePlayerNotifier.onPause();
       } else {
-        onSelecting(
-          SelectingState(
-            audio: audio,
-            audioType: AudioTypes.offline,
-          ),
-        );
-
+        onSelecting(selectingState);
         audioOfflinePlayerNotifier.onPlay(audio.id);
       }
     }, [
@@ -60,12 +55,8 @@ class OfflineAudioCard extends HookConsumerWidget {
     ]);
 
     useEffect(() {
-      if (selectingState.audio?.id != audio.id) {
-        audioOfflinePlayerNotifier.onPause();
-      }
-
       return () {};
-    }, [selectingState, audio]);
+    }, [audio]);
 
     useEffect(() {
       return () {
@@ -76,14 +67,12 @@ class OfflineAudioCard extends HookConsumerWidget {
     }, [audio]);
 
     return BaseAudioCard(
-      description: audio.description.tr(),
       image: AssetImage(audio.image),
       isLoading: audioOfflinePlayerState.isLoading,
       isPlaying: audioOfflinePlayerState.isPlaying,
       isSelected: isSelected,
       key: backgroundKey,
       name: audio.name.tr(),
-      onDeleted: () => onDeleted(audio.id),
       onTap: onTap,
     );
   }

@@ -51,7 +51,7 @@ class OnlineMiniPlayer extends HookConsumerWidget {
 
       return BaseMiniPlayer(
         onTap: baseMiniPlayerState.onTap,
-        image: BaseNetworkImage(
+        leading: BaseNetworkImage(
           image: tag.image,
           size: 5,
         ),
