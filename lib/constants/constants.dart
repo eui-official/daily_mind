@@ -16,6 +16,6 @@ const defaultDuration = Duration(milliseconds: 300);
 
 const mediumDuration = Duration(milliseconds: 600);
 
-const diskDuration = Duration(minutes: 1);
+const longDuration = Duration(minutes: 1);
 
 const appStoreId = '6466182407';

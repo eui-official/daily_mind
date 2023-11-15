@@ -9,10 +9,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-class NewMix extends StatelessWidget {
-  const NewMix({
-    super.key,
-  });
+class Mix extends StatelessWidget {
+  const Mix({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +48,7 @@ class NewMix extends StatelessWidget {
           children: [
             const BaseBackground(),
             AppBarScrollview(
-              title: 'newMix'.tr(),
+              title: 'naturalSounds'.tr(),
               children: [
                 OfflineListAudio(
                   padding: EdgeInsets.symmetric(horizontal: spacing(2)),

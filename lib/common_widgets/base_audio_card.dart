@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
 class BaseAudioCard extends StatelessWidget {
-  final bool isLoading;
-  final bool isPlaying;
   final bool isSelected;
   final Key? backgroundKey;
   final String name;
@@ -16,8 +14,6 @@ class BaseAudioCard extends StatelessWidget {
   const BaseAudioCard({
     super.key,
     required this.image,
-    required this.isLoading,
-    required this.isPlaying,
     required this.isSelected,
     required this.name,
     required this.onTap,

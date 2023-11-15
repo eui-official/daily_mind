@@ -17,7 +17,7 @@ class DiskPlayerCircle extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final animation = useAnimationController(duration: diskDuration);
+    final animation = useAnimationController(duration: longDuration);
 
     useEffect(() {
       if (isPlaying) {

@@ -1,0 +1,37 @@
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
+import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
+import 'package:daily_mind/features/mix_mini_player/presentation/mix_mini_player_images.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart' hide Trans;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+class MixMiniPlayer extends HookConsumerWidget {
+  const MixMiniPlayer({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mixState = ref.watch(mixProvider);
+    final mixItems = mixState.mixItems;
+
+    final title = mixItems.map((item) {
+      final audio = item.audio;
+
+      return audio.name.tr();
+    }).join(', ');
+
+    return BaseMiniPlayer(
+      onTap: () {},
+      title: title,
+      subtitle: Text(
+        '${mixItems.length} âm thanh',
+        style: context.textTheme.bodySmall,
+      ),
+      leading: const MixMiniPlayerImages(),
+      isLoading: false,
+      isPlaying: false,
+      onPause: () {},
+      onPlay: () {},
+    );
+  }
+}

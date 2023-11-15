@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
@@ -16,6 +17,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
   final VoidCallback onPlay;
   final VoidCallback? onTap;
   final Widget leading;
+  final Widget? subtitle;
 
   const BaseMiniPlayer({
     super.key,
@@ -25,6 +27,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
     required this.onPause,
     required this.onPlay,
     required this.title,
+    this.subtitle,
     this.onTap,
   });
 
@@ -46,27 +49,43 @@ class BaseMiniPlayer extends HookConsumerWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: spacing()),
           child: Row(
-            children: space([
-              AnimatedSwitcher(
-                key: ValueKey(leading.hashCode),
-                duration: defaultDuration,
-                child: leading,
-              ),
-              Flexible(
-                child: BaseMarquee(
-                  text: title,
-                  style: context.textTheme.bodySmall?.copyWith(
-                    fontWeight: FontWeight.bold,
+            children: space(
+              [
+                AnimatedSwitcher(
+                  key: ValueKey(leading.hashCode),
+                  duration: defaultDuration,
+                  child: leading,
+                ),
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: space(
+                      [
+                        SizedBox(
+                          height: spacing(2),
+                          child: BaseMarquee(
+                            text: title,
+                            style: context.textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        subtitle,
+                      ].whereNotNull().toList(),
+                      height: spacing(),
+                    ),
                   ),
                 ),
-              ),
-              BaseMiniPlayerToggleButton(
-                isLoading: isLoading,
-                isPlaying: isPlaying,
-                onPause: onPause,
-                onPlay: onPlay,
-              ),
-            ], width: spacing(2)),
+                BaseMiniPlayerToggleButton(
+                  isLoading: isLoading,
+                  isPlaying: isPlaying,
+                  onPause: onPause,
+                  onPlay: onPlay,
+                ),
+              ],
+              width: spacing(2),
+            ),
           ),
         ),
       ),
