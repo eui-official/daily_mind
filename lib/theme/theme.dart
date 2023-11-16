@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 const background = Color(0xFF07020D);
 const celadon = Color(0xFFB0F2B4);
-const jet = Color(0xFF353238);
 const maize = Color(0xFFFFF07C);
 const secondaryTextColor = Colors.white70;
 
@@ -27,7 +26,6 @@ ThemeData createDarkTheme(SupportedTheme theme) {
       blendOnLevel: 20,
       inputDecoratorFocusedHasBorder: false,
       inputDecoratorUnfocusedHasBorder: false,
-      inputDecoratorFillColor: jet,
       inputDecoratorUnfocusedBorderIsColored: false,
       inputDecoratorRadius: spacing(2),
       useM2StyleDividerInM3: true,

@@ -4,6 +4,7 @@ import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_st
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
+import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,6 +20,13 @@ class MixdNotifier extends StateNotifier<MixState> {
   MixdNotifier({
     required this.baseMiniPlayerNotifier,
   }) : super(initMixState);
+
+  void onAddNewMix() async {
+    final id = await db.onAddNewPlaylist(state.playlist);
+
+    final recentPlaylist = db.onGetPlaylistById(id);
+    state = state.copyWith(recentPlaylist: recentPlaylist);
+  }
 
   void onPlay(MixItem item) {
     final audio = item.audio;
@@ -61,6 +69,13 @@ class MixdNotifier extends StateNotifier<MixState> {
 
   void onUpdateTitle(String newTitle) {
     state = state.copyWith(title: newTitle);
+  }
+
+  void onVolumeChanged(int index, double volume) {
+    final currentMixItems = List<MixItem>.from(state.mixItems);
+    currentMixItems[index].player.setVolume(volume);
+
+    state = state.copyWith(mixItems: currentMixItems);
   }
 }
 

@@ -3,7 +3,6 @@ import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_icon_button_with_title.dart';
 import 'package:daily_mind/common_widgets/base_scaffold_sheet.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
-import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/mix_player_item/presentation/mix_player_item.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -23,6 +22,8 @@ class MixPlayer extends HookConsumerWidget {
     final mixNotifier = ref.watch(mixProvider.notifier);
     final mixItems = mixState.mixItems;
 
+    print(mixState.isCanAddANewPlaylist);
+
     final onSaveMix = useCallback(
       () async {
         if (mixState.title.isEmpty) {
@@ -31,7 +32,7 @@ class MixPlayer extends HookConsumerWidget {
             message: 'Vui lòng nhập tên',
           );
         } else {
-          db.onAddNewMix(mixState);
+          mixNotifier.onAddNewMix();
         }
       },
       [mixState],
@@ -51,6 +52,7 @@ class MixPlayer extends HookConsumerWidget {
       child: Container(
         padding: EdgeInsets.all(spacing(2)),
         child: ListView(
+          shrinkWrap: true,
           children: space(
             [
               BaseContentHeader(
@@ -58,9 +60,7 @@ class MixPlayer extends HookConsumerWidget {
                 spacingSize: 5,
                 child: Column(
                   children: space(
-                    mixItems.map((item) {
-                      return MixPlayerItem(item: item);
-                    }).toList(),
+                    mixItems.map((item) => MixPlayerItem(item: item)).toList(),
                     height: spacing(6),
                   ),
                 ),

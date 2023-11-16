@@ -1,9 +1,11 @@
 import 'package:daily_mind/common_widgets/base_mix_editor_item.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
+import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MixPlayerItem extends StatelessWidget {
+class MixPlayerItem extends HookConsumerWidget {
   final MixItem item;
 
   const MixPlayerItem({
@@ -12,7 +14,11 @@ class MixPlayerItem extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mixState = ref.read(mixProvider);
+    final mixNotifier = ref.read(mixProvider.notifier);
+    final index = mixState.mixItems.indexOf(item);
+
     final player = item.player;
     final audio = item.audio;
 
@@ -20,7 +26,9 @@ class MixPlayerItem extends StatelessWidget {
       image: audio.image,
       initVolume: player.volume,
       name: audio.name.tr(),
-      onVolumeChanged: player.setVolume,
+      onVolumeChanged: (volume) {
+        mixNotifier.onVolumeChanged(index, volume);
+      },
     );
   }
 }

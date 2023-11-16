@@ -60,10 +60,10 @@ dependencies:
   tutorial_coach_mark: ^1.2.9
   animated_text_kit: ^4.2.2
   supabase_flutter: ^1.10.16
-  envied: ^0.3.0+3
+  envied: ^0.5.1
   json_annotation: ^4.8.1
   cached_network_image: ^3.2.3
-  collection: ^1.17.2
+  collection: ^1.18.0
   marquee: ^2.2.3
   uuid: ^4.1.0
   flutter_spinkit: ^5.2.0
@@ -105,7 +105,7 @@ dev_dependencies:
   freezed: ^2.4.1
   isar_generator: ^3.1.0+1
   flutter_launcher_icons: ^0.13.1
-  envied_generator: ^0.3.0+3
+  envied_generator: ^0.5.1
   json_serializable: ^6.7.1
   riverpod_generator: ^2.3.5
   custom_lint: ^0.5.5

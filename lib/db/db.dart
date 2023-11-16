@@ -5,7 +5,6 @@ import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
-import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -168,23 +167,16 @@ class Db {
     );
   }
 
-  void onAddNewMix(MixState state) {
-    final items = state.mixItems.map((item) {
-      final audio = item.audio;
-      final player = item.player;
-
-      return MixItemInfo()
-        ..id = audio.id
-        ..volume = player.volume;
-    }).toList();
-
-    Playlist playlist = Playlist()
-      ..title = state.title
-      ..items = items;
-
-    isar.writeTxnSync(() {
-      isar.playlists.putSync(playlist);
+  Future<int> onAddNewPlaylist(Playlist playlist) {
+    return isar.writeTxn(() {
+      return isar.playlists.put(playlist);
     });
+  }
+
+  Stream<List<Playlist>> onStreamMixToState() {
+    final playlist = isar.playlists.where().watch();
+
+    return playlist;
   }
 
   Stream<List<Task>> onStreamTasks() {
