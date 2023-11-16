@@ -25,7 +25,6 @@ class FocusModeAudio extends HookWidget {
       () {
         onShowBottomSheet(
           context,
-          isScrollControlled: true,
           child: FractionallySizedBox(
             heightFactor: 0.7,
             child: OfflineListAudioMinimal(

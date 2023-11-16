@@ -13,11 +13,14 @@ class MixPlayerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final player = item.player;
+    final audio = item.audio;
+
     return BaseMixEditorItem(
-      image: item.audio.image,
-      initVolume: 0.5,
-      name: item.audio.name.tr(),
-      onVolumeChanged: (volume) {},
+      image: audio.image,
+      initVolume: player.volume,
+      name: audio.name.tr(),
+      onVolumeChanged: player.setVolume,
     );
   }
 }

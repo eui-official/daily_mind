@@ -2,12 +2,14 @@ import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_domains/audio_offline.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const initMixState = MixState(
+  title: emptyString,
   mixItems: [],
 );
 
@@ -55,6 +57,10 @@ class MixdNotifier extends StateNotifier<MixState> {
         audioType: AudioTypes.mix,
       ),
     );
+  }
+
+  void onUpdateTitle(String newTitle) {
+    state = state.copyWith(title: newTitle);
   }
 }
 

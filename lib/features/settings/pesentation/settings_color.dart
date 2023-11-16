@@ -24,7 +24,6 @@ class SettingsColor extends StatelessWidget {
       onTap: () {
         onShowBottomSheet(
           context,
-          backgroundColor: context.theme.colorScheme.background,
           child: const SettingsThemeBottomSheet(),
         );
       },

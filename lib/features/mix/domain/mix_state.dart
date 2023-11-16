@@ -8,6 +8,7 @@ class MixState with _$MixState {
   const MixState._();
 
   const factory MixState({
+    required String title,
     required List<MixItem> mixItems,
   }) = _MixState;
 

@@ -5,6 +5,7 @@ import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
+import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,7 +45,7 @@ class Db {
         throw Exception('Unknown version: $currentVersion');
     }
 
-    // await prefs.setInt('dbVersion', 1);
+    await prefs.setInt('dbVersion', 2);
   }
 
   Stream<List<Playlist>> onStreamAllPlaylists() {
@@ -167,19 +168,24 @@ class Db {
     );
   }
 
-  // void onAddANewOfflineMix(List<OfflineMixEditorItemState> itemStates) {
-  //   final items = itemStates.map((item) {
-  //     return PlaylistItem()
-  //       ..id = item.id
-  //       ..volume = item.volume;
-  //   }).toList();
+  void onAddNewMix(MixState state) {
+    final items = state.mixItems.map((item) {
+      final audio = item.audio;
+      final player = item.player;
 
-  //   Playlist playlist = Playlist()..items = items;
+      return MixItemInfo()
+        ..id = audio.id
+        ..volume = player.volume;
+    }).toList();
 
-  //   isar.writeTxnSync(() {
-  //     isar.playlists.putSync(playlist);
-  //   });
-  // }
+    Playlist playlist = Playlist()
+      ..title = state.title
+      ..items = items;
+
+    isar.writeTxnSync(() {
+      isar.playlists.putSync(playlist);
+    });
+  }
 
   Stream<List<Task>> onStreamTasks() {
     return isar.tasks.where(sort: Sort.desc).anyId().watch();

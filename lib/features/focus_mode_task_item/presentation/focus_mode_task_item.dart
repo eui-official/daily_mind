@@ -40,7 +40,6 @@ class FocusModeTaskItem extends HookConsumerWidget {
         await onShowBottomSheet(
           context,
           child: const FocusModeSession(),
-          isScrollControlled: true,
           isDismissible: false,
           enableDrag: false,
         );

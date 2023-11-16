@@ -37,7 +37,6 @@ class BaseOnlineHandler extends HookConsumerWidget {
 
       onShowBottomSheet(
         context,
-        isScrollControlled: true,
         child: OnlinePlayer(category: category),
       ).then((value) => baseMiniPlayerNotifier.onShow());
     }, [category, context]);

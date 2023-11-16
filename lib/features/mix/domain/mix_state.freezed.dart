@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MixState {
+  String get title => throw _privateConstructorUsedError;
   List<MixItem> get mixItems => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -28,7 +29,7 @@ abstract class $MixStateCopyWith<$Res> {
   factory $MixStateCopyWith(MixState value, $Res Function(MixState) then) =
       _$MixStateCopyWithImpl<$Res, MixState>;
   @useResult
-  $Res call({List<MixItem> mixItems});
+  $Res call({String title, List<MixItem> mixItems});
 }
 
 /// @nodoc
@@ -44,9 +45,14 @@ class _$MixStateCopyWithImpl<$Res, $Val extends MixState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? title = null,
     Object? mixItems = null,
   }) {
     return _then(_value.copyWith(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       mixItems: null == mixItems
           ? _value.mixItems
           : mixItems // ignore: cast_nullable_to_non_nullable
@@ -63,7 +69,7 @@ abstract class _$$MixStateImplCopyWith<$Res>
       __$$MixStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MixItem> mixItems});
+  $Res call({String title, List<MixItem> mixItems});
 }
 
 /// @nodoc
@@ -77,9 +83,14 @@ class __$$MixStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? title = null,
     Object? mixItems = null,
   }) {
     return _then(_$MixStateImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       mixItems: null == mixItems
           ? _value._mixItems
           : mixItems // ignore: cast_nullable_to_non_nullable
@@ -91,10 +102,13 @@ class __$$MixStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MixStateImpl extends _MixState {
-  const _$MixStateImpl({required final List<MixItem> mixItems})
+  const _$MixStateImpl(
+      {required this.title, required final List<MixItem> mixItems})
       : _mixItems = mixItems,
         super._();
 
+  @override
+  final String title;
   final List<MixItem> _mixItems;
   @override
   List<MixItem> get mixItems {
@@ -105,7 +119,7 @@ class _$MixStateImpl extends _MixState {
 
   @override
   String toString() {
-    return 'MixState(mixItems: $mixItems)';
+    return 'MixState(title: $title, mixItems: $mixItems)';
   }
 
   @override
@@ -113,12 +127,13 @@ class _$MixStateImpl extends _MixState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MixStateImpl &&
+            (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._mixItems, _mixItems));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_mixItems));
+  int get hashCode => Object.hash(
+      runtimeType, title, const DeepCollectionEquality().hash(_mixItems));
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +143,13 @@ class _$MixStateImpl extends _MixState {
 }
 
 abstract class _MixState extends MixState {
-  const factory _MixState({required final List<MixItem> mixItems}) =
-      _$MixStateImpl;
+  const factory _MixState(
+      {required final String title,
+      required final List<MixItem> mixItems}) = _$MixStateImpl;
   const _MixState._() : super._();
 
+  @override
+  String get title;
   @override
   List<MixItem> get mixItems;
   @override
