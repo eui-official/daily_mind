@@ -5,7 +5,7 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class AudioImages extends StatelessWidget {
-  final List<PlaylistItem> items;
+  final List<MixItemInfo> items;
   final double size;
   final double radiusSize;
 

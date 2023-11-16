@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class OfflinePlayerListItem extends StatelessWidget {
   final int playlistId;
-  final List<PlaylistItem> items;
+  final List<MixItemInfo> items;
   final EdgeInsets padding;
 
   const OfflinePlayerListItem({

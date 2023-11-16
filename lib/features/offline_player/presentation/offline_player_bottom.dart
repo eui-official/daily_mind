@@ -14,7 +14,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfflinePlayerBottom extends HookConsumerWidget {
   final int playlistId;
-  final List<PlaylistItem> items;
+  final List<MixItemInfo> items;
   final String? initialTitle;
 
   const OfflinePlayerBottom({

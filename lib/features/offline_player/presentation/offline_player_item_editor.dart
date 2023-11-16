@@ -9,7 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfflinePlayerItemEditor extends HookConsumerWidget {
   final int playlistId;
-  final PlaylistItem item;
+  final MixItemInfo item;
 
   const OfflinePlayerItemEditor({
     super.key,

@@ -21,7 +21,7 @@ const PlaylistSchema = CollectionSchema(
       id: 0,
       name: r'items',
       type: IsarType.objectList,
-      target: r'PlaylistItem',
+      target: r'MixItemInfo',
     ),
     r'title': PropertySchema(
       id: 1,
@@ -36,7 +36,7 @@ const PlaylistSchema = CollectionSchema(
   idName: r'id',
   indexes: {},
   links: {},
-  embeddedSchemas: {r'PlaylistItem': PlaylistItemSchema},
+  embeddedSchemas: {r'MixItemInfo': MixItemInfoSchema},
   getId: _playlistGetId,
   getLinks: _playlistGetLinks,
   attach: _playlistAttach,
@@ -54,11 +54,11 @@ int _playlistEstimateSize(
     if (list != null) {
       bytesCount += 3 + list.length * 3;
       {
-        final offsets = allOffsets[PlaylistItem]!;
+        final offsets = allOffsets[MixItemInfo]!;
         for (var i = 0; i < list.length; i++) {
           final value = list[i];
           bytesCount +=
-              PlaylistItemSchema.estimateSize(value, offsets, allOffsets);
+              MixItemInfoSchema.estimateSize(value, offsets, allOffsets);
         }
       }
     }
@@ -78,10 +78,10 @@ void _playlistSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeObjectList<PlaylistItem>(
+  writer.writeObjectList<MixItemInfo>(
     offsets[0],
     allOffsets,
-    PlaylistItemSchema.serialize,
+    MixItemInfoSchema.serialize,
     object.items,
   );
   writer.writeString(offsets[1], object.title);
@@ -95,11 +95,11 @@ Playlist _playlistDeserialize(
 ) {
   final object = Playlist();
   object.id = id;
-  object.items = reader.readObjectList<PlaylistItem>(
+  object.items = reader.readObjectList<MixItemInfo>(
     offsets[0],
-    PlaylistItemSchema.deserialize,
+    MixItemInfoSchema.deserialize,
     allOffsets,
-    PlaylistItem(),
+    MixItemInfo(),
   );
   object.title = reader.readStringOrNull(offsets[1]);
   return object;
@@ -113,11 +113,11 @@ P _playlistDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readObjectList<PlaylistItem>(
+      return (reader.readObjectList<MixItemInfo>(
         offset,
-        PlaylistItemSchema.deserialize,
+        MixItemInfoSchema.deserialize,
         allOffsets,
-        PlaylistItem(),
+        MixItemInfo(),
       )) as P;
     case 1:
       return (reader.readStringOrNull(offset)) as P;
@@ -518,7 +518,7 @@ extension PlaylistQueryFilter
 extension PlaylistQueryObject
     on QueryBuilder<Playlist, Playlist, QFilterCondition> {
   QueryBuilder<Playlist, Playlist, QAfterFilterCondition> itemsElement(
-      FilterQuery<PlaylistItem> q) {
+      FilterQuery<MixItemInfo> q) {
     return QueryBuilder.apply(this, (query) {
       return query.object(q, r'items');
     });
@@ -587,8 +587,7 @@ extension PlaylistQueryProperty
     });
   }
 
-  QueryBuilder<Playlist, List<PlaylistItem>?, QQueryOperations>
-      itemsProperty() {
+  QueryBuilder<Playlist, List<MixItemInfo>?, QQueryOperations> itemsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'items');
     });
@@ -608,9 +607,9 @@ extension PlaylistQueryProperty
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-const PlaylistItemSchema = Schema(
-  name: r'PlaylistItem',
-  id: -7448504014523809551,
+const MixItemInfoSchema = Schema(
+  name: r'MixItemInfo',
+  id: 5739680447547843202,
   properties: {
     r'id': PropertySchema(
       id: 0,
@@ -623,14 +622,14 @@ const PlaylistItemSchema = Schema(
       type: IsarType.double,
     )
   },
-  estimateSize: _playlistItemEstimateSize,
-  serialize: _playlistItemSerialize,
-  deserialize: _playlistItemDeserialize,
-  deserializeProp: _playlistItemDeserializeProp,
+  estimateSize: _mixItemInfoEstimateSize,
+  serialize: _mixItemInfoSerialize,
+  deserialize: _mixItemInfoDeserialize,
+  deserializeProp: _mixItemInfoDeserializeProp,
 );
 
-int _playlistItemEstimateSize(
-  PlaylistItem object,
+int _mixItemInfoEstimateSize(
+  MixItemInfo object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -639,8 +638,8 @@ int _playlistItemEstimateSize(
   return bytesCount;
 }
 
-void _playlistItemSerialize(
-  PlaylistItem object,
+void _mixItemInfoSerialize(
+  MixItemInfo object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -649,19 +648,19 @@ void _playlistItemSerialize(
   writer.writeDouble(offsets[1], object.volume);
 }
 
-PlaylistItem _playlistItemDeserialize(
+MixItemInfo _mixItemInfoDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = PlaylistItem();
+  final object = MixItemInfo();
   object.id = reader.readString(offsets[0]);
   object.volume = reader.readDouble(offsets[1]);
   return object;
 }
 
-P _playlistItemDeserializeProp<P>(
+P _mixItemInfoDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -677,9 +676,9 @@ P _playlistItemDeserializeProp<P>(
   }
 }
 
-extension PlaylistItemQueryFilter
-    on QueryBuilder<PlaylistItem, PlaylistItem, QFilterCondition> {
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idEqualTo(
+extension MixItemInfoQueryFilter
+    on QueryBuilder<MixItemInfo, MixItemInfo, QFilterCondition> {
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -692,7 +691,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -707,7 +706,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idLessThan(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -722,7 +721,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idBetween(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -741,7 +740,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idStartsWith(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -754,7 +753,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idEndsWith(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -767,7 +766,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idContains(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idContains(
       String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -779,7 +778,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idMatches(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -791,7 +790,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> idIsEmpty() {
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -800,8 +799,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
-      idIsNotEmpty() {
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> idIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'id',
@@ -810,7 +808,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> volumeEqualTo(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> volumeEqualTo(
     double value, {
     double epsilon = Query.epsilon,
   }) {
@@ -823,7 +821,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition>
       volumeGreaterThan(
     double value, {
     bool include = false,
@@ -839,8 +837,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition>
-      volumeLessThan(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> volumeLessThan(
     double value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -855,7 +852,7 @@ extension PlaylistItemQueryFilter
     });
   }
 
-  QueryBuilder<PlaylistItem, PlaylistItem, QAfterFilterCondition> volumeBetween(
+  QueryBuilder<MixItemInfo, MixItemInfo, QAfterFilterCondition> volumeBetween(
     double lower,
     double upper, {
     bool includeLower = true,
@@ -875,5 +872,5 @@ extension PlaylistItemQueryFilter
   }
 }
 
-extension PlaylistItemQueryObject
-    on QueryBuilder<PlaylistItem, PlaylistItem, QFilterCondition> {}
+extension MixItemInfoQueryObject
+    on QueryBuilder<MixItemInfo, MixItemInfo, QFilterCondition> {}

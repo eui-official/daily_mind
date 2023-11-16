@@ -13,6 +13,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   final engine = WidgetsFlutterBinding.ensureInitialized();
+  await db.onInit();
   await EasyLocalization.ensureInitialized();
   await localNotifications.onInit();
 
@@ -20,8 +21,6 @@ void main() async {
     url: Env.supaBaseProjectUrl,
     anonKey: Env.supaBaseAnonKey,
   );
-
-  await db.onInit();
 
   final backgroundHandler = await AudioService.init(
     builder: () => DailyMindBackgroundHandler(),

@@ -8,11 +8,11 @@ class Playlist {
 
   String? title;
 
-  List<PlaylistItem>? items;
+  List<MixItemInfo>? items;
 }
 
 @embedded
-class PlaylistItem {
+class MixItemInfo {
   late String id;
 
   late double volume;
