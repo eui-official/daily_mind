@@ -10,7 +10,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
 class BaseCard extends HookWidget {
-  final double? imageHeight;
+  final double? height;
   final ImageProvider image;
   final VoidCallback? onTap;
   final Widget content;
@@ -19,7 +19,7 @@ class BaseCard extends HookWidget {
     super.key,
     required this.content,
     required this.image,
-    this.imageHeight,
+    this.height,
     this.onTap,
   });
 
@@ -40,7 +40,7 @@ class BaseCard extends HookWidget {
             children: [
               BaseCardImage(
                 image: image,
-                imageHeight: imageHeight,
+                height: height,
               ),
               BaseCardGradient(color: backgroundColor),
               Positioned.fill(child: content),

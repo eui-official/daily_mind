@@ -16,19 +16,16 @@ class VolumeSlider extends HookWidget {
   Widget build(BuildContext context) {
     final volume = useState(initVolume);
 
-    return RotatedBox(
-      quarterTurns: 1,
-      child: BaseSliderTheme(
-        slider: Slider(
-          value: volume.value.toDouble(),
-          min: 0,
-          max: 1,
-          divisions: 100,
-          onChanged: (value) {
-            volume.value = value;
-            onVolumeChanged(value);
-          },
-        ),
+    return BaseSliderTheme(
+      slider: Slider(
+        value: volume.value.toDouble(),
+        min: 0,
+        max: 1,
+        divisions: 100,
+        onChanged: (value) {
+          volume.value = value;
+          onVolumeChanged(value);
+        },
       ),
     );
   }

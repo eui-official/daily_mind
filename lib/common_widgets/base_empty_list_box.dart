@@ -23,7 +23,7 @@ class BaseEmptyListBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseCard(
       image: AssetImage(imageUrl),
-      imageHeight: smallCard,
+      height: smallCard,
       content: BaseSpacingContainer(
         alignment: Alignment.bottomCenter,
         child: Row(

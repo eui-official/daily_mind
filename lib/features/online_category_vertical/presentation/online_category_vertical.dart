@@ -27,7 +27,7 @@ class OnlineCategoryVertical extends StatelessWidget {
       builder: (onTap) {
         return BaseCard(
           onTap: onTap,
-          imageHeight: imageHeight ?? largeCard,
+          height: imageHeight ?? largeCard,
           image: CachedNetworkImageProvider(audioCategory.audios.first.image),
           content: BaseContentWithPlayIcon(
             child: Flexible(
