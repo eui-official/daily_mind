@@ -37,7 +37,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
     return Container(
       height: spacing(6),
       margin: EdgeInsets.symmetric(
-        vertical: kBottomNavigationBarHeight * 1.75,
+        vertical: kBottomNavigationBarHeight * 1.25,
         horizontal: spacing(2),
       ),
       child: BaseBackdropFilter(
@@ -50,10 +50,13 @@ class BaseMiniPlayer extends HookConsumerWidget {
             child: Row(
               children: space(
                 [
-                  AnimatedSwitcher(
-                    key: ValueKey(leading.hashCode),
-                    duration: defaultDuration,
-                    child: leading,
+                  Container(
+                    padding: EdgeInsets.only(left: spacing()),
+                    child: AnimatedSwitcher(
+                      key: ValueKey(leading.hashCode),
+                      duration: defaultDuration,
+                      child: leading,
+                    ),
                   ),
                   Flexible(
                     child: Column(

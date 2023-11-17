@@ -9,26 +9,28 @@ class InternetConnectionNotice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: spacing(2),
-          vertical: spacing(3),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Flexible(
-              child: BaseHeaderWithDescription(
-                name: 'noInternetConnection'.tr(),
-                description: 'noInternetNotice'.tr(),
-                headerAction: IconButton(
-                  onPressed: context.pop,
-                  icon: const Icon(Icons.close),
+    return Material(
+      child: SafeArea(
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: spacing(2),
+            vertical: spacing(3),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Flexible(
+                child: BaseHeaderWithDescription(
+                  name: 'noInternetConnection'.tr(),
+                  description: 'noInternetNotice'.tr(),
+                  headerAction: IconButton(
+                    onPressed: context.pop,
+                    icon: const Icon(Icons.close),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

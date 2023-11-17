@@ -82,7 +82,6 @@ dependencies:
   pausable_timer: ^3.1.0+3
   adaptive_dialog: ^1.10.0
   bottom_sheet: ^4.0.0
-  modal_bottom_sheet: ^3.0.0-pre
   isar_flutter_libs: ^3.1.0+1
 dev_dependencies:
   flutter_test:

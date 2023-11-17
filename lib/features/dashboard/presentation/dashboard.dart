@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_providers/config_provider.dart';
+import 'package:daily_mind/common_widgets/fade_indexed_stack.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
@@ -45,7 +46,7 @@ class Dashboard extends HookConsumerWidget {
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              IndexedStack(
+              FadeIndexedStack(
                 index: appNavigationBarState.index,
                 children: children,
               ),
