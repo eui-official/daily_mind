@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_widgets/base_reactive_text_field.dart';
-import 'package:daily_mind/common_widgets/base_spacing_container.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/features/focus_mode_task_new_flow/presentation/focus_mode_task_icon.dart';
 import 'package:daily_mind/features/focus_mode_task_new_flow/presentation/focus_mode_task_working_sessions.dart';
 import 'package:daily_mind/theme/common.dart';

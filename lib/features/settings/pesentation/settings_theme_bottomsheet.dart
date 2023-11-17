@@ -1,4 +1,3 @@
-import 'package:daily_mind/common_widgets/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_list_view_header.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/db/db.dart';

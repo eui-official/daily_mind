@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,7 @@ class BaseContainerList<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(spacing(2)),
+    return BaseSpacingContainerHorizontal(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: space(

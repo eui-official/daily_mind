@@ -26,7 +26,7 @@ class AppBarScrollview extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            expandedHeight: context.height * 0.15,
+            expandedHeight: kToolbarHeight * 2,
             forceMaterialTransparency: true,
             centerTitle: false,
           ),

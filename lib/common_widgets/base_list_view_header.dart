@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_spacing_container.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

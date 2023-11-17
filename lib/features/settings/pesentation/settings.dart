@@ -6,6 +6,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_color.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_version.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,49 +23,52 @@ class Settings extends StatelessWidget {
           const BaseBackground(),
           AppBarScrollview(
             title: 'settings'.tr(),
-            children: [
-              BaseContainerList(
-                title: 'styling'.tr(),
-                items: const [
-                  SettingsColor(),
-                ],
-              ),
-              BaseContainerList(
-                title: 'feedback'.tr(),
-                items: [
-                  BaseListTile(
-                    onTap: () {
-                      inAppReview.openStoreListing(appStoreId: appStoreId);
-                    },
-                    title: Text('rating'.tr()),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(spacing(2)),
-                      topRight: Radius.circular(spacing(2)),
+            children: space(
+              [
+                BaseContainerList(
+                  title: 'styling'.tr(),
+                  items: const [
+                    SettingsColor(),
+                  ],
+                ),
+                BaseContainerList(
+                  title: 'feedback'.tr(),
+                  items: [
+                    BaseListTile(
+                      onTap: () {
+                        inAppReview.openStoreListing(appStoreId: appStoreId);
+                      },
+                      title: Text('rating'.tr()),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(spacing(2)),
+                        topRight: Radius.circular(spacing(2)),
+                      ),
                     ),
-                  ),
-                  BaseListTile(
-                    onTap: () {
-                      launchUrl(Uri.parse('https://m.me/eui.dailymind'));
-                    },
-                    title: Text('sendFeedback'.tr()),
-                    subtitle: Text(
-                      'sendFeedbackDescription'.tr(),
-                      style: const TextStyle(color: secondaryTextColor),
+                    BaseListTile(
+                      onTap: () {
+                        launchUrl(Uri.parse('https://m.me/eui.dailymind'));
+                      },
+                      title: Text('sendFeedback'.tr()),
+                      subtitle: Text(
+                        'sendFeedbackDescription'.tr(),
+                        style: const TextStyle(color: secondaryTextColor),
+                      ),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(spacing(2)),
+                        bottomRight: Radius.circular(spacing(2)),
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(spacing(2)),
-                      bottomRight: Radius.circular(spacing(2)),
-                    ),
-                  ),
-                ],
-              ),
-              BaseContainerList(
-                title: 'system'.tr(),
-                items: const [
-                  SettingsVersion(),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                BaseContainerList(
+                  title: 'system'.tr(),
+                  items: const [
+                    SettingsVersion(),
+                  ],
+                ),
+              ],
+              height: spacing(3),
+            ),
           )
         ],
       ),
