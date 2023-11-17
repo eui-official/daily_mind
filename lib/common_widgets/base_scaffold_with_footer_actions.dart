@@ -4,11 +4,11 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BaseScaffoldSheet extends StatelessWidget {
+class BaseScaffoldWithFooterActions extends StatelessWidget {
   final Widget child;
   final List<Widget> footerButtons;
 
-  const BaseScaffoldSheet({
+  const BaseScaffoldWithFooterActions({
     super.key,
     this.footerButtons = const [],
     required this.child,

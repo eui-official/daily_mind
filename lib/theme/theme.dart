@@ -18,19 +18,14 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     background: background,
     scaffoldBackground: background,
     useMaterial3: true,
-    swapLegacyOnMaterial3: true,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-    blendLevel: 13,
     error: red,
     subThemesData: FlexSubThemesData(
       alignedDropdown: true,
-      blendOnLevel: 20,
       inputDecoratorFocusedHasBorder: false,
       inputDecoratorUnfocusedHasBorder: false,
       inputDecoratorUnfocusedBorderIsColored: false,
       inputDecoratorRadius: spacing(2),
-      useM2StyleDividerInM3: true,
-      useTextTheme: true,
     ),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -31,9 +32,10 @@ class MixMiniPlayerImages extends HookConsumerWidget {
         );
       },
       options: CarouselOptions(
-        autoPlay: true,
+        autoPlay: mixState.mixItems.length > 1,
         aspectRatio: 1,
         viewportFraction: 1,
+        autoPlayAnimationDuration: shortDuration,
       ),
     );
   }

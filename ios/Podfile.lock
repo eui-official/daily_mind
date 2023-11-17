@@ -1,6 +1,4 @@
 PODS:
-  - advanced_in_app_review (0.0.1):
-    - Flutter
   - app_links (0.0.1):
     - Flutter
   - audio_service (0.0.1):
@@ -44,7 +42,6 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - advanced_in_app_review (from `.symlinks/plugins/advanced_in_app_review/ios`)
   - app_links (from `.symlinks/plugins/app_links/ios`)
   - audio_service (from `.symlinks/plugins/audio_service/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
@@ -69,8 +66,6 @@ SPEC REPOS:
     - ReachabilitySwift
 
 EXTERNAL SOURCES:
-  advanced_in_app_review:
-    :path: ".symlinks/plugins/advanced_in_app_review/ios"
   app_links:
     :path: ".symlinks/plugins/app_links/ios"
   audio_service:
@@ -107,7 +102,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
-  advanced_in_app_review: fe8fd50b8670cb3dbe67e4c26ca643f7aea8dbb8
   app_links: 5ef33d0d295a89d9d16bb81b0e3b0d5f70d6c875
   audio_service: f509d65da41b9521a61f1c404dd58651f265a567
   audio_session: 4f3e461722055d21515cf3261b64c973c062f345

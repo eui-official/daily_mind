@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_background.dart';
-import 'package:daily_mind/common_widgets/base_stack_with_bottom_action.dart';
+import 'package:daily_mind/common_widgets/base_scaffold_with_footer_actions.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/common_widgets/base_task_form/presentation/base_task_form_content.dart';
@@ -65,18 +65,20 @@ class BaseTaskForm extends HookWidget {
       child: Stack(
         children: [
           const BaseBackground(),
-          BaseStackWithBottomAction(
-            bottom: ReactiveFormConsumer(
-              builder: (context, formGroup, child) {
-                return ElevatedButton(
-                  onPressed: formGroup.valid ? onPressedInternal : emptyNull,
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size.fromHeight(48),
-                  ),
-                  child: Text(buttonTitle),
-                );
-              },
-            ),
+          BaseScaffoldWithFooterActions(
+            footerButtons: [
+              ReactiveFormConsumer(
+                builder: (context, formGroup, child) {
+                  return ElevatedButton(
+                    onPressed: formGroup.valid ? onPressedInternal : emptyNull,
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size.fromHeight(48),
+                    ),
+                    child: Text(buttonTitle),
+                  );
+                },
+              )
+            ],
             child: AppBarScrollview(
               title: title,
               children: const [
