@@ -15,11 +15,16 @@ mixin BaseAudioVariables on BaseAudioHandler {
   bool isAutoPlayNext = true;
   Timer? timer;
 
-  List<MixItem> mixItems = [];
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
 
   StreamSubscription<Duration?>? onStreamDuration;
   StreamSubscription<Duration>? onStreamPosition;
+}
+
+mixin BaseAudioMixVariables on BaseAudioHandler {
+  BehaviorSubject<List<MixItem>> onStreamMixItems = BehaviorSubject()..add([]);
+
+  List<MixItem> get mixItems => onStreamMixItems.value;
 }
 
 mixin BaseAudioOnHoldVariables on BaseAudioHandler {

@@ -39,7 +39,7 @@ class MixPlayer extends HookConsumerWidget {
     return BaseScaffold(
       footerButtons: [
         MixCollectionButtonSwitcher(
-          isCanAddNewMix: mixNotifier.isCanAddANewMix,
+          isCanAddNewMix: true,
           onDeleteMix: mixNotifier.onDeleteMix,
           onSaveMix: onSaveMix,
         ),

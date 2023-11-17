@@ -8,7 +8,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
-import 'package:daily_mind/features/mix/application/mix.dart';
+import 'package:daily_mind/extensions/list.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -25,30 +25,6 @@ class MixdNotifier extends StateNotifier<MixState> {
   }) : super(initMixState);
 
   List<MixItem> get mixItems => baseBackgroundHandler.mixItems;
-
-  bool isContain(String id) {
-    if (isNoAudio) {
-      return false;
-    }
-
-    final item = mixItems.where((state) => state.audio.id == id);
-
-    return item.isNotEmpty;
-  }
-
-  bool get isNoAudio => mixItems.isEmpty;
-
-  bool get isCanAddANewMix {
-    if (isNoAudio) {
-      return false;
-    }
-
-    return onComplareMix(
-      state.title,
-      playlist,
-      state.recentPlaylist,
-    );
-  }
 
   Playlist get playlist {
     final items = mixItems.map((item) {
@@ -82,7 +58,7 @@ class MixdNotifier extends StateNotifier<MixState> {
   }
 
   void onSelect(AudioOffline audio) {
-    if (isContain(audio.id)) {
+    if (mixItems.isContain(audio.id)) {
       final item = mixItems.firstWhere((item) => item.audio.id == audio.id);
       baseBackgroundHandler.onRemoveMixItem(item);
     } else {

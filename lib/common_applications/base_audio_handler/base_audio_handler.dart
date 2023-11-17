@@ -34,6 +34,7 @@ class DailyMindBackgroundHandler extends BaseAudioHandler
     with
         SeekHandler,
         BaseAudioVariables,
+        BaseAudioMixVariables,
         BaseTaskVariables,
         BaseAudioOnHoldVariables {
   DailyMindBackgroundHandler() {
