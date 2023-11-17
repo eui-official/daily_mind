@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/features/audio_card/presentation/audio_card_content.dart';
-import 'package:daily_mind/theme/common.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -24,21 +24,21 @@ class BaseAudioCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: circularRadius(2),
-            border: Border.all(
-              width: 3,
-              color:
-                  isSelected ? context.theme.primaryColor : Colors.transparent,
+        BaseCard(
+          image: image,
+          onTap: onTap,
+          content: AudioCardContent(name: name),
+        ),
+        if (isSelected)
+          Positioned(
+            top: spacing(),
+            right: spacing(),
+            child: Icon(
+              Icons.check_circle_rounded,
+              size: spacing(2),
+              color: context.theme.primaryColor,
             ),
           ),
-          child: BaseCard(
-            image: image,
-            onTap: onTap,
-            content: AudioCardContent(name: name),
-          ),
-        ),
       ],
     );
   }
