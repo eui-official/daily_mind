@@ -28,6 +28,15 @@ class MixdNotifier extends StateNotifier<MixState> {
     state = state.copyWith(recentPlaylist: recentPlaylist);
   }
 
+  void onDeleteMix() {
+    final recentPlaylistId = state.recentPlaylist?.id;
+
+    if (recentPlaylistId != null) {
+      db.onDeletePlaylist(recentPlaylistId);
+      state = state.copyWith(recentPlaylist: null);
+    }
+  }
+
   void onPlay(MixItem item) {
     final audio = item.audio;
     final player = item.player;
