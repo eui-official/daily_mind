@@ -40,7 +40,7 @@ class TogglePlayModeButton extends HookWidget {
     );
 
     useEffect(() {
-      Future.delayed(shortDuration, () {
+      Future.delayed(shorterDuration, () {
         if (isPlaying) {
           animationController.forward();
         } else {

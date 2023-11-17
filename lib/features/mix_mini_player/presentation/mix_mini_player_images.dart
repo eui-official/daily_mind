@@ -35,7 +35,7 @@ class MixMiniPlayerImages extends HookConsumerWidget {
         autoPlay: mixState.mixItems.length > 1,
         aspectRatio: 1,
         viewportFraction: 1,
-        autoPlayAnimationDuration: shortDuration,
+        autoPlayAnimationDuration: shorterDuration,
       ),
     );
   }

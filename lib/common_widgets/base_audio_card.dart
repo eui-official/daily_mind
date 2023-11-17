@@ -35,7 +35,6 @@ class BaseAudioCard extends StatelessWidget {
             right: spacing(),
             child: Icon(
               Icons.check_circle_rounded,
-              size: spacing(2),
               color: context.theme.primaryColor,
             ),
           ),

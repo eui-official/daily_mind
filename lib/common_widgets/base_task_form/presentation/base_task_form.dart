@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_background.dart';
-import 'package:daily_mind/common_widgets/base_scaffold_with_footer_actions.dart';
+import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/common_widgets/base_task_form/presentation/base_task_form_content.dart';
@@ -65,7 +65,7 @@ class BaseTaskForm extends HookWidget {
       child: Stack(
         children: [
           const BaseBackground(),
-          BaseScaffoldWithFooterActions(
+          BaseScaffold(
             footerButtons: [
               ReactiveFormConsumer(
                 builder: (context, formGroup, child) {

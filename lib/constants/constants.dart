@@ -10,7 +10,9 @@ const emptyNull = null;
 
 const emptyWidget = SizedBox.shrink();
 
-const shortDuration = Duration(milliseconds: 100);
+const shorterDuration = Duration(milliseconds: 100);
+
+const shortDuration = Duration(milliseconds: 200);
 
 const defaultDuration = Duration(milliseconds: 300);
 

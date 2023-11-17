@@ -1,6 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
-import 'package:daily_mind/common_widgets/base_scaffold_with_footer_actions.dart';
+import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix_player_item/presentation/mix_player_item.dart';
@@ -35,7 +35,7 @@ class MixPlayer extends HookConsumerWidget {
       [mixState],
     );
 
-    return BaseScaffoldWithFooterActions(
+    return BaseScaffold(
       footerButtons: [
         MixCollectionButtonSwitcher(
           isCanAddNewMix: mixState.isCanAddANewMix,
@@ -45,8 +45,7 @@ class MixPlayer extends HookConsumerWidget {
       ],
       child: Container(
         padding: EdgeInsets.all(spacing(2)),
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
           children: space(
             [
               BaseContentHeader(

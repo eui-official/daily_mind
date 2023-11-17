@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:daily_mind/common_widgets/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
@@ -13,11 +14,11 @@ class BaseMiniPlayer extends HookConsumerWidget {
   final bool isLoading;
   final bool isPlaying;
   final String title;
+  final String subtitle;
   final VoidCallback onPause;
   final VoidCallback onPlay;
   final VoidCallback? onTap;
   final Widget leading;
-  final Widget? subtitle;
 
   const BaseMiniPlayer({
     super.key,
@@ -27,64 +28,69 @@ class BaseMiniPlayer extends HookConsumerWidget {
     required this.onPause,
     required this.onPlay,
     required this.title,
-    this.subtitle,
+    this.subtitle = emptyString,
     this.onTap,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      height: spacing(7),
+      height: spacing(6),
       margin: EdgeInsets.symmetric(
         vertical: kBottomNavigationBarHeight * 1.75,
         horizontal: spacing(2),
       ),
-      decoration: BoxDecoration(
-        color: context.theme.primaryColorDark.withOpacity(0.7),
-        borderRadius: circularRadius(2),
-      ),
-      child: BaseInkWell(
-        onTap: onTap,
-        borderRadius: circularRadius(2),
+      child: BaseBackdropFilter(
+        borderRadius: circularRadius(),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: spacing()),
-          child: Row(
-            children: space(
-              [
-                AnimatedSwitcher(
-                  key: ValueKey(leading.hashCode),
-                  duration: defaultDuration,
-                  child: leading,
-                ),
-                Flexible(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: space(
-                      [
-                        SizedBox(
-                          height: spacing(2),
-                          child: BaseMarquee(
-                            text: title,
-                            style: context.textTheme.bodySmall?.copyWith(
-                              fontWeight: FontWeight.bold,
+          color: context.theme.primaryColor.withOpacity(0.25),
+          child: BaseInkWell(
+            onTap: onTap,
+            borderRadius: circularRadius(),
+            child: Row(
+              children: space(
+                [
+                  AnimatedSwitcher(
+                    key: ValueKey(leading.hashCode),
+                    duration: defaultDuration,
+                    child: leading,
+                  ),
+                  Flexible(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: space(
+                        [
+                          SizedBox(
+                            height: spacing(2),
+                            child: BaseMarquee(
+                              text: title,
+                              style: context.textTheme.labelMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        subtitle,
-                      ].whereNotNull().toList(),
-                      height: spacing(),
+                          if (subtitle.isNotEmpty)
+                            Text(
+                              subtitle,
+                              style: context.textTheme.bodySmall?.copyWith(
+                                color: secondaryTextColor,
+                              ),
+                            )
+                        ].whereNotNull().toList(),
+                        height: spacing(0.5),
+                      ),
                     ),
                   ),
-                ),
-                BaseMiniPlayerToggleButton(
-                  isLoading: isLoading,
-                  isPlaying: isPlaying,
-                  onPause: onPause,
-                  onPlay: onPlay,
-                ),
-              ],
-              width: spacing(2),
+                  BaseMiniPlayerToggleButton(
+                    isLoading: isLoading,
+                    isPlaying: isPlaying,
+                    onPause: onPause,
+                    onPlay: onPlay,
+                  ),
+                ],
+                width: spacing(),
+              ),
             ),
           ),
         ),
