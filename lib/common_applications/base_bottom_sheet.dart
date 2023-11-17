@@ -13,7 +13,7 @@ Future<T?> onShowBottomSheet<T>(
     isDismissible: isDismissible,
     isScrollControlled: true,
     showDragHandle: true,
-    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+    useSafeArea: true,
     builder: (BuildContext context) {
       return child;
     },
