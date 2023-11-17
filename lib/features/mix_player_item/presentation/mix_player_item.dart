@@ -15,9 +15,8 @@ class MixPlayerItem extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mixState = ref.read(mixProvider);
-    final mixNotifier = ref.read(mixProvider.notifier);
-    final index = mixState.mixItems.indexOf(item);
+    final mixNotifier = ref.watch(mixProvider.notifier);
+    final index = mixNotifier.mixItems.indexOf(item);
 
     final player = item.player;
     final audio = item.audio;

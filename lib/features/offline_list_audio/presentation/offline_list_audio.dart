@@ -16,14 +16,13 @@ class OfflineListAudio extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mixNotifier = ref.read(mixProvider.notifier);
-    final mixState = ref.watch(mixProvider);
+    final mixNotifier = ref.watch(mixProvider.notifier);
 
     return BaseGridItemsHeader(
       padding: padding,
       items: offlineAudios,
       onItemIndexBuilder: (context, index, audio) {
-        final isSelected = mixState.isContain(audio.id);
+        final isSelected = mixNotifier.isContain(audio.id);
 
         return OfflineAudioCard(
           backgroundKey: index == 0 ? soundKey : ValueKey(audio.id),

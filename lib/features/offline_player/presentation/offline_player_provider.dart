@@ -13,7 +13,7 @@ class OfflinePlayerNotifier extends StateNotifier<void> {
   }) : super({});
 
   void onUpdateVolume(double volume, String itemId, int playlistId) {
-    backgroundHandler.onUpdateOfflineVolume(volume, itemId, playlistId);
+    backgroundHandler.onUpdateMixVolume(volume, itemId, playlistId);
   }
 }
 

@@ -7,7 +7,7 @@ import 'package:daily_mind/common_applications/online_audio_player/application/o
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/schemas/task.dart';
-import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
+import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:rxdart/rxdart.dart';
 
 mixin BaseAudioVariables on BaseAudioHandler {
@@ -15,10 +15,9 @@ mixin BaseAudioVariables on BaseAudioHandler {
   bool isAutoPlayNext = true;
   Timer? timer;
 
-  List<OfflinePlayerItem> offlinePlayerItems = [];
+  List<MixItem> mixItems = [];
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
 
-  BehaviorSubject<int> onStreamPlaylistId = BehaviorSubject();
   StreamSubscription<Duration?>? onStreamDuration;
   StreamSubscription<Duration>? onStreamPosition;
 }

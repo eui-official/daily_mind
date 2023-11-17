@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MixState {
   String get title => throw _privateConstructorUsedError;
-  List<MixItem> get mixItems => throw _privateConstructorUsedError;
   Playlist? get recentPlaylist => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +29,7 @@ abstract class $MixStateCopyWith<$Res> {
   factory $MixStateCopyWith(MixState value, $Res Function(MixState) then) =
       _$MixStateCopyWithImpl<$Res, MixState>;
   @useResult
-  $Res call({String title, List<MixItem> mixItems, Playlist? recentPlaylist});
+  $Res call({String title, Playlist? recentPlaylist});
 }
 
 /// @nodoc
@@ -47,7 +46,6 @@ class _$MixStateCopyWithImpl<$Res, $Val extends MixState>
   @override
   $Res call({
     Object? title = null,
-    Object? mixItems = null,
     Object? recentPlaylist = freezed,
   }) {
     return _then(_value.copyWith(
@@ -55,10 +53,6 @@ class _$MixStateCopyWithImpl<$Res, $Val extends MixState>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      mixItems: null == mixItems
-          ? _value.mixItems
-          : mixItems // ignore: cast_nullable_to_non_nullable
-              as List<MixItem>,
       recentPlaylist: freezed == recentPlaylist
           ? _value.recentPlaylist
           : recentPlaylist // ignore: cast_nullable_to_non_nullable
@@ -75,7 +69,7 @@ abstract class _$$MixStateImplCopyWith<$Res>
       __$$MixStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, List<MixItem> mixItems, Playlist? recentPlaylist});
+  $Res call({String title, Playlist? recentPlaylist});
 }
 
 /// @nodoc
@@ -90,7 +84,6 @@ class __$$MixStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? mixItems = null,
     Object? recentPlaylist = freezed,
   }) {
     return _then(_$MixStateImpl(
@@ -98,10 +91,6 @@ class __$$MixStateImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      mixItems: null == mixItems
-          ? _value._mixItems
-          : mixItems // ignore: cast_nullable_to_non_nullable
-              as List<MixItem>,
       recentPlaylist: freezed == recentPlaylist
           ? _value.recentPlaylist
           : recentPlaylist // ignore: cast_nullable_to_non_nullable
@@ -113,29 +102,16 @@ class __$$MixStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MixStateImpl extends _MixState {
-  const _$MixStateImpl(
-      {required this.title,
-      required final List<MixItem> mixItems,
-      this.recentPlaylist})
-      : _mixItems = mixItems,
-        super._();
+  const _$MixStateImpl({required this.title, this.recentPlaylist}) : super._();
 
   @override
   final String title;
-  final List<MixItem> _mixItems;
-  @override
-  List<MixItem> get mixItems {
-    if (_mixItems is EqualUnmodifiableListView) return _mixItems;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_mixItems);
-  }
-
   @override
   final Playlist? recentPlaylist;
 
   @override
   String toString() {
-    return 'MixState(title: $title, mixItems: $mixItems, recentPlaylist: $recentPlaylist)';
+    return 'MixState(title: $title, recentPlaylist: $recentPlaylist)';
   }
 
   @override
@@ -144,14 +120,12 @@ class _$MixStateImpl extends _MixState {
         (other.runtimeType == runtimeType &&
             other is _$MixStateImpl &&
             (identical(other.title, title) || other.title == title) &&
-            const DeepCollectionEquality().equals(other._mixItems, _mixItems) &&
             (identical(other.recentPlaylist, recentPlaylist) ||
                 other.recentPlaylist == recentPlaylist));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title,
-      const DeepCollectionEquality().hash(_mixItems), recentPlaylist);
+  int get hashCode => Object.hash(runtimeType, title, recentPlaylist);
 
   @JsonKey(ignore: true)
   @override
@@ -163,14 +137,11 @@ class _$MixStateImpl extends _MixState {
 abstract class _MixState extends MixState {
   const factory _MixState(
       {required final String title,
-      required final List<MixItem> mixItems,
       final Playlist? recentPlaylist}) = _$MixStateImpl;
   const _MixState._() : super._();
 
   @override
   String get title;
-  @override
-  List<MixItem> get mixItems;
   @override
   Playlist? get recentPlaylist;
   @override

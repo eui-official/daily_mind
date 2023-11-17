@@ -31,8 +31,7 @@ extension BaseTask on DailyMindBackgroundHandler {
 
   void onTaskStart() {
     onOnlineDispose();
-    onOfflineDispose();
-    audioType = AudioTypes.task;
+    onMixDispose();
 
     onTaskUpdateStep(FocusModeSessionSteps.focusing);
     onTaskStartTimer(pomodoroSessionMaxSeconds);

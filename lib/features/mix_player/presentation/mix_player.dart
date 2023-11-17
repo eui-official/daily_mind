@@ -18,8 +18,9 @@ class MixPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mixState = ref.watch(mixProvider);
-    final mixNotifier = ref.read(mixProvider.notifier);
-    final mixItems = mixState.mixItems;
+    final mixNotifier = ref.watch(mixProvider.notifier);
+
+    final mixItems = mixNotifier.mixItems;
 
     final onSaveMix = useCallback(
       () async {
@@ -38,7 +39,7 @@ class MixPlayer extends HookConsumerWidget {
     return BaseScaffold(
       footerButtons: [
         MixCollectionButtonSwitcher(
-          isCanAddNewMix: mixState.isCanAddANewMix,
+          isCanAddNewMix: mixNotifier.isCanAddANewMix,
           onDeleteMix: mixNotifier.onDeleteMix,
           onSaveMix: onSaveMix,
         ),

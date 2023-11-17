@@ -13,19 +13,19 @@ import 'package:daily_mind/common_applications/sound_effect_audio_player.dart';
 import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_domains/audio_offline.dart';
-import 'package:daily_mind/constants/constants.dart';
+
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/constants/offline_audio_sources.dart';
 import 'package:daily_mind/constants/tasks.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
-import 'package:daily_mind/features/offline_player/domain/offline_player_item.dart';
+import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 part 'base_audio_on_hold.dart';
-part 'base_offline_player.dart';
+part 'base_mix_player.dart';
 part 'base_online_player.dart';
 part 'base_timer.dart';
 part 'base_task.dart';
@@ -45,28 +45,36 @@ class DailyMindBackgroundHandler extends BaseAudioHandler
     await session.configure(const AudioSessionConfiguration.music());
   }
 
+  void onUpdatePlaybackStatePlaying(bool isPlaying) {
+    playbackState.add(
+      playbackState.value.copyWith(
+        playing: isPlaying,
+      ),
+    );
+  }
+
   @override
   Future<void> play() async {
-    if (audioType == AudioTypes.task || audioType == AudioTypes.offline) {
-      onPlayOffline();
+    if (audioType == AudioTypes.mix) {
+      onPlayMix();
     } else if (audioType == AudioTypes.online) {
       onPlayOnline();
     }
 
-    playbackState.add(playbackState.value.copyWith(playing: true));
+    onUpdatePlaybackStatePlaying(true);
 
     return super.play();
   }
 
   @override
   Future<void> pause() async {
-    if (audioType == AudioTypes.task || audioType == AudioTypes.offline) {
-      onPauseOffline();
+    if (audioType == AudioTypes.mix) {
+      onPauseMix();
     } else if (audioType == AudioTypes.online) {
       onPauseOnline();
     }
 
-    playbackState.add(playbackState.value.copyWith(playing: false));
+    onUpdatePlaybackStatePlaying(false);
 
     return super.pause();
   }

@@ -11,12 +11,12 @@ class MixMiniPlayerImages extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mixState = ref.watch(mixProvider);
+    final mixNotifier = ref.watch(mixProvider.notifier);
 
     return CarouselSlider.builder(
-      itemCount: mixState.mixItems.length,
+      itemCount: mixNotifier.mixItems.length,
       itemBuilder: (context, index, realIndex) {
-        final item = mixState.mixItems[index];
+        final item = mixNotifier.mixItems[index];
         final audio = item.audio;
 
         return Container(
@@ -32,7 +32,7 @@ class MixMiniPlayerImages extends HookConsumerWidget {
         );
       },
       options: CarouselOptions(
-        autoPlay: mixState.mixItems.length > 1,
+        autoPlay: mixNotifier.mixItems.length > 1,
         aspectRatio: 1,
         viewportFraction: 1,
         autoPlayAnimationDuration: shorterDuration,
