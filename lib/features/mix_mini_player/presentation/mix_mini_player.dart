@@ -18,6 +18,8 @@ class MixMiniPlayer extends HookConsumerWidget {
     final isPlaying = playBackState.data?.playing ?? false;
     final mixItemsSnapshot = useStream(baseBackgroundHandler.onStreamMixItems);
     final mixItems = mixItemsSnapshot.data ?? [];
+    final mediaItemSnapshot = useStream(baseBackgroundHandler.mediaItem);
+    final mediaItem = mediaItemSnapshot.data;
 
     final title = mixItems.map((item) {
       final audio = item.audio;
@@ -37,7 +39,7 @@ class MixMiniPlayer extends HookConsumerWidget {
 
     return BaseMiniPlayer(
       onTap: onOpenMiniPlayer,
-      title: title,
+      title: mediaItem?.title ?? title,
       subtitle: '${mixItems.length} âm thanh'.tr(),
       leading: const MixMiniPlayerImages(),
       isLoading: false,

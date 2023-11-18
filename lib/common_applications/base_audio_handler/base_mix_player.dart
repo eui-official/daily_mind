@@ -1,17 +1,39 @@
 part of 'base_audio_handler.dart';
 
 extension BaseMixPlayer on DailyMindBackgroundHandler {
-  void onInitMix(List<MixItem> items) async {
+  void onInitMix(Playlist playlist) async {
     audioType = AudioTypes.mix;
     await onMixDispose();
     await onOnlineDispose();
 
-    if (items.isNotEmpty) {
-      for (var item in items) {
+    final itemInfos = playlist.items ?? [];
+    final mixItems = itemInfos.map((info) {
+      final player = GaplessAudioPlayer();
+      player.setVolume(info.volume);
+
+      return MixItem(
+        player: player,
+        audio: info.id.onGetOfflineAudio,
+      );
+    }).toList();
+
+    if (mixItems.isNotEmpty) {
+      for (var item in mixItems) {
         item.player.onSetSource(item.audio.id);
         item.player.setVolume(item.player.volume);
-        mixItems.add(item);
       }
+
+      onStreamMixItems.add(mixItems);
+
+      final firstItem = mixItems.first;
+
+      mediaItem.add(
+        MediaItem(
+          id: firstItem.audio.id,
+          title: playlist.title ?? emptyString,
+          artUri: await onGetSoundImageFromAsset(firstItem.audio.image),
+        ),
+      );
 
       play();
       onInitPlaybackState();
