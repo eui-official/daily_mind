@@ -12,8 +12,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class BaseMiniPlayer extends HookConsumerWidget {
   final bool isLoading;
   final bool isPlaying;
-  final String title;
   final String subtitle;
+  final String title;
   final VoidCallback onPause;
   final VoidCallback onPlay;
   final VoidCallback? onTap;
@@ -21,14 +21,14 @@ class BaseMiniPlayer extends HookConsumerWidget {
 
   const BaseMiniPlayer({
     super.key,
-    required this.leading,
     required this.isLoading,
     required this.isPlaying,
+    required this.leading,
     required this.onPause,
     required this.onPlay,
     required this.title,
-    this.subtitle = emptyString,
     this.onTap,
+    this.subtitle = emptyString,
   });
 
   @override
