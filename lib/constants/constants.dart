@@ -18,6 +18,8 @@ const defaultDuration = Duration(milliseconds: 300);
 
 const mediumDuration = Duration(milliseconds: 600);
 
-const longDuration = Duration(minutes: 1);
+const longDuration = Duration(seconds: 1);
+
+const longerDuration = Duration(minutes: 1);
 
 const appStoreId = '6466182407';

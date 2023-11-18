@@ -54,7 +54,7 @@ class MixdNotifier extends StateNotifier<MixState> {
     );
   }
 
-  void onAddNewMix() async {
+  Future<void> onAddNewMix() async {
     final id = await db.onAddNewPlaylist(playlist);
 
     final recentPlaylist = db.onGetPlaylistById(id);

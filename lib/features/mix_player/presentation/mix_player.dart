@@ -1,4 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:daily_mind/common_applications/base_snackbar.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
@@ -30,7 +31,11 @@ class MixPlayer extends HookConsumerWidget {
             message: 'Vui lòng nhập tên'.tr(),
           );
         } else {
-          mixNotifier.onAddNewMix();
+          await mixNotifier.onAddNewMix();
+
+          if (context.mounted) {
+            onShowSnackbar(context, content: 'Đã lưu vào bộ sưu tập'.tr());
+          }
         }
       },
       [mixState],
