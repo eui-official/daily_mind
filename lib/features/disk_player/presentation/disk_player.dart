@@ -1,6 +1,6 @@
 import 'package:daily_mind/features/disk_player/presentation/disk_player_circle.dart';
 import 'package:daily_mind/features/disk_player/presentation/disk_player_pattern.dart';
-import 'package:daily_mind/features/offline_player/presentation/offline_player_toggle_button.dart';
+import 'package:daily_mind/features/player_toggle_button/presentation/player_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -35,7 +35,7 @@ class DiskPlayer extends StatelessWidget {
           color: context.theme.primaryColorDark.withOpacity(0.5),
           divideSize: 6,
         ),
-        const OfflinePlayerToggleButton(),
+        const PlayerToggleButton(),
       ],
     );
   }

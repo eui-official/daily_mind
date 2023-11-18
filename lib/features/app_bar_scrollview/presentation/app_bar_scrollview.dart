@@ -3,6 +3,7 @@ import 'package:get/utils.dart';
 
 class AppBarScrollview extends StatelessWidget {
   final List<Widget> children;
+  final PreferredSizeWidget? bottom;
   final ScrollPhysics? physics;
   final String title;
 
@@ -10,6 +11,7 @@ class AppBarScrollview extends StatelessWidget {
     super.key,
     required this.children,
     required this.title,
+    this.bottom,
     this.physics,
   });
 
@@ -26,9 +28,10 @@ class AppBarScrollview extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            bottom: bottom,
+            centerTitle: false,
             expandedHeight: kToolbarHeight * 2,
             forceMaterialTransparency: true,
-            centerTitle: false,
           ),
           SliverPadding(
             padding: const EdgeInsets.only(

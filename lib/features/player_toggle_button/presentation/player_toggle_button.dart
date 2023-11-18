@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OfflinePlayerToggleButton extends HookConsumerWidget {
-  const OfflinePlayerToggleButton({
+class PlayerToggleButton extends HookConsumerWidget {
+  const PlayerToggleButton({
     super.key,
   });
 
