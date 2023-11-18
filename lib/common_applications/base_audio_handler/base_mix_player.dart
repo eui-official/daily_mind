@@ -18,6 +18,24 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     }
   }
 
+  void onUpdateMediaItem() async {
+    final firstItem = mixItems.first;
+
+    final title = mixItems.map((item) {
+      final audio = item.audio;
+
+      return audio.name.tr();
+    }).join(', ');
+
+    mediaItem.add(
+      MediaItem(
+        id: firstItem.audio.id,
+        title: title,
+        artUri: await onGetSoundImageFromAsset(firstItem.audio.image),
+      ),
+    );
+  }
+
   void onRemoveMixItem(MixItem removeItem) {
     final newMixItems = List<MixItem>.from(mixItems);
     final item = newMixItems.firstWhere((item) => item == removeItem);
@@ -26,6 +44,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     newMixItems.remove(item);
 
     onStreamMixItems.add(newMixItems);
+    onUpdateMediaItem();
   }
 
   void onAddMixItem(MixItem newItem) async {
@@ -38,14 +57,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     player.onSetSource(audio.id);
     player.play();
 
-    mediaItem.add(
-      MediaItem(
-        id: audio.id,
-        title: audio.name.tr(),
-        artUri: await onGetSoundImageFromAsset(audio.image),
-      ),
-    );
-
+    onUpdateMediaItem();
     onInitPlaybackState();
   }
 
