@@ -18,9 +18,9 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     }
   }
 
-  void onRemoveMixItem(MixItem item) {
+  void onRemoveMixItem(MixItem removeItem) {
     final newMixItems = List<MixItem>.from(mixItems);
-    final item = newMixItems.firstWhere((item) => item == item);
+    final item = newMixItems.firstWhere((item) => item == removeItem);
     item.player.onDispose();
 
     newMixItems.remove(item);
@@ -28,12 +28,12 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     onStreamMixItems.add(newMixItems);
   }
 
-  void onAddMixItem(MixItem item) async {
+  void onAddMixItem(MixItem newItem) async {
     audioType = AudioTypes.mix;
-    onStreamMixItems.add([...mixItems, item]);
+    onStreamMixItems.add([...mixItems, newItem]);
 
-    final audio = item.audio;
-    final player = item.player;
+    final audio = newItem.audio;
+    final player = newItem.player;
 
     player.onSetSource(audio.id);
     player.play();

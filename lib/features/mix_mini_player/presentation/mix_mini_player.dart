@@ -1,7 +1,6 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
-import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/features/mix_mini_player/presentation/mix_mini_player_images.dart';
 import 'package:daily_mind/features/mix_player/presentation/mix_player.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -17,9 +16,8 @@ class MixMiniPlayer extends HookConsumerWidget {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final playBackState = useStream(baseBackgroundHandler.playbackState);
     final isPlaying = playBackState.data?.playing ?? false;
-
-    final mixNotifier = ref.watch(mixProvider.notifier);
-    final mixItems = mixNotifier.mixItems;
+    final mixItemsSnapshot = useStream(baseBackgroundHandler.onStreamMixItems);
+    final mixItems = mixItemsSnapshot.data ?? [];
 
     final title = mixItems.map((item) {
       final audio = item.audio;

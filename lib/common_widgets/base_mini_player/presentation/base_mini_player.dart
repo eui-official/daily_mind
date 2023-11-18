@@ -62,15 +62,16 @@ class BaseMiniPlayer extends HookConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: space(
                       [
-                        SizedBox(
-                          height: spacing(2),
-                          child: BaseMarquee(
-                            text: title,
-                            style: context.textTheme.labelMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
+                        if (title.isNotEmpty)
+                          SizedBox(
+                            height: spacing(2),
+                            child: BaseMarquee(
+                              text: title,
+                              style: context.textTheme.labelMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
                         if (subtitle.isNotEmpty)
                           Text(
                             subtitle,
