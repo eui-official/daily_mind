@@ -9,6 +9,7 @@ import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/extensions/list.dart';
+import 'package:daily_mind/features/mix/application/mix.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -39,6 +40,18 @@ class MixdNotifier extends StateNotifier<MixState> {
     return Playlist()
       ..title = state.title
       ..items = items;
+  }
+
+  bool get isCanAddANewMix {
+    if (mixItems.isNoAudio) {
+      return false;
+    }
+
+    return onComplareMix(
+      state.title,
+      playlist,
+      state.recentPlaylist,
+    );
   }
 
   void onAddNewMix() async {

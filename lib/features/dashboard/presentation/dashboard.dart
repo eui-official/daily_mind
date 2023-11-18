@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_providers/config_provider.dart';
+import 'package:daily_mind/common_widgets/base_theme_without_divider.dart';
 import 'package:daily_mind/common_widgets/fade_indexed_stack.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';
@@ -38,23 +39,20 @@ class Dashboard extends HookConsumerWidget {
         return const BirdLoading();
       }
 
-      return Scaffold(
-        extendBody: true,
-        extendBodyBehindAppBar: true,
-        body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              FadeIndexedStack(
-                index: appNavigationBarState.index,
-                children: children,
-              ),
-              const BaseMiniPlayerSwitcher(),
-            ],
+      return BaseThemeWithoutDivider(
+        child: Scaffold(
+          extendBody: true,
+          extendBodyBehindAppBar: true,
+          body: AnnotatedRegion<SystemUiOverlayStyle>(
+            value: SystemUiOverlayStyle.light,
+            child: FadeIndexedStack(
+              index: appNavigationBarState.index,
+              children: children,
+            ),
           ),
+          persistentFooterButtons: const [BaseMiniPlayerSwitcher()],
+          bottomNavigationBar: const AppNavigationBar(),
         ),
-        bottomNavigationBar: const AppNavigationBar(),
       );
     }, [
       appNavigationBarState,

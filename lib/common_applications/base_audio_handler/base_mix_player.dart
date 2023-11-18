@@ -30,6 +30,8 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
   }
 
   void onAddMixItem(MixItem item) async {
+    onStreamMixItems.add([...mixItems, item]);
+
     final audio = item.audio;
     final player = item.player;
 
@@ -45,8 +47,6 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     );
 
     onInitPlaybackState();
-
-    onStreamMixItems.add([...mixItems, item]);
   }
 
   void onInitPlaybackState() async {

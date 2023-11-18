@@ -1,5 +1,6 @@
-import 'package:daily_mind/theme/common.dart';
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class BaseBackdropFilter extends StatelessWidget {
   final BorderRadius borderRadius;
@@ -13,8 +14,16 @@ class BaseBackdropFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(gradient: baseLinearGradient),
+    return ClipRRect(
+      borderRadius: borderRadius,
+      child: Stack(
+        children: [
+          child ?? Container(),
+          Container().frosted(
+            frostColor: context.theme.colorScheme.background,
+          ),
+        ],
+      ),
     );
   }
 }

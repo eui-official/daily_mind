@@ -35,13 +35,11 @@ class BaseMiniPlayer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: spacing(6),
-      margin: EdgeInsets.symmetric(
-        vertical: kBottomNavigationBarHeight * 2,
-        horizontal: spacing(2),
-      ),
+      width: context.width,
+      margin: EdgeInsets.symmetric(horizontal: spacing(2)),
       child: Container(
         decoration: BoxDecoration(
-          color: context.theme.primaryColor.withOpacity(0.25),
+          color: context.theme.primaryColorDark,
           borderRadius: circularRadius(),
         ),
         child: BaseInkWell(
