@@ -91,6 +91,10 @@ class MixdNotifier extends StateNotifier<MixState> {
     );
   }
 
+  void onClearTitle() {
+    state = state.copyWith(title: emptyString);
+  }
+
   void onUpdateTitle(String newTitle) {
     state = state.copyWith(title: newTitle);
   }

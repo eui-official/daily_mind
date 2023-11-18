@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
+import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/features/mix_mini_player/presentation/mix_mini_player_images.dart';
 import 'package:daily_mind/features/mix_player/presentation/mix_player.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -13,6 +14,7 @@ class MixMiniPlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final mixNotifier = ref.read(mixProvider.notifier);
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final playBackState = useStream(baseBackgroundHandler.playbackState);
     final isPlaying = playBackState.data?.playing ?? false;
@@ -28,11 +30,13 @@ class MixMiniPlayer extends HookConsumerWidget {
     }).join(', ');
 
     final onOpenMiniPlayer = useCallback(
-      () {
-        onShowBottomSheet(
+      () async {
+        await onShowBottomSheet(
           context,
           child: const MixPlayer(),
         );
+
+        mixNotifier.onClearTitle();
       },
       [context],
     );
