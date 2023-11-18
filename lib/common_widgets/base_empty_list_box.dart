@@ -2,6 +2,7 @@ import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart'
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/audio_card_sizes.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
 
@@ -44,6 +45,7 @@ class BaseEmptyListBox extends StatelessWidget {
                     subTitle,
                     style: context.textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.bold,
+                      color: secondaryTextColor,
                     ),
                   )
               ],

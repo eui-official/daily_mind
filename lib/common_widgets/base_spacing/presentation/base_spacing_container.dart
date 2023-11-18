@@ -3,21 +3,23 @@ import 'package:flutter/material.dart';
 
 class BaseSpacingContainer extends StatelessWidget {
   final Alignment? alignment;
+  final double size;
   final EdgeInsets? padding;
   final Widget child;
 
   const BaseSpacingContainer({
     super.key,
-    required this.child,
     this.alignment,
     this.padding,
+    this.size = 2,
+    required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: alignment,
-      padding: padding ?? EdgeInsets.all(spacing(2)),
+      padding: EdgeInsets.all(spacing(size)),
       child: child,
     );
   }

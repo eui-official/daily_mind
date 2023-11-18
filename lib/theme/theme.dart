@@ -7,7 +7,7 @@ const background = Color(0xFF07020D);
 const celadon = Color(0xFFB0F2B4);
 const maize = Color(0xFFFFF07C);
 const red = Color(0xFFE83151);
-const secondaryTextColor = Colors.white70;
+const secondaryTextColor = Color(0xFFF4EBD9);
 
 final fontFamily = GoogleFonts.inter().fontFamily;
 
