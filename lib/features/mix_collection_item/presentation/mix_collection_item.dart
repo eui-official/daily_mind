@@ -5,8 +5,8 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/extensions/string.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixCollectionItem extends HookConsumerWidget {
@@ -27,13 +27,17 @@ class MixCollectionItem extends HookConsumerWidget {
     final firstAudioOffline = firstItem.id.onGetOfflineAudio;
 
     return BaseCard(
-      height: spacing(12),
       content: BaseSpacingContainer(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(playlist.title ?? emptyString),
+            Text(
+              playlist.title ?? emptyString,
+              style: context.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
