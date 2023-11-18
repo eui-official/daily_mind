@@ -46,7 +46,7 @@ class BaseGridItemsHeader<T> extends StatelessWidget {
             onItemIndexBuilder: (context, index, item) {
               return StaggeredGridTile.count(
                 crossAxisCellCount: 2,
-                mainAxisCellCount: 1.25,
+                mainAxisCellCount: 1,
                 child: onItemIndexBuilder(
                   context,
                   index,

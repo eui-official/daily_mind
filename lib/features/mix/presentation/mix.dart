@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/offline_list_audio/presentation/offline_list_audio.dart';
+import 'package:daily_mind/features/mix_switch/presentation/mix_switch.dart';
 import 'package:daily_mind/features/tutorial/constant/constant.dart';
 import 'package:daily_mind/features/tutorial/constant/tasks.dart';
 import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
@@ -51,10 +51,8 @@ class Mix extends StatelessWidget {
             const BaseBackground(),
             AppBarScrollview(
               title: 'naturalSounds'.tr(),
-              children: [
-                OfflineListAudio(
-                  padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-                ),
+              children: const [
+                MixSwitch(),
               ],
             ),
           ],

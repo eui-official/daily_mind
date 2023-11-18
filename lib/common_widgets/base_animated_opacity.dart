@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -29,8 +30,7 @@ class BaseAnimatedOpacity extends HookWidget {
       return () {};
     }, [valueKey]);
 
-    return AnimatedSwitcher(
-      duration: defaultDuration,
+    return BaseAnimatedSwitcher(
       child: isVisible.value ? child : emptyWidget,
     );
   }

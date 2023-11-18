@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
@@ -26,9 +27,8 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
       return emptyWidget;
     }, [baseMiniPlayerState]);
 
-    return AnimatedSwitcher(
+    return BaseAnimatedSwitcher(
       key: ValueKey(baseMiniPlayerState),
-      duration: defaultDuration,
       child: child,
     );
   }

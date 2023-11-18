@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
@@ -50,9 +51,8 @@ class BaseMiniPlayer extends HookConsumerWidget {
               [
                 Container(
                   padding: EdgeInsets.only(left: spacing()),
-                  child: AnimatedSwitcher(
+                  child: BaseAnimatedSwitcher(
                     key: ValueKey(leading.hashCode),
-                    duration: defaultDuration,
                     child: leading,
                   ),
                 ),

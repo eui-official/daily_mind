@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_audios_builder/presentation/base_audios_builder_provider.dart';
 import 'package:daily_mind/common_widgets/base_audios_builder/presentation/base_audios_skeleton.dart';
 import 'package:daily_mind/types/common.dart';
@@ -30,8 +31,7 @@ class BaseAudiosBuilder extends HookConsumerWidget {
       );
     }, [baseAudiosBuilderState]);
 
-    return AnimatedSwitcher(
-      duration: kThemeAnimationDuration,
+    return BaseAnimatedSwitcher(
       child: child,
     );
   }

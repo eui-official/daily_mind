@@ -1,4 +1,4 @@
-import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/features/focus_mode_empty_list/presentation/focus_mode_empty.dart';
 import 'package:daily_mind/features/focus_mode_list/presentation/focus_mode_list.dart';
 import 'package:daily_mind/features/focus_mode_list/presentation/focus_mode_list_provider.dart';
@@ -21,9 +21,6 @@ class FocusModeListSwitcher extends HookConsumerWidget {
       return const FocusModeList();
     }, [focusModeListState]);
 
-    return AnimatedSwitcher(
-      duration: defaultDuration,
-      child: child,
-    );
+    return BaseAnimatedSwitcher(child: child);
   }
 }
