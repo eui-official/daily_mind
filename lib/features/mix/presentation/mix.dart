@@ -7,15 +7,18 @@ import 'package:daily_mind/features/tutorial/presentation/tutorial.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-class Mix extends StatelessWidget {
+class Mix extends HookWidget {
   const Mix({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final currentIndex = useState(0);
+
     return Scaffold(
       body: Tutorial(
         task: newMixTutorial,
@@ -49,11 +52,25 @@ class Mix extends StatelessWidget {
         child: Stack(
           children: [
             const BaseBackground(),
-            AppBarScrollview(
-              title: 'naturalSounds'.tr(),
-              children: const [
-                MixSwitch(),
-              ],
+            DefaultTabController(
+              length: 2,
+              child: AppBarScrollview(
+                title: 'naturalSounds'.tr(),
+                bottom: TabBar(
+                  dividerColor: Colors.white10,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  onTap: (index) => currentIndex.value = index,
+                  tabs: [
+                    Tab(text: 'Pha trộn'.tr()),
+                    Tab(text: 'Bộ sưu tập'.tr()),
+                  ],
+                ),
+                children: [
+                  MixSwitch(index: currentIndex.value),
+                ],
+              ),
             ),
           ],
         ),

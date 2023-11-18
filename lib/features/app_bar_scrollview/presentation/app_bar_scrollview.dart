@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -31,7 +32,10 @@ class AppBarScrollview extends StatelessWidget {
             bottom: bottom,
             centerTitle: false,
             expandedHeight: kToolbarHeight * 2,
+            flexibleSpace: Container().blurred(colorOpacity: 0),
+            floating: true,
             forceMaterialTransparency: true,
+            snap: true,
           ),
           SliverPadding(
             padding: const EdgeInsets.only(
