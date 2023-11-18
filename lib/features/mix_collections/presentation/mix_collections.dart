@@ -18,7 +18,7 @@ class MixCollections extends HookConsumerWidget {
       children: mixCollectionsState.map((playlist) {
         return StaggeredGridTile.count(
           crossAxisCellCount: 1,
-          mainAxisCellCount: 0.4,
+          mainAxisCellCount: 0.3,
           child: MixCollectionItem(playlist: playlist),
         );
       }).toList(),

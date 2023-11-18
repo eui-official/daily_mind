@@ -20,6 +20,7 @@ class BaseBackdropFilter extends StatelessWidget {
         children: [
           child ?? Container(),
           Container().frosted(
+            frostOpacity: 0.2,
             frostColor: context.theme.colorScheme.background,
           ),
         ],

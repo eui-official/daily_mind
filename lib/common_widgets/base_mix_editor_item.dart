@@ -30,8 +30,8 @@ class BaseMixEditorItem extends StatelessWidget {
       children: space(
         [
           BaseCardImage(
-            height: spacing(8),
-            width: spacing(8),
+            height: spacing(7),
+            width: spacing(7),
             image: AssetImage(image),
           ),
           Flexible(
@@ -41,7 +41,7 @@ class BaseMixEditorItem extends StatelessWidget {
                 [
                   Text(
                     name,
-                    style: context.textTheme.bodyLarge?.copyWith(
+                    style: context.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
