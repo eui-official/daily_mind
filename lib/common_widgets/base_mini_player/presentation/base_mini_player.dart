@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
@@ -40,7 +41,6 @@ class BaseMiniPlayer extends HookConsumerWidget {
       margin: EdgeInsets.symmetric(horizontal: spacing(2)),
       child: Container(
         decoration: BoxDecoration(
-          color: context.theme.primaryColorDark,
           borderRadius: circularRadius(),
         ),
         child: BaseInkWell(
@@ -95,6 +95,9 @@ class BaseMiniPlayer extends HookConsumerWidget {
             ),
           ),
         ),
+      ).frosted(
+        borderRadius: circularRadius(),
+        frostColor: context.theme.primaryColor.withOpacity(0.5),
       ),
     );
   }
