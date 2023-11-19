@@ -38,7 +38,7 @@ class Settings extends StatelessWidget {
                       onTap: () {
                         inAppReview.openStoreListing(appStoreId: appStoreId);
                       },
-                      title: Text('rating'.tr()),
+                      title: 'rating'.tr(),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(spacing(2)),
                         topRight: Radius.circular(spacing(2)),
@@ -48,7 +48,7 @@ class Settings extends StatelessWidget {
                       onTap: () {
                         launchUrl(Uri.parse('https://m.me/eui.dailymind'));
                       },
-                      title: Text('sendFeedback'.tr()),
+                      title: 'sendFeedback'.tr(),
                       subtitle: Text(
                         'sendFeedbackDescription'.tr(),
                         style: const TextStyle(color: secondaryTextColor),

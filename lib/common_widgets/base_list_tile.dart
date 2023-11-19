@@ -1,10 +1,12 @@
 import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BaseListTile extends StatelessWidget {
   final BorderRadius? borderRadius;
+  final Color? color;
+  final String title;
   final VoidCallback? onTap;
-  final Widget title;
   final Widget? leading;
   final Widget? subtitle;
   final Widget? trailing;
@@ -13,6 +15,7 @@ class BaseListTile extends StatelessWidget {
     super.key,
     required this.title,
     this.borderRadius,
+    this.color,
     this.leading,
     this.onTap,
     this.subtitle,
@@ -29,7 +32,13 @@ class BaseListTile extends StatelessWidget {
           leading: leading,
           onTap: onTap,
           subtitle: subtitle,
-          title: title,
+          title: Text(
+            title,
+            style: context.textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w500,
+              color: color,
+            ),
+          ),
           trailing: trailing,
         ),
       ),

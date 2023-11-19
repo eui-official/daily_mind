@@ -60,7 +60,7 @@ class OfflineListAudioMinimal extends HookConsumerWidget {
                 buttonBuilder: (isSelected, audio, context) {
                   return BaseListTile(
                     leading: OfflineListAudioMinimalPreview(audio: audio),
-                    title: Text(audio.name.tr()),
+                    title: audio.name.tr(),
                     trailing: isSelected
                         ? Icon(
                             Icons.check_circle_rounded,

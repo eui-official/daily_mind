@@ -12,7 +12,7 @@ class SettingsColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseListTile(
-      title: Text('color'.tr()),
+      title: 'color'.tr(),
       trailing: Container(
         width: 32,
         height: 32,

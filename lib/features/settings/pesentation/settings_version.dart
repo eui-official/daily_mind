@@ -28,7 +28,7 @@ class SettingsVersion extends HookWidget {
       future: PackageInfo.fromPlatform(),
       builder: (context, snapshot) {
         return BaseListTile(
-          title: Text('version'.tr()),
+          title: 'version'.tr(),
           trailing: Text(appVersion),
         );
       },
