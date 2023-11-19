@@ -16,14 +16,8 @@ class BaseBackdropFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: borderRadius,
-      child: Stack(
-        children: [
-          child ?? Container(),
-          Container().frosted(
-            frostOpacity: 0.2,
-            frostColor: context.theme.colorScheme.background,
-          ),
-        ],
+      child: Container(child: child).frosted(
+        frostColor: context.theme.colorScheme.background,
       ),
     );
   }

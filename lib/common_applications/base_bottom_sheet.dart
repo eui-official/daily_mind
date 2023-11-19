@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 Future<T?> onShowBottomSheet<T>(
   BuildContext context, {
@@ -8,6 +9,7 @@ Future<T?> onShowBottomSheet<T>(
 }) {
   return showModalBottomSheet<T>(
     backgroundColor: Colors.transparent,
+    barrierColor: context.theme.colorScheme.background.withOpacity(0.75),
     context: context,
     enableDrag: enableDrag,
     isDismissible: isDismissible,

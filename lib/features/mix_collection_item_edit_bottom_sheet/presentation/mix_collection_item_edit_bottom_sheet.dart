@@ -1,4 +1,6 @@
+import 'package:daily_mind/common_widgets/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_list_tile.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -38,22 +40,32 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
       ];
     }, [context]);
 
-    return Material(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: spacing(2)),
-        child: Wrap(
-          children: [
-            ListView.separated(
-              shrinkWrap: true,
-              itemCount: children.length,
-              separatorBuilder: (context, index) => const Divider(),
-              itemBuilder: (context, index) {
-                return children[index];
-              },
-            ),
-          ],
+    return Wrap(
+      children: [
+        BaseBackdropFilter(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: spacing(2)),
+                child: Text(
+                  playlist.title ?? emptyString,
+                  style: context.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: children.length,
+                itemBuilder: (context, index) {
+                  return children[index];
+                },
+              ),
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

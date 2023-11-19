@@ -15,20 +15,17 @@ class BaseScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseThemeWithoutDivider(
-      child: Stack(
-        children: [
-          const BaseBackdropFilter(),
-          Scaffold(
-            backgroundColor: Colors.transparent,
-            body: child,
-            persistentFooterButtons: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: footerButtons,
-              )
-            ],
-          ),
-        ],
+      child: BaseBackdropFilter(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: child,
+          persistentFooterButtons: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: footerButtons,
+            )
+          ],
+        ),
       ),
     );
   }
