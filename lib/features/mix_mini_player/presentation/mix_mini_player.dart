@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
+import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
@@ -16,14 +17,9 @@ class MixMiniPlayer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mixNotifier = ref.read(mixProvider.notifier);
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
-    final playBackState = useStream(baseBackgroundHandler.playbackState);
-    final isPlaying = playBackState.data?.playing ?? false;
-    final mixItemsSnapshot = useStream(baseBackgroundHandler.onStreamMixItems);
-    final mixItems = mixItemsSnapshot.data ?? [];
-    final mediaItemSnapshot = useStream(baseBackgroundHandler.mediaItem);
-    final mediaItem = mediaItemSnapshot.data;
+    final mixData = useMix(ref);
 
-    final title = mixItems.map((item) {
+    final title = mixData.mixItems.map((item) {
       final audio = item.audio;
 
       return audio.name.tr();
@@ -43,11 +39,11 @@ class MixMiniPlayer extends HookConsumerWidget {
 
     return BaseMiniPlayer(
       onTap: onOpenMiniPlayer,
-      title: mediaItem?.title ?? title,
-      subtitle: '${mixItems.length} âm thanh'.tr(),
+      title: mixData.mediaItem?.title ?? title,
+      subtitle: '${mixData.mixItems.length} âm thanh'.tr(),
       leading: const MixMiniPlayerImages(),
       isLoading: false,
-      isPlaying: isPlaying,
+      isPlaying: mixData.isPlaying,
       onPause: baseBackgroundHandler.pause,
       onPlay: baseBackgroundHandler.play,
     );

@@ -8,6 +8,14 @@ part 'mix_conllections_provider.g.dart';
 class MixCollectionsNotifier extends _$MixCollectionsNotifier {
   @override
   List<Playlist> build() {
+    onStreamAllPlaylists();
+
     return db.onGetAllPlaylists();
+  }
+
+  void onStreamAllPlaylists() {
+    db.onStreamAllPlaylists().listen((playlists) {
+      state = playlists;
+    });
   }
 }

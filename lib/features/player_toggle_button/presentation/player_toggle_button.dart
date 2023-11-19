@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/offline_player/presentation/offline_player_provider.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/features/toggle_play_mode_button/presentation/toggle_play_mode_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -11,10 +11,10 @@ class PlayerToggleButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final playMixNotifier = ref.read(playMixProvider.notifier);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final playbackStateMemoized = useMemoized(
-      () => playMixNotifier.backgroundHandler.playbackState,
+      () => baseBackgroundHandler.playbackState,
       [],
     );
 
@@ -24,8 +24,8 @@ class PlayerToggleButton extends HookConsumerWidget {
 
     return TogglePlayModeButton(
       isPlaying: isPlaying,
-      onPlay: playMixNotifier.backgroundHandler.play,
-      onPause: playMixNotifier.backgroundHandler.pause,
+      onPlay: baseBackgroundHandler.play,
+      onPause: baseBackgroundHandler.pause,
     );
   }
 }

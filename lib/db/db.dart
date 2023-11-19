@@ -139,34 +139,6 @@ class Db {
     });
   }
 
-  void onUpdateVolume(
-    double volume,
-    String itemId,
-    int playlistId,
-  ) {
-    final playlist =
-        isar.playlists.where().idEqualTo(playlistId).findFirstSync();
-
-    onSafeValueBuilder(
-      playlist,
-      (safePlaylist) {
-        final items = safePlaylist.items ?? [];
-        final index = items.indexWhere((item) => item.id == itemId);
-        final item = items[index];
-
-        item.volume = volume;
-
-        items[index] = item;
-
-        safePlaylist.items = items;
-
-        isar.writeTxnSync(() {
-          isar.playlists.putSync(safePlaylist);
-        });
-      },
-    );
-  }
-
   Future<int> onAddNewPlaylist(Playlist playlist) {
     return isar.writeTxn(() {
       return isar.playlists.put(playlist);

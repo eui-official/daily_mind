@@ -41,21 +41,23 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
   }
 
   void onUpdateMediaItem() async {
-    final firstItem = mixItems.first;
+    if (mixItems.isNotEmpty) {
+      final firstItem = mixItems.first;
 
-    final title = mixItems.map((item) {
-      final audio = item.audio;
+      final title = mixItems.map((item) {
+        final audio = item.audio;
 
-      return audio.name.tr();
-    }).join(', ');
+        return audio.name.tr();
+      }).join(', ');
 
-    mediaItem.add(
-      MediaItem(
-        id: firstItem.audio.id,
-        title: title,
-        artUri: await onGetSoundImageFromAsset(firstItem.audio.image),
-      ),
-    );
+      mediaItem.add(
+        MediaItem(
+          id: firstItem.audio.id,
+          title: title,
+          artUri: await onGetSoundImageFromAsset(firstItem.audio.image),
+        ),
+      );
+    }
   }
 
   void onRemoveMixItem(MixItem removeItem) {
@@ -97,11 +99,13 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     );
   }
 
-  void onUpdateMixVolume(double volume, String itemId, int playlistId) {
-    final item = mixItems.firstWhere((item) => item.audio.id == itemId);
-    item.player.setVolume(volume);
+  void onUpdateMixItemVolume(double volume, MixItem item) {
+    final newMixItems = List<MixItem>.from(mixItems);
+    final index = newMixItems.indexOf(item);
 
-    db.onUpdateVolume(volume, itemId, playlistId);
+    newMixItems[index].player.setVolume(volume);
+
+    onStreamMixItems.add(newMixItems);
   }
 
   void onUpdateMixPlaylistTitle(

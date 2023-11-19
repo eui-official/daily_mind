@@ -98,8 +98,6 @@ class MixdNotifier extends StateNotifier<MixState> {
   void onUpdateTitle(String newTitle) {
     state = state.copyWith(title: newTitle);
   }
-
-  void onVolumeChanged(int index, double volume) {}
 }
 
 final mixProvider = StateNotifierProvider<MixdNotifier, MixState>((ref) {

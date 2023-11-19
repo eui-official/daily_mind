@@ -1,5 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_snackbar.dart';
+import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
@@ -20,8 +21,7 @@ class MixPlayer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mixState = ref.watch(mixProvider);
     final mixNotifier = ref.watch(mixProvider.notifier);
-
-    final mixItems = mixNotifier.mixItems;
+    final mixData = useMix(ref);
 
     final onSaveMix = useCallback(
       () async {
@@ -67,7 +67,7 @@ class MixPlayer extends HookConsumerWidget {
                   title: 'Danh sách âm thanh'.tr(),
                   spacingSize: 4,
                   child: Flexible(
-                    child: MixPlayerListItem(mixItems: mixItems),
+                    child: MixPlayerListItem(mixItems: mixData.mixItems),
                   ),
                 ),
               )
