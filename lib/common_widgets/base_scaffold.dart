@@ -21,7 +21,7 @@ class BaseScaffold extends StatelessWidget {
           body: child,
           persistentFooterButtons: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: footerButtons,
             )
           ],

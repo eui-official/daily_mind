@@ -4,6 +4,7 @@ import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
+import 'package:daily_mind/common_widgets/base_time_picker/presentation/base_time_picker.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/features/mix_player_list_item/presentation/mix_player_list_item.dart';
@@ -43,6 +44,7 @@ class MixPlayer extends HookConsumerWidget {
 
     return BaseScaffold(
       footerButtons: [
+        const BaseTimerPicker(),
         MixCollectionButtonSwitcher(
           isCanAddNewMix: mixNotifier.isCanAddANewMix,
           onDeleteMix: mixNotifier.onDeleteMix,

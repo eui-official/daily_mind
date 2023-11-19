@@ -10,7 +10,6 @@ import 'package:daily_mind/common_applications/local_notifications.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_applications/sound_effect_audio_player.dart';
-import 'package:daily_mind/common_applications/time.dart';
 import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_domains/audio_offline.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -24,8 +23,8 @@ import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
-import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 part 'base_audio_on_hold.dart';
 part 'base_mix_player.dart';
@@ -39,6 +38,7 @@ class DailyMindBackgroundHandler extends BaseAudioHandler
         BaseAudioVariables,
         BaseAudioMixVariables,
         BaseTaskVariables,
+        BaseTimer,
         BaseAudioOnHoldVariables {
   DailyMindBackgroundHandler() {
     onInit();

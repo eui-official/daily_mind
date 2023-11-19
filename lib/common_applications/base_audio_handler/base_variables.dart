@@ -13,7 +13,6 @@ import 'package:rxdart/rxdart.dart';
 mixin BaseAudioVariables on BaseAudioHandler {
   AudioTypes audioType = AudioTypes.none;
   bool isAutoPlayNext = true;
-  Timer? timer;
 
   OnlineAudioPlayer onlinePlayer = OnlineAudioPlayer();
 
@@ -56,4 +55,13 @@ mixin BaseTaskVariables on BaseAudioHandler {
   int get taskWorkingSessions => taskCurrent.workingSessions ?? 0;
   String get taskTitle => taskCurrent.title ?? emptyString;
   Task get taskCurrent => onStreamTaskCurrent.value;
+}
+
+mixin BaseTimer on BaseAudioHandler {
+  BehaviorSubject<Duration> onStreamTimerRemaining = BehaviorSubject()
+    ..add(Duration.zero);
+
+  Duration get remainingTime => onStreamTimerRemaining.value;
+
+  Timer? timer;
 }

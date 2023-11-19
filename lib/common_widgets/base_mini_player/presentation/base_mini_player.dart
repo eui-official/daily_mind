@@ -1,5 +1,7 @@
 import 'package:blur/blur.dart';
 import 'package:collection/collection.dart';
+import 'package:daily_mind/common_applications/date_formatter.dart';
+import 'package:daily_mind/common_hooks/use_timer.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
@@ -35,6 +37,8 @@ class BaseMiniPlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final remaining = useTimer(ref);
+
     return Container(
       height: spacing(7),
       width: context.width,
@@ -72,13 +76,27 @@ class BaseMiniPlayer extends HookConsumerWidget {
                               ),
                             ),
                           ),
-                        if (subtitle.isNotEmpty)
-                          Text(
-                            subtitle,
-                            style: context.textTheme.bodySmall?.copyWith(
-                              color: secondaryTextColor,
-                            ),
-                          )
+                        Row(
+                          children: space(
+                            [
+                              if (subtitle.isNotEmpty)
+                                Text(
+                                  subtitle,
+                                  style: context.textTheme.bodySmall?.copyWith(
+                                    color: secondaryTextColor,
+                                  ),
+                                ),
+                              if (remaining != Duration.zero)
+                                Text(
+                                  dateFormatter.onFormatDuration(remaining),
+                                  style: context.textTheme.bodySmall?.copyWith(
+                                    color: secondaryTextColor,
+                                  ),
+                                ),
+                            ],
+                            width: spacing(2),
+                          ),
+                        )
                       ].whereNotNull().toList(),
                       height: spacing(0.5),
                     ),
