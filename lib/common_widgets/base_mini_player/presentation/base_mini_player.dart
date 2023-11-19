@@ -36,7 +36,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      height: spacing(6),
+      height: spacing(7),
       width: context.width,
       margin: EdgeInsets.symmetric(horizontal: spacing(2)),
       child: Container(
