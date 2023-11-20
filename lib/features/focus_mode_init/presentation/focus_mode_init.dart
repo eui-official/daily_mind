@@ -34,6 +34,7 @@ class FocusModeInit extends HookConsumerWidget {
     useEffectDelayed(() {
       if (!taskCurrentSnapshot.hasData) {
         final firstTask = focusModeState.first;
+
         baseBackgroundHandler.onTaskInit(firstTask);
       }
     }, [taskCurrentSnapshot.hasData, focusModeState]);
