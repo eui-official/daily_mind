@@ -1,11 +1,11 @@
 import 'package:blur/blur.dart';
 import 'package:collection/collection.dart';
-import 'package:daily_mind/common_applications/date_formatter.dart';
 import 'package:daily_mind/common_hooks/use_timer.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
-import 'package:daily_mind/common_widgets/base_marquee.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_content_player.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_title_player.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -66,37 +66,11 @@ class BaseMiniPlayer extends HookConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: space(
                       [
-                        if (title.isNotEmpty)
-                          SizedBox(
-                            height: spacing(2),
-                            child: BaseMarquee(
-                              text: title,
-                              style: context.textTheme.labelMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        Row(
-                          children: space(
-                            [
-                              if (subtitle.isNotEmpty)
-                                Text(
-                                  subtitle,
-                                  style: context.textTheme.bodySmall?.copyWith(
-                                    color: secondaryTextColor,
-                                  ),
-                                ),
-                              if (remaining != Duration.zero)
-                                Text(
-                                  dateFormatter.onFormatDuration(remaining),
-                                  style: context.textTheme.bodySmall?.copyWith(
-                                    color: secondaryTextColor,
-                                  ),
-                                ),
-                            ],
-                            width: spacing(2),
-                          ),
-                        )
+                        if (title.isNotEmpty) BaseMiniTitlePlayer(title: title),
+                        BaseMiniPlayerContent(
+                          subtitle: subtitle,
+                          remaining: remaining,
+                        ),
                       ].whereNotNull().toList(),
                       height: spacing(0.5),
                     ),
