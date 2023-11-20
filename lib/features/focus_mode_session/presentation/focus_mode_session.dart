@@ -4,16 +4,14 @@ import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/focus_mode_actions/presentation/focus_mode_actions.dart';
-import 'package:daily_mind/features/focus_mode_audio/presentation/focus_mode_audio.dart';
 import 'package:daily_mind/features/focus_mode_session_current_step_text/presentation/focus_mode_session_current_step_text.dart';
 import 'package:daily_mind/features/focus_mode_session/hook/useBackgroundTaskData.dart';
+import 'package:daily_mind/features/focus_mode_task_selector/presentation/focus_mode_task_selector.dart';
 import 'package:daily_mind/features/focus_mode_timer/presentation/focus_mode_timer.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart' hide Trans;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -103,50 +101,44 @@ class FocusModeSession extends HookConsumerWidget {
     }, []);
 
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-        child: Column(
-          children: space(
-            [
-              Column(
-                children: space(
-                  [
-                    Text(
-                      taskBackgroundData.taskTitle,
-                      style: context.textTheme.headlineLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+          child: Column(
+            children: space(
+              [
+                Column(
+                  children: space(
+                    [
+                      FocusModeTaskSelector(
+                        title: taskBackgroundData.taskTitle,
                       ),
-                    ),
-                    FocusModeSessionCurrentStepText(
-                      step: taskBackgroundData.taskCurrentStep,
-                      currentSession: taskBackgroundData.taskCurrentSession,
-                      workingSessions: taskBackgroundData.taskWorkingSessions,
-                    ),
-                  ],
-                  height: spacing(3),
+                      FocusModeSessionCurrentStepText(
+                        step: taskBackgroundData.taskCurrentStep,
+                        currentSession: taskBackgroundData.taskCurrentSession,
+                        workingSessions: taskBackgroundData.taskWorkingSessions,
+                      ),
+                    ],
+                    height: spacing(3),
+                  ),
                 ),
-              ),
-              FocusModeTimer(
-                isPlaying: taskBackgroundData.taskIsPlaying,
-                remainingSeconds: taskBackgroundData.taskRemainingSeconds,
-                seconds: taskBackgroundData.taskSeconds,
-              ),
-              FocusModeAudio(
-                onAudioSelected: baseBackgroundHandler.onUpdateAudioId,
-                onAudioDeleted: baseBackgroundHandler.onDeleteAudioId,
-                title: taskBackgroundData.taskAudioOffline?.name.tr(),
-              ),
-              FocusModeActions(
-                isPlaying: taskBackgroundData.taskIsPlaying,
-                onClose: onClose,
-                onPause: baseBackgroundHandler.onTaskPause,
-                onPlay: baseBackgroundHandler.onTaskStartOrResume,
-                onSettings: onSettings,
-                step: taskBackgroundData.taskCurrentStep,
-              ),
-            ],
-            height: spacing(3),
+                FocusModeTimer(
+                  isPlaying: taskBackgroundData.taskIsPlaying,
+                  remainingSeconds: taskBackgroundData.taskRemainingSeconds,
+                  seconds: taskBackgroundData.taskSeconds,
+                ),
+                FocusModeActions(
+                  isPlaying: taskBackgroundData.taskIsPlaying,
+                  onClose: onClose,
+                  onPause: baseBackgroundHandler.onTaskPause,
+                  onPlay: baseBackgroundHandler.onTaskStartOrResume,
+                  onSettings: onSettings,
+                  step: taskBackgroundData.taskCurrentStep,
+                ),
+              ],
+              height: spacing(3),
+            ),
           ),
         ),
       ),

@@ -42,7 +42,7 @@ class FocusModeActions extends HookWidget {
           onPause: onPause,
           onPlay: onPlay,
           padding: EdgeInsets.all(spacing(2)),
-          size: 6,
+          size: 5,
         ),
         IconButton(
           onPressed: onClose,
