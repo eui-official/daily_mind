@@ -6,7 +6,12 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixCollections extends HookConsumerWidget {
-  const MixCollections({super.key});
+  final VoidCallback onCreateNew;
+
+  const MixCollections({
+    super.key,
+    required this.onCreateNew,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
