@@ -1,4 +1,3 @@
-import 'package:blur/blur.dart';
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_hooks/use_timer.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
@@ -46,6 +45,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: circularRadius(),
+          color: context.theme.primaryColorDark.withOpacity(0.5),
         ),
         child: BaseInkWell(
           onTap: onTap,
@@ -87,9 +87,6 @@ class BaseMiniPlayer extends HookConsumerWidget {
             ),
           ),
         ),
-      ).frosted(
-        borderRadius: circularRadius(),
-        frostColor: context.theme.primaryColor.withOpacity(0.5),
       ),
     );
   }
