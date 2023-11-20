@@ -28,6 +28,7 @@ class TimerCircularAnimate extends StatelessWidget {
           child: Lottie.asset(
             'assets/lottie/circle.json',
             animate: animate,
+            width: context.width * 0.7,
           ),
         ),
         TimerCircular(

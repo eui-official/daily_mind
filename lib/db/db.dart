@@ -159,9 +159,13 @@ class Db {
     return isar.tasks.where(sort: Sort.desc).anyId().findAllSync();
   }
 
-  void onAddANewTask(Task task) {
-    isar.writeTxnSync(() {
-      isar.tasks.putSync(task);
+  Task? onGetTask(int id) {
+    return isar.tasks.getSync(id);
+  }
+
+  int onAddANewTask(Task task) {
+    return isar.writeTxnSync(() {
+      return isar.tasks.putSync(task);
     });
   }
 

@@ -1,25 +1,25 @@
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/features/focus_mode/presentation/focus_mode_provider.dart';
 import 'package:daily_mind/features/focus_mode_empty_list/presentation/focus_mode_empty.dart';
-import 'package:daily_mind/features/focus_mode_list/presentation/focus_mode_list.dart';
-import 'package:daily_mind/features/focus_mode_list/presentation/focus_mode_list_provider.dart';
+import 'package:daily_mind/features/focus_mode_init/presentation/focus_mode_init.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class FocusModeListSwitcher extends HookConsumerWidget {
-  const FocusModeListSwitcher({super.key});
+class FocusModeSwitcher extends HookConsumerWidget {
+  const FocusModeSwitcher({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final focusModeListState = ref.watch(focusModeListNotifierProvider);
+    final focusModeState = ref.watch(focusModeNotifierProvider);
 
     final child = useMemoized(() {
-      if (focusModeListState.isEmpty) {
+      if (focusModeState.isEmpty) {
         return const FocusModeEmptyList();
       }
 
-      return const FocusModeList();
-    }, [focusModeListState]);
+      return const FocusModeInit();
+    }, [focusModeState]);
 
     return BaseAnimatedSwitcher(child: child);
   }

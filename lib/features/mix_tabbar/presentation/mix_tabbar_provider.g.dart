@@ -6,7 +6,7 @@ part of 'mix_tabbar_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mixTabbarNotifierHash() => r'371c41345b7547d6ecb68a617cb4ce761c36a9d0';
+String _$mixTabbarNotifierHash() => r'7bd6885b5188dedbf6f24cce16ebae4010f7e04f';
 
 /// See also [MixTabbarNotifier].
 @ProviderFor(MixTabbarNotifier)

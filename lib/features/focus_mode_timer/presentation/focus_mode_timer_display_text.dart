@@ -17,7 +17,7 @@ class FocusModeTimerDisplayText extends StatelessWidget {
       dateFormatter.onFormatDuration(
         Duration(seconds: seconds),
       ),
-      style: context.textTheme.displayLarge?.copyWith(
+      style: context.textTheme.displayMedium?.copyWith(
         fontWeight: FontWeight.bold,
         letterSpacing: spacing(0.5),
       ),
