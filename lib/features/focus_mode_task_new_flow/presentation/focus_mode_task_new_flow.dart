@@ -27,14 +27,12 @@ class FocusModeTaskNewFlow extends HookConsumerWidget {
         final workingSessions = value['workingSessions'] as int;
         final shortBreak = value['shortBreak'] as int;
         final longBreak = value['longBreak'] as int;
-        final iconId = value['iconId'] as String;
 
         final newTask = Task()
           ..workingSessions = workingSessions
           ..title = title
           ..shortBreak = shortBreak
-          ..longBreak = longBreak
-          ..iconId = iconId;
+          ..longBreak = longBreak;
 
         final id = db.onAddANewTask(newTask);
         final task = db.onGetTask(id);

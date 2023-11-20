@@ -19,7 +19,7 @@ class FocusModeDeleteSliable extends StatelessWidget {
     return Slidable(
       key: ValueKey(id),
       endActionPane: ActionPane(
-        extentRatio: 0.25,
+        extentRatio: 0.2,
         motion: const ScrollMotion(),
         dismissible: DismissiblePane(onDismissed: onDeleted),
         children: [

@@ -45,7 +45,6 @@ class BaseTaskForm extends HookWidget {
             Validators.required,
           ],
         ),
-        'iconId': FormControl<String>(value: 'meeting'),
       });
     }, []);
 

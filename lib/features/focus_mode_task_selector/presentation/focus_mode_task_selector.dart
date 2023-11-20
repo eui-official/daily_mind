@@ -1,3 +1,5 @@
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
+import 'package:daily_mind/features/focus_mode_task_list/presentation/focus_mode_task_list.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -13,7 +15,15 @@ class FocusModeTaskSelector extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final onShowListTask = useCallback(() {}, []);
+    final onShowListTask = useCallback(
+      () {
+        onShowBottomSheet(
+          context,
+          child: const FocusModeTaskList(),
+        );
+      },
+      [],
+    );
 
     return ElevatedButton(
       onPressed: onShowListTask,

@@ -24,13 +24,11 @@ class FocusModeEdit extends HookWidget {
         final workingSessions = value['workingSessions'] as int;
         final shortBreak = value['shortBreak'] as int;
         final longBreak = value['longBreak'] as int;
-        final iconId = value['iconId'] as String;
 
         task.title = title;
         task.workingSessions = workingSessions;
         task.shortBreak = shortBreak;
         task.longBreak = longBreak;
-        task.iconId = iconId;
 
         db.onUpdateTask(task);
 
@@ -51,7 +49,6 @@ class FocusModeEdit extends HookWidget {
             'title': task.title,
             'shortBreak': task.shortBreak,
             'longBreak': task.longBreak,
-            'iconId': task.iconId,
           });
         },
       ),

@@ -27,28 +27,23 @@ const TaskSchema = CollectionSchema(
       name: r'audioId',
       type: IsarType.string,
     ),
-    r'iconId': PropertySchema(
-      id: 2,
-      name: r'iconId',
-      type: IsarType.string,
-    ),
     r'longBreak': PropertySchema(
-      id: 3,
+      id: 2,
       name: r'longBreak',
       type: IsarType.long,
     ),
     r'shortBreak': PropertySchema(
-      id: 4,
+      id: 3,
       name: r'shortBreak',
       type: IsarType.long,
     ),
     r'title': PropertySchema(
-      id: 5,
+      id: 4,
       name: r'title',
       type: IsarType.string,
     ),
     r'workingSessions': PropertySchema(
-      id: 6,
+      id: 5,
       name: r'workingSessions',
       type: IsarType.long,
     )
@@ -86,12 +81,6 @@ int _taskEstimateSize(
     }
   }
   {
-    final value = object.iconId;
-    if (value != null) {
-      bytesCount += 3 + value.length * 3;
-    }
-  }
-  {
     final value = object.title;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
@@ -108,11 +97,10 @@ void _taskSerialize(
 ) {
   writer.writeString(offsets[0], object.audioFrom);
   writer.writeString(offsets[1], object.audioId);
-  writer.writeString(offsets[2], object.iconId);
-  writer.writeLong(offsets[3], object.longBreak);
-  writer.writeLong(offsets[4], object.shortBreak);
-  writer.writeString(offsets[5], object.title);
-  writer.writeLong(offsets[6], object.workingSessions);
+  writer.writeLong(offsets[2], object.longBreak);
+  writer.writeLong(offsets[3], object.shortBreak);
+  writer.writeString(offsets[4], object.title);
+  writer.writeLong(offsets[5], object.workingSessions);
 }
 
 Task _taskDeserialize(
@@ -124,12 +112,11 @@ Task _taskDeserialize(
   final object = Task();
   object.audioFrom = reader.readStringOrNull(offsets[0]);
   object.audioId = reader.readStringOrNull(offsets[1]);
-  object.iconId = reader.readStringOrNull(offsets[2]);
   object.id = id;
-  object.longBreak = reader.readLongOrNull(offsets[3]);
-  object.shortBreak = reader.readLongOrNull(offsets[4]);
-  object.title = reader.readStringOrNull(offsets[5]);
-  object.workingSessions = reader.readLongOrNull(offsets[6]);
+  object.longBreak = reader.readLongOrNull(offsets[2]);
+  object.shortBreak = reader.readLongOrNull(offsets[3]);
+  object.title = reader.readStringOrNull(offsets[4]);
+  object.workingSessions = reader.readLongOrNull(offsets[5]);
   return object;
 }
 
@@ -145,14 +132,12 @@ P _taskDeserializeProp<P>(
     case 1:
       return (reader.readStringOrNull(offset)) as P;
     case 2:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 3:
       return (reader.readLongOrNull(offset)) as P;
     case 4:
-      return (reader.readLongOrNull(offset)) as P;
-    case 5:
       return (reader.readStringOrNull(offset)) as P;
-    case 6:
+    case 5:
       return (reader.readLongOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -532,150 +517,6 @@ extension TaskQueryFilter on QueryBuilder<Task, Task, QFilterCondition> {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'audioId',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'iconId',
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'iconId',
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'iconId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdGreaterThan(
-    String? value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'iconId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdLessThan(
-    String? value, {
-    bool include = false,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'iconId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdBetween(
-    String? lower,
-    String? upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'iconId',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'iconId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'iconId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdContains(String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'iconId',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdMatches(String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'iconId',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'iconId',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterFilterCondition> iconIdIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'iconId',
         value: '',
       ));
     });
@@ -1113,18 +954,6 @@ extension TaskQuerySortBy on QueryBuilder<Task, Task, QSortBy> {
     });
   }
 
-  QueryBuilder<Task, Task, QAfterSortBy> sortByIconId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'iconId', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterSortBy> sortByIconIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'iconId', Sort.desc);
-    });
-  }
-
   QueryBuilder<Task, Task, QAfterSortBy> sortByLongBreak() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'longBreak', Sort.asc);
@@ -1196,18 +1025,6 @@ extension TaskQuerySortThenBy on QueryBuilder<Task, Task, QSortThenBy> {
   QueryBuilder<Task, Task, QAfterSortBy> thenByAudioIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.desc);
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterSortBy> thenByIconId() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'iconId', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Task, Task, QAfterSortBy> thenByIconIdDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'iconId', Sort.desc);
     });
   }
 
@@ -1287,13 +1104,6 @@ extension TaskQueryWhereDistinct on QueryBuilder<Task, Task, QDistinct> {
     });
   }
 
-  QueryBuilder<Task, Task, QDistinct> distinctByIconId(
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'iconId', caseSensitive: caseSensitive);
-    });
-  }
-
   QueryBuilder<Task, Task, QDistinct> distinctByLongBreak() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'longBreak');
@@ -1336,12 +1146,6 @@ extension TaskQueryProperty on QueryBuilder<Task, Task, QQueryProperty> {
   QueryBuilder<Task, String?, QQueryOperations> audioIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'audioId');
-    });
-  }
-
-  QueryBuilder<Task, String?, QQueryOperations> iconIdProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'iconId');
     });
   }
 

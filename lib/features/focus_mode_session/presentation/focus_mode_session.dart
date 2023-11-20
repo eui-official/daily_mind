@@ -100,46 +100,42 @@ class FocusModeSession extends HookConsumerWidget {
       };
     }, []);
 
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-          child: Column(
-            children: space(
-              [
-                Column(
-                  children: space(
-                    [
-                      FocusModeTaskSelector(
-                        title: taskBackgroundData.taskTitle,
-                      ),
-                      FocusModeSessionCurrentStepText(
-                        step: taskBackgroundData.taskCurrentStep,
-                        currentSession: taskBackgroundData.taskCurrentSession,
-                        workingSessions: taskBackgroundData.taskWorkingSessions,
-                      ),
-                    ],
-                    height: spacing(3),
+    return Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(spacing(2)),
+      child: Column(
+        children: space(
+          [
+            Column(
+              children: space(
+                [
+                  FocusModeTaskSelector(
+                    title: taskBackgroundData.taskTitle,
                   ),
-                ),
-                FocusModeTimer(
-                  isPlaying: taskBackgroundData.taskIsPlaying,
-                  remainingSeconds: taskBackgroundData.taskRemainingSeconds,
-                  seconds: taskBackgroundData.taskSeconds,
-                ),
-                FocusModeActions(
-                  isPlaying: taskBackgroundData.taskIsPlaying,
-                  onClose: onClose,
-                  onPause: baseBackgroundHandler.onTaskPause,
-                  onPlay: baseBackgroundHandler.onTaskStartOrResume,
-                  onSettings: onSettings,
-                  step: taskBackgroundData.taskCurrentStep,
-                ),
-              ],
-              height: spacing(3),
+                  FocusModeSessionCurrentStepText(
+                    step: taskBackgroundData.taskCurrentStep,
+                    currentSession: taskBackgroundData.taskCurrentSession,
+                    workingSessions: taskBackgroundData.taskWorkingSessions,
+                  ),
+                ],
+                height: spacing(3),
+              ),
             ),
-          ),
+            FocusModeTimer(
+              isPlaying: taskBackgroundData.taskIsPlaying,
+              remainingSeconds: taskBackgroundData.taskRemainingSeconds,
+              seconds: taskBackgroundData.taskSeconds,
+            ),
+            FocusModeActions(
+              isPlaying: taskBackgroundData.taskIsPlaying,
+              onClose: onClose,
+              onPause: baseBackgroundHandler.onTaskPause,
+              onPlay: baseBackgroundHandler.onTaskStartOrResume,
+              onSettings: onSettings,
+              step: taskBackgroundData.taskCurrentStep,
+            ),
+          ],
+          height: spacing(3),
         ),
       ),
     );

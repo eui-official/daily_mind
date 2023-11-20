@@ -6,7 +6,7 @@ part of 'focus_mode_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$focusModeNotifierHash() => r'fbc649819972e8759fb5b6837050f63107387568';
+String _$focusModeNotifierHash() => r'72df6eeb0ea71263fabd056557a08d1a6cdb5fa2';
 
 /// See also [FocusModeNotifier].
 @ProviderFor(FocusModeNotifier)

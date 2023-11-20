@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FocusModeTaskState {
   String get title => throw _privateConstructorUsedError;
-  String get iconId => throw _privateConstructorUsedError;
   int get workingSessions => throw _privateConstructorUsedError;
   int get shortBreak => throw _privateConstructorUsedError;
   int get longBreak => throw _privateConstructorUsedError;
@@ -33,12 +32,7 @@ abstract class $FocusModeTaskStateCopyWith<$Res> {
           FocusModeTaskState value, $Res Function(FocusModeTaskState) then) =
       _$FocusModeTaskStateCopyWithImpl<$Res, FocusModeTaskState>;
   @useResult
-  $Res call(
-      {String title,
-      String iconId,
-      int workingSessions,
-      int shortBreak,
-      int longBreak});
+  $Res call({String title, int workingSessions, int shortBreak, int longBreak});
 }
 
 /// @nodoc
@@ -55,7 +49,6 @@ class _$FocusModeTaskStateCopyWithImpl<$Res, $Val extends FocusModeTaskState>
   @override
   $Res call({
     Object? title = null,
-    Object? iconId = null,
     Object? workingSessions = null,
     Object? shortBreak = null,
     Object? longBreak = null,
@@ -64,10 +57,6 @@ class _$FocusModeTaskStateCopyWithImpl<$Res, $Val extends FocusModeTaskState>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      iconId: null == iconId
-          ? _value.iconId
-          : iconId // ignore: cast_nullable_to_non_nullable
               as String,
       workingSessions: null == workingSessions
           ? _value.workingSessions
@@ -93,12 +82,7 @@ abstract class _$$FocusModeTaskStateImplCopyWith<$Res>
       __$$FocusModeTaskStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String title,
-      String iconId,
-      int workingSessions,
-      int shortBreak,
-      int longBreak});
+  $Res call({String title, int workingSessions, int shortBreak, int longBreak});
 }
 
 /// @nodoc
@@ -113,7 +97,6 @@ class __$$FocusModeTaskStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? iconId = null,
     Object? workingSessions = null,
     Object? shortBreak = null,
     Object? longBreak = null,
@@ -122,10 +105,6 @@ class __$$FocusModeTaskStateImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      iconId: null == iconId
-          ? _value.iconId
-          : iconId // ignore: cast_nullable_to_non_nullable
               as String,
       workingSessions: null == workingSessions
           ? _value.workingSessions
@@ -148,15 +127,12 @@ class __$$FocusModeTaskStateImplCopyWithImpl<$Res>
 class _$FocusModeTaskStateImpl implements _FocusModeTaskState {
   const _$FocusModeTaskStateImpl(
       {required this.title,
-      required this.iconId,
       required this.workingSessions,
       required this.shortBreak,
       required this.longBreak});
 
   @override
   final String title;
-  @override
-  final String iconId;
   @override
   final int workingSessions;
   @override
@@ -166,7 +142,7 @@ class _$FocusModeTaskStateImpl implements _FocusModeTaskState {
 
   @override
   String toString() {
-    return 'FocusModeTaskState(title: $title, iconId: $iconId, workingSessions: $workingSessions, shortBreak: $shortBreak, longBreak: $longBreak)';
+    return 'FocusModeTaskState(title: $title, workingSessions: $workingSessions, shortBreak: $shortBreak, longBreak: $longBreak)';
   }
 
   @override
@@ -175,7 +151,6 @@ class _$FocusModeTaskStateImpl implements _FocusModeTaskState {
         (other.runtimeType == runtimeType &&
             other is _$FocusModeTaskStateImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.iconId, iconId) || other.iconId == iconId) &&
             (identical(other.workingSessions, workingSessions) ||
                 other.workingSessions == workingSessions) &&
             (identical(other.shortBreak, shortBreak) ||
@@ -185,8 +160,8 @@ class _$FocusModeTaskStateImpl implements _FocusModeTaskState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, title, iconId, workingSessions, shortBreak, longBreak);
+  int get hashCode =>
+      Object.hash(runtimeType, title, workingSessions, shortBreak, longBreak);
 
   @JsonKey(ignore: true)
   @override
@@ -199,15 +174,12 @@ class _$FocusModeTaskStateImpl implements _FocusModeTaskState {
 abstract class _FocusModeTaskState implements FocusModeTaskState {
   const factory _FocusModeTaskState(
       {required final String title,
-      required final String iconId,
       required final int workingSessions,
       required final int shortBreak,
       required final int longBreak}) = _$FocusModeTaskStateImpl;
 
   @override
   String get title;
-  @override
-  String get iconId;
   @override
   int get workingSessions;
   @override

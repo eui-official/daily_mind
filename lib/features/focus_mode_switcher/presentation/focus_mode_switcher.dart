@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/features/focus_mode/presentation/focus_mode_provider.dart';
 import 'package:daily_mind/features/focus_mode_empty_list/presentation/focus_mode_empty.dart';
 import 'package:daily_mind/features/focus_mode_init/presentation/focus_mode_init.dart';
@@ -21,6 +22,15 @@ class FocusModeSwitcher extends HookConsumerWidget {
       return const FocusModeInit();
     }, [focusModeState]);
 
-    return BaseAnimatedSwitcher(child: child);
+    return Scaffold(
+      body: Stack(
+        children: [
+          const BaseBackground(),
+          SafeArea(
+            child: BaseAnimatedSwitcher(child: child),
+          )
+        ],
+      ),
+    );
   }
 }

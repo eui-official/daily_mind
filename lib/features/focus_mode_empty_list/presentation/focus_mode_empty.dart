@@ -9,16 +9,13 @@ class FocusModeEmptyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: BaseSpacingContainerHorizontal(
-          child: BaseEmptyListBox(
-            action: const FocusModeNewSessionButton(),
-            imageUrl: 'assets/images/sessions_working.png',
-            subTitle: 'focusEmpty'.tr(),
-            title: "task".tr(),
-          ),
-        ),
+    return BaseSpacingContainerHorizontal(
+      alignment: Alignment.bottomCenter,
+      child: BaseEmptyListBox(
+        action: const FocusModeNewSessionButton(),
+        imageUrl: 'assets/images/sessions_working.png',
+        subTitle: 'focusEmpty'.tr(),
+        title: "task".tr(),
       ),
     );
   }
