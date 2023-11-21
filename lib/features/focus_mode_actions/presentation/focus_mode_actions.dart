@@ -11,11 +11,11 @@ class FocusModeActions extends HookWidget {
   final VoidCallback onPause;
   final VoidCallback onClose;
   final VoidCallback onSettings;
-  final bool isPlaying;
+  final bool isRunning;
 
   const FocusModeActions({
     super.key,
-    required this.isPlaying,
+    required this.isRunning,
     required this.onClose,
     required this.onPause,
     required this.onPlay,
@@ -38,7 +38,7 @@ class FocusModeActions extends HookWidget {
         ),
         TogglePlayModeButton(
           backgroundColor: context.theme.primaryColorDark,
-          isPlaying: isPlaying,
+          isPlaying: isRunning,
           onPause: onPause,
           onPlay: onPlay,
           padding: EdgeInsets.all(spacing(2)),

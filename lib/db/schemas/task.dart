@@ -12,9 +12,5 @@ class Task {
 
   int? workingSessions;
 
-  String? audioId;
-
-  String? audioFrom;
-
   String? title;
 }

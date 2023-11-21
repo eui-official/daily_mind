@@ -95,12 +95,6 @@ class FocusModeSession extends HookConsumerWidget {
       }
     }, [taskBackgroundData.taskCurrentStep]);
 
-    useEffect(() {
-      return () {
-        baseBackgroundHandler.onTaskDisposeBackgroundAudio();
-      };
-    }, []);
-
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.all(spacing(2)),
@@ -123,12 +117,12 @@ class FocusModeSession extends HookConsumerWidget {
               ),
             ),
             FocusModeTimer(
-              isPlaying: taskBackgroundData.taskIsPlaying,
+              isRunning: taskBackgroundData.taskIsRunning,
               remainingSeconds: taskBackgroundData.taskRemainingSeconds,
               seconds: taskBackgroundData.taskSeconds,
             ),
             FocusModeActions(
-              isPlaying: taskBackgroundData.taskIsPlaying,
+              isRunning: taskBackgroundData.taskIsRunning,
               onClose: onClose,
               onPause: baseBackgroundHandler.onTaskPause,
               onPlay: baseBackgroundHandler.onTaskStartOrResume,

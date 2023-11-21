@@ -4,7 +4,7 @@ import 'package:daily_mind/db/schemas/task.dart';
 
 class TaskBackgroundData {
   final AudioOffline? taskAudioOffline;
-  final bool taskIsPlaying;
+  final bool taskIsRunning;
   final FocusModeSessionSteps taskCurrentStep;
   final int taskCurrentSession;
   final int taskRemainingSeconds;
@@ -17,7 +17,7 @@ class TaskBackgroundData {
     required this.taskCurrent,
     required this.taskCurrentSession,
     required this.taskCurrentStep,
-    required this.taskIsPlaying,
+    required this.taskIsRunning,
     required this.taskRemainingSeconds,
     required this.taskSeconds,
     required this.taskTitle,

@@ -38,7 +38,7 @@ mixin BaseTaskVariables on BaseAudioHandler {
   bool taskIsInBackground = false;
 
   BehaviorSubject<Task> onStreamTaskCurrent = BehaviorSubject();
-  BehaviorSubject<bool> onStreamTaskPlaying = BehaviorSubject();
+  BehaviorSubject<bool> onStreamTaskRunning = BehaviorSubject();
   BehaviorSubject<int> onStreamTaskRemainingSeconds = BehaviorSubject();
   BehaviorSubject<int> onStreamTaskSeconds = BehaviorSubject();
   BehaviorSubject<FocusModeSessionSteps> onStreamTaskCurrentStep =
