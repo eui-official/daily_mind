@@ -1,4 +1,3 @@
-import 'package:alarm/alarm.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/env.dart';
@@ -15,21 +14,20 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   final engine = WidgetsFlutterBinding.ensureInitialized();
   await db.onInit();
-  await Alarm.init();
-  await EasyLocalization.ensureInitialized();
-  await localNotifications.onInit();
-
-  await Supabase.initialize(
-    url: Env.supaBaseProjectUrl,
-    anonKey: Env.supaBaseAnonKey,
-  );
-
   final backgroundHandler = await AudioService.init(
     builder: () => DailyMindBackgroundHandler(),
     config: const AudioServiceConfig(
       androidNotificationChannelId: 'dev.andyng.dailymind.channel.background',
       androidNotificationChannelName: 'Music Playback',
     ),
+  );
+
+  await EasyLocalization.ensureInitialized();
+  await localNotifications.onInit();
+
+  await Supabase.initialize(
+    url: Env.supaBaseProjectUrl,
+    anonKey: Env.supaBaseAnonKey,
   );
 
   runApp(

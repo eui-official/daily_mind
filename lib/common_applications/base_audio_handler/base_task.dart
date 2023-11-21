@@ -34,30 +34,12 @@ extension BaseTask on DailyMindBackgroundHandler {
       duration: tick,
       onCounting: (remainingSeconds) {
         onStreamTaskRemainingSeconds.add(remainingSeconds);
-        onStartAlarm(remainingSeconds, notificationBody);
       },
       onFinished: onTaskFinished,
     );
   }
 
-  void onStartAlarm(int seconds, String notificationBody) async {
-    final isHasAlarm = Alarm.hasAlarm();
-
-    if (isHasAlarm) return;
-
-    final alarmSettings = baseAlarm.onCreateAlarmSettings(
-      id: taskCurrent.id,
-      seconds: seconds,
-      notificationTitle: taskTitle,
-      notificationBody: notificationBody,
-    );
-
-    await Alarm.set(alarmSettings: alarmSettings);
-  }
-
   Future<void> onTaskFinished() async {
-    await Alarm.stopAll();
-
     if (taskCurrentStep == FocusModeSessionSteps.focusing) {
       if (isTaskCompleting) {
         onTaskCompleted();
@@ -81,7 +63,6 @@ extension BaseTask on DailyMindBackgroundHandler {
   Future<void> onTaskPause() async {
     taskCountdown.onPause();
     onTaskUpdateRunning(false);
-    await Alarm.stopAll();
   }
 
   void onTaskResume() {

@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:alarm/alarm.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_session/audio_session.dart';
 import 'package:daily_mind/common_applications/assets.dart';
-import 'package:daily_mind/common_applications/base_alarm.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_variables.dart';
 import 'package:daily_mind/common_applications/base_count_down.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
