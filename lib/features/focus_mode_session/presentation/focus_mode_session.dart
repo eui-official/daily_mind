@@ -62,19 +62,15 @@ class FocusModeSession extends HookConsumerWidget {
 
     final onFinish = useCallback(
       () async {
-        final result = await showOkCancelAlertDialog(
+        final result = await showOkAlertDialog(
           context: context,
-          title: 'Hòa thành'.tr(),
-          message: 'Bạn có muốn tiếp tục?'.tr(),
-          cancelLabel: 'Thoát'.tr(),
-          okLabel: 'Tiếp tục'.tr(),
+          title: 'Tuyệt vời, bạn đã hoàn thành'.tr(),
+          okLabel: 'Ok'.tr(),
         );
 
         if (context.mounted) {
           if (result == OkCancelResult.ok) {
             baseBackgroundHandler.onTaskReset();
-          } else {
-            context.pop();
           }
         }
       },

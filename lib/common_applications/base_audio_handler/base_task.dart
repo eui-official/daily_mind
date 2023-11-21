@@ -27,8 +27,23 @@ extension BaseTask on DailyMindBackgroundHandler {
   Future<void> onTaskStartTimer(int seconds, String notificationBody) async {
     onStreamTaskSeconds.add(seconds);
     onStreamTaskRemainingSeconds.add(seconds);
-
     taskCountdown = BaseCountdown();
+
+    taskCountdown.onStart(
+      seconds: seconds,
+      duration: tick,
+      onCounting: (remainingSeconds) {
+        onStreamTaskRemainingSeconds.add(remainingSeconds);
+        onStartAlarm(remainingSeconds, notificationBody);
+      },
+      onFinished: onTaskFinished,
+    );
+  }
+
+  void onStartAlarm(int seconds, String notificationBody) async {
+    final isHasAlarm = Alarm.hasAlarm();
+
+    if (isHasAlarm) return;
 
     final alarmSettings = baseAlarm.onCreateAlarmSettings(
       id: taskCurrent.id,
@@ -38,18 +53,11 @@ extension BaseTask on DailyMindBackgroundHandler {
     );
 
     await Alarm.set(alarmSettings: alarmSettings);
-
-    taskCountdown.onStart(
-      seconds: seconds,
-      duration: tick,
-      onCounting: (remainingSeconds) {
-        onStreamTaskRemainingSeconds.add(remainingSeconds);
-      },
-      onFinished: onTaskFinished,
-    );
   }
 
-  void onTaskFinished() {
+  Future<void> onTaskFinished() async {
+    await Alarm.stopAll();
+
     if (taskCurrentStep == FocusModeSessionSteps.focusing) {
       if (isTaskCompleting) {
         onTaskCompleted();
@@ -70,9 +78,10 @@ extension BaseTask on DailyMindBackgroundHandler {
     onStreamTaskRunning.add(isRunning);
   }
 
-  void onTaskPause() {
+  Future<void> onTaskPause() async {
     taskCountdown.onPause();
     onTaskUpdateRunning(false);
+    await Alarm.stopAll();
   }
 
   void onTaskResume() {
