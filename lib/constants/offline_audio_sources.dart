@@ -4,7 +4,7 @@ const defaultAudioId = 'silient';
 
 OfflineAudioSources offlineAudioSources = {
   'silient': [
-    'assets/audios/silients/1-second-of-silence.mp3',
+    'assets/audios/silients/long_blank.mp3',
   ],
   'fire': [
     'assets/audios/fires/fire-1.mp3',

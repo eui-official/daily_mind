@@ -34,9 +34,26 @@ extension BaseTask on DailyMindBackgroundHandler {
       duration: tick,
       onCounting: (remainingSeconds) {
         onStreamTaskRemainingSeconds.add(remainingSeconds);
+        onPlayBlankSound();
       },
       onFinished: onTaskFinished,
     );
+  }
+
+  Future<void> onPlayBlankSound() async {
+    if (taskBackgroundAudioGaplessAudioPlayer.playing) return;
+
+    await taskBackgroundAudioGaplessAudioPlayer.onSetSource(defaultAudioId);
+    taskBackgroundAudioGaplessAudioPlayer.play();
+
+    mediaItem.add(
+      MediaItem(
+        id: '${taskCurrent.id}',
+        title: taskCurrent.title ?? emptyString,
+      ),
+    );
+
+    playbackState.add(playbackState.value.copyWith(playing: true));
   }
 
   Future<void> onTaskFinished() async {
