@@ -44,6 +44,7 @@ mixin BaseTaskVariables on BaseAudioHandler {
   BehaviorSubject<FocusModeSessionSteps> onStreamTaskCurrentStep =
       BehaviorSubject();
 
+  bool get isTimerActive => taskCountdown.timer?.isActive ?? false;
   bool get isShouldTakeALongBreak => taskCurrentSession % 4 == 0;
   bool get isTaskCompleting =>
       taskCurrentSession >= taskWorkingSessions && taskWorkingSessions > 0;

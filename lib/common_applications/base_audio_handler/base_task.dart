@@ -30,17 +30,11 @@ extension BaseTask on DailyMindBackgroundHandler {
 
     taskCountdown = BaseCountdown();
 
-    final alarmSettings = AlarmSettings(
+    final alarmSettings = baseAlarm.onCreateAlarmSettings(
       id: taskCurrent.id,
-      dateTime: DateTime.now().add(Duration(seconds: seconds)),
-      assetAudioPath: 'assets/audios/alarm.mp3',
-      loopAudio: false,
-      vibrate: true,
-      volumeMax: true,
-      fadeDuration: 3.0,
+      seconds: seconds,
       notificationTitle: taskTitle,
       notificationBody: notificationBody,
-      enableNotificationOnKill: true,
     );
 
     await Alarm.set(alarmSettings: alarmSettings);
@@ -126,7 +120,7 @@ extension BaseTask on DailyMindBackgroundHandler {
   }
 
   void onTaskUpdateIsInBackground(bool isInBackground) {
-    if (isInBackground && taskCurrentStep == FocusModeSessionSteps.focusing) {
+    if (isInBackground && isTimerActive) {
       localNotifications.onShowLocalNotification(
         id: taskCurrent.id,
         title: 'Hãy tập trung',
