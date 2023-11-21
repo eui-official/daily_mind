@@ -3,9 +3,10 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/features/focus_mode_task_new_flow/presentation/focus_mode_task_working_sessions.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/utils.dart';
+import 'package:get/utils.dart' hide Trans;
 
 class BaseTaskFormContent extends HookWidget {
   const BaseTaskFormContent({
@@ -30,26 +31,26 @@ class BaseTaskFormContent extends HookWidget {
               FocusModeTaskWorkingSessions(
                 formControlName: 'workingSessions',
               ),
-              const BaseReactiveTextField(
-                title: 'Tiêu đề',
+              BaseReactiveTextField(
+                title: 'Tiêu đề'.tr(),
                 formControlName: 'title',
                 autofocus: true,
                 decoration: InputDecoration(
-                  hintText: 'Có thể là: working, reading, yoya',
+                  hintText: 'Có thể là: working, reading, yoga'.tr(),
                 ),
               ),
-              const BaseReactiveTextField(
-                title: 'Thời gian nghỉ giữa các phiên',
+              BaseReactiveTextField(
+                title: 'Thời gian nghỉ giữa các phiên'.tr(),
                 formControlName: 'shortBreak',
                 decoration: InputDecoration(
-                  suffix: Text('phút'),
+                  suffix: Text('phút'.tr()),
                 ),
               ),
-              const BaseReactiveTextField(
-                title: 'Thời gian nghỉ sau 4 phiên',
+              BaseReactiveTextField(
+                title: 'Thời gian nghỉ sau 4 phiên'.tr(),
                 formControlName: 'longBreak',
                 decoration: InputDecoration(
-                  suffix: Text('phút'),
+                  suffix: Text('phút'.tr()),
                 ),
               ),
             ],
