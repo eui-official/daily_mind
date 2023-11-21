@@ -185,7 +185,7 @@ extension BaseTask on DailyMindBackgroundHandler {
   }
 
   void onTaskUpdateIsInBackground(bool isInBackground) {
-    if (isInBackground) {
+    if (isInBackground && taskCurrentStep == FocusModeSessionSteps.focusing) {
       localNotifications.onShowLocalNotification(
         id: taskCurrent.id,
         title: 'Hãy tập trung',
