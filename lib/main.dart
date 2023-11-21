@@ -13,6 +13,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   final engine = WidgetsFlutterBinding.ensureInitialized();
+
+  await EasyLocalization.ensureInitialized();
+
   await db.onInit();
   final backgroundHandler = await AudioService.init(
     builder: () => DailyMindBackgroundHandler(),
@@ -21,8 +24,6 @@ void main() async {
       androidNotificationChannelName: 'Music Playback',
     ),
   );
-
-  await EasyLocalization.ensureInitialized();
   await localNotifications.onInit();
 
   await Supabase.initialize(
