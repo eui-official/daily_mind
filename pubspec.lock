@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.1"
+  alarm:
+    dependency: "direct main"
+    description:
+      name: alarm
+      sha256: "16f1d9f5907e87e45b70cdc184a39a0490165a29a09d193c770e80fa5f606efa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   analyzer:
     dependency: transitive
     description:
@@ -33,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.2"
+  android_alarm_manager_plus:
+    dependency: transitive
+    description:
+      name: android_alarm_manager_plus
+      sha256: "82fb28c867c4b3dd7e9157728e46426b8916362f977dbba46b949210f00099f4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.3"
   animated_text_kit:
     dependency: "direct main"
     description:
@@ -377,6 +393,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.10"
+  device_info_plus:
+    dependency: "direct main"
+    description:
+      name: device_info_plus
+      sha256: "0042cb3b2a76413ea5f8a2b40cec2a33e01d0c937e91f0f7c211fde4f7739ba6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.1"
+  device_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: device_info_plus_platform_interface
+      sha256: d3b01d5868b50ae571cd1dc6e502fc94d956b665756180f7b16ead09e836fd64
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   dots_indicator:
     dependency: transitive
     description:
@@ -502,6 +534,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.1"
+  flutter_fgbg:
+    dependency: transitive
+    description:
+      name: flutter_fgbg
+      sha256: "08c4d2fd229e3df26083d5aecc3dea9ff4f2d188f8cd57aaf2b3f047bd08a047"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   flutter_hooks:
     dependency: "direct main"
     description:
@@ -578,10 +618,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: "6d11ea777496061e583623aaf31923f93a9409ef8fcaeeefdd6cd78bf4fe5bb3"
+      sha256: "501ed9d54f1c8c0535b7991bade36f9e7e3b45a2346401f03775c1ec7a3c06ae"
       url: "https://pub.dev"
     source: hosted
-    version: "16.1.0"
+    version: "15.1.2"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -1634,6 +1674,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  vibration:
+    dependency: transitive
+    description:
+      name: vibration
+      sha256: "63d4f6b03e38d106599da18e786d5edcd02354433a4ed478fccbbcfc347193ab"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.3"
+  volume_controller:
+    dependency: transitive
+    description:
+      name: volume_controller
+      sha256: "189bdc7a554f476b412e4c8b2f474562b09d74bc458c23667356bce3ca1d48c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   watcher:
     dependency: transitive
     description:
@@ -1698,6 +1754,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
+  win32_registry:
+    dependency: transitive
+    description:
+      name: win32_registry
+      sha256: "41fd8a189940d8696b1b810efb9abcf60827b6cbfab90b0c43e8439e3a39d85a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
   xdg_directories:
     dependency: transitive
     description:

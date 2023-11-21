@@ -34,32 +34,43 @@ extension BaseTask on DailyMindBackgroundHandler {
     onMixDispose();
 
     onTaskUpdateStep(FocusModeSessionSteps.focusing);
-    onTaskStartTimer(pomodoroSessionMaxSeconds);
+    onTaskStartTimer(
+      pomodoroSessionMaxSeconds,
+      'Hãy nghỉ ngơi nhé'.tr(),
+    );
     onTaskUpdatePlaying(true);
   }
 
-  void onTaskStartTimer(int seconds) {
+  Future<void> onTaskStartTimer(int seconds, String notificationBody) async {
     onStreamTaskSeconds.add(seconds);
     onStreamTaskRemainingSeconds.add(seconds);
 
     taskCountdown = BaseCountdown();
 
+    final alarmSettings = AlarmSettings(
+      id: taskCurrent.id,
+      dateTime: DateTime.now().add(Duration(seconds: seconds)),
+      assetAudioPath: 'assets/audios/alarm.mp3',
+      loopAudio: false,
+      vibrate: true,
+      volumeMax: true,
+      fadeDuration: 3.0,
+      notificationTitle: taskTitle,
+      notificationBody: notificationBody,
+      enableNotificationOnKill: true,
+    );
+
+    await Alarm.set(alarmSettings: alarmSettings);
+
     taskCountdown.onStart(
       seconds: seconds,
       duration: tick,
       onCounting: (remainingSeconds) {
-        onPlaySounds(remainingSeconds);
         onTaskPlayBackgroundAudio();
         onStreamTaskRemainingSeconds.add(remainingSeconds);
       },
       onFinished: onTaskFinished,
     );
-  }
-
-  void onPlaySounds(int remainingSeconds) {
-    if (remainingSeconds <= 2) {
-      soundEffectAudioPlayer.onPlayDing();
-    }
   }
 
   void onUpdateAudioId(dynamic audio, String audioFrom) {
@@ -137,9 +148,15 @@ extension BaseTask on DailyMindBackgroundHandler {
     onTaskUpdateStep(FocusModeSessionSteps.breakTime);
 
     if (isShouldTakeALongBreak) {
-      onTaskStartTimer(taskLongBreakInSeconds);
+      onTaskStartTimer(
+        taskLongBreakInSeconds,
+        'Bắt đầu phiên làm việc tiếp theo'.tr(),
+      );
     } else {
-      onTaskStartTimer(taskShortBreakInSeconds);
+      onTaskStartTimer(
+        taskShortBreakInSeconds,
+        'Bắt đầu phiên làm việc tiếp theo'.tr(),
+      );
     }
   }
 
