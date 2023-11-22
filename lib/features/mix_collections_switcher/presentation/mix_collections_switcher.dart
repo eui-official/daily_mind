@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixCollectionsSwitcher extends HookConsumerWidget {
   final VoidCallback onCreateNew;
+
   const MixCollectionsSwitcher({
     super.key,
     required this.onCreateNew,
@@ -22,7 +23,7 @@ class MixCollectionsSwitcher extends HookConsumerWidget {
         return MixCollectionsEmpty(onPressed: onCreateNew);
       }
 
-      return MixCollections(onCreateNew: onCreateNew);
+      return const MixCollections();
     }, [mixCollectionsState]);
 
     return BaseAnimatedSwitcher(child: child);
