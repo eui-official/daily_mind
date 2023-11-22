@@ -25,16 +25,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
 
       onStreamMixItems.add(mixItems);
 
-      final firstItem = mixItems.first;
-
-      mediaItem.add(
-        MediaItem(
-          id: firstItem.audio.id,
-          title: playlist.title ?? emptyString,
-          artUri: await onGetSoundImageFromAsset(firstItem.audio.image),
-        ),
-      );
-
+      onUpdateMediaItem();
       play();
       onInitPlaybackState();
     }
@@ -120,6 +111,8 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
   }
 
   void onPlayMix() {
+    onUpdateMediaItem();
+
     for (var item in mixItems) {
       item.player.play();
     }
