@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_widgets/base_list_view_header.dart';
-import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/settings/constants/supported_theme.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_theme_color_box.dart';
@@ -13,11 +12,12 @@ class SettingsThemeBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScaffold(
-      child: BaseListViewHeader(
-        title: 'colorList'.tr(),
-        child: Flexible(
+    return Wrap(
+      children: [
+        BaseListViewHeader(
+          title: 'colorList'.tr(),
           child: ListView(
+            shrinkWrap: true,
             padding: EdgeInsets.symmetric(vertical: spacing(2)),
             children: supportedThemes.map((theme) {
               return ListTile(
@@ -31,7 +31,7 @@ class SettingsThemeBottomSheet extends StatelessWidget {
             }).toList(),
           ),
         ),
-      ),
+      ],
     );
   }
 }

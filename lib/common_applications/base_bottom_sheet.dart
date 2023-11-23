@@ -8,8 +8,7 @@ Future<T?> onShowBottomSheet<T>(
   bool enableDrag = true,
 }) {
   return showModalBottomSheet<T>(
-    backgroundColor: Colors.transparent,
-    barrierColor: context.theme.colorScheme.background.withOpacity(0.75),
+    backgroundColor: context.theme.scaffoldBackgroundColor,
     context: context,
     enableDrag: enableDrag,
     isDismissible: isDismissible,
