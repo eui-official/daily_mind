@@ -1,4 +1,5 @@
 import 'package:audio_service/audio_service.dart';
+import 'package:daily_mind/common_applications/base_background_fetch.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/env.dart';
 import 'package:daily_mind/common_applications/local_notifications.dart';
@@ -24,6 +25,8 @@ void main() async {
       androidNotificationChannelName: 'Music Playback',
     ),
   );
+  await baseBackgroundFetch.registerHeadlessTask();
+  await baseBackgroundFetch.configure();
   await localNotifications.onInit();
 
   await Supabase.initialize(
