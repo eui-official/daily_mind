@@ -7,6 +7,10 @@ extension BaseTask on DailyMindBackgroundHandler {
     onTaskReset();
   }
 
+  void onTaskUpdate(Task newTask) {
+    onStreamTaskCurrent.add(newTask);
+  }
+
   void onTaskStartOrResume() {
     if (taskCurrentStep == FocusModeSessionSteps.ready) {
       onTaskStart();

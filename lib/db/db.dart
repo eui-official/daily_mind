@@ -179,9 +179,9 @@ class Db {
     });
   }
 
-  void onUpdateTask(Task task) {
-    isar.writeTxnSync(() {
-      isar.tasks.putSync(task);
+  Future<int> onUpdateTask(Task task) async {
+    return isar.writeTxn(() async {
+      return isar.tasks.put(task);
     });
   }
 

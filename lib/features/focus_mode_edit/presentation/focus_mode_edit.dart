@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_widgets/base_task_form/presentation/base_task_form.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/task.dart';
@@ -9,16 +10,18 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 class FocusModeEdit extends HookWidget {
   final Task task;
+  final ValueChanged<Task> onAfterUpdated;
 
   const FocusModeEdit({
     super.key,
     required this.task,
+    required this.onAfterUpdated,
   });
 
   @override
   Widget build(BuildContext context) {
     final onEditTask = useCallback(
-      (FormGroup formGroup) {
+      (FormGroup formGroup) async {
         final value = formGroup.value;
         final title = value['title'] as String;
         final workingSessions = value['workingSessions'] as int;
@@ -30,9 +33,13 @@ class FocusModeEdit extends HookWidget {
         task.shortBreak = shortBreak;
         task.longBreak = longBreak;
 
-        db.onUpdateTask(task);
+        final id = await db.onUpdateTask(task);
+        final updatedTask = db.onGetTask(id);
 
-        context.pop();
+        if (context.mounted) {
+          onSafeValueBuilder(updatedTask, onAfterUpdated);
+          context.pop();
+        }
       },
       [task],
     );

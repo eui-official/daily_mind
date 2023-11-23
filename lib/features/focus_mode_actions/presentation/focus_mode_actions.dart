@@ -9,14 +9,14 @@ class FocusModeActions extends HookWidget {
   final FocusModeSessionSteps step;
   final VoidCallback onPlay;
   final VoidCallback onPause;
-  final VoidCallback onClose;
+  final VoidCallback onEdit;
   final VoidCallback onSettings;
   final bool isRunning;
 
   const FocusModeActions({
     super.key,
     required this.isRunning,
-    required this.onClose,
+    required this.onEdit,
     required this.onPause,
     required this.onPlay,
     required this.onSettings,
@@ -45,9 +45,9 @@ class FocusModeActions extends HookWidget {
           size: 5,
         ),
         IconButton(
-          onPressed: onClose,
+          onPressed: onEdit,
           padding: EdgeInsets.all(spacing(2)),
-          icon: const Icon(Icons.close),
+          icon: const Icon(Icons.edit),
           style: IconButton.styleFrom(
             backgroundColor: context.theme.cardColor,
           ),
