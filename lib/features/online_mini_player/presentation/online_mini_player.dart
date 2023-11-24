@@ -1,8 +1,11 @@
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
+import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
-import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
+import 'package:daily_mind/features/online_mini_player/presentation/online_mini_player_provider.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,10 +18,11 @@ class OnlineMiniPlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseMiniPlayerState = ref.watch(baseMiniPlayerProvider);
+    final onlineMiniPlayerState = ref.watch(onlineMiniPlayerNotifierProvider);
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
+    final category = onlineMiniPlayerState.category;
 
     final currentIndexStreamMemoized =
         useMemoized(() => onlinePlayer.currentIndexStream, []);
@@ -45,12 +49,21 @@ class OnlineMiniPlayer extends HookConsumerWidget {
     final isLoading = processingStateSnapshot.data != ProcessingState.ready;
     final isPlaying = playBackState.data?.playing ?? false;
 
+    final onOpenPlayerOnline = useCallback(() {
+      onSafeValueBuilder(category, (safeCategory) {
+        onShowBottomSheet(
+          context,
+          child: OnlinePlayer(category: safeCategory),
+        );
+      });
+    }, [category, context]);
+
     if (sequence.isNotEmpty) {
       final item = sequence[currentIndex];
       final tag = item.tag;
 
       return BaseMiniPlayer(
-        onTap: baseMiniPlayerState.onTap,
+        onTap: onOpenPlayerOnline,
         leading: BaseNetworkImage(
           image: tag.image,
           size: 5,

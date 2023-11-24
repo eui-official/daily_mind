@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MiniPlayerState {
   bool get isShow => throw _privateConstructorUsedError;
   AudioTypes get audioType => throw _privateConstructorUsedError;
-  VoidCallback? get onTap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MiniPlayerStateCopyWith<MiniPlayerState> get copyWith =>
@@ -31,7 +30,7 @@ abstract class $MiniPlayerStateCopyWith<$Res> {
           MiniPlayerState value, $Res Function(MiniPlayerState) then) =
       _$MiniPlayerStateCopyWithImpl<$Res, MiniPlayerState>;
   @useResult
-  $Res call({bool isShow, AudioTypes audioType, VoidCallback? onTap});
+  $Res call({bool isShow, AudioTypes audioType});
 }
 
 /// @nodoc
@@ -49,7 +48,6 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
   $Res call({
     Object? isShow = null,
     Object? audioType = null,
-    Object? onTap = freezed,
   }) {
     return _then(_value.copyWith(
       isShow: null == isShow
@@ -60,10 +58,6 @@ class _$MiniPlayerStateCopyWithImpl<$Res, $Val extends MiniPlayerState>
           ? _value.audioType
           : audioType // ignore: cast_nullable_to_non_nullable
               as AudioTypes,
-      onTap: freezed == onTap
-          ? _value.onTap
-          : onTap // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
     ) as $Val);
   }
 }
@@ -76,7 +70,7 @@ abstract class _$$MiniPlayerStateImplCopyWith<$Res>
       __$$MiniPlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isShow, AudioTypes audioType, VoidCallback? onTap});
+  $Res call({bool isShow, AudioTypes audioType});
 }
 
 /// @nodoc
@@ -92,7 +86,6 @@ class __$$MiniPlayerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isShow = null,
     Object? audioType = null,
-    Object? onTap = freezed,
   }) {
     return _then(_$MiniPlayerStateImpl(
       isShow: null == isShow
@@ -103,10 +96,6 @@ class __$$MiniPlayerStateImplCopyWithImpl<$Res>
           ? _value.audioType
           : audioType // ignore: cast_nullable_to_non_nullable
               as AudioTypes,
-      onTap: freezed == onTap
-          ? _value.onTap
-          : onTap // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
     ));
   }
 }
@@ -114,19 +103,16 @@ class __$$MiniPlayerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MiniPlayerStateImpl implements _MiniPlayerState {
-  const _$MiniPlayerStateImpl(
-      {required this.isShow, required this.audioType, this.onTap});
+  const _$MiniPlayerStateImpl({required this.isShow, required this.audioType});
 
   @override
   final bool isShow;
   @override
   final AudioTypes audioType;
-  @override
-  final VoidCallback? onTap;
 
   @override
   String toString() {
-    return 'MiniPlayerState(isShow: $isShow, audioType: $audioType, onTap: $onTap)';
+    return 'MiniPlayerState(isShow: $isShow, audioType: $audioType)';
   }
 
   @override
@@ -136,12 +122,11 @@ class _$MiniPlayerStateImpl implements _MiniPlayerState {
             other is _$MiniPlayerStateImpl &&
             (identical(other.isShow, isShow) || other.isShow == isShow) &&
             (identical(other.audioType, audioType) ||
-                other.audioType == audioType) &&
-            (identical(other.onTap, onTap) || other.onTap == onTap));
+                other.audioType == audioType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isShow, audioType, onTap);
+  int get hashCode => Object.hash(runtimeType, isShow, audioType);
 
   @JsonKey(ignore: true)
   @override
@@ -154,15 +139,12 @@ class _$MiniPlayerStateImpl implements _MiniPlayerState {
 abstract class _MiniPlayerState implements MiniPlayerState {
   const factory _MiniPlayerState(
       {required final bool isShow,
-      required final AudioTypes audioType,
-      final VoidCallback? onTap}) = _$MiniPlayerStateImpl;
+      required final AudioTypes audioType}) = _$MiniPlayerStateImpl;
 
   @override
   bool get isShow;
   @override
   AudioTypes get audioType;
-  @override
-  VoidCallback? get onTap;
   @override
   @JsonKey(ignore: true)
   _$$MiniPlayerStateImplCopyWith<_$MiniPlayerStateImpl> get copyWith =>
