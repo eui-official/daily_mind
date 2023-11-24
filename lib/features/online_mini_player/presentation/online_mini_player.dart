@@ -46,7 +46,7 @@ class OnlineMiniPlayer extends HookConsumerWidget {
     final sequence = onlinePlayer.audioSource?.sequence ?? [];
     final currentIndex = currentIndexSnapshot.data ?? 0;
 
-    final isLoading = processingStateSnapshot.data != ProcessingState.ready;
+    final isLoading = processingStateSnapshot.data == ProcessingState.loading;
     final isPlaying = playBackState.data?.playing ?? false;
 
     final onOpenPlayerOnline = useCallback(() {
