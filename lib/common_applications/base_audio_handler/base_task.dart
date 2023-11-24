@@ -21,14 +21,11 @@ extension BaseTask on DailyMindBackgroundHandler {
 
   void onTaskStart() {
     onTaskUpdateStep(FocusModeSessionSteps.focusing);
-    onTaskStartTimer(
-      pomodoroSessionMaxSeconds,
-      'Hãy nghỉ ngơi nhé'.tr(),
-    );
+    onTaskStartTimer(pomodoroSessionMaxSeconds);
     onTaskUpdateRunning(true);
   }
 
-  Future<void> onTaskStartTimer(int seconds, String notificationBody) async {
+  Future<void> onTaskStartTimer(int seconds) async {
     onStreamTaskSeconds.add(seconds);
     onStreamTaskRemainingSeconds.add(seconds);
     taskCountdown = BaseCountdown();
@@ -39,9 +36,16 @@ extension BaseTask on DailyMindBackgroundHandler {
       onCounting: (remainingSeconds) {
         onStreamTaskRemainingSeconds.add(remainingSeconds);
         onInitBlankSound();
+        onPlayAlarm(remainingSeconds);
       },
       onFinished: onTaskFinished,
     );
+  }
+
+  void onPlayAlarm(int remainingSeconds) {
+    if (remainingSeconds <= 0) {
+      soundEffectAudioPlayer.onPlayAlarm();
+    }
   }
 
   Future<void> onInitBlankSound() async {
@@ -85,17 +89,11 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskBreakTime() {
     onTaskUpdateStep(FocusModeSessionSteps.breakTime);
 
-    if (isShouldTakeALongBreak) {
-      onTaskStartTimer(
-        taskLongBreakInSeconds,
-        'Bắt đầu phiên làm việc tiếp theo'.tr(),
-      );
-    } else {
-      onTaskStartTimer(
-        taskShortBreakInSeconds,
-        'Bắt đầu phiên làm việc tiếp theo'.tr(),
-      );
-    }
+    final breakTimeInSeconds = isShouldTakeALongBreak
+        ? taskLongBreakInSeconds
+        : taskShortBreakInSeconds;
+
+    onTaskStartTimer(breakTimeInSeconds);
   }
 
   void onTaskCompleted() {
