@@ -133,8 +133,11 @@ flutter:
     - assets/audios/rains/
     - assets/audios/spaces/
     - assets/audios/waters/
+    - assets/audios/waves/
     - assets/audios/white-noises/
     - assets/audios/winds/
+    - assets/audios/cat-purrings/
+    - assets/audios/delta-waves/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

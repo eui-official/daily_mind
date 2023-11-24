@@ -21,14 +21,19 @@ OfflineAudioSources offlineAudioSources = {
   'water': [
     'assets/audios/waters/water-1.mp3',
   ],
+  "wave": [
+    'assets/audios/waves/wave-1.mp3',
+  ],
   'wind': [
     'assets/audios/winds/wind-1.mp3',
-    'assets/audios/winds/wind-2.mp3',
-    'assets/audios/winds/wind-3.mp3',
+  ],
+  "catPurring": [
+    'assets/audios/cat-purrings/cat-purring-1.mp3',
+  ],
+  'deltaWave': [
+    'assets/audios/delta-waves/delta-wave-1.mp3',
   ],
   'whiteNoise': [
     'assets/audios/white-noises/white-noise-1.mp3',
-    'assets/audios/white-noises/white-noise-2.mp3',
-    'assets/audios/white-noises/white-noise-3.mp3',
   ],
 };
