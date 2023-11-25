@@ -17,6 +17,7 @@ class BaseMiniPlayerContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: space(
         [
           if (subtitle.isNotEmpty)
