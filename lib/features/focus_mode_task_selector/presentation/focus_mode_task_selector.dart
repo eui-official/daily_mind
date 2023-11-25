@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/features/focus_mode_task_list/presentation/focus_mode_task_list.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -29,10 +30,19 @@ class FocusModeTaskSelector extends HookWidget {
       onPressed: onShowListTask,
       child: Container(
         padding: EdgeInsets.all(spacing()),
-        child: Text(
-          title,
-          style: context.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.bold,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: space(
+            [
+              Text(
+                title,
+                style: context.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Icon(Icons.arrow_drop_down),
+            ],
+            width: spacing(),
           ),
         ),
       ),
