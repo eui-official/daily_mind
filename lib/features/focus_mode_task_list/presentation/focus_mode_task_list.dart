@@ -25,30 +25,28 @@ class FocusModeTaskList extends HookConsumerWidget {
       children: [
         Container(
           constraints: BoxConstraints(minHeight: context.height / 2),
-          child: Material(
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(spacing(2)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Danh sách công việc'),
-                      IconButton(
-                        onPressed: onOpenAddNewTask,
-                        icon: const Icon(Icons.add),
-                      ),
-                    ],
-                  ),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(spacing(2)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Danh sách công việc'),
+                    IconButton(
+                      onPressed: onOpenAddNewTask,
+                      icon: const Icon(Icons.add),
+                    ),
+                  ],
                 ),
-                ListView(
-                  shrinkWrap: true,
-                  children: focusModeState.map((task) {
-                    return FocusModeTaskItem(task: task);
-                  }).toList(),
-                )
-              ],
-            ),
+              ),
+              ListView(
+                shrinkWrap: true,
+                children: focusModeState.map((task) {
+                  return FocusModeTaskItem(task: task);
+                }).toList(),
+              )
+            ],
           ),
         )
       ],

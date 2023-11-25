@@ -49,6 +49,7 @@ class OnlinePlayer extends HookConsumerWidget {
 
     return DraggableScrollableSheet(
       initialChildSize: 1,
+      expand: false,
       builder: (context, scrollController) {
         return BasePlayerDetails(
           image: imageProvider,
