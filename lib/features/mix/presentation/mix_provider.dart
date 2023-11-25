@@ -70,7 +70,7 @@ class MixdNotifier extends StateNotifier<MixState> {
     }
   }
 
-  void onSelect(AudioOffline audio) {
+  void onSelect(AudioOffline audio) async {
     if (mixItems.isContain(audio.id)) {
       final item = mixItems.firstWhere((item) => item.audio.id == audio.id);
       baseBackgroundHandler.onRemoveMixItem(item);
@@ -80,7 +80,7 @@ class MixdNotifier extends StateNotifier<MixState> {
         player: GaplessAudioPlayer(),
       );
 
-      baseBackgroundHandler.onAddMixItem(newMixItem);
+      await baseBackgroundHandler.onAddMixItem(newMixItem);
     }
 
     baseMiniPlayerNotifier.onUpdateState(
