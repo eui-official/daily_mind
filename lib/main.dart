@@ -10,6 +10,7 @@ import 'package:daily_mind/features/localization/presentation/localization.dart'
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:showcaseview/showcaseview.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -38,9 +39,15 @@ void main() async {
     ProviderScope(
       child: Localization(
         child: BaseInternetConnectionChecker(
-          child: Init(
-            engine: engine,
-            backgroundHandler: backgroundHandler,
+          child: ShowCaseWidget(
+            builder: Builder(
+              builder: (context) {
+                return Init(
+                  backgroundHandler: backgroundHandler,
+                  engine: engine,
+                );
+              },
+            ),
           ),
         ),
       ),
