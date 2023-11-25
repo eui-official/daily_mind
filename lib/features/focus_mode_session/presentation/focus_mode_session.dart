@@ -2,6 +2,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/features/focus_mode_actions/presentation/focus_mode_actions.dart';
 import 'package:daily_mind/features/focus_mode_edit/presentation/focus_mode_edit.dart';
@@ -25,6 +26,8 @@ class FocusModeSession extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final taskBackgroundData = useBackgroundTaskData(ref);
+    final isReady =
+        taskBackgroundData.taskCurrentStep == FocusModeSessionSteps.ready;
 
     final onEdit = useCallback(
       () async {
@@ -44,7 +47,7 @@ class FocusModeSession extends HookConsumerWidget {
       [taskBackgroundData, context],
     );
 
-    final onSettings = useCallback(
+    final onReset = useCallback(
       () async {
         final result = await showOkCancelAlertDialog(
           context: context,
@@ -59,6 +62,14 @@ class FocusModeSession extends HookConsumerWidget {
       },
       [],
     );
+
+    final onResetSwitcher = useMemoized(() {
+      if (isReady) {
+        return emptyNull;
+      }
+
+      return onReset;
+    }, [isReady]);
 
     final onFinish = useCallback(
       () async {
@@ -122,7 +133,7 @@ class FocusModeSession extends HookConsumerWidget {
               onEdit: onEdit,
               onPause: baseBackgroundHandler.onTaskPause,
               onPlay: baseBackgroundHandler.onTaskStartOrResume,
-              onSettings: onSettings,
+              onReset: onResetSwitcher,
               step: taskBackgroundData.taskCurrentStep,
             ),
           ],
