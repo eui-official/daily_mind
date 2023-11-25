@@ -24,6 +24,7 @@ mixin _$Category {
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   String get layout => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get group => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $CategoryCopyWith<$Res> {
       {String id,
       @JsonKey(name: 'created_at') String createdAt,
       String name,
+      String image,
       String layout,
       String description,
       String group});
@@ -64,6 +66,7 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? id = null,
     Object? createdAt = null,
     Object? name = null,
+    Object? image = null,
     Object? layout = null,
     Object? description = null,
     Object? group = null,
@@ -80,6 +83,10 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       layout: null == layout
           ? _value.layout
@@ -109,6 +116,7 @@ abstract class _$$CategoryImplCopyWith<$Res>
       {String id,
       @JsonKey(name: 'created_at') String createdAt,
       String name,
+      String image,
       String layout,
       String description,
       String group});
@@ -128,6 +136,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? id = null,
     Object? createdAt = null,
     Object? name = null,
+    Object? image = null,
     Object? layout = null,
     Object? description = null,
     Object? group = null,
@@ -144,6 +153,10 @@ class __$$CategoryImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       layout: null == layout
           ? _value.layout
@@ -168,6 +181,7 @@ class _$CategoryImpl implements _Category {
       {required this.id,
       @JsonKey(name: 'created_at') required this.createdAt,
       required this.name,
+      required this.image,
       required this.layout,
       required this.description,
       required this.group});
@@ -183,6 +197,8 @@ class _$CategoryImpl implements _Category {
   @override
   final String name;
   @override
+  final String image;
+  @override
   final String layout;
   @override
   final String description;
@@ -191,7 +207,7 @@ class _$CategoryImpl implements _Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, createdAt: $createdAt, name: $name, layout: $layout, description: $description, group: $group)';
+    return 'Category(id: $id, createdAt: $createdAt, name: $name, image: $image, layout: $layout, description: $description, group: $group)';
   }
 
   @override
@@ -203,6 +219,7 @@ class _$CategoryImpl implements _Category {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -211,8 +228,8 @@ class _$CategoryImpl implements _Category {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, createdAt, name, layout, description, group);
+  int get hashCode => Object.hash(
+      runtimeType, id, createdAt, name, image, layout, description, group);
 
   @JsonKey(ignore: true)
   @override
@@ -233,6 +250,7 @@ abstract class _Category implements Category {
       {required final String id,
       @JsonKey(name: 'created_at') required final String createdAt,
       required final String name,
+      required final String image,
       required final String layout,
       required final String description,
       required final String group}) = _$CategoryImpl;
@@ -247,6 +265,8 @@ abstract class _Category implements Category {
   String get createdAt;
   @override
   String get name;
+  @override
+  String get image;
   @override
   String get layout;
   @override
