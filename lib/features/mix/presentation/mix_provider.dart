@@ -66,7 +66,7 @@ class MixdNotifier extends StateNotifier<MixState> {
 
     if (recentPlaylistId != null) {
       db.onDeletePlaylist(recentPlaylistId);
-      state = state.copyWith(recentPlaylist: null);
+      state = state.copyWith(recentPlaylist: emptyNull);
     }
   }
 
