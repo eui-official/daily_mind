@@ -10,7 +10,7 @@ class FocusModeActions extends HookWidget {
   final VoidCallback onPlay;
   final VoidCallback onPause;
   final VoidCallback onEdit;
-  final VoidCallback onSettings;
+  final VoidCallback? onReset;
   final bool isRunning;
 
   const FocusModeActions({
@@ -19,8 +19,8 @@ class FocusModeActions extends HookWidget {
     required this.onEdit,
     required this.onPause,
     required this.onPlay,
-    required this.onSettings,
     required this.step,
+    this.onReset,
   });
 
   @override
@@ -29,11 +29,11 @@ class FocusModeActions extends HookWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconButton(
-          onPressed: onSettings,
+          onPressed: onReset,
           padding: EdgeInsets.all(spacing(2)),
           icon: const Icon(Icons.restart_alt_rounded),
           style: IconButton.styleFrom(
-            backgroundColor: context.theme.cardColor,
+            backgroundColor: context.theme.primaryColorDark,
           ),
         ),
         TogglePlayModeButton(
@@ -49,7 +49,7 @@ class FocusModeActions extends HookWidget {
           padding: EdgeInsets.all(spacing(2)),
           icon: const Icon(Icons.edit),
           style: IconButton.styleFrom(
-            backgroundColor: context.theme.cardColor,
+            backgroundColor: context.theme.primaryColorDark,
           ),
         ),
       ],
