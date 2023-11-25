@@ -1,3 +1,5 @@
+import 'package:blur/blur.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -8,7 +10,7 @@ Future<T?> onShowBottomSheet<T>(
   bool enableDrag = true,
 }) {
   return showModalBottomSheet<T>(
-    backgroundColor: context.theme.scaffoldBackgroundColor,
+    backgroundColor: Colors.transparent,
     context: context,
     enableDrag: enableDrag,
     isDismissible: isDismissible,
@@ -16,7 +18,17 @@ Future<T?> onShowBottomSheet<T>(
     showDragHandle: true,
     useSafeArea: true,
     builder: (BuildContext context) {
-      return child;
+      return Stack(
+        children: [
+          Positioned.fill(
+            child: Container().blurred(
+              blur: spacing(),
+              blurColor: context.theme.colorScheme.background,
+            ),
+          ),
+          child,
+        ],
+      );
     },
   );
 }
