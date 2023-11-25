@@ -22,7 +22,7 @@ class OnlineCategoryHorizontal extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = CachedNetworkImageProvider(audioCategory.audios.first.image);
+    final image = CachedNetworkImageProvider(audioCategory.category.image);
     final paletteGenerator = useImagePallete(image);
 
     return BaseNullBuilder(
