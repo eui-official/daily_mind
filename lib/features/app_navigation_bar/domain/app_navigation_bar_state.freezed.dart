@@ -94,8 +94,8 @@ class __$$AppNavigationBarStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppNavigationBarStateImpl implements _AppNavigationBarState {
-  const _$AppNavigationBarStateImpl({required this.index});
+class _$AppNavigationBarStateImpl extends _AppNavigationBarState {
+  const _$AppNavigationBarStateImpl({required this.index}) : super._();
 
   @override
   final int index;
@@ -124,9 +124,10 @@ class _$AppNavigationBarStateImpl implements _AppNavigationBarState {
           _$AppNavigationBarStateImpl>(this, _$identity);
 }
 
-abstract class _AppNavigationBarState implements AppNavigationBarState {
+abstract class _AppNavigationBarState extends AppNavigationBarState {
   const factory _AppNavigationBarState({required final int index}) =
       _$AppNavigationBarStateImpl;
+  const _AppNavigationBarState._() : super._();
 
   @override
   int get index;

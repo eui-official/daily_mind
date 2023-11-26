@@ -1,1 +1,0 @@
-const newMixTutorial = 'newMixTutorial';
