@@ -3,6 +3,7 @@ import 'package:daily_mind/common_widgets/base_audios_builder/presentation/base_
 import 'package:daily_mind/common_widgets/base_showcase/constant/showcase_keys.dart';
 import 'package:daily_mind/common_widgets/base_showcase/constant/showcase_tasks.dart';
 import 'package:daily_mind/common_widgets/base_showcase/presentation/base_showcase.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/online_category_group/presentation/online_category_group.dart';
@@ -44,12 +45,13 @@ class OnlineExploreList extends HookConsumerWidget {
 
           audioCategoryGroup.forEach(
             (group, audioCategories) {
-              if (group.isEmpty) {
-                children.add(OnlineCategoryWithoutGroup(
-                    audioCategories: audioCategories));
-              } else {
+              if (group != emptyNull) {
                 children
                     .add(OnlineCategoryGroup(audioCategories: audioCategories));
+              } else {
+                children.add(
+                  OnlineCategoryWithoutGroup(audioCategories: audioCategories),
+                );
               }
             },
           );
@@ -57,7 +59,7 @@ class OnlineExploreList extends HookConsumerWidget {
           return Column(
             children: space(
               children,
-              height: spacing(3),
+              height: spacing(5),
             ),
           );
         },

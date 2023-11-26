@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 
 typedef OfflineAudioSources = Map<String, List<String>>;
 
-// typedef OnItemVolumeChanged = Function(
-//   OfflineMixEditorItemState offlineMixEditorItemState,
-//   double volume,
-// );
-
 typedef OnWidgetSettingBuilder = Widget Function(Settings?);
 
 typedef OnEmptyWidgetBuilder<T> = Widget Function(T data);
@@ -38,7 +33,7 @@ typedef OnSoundOfflineStateBuilder = Function(
 
 typedef OnOnlineHandlerBuilder = Widget Function(VoidCallback onTap);
 
-typedef AudioCategoryGroup = Map<String, List<AudioCategory>>;
+typedef AudioCategoryGroup = Map<String?, List<AudioCategory>>;
 
 typedef OnCounting = Function(int remainingSeconds);
 

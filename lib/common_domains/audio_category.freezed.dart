@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AudioCategory {
+  Group? get group => throw _privateConstructorUsedError;
   Category get category => throw _privateConstructorUsedError;
   List<Audio> get audios => throw _privateConstructorUsedError;
 
@@ -30,8 +31,9 @@ abstract class $AudioCategoryCopyWith<$Res> {
           AudioCategory value, $Res Function(AudioCategory) then) =
       _$AudioCategoryCopyWithImpl<$Res, AudioCategory>;
   @useResult
-  $Res call({Category category, List<Audio> audios});
+  $Res call({Group? group, Category category, List<Audio> audios});
 
+  $GroupCopyWith<$Res>? get group;
   $CategoryCopyWith<$Res> get category;
 }
 
@@ -48,10 +50,15 @@ class _$AudioCategoryCopyWithImpl<$Res, $Val extends AudioCategory>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? group = freezed,
     Object? category = null,
     Object? audios = null,
   }) {
     return _then(_value.copyWith(
+      group: freezed == group
+          ? _value.group
+          : group // ignore: cast_nullable_to_non_nullable
+              as Group?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -61,6 +68,18 @@ class _$AudioCategoryCopyWithImpl<$Res, $Val extends AudioCategory>
           : audios // ignore: cast_nullable_to_non_nullable
               as List<Audio>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GroupCopyWith<$Res>? get group {
+    if (_value.group == null) {
+      return null;
+    }
+
+    return $GroupCopyWith<$Res>(_value.group!, (value) {
+      return _then(_value.copyWith(group: value) as $Val);
+    });
   }
 
   @override
@@ -80,8 +99,10 @@ abstract class _$$AudioCategoryImplCopyWith<$Res>
       __$$AudioCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Category category, List<Audio> audios});
+  $Res call({Group? group, Category category, List<Audio> audios});
 
+  @override
+  $GroupCopyWith<$Res>? get group;
   @override
   $CategoryCopyWith<$Res> get category;
 }
@@ -97,10 +118,15 @@ class __$$AudioCategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? group = freezed,
     Object? category = null,
     Object? audios = null,
   }) {
     return _then(_$AudioCategoryImpl(
+      group: freezed == group
+          ? _value.group
+          : group // ignore: cast_nullable_to_non_nullable
+              as Group?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -117,9 +143,11 @@ class __$$AudioCategoryImplCopyWithImpl<$Res>
 
 class _$AudioCategoryImpl implements _AudioCategory {
   const _$AudioCategoryImpl(
-      {required this.category, required final List<Audio> audios})
+      {this.group, required this.category, required final List<Audio> audios})
       : _audios = audios;
 
+  @override
+  final Group? group;
   @override
   final Category category;
   final List<Audio> _audios;
@@ -132,7 +160,7 @@ class _$AudioCategoryImpl implements _AudioCategory {
 
   @override
   String toString() {
-    return 'AudioCategory(category: $category, audios: $audios)';
+    return 'AudioCategory(group: $group, category: $category, audios: $audios)';
   }
 
   @override
@@ -140,14 +168,15 @@ class _$AudioCategoryImpl implements _AudioCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AudioCategoryImpl &&
+            (identical(other.group, group) || other.group == group) &&
             (identical(other.category, category) ||
                 other.category == category) &&
             const DeepCollectionEquality().equals(other._audios, _audios));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, category, const DeepCollectionEquality().hash(_audios));
+  int get hashCode => Object.hash(runtimeType, group, category,
+      const DeepCollectionEquality().hash(_audios));
 
   @JsonKey(ignore: true)
   @override
@@ -158,9 +187,12 @@ class _$AudioCategoryImpl implements _AudioCategory {
 
 abstract class _AudioCategory implements AudioCategory {
   const factory _AudioCategory(
-      {required final Category category,
+      {final Group? group,
+      required final Category category,
       required final List<Audio> audios}) = _$AudioCategoryImpl;
 
+  @override
+  Group? get group;
   @override
   Category get category;
   @override
