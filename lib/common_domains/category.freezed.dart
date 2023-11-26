@@ -20,14 +20,14 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Category {
-  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   String get layout => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get group => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get group => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +41,13 @@ abstract class $CategoryCopyWith<$Res> {
       _$CategoryCopyWithImpl<$Res, Category>;
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'created_at') String createdAt,
-      String name,
+      {@JsonKey(name: 'created_at') String createdAt,
+      String description,
+      String id,
       String image,
       String layout,
-      String description,
-      String group});
+      String name,
+      String? group});
 }
 
 /// @nodoc
@@ -63,26 +63,26 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? createdAt = null,
-    Object? name = null,
+    Object? description = null,
+    Object? id = null,
     Object? image = null,
     Object? layout = null,
-    Object? description = null,
-    Object? group = null,
+    Object? name = null,
+    Object? group = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
           ? _value.image
@@ -92,14 +92,14 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.layout
           : layout // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      group: null == group
+      group: freezed == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -113,13 +113,13 @@ abstract class _$$CategoryImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'created_at') String createdAt,
-      String name,
+      {@JsonKey(name: 'created_at') String createdAt,
+      String description,
+      String id,
       String image,
       String layout,
-      String description,
-      String group});
+      String name,
+      String? group});
 }
 
 /// @nodoc
@@ -133,26 +133,26 @@ class __$$CategoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? createdAt = null,
-    Object? name = null,
+    Object? description = null,
+    Object? id = null,
     Object? image = null,
     Object? layout = null,
-    Object? description = null,
-    Object? group = null,
+    Object? name = null,
+    Object? group = freezed,
   }) {
     return _then(_$CategoryImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       image: null == image
           ? _value.image
@@ -162,14 +162,14 @@ class __$$CategoryImplCopyWithImpl<$Res>
           ? _value.layout
           : layout // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      group: null == group
+      group: freezed == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -178,36 +178,36 @@ class __$$CategoryImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CategoryImpl implements _Category {
   const _$CategoryImpl(
-      {required this.id,
-      @JsonKey(name: 'created_at') required this.createdAt,
-      required this.name,
+      {@JsonKey(name: 'created_at') required this.createdAt,
+      required this.description,
+      required this.id,
       required this.image,
       required this.layout,
-      required this.description,
-      required this.group});
+      required this.name,
+      this.group});
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
 
   @override
-  final String id;
-  @override
   @JsonKey(name: 'created_at')
   final String createdAt;
   @override
-  final String name;
+  final String description;
+  @override
+  final String id;
   @override
   final String image;
   @override
   final String layout;
   @override
-  final String description;
+  final String name;
   @override
-  final String group;
+  final String? group;
 
   @override
   String toString() {
-    return 'Category(id: $id, createdAt: $createdAt, name: $name, image: $image, layout: $layout, description: $description, group: $group)';
+    return 'Category(createdAt: $createdAt, description: $description, id: $id, image: $image, layout: $layout, name: $name, group: $group)';
   }
 
   @override
@@ -215,21 +215,21 @@ class _$CategoryImpl implements _Category {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.layout, layout) || other.layout == layout) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.layout, layout) || other.layout == layout) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.group, group) || other.group == group));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, createdAt, name, image, layout, description, group);
+      runtimeType, createdAt, description, id, image, layout, name, group);
 
   @JsonKey(ignore: true)
   @override
@@ -247,32 +247,32 @@ class _$CategoryImpl implements _Category {
 
 abstract class _Category implements Category {
   const factory _Category(
-      {required final String id,
-      @JsonKey(name: 'created_at') required final String createdAt,
-      required final String name,
+      {@JsonKey(name: 'created_at') required final String createdAt,
+      required final String description,
+      required final String id,
       required final String image,
       required final String layout,
-      required final String description,
-      required final String group}) = _$CategoryImpl;
+      required final String name,
+      final String? group}) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;
 
   @override
-  String get id;
-  @override
   @JsonKey(name: 'created_at')
   String get createdAt;
   @override
-  String get name;
+  String get description;
+  @override
+  String get id;
   @override
   String get image;
   @override
   String get layout;
   @override
-  String get description;
+  String get name;
   @override
-  String get group;
+  String? get group;
   @override
   @JsonKey(ignore: true)
   _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>

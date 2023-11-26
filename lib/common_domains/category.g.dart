@@ -8,22 +8,22 @@ part of 'category.dart';
 
 _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     _$CategoryImpl(
-      id: json['id'] as String,
       createdAt: json['created_at'] as String,
-      name: json['name'] as String,
+      description: json['description'] as String,
+      id: json['id'] as String,
       image: json['image'] as String,
       layout: json['layout'] as String,
-      description: json['description'] as String,
-      group: json['group'] as String,
+      name: json['name'] as String,
+      group: json['group'] as String?,
     );
 
 Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'created_at': instance.createdAt,
-      'name': instance.name,
+      'description': instance.description,
+      'id': instance.id,
       'image': instance.image,
       'layout': instance.layout,
-      'description': instance.description,
+      'name': instance.name,
       'group': instance.group,
     };
