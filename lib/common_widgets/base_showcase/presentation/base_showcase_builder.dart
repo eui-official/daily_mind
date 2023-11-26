@@ -1,6 +1,6 @@
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/features/tutorial/constant/constant.dart';
-import 'package:daily_mind/features/tutorial/constant/tasks.dart';
+import 'package:daily_mind/common_widgets/base_showcase/constant/constant.dart';
+import 'package:daily_mind/common_widgets/base_showcase/constant/tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:showcaseview/showcaseview.dart';

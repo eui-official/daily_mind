@@ -85,7 +85,6 @@ dependencies:
   background_fetch: ^1.2.1
   blur: ^3.1.0
   showcaseview: ^2.0.3
-  tutorial_coach_mark: ^1.2.11
 dev_dependencies:
   flutter_test:
     sdk: flutter
