@@ -39,8 +39,8 @@ void main() async {
       child: Localization(
         child: BaseInternetConnectionChecker(
           child: Init(
-            engine: engine,
             backgroundHandler: backgroundHandler,
+            engine: engine,
           ),
         ),
       ),

@@ -52,7 +52,6 @@ dependencies:
   introduction_screen: ^3.1.11
   shared_preferences: ^2.2.2
   easy_localization: ^3.0.3
-  tutorial_coach_mark: ^1.2.9
   animated_text_kit: ^4.2.2
   supabase_flutter: ^1.10.16
   envied: ^0.5.1
@@ -85,6 +84,7 @@ dependencies:
   device_info_plus: ^9.1.1
   background_fetch: ^1.2.1
   blur: ^3.1.0
+  showcaseview: ^2.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

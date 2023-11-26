@@ -8,7 +8,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixAudioCard extends HookConsumerWidget {
   final bool isSelected;
-  final Key? backgroundKey;
   final AudioOffline audio;
   final ValueChanged<AudioOffline> onSelecting;
   final player = GaplessAudioPlayer();
@@ -18,7 +17,6 @@ class MixAudioCard extends HookConsumerWidget {
     required this.isSelected,
     required this.audio,
     required this.onSelecting,
-    this.backgroundKey,
   });
 
   @override
@@ -30,7 +28,6 @@ class MixAudioCard extends HookConsumerWidget {
     return BaseAudioCard(
       image: AssetImage(audio.image),
       isSelected: isSelected,
-      key: backgroundKey,
       name: audio.name.tr(),
       onTap: onTap,
     );
