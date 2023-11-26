@@ -2,7 +2,7 @@ import 'package:daily_mind/features/app_navigation_bar/domain/app_navigation_bar
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AppNavigationBarNotifier extends StateNotifier<AppNavigationBarState> {
-  AppNavigationBarNotifier() : super(const AppNavigationBarState(index: 0));
+  AppNavigationBarNotifier() : super(const AppNavigationBarState(index: 1));
 
   void onTap(int index) {
     state = state.copyWith(index: index);
