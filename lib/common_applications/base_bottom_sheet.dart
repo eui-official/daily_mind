@@ -5,9 +5,9 @@ import 'package:get/utils.dart';
 
 Future<T?> onShowBottomSheet<T>(
   BuildContext context, {
-  required Widget child,
-  bool isDismissible = true,
   bool enableDrag = true,
+  bool isDismissible = true,
+  required Widget child,
 }) {
   return showModalBottomSheet<T>(
     backgroundColor: Colors.transparent,
@@ -23,7 +23,7 @@ Future<T?> onShowBottomSheet<T>(
           Positioned.fill(
             child: Container().blurred(
               blur: spacing(),
-              blurColor: context.theme.colorScheme.background,
+              blurColor: context.theme.scaffoldBackgroundColor,
             ),
           ),
           child,

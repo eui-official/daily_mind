@@ -1,7 +1,6 @@
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/audio.dart';
-import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_control.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_current_audio.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_information.dart';
@@ -31,23 +30,20 @@ class OnlinePlayerBottom extends HookConsumerWidget {
         horizontal: spacing(2),
       ),
       decoration: const BoxDecoration(gradient: baseLinearGradient),
-      child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: space(
-            [
-              BasePlayerControl(
-                backgroundHandler: backgroundHandler,
-                onNext: backgroundHandler.skipToNext,
-                onPrevious: backgroundHandler.skipToPrevious,
-              ),
-              const BasePlayerUserActions(),
-              BasePlayerInformation(category: category),
-              BasePlayerCurrentAudio(audio: audio),
-              const OnlineListRelated()
-            ],
-            height: spacing(4),
-          ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: space(
+          [
+            BasePlayerControl(
+              backgroundHandler: backgroundHandler,
+              onNext: backgroundHandler.skipToNext,
+              onPrevious: backgroundHandler.skipToPrevious,
+            ),
+            BasePlayerInformation(category: category),
+            BasePlayerCurrentAudio(audio: audio),
+            const OnlineListRelated()
+          ],
+          height: spacing(4),
         ),
       ),
     );

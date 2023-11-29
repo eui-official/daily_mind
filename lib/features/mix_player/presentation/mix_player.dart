@@ -2,9 +2,9 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_snackbar.dart';
 import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
+import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
-import 'package:daily_mind/common_widgets/base_time_picker/presentation/base_time_picker.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/features/mix_player_list_item/presentation/mix_player_list_item.dart';
@@ -43,40 +43,47 @@ class MixPlayer extends HookConsumerWidget {
     );
 
     return BaseScaffold(
-      footerButtons: [
-        const BaseTimerPicker(),
-        MixCollectionButtonSwitcher(
-          isCanAddNewMix: mixNotifier.isCanAddANewMix,
-          onDeleteMix: mixNotifier.onDeleteMix,
-          onSaveMix: onSaveMix,
-        ),
-      ],
-      child: Container(
-        padding: EdgeInsets.all(spacing(2)),
-        child: Column(
-          children: space(
-            [
-              BaseContentHeader(
-                title: 'name'.tr(),
-                child: BaseTextField(
-                  hintText: 'nameOfTheMix'.tr(),
-                  initialValue: mixState.title,
-                  onChanged: mixNotifier.onUpdateTitle,
+      child: Column(
+        children: [
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(spacing(2)),
+              child: Column(
+                children: space(
+                  [
+                    BaseContentHeader(
+                      title: 'name'.tr(),
+                      child: BaseTextField(
+                        hintText: 'nameOfTheMix'.tr(),
+                        initialValue: mixState.title,
+                        onChanged: mixNotifier.onUpdateTitle,
+                      ),
+                    ),
+                    Flexible(
+                      child: BaseContentHeader(
+                        title: 'Danh sách âm thanh'.tr(),
+                        spacingSize: 4,
+                        child: Flexible(
+                          child: MixPlayerListItem(mixItems: mixData.mixItems),
+                        ),
+                      ),
+                    )
+                  ],
+                  height: spacing(4),
                 ),
               ),
-              Flexible(
-                child: BaseContentHeader(
-                  title: 'Danh sách âm thanh'.tr(),
-                  spacingSize: 4,
-                  child: Flexible(
-                    child: MixPlayerListItem(mixItems: mixData.mixItems),
-                  ),
-                ),
-              )
-            ],
-            height: spacing(4),
+            ),
           ),
-        ),
+          BasePlayerUserActions(
+            actions: [
+              MixCollectionButtonSwitcher(
+                isCanAddNewMix: mixNotifier.isCanAddANewMix,
+                onDeleteMix: mixNotifier.onDeleteMix,
+                onSaveMix: onSaveMix,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
