@@ -37,5 +37,6 @@ void migrationV2(Isar isar) {
   // Add to db
   isar.writeTxnSync(() {
     isar.mixCollections.putAllSync(mixCollections);
+    isar.playlists.clearSync();
   });
 }
