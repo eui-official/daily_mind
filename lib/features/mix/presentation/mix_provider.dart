@@ -7,7 +7,7 @@ import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_min
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/extensions/list.dart';
 import 'package:daily_mind/features/mix/application/mix.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
@@ -27,17 +27,17 @@ class MixdNotifier extends StateNotifier<MixState> {
 
   List<MixItem> get mixItems => baseBackgroundHandler.mixItems;
 
-  Playlist get playlist {
+  MixCollection get mixCollection {
     final items = mixItems.map((item) {
       final audio = item.audio;
       final player = item.player;
 
-      return MixItemInfo()
+      return MixCollectionItemInfo()
         ..id = audio.id
         ..volume = player.volume;
     }).toList();
 
-    return Playlist()
+    return MixCollection()
       ..title = state.title
       ..items = items;
   }
@@ -49,24 +49,25 @@ class MixdNotifier extends StateNotifier<MixState> {
 
     return onComplareMix(
       state.title,
-      playlist,
-      state.recentPlaylist,
+      mixCollection,
+      state.recentMixCollection,
     );
   }
 
   Future<void> onAddNewMix() async {
-    final id = await db.onAddNewPlaylist(playlist);
+    final id = await db.onAddNewMixCollection(mixCollection);
 
-    final recentPlaylist = db.onGetPlaylistById(id);
-    state = state.copyWith(recentPlaylist: recentPlaylist);
+    final recentMixCollection = db.onGetMixCollectionById(id);
+    state = state.copyWith(recentMixCollection: recentMixCollection);
   }
 
   void onDeleteMix() {
-    final recentPlaylistId = state.recentPlaylist?.id;
+    final recentMixCollectionId = state.recentMixCollection?.id;
 
-    if (recentPlaylistId != null) {
-      db.onDeletePlaylist(recentPlaylistId);
-      state = state.copyWith(recentPlaylist: emptyNull);
+    if (recentMixCollectionId != null) {
+      db.onDeleteCollection(recentMixCollectionId);
+
+      state = state.copyWith(recentMixCollection: emptyNull);
     }
   }
 

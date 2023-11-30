@@ -1,4 +1,4 @@
-import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'mix_state.freezed.dart';
@@ -9,6 +9,6 @@ class MixState with _$MixState {
 
   const factory MixState({
     required String title,
-    Playlist? recentPlaylist,
+    MixCollection? recentMixCollection,
   }) = _MixState;
 }

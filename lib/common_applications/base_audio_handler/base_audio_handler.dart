@@ -15,7 +15,7 @@ import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/constants/offline_audio_sources.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_session.dart';

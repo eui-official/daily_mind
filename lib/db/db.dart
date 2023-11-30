@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/migration/v1.dart';
 import 'package:daily_mind/db/schemas/first_time.dart';
+import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
@@ -18,6 +19,7 @@ class Db {
       [
         FirstTimeSchema,
         PlaylistSchema,
+        MixCollectionSchema,
         SettingsSchema,
         TaskSchema,
       ],
@@ -29,17 +31,15 @@ class Db {
 
   Future<void> performMigrationIfNeeded(Isar isar) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('dbVersion');
 
     final currentVersion = prefs.getInt('dbVersion') ?? 1;
-
-    onClearBrokenData();
 
     switch (currentVersion) {
       case 1:
         migrationV1(isar);
         break;
       case 2:
+        migrationV2(isar);
         return;
       default:
         throw Exception('Unknown version: $currentVersion');
@@ -48,29 +48,20 @@ class Db {
     await prefs.setInt('dbVersion', 2);
   }
 
-  void onClearBrokenData() {
-    final playlists = isar.playlists.filter().itemsIsNull().findAllSync();
-
-    isar.writeTxnSync(() {
-      isar.playlists
-          .deleteAllSync(playlists.map((playlist) => playlist.id).toList());
-    });
+  Stream<List<MixCollection>> onStreamAllMixCollections() {
+    return isar.mixCollections.where(sort: Sort.desc).anyId().watch();
   }
 
-  Stream<List<Playlist>> onStreamAllPlaylists() {
-    return isar.playlists.where(sort: Sort.desc).anyId().watch();
+  Stream<MixCollection?> onStreamMixCollectionById(int id) {
+    return isar.mixCollections.watchObject(id, fireImmediately: true);
   }
 
-  Stream<Playlist?> onStreamPlaylistById(int id) {
-    return isar.playlists.watchObject(id, fireImmediately: true);
+  MixCollection? onGetMixCollectionById(int id) {
+    return isar.mixCollections.getSync(id);
   }
 
-  Playlist? onGetPlaylistById(int id) {
-    return isar.playlists.getSync(id);
-  }
-
-  List<Playlist> onGetAllPlaylists() {
-    return isar.playlists.where(sort: Sort.desc).anyId().findAllSync();
+  List<MixCollection> onGetAllMixCollections() {
+    return isar.mixCollections.where(sort: Sort.desc).anyId().findAllSync();
   }
 
   void onAddSetting(String? value, String type) {
@@ -130,35 +121,35 @@ class Db {
     });
   }
 
-  void onDeletePlaylist(int id) {
+  void onDeleteCollection(int id) {
     isar.writeTxnSync(() {
-      isar.playlists.deleteSync(id);
+      isar.mixCollections.deleteSync(id);
     });
   }
 
-  void onUpdatePlaylistTitle(String title, int playlistId) {
-    final playlist =
-        isar.playlists.where().idEqualTo(playlistId).findFirstSync();
+  void onUpdateCollectionTitle(String title, int mixCollectionId) {
+    final mixCollection =
+        isar.mixCollections.where().idEqualTo(mixCollectionId).findFirstSync();
 
-    onSafeValueBuilder(playlist, (safePlaylist) {
-      safePlaylist.title = title;
+    onSafeValueBuilder(mixCollection, (safeMixCollection) {
+      safeMixCollection.title = title;
 
       isar.writeTxnSync(() {
-        isar.playlists.putSync(safePlaylist);
+        isar.mixCollections.putSync(safeMixCollection);
       });
     });
   }
 
-  Future<int> onAddNewPlaylist(Playlist playlist) {
+  Future<int> onAddNewMixCollection(MixCollection mixCollection) {
     return isar.writeTxn(() {
-      return isar.playlists.put(playlist);
+      return isar.mixCollections.put(mixCollection);
     });
   }
 
-  Stream<List<Playlist>> onStreamMixToState() {
-    final playlist = isar.playlists.where().watch();
+  Stream<List<MixCollection>> onStreamMixCollectionsToState() {
+    final mixCollections = isar.mixCollections.where().watch();
 
-    return playlist;
+    return mixCollections;
   }
 
   Stream<List<Task>> onStreamTasks() {

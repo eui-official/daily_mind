@@ -1,12 +1,12 @@
 part of 'base_audio_handler.dart';
 
 extension BaseMixPlayer on DailyMindBackgroundHandler {
-  void onInitMix(Playlist playlist) async {
+  void onInitMix(MixCollection mixCollection) async {
     await onMixDispose();
     await onOnlineDispose();
     audioType = AudioTypes.mix;
 
-    final itemInfos = playlist.items ?? [];
+    final itemInfos = mixCollection.items ?? [];
     final mixItems = itemInfos.map((info) {
       final player = GaplessAudioPlayer();
       player.setVolume(info.volume);
@@ -101,7 +101,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     onStreamMixItems.add(newMixItems);
   }
 
-  void onUpdateMixPlaylistTitle(
+  void onUpdateMixCollectionTitle(
     String name,
     int playlistId,
   ) {
@@ -109,7 +109,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
 
     mediaItem.add(updatedMediaItem);
 
-    db.onUpdatePlaylistTitle(name, playlistId);
+    db.onUpdateCollectionTitle(name, playlistId);
   }
 
   void onPlayMix() {
