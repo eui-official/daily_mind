@@ -11,7 +11,7 @@ class BaseBackground extends HookConsumerWidget {
     final appState = ref.watch(appProvider);
 
     return Opacity(
-      opacity: 0.2,
+      opacity: 0.5,
       child: Background(image: AssetImage(appState.backgroundImage)),
     );
   }

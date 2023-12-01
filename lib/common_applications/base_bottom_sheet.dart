@@ -15,8 +15,6 @@ Future<T?> onShowBottomSheet<T>(
     enableDrag: enableDrag,
     isDismissible: isDismissible,
     isScrollControlled: true,
-    showDragHandle: true,
-    useSafeArea: true,
     builder: (BuildContext context) {
       return Stack(
         children: [
