@@ -29,7 +29,6 @@ class OnlinePlayerBottom extends HookConsumerWidget {
         vertical: spacing(4),
         horizontal: spacing(2),
       ),
-      decoration: const BoxDecoration(gradient: baseLinearGradient),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: space(
