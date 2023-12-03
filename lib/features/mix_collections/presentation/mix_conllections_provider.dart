@@ -1,5 +1,5 @@
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'mix_conllections_provider.g.dart';
@@ -7,15 +7,15 @@ part 'mix_conllections_provider.g.dart';
 @riverpod
 class MixCollectionsNotifier extends _$MixCollectionsNotifier {
   @override
-  List<Playlist> build() {
-    onStreamAllPlaylists();
+  List<MixCollection> build() {
+    onStreamAllMixCollections();
 
-    return db.onGetAllPlaylists();
+    return db.onGetAllMixCollections();
   }
 
-  void onStreamAllPlaylists() {
-    db.onStreamAllPlaylists().listen((playlists) {
-      state = playlists;
+  void onStreamAllMixCollections() {
+    db.onStreamAllMixCollections().listen((mixCollections) {
+      state = mixCollections;
     });
   }
 }

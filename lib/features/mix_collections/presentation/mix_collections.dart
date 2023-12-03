@@ -15,11 +15,11 @@ class MixCollections extends HookConsumerWidget {
     return StaggeredGrid.count(
       crossAxisCount: 1,
       mainAxisSpacing: spacing(2),
-      children: mixCollectionsState.map((playlist) {
+      children: mixCollectionsState.map((mixCollection) {
         return StaggeredGridTile.count(
           crossAxisCellCount: 1,
           mainAxisCellCount: 0.3,
-          child: MixCollectionItem(playlist: playlist),
+          child: MixCollectionItem(mixCollection: mixCollection),
         );
       }).toList(),
     );

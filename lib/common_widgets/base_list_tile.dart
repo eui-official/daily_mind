@@ -29,6 +29,7 @@ class BaseListTile extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: ListTile(
+          contentPadding: EdgeInsets.zero,
           leading: leading,
           onTap: onTap,
           subtitle: subtitle,

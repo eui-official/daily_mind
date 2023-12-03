@@ -23,12 +23,12 @@ class Init extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.read(configProvider);
     final baseBackgroundHandlerNotifier =
         ref.read(baseBackgroundHandlerProvider.notifier);
 
     useEffectDelayed(
       () {
+        ref.read(configProvider);
         baseBackgroundHandlerNotifier.onSetBackgroundHandler(backgroundHandler);
       },
       [context, backgroundHandler],

@@ -25,7 +25,7 @@ class MixCollectionButtonSwitcher extends StatelessWidget {
 
     return BaseIconButtonWithTitle(
       onPressed: onPressed,
-      icon: const Icon(Icons.favorite_outline),
+      icon: const Icon(Icons.video_collection_outlined),
       style: IconButton.styleFrom(backgroundColor: backgroundColor),
       title: title.tr(),
     );

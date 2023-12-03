@@ -65,7 +65,7 @@ class BaseTaskForm extends HookWidget {
         children: [
           const BaseBackground(),
           BaseScaffold(
-            footerButtons: [
+            persistentFooterButtons: [
               ReactiveFormConsumer(
                 builder: (context, formGroup, child) {
                   return ElevatedButton(

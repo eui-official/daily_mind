@@ -21,9 +21,10 @@ List<Widget> space(
 
 const baseLinearGradient = LinearGradient(
   colors: [
-    Colors.black38,
+    Colors.black26,
     Colors.black,
   ],
+  stops: [0.1, 0.5],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
 );

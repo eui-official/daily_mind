@@ -11,7 +11,7 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/db/schemas/playlist.dart';
+import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/extensions/string.dart';
 import 'package:daily_mind/features/mix_collection_item_edit_bottom_sheet/presentation/mix_collection_item_edit_bottom_sheet.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -23,11 +23,11 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixCollectionItem extends HookConsumerWidget {
-  final Playlist playlist;
+  final MixCollection mixCollection;
 
   const MixCollectionItem({
     super.key,
-    required this.playlist,
+    required this.mixCollection,
   });
 
   @override
@@ -35,7 +35,7 @@ class MixCollectionItem extends HookConsumerWidget {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final baseMiniPlayerNotifier = ref.watch(baseMiniPlayerProvider.notifier);
 
-    final items = playlist.items ?? [];
+    final items = mixCollection.items ?? [];
     final firstItem = items.first;
     final firstAudioOffline = firstItem.id.onGetOfflineAudio;
     final sounds =
@@ -48,7 +48,8 @@ class MixCollectionItem extends HookConsumerWidget {
         context: context,
         textFields: [
           DialogTextField(
-            initialText: playlist.title ?? emptyString,
+            hintText: 'Tên mix'.tr(),
+            initialText: mixCollection.title ?? emptyString,
             validator: adaptiveDialogValidators.required,
           ),
         ],
@@ -58,9 +59,9 @@ class MixCollectionItem extends HookConsumerWidget {
         final result = results?.first;
 
         onSafeValueBuilder(result, (title) {
-          baseBackgroundHandler.onUpdateMixPlaylistTitle(
+          baseBackgroundHandler.onUpdateMixCollectionTitle(
             title,
-            playlist.id,
+            mixCollection.id,
           );
         });
       }
@@ -72,11 +73,11 @@ class MixCollectionItem extends HookConsumerWidget {
 
         final result = await showOkCancelAlertDialog(
           context: context,
-          title: 'Bạn có chắc chắn muốn xóa ${playlist.title}?'.tr(),
+          title: 'Bạn có chắc chắn muốn xóa ${mixCollection.title}?'.tr(),
         );
 
         if (result == OkCancelResult.ok) {
-          db.onDeletePlaylist(playlist.id);
+          db.onDeleteCollection(mixCollection.id);
         }
       },
       [context],
@@ -86,18 +87,18 @@ class MixCollectionItem extends HookConsumerWidget {
       onShowBottomSheet(
         context,
         child: MixCollectionItemEditBottomSheet(
-          playlist: playlist,
+          mixCollection: mixCollection,
           onDeleted: onDeleted,
           onRenamed: onRenamed,
         ),
       );
-    }, [context, playlist]);
+    }, [context, mixCollection]);
 
     return Stack(
       children: [
         BaseCard(
           onTap: () {
-            baseBackgroundHandler.onInitMix(playlist);
+            baseBackgroundHandler.onInitMix(mixCollection);
             baseMiniPlayerNotifier.onUpdateState(
               const MiniPlayerState(
                 isShow: true,
@@ -111,7 +112,7 @@ class MixCollectionItem extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  playlist.title ?? emptyString,
+                  mixCollection.title ?? emptyString,
                   style: context.textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),

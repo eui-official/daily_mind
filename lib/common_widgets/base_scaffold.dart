@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class BaseScaffold extends StatelessWidget {
   final Widget child;
-  final List<Widget> footerButtons;
+  final List<Widget> persistentFooterButtons;
 
   const BaseScaffold({
     super.key,
-    this.footerButtons = const [],
+    this.persistentFooterButtons = const [],
     required this.child,
   });
 
@@ -22,7 +22,7 @@ class BaseScaffold extends StatelessWidget {
           persistentFooterButtons: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: footerButtons,
+              children: persistentFooterButtons,
             )
           ],
         ),
