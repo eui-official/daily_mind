@@ -16,7 +16,6 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     fontFamily: fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
-    surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     error: red,
     subThemesData: FlexSubThemesData(
       alignedDropdown: true,

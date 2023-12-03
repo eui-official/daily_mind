@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_applications/base_snackbar.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/disk_player/presentation/disk_player.dart';
 import 'package:daily_mind/features/online_playlist_switcher/presentation/online_playlist_switcher.dart';
@@ -37,6 +38,11 @@ class OnlinePlayerDetails extends HookConsumerWidget {
 
     final isPlaying = playBackState.data?.playing ?? false;
 
+    final onViewPlaylist = useCallback(
+      () {},
+      [],
+    );
+
     final onAddedToPlaylist = useCallback(
       (int playlistId) {
         db.onAddAudioToPlaylist(tag.id, playlistId);
@@ -47,7 +53,12 @@ class OnlinePlayerDetails extends HookConsumerWidget {
 
         onShowSnackbar(
           context,
+          duration: actionDuration,
           content: 'Đã thêm vào playlist ${onlinePlaylist?.title}',
+          action: SnackBarAction(
+            label: 'Xem playlist',
+            onPressed: onViewPlaylist,
+          ),
         );
       },
       [tag],
