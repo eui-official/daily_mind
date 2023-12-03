@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
+import 'package:daily_mind/common_widgets/base_tabbar.dart';
+import 'package:daily_mind/common_widgets/base_tabbar_item.dart';
 import 'package:daily_mind/features/mix_tabbar/presentation/mix_tabbar_provider.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,16 +20,12 @@ class MixTabbar extends HookConsumerWidget implements PreferredSizeWidget {
       tabController.animateTo(mixTabbarState);
     }, [mixTabbarState]);
 
-    return TabBar(
-      controller: tabController,
-      dividerColor: Colors.white10,
-      indicatorSize: TabBarIndicatorSize.tab,
-      isScrollable: true,
+    return BaseTabbar(
+      tabController: tabController,
       onTap: mixTabbarNotifier.onTap,
-      tabAlignment: TabAlignment.start,
-      tabs: [
-        Tab(text: 'Pha trộn'.tr()),
-        Tab(text: 'Bộ sưu tập'.tr()),
+      tabs: const [
+        BaseTabbarItem(title: 'Pha trộn'),
+        BaseTabbarItem(title: 'Bộ sưu tập'),
       ],
     );
   }
