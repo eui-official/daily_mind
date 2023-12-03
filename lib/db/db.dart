@@ -193,6 +193,14 @@ class Db {
       isar.onlinePlaylists.putSync(onlinePlaylist);
     });
   }
+
+  List<OnlinePlaylist> onGetOnlinePlaylists() {
+    return isar.onlinePlaylists.where().findAllSync();
+  }
+
+  Stream<List<OnlinePlaylist>> onStreamOnlinePlaylists() {
+    return isar.onlinePlaylists.where().watch();
+  }
 }
 
 final db = Db();

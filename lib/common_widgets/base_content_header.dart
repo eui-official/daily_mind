@@ -4,17 +4,19 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BaseContentHeader extends StatelessWidget {
-  final String title;
-  final Widget child;
   final double spacingSize;
+  final String title;
+  final TextStyle? titleStyle;
+  final Widget child;
   final Widget? trailing;
 
   const BaseContentHeader({
     super.key,
-    required this.title,
     required this.child,
-    this.trailing,
+    required this.title,
     this.spacingSize = 1,
+    this.titleStyle,
+    this.trailing,
   });
 
   @override
@@ -29,7 +31,10 @@ class BaseContentHeader extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.titleLarge,
+                style: titleStyle ??
+                    Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
               ),
               trailing,
             ].whereNotNull().toList(),

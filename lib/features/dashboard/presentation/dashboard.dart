@@ -1,7 +1,6 @@
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_theme_without_divider.dart';
-import 'package:daily_mind/common_widgets/fade_indexed_stack.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/bird_loading/presentation/bird_loading.dart';
@@ -45,9 +44,8 @@ class Dashboard extends HookConsumerWidget {
           extendBodyBehindAppBar: true,
           body: AnnotatedRegion<SystemUiOverlayStyle>(
             value: SystemUiOverlayStyle.light,
-            child: FadeIndexedStack(
-              index: appNavigationBarState.index,
-              children: children,
+            child: BaseAnimatedSwitcher(
+              child: children[appNavigationBarState.index],
             ),
           ),
           persistentFooterButtons: const [BaseMiniPlayerSwitcher()],

@@ -3,8 +3,11 @@ import 'package:daily_mind/common_applications/adaptive_dialog_validators.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_list_tile.dart';
+import 'package:daily_mind/common_widgets/base_square_icon.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
+import 'package:daily_mind/features/online_playlist_available/presentation/online_playlist_available.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -50,14 +53,18 @@ class OnlinePlaylistList extends HookWidget {
           child: BaseContentHeader(
             title: 'Danh sách playlist',
             child: Flexible(
-              child: ListView(
-                children: [
-                  BaseListTile(
-                    onTap: openAddOnlinePlaylist,
-                    leading: const Icon(Icons.add),
-                    title: 'Thêm mới',
-                  ),
-                ],
+              child: Column(
+                children: space(
+                  [
+                    BaseListTile(
+                      onTap: openAddOnlinePlaylist,
+                      leading: const BaseSquareIcon(iconData: Icons.add),
+                      title: 'Thêm mới',
+                    ),
+                    const Flexible(child: OnlinePlaylistAvailable()),
+                  ],
+                  height: spacing(5),
+                ),
               ),
             ),
           ),
