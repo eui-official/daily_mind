@@ -48,16 +48,11 @@ int _onlinePlaylistEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  bytesCount += 3 + object.itemIds.length * 3;
   {
-    final list = object.itemIds;
-    if (list != null) {
-      bytesCount += 3 + list.length * 3;
-      {
-        for (var i = 0; i < list.length; i++) {
-          final value = list[i];
-          bytesCount += value.length * 3;
-        }
-      }
+    for (var i = 0; i < object.itemIds.length; i++) {
+      final value = object.itemIds[i];
+      bytesCount += value.length * 3;
     }
   }
   {
@@ -87,7 +82,7 @@ OnlinePlaylist _onlinePlaylistDeserialize(
 ) {
   final object = OnlinePlaylist();
   object.id = id;
-  object.itemIds = reader.readStringList(offsets[0]);
+  object.itemIds = reader.readStringList(offsets[0]) ?? [];
   object.title = reader.readStringOrNull(offsets[1]);
   return object;
 }
@@ -100,7 +95,7 @@ P _onlinePlaylistDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readStringList(offset)) as P;
+      return (reader.readStringList(offset) ?? []) as P;
     case 1:
       return (reader.readStringOrNull(offset)) as P;
     default:
@@ -255,24 +250,6 @@ extension OnlinePlaylistQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<OnlinePlaylist, OnlinePlaylist, QAfterFilterCondition>
-      itemIdsIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'itemIds',
-      ));
-    });
-  }
-
-  QueryBuilder<OnlinePlaylist, OnlinePlaylist, QAfterFilterCondition>
-      itemIdsIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'itemIds',
       ));
     });
   }
@@ -729,7 +706,7 @@ extension OnlinePlaylistQueryProperty
     });
   }
 
-  QueryBuilder<OnlinePlaylist, List<String>?, QQueryOperations>
+  QueryBuilder<OnlinePlaylist, List<String>, QQueryOperations>
       itemIdsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'itemIds');

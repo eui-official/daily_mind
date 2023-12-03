@@ -7,14 +7,19 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart' hide Trans;
 
 class OnlinePlaylistSwitcher extends HookWidget {
-  const OnlinePlaylistSwitcher({super.key});
+  final ValueChanged<int> onSelected;
+
+  const OnlinePlaylistSwitcher({
+    super.key,
+    required this.onSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
     final onOpenPlaylist = useCallback(() {
       onShowBottomSheet(
         context,
-        child: const OnlinePlaylistList(),
+        child: OnlinePlaylistList(onSelected: onSelected),
       );
     }, []);
 

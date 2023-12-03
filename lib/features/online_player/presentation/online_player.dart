@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
-import 'package:daily_mind/common_widgets/base_player_details.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_details.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_bottom.dart';
 import 'package:flutter/material.dart';
@@ -51,9 +51,10 @@ class OnlinePlayer extends HookConsumerWidget {
       initialChildSize: 1,
       expand: false,
       builder: (context, scrollController) {
-        return BasePlayerDetails(
+        return OnlinePlayerDetails(
           image: imageProvider,
           scrollController: scrollController,
+          tag: tag,
           child: OnlinePlayerBottom(
             backgroundHandler: baseBackgroundHandler,
             category: category,

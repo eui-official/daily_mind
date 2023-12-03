@@ -14,7 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class OnlinePlaylistList extends HookWidget {
-  const OnlinePlaylistList({super.key});
+  final ValueChanged<int> onSelected;
+
+  const OnlinePlaylistList({
+    super.key,
+    required this.onSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +66,9 @@ class OnlinePlaylistList extends HookWidget {
                       leading: const BaseSquareIcon(iconData: Icons.add),
                       title: 'Thêm mới',
                     ),
-                    const Flexible(child: OnlinePlaylistAvailable()),
+                    Flexible(
+                      child: OnlinePlaylistAvailable(onSelected: onSelected),
+                    ),
                   ],
                   height: spacing(5),
                 ),

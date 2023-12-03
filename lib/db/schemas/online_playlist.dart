@@ -8,5 +8,5 @@ class OnlinePlaylist {
 
   String? title;
 
-  List<String>? itemIds;
+  List<String> itemIds = [];
 }

@@ -8,7 +8,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> onShowSnackbar(
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(content),
-      duration: mediumDuration,
+      duration: longDuration,
     ),
   );
 }

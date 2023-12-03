@@ -194,12 +194,36 @@ class Db {
     });
   }
 
+  void onAddAudioToPlaylist(String audioId, int onlinePlaylistId) {
+    final onlinePlaylist = isar.onlinePlaylists
+        .where()
+        .idEqualTo(onlinePlaylistId)
+        .findFirstSync();
+
+    // Check if the audioId is alerady in the playlist
+    if (onlinePlaylist?.itemIds.contains(audioId) ?? false) {
+      return;
+    }
+
+    onSafeValueBuilder(onlinePlaylist, (safeOnlinePlaylist) {
+      safeOnlinePlaylist.itemIds = [...safeOnlinePlaylist.itemIds, audioId];
+
+      isar.writeTxnSync(() {
+        isar.onlinePlaylists.putSync(safeOnlinePlaylist);
+      });
+    });
+  }
+
   List<OnlinePlaylist> onGetOnlinePlaylists() {
     return isar.onlinePlaylists.where().findAllSync();
   }
 
   Stream<List<OnlinePlaylist>> onStreamOnlinePlaylists() {
     return isar.onlinePlaylists.where().watch();
+  }
+
+  OnlinePlaylist? onGetOnlinePlaylist(int id) {
+    return isar.onlinePlaylists.getSync(id);
   }
 }
 

@@ -7,7 +7,7 @@ part of 'online_playlist_available_provider.dart';
 // **************************************************************************
 
 String _$onlinePlaylistAvailableNotifierHash() =>
-    r'efad97d8d6b31203fc184d32b42f7602dcb0e38a';
+    r'b2a92267aff5e9615154ea8e8ffbe0e58b4500a4';
 
 /// See also [OnlinePlaylistAvailableNotifier].
 @ProviderFor(OnlinePlaylistAvailableNotifier)
