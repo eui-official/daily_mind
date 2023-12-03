@@ -6,6 +6,7 @@
         android:label="DailyMind"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
+        android:enableOnBackInvokedCallback="true"
         android:usesCleartextTraffic="true" >
         <activity
             android:name=".MainActivity"

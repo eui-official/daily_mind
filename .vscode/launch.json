@@ -7,7 +7,7 @@
     {
       "name": "daily_mind",
       "request": "launch",
-      "type": "dart"
+      "type": "dart",
     },
     {
       "name": "daily_mind (profile mode)",

@@ -83,7 +83,6 @@ dependencies:
   isar_flutter_libs: ^3.1.0+1
   device_info_plus: ^9.1.1
   background_fetch: ^1.2.1
-  blur: ^3.1.0
   showcaseview: ^2.0.3
   like_button: ^2.0.5
 dev_dependencies:

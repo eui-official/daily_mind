@@ -2,6 +2,7 @@ import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/migration/v1.dart';
 import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/mix_collection.dart';
+import 'package:daily_mind/db/schemas/online_playlist.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
 import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
@@ -22,6 +23,7 @@ class Db {
         MixCollectionSchema,
         SettingsSchema,
         TaskSchema,
+        OnlinePlaylistSchema,
       ],
       directory: dir.path,
     );
@@ -184,6 +186,12 @@ class Db {
 
   Stream<Task?> onStreamTask(int id) {
     return isar.tasks.watchObject(id);
+  }
+
+  void onAddOnlinePlaylist(OnlinePlaylist onlinePlaylist) {
+    isar.writeTxnSync(() {
+      isar.onlinePlaylists.putSync(onlinePlaylist);
+    });
   }
 }
 

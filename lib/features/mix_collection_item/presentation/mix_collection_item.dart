@@ -48,6 +48,7 @@ class MixCollectionItem extends HookConsumerWidget {
         context: context,
         textFields: [
           DialogTextField(
+            hintText: 'Tên mix'.tr(),
             initialText: mixCollection.title ?? emptyString,
             validator: adaptiveDialogValidators.required,
           ),
