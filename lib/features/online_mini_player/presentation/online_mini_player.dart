@@ -51,10 +51,14 @@ class OnlineMiniPlayer extends HookConsumerWidget {
 
     final onOpenPlayerOnline = useCallback(() {
       onSafeValueBuilder(category, (safeCategory) {
-        onShowBottomSheet(
+        onShowScrollableBottomSheet(
           context,
           useSafeArea: false,
-          child: OnlinePlayer(category: safeCategory),
+          initialChildSize: 1,
+          builder: (context, scrollController) => OnlinePlayer(
+            scrollController: scrollController,
+            category: safeCategory,
+          ),
         );
       });
     }, [category, context]);

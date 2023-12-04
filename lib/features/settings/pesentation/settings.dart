@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_applications/in_app_review.dart';
 import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/common_widgets/base_container_list/presentation/base_container_list.dart';
@@ -32,13 +33,11 @@ class Settings extends StatelessWidget {
                   items: [
                     BaseTileTrailingArrow(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return OnlinePlaylistSelector(
-                                onSelected: (playlistId) {},
-                              );
-                            },
+                        onShowScrollableBottomSheet(
+                          context,
+                          builder: (context, scrollController) =>
+                              OnlinePlaylistSelector(
+                            onSelected: (playlistId) {},
                           ),
                         );
                       },

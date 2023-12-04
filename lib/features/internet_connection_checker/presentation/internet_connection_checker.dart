@@ -30,9 +30,11 @@ class InternetConnectionChecker extends HookConsumerWidget {
             if (state.isDisconnected) {
               isOpen.value = true;
 
-              await onShowBottomSheet(
+              await onShowScrollableBottomSheet(
                 context,
-                child: const InternetConnectionNotice(),
+                initialChildSize: 0.25,
+                builder: (context, scrollController) =>
+                    const InternetConnectionNotice(),
               );
 
               isOpen.value = false;

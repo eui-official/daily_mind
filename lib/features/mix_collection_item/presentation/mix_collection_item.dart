@@ -84,9 +84,10 @@ class MixCollectionItem extends HookConsumerWidget {
     );
 
     final onOpenEdit = useCallback(() async {
-      onShowBottomSheet(
+      onShowScrollableBottomSheet(
         context,
-        child: MixCollectionItemEditBottomSheet(
+        builder: (context, scrollController) =>
+            MixCollectionItemEditBottomSheet(
           mixCollection: mixCollection,
           onDeleted: onDeleted,
           onRenamed: onRenamed,

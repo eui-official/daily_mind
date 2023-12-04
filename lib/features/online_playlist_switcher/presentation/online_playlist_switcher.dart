@@ -17,10 +17,11 @@ class OnlinePlaylistSwitcher extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final onOpenPlaylist = useCallback(() {
-      onShowBottomSheet(
+      onShowScrollableBottomSheet(
         context,
         useSafeArea: true,
-        child: OnlinePlaylistSelectorContent(onSelected: onSelected),
+        builder: (context, scrollController) =>
+            OnlinePlaylistSelectorContent(onSelected: onSelected),
       );
     }, []);
 

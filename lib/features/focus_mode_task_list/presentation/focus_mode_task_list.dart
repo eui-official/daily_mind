@@ -10,7 +10,12 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FocusModeTaskList extends HookConsumerWidget {
-  const FocusModeTaskList({super.key});
+  final ScrollController scrollController;
+
+  const FocusModeTaskList({
+    super.key,
+    required this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,26 +28,25 @@ class FocusModeTaskList extends HookConsumerWidget {
       [],
     );
 
-    return Wrap(
-      children: [
-        BaseSpacingBottomSheet(
-          child: BaseContentHeader(
-            title: 'Danh sách công việc',
-            trailing: IconButton(
-              onPressed: onOpenAddNewTask,
-              icon: const Icon(Icons.add),
-            ),
-            child: Column(
-              children: space(
-                focusModeState.map((task) {
-                  return FocusModeTaskItem(task: task);
-                }).toList(),
-                height: spacing(2),
-              ),
+    return BaseSpacingBottomSheet(
+      child: BaseContentHeader(
+        title: 'Danh sách công việc',
+        trailing: IconButton(
+          onPressed: onOpenAddNewTask,
+          icon: const Icon(Icons.add),
+        ),
+        child: Flexible(
+          child: ListView(
+            controller: scrollController,
+            children: space(
+              focusModeState.map((task) {
+                return FocusModeTaskItem(task: task);
+              }).toList(),
+              height: spacing(2),
             ),
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

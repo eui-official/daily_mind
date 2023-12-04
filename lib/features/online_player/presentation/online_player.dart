@@ -10,10 +10,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlinePlayer extends HookConsumerWidget {
   final Category category;
+  final ScrollController scrollController;
 
   const OnlinePlayer({
     super.key,
     required this.category,
+    required this.scrollController,
   });
 
   @override
@@ -47,21 +49,15 @@ class OnlinePlayer extends HookConsumerWidget {
 
     final imageProvider = CachedNetworkImageProvider(tag.image);
 
-    return DraggableScrollableSheet(
-      initialChildSize: 1,
-      expand: false,
-      builder: (context, scrollController) {
-        return OnlinePlayerDetails(
-          image: imageProvider,
-          scrollController: scrollController,
-          tag: tag,
-          child: OnlinePlayerBottom(
-            backgroundHandler: baseBackgroundHandler,
-            category: category,
-            audio: tag,
-          ),
-        );
-      },
+    return OnlinePlayerDetails(
+      scrollController: scrollController,
+      image: imageProvider,
+      tag: tag,
+      child: OnlinePlayerBottom(
+        backgroundHandler: baseBackgroundHandler,
+        category: category,
+        audio: tag,
+      ),
     );
   }
 }

@@ -79,7 +79,6 @@ dependencies:
   flutter_local_notifications: ^15.1.0
   pausable_timer: ^3.1.0+3
   adaptive_dialog: ^1.10.0
-  bottom_sheet: ^4.0.0
   isar_flutter_libs: ^3.1.0+1
   device_info_plus: ^9.1.1
   background_fetch: ^1.2.1

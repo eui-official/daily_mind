@@ -27,9 +27,12 @@ class MixMiniPlayer extends HookConsumerWidget {
 
     final onOpenMiniPlayer = useCallback(
       () async {
-        await onShowBottomSheet(
+        await onShowScrollableBottomSheet(
           context,
-          child: const MixPlayer(),
+          initialChildSize: 1,
+          builder: (context, scrollController) => MixPlayer(
+            scrollController: scrollController,
+          ),
         );
 
         mixNotifier.onClearTitle();

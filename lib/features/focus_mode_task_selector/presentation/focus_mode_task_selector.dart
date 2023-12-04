@@ -29,9 +29,12 @@ class FocusModeTaskSelector extends HookConsumerWidget {
 
     final onShowListTask = useCallback(
       () {
-        onShowBottomSheet(
+        onShowScrollableBottomSheet(
           context,
-          child: const FocusModeTaskList(),
+          initialChildSize: 0.75,
+          builder: (context, scrollController) => FocusModeTaskList(
+            scrollController: scrollController,
+          ),
         );
       },
       [],

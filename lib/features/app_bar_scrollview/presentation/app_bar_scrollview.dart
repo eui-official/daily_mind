@@ -4,6 +4,7 @@ import 'package:get/utils.dart';
 class AppBarScrollview extends StatelessWidget {
   final List<Widget> children;
   final PreferredSizeWidget? bottom;
+  final ScrollController? scrollController;
   final ScrollPhysics? physics;
   final String title;
 
@@ -13,12 +14,14 @@ class AppBarScrollview extends StatelessWidget {
     required this.title,
     this.bottom,
     this.physics,
+    this.scrollController,
   });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
+        controller: scrollController,
         physics: physics,
         slivers: [
           SliverAppBar(

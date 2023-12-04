@@ -4,6 +4,7 @@ import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
+import 'package:daily_mind/common_widgets/base_sliver_list.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
@@ -16,7 +17,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixPlayer extends HookConsumerWidget {
-  const MixPlayer({super.key});
+  final ScrollController scrollController;
+
+  const MixPlayer({
+    super.key,
+    required this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -46,32 +52,33 @@ class MixPlayer extends HookConsumerWidget {
       child: Column(
         children: [
           Expanded(
-            child: Container(
-              padding: EdgeInsets.all(spacing(2)),
-              child: Column(
-                children: space(
-                  [
-                    BaseContentHeader(
-                      title: 'name'.tr(),
-                      child: BaseTextField(
-                        hintText: 'nameOfTheMix'.tr(),
-                        initialValue: mixState.title,
-                        onChanged: mixNotifier.onUpdateTitle,
-                      ),
-                    ),
-                    Flexible(
-                      child: BaseContentHeader(
-                        title: 'Danh sách âm thanh'.tr(),
-                        spacingSize: 4,
-                        child: Flexible(
+            child: BaseSliverList(
+              scrollController: scrollController,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(spacing(2)),
+                  child: Column(
+                    children: space(
+                      [
+                        BaseContentHeader(
+                          title: 'name'.tr(),
+                          child: BaseTextField(
+                            hintText: 'nameOfTheMix'.tr(),
+                            initialValue: mixState.title,
+                            onChanged: mixNotifier.onUpdateTitle,
+                          ),
+                        ),
+                        BaseContentHeader(
+                          title: 'Danh sách âm thanh'.tr(),
+                          spacingSize: 4,
                           child: MixPlayerListItem(mixItems: mixData.mixItems),
                         ),
-                      ),
-                    )
-                  ],
-                  height: spacing(4),
+                      ],
+                      height: spacing(4),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           BasePlayerUserActions(

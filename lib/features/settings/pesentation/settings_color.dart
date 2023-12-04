@@ -22,9 +22,11 @@ class SettingsColor extends StatelessWidget {
         ),
       ),
       onTap: () {
-        onShowBottomSheet(
+        onShowScrollableBottomSheet(
           context,
-          child: const SettingsThemeBottomSheet(),
+          builder: (context, scrollController) => SettingsThemeBottomSheet(
+            scrollController: scrollController,
+          ),
         );
       },
     );
