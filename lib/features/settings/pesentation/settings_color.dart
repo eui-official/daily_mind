@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
-import 'package:daily_mind/common_widgets/base_list_tile.dart';
+import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_theme_bottomsheet.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,7 +11,7 @@ class SettingsColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseListTile(
+    return BaseTile(
       title: 'color'.tr(),
       trailing: Container(
         width: 32,

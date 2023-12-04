@@ -26,7 +26,7 @@ class BaseListViewHeader extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: context.textTheme.bodyLarge?.copyWith(
+                style: context.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),

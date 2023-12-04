@@ -2,7 +2,7 @@ import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BaseListTile extends StatelessWidget {
+class BaseTile extends StatelessWidget {
   final BorderRadius? borderRadius;
   final Color? color;
   final String title;
@@ -11,7 +11,7 @@ class BaseListTile extends StatelessWidget {
   final Widget? subtitle;
   final Widget? trailing;
 
-  const BaseListTile({
+  const BaseTile({
     super.key,
     required this.title,
     this.borderRadius,
@@ -29,10 +29,10 @@ class BaseListTile extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: ListTile(
-          contentPadding: EdgeInsets.zero,
           leading: leading,
           onTap: onTap,
           subtitle: subtitle,
+          tileColor: context.theme.cardColor,
           title: Text(
             title,
             style: context.textTheme.bodyLarge?.copyWith(

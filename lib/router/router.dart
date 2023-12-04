@@ -31,6 +31,6 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/focus-mode/task/new',
       builder: (context, state) => const FocusModeTaskNewFlow(),
-    )
+    ),
   ],
 );

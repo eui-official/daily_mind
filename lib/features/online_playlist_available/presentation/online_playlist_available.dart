@@ -22,21 +22,17 @@ class OnlinePlaylistAvailable extends HookConsumerWidget {
 
     return BaseContentHeader(
       title: 'Playlist của bạn'.tr(),
+      spacingSize: 2,
       titleStyle: context.textTheme.titleMedium?.copyWith(
         fontWeight: FontWeight.bold,
       ),
-      child: Flexible(
-        child: ListView.builder(
-          itemCount: onlinePlaylistsState.length,
-          itemBuilder: (context, index) {
-            final onlinePlaylist = onlinePlaylistsState[index];
-
-            return OnlinePlaylistAvailableItem(
-              onTap: () => onSelected(onlinePlaylist.id),
-              title: onlinePlaylist.title ?? emptyString,
-            );
-          },
-        ),
+      child: Column(
+        children: onlinePlaylistsState.map((onlinePlaylist) {
+          return OnlinePlaylistAvailableItem(
+            onTap: () => onSelected(onlinePlaylist.id),
+            title: onlinePlaylist.title ?? emptyString,
+          );
+        }).toList(),
       ),
     );
   }

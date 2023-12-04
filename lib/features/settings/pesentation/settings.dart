@@ -1,9 +1,11 @@
 import 'package:daily_mind/common_applications/in_app_review.dart';
 import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/common_widgets/base_container_list/presentation/base_container_list.dart';
-import 'package:daily_mind/common_widgets/base_list_tile.dart';
+import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
+import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile_trailing_arrow.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
+import 'package:daily_mind/features/online_playlist_selector/presentation/online_playlist_selector.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_color.dart';
 import 'package:daily_mind/features/settings/pesentation/settings_version.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -26,6 +28,25 @@ class Settings extends StatelessWidget {
             children: space(
               [
                 BaseContainerList(
+                  title: 'Thư viện'.tr(),
+                  items: [
+                    BaseTileTrailingArrow(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return OnlinePlaylistSelector(
+                                onSelected: (playlistId) {},
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      title: 'Playlist'.tr(),
+                    ),
+                  ],
+                ),
+                BaseContainerList(
                   title: 'styling'.tr(),
                   items: const [
                     SettingsColor(),
@@ -34,7 +55,7 @@ class Settings extends StatelessWidget {
                 BaseContainerList(
                   title: 'feedback'.tr(),
                   items: [
-                    BaseListTile(
+                    BaseTile(
                       onTap: () {
                         inAppReview.openStoreListing(appStoreId: appStoreId);
                       },
@@ -44,7 +65,7 @@ class Settings extends StatelessWidget {
                         topRight: Radius.circular(spacing(2)),
                       ),
                     ),
-                    BaseListTile(
+                    BaseTile(
                       onTap: () {
                         launchUrl(Uri.parse('https://m.me/eui.dailymind'));
                       },

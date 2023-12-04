@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_divider.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -29,15 +30,12 @@ class BaseContainerList<T> extends StatelessWidget {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                color: context.theme.colorScheme.background.withOpacity(0.5),
-                borderRadius: circularRadius(2),
-              ),
+              decoration: BoxDecoration(borderRadius: circularRadius(2)),
               child: ListView.separated(
                 itemBuilder: (context, index) => items[index],
                 itemCount: items.length,
                 physics: const NeverScrollableScrollPhysics(),
-                separatorBuilder: (context, index) => const Divider(height: 0),
+                separatorBuilder: (context, index) => const BaseDivider(),
                 shrinkWrap: true,
               ),
             ),
