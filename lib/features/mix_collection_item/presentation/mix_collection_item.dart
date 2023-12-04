@@ -86,7 +86,6 @@ class MixCollectionItem extends HookConsumerWidget {
     final onOpenEdit = useCallback(() async {
       onShowBottomSheet(
         context,
-        useSafeArea: true,
         child: MixCollectionItemEditBottomSheet(
           mixCollection: mixCollection,
           onDeleted: onDeleted,

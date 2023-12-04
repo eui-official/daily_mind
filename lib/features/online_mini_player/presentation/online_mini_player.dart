@@ -53,6 +53,7 @@ class OnlineMiniPlayer extends HookConsumerWidget {
       onSafeValueBuilder(category, (safeCategory) {
         onShowBottomSheet(
           context,
+          useSafeArea: false,
           child: OnlinePlayer(category: safeCategory),
         );
       });

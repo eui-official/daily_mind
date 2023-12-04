@@ -14,7 +14,7 @@ class BaseContentHeader extends StatelessWidget {
     super.key,
     required this.child,
     required this.title,
-    this.spacingSize = 1,
+    this.spacingSize = 2,
     this.titleStyle,
     this.trailing,
   });
@@ -22,7 +22,6 @@ class BaseContentHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: space(
         [
@@ -32,7 +31,7 @@ class BaseContentHeader extends StatelessWidget {
               Text(
                 title,
                 style: titleStyle ??
-                    Theme.of(context).textTheme.titleLarge?.copyWith(
+                    Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
               ),

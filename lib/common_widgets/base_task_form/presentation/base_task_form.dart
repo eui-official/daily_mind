@@ -71,7 +71,7 @@ class BaseTaskForm extends HookWidget {
                   return ElevatedButton(
                     onPressed: formGroup.valid ? onPressedInternal : emptyNull,
                     style: ElevatedButton.styleFrom(
-                      fixedSize: const Size.fromHeight(48),
+                      fixedSize: const Size(200, 48),
                     ),
                     child: Text(buttonTitle),
                   );

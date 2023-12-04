@@ -19,7 +19,7 @@ class BaseSpacingContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: alignment,
-      padding: EdgeInsets.all(spacing(size)),
+      padding: padding ?? EdgeInsets.all(spacing(size)),
       child: child,
     );
   }
