@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_bottom_sheet.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/schemas/mix_collection.dart';
@@ -41,7 +41,7 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
       ];
     }, [context]);
 
-    return BaseSpacingContainer(
+    return BaseSpacingBottomSheet(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: space(
