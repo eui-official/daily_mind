@@ -33,10 +33,9 @@ class BaseOnlineHandler extends HookConsumerWidget {
     final audios = audioCategory.audios;
     final category = audioCategory.category;
 
-    final onTap = useCallback(() {
-      baseBackgroundHandler.onInitOnline(audios);
-
+    final onTap = useCallback(() async {
       onlineMiniPlayerNotifier.onUpdate(category);
+      await baseBackgroundHandler.onInitOnline(audios);
 
       baseMiniPlayerNotifier.onUpdateState(
         const MiniPlayerState(

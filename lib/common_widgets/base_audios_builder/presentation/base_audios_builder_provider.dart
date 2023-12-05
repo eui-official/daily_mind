@@ -1,7 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:daily_mind/common_applications/audio.dart';
 import 'package:daily_mind/common_applications/supabase.dart';
-import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/types/common.dart';
@@ -25,10 +23,7 @@ class BaseAudiosBuilderNotifier extends _$BaseAudiosBuilderNotifier {
   Future<AudioCategoryGroup> onGetAudioCategories() async {
     final configState = ref.read(configProvider);
 
-    final rawAudios =
-        await supabase.from('audios').select().order('created_at');
-
-    List<Audio> audios = onToAudios(rawAudios);
+    final audios = await supabaseAPI.onGetAudios();
 
     final groupAudios = audios.groupListsBy((audio) => audio.category);
 
