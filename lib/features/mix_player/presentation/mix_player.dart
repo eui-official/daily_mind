@@ -1,5 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:daily_mind/common_applications/base_snackbar.dart';
+import 'package:daily_mind/common_applications/base_snackbar/base_snackbar.dart';
 import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
@@ -41,7 +41,10 @@ class MixPlayer extends HookConsumerWidget {
           await mixNotifier.onAddNewMix();
 
           if (context.mounted) {
-            onShowSnackbar(context, content: 'Đã lưu vào bộ sưu tập'.tr());
+            onShowSnackbar(
+              context,
+              message: 'Đã lưu vào bộ sưu tập'.tr(),
+            );
           }
         }
       },
