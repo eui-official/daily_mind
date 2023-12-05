@@ -31,28 +31,30 @@ class Init extends HookConsumerWidget {
         ref.read(configProvider);
         baseBackgroundHandlerNotifier.onSetBackgroundHandler(backgroundHandler);
       },
-      [context, backgroundHandler],
+      [backgroundHandler],
     );
 
     return BaseShowcaseBuilder(
-      child: SettingWatcher(
-        type: 'theme',
-        onWidgetSettingBuilder: (setting) {
-          final theme = getTheme(setting);
+      builder: (BuildContext context) {
+        return SettingWatcher(
+          type: 'theme',
+          onWidgetSettingBuilder: (setting) {
+            final theme = getTheme(setting);
 
-          return MaterialApp.router(
-            darkTheme: createDarkTheme(theme),
-            debugShowCheckedModeBanner: false,
-            locale: context.locale,
-            localizationsDelegates: context.localizationDelegates,
-            routerConfig: routerConfig,
-            supportedLocales: context.supportedLocales,
-            theme: createDarkTheme(theme),
-            themeMode: ThemeMode.dark,
-            title: 'DailyMind',
-          );
-        },
-      ),
+            return MaterialApp.router(
+              darkTheme: createDarkTheme(theme),
+              debugShowCheckedModeBanner: false,
+              locale: context.locale,
+              localizationsDelegates: context.localizationDelegates,
+              routerConfig: routerConfig,
+              supportedLocales: context.supportedLocales,
+              theme: createDarkTheme(theme),
+              themeMode: ThemeMode.dark,
+              title: 'DailyMind',
+            );
+          },
+        );
+      },
     );
   }
 }

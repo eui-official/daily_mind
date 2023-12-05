@@ -35,8 +35,10 @@ class Settings extends StatelessWidget {
                       onTap: () {
                         onShowScrollableBottomSheet(
                           context,
+                          initialChildSize: 1,
                           builder: (context, scrollController) =>
                               OnlinePlaylistSelector(
+                            scrollController: scrollController,
                             onSelected: (playlistId) {},
                           ),
                         );

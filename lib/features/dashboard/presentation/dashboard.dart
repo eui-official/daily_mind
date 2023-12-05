@@ -59,11 +59,6 @@ class Dashboard extends HookConsumerWidget {
       configState.isLoading,
     ]);
 
-    return BaseAnimatedSwitcher(
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        return FadeTransition(opacity: animation, child: child);
-      },
-      child: child,
-    );
+    return BaseAnimatedSwitcher(child: child);
   }
 }

@@ -6,11 +6,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class BaseShowcaseBuilder extends HookWidget {
-  final Widget child;
+  final WidgetBuilder builder;
 
   const BaseShowcaseBuilder({
     super.key,
-    required this.child,
+    required this.builder,
   });
 
   @override
@@ -34,11 +34,7 @@ class BaseShowcaseBuilder extends HookWidget {
 
     return ShowCaseWidget(
       onComplete: onShowcaseComplete,
-      builder: Builder(
-        builder: (context) {
-          return child;
-        },
-      ),
+      builder: Builder(builder: builder),
     );
   }
 }

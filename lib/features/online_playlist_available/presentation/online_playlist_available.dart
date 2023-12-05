@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_content_header.dart';
+import 'package:daily_mind/common_widgets/base_sliver_list.dart';
 import 'package:daily_mind/common_widgets/base_square_icon.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -14,11 +15,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class OnlinePlaylistAvailable extends HookConsumerWidget {
   final ValueChanged<int> onSelected;
   final VoidCallback openAddOnlinePlaylist;
+  final ScrollController? scrollController;
 
   const OnlinePlaylistAvailable({
     super.key,
     required this.openAddOnlinePlaylist,
     required this.onSelected,
+    this.scrollController,
   });
 
   @override
@@ -27,32 +30,34 @@ class OnlinePlaylistAvailable extends HookConsumerWidget {
         ref.watch(onlinePlaylistAvailableNotifierProvider);
 
     return BaseContentHeader(
-      title: 'Playlist của bạn'.tr(),
-      spacingSize: 2,
-      titleStyle: context.textTheme.titleMedium?.copyWith(
-        fontWeight: FontWeight.bold,
-      ),
-      child: Column(
-        children: space(
-          [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: spacing(2)),
-              child: BaseTile(
-                onTap: openAddOnlinePlaylist,
-                leading: const BaseSquareIcon(iconData: Icons.add),
-                title: 'Thêm mới',
-              ),
-            ),
-            ...onlinePlaylistsState.map((onlinePlaylist) {
-              return OnlinePlaylistAvailableItem(
-                onTap: () => onSelected(onlinePlaylist.id),
-                title: onlinePlaylist.title ?? emptyString,
-              );
-            })
-          ],
-          height: spacing(2),
+        title: 'Danh sách playlist'.tr(),
+        spacingSize: 2,
+        titleStyle: context.textTheme.titleMedium?.copyWith(
+          fontWeight: FontWeight.bold,
         ),
-      ),
-    );
+        child: Expanded(
+          child: BaseSliverList(
+            scrollController: scrollController,
+            children: space(
+              [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: spacing(2)),
+                  child: BaseTile(
+                    onTap: openAddOnlinePlaylist,
+                    leading: const BaseSquareIcon(iconData: Icons.add),
+                    title: 'Thêm mới',
+                  ),
+                ),
+                ...onlinePlaylistsState.map((onlinePlaylist) {
+                  return OnlinePlaylistAvailableItem(
+                    onTap: () => onSelected(onlinePlaylist.id),
+                    title: onlinePlaylist.title ?? emptyString,
+                  );
+                })
+              ],
+              height: spacing(2),
+            ),
+          ),
+        ));
   }
 }
