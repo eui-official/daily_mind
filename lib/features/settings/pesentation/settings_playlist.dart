@@ -1,4 +1,3 @@
-import 'package:daily_mind/common_applications/audio.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
@@ -38,10 +37,8 @@ class SettingsPlaylist extends HookConsumerWidget {
           playlist,
           (safePlaylist) async {
             // Get audios from supapase
-            final rawAudios =
+            final audios =
                 await supabaseAPI.onGetAudiosByIds(safePlaylist.itemIds);
-
-            final audios = onToAudios(rawAudios);
 
             onlineMiniPlayerNotifier.onClear();
             await baseBackgroundHandler.onInitOnline(audios);

@@ -2,7 +2,6 @@ import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_sliver_list.dart';
 import 'package:daily_mind/common_widgets/base_square_icon.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_playlist_available/presentation/online_playlist_available_provider.dart';
 import 'package:daily_mind/features/online_playlist_available_item/presentation/online_playlist_available_item.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -51,7 +50,7 @@ class OnlinePlaylistAvailable extends HookConsumerWidget {
                 ...onlinePlaylistsState.map((onlinePlaylist) {
                   return OnlinePlaylistAvailableItem(
                     onTap: () => onSelected(onlinePlaylist.id),
-                    title: onlinePlaylist.title ?? emptyString,
+                    onlinePlaylist: onlinePlaylist,
                   );
                 })
               ],
