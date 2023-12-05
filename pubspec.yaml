@@ -83,6 +83,7 @@ dependencies:
   device_info_plus: ^9.1.1
   background_fetch: ^1.2.1
   showcaseview: ^2.0.3
+  another_flushbar: ^1.12.30
 dev_dependencies:
   flutter_test:
     sdk: flutter

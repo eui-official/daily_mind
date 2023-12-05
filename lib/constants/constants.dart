@@ -20,7 +20,7 @@ const mediumDuration = Duration(milliseconds: 600);
 
 const longDuration = Duration(seconds: 1);
 
-const actionDuration = Duration(seconds: 5);
+const actionDuration = Duration(seconds: 3);
 
 const longerDuration = Duration(minutes: 1);
 
