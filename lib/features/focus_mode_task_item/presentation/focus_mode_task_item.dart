@@ -1,12 +1,11 @@
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/common_widgets/base_sliable.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/task.dart';
-import 'package:daily_mind/features/focus_mode_delete_sliable/presentation/focus_mode_delete_sliable.dart';
 import 'package:daily_mind/features/focus_mode_task_item/presentation/focus_mode_task_item_selected.dart';
-import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -50,19 +49,13 @@ class FocusModeTaskItem extends HookConsumerWidget {
       [isSelected],
     );
 
-    return ClipRRect(
-      borderRadius: circularRadius(2),
-      child: Material(
-        type: MaterialType.transparency,
-        child: FocusModeDeleteSliable(
-          id: task.id,
-          onDeleted: onDeletedTask,
-          child: BaseTile(
-            onTap: onSelectTask,
-            title: task.title ?? emptyString,
-            trailing: FocusModeTaskItemSelected(isSelected: isSelected),
-          ),
-        ),
+    return BaseSliable(
+      id: task.id,
+      onDeleted: onDeletedTask,
+      child: BaseTile(
+        onTap: onSelectTask,
+        title: task.title ?? emptyString,
+        trailing: FocusModeTaskItemSelected(isSelected: isSelected),
       ),
     );
   }
