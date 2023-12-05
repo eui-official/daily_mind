@@ -17,21 +17,8 @@ class ConfigNotifier extends StateNotifier<ConfigState> {
   }
 
   Future<void> onGetBaseConfig() async {
-    final List<Category> categories = [];
-    final List<Group> groups = [];
-
-    final categoriesData =
-        await supabase.from('categories').select() as List<dynamic>;
-
-    final groupsData = await supabase.from('groups').select() as List<dynamic>;
-
-    for (var data in categoriesData) {
-      categories.add(Category.fromJson(data));
-    }
-
-    for (var data in groupsData) {
-      groups.add(Group.fromJson(data));
-    }
+    final List<Category> categories = await supabaseAPI.onGetCategories();
+    final List<Group> groups = await supabaseAPI.onGetGroups();
 
     state = state.copyWith(
       isLoading: false,

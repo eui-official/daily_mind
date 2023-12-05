@@ -9,6 +9,7 @@ import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_min
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile_trailing_arrow.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
+import 'package:daily_mind/features/online_mini_player/presentation/online_mini_player_provider.dart';
 import 'package:daily_mind/features/online_playlist_selector/presentation/online_playlist_selector.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ class SettingsPlaylist extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
+    final onlineMiniPlayerNotifier =
+        ref.watch(onlineMiniPlayerNotifierProvider.notifier);
 
     final onSelected = useCallback(
       (playlistId) {
@@ -35,14 +38,13 @@ class SettingsPlaylist extends HookConsumerWidget {
           playlist,
           (safePlaylist) async {
             // Get audios from supapase
-            final rawAudios = await supabase
-                .from('audios')
-                .select()
-                .in_('id', safePlaylist.itemIds);
+            final rawAudios =
+                await supabaseAPI.onGetAudiosByIds(safePlaylist.itemIds);
 
             final audios = onToAudios(rawAudios);
 
-            baseBackgroundHandler.onInitOnline(audios);
+            onlineMiniPlayerNotifier.onClear();
+            await baseBackgroundHandler.onInitOnline(audios);
 
             baseMiniPlayerNotifier.onUpdateState(
               const MiniPlayerState(

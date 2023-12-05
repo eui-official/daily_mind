@@ -12,4 +12,8 @@ class OnlineMiniPlayerNotifier extends _$OnlineMiniPlayerNotifier {
   void onUpdate(Category category) {
     state = state.copyWith(category: category);
   }
+
+  void onClear() {
+    state = const OnlineMiniPlayerState();
+  }
 }
