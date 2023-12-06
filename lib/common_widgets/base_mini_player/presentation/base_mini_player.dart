@@ -31,7 +31,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
     required this.onPlay,
     required this.title,
     this.onTap,
-    this.subtitle = emptyString,
+    this.subtitle = kEmptyString,
   });
 
   @override

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
-double blur = 4;
+double kBlur = 4;
 
-const appDescription = 'DailyMind - Soothe, Sleep, Relax';
+const kAppDescription = 'DailyMind - Soothe, Sleep, Relax';
 
-const emptyString = '';
+const kEmptyString = '';
 
-const emptyNull = null;
+const kNull = null;
 
-const emptyWidget = SizedBox.shrink();
+const kEmptyWidget = SizedBox.shrink();
 
-const shorterDuration = Duration(milliseconds: 100);
+const kShorterDuration = Duration(milliseconds: 100);
 
-const shortDuration = Duration(milliseconds: 200);
+const kShortDuration = Duration(milliseconds: 200);
 
-const defaultDuration = Duration(milliseconds: 300);
+const kDefaultDuration = Duration(milliseconds: 300);
 
-const mediumDuration = Duration(milliseconds: 600);
+const kMediumDuration = Duration(milliseconds: 600);
 
-const longDuration = Duration(seconds: 1);
+const kLongDuration = Duration(seconds: 1);
 
-const actionDuration = Duration(seconds: 3);
+const kActionDuration = Duration(seconds: 3);
 
-const longerDuration = Duration(minutes: 1);
+const kLongerDuration = Duration(minutes: 1);
 
-const appStoreId = '6466182407';
+const kAppStoreId = '6466182407';

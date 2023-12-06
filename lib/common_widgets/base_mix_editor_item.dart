@@ -20,7 +20,7 @@ class BaseMixEditorItem extends StatelessWidget {
     required this.initVolume,
     required this.name,
     required this.onVolumeChanged,
-    this.prefixChild = emptyWidget,
+    this.prefixChild = kEmptyWidget,
     this.volumeKey,
   });
 

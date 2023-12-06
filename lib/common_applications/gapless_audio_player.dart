@@ -10,7 +10,7 @@ class GaplessAudioPlayer extends AudioPlayer {
   Future<void> onSetSource(String id) async {
     try {
       children = [];
-      final paths = offlineAudioSources[id] ?? [];
+      final paths = kOfflineAudioSources[id] ?? [];
 
       for (var path in paths) {
         children.add(AudioSource.asset(path));

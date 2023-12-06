@@ -24,7 +24,7 @@ class BaseMiniPlayerSwitcher extends HookConsumerWidget {
         }
       }
 
-      return emptyWidget;
+      return kEmptyWidget;
     }, [baseMiniPlayerState]);
 
     return BaseAnimatedSwitcher(

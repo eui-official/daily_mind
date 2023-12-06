@@ -1,8 +1,8 @@
 import 'package:daily_mind/types/common.dart';
 
-const defaultAudioId = 'silient';
+const kDefaultAudioId = 'silient';
 
-OfflineAudioSources offlineAudioSources = {
+OfflineAudioSources kOfflineAudioSources = {
   'silient': [
     'assets/audios/silients/long_blank.mp3',
   ],

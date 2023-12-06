@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 class EmptyWidgetBuilder<T> extends StatelessWidget {
   final T? data;
-  final OnEmptyWidgetBuilder<T> builder;
+  final OnkEmptyWidgetBuilder<T> builder;
   final Widget empty;
 
   const EmptyWidgetBuilder({
     super.key,
     required this.builder,
     this.data,
-    this.empty = emptyWidget,
+    this.empty = kEmptyWidget,
   });
 
   @override

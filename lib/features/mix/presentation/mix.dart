@@ -25,7 +25,7 @@ class Mix extends HookConsumerWidget {
     final appNavigationBarState = ref.watch(appNavigationBarProvider);
 
     useEffectDelayed(() {
-      if (db.onIsFirstTime(newMixTutorial) &&
+      if (db.onIsFirstTime(kNewMixTutorial) &&
           appNavigationBarState.isMixScreen) {
         ShowCaseWidget.of(context).startShowCase([soundKey]);
       }

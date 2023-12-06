@@ -24,7 +24,8 @@ class TogglePlayModeButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final animationController = useAnimationController(duration: shortDuration);
+    final animationController =
+        useAnimationController(duration: kShortDuration);
 
     final onToggle = useCallback(
       () {
@@ -40,7 +41,7 @@ class TogglePlayModeButton extends HookWidget {
     );
 
     useEffect(() {
-      Future.delayed(shorterDuration, () {
+      Future.delayed(kShorterDuration, () {
         if (isPlaying) {
           animationController.forward();
         } else {

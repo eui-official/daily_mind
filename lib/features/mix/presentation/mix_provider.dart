@@ -14,7 +14,7 @@ import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:daily_mind/features/mix/domain/mix_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-const initMixState = MixState(title: emptyString);
+const initMixState = MixState(title: kEmptyString);
 
 class MixdNotifier extends StateNotifier<MixState> {
   final BaseMiniPlayerProvider baseMiniPlayerNotifier;
@@ -67,7 +67,7 @@ class MixdNotifier extends StateNotifier<MixState> {
     if (recentMixCollectionId != null) {
       db.onDeleteCollection(recentMixCollectionId);
 
-      state = state.copyWith(recentMixCollection: emptyNull);
+      state = state.copyWith(recentMixCollection: kNull);
     }
   }
 
@@ -93,7 +93,7 @@ class MixdNotifier extends StateNotifier<MixState> {
   }
 
   void onClearTitle() {
-    state = state.copyWith(title: emptyString);
+    state = state.copyWith(title: kEmptyString);
   }
 
   void onUpdateTitle(String newTitle) {

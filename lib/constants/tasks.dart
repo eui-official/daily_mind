@@ -1,1 +1,1 @@
-const backgroundVolume = 0.5;
+const kBackgroundVolume = 0.5;

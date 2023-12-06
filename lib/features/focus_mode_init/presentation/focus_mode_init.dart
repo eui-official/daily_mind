@@ -26,7 +26,7 @@ class FocusModeInit extends HookConsumerWidget {
           return const FocusModeSession();
         }
 
-        return emptyWidget;
+        return kEmptyWidget;
       },
       [taskCurrentSnapshot.hasData],
     );

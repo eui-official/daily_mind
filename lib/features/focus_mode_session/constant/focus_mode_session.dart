@@ -1,3 +1,3 @@
-const pomodoroSessionMaxSeconds = 1500;
+const kPomodoroSessionMaxSeconds = 1500;
 
-const tick = Duration(seconds: 1);
+const kTick = Duration(seconds: 1);

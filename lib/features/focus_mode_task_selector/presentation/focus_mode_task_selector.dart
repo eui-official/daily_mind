@@ -41,7 +41,7 @@ class FocusModeTaskSelector extends HookConsumerWidget {
     );
 
     useEffectDelayed(() {
-      if (db.onIsFirstTime(focusModeChangeTaskTutorial) &&
+      if (db.onIsFirstTime(kFocusModeChangeTaskTutorial) &&
           appNavigationBarState.isFocusModeScreen) {
         ShowCaseWidget.of(context).startShowCase(
           [

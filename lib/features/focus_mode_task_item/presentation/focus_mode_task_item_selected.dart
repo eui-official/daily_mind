@@ -19,6 +19,6 @@ class FocusModeTaskItemSelected extends StatelessWidget {
       );
     }
 
-    return emptyWidget;
+    return kEmptyWidget;
   }
 }

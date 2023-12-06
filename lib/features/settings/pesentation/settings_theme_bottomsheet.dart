@@ -22,7 +22,7 @@ class SettingsThemeBottomSheet extends StatelessWidget {
       child: Expanded(
         child: BaseSliverList(
           scrollController: scrollController,
-          children: supportedThemes.map((theme) {
+          children: kSupportedThemes.map((theme) {
             return ListTile(
               onTap: () {
                 db.onAddSetting(theme.id, "theme");

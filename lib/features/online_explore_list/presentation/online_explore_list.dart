@@ -26,7 +26,7 @@ class OnlineExploreList extends HookConsumerWidget {
 
     useEffectDelayed(
       () {
-        if (db.onIsFirstTime(exploreScreenTutorial) &&
+        if (db.onIsFirstTime(kExploreScreenTutorial) &&
             appNavigationState.isExploreScreen) {
           ShowCaseWidget.of(context).startShowCase([exploreScreenKey]);
         }
@@ -45,7 +45,7 @@ class OnlineExploreList extends HookConsumerWidget {
 
           audioCategoryGroup.forEach(
             (group, audioCategories) {
-              if (group != emptyNull) {
+              if (group != kNull) {
                 children
                     .add(OnlineCategoryGroup(audioCategories: audioCategories));
               } else {

@@ -6,7 +6,7 @@ class AdaptiveDialogValidators {
       return 'Không thể để trống';
     }
 
-    return emptyNull;
+    return kNull;
   }
 }
 

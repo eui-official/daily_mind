@@ -18,12 +18,12 @@ class BaseAudiosSkeleton extends StatelessWidget {
         mainAxisSpacing: spacing(2),
         crossAxisSpacing: spacing(2),
         children: [
-          BaseSkeletonBox(height: tinyCard),
-          BaseSkeletonBox(height: tinyCard),
-          BaseSkeletonBox(height: tinyCard),
-          BaseSkeletonBox(height: largeCard),
-          BaseSkeletonBox(height: largeCard),
-          BaseSkeletonBox(height: largeCard),
+          BaseSkeletonBox(height: kTinyCard),
+          BaseSkeletonBox(height: kTinyCard),
+          BaseSkeletonBox(height: kTinyCard),
+          BaseSkeletonBox(height: kLargeCard),
+          BaseSkeletonBox(height: kLargeCard),
+          BaseSkeletonBox(height: kLargeCard),
         ],
       ),
     );

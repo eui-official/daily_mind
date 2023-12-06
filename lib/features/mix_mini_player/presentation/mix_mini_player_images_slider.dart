@@ -37,7 +37,7 @@ class MixMiniPlayerImagesSlider extends StatelessWidget {
         autoPlay: mixItems.length > 1,
         aspectRatio: 1,
         viewportFraction: 1,
-        autoPlayAnimationDuration: shorterDuration,
+        autoPlayAnimationDuration: kShorterDuration,
       ),
     );
   }

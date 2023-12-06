@@ -54,7 +54,7 @@ mixin BaseTaskVariables on BaseAudioHandler {
   int get taskShortBreak => taskCurrent.shortBreak ?? 0;
   int get taskShortBreakInSeconds => taskShortBreak * 60;
   int get taskWorkingSessions => taskCurrent.workingSessions ?? 0;
-  String get taskTitle => taskCurrent.title ?? emptyString;
+  String get taskTitle => taskCurrent.title ?? kEmptyString;
   Task get taskCurrent => onStreamTaskCurrent.value;
 }
 

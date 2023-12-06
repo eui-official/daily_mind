@@ -28,7 +28,7 @@ class BaseTaskForm extends HookWidget {
       return FormGroup({
         'workingSessions': FormControl<int>(value: 0),
         'title': FormControl<String>(
-          value: emptyString,
+          value: kEmptyString,
           validators: [
             Validators.required,
           ],
@@ -69,7 +69,7 @@ class BaseTaskForm extends HookWidget {
               ReactiveFormConsumer(
                 builder: (context, formGroup, child) {
                   return ElevatedButton(
-                    onPressed: formGroup.valid ? onPressedInternal : emptyNull,
+                    onPressed: formGroup.valid ? onPressedInternal : kNull,
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(200, 48),
                     ),

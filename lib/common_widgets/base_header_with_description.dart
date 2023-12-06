@@ -15,7 +15,7 @@ class BaseHeaderWithDescription extends StatelessWidget {
     super.key,
     required this.description,
     required this.name,
-    this.headerAction = emptyWidget,
+    this.headerAction = kEmptyWidget,
     this.maxLines,
     this.overflow,
   });

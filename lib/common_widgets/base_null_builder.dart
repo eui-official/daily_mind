@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class BaseNullBuilder<T> extends StatelessWidget {
   final T? value;
-  final OnEmptyWidgetBuilder<T> builder;
+  final OnkEmptyWidgetBuilder<T> builder;
 
   const BaseNullBuilder({
     super.key,
@@ -20,6 +20,6 @@ class BaseNullBuilder<T> extends StatelessWidget {
       return builder(currentValue);
     }
 
-    return emptyWidget;
+    return kEmptyWidget;
   }
 }

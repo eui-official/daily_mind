@@ -5,7 +5,7 @@ import 'package:get/utils.dart';
 
 void onShowSnackbar(
   BuildContext context, {
-  Duration duration = actionDuration,
+  Duration duration = kActionDuration,
   VoidCallback? onTap,
   Widget? trailing,
   String? title,
@@ -13,7 +13,7 @@ void onShowSnackbar(
 }) {
   Flushbar(
     duration: duration,
-    animationDuration: defaultDuration,
+    animationDuration: kDefaultDuration,
     backgroundColor: context.theme.primaryColorDark,
     flushbarPosition: FlushbarPosition.TOP,
     flushbarStyle: FlushbarStyle.FLOATING,

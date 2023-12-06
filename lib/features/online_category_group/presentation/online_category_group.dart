@@ -57,7 +57,7 @@ class OnlineCategoryGroup extends HookWidget {
                   },
                 );
               },
-              options: baseCarouselOptions,
+              options: kBaseCarouselOptions,
             )
           ],
           height: spacing(2),

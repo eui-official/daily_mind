@@ -35,7 +35,7 @@ class OnlineCategoryHorizontal extends HookWidget {
           audioCategory: audioCategory,
           builder: (onTap) {
             return SizedBox(
-              height: tinyCard,
+              height: kTinyCard,
               child: ClipRRect(
                 borderRadius: circularRadius(2),
                 child: BaseInkWell(

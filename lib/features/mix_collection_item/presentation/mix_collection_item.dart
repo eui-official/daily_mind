@@ -49,7 +49,7 @@ class MixCollectionItem extends HookConsumerWidget {
         textFields: [
           DialogTextField(
             hintText: 'Tên mix'.tr(),
-            initialText: mixCollection.title ?? emptyString,
+            initialText: mixCollection.title ?? kEmptyString,
             validator: adaptiveDialogValidators.required,
           ),
         ],
@@ -113,7 +113,7 @@ class MixCollectionItem extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  mixCollection.title ?? emptyString,
+                  mixCollection.title ?? kEmptyString,
                   style: context.textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),

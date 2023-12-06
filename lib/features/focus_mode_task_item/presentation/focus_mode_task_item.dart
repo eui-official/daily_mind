@@ -54,7 +54,7 @@ class FocusModeTaskItem extends HookConsumerWidget {
       onDeleted: onDeletedTask,
       child: BaseTile(
         onTap: onSelectTask,
-        title: task.title ?? emptyString,
+        title: task.title ?? kEmptyString,
         trailing: FocusModeTaskItemSelected(isSelected: isSelected),
       ),
     );
