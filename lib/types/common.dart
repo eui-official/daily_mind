@@ -7,7 +7,7 @@ typedef OfflineAudioSources = Map<String, List<String>>;
 
 typedef OnWidgetSettingBuilder = Widget Function(Settings?);
 
-typedef OnEmptyWidgetBuilder<T> = Widget Function(T data);
+typedef OnkEmptyWidgetBuilder<T> = Widget Function(T data);
 
 typedef OnListItemBuilder<T> = Widget Function(
   BuildContext context,

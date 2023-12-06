@@ -38,7 +38,7 @@ class OnlinePlayer extends HookConsumerWidget {
     final sequence = sequenceSnapshot.data ?? [];
 
     if (sequence.isEmpty) {
-      return emptyWidget;
+      return kEmptyWidget;
     }
 
     final s = sequence[currentIndex];

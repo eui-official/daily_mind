@@ -18,15 +18,15 @@ class BaseShowcaseBuilder extends HookWidget {
     final onShowcaseComplete = useCallback(
       (int? index, GlobalKey key) {
         if (key == soundKey) {
-          db.onAddFirstTime(newMixTutorial);
+          db.onAddFirstTime(kNewMixTutorial);
         }
 
         if (key == focusModeChangeTaskKey) {
-          db.onAddFirstTime(focusModeChangeTaskTutorial);
+          db.onAddFirstTime(kFocusModeChangeTaskTutorial);
         }
 
         if (key == exploreScreenKey) {
-          db.onAddFirstTime(exploreScreenTutorial);
+          db.onAddFirstTime(kExploreScreenTutorial);
         }
       },
       [],

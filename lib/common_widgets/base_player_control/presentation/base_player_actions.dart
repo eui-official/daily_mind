@@ -32,7 +32,7 @@ class BasePlayerActions extends HookWidget {
           );
         }
 
-        return emptyWidget;
+        return kEmptyWidget;
       },
       [onPrevious],
     );
@@ -47,7 +47,7 @@ class BasePlayerActions extends HookWidget {
           );
         }
 
-        return emptyWidget;
+        return kEmptyWidget;
       },
       [onNext],
     );

@@ -43,7 +43,7 @@ class Settings extends StatelessWidget {
                   items: [
                     BaseTile(
                       onTap: () {
-                        inAppReview.openStoreListing(appStoreId: appStoreId);
+                        inAppReview.openStoreListing(appStoreId: kAppStoreId);
                       },
                       title: 'rating'.tr(),
                       borderRadius: BorderRadius.only(

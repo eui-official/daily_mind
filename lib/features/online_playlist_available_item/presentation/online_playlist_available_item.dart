@@ -24,7 +24,7 @@ class OnlinePlaylistAvailableItem extends StatelessWidget {
       child: BaseTile(
         onTap: onTap,
         leading: const BaseSquareIcon(iconData: Icons.music_note),
-        title: onlinePlaylist.title ?? emptyString,
+        title: onlinePlaylist.title ?? kEmptyString,
       ),
     );
   }

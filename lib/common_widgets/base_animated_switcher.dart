@@ -14,7 +14,7 @@ class BaseAnimatedSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: defaultDuration,
+      duration: kDefaultDuration,
       transitionBuilder: transitionBuilder,
       child: child,
     );

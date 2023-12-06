@@ -31,7 +31,7 @@ class BaseAnimatedOpacity extends HookWidget {
     }, [valueKey]);
 
     return BaseAnimatedSwitcher(
-      child: isVisible.value ? child : emptyWidget,
+      child: isVisible.value ? child : kEmptyWidget,
     );
   }
 }

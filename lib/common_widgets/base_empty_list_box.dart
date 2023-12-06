@@ -17,14 +17,14 @@ class BaseEmptyListBox extends StatelessWidget {
     required this.action,
     required this.imageUrl,
     required this.title,
-    this.subTitle = emptyString,
+    this.subTitle = kEmptyString,
   });
 
   @override
   Widget build(BuildContext context) {
     return BaseCard(
       image: AssetImage(imageUrl),
-      height: tinyCard,
+      height: kTinyCard,
       content: BaseSpacingContainer(
         alignment: Alignment.bottomCenter,
         child: Row(

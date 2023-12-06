@@ -1,3 +1,3 @@
-const newMixTutorial = 'newMixTutorial';
-const focusModeChangeTaskTutorial = 'focusModeChangeTaskTutorial';
-const exploreScreenTutorial = 'exploreScreenTutorial';
+const kNewMixTutorial = 'newMixTutorial';
+const kFocusModeChangeTaskTutorial = 'focusModeChangeTaskTutorial';
+const kExploreScreenTutorial = 'exploreScreenTutorial';

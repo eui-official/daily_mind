@@ -8,7 +8,7 @@ class ListHeader extends StatelessWidget {
 
   const ListHeader({
     super.key,
-    this.trailing = emptyWidget,
+    this.trailing = kEmptyWidget,
     required this.child,
   });
 

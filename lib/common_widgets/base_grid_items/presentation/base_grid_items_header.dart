@@ -17,9 +17,9 @@ class BaseGridItemsHeader<T> extends StatelessWidget {
     super.key,
     required this.items,
     required this.onItemIndexBuilder,
-    this.headerTrailing = emptyWidget,
+    this.headerTrailing = kEmptyWidget,
     this.padding,
-    this.title = emptyString,
+    this.title = kEmptyString,
   });
 
   @override

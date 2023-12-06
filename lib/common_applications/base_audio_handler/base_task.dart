@@ -21,7 +21,7 @@ extension BaseTask on DailyMindBackgroundHandler {
 
   void onTaskStart() {
     onTaskUpdateStep(FocusModeSessionSteps.focusing);
-    onTaskStartTimer(pomodoroSessionMaxSeconds);
+    onTaskStartTimer(kPomodoroSessionMaxSeconds);
     onTaskUpdateRunning(true);
   }
 
@@ -32,7 +32,7 @@ extension BaseTask on DailyMindBackgroundHandler {
 
     taskCountdown.onStart(
       seconds: seconds,
-      duration: tick,
+      duration: kTick,
       onCounting: (remainingSeconds) {
         onStreamTaskRemainingSeconds.add(remainingSeconds);
         onInitBlankSound();
@@ -51,7 +51,7 @@ extension BaseTask on DailyMindBackgroundHandler {
   Future<void> onInitBlankSound() async {
     if (taskBackgroundAudioGaplessAudioPlayer.playing) return;
 
-    await taskBackgroundAudioGaplessAudioPlayer.onSetSource(defaultAudioId);
+    await taskBackgroundAudioGaplessAudioPlayer.onSetSource(kDefaultAudioId);
     taskBackgroundAudioGaplessAudioPlayer.play();
   }
 
@@ -113,8 +113,8 @@ extension BaseTask on DailyMindBackgroundHandler {
   void onTaskReset() {
     taskCurrentSession = 1;
     onTaskUpdateStep(FocusModeSessionSteps.ready);
-    onStreamTaskRemainingSeconds.add(pomodoroSessionMaxSeconds);
-    onStreamTaskSeconds.add(pomodoroSessionMaxSeconds);
+    onStreamTaskRemainingSeconds.add(kPomodoroSessionMaxSeconds);
+    onStreamTaskSeconds.add(kPomodoroSessionMaxSeconds);
     onTaskUpdateRunning(false);
     taskCountdown.onCancel();
   }

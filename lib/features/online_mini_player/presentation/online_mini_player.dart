@@ -74,6 +74,6 @@ class OnlineMiniPlayer extends HookConsumerWidget {
       );
     }
 
-    return emptyWidget;
+    return kEmptyWidget;
   }
 }

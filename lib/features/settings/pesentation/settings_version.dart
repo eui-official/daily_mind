@@ -21,7 +21,7 @@ class SettingsVersion extends HookWidget {
         return '${data?.version}+${data?.buildNumber}';
       }
 
-      return emptyString;
+      return kEmptyString;
     }, [packageInfoSnapshot]);
 
     return FutureBuilder(

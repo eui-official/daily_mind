@@ -65,7 +65,7 @@ class FocusModeSession extends HookConsumerWidget {
 
     final onResetSwitcher = useMemoized(() {
       if (isReady) {
-        return emptyNull;
+        return kNull;
       }
 
       return onReset;

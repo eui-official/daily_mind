@@ -47,7 +47,7 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
         children: space(
           [
             Text(
-              mixCollection.title ?? emptyString,
+              mixCollection.title ?? kEmptyString,
               style: context.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

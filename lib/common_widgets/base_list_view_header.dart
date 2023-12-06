@@ -12,7 +12,7 @@ class BaseListViewHeader extends StatelessWidget {
     super.key,
     required this.title,
     required this.child,
-    this.trailing = emptyWidget,
+    this.trailing = kEmptyWidget,
   });
 
   @override

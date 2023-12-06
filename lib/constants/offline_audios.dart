@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_domains/audio_offline.dart';
 
-final List<AudioOffline> offlineAudios = [
+final List<AudioOffline> kOfflineAudios = [
   AudioOffline(
     id: 'rain',
     name: 'rain',

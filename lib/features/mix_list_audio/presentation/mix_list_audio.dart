@@ -25,7 +25,7 @@ class MixListAudio extends HookConsumerWidget {
 
     return BaseGridItemsHeader(
       padding: padding,
-      items: offlineAudios,
+      items: kOfflineAudios,
       onItemIndexBuilder: (context, index, audio) {
         final isSelected = mixData.mixItems.isContain(audio.id);
 
