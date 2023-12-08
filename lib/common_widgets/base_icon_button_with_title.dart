@@ -1,3 +1,4 @@
+import 'package:daily_mind/extensions/context.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +25,8 @@ class BaseIconButtonWithTitle extends StatelessWidget {
         IconButton(
           onPressed: onPressed,
           icon: icon,
-          style: style,
+          style: style ??
+              IconButton.styleFrom(backgroundColor: context.primaryColorDark50),
         ),
         Text(
           title,
