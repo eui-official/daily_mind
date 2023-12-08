@@ -28,7 +28,7 @@ class Background extends StatelessWidget {
             ),
           ),
         ),
-        const BaseBackdropFilter()
+        BaseBackdropFilter(image: image)
       ],
     );
   }

@@ -17,7 +17,7 @@ class BasePlayerUserActions extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(spacing(2)),
       child: Container(
-        padding: EdgeInsets.all(spacing()),
+        padding: EdgeInsets.all(spacing(2)),
         decoration: BoxDecoration(
           color: context.theme.colorScheme.background,
           borderRadius: circularRadius(2),
