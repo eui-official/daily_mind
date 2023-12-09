@@ -1,6 +1,5 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_details.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -26,21 +25,17 @@ class OnlinePlayer extends HookConsumerWidget {
 
     final sequence = sequenceSnapshot.data ?? [];
 
-    if (onlinePlayer.isReady) {
-      final s = sequence[currentIndex];
-      final tag = s.tag;
+    final s = sequence[currentIndex];
+    final tag = s.tag;
 
-      return OnlinePlayerDetails(
-        scrollController: scrollController,
-        image: tag.image,
-        tag: tag,
-        child: OnlinePlayerBottom(
-          backgroundHandler: baseBackgroundHandler,
-          audio: tag,
-        ),
-      );
-    }
-
-    return kEmptyWidget;
+    return OnlinePlayerDetails(
+      scrollController: scrollController,
+      image: tag.image,
+      tag: tag,
+      child: OnlinePlayerBottom(
+        backgroundHandler: baseBackgroundHandler,
+        audio: tag,
+      ),
+    );
   }
 }

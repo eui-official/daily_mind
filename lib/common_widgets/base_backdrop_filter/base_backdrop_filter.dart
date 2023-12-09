@@ -23,9 +23,7 @@ class BaseBackdropFilter extends HookWidget {
     return BaseNullBuilder(
       value: pallete.data,
       builder: (safePallete) {
-        return BaseBackdropFilterGradient(
-          color: safePallete.dominantColor?.color,
-        );
+        return BaseBackdropFilterGradient(pallete: safePallete);
       },
     );
   }
