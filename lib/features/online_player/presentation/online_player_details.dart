@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_applications/base_snackbar/base_snackbar.dart';
+import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/disk_player_image/presentation/disk_player_image.dart';
@@ -43,6 +45,11 @@ class OnlinePlayerDetails extends HookConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
+          Positioned.fill(
+            child: BaseBackdropFilter(
+              image: CachedNetworkImageProvider(image),
+            ),
+          ),
           Column(
             children: [
               Expanded(

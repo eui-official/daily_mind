@@ -17,40 +17,30 @@ class OnlinePlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
-    final currentIndexStreamMemoized = useMemoized(
-      () => baseBackgroundHandler.onlinePlayer.currentIndexStream,
-      [],
-    );
-
-    final currentIndexSnapshot = useStream(currentIndexStreamMemoized);
+    final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
+    final sequenceSnapshot = useStream(onlinePlayer.sequenceStream);
 
     final currentIndex = currentIndexSnapshot.data ?? 0;
 
-    final sequenceStreamMemoized = useMemoized(
-      () => baseBackgroundHandler.onlinePlayer.sequenceStream,
-      [],
-    );
-
-    final sequenceSnapshot = useStream(sequenceStreamMemoized);
-
     final sequence = sequenceSnapshot.data ?? [];
 
-    if (sequence.isEmpty) {
-      return kEmptyWidget;
+    if (onlinePlayer.isReady) {
+      final s = sequence[currentIndex];
+      final tag = s.tag;
+
+      return OnlinePlayerDetails(
+        scrollController: scrollController,
+        image: tag.image,
+        tag: tag,
+        child: OnlinePlayerBottom(
+          backgroundHandler: baseBackgroundHandler,
+          audio: tag,
+        ),
+      );
     }
 
-    final s = sequence[currentIndex];
-    final tag = s.tag;
-
-    return OnlinePlayerDetails(
-      scrollController: scrollController,
-      image: tag.image,
-      tag: tag,
-      child: OnlinePlayerBottom(
-        backgroundHandler: baseBackgroundHandler,
-        audio: tag,
-      ),
-    );
+    return kEmptyWidget;
   }
 }

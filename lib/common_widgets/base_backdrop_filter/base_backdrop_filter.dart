@@ -17,7 +17,8 @@ class BaseBackdropFilter extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pallete = useImagePallete(image ?? MemoryImage(kTransparentImage));
+    final transparentImage = MemoryImage(kTransparentImage);
+    final pallete = useImagePallete(image ?? transparentImage);
 
     return BaseNullBuilder(
       value: pallete.data,

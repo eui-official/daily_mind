@@ -5,6 +5,13 @@ import 'package:daily_mind/common_domains/audio.dart';
 import 'package:just_audio/just_audio.dart';
 
 class OnlineAudioPlayer extends AudioPlayer {
+  bool get isReady {
+    final currentSequence = sequence ?? [];
+
+    return processingState == ProcessingState.ready &&
+        currentSequence.isNotEmpty;
+  }
+
   OnlineAudioPlayerIndexState get indexState {
     int index = currentIndex ?? 0;
     int sequenceLength = sequence?.length ?? 0;

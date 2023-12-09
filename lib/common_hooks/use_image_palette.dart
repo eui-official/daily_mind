@@ -1,21 +1,18 @@
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palette_generator/palette_generator.dart';
 
 AsyncSnapshot<PaletteGenerator> useImagePallete(ImageProvider image) {
-  final resizedImage = useMemoized(
-    () => ResizeImage(
+  final paletteGeneratorMemoized = useMemoized(
+    () => PaletteGenerator.fromImageProvider(
       image,
-      width: 1,
-      height: 1,
+      size: Size(
+        spacing(),
+        spacing(),
+      ),
     ),
     [image],
-  );
-
-  final paletteGeneratorMemoized = useMemoized(
-    () => PaletteGenerator.fromImageProvider(resizedImage,
-        size: const Size(1, 1)),
-    [resizedImage],
   );
 
   final paletteGenerator = useFuture(paletteGeneratorMemoized);

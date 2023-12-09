@@ -13,13 +13,7 @@ class PlayerToggleButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
-    final playbackStateMemoized = useMemoized(
-      () => baseBackgroundHandler.playbackState,
-      [],
-    );
-
-    final playBackState = useStream(playbackStateMemoized);
-
+    final playBackState = useStream(baseBackgroundHandler.playbackState);
     final isPlaying = playBackState.data?.playing ?? false;
 
     return TogglePlayModeButton(

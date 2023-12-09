@@ -14,13 +14,9 @@ class OnlineListRelated extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
-    final sequenceStreamMemoized = useMemoized(
-      () => baseBackgroundHandler.onlinePlayer.sequenceStream,
-      [],
-    );
-
-    final sequenceSnapshot = useStream(sequenceStreamMemoized);
+    final sequenceSnapshot = useStream(onlinePlayer.sequenceStream);
 
     final sequence = sequenceSnapshot.data ?? [];
 

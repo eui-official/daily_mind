@@ -17,27 +17,12 @@ class OnlineMiniPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
-
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
-    final currentIndexStreamMemoized =
-        useMemoized(() => onlinePlayer.currentIndexStream, []);
-
-    final currentIndexSnapshot = useStream(currentIndexStreamMemoized);
-
-    final processingStateStreamMemoized = useMemoized(
-      () => onlinePlayer.processingStateStream,
-      [],
-    );
-
-    final processingStateSnapshot = useStream(processingStateStreamMemoized);
-
-    final playbackStateMemoized = useMemoized(
-      () => baseBackgroundHandler.playbackState,
-      [],
-    );
-
-    final playBackState = useStream(playbackStateMemoized);
+    final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
+    final processingStateSnapshot =
+        useStream(onlinePlayer.processingStateStream);
+    final playBackState = useStream(baseBackgroundHandler.playbackState);
 
     final sequence = onlinePlayer.audioSource?.sequence ?? [];
     final currentIndex = currentIndexSnapshot.data ?? 0;
@@ -56,7 +41,7 @@ class OnlineMiniPlayer extends HookConsumerWidget {
       );
     }, [context]);
 
-    if (sequence.isNotEmpty) {
+    if (onlinePlayer.isReady) {
       final item = sequence[currentIndex];
       final tag = item.tag;
 
