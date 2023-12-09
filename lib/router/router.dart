@@ -10,7 +10,7 @@ final routerConfig = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => Introduction(),
+      builder: (context, state) => const Introduction(),
     ),
     GoRoute(
       path: '/dashboard',

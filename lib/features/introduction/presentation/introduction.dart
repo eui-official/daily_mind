@@ -1,4 +1,3 @@
-import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
@@ -10,19 +9,12 @@ import 'package:go_router/go_router.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class Introduction extends HookWidget {
-  final player = GaplessAudioPlayer();
-
-  Introduction({super.key});
+  const Introduction({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isFirstTime = useMemoized(
-      () => db.onIsFirstTime("introduction"),
-      [],
-    );
-
     final child = useMemoized(() {
-      if (isFirstTime) {
+      if (db.onIsFirstTime("introduction")) {
         Scaffold(
           body: IntroductionScreen(
             pages: [
@@ -51,19 +43,7 @@ class Introduction extends HookWidget {
       }
 
       return const Dashboard();
-    }, [isFirstTime]);
-
-    useEffect(() {
-      if (isFirstTime) {
-        player.onSetSource('water');
-        player.setVolume(0.2);
-        player.play();
-      }
-
-      return () {
-        player.onDispose();
-      };
-    }, [isFirstTime]);
+    }, []);
 
     return BaseAnimatedSwitcher(child: child);
   }
