@@ -18,29 +18,22 @@ class BasePlayerInformation extends StatelessWidget {
     return BaseNullBuilder(
       value: category,
       builder: (safeCategory) {
-        return Container(
-          padding: EdgeInsets.all(spacing(2)),
-          decoration: BoxDecoration(
-            color: context.theme.colorScheme.background,
-            borderRadius: circularRadius(2),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: space(
-              [
-                Text(
-                  safeCategory.name,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: space(
+            [
+              Text(
+                safeCategory.name,
+                style: context.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  safeCategory.description,
-                  style: const TextStyle(color: secondaryTextColor),
-                ),
-              ],
-              height: spacing(),
-            ),
+              ),
+              Text(
+                safeCategory.description,
+                style: const TextStyle(color: secondaryTextColor),
+              ),
+            ],
+            height: spacing(),
           ),
         );
       },

@@ -31,13 +31,10 @@ class OnlineListRelated extends HookConsumerWidget {
       children: space(
         [
           const OnlineListRelatedHeader(),
-          ListView.separated(
+          ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: sequence.length,
-            separatorBuilder: (context, index) {
-              return SizedBox(height: spacing());
-            },
             itemBuilder: (context, index) {
               final s = sequence[index];
               final tag = s.tag;

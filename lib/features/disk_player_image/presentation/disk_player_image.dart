@@ -18,9 +18,6 @@ class DiskPlayerImage extends HookWidget {
 
     return Container(
       alignment: Alignment.center,
-      decoration: BoxDecoration(
-        boxShadow: kElevationToShadow[24],
-      ),
       child: ClipRRect(
         borderRadius: circularRadius(2),
         child: CachedNetworkImage(
