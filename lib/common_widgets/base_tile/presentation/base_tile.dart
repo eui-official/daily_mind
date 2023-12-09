@@ -49,7 +49,6 @@ class BaseTile extends HookWidget {
           leading: leading,
           onTap: onTap,
           subtitle: subtitle,
-          tileColor: context.theme.focusColor,
           title: Text(
             title,
             style: context.textTheme.bodyLarge?.copyWith(

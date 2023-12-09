@@ -6,14 +6,15 @@ AsyncSnapshot<PaletteGenerator> useImagePallete(ImageProvider image) {
   final resizedImage = useMemoized(
     () => ResizeImage(
       image,
-      width: 8,
-      height: 8,
+      width: 1,
+      height: 1,
     ),
     [image],
   );
 
   final paletteGeneratorMemoized = useMemoized(
-    () => PaletteGenerator.fromImageProvider(resizedImage),
+    () => PaletteGenerator.fromImageProvider(resizedImage,
+        size: const Size(1, 1)),
     [resizedImage],
   );
 

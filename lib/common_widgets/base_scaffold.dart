@@ -1,4 +1,3 @@
-import 'package:daily_mind/common_widgets/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_theme_without_divider.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +14,14 @@ class BaseScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseThemeWithoutDivider(
-      child: BaseBackdropFilter(
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: child,
-          persistentFooterButtons: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: persistentFooterButtons,
-            )
-          ],
-        ),
+      child: Scaffold(
+        body: child,
+        persistentFooterButtons: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: persistentFooterButtons,
+          )
+        ],
       ),
     );
   }

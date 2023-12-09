@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_details.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -44,11 +43,9 @@ class OnlinePlayer extends HookConsumerWidget {
     final s = sequence[currentIndex];
     final tag = s.tag;
 
-    final imageProvider = CachedNetworkImageProvider(tag.image);
-
     return OnlinePlayerDetails(
       scrollController: scrollController,
-      image: imageProvider,
+      image: tag.image,
       tag: tag,
       child: OnlinePlayerBottom(
         backgroundHandler: baseBackgroundHandler,
