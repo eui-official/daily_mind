@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_hooks/use_image_palette.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter_gradien.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,10 @@ class BaseBackdropFilter extends HookWidget {
     return BaseNullBuilder(
       value: pallete.data,
       builder: (safePallete) {
-        return BaseBackdropFilterGradient(pallete: safePallete);
+        return BaseAnimatedSwitcher(
+          key: ValueKey(safePallete),
+          child: BaseBackdropFilterGradient(pallete: safePallete),
+        );
       },
     );
   }
