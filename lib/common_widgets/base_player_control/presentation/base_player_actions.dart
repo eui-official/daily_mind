@@ -52,21 +52,18 @@ class BasePlayerActions extends HookWidget {
       [onNext],
     );
 
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: spacing(3)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          onPreviousChild,
-          TogglePlayModeButton(
-            isPlaying: isPlaying,
-            onPause: onPause,
-            onPlay: onPlay,
-            size: 6,
-          ),
-          onNextChild,
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        onPreviousChild,
+        TogglePlayModeButton(
+          isPlaying: isPlaying,
+          onPause: onPause,
+          onPlay: onPlay,
+          size: 6,
+        ),
+        onNextChild,
+      ],
     );
   }
 }

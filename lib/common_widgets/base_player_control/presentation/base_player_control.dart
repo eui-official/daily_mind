@@ -21,32 +21,31 @@ class BasePlayerControl extends HookWidget {
     final player = backgroundHandler.onlinePlayer;
     final duration = player.duration;
 
-    final positionStreamMemoized = useMemoized(() => player.positionStream, []);
-
-    final positionSnapshot = useStream(positionStreamMemoized);
-
-    final playingStreamMemoized = useMemoized(() => player.playingStream, []);
-
-    final playingSnapshot = useStream(playingStreamMemoized);
+    final positionSnapshot = useStream(player.positionStream);
+    final playingSnapshot = useStream(player.playingStream);
 
     final seconds = duration?.inSeconds ?? 0;
     final isPlaying = playingSnapshot.data ?? false;
 
-    return Column(
-      children: [
-        BasePlayerTime(
-          max: seconds,
-          onChangeEnd: backgroundHandler.onlinePlayer.seek,
-          value: positionSnapshot.data?.inSeconds ?? 0,
-        ),
-        BasePlayerActions(
-          isPlaying: isPlaying,
-          onPlay: backgroundHandler.play,
-          onPause: backgroundHandler.pause,
-          onNext: onNext,
-          onPrevious: onPrevious,
-        ),
-      ],
-    );
+    final child = useMemoized(() {
+      return Column(
+        children: [
+          BasePlayerTime(
+            max: seconds,
+            onChangeEnd: backgroundHandler.onlinePlayer.seek,
+            position: positionSnapshot.data?.inSeconds ?? 0,
+          ),
+          BasePlayerActions(
+            isPlaying: isPlaying,
+            onPlay: backgroundHandler.play,
+            onPause: backgroundHandler.pause,
+            onNext: onNext,
+            onPrevious: onPrevious,
+          ),
+        ],
+      );
+    }, [seconds, positionSnapshot]);
+
+    return child;
   }
 }

@@ -9,6 +9,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -38,56 +39,65 @@ class BaseMiniPlayer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final remaining = useTimer(ref);
 
-    return Container(
-      height: spacing(7),
-      width: context.width,
-      margin: EdgeInsets.symmetric(horizontal: spacing(2)),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: circularRadius(),
-          color: context.theme.primaryColorDark.withOpacity(0.5),
-        ),
-        child: BaseInkWell(
-          onTap: onTap,
-          borderRadius: circularRadius(),
-          child: Row(
-            children: space(
-              [
-                Container(
-                  padding: EdgeInsets.only(left: spacing()),
-                  child: BaseAnimatedSwitcher(
-                    key: ValueKey(leading.hashCode),
-                    child: leading,
-                  ),
-                ),
-                Flexible(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: space(
-                      [
-                        if (title.isNotEmpty) BaseMiniTitlePlayer(title: title),
-                        BaseMiniPlayerContent(
-                          subtitle: subtitle,
-                          remaining: remaining,
-                        ),
-                      ].whereNotNull().toList(),
-                      height: spacing(0.5),
+    final child = useMemoized(() {
+      return Container(
+        height: spacing(7),
+        width: context.width,
+        margin: EdgeInsets.symmetric(horizontal: spacing(2)),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: circularRadius(),
+            color: context.theme.primaryColorDark.withOpacity(0.5),
+          ),
+          child: BaseInkWell(
+            onTap: onTap,
+            borderRadius: circularRadius(),
+            child: Row(
+              children: space(
+                [
+                  Container(
+                    padding: EdgeInsets.only(left: spacing()),
+                    child: BaseAnimatedSwitcher(
+                      key: ValueKey(leading.hashCode),
+                      child: leading,
                     ),
                   ),
-                ),
-                BaseMiniPlayerToggleButton(
-                  isLoading: isLoading,
-                  isPlaying: isPlaying,
-                  onPause: onPause,
-                  onPlay: onPlay,
-                ),
-              ],
-              width: spacing(),
+                  Flexible(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: space(
+                        [
+                          if (title.isNotEmpty)
+                            BaseMiniTitlePlayer(title: title),
+                          BaseMiniPlayerContent(
+                            subtitle: subtitle,
+                            remaining: remaining,
+                          ),
+                        ].whereNotNull().toList(),
+                        height: spacing(0.5),
+                      ),
+                    ),
+                  ),
+                  BaseMiniPlayerToggleButton(
+                    isLoading: isLoading,
+                    isPlaying: isPlaying,
+                    onPause: onPause,
+                    onPlay: onPlay,
+                  ),
+                ],
+                width: spacing(),
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    }, [
+      isPlaying,
+      isLoading,
+      remaining,
+    ]);
+
+    return child;
   }
 }

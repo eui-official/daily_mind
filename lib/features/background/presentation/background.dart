@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_widgets/base_animated_opacity.dart';
-import 'package:daily_mind/common_widgets/base_backdrop_filter.dart';
+import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter.dart';
 import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {
@@ -28,7 +28,7 @@ class Background extends StatelessWidget {
             ),
           ),
         ),
-        const BaseBackdropFilter()
+        Positioned.fill(child: BaseBackdropFilter(image: image)),
       ],
     );
   }

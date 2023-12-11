@@ -1,4 +1,3 @@
-import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/common_widgets/base_audios_builder/presentation/base_audios_builder_provider.dart';
 import 'package:daily_mind/common_widgets/base_refresh/presentation/base_refresh.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
@@ -20,15 +19,10 @@ class OnlineList extends HookConsumerWidget {
       child: Scaffold(
         body: BaseRefresh(
           onRefresh: baseAudiosBuilderNotifier.onRefreshAudioCategories,
-          child: Stack(
-            children: [
-              const BaseBackground(),
-              AppBarScrollview(
-                title: 'explore'.tr(),
-                children: const [
-                  OnlineExploreList(),
-                ],
-              ),
+          child: AppBarScrollview(
+            title: 'explore'.tr(),
+            children: const [
+              OnlineExploreList(),
             ],
           ),
         ),

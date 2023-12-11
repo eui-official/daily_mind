@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
-import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
@@ -32,20 +31,15 @@ class Mix extends HookConsumerWidget {
     }, [context, appNavigationBarState]);
 
     return Scaffold(
-      body: Stack(
+      body: AppBarScrollview(
+        title: 'naturalSounds'.tr(),
+        bottom: const MixTabbar(),
         children: [
-          const BaseBackground(),
-          AppBarScrollview(
-            title: 'naturalSounds'.tr(),
-            bottom: const MixTabbar(),
-            children: [
-              MixSwitch(
-                index: mixTabbarState,
-                onCreateNew: () {
-                  mixTabbarNotifier.onTap(0);
-                },
-              ),
-            ],
+          MixSwitch(
+            index: mixTabbarState,
+            onCreateNew: () {
+              mixTabbarNotifier.onTap(0);
+            },
           ),
         ],
       ),

@@ -22,11 +22,10 @@ List<Widget> space(
 const baseLinearGradient = LinearGradient(
   colors: [
     Colors.black26,
-    Colors.black,
+    Colors.black87,
   ],
-  stops: [0.1, 0.5],
-  begin: Alignment.topCenter,
-  end: Alignment.bottomCenter,
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
 );
 
 BorderRadius circularRadius([double size = 1]) =>

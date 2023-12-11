@@ -24,7 +24,6 @@ class BaseIconButtonWithTitle extends StatelessWidget {
         IconButton(
           onPressed: onPressed,
           icon: icon,
-          style: style,
         ),
         Text(
           title,

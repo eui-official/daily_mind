@@ -14,13 +14,9 @@ class OnlineListRelated extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
-    final sequenceStreamMemoized = useMemoized(
-      () => baseBackgroundHandler.onlinePlayer.sequenceStream,
-      [],
-    );
-
-    final sequenceSnapshot = useStream(sequenceStreamMemoized);
+    final sequenceSnapshot = useStream(onlinePlayer.sequenceStream);
 
     final sequence = sequenceSnapshot.data ?? [];
 
@@ -35,13 +31,10 @@ class OnlineListRelated extends HookConsumerWidget {
       children: space(
         [
           const OnlineListRelatedHeader(),
-          ListView.separated(
+          ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: sequence.length,
-            separatorBuilder: (context, index) {
-              return SizedBox(height: spacing());
-            },
             itemBuilder: (context, index) {
               final s = sequence[index];
               final tag = s.tag;

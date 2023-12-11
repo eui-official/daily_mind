@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_applications/in_app_review.dart';
-import 'package:daily_mind/common_widgets/base_background.dart';
 import 'package:daily_mind/common_widgets/base_container_list/presentation/base_container_list.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -19,65 +18,60 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const BaseBackground(),
-          AppBarScrollview(
-            title: 'settings'.tr(),
-            children: space(
-              [
-                BaseContainerList(
-                  title: 'Thư viện'.tr(),
-                  items: const [
-                    SettingsPlaylist(),
-                  ],
+      body: AppBarScrollview(
+        title: 'settings'.tr(),
+        children: space(
+          [
+            BaseContainerList(
+              title: 'Thư viện'.tr(),
+              items: const [
+                SettingsPlaylist(),
+              ],
+            ),
+            BaseContainerList(
+              title: 'styling'.tr(),
+              items: const [
+                SettingsColor(),
+              ],
+            ),
+            BaseContainerList(
+              title: 'feedback'.tr(),
+              items: [
+                BaseTile(
+                  onTap: () {
+                    inAppReview.openStoreListing(appStoreId: kAppStoreId);
+                  },
+                  title: 'rating'.tr(),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(spacing(2)),
+                    topRight: Radius.circular(spacing(2)),
+                  ),
                 ),
-                BaseContainerList(
-                  title: 'styling'.tr(),
-                  items: const [
-                    SettingsColor(),
-                  ],
-                ),
-                BaseContainerList(
-                  title: 'feedback'.tr(),
-                  items: [
-                    BaseTile(
-                      onTap: () {
-                        inAppReview.openStoreListing(appStoreId: kAppStoreId);
-                      },
-                      title: 'rating'.tr(),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(spacing(2)),
-                        topRight: Radius.circular(spacing(2)),
-                      ),
-                    ),
-                    BaseTile(
-                      onTap: () {
-                        launchUrl(Uri.parse('https://m.me/eui.dailymind'));
-                      },
-                      title: 'sendFeedback'.tr(),
-                      subtitle: Text(
-                        'sendFeedbackDescription'.tr(),
-                        style: const TextStyle(color: secondaryTextColor),
-                      ),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(spacing(2)),
-                        bottomRight: Radius.circular(spacing(2)),
-                      ),
-                    ),
-                  ],
-                ),
-                BaseContainerList(
-                  title: 'system'.tr(),
-                  items: const [
-                    SettingsVersion(),
-                  ],
+                BaseTile(
+                  onTap: () {
+                    launchUrl(Uri.parse('https://m.me/eui.dailymind'));
+                  },
+                  title: 'sendFeedback'.tr(),
+                  subtitle: Text(
+                    'sendFeedbackDescription'.tr(),
+                    style: const TextStyle(color: secondaryTextColor),
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(spacing(2)),
+                    bottomRight: Radius.circular(spacing(2)),
+                  ),
                 ),
               ],
-              height: spacing(3),
             ),
-          )
-        ],
+            BaseContainerList(
+              title: 'system'.tr(),
+              items: const [
+                SettingsVersion(),
+              ],
+            ),
+          ],
+          height: spacing(3),
+        ),
       ),
     );
   }

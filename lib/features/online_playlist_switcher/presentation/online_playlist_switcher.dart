@@ -4,7 +4,6 @@ import 'package:daily_mind/features/online_playlist_selector/presentation/online
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/utils.dart' hide Trans;
 
 class OnlinePlaylistSwitcher extends HookWidget {
   final ValueChanged<int> onSelected;
@@ -31,9 +30,6 @@ class OnlinePlaylistSwitcher extends HookWidget {
     return BaseIconButtonWithTitle(
       onPressed: onOpenPlaylist,
       icon: const Icon(Icons.playlist_add_outlined),
-      style: IconButton.styleFrom(
-        backgroundColor: context.theme.primaryColorDark,
-      ),
       title: 'Lưu vào playlist'.tr(),
     );
   }
