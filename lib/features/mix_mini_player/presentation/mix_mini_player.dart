@@ -25,6 +25,11 @@ class MixMiniPlayer extends HookConsumerWidget {
       return audio.name.tr();
     }).join(', ');
 
+    final subtitle = useMemoized(
+      () => '${mixData.mixItems.length} âm thanh',
+      [mixData.mixItems],
+    );
+
     final onOpenMiniPlayer = useCallback(
       () async {
         await onShowScrollableBottomSheet(
@@ -43,7 +48,7 @@ class MixMiniPlayer extends HookConsumerWidget {
     return BaseMiniPlayer(
       onTap: onOpenMiniPlayer,
       title: mixData.mediaItem?.title ?? title,
-      subtitle: '${mixData.mixItems.length} âm thanh'.tr(),
+      subtitle: subtitle,
       leading: const MixMiniPlayerImages(),
       isLoading: false,
       isPlaying: mixData.isPlaying,

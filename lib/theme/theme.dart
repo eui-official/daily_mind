@@ -17,7 +17,6 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     fontFamily: fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
-    background: midnightBlack,
     scaffoldBackground: midnightBlack,
     error: red,
     subThemesData: FlexSubThemesData(

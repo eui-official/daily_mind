@@ -29,7 +29,7 @@ class OnlinePlaylistSwitcher extends HookWidget {
 
     return BaseIconButtonWithTitle(
       onPressed: onOpenPlaylist,
-      icon: const Icon(Icons.playlist_add_outlined),
+      iconData: Icons.playlist_add_outlined,
       title: 'Lưu vào playlist'.tr(),
     );
   }

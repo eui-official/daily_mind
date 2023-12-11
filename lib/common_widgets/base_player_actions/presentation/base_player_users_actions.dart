@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_widgets/base_time_picker/presentation/base_time_picker.dart';
+import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,14 @@ class BasePlayerUserActions extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(spacing(2)),
       child: Row(
-        children: [
-          const BaseTimerPicker(),
-          ...actions,
-        ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: space(
+          [
+            const BaseTimerPicker(),
+            ...actions,
+          ],
+          width: spacing(2),
+        ),
       ),
     );
   }

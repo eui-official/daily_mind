@@ -87,6 +87,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
         ),
       );
     }, [
+      subtitle,
       isPlaying,
       isLoading,
     ]);

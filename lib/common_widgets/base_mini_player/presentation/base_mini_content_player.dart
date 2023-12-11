@@ -42,7 +42,10 @@ class BaseMiniPlayerContent extends HookConsumerWidget {
           width: spacing(2),
         ),
       );
-    }, [remaining]);
+    }, [
+      subtitle,
+      remaining,
+    ]);
 
     return child;
   }
