@@ -26,12 +26,12 @@ class OnlinePlayer extends HookConsumerWidget {
 
     final sequence = sequenceSnapshot.data ?? [];
 
-    final s = sequence[currentIndex];
-    final tag = s.tag;
-
     if (sequence.isEmpty) {
       return kEmptyWidget;
     }
+
+    final s = sequence[currentIndex];
+    final tag = s.tag;
 
     return OnlinePlayerDetails(
       scrollController: scrollController,
