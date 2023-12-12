@@ -29,7 +29,7 @@ extension BaseTimerPlayer on DailyMindBackgroundHandler {
   }
 
   void onResetMasterVolume() {
-    onStreamMasterVolume.add(1);
+    onStreamMasterVolume.add(1.0);
   }
 
   void onCalculateMasterVolume(TimeOfDay timeOfDay) {

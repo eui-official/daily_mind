@@ -31,6 +31,15 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     }
   }
 
+  void onUpdateVolumeBasedOnMasterVolume() {
+    onStreamMasterVolume.listen((volumeMaster) {
+      for (var item in mixItems) {
+        final volume = item.player.volume * volumeMaster;
+        item.player.setVolume(volume);
+      }
+    });
+  }
+
   void onUpdateMediaItem() async {
     if (mixItems.isNotEmpty) {
       final firstItem = mixItems.first;
