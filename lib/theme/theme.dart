@@ -25,6 +25,7 @@ ThemeData createDarkTheme(SupportedTheme theme) {
       inputDecoratorUnfocusedHasBorder: false,
       inputDecoratorUnfocusedBorderIsColored: false,
       inputDecoratorRadius: spacing(2),
+      inputDecoratorBorderSchemeColor: SchemeColor.shadow,
     ),
   ).copyWith(
     cupertinoOverrideTheme: const CupertinoThemeData(
