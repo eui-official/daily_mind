@@ -62,6 +62,8 @@ mixin BaseTimer on BaseAudioHandler {
   BehaviorSubject<Duration> onStreamTimerRemaining = BehaviorSubject()
     ..add(Duration.zero);
 
+  BehaviorSubject<double> onStreamMasterVolume = BehaviorSubject()..add(1);
+
   Duration get remainingTime => onStreamTimerRemaining.value;
 
   Timer? timer;

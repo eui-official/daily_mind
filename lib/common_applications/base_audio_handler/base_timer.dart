@@ -28,6 +28,20 @@ extension BaseTimerPlayer on DailyMindBackgroundHandler {
     onStreamTimerRemaining.add(Duration.zero);
   }
 
+  void onResetMasterVolume() {
+    onStreamMasterVolume.add(1);
+  }
+
+  void onCalculateMasterVolume(TimeOfDay timeOfDay) {
+    final remainingTime = onCalculateRemainingTime(timeOfDay);
+
+    // Decay the mater volume from 1 to 0.0 in the last 10 seconds
+    final masterVolume =
+        remainingTime.inSeconds > 10 ? 1.0 : remainingTime.inSeconds / 10.0;
+
+    onStreamMasterVolume.add(masterVolume);
+  }
+
   void onStartTimer(TimeOfDay timeOfDay) {
     timer?.cancel();
     onUpdateTimerRemaining(timeOfDay);
@@ -36,9 +50,11 @@ extension BaseTimerPlayer on DailyMindBackgroundHandler {
       if (remainingTime.inSeconds <= 0) {
         pause();
         timer?.cancel();
+        onResetMasterVolume();
         onResetTimerRemaining();
       } else {
         onUpdateTimerRemaining(timeOfDay);
+        onCalculateMasterVolume(timeOfDay);
       }
     });
   }
