@@ -11,6 +11,7 @@ import 'package:daily_mind/common_applications/online_audio_player/application/o
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_applications/sound_effect_audio_player.dart';
 import 'package:daily_mind/common_domains/audio.dart';
+import 'package:daily_mind/common_domains/mix_volume.dart';
 
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/constants/offline_audio_sources.dart';
@@ -22,6 +23,7 @@ import 'package:daily_mind/features/focus_mode_session/constant/focus_mode_sessi
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart' hide Trans;
 
 part 'base_audio_on_hold.dart';
 part 'base_mix_player.dart';

@@ -7,7 +7,7 @@ part of 'online_mini_player_provider.dart';
 // **************************************************************************
 
 String _$onlineMiniPlayerNotifierHash() =>
-    r'52d35e04dc5b42555d25eaf231640e4a21aa8eee';
+    r'279016edfecc720c90c38d81b95257f53fd4a461';
 
 /// See also [OnlineMiniPlayerNotifier].
 @ProviderFor(OnlineMiniPlayerNotifier)

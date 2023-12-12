@@ -4,6 +4,7 @@ import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/base_count_down.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
 import 'package:daily_mind/common_applications/online_audio_player/application/online_audio_player.dart';
+import 'package:daily_mind/common_domains/mix_volume.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/schemas/task.dart';
@@ -24,6 +25,8 @@ mixin BaseAudioMixVariables on BaseAudioHandler {
   BehaviorSubject<List<MixItem>> onStreamMixItems = BehaviorSubject()..add([]);
 
   List<MixItem> get mixItems => onStreamMixItems.value;
+
+  List<MixVolume> backupMixVolumes = [];
 }
 
 mixin BaseAudioOnHoldVariables on BaseAudioHandler {
@@ -62,7 +65,10 @@ mixin BaseTimer on BaseAudioHandler {
   BehaviorSubject<Duration> onStreamTimerRemaining = BehaviorSubject()
     ..add(Duration.zero);
 
-  BehaviorSubject<double> onStreamMasterVolume = BehaviorSubject()..add(1);
+  StreamController<double> onMasterVolumeController =
+      StreamController<double>();
+
+  Stream get onMasterVolumeStream => onMasterVolumeController.stream;
 
   Duration get remainingTime => onStreamTimerRemaining.value;
 

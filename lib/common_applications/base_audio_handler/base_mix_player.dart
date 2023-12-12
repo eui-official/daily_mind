@@ -31,10 +31,33 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     }
   }
 
+  void onClearBackupMixVolume() {
+    backupMixVolumes.clear();
+  }
+
+  MixVolume onGetBackupMixVolume(MixItem item) {
+    return backupMixVolumes.firstWhere(
+      (mixVolume) => mixVolume.id == item.audio.id,
+      orElse: () {
+        final mixVolume = MixVolume(
+          id: item.audio.id,
+          volume: item.player.volume,
+        );
+
+        backupMixVolumes.add(mixVolume);
+
+        return mixVolume;
+      },
+    );
+  }
+
   void onUpdateVolumeBasedOnMasterVolume() {
-    onStreamMasterVolume.listen((volumeMaster) {
+    onMasterVolumeStream.listen((volumeMaster) {
       for (var item in mixItems) {
-        final volume = item.player.volume * volumeMaster;
+        final mixVolume = onGetBackupMixVolume(item);
+
+        final volume = mixVolume.volume * volumeMaster;
+
         item.player.setVolume(volume);
       }
     });
