@@ -17,7 +17,6 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     fontFamily: fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
-    background: midnightBlack,
     scaffoldBackground: midnightBlack,
     error: red,
     subThemesData: FlexSubThemesData(
@@ -26,6 +25,7 @@ ThemeData createDarkTheme(SupportedTheme theme) {
       inputDecoratorUnfocusedHasBorder: false,
       inputDecoratorUnfocusedBorderIsColored: false,
       inputDecoratorRadius: spacing(2),
+      inputDecoratorBorderSchemeColor: SchemeColor.shadow,
     ),
   ).copyWith(
     cupertinoOverrideTheme: const CupertinoThemeData(

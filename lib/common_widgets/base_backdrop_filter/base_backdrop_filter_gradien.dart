@@ -1,5 +1,5 @@
+import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter_overlay.dart';
 import 'package:daily_mind/extensions/context.dart';
-import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -35,12 +35,8 @@ class BaseBackdropFilterGradient extends HookWidget {
 
     return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(gradient: gradient),
-        ),
-        Container(
-          decoration: const BoxDecoration(gradient: baseLinearGradient),
-        ),
+        BaseBackdropFilterOverlay(gradient: gradient),
+        const BaseBackdropFilterOverlay(),
       ],
     );
   }

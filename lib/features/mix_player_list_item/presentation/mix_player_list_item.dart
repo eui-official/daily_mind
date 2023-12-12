@@ -3,8 +3,9 @@ import 'package:daily_mind/features/mix_player_item/presentation/mix_player_item
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class MixPlayerListItem extends StatelessWidget {
+class MixPlayerListItem extends HookWidget {
   final List<MixItem> mixItems;
 
   const MixPlayerListItem({
@@ -14,13 +15,15 @@ class MixPlayerListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: space(
+    final children = useMemoized(() {
+      return space(
         mixItems.map((item) {
           return MixPlayerItem(item: item);
         }).toList(),
         height: spacing(5),
-      ),
-    );
+      );
+    }, [mixItems]);
+
+    return Column(children: children);
   }
 }

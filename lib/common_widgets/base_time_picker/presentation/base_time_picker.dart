@@ -54,11 +54,10 @@ class BaseTimerPicker extends HookConsumerWidget {
     }, [remaining]);
 
     return Container(
-      width: 200,
       padding: padding,
       child: BaseIconButtonWithTitle(
         onPressed: onOpenTimer,
-        icon: const Icon(Icons.av_timer),
+        iconData: Icons.av_timer,
         title: title,
       ),
     );

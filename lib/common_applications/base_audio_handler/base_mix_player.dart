@@ -31,6 +31,49 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     }
   }
 
+  void onClearBackupMixVolume() {
+    backupMixVolumes.clear();
+  }
+
+  MixVolume onGetBackupMixVolume(MixItem item) {
+    return backupMixVolumes.firstWhere(
+      (mixVolume) => mixVolume.id == item.audio.id,
+      orElse: () {
+        final mixVolume = MixVolume(
+          id: item.audio.id,
+          volume: item.player.volume,
+        );
+
+        backupMixVolumes.add(mixVolume);
+
+        return mixVolume;
+      },
+    );
+  }
+
+  void onUpdateVolumeForBackupMixVolume(double volume, MixItem item) {
+    final index = backupMixVolumes.indexWhere(
+      (mixVolume) => mixVolume.id == item.audio.id,
+    );
+
+    if (index != -1) {
+      backupMixVolumes[index] =
+          backupMixVolumes[index].copyWith(volume: volume);
+    }
+  }
+
+  void onUpdateVolumeBasedOnMasterVolume() {
+    onMasterVolumeStream.listen((volumeMaster) {
+      for (var item in mixItems) {
+        final mixVolume = onGetBackupMixVolume(item);
+
+        final volume = mixVolume.volume * volumeMaster;
+
+        item.player.setVolume(volume);
+      }
+    });
+  }
+
   void onUpdateMediaItem() async {
     if (mixItems.isNotEmpty) {
       final firstItem = mixItems.first;
@@ -99,6 +142,8 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     newMixItems[index].player.setVolume(volume);
 
     onStreamMixItems.add(newMixItems);
+
+    onUpdateVolumeForBackupMixVolume(volume, item);
   }
 
   void onUpdateMixCollectionTitle(

@@ -7,7 +7,7 @@ part of 'base_audios_builder_provider.dart';
 // **************************************************************************
 
 String _$baseAudiosBuilderNotifierHash() =>
-    r'8d10a6dc6970d2b599f51bd26a8a13fa2b77c003';
+    r'0bbea1ed9bcc0d4f2f1aa6d3a84c77d185dfe2eb';
 
 /// See also [BaseAudiosBuilderNotifier].
 @ProviderFor(BaseAudiosBuilderNotifier)

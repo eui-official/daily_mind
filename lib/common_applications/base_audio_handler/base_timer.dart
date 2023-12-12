@@ -1,5 +1,8 @@
 part of 'base_audio_handler.dart';
 
+const double kMasterVolumeMax = 1;
+const double kMasterVolumeDecayed = 0.1;
+
 extension BaseTimerPlayer on DailyMindBackgroundHandler {
   Duration onCalculateRemainingTime(TimeOfDay targetTime) {
     DateTime now = DateTime.now();
@@ -28,17 +31,35 @@ extension BaseTimerPlayer on DailyMindBackgroundHandler {
     onStreamTimerRemaining.add(Duration.zero);
   }
 
+  void onResetMasterVolume() {
+    onMasterVolumeController.add(kMasterVolumeMax);
+  }
+
+  void onCalculateMasterVolume() {
+    final seconds = remainingTime.inSeconds;
+
+    if (seconds > 10) {
+      onMasterVolumeController.add(kMasterVolumeMax);
+    } else {
+      onMasterVolumeController.add(seconds * kMasterVolumeDecayed);
+    }
+  }
+
   void onStartTimer(TimeOfDay timeOfDay) {
     timer?.cancel();
     onUpdateTimerRemaining(timeOfDay);
 
     timer = Timer.periodic(const Duration(seconds: 1), (currentTimer) {
-      if (remainingTime.inSeconds <= 0) {
+      final seconds = remainingTime.inSeconds;
+
+      if (seconds.isEqual(0)) {
         pause();
         timer?.cancel();
         onResetTimerRemaining();
+        onResetMasterVolume();
       } else {
         onUpdateTimerRemaining(timeOfDay);
+        onCalculateMasterVolume();
       }
     });
   }

@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:daily_mind/common_hooks/use_timer.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_content_player.dart';
@@ -37,8 +36,6 @@ class BaseMiniPlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final remaining = useTimer(ref);
-
     final child = useMemoized(() {
       return Container(
         height: spacing(7),
@@ -70,10 +67,7 @@ class BaseMiniPlayer extends HookConsumerWidget {
                         [
                           if (title.isNotEmpty)
                             BaseMiniTitlePlayer(title: title),
-                          BaseMiniPlayerContent(
-                            subtitle: subtitle,
-                            remaining: remaining,
-                          ),
+                          BaseMiniPlayerContent(subtitle: subtitle),
                         ].whereNotNull().toList(),
                         height: spacing(0.5),
                       ),
@@ -93,9 +87,14 @@ class BaseMiniPlayer extends HookConsumerWidget {
         ),
       );
     }, [
-      isPlaying,
       isLoading,
-      remaining,
+      isPlaying,
+      leading,
+      onPause,
+      onPlay,
+      onTap,
+      subtitle,
+      title,
     ]);
 
     return child;

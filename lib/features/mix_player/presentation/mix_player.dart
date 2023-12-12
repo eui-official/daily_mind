@@ -29,6 +29,7 @@ class MixPlayer extends HookConsumerWidget {
     final mixState = ref.watch(mixProvider);
     final mixNotifier = ref.watch(mixProvider.notifier);
     final mixData = useMix(ref);
+    final nameFocusNode = useMemoized(() => FocusNode());
 
     final onSaveMix = useCallback(
       () async {
@@ -37,6 +38,8 @@ class MixPlayer extends HookConsumerWidget {
             context: context,
             message: 'Vui lòng nhập tên'.tr(),
           );
+
+          nameFocusNode.requestFocus();
         } else {
           await mixNotifier.onAddNewMix();
 
@@ -66,6 +69,7 @@ class MixPlayer extends HookConsumerWidget {
                         BaseContentHeader(
                           title: 'name'.tr(),
                           child: BaseTextField(
+                            focusNode: nameFocusNode,
                             hintText: 'nameOfTheMix'.tr(),
                             initialValue: mixState.title,
                             onChanged: mixNotifier.onUpdateTitle,
