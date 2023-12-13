@@ -57,23 +57,12 @@ class OnlinePlayerDetails extends HookConsumerWidget {
           ),
           Column(
             children: [
+              BaseSpacingContainer(
+                padding: const EdgeInsets.all(kToolbarHeight),
+                child: DiskPlayerImage(image: image),
+              ),
               Expanded(
-                child: CustomScrollView(
-                  controller: scrollController,
-                  slivers: [
-                    SliverPadding(
-                      padding: const EdgeInsets.only(top: kToolbarHeight),
-                      sliver: SliverList(
-                        delegate: SliverChildListDelegate(
-                          [
-                            DiskPlayerImage(image: image),
-                            child,
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: SingleChildScrollView(child: child),
               ),
               BaseSpacingContainer(
                 child: Column(
@@ -92,7 +81,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

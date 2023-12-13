@@ -29,6 +29,7 @@ class BasePlayerControl extends HookWidget {
 
     final child = useMemoized(() {
       return Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           BasePlayerTime(
             max: seconds,
