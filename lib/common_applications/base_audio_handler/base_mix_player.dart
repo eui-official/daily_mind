@@ -56,13 +56,17 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     backupMixVolumes.clear();
   }
 
+  void onRemoveBackupMixVolume(MixItem item) {
+    backupMixVolumes.removeWhere((mixVolume) => mixVolume.id == item.id);
+  }
+
   void onUpdateVolumeForBackupMixVolume(double volume, MixItem item) {
     final index =
         backupMixVolumes.indexWhere((mixVolume) => mixVolume.id == item.id);
 
     if (index != -1) {
-      backupMixVolumes[index] =
-          backupMixVolumes[index].copyWith(volume: volume);
+      final mixVolume = backupMixVolumes[index];
+      backupMixVolumes[index] = mixVolume.copyWith(volume: volume);
     }
   }
 
@@ -103,6 +107,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     final item = newMixItems.firstWhere((item) => item == removeItem);
     item.player.onDispose();
 
+    onRemoveBackupMixVolume(item);
     newMixItems.remove(item);
 
     onStreamMixItems.add(newMixItems);
