@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_slider.dart';
@@ -35,7 +33,7 @@ class BasePlayerTime extends HookWidget {
       return BasePlayerTimeSlider(
         max: max.toDouble(),
         onChangeEnd: onChangeEnd,
-        value: min(max, position),
+        value: position,
         onValueChanged: (value) {
           trackValueState.value = value;
         },

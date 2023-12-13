@@ -20,7 +20,15 @@ class BasePlayerTimeSlider extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isChanging = useState(false);
-    final trackValueState = useState<double>(0);
+    final trackState = useState<double>(0);
+
+    double trackValue = useMemoized(() {
+      if (max == 0) {
+        return 0;
+      }
+
+      return trackState.value;
+    }, [value]);
 
     final onSliderChangedEnd = useCallback(
       (double seconds) {
@@ -34,7 +42,7 @@ class BasePlayerTimeSlider extends HookWidget {
 
     final onSliderChanged = useCallback(
       (double seconds) {
-        trackValueState.value = seconds;
+        trackState.value = seconds;
       },
       [],
     );
@@ -44,11 +52,11 @@ class BasePlayerTimeSlider extends HookWidget {
     }, []);
 
     useEffectDelayed(() {
-      onValueChanged(trackValueState.value);
-    }, [trackValueState.value]);
+      onValueChanged(trackState.value);
+    }, [trackState.value]);
 
     useEffectDelayed(() {
-      trackValueState.value = value.toDouble();
+      trackState.value = value.toDouble();
     }, [value]);
 
     return BaseSliderTheme(
@@ -59,7 +67,7 @@ class BasePlayerTimeSlider extends HookWidget {
         onChanged: onSliderChanged,
         onChangeStart: onSliderChangeStart,
         onChangeEnd: onSliderChangedEnd,
-        value: trackValueState.value.toDouble(),
+        value: trackValue,
         secondaryTrackValue: value.toDouble(),
       ),
     );
