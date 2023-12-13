@@ -4,6 +4,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
   void onInitMix(MixCollection mixCollection) async {
     await onMixDispose();
     await onOnlineDispose();
+    onClearBackupMixVolumes();
     audioType = AudioTypes.mix;
 
     final itemInfos = mixCollection.items ?? [];
@@ -51,18 +52,25 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     );
   }
 
+  void onClearBackupMixVolumes() {
+    backupMixVolumes.clear();
+  }
+
+  void onRemoveBackupMixVolume(MixItem item) {
+    backupMixVolumes.removeWhere((mixVolume) => mixVolume.id == item.id);
+  }
+
   void onUpdateVolumeForBackupMixVolume(double volume, MixItem item) {
-    final index = backupMixVolumes.indexWhere(
-      (mixVolume) => mixVolume.id == item.audio.id,
-    );
+    final index =
+        backupMixVolumes.indexWhere((mixVolume) => mixVolume.id == item.id);
 
     if (index != -1) {
-      backupMixVolumes[index] =
-          backupMixVolumes[index].copyWith(volume: volume);
+      final mixVolume = backupMixVolumes[index];
+      backupMixVolumes[index] = mixVolume.copyWith(volume: volume);
     }
   }
 
-  void onUpdateVolumeBasedOnMasterVolume() {
+  void onUpdateMixVolumeBasedOnMasterVolume() {
     onMasterVolumeStream.listen((volumeMaster) {
       for (var item in mixItems) {
         final mixVolume = onGetBackupMixVolume(item);
@@ -99,6 +107,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     final item = newMixItems.firstWhere((item) => item == removeItem);
     item.player.onDispose();
 
+    onRemoveBackupMixVolume(item);
     newMixItems.remove(item);
 
     onStreamMixItems.add(newMixItems);

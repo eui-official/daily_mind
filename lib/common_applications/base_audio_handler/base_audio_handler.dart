@@ -47,7 +47,8 @@ class DailyMindBackgroundHandler extends BaseAudioHandler
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration.music());
 
-    onUpdateVolumeBasedOnMasterVolume();
+    onUpdateMixVolumeBasedOnMasterVolume();
+    onUpdateOnlineVolumeBasedOnMasterVolume();
   }
 
   void onUpdatePlaybackStatePlaying(bool isPlaying) {

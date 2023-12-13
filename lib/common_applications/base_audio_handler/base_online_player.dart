@@ -37,6 +37,12 @@ extension BaseOnlinePlayer on DailyMindBackgroundHandler {
     );
   }
 
+  void onUpdateOnlineVolumeBasedOnMasterVolume() {
+    onMasterVolumeStream.listen((volumeMaster) {
+      onlinePlayer.setVolume(volumeMaster);
+    });
+  }
+
   void onOnlinePlayerPlayStateChanged() {
     onStreamPosition?.cancel();
     onStreamDuration?.cancel();
