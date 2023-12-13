@@ -66,7 +66,7 @@ mixin BaseTimer on BaseAudioHandler {
     ..add(Duration.zero);
 
   StreamController<double> onMasterVolumeController =
-      StreamController<double>();
+      StreamController<double>.broadcast();
 
   Stream get onMasterVolumeStream => onMasterVolumeController.stream;
 

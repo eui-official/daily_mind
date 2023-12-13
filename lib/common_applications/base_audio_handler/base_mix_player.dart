@@ -4,6 +4,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
   void onInitMix(MixCollection mixCollection) async {
     await onMixDispose();
     await onOnlineDispose();
+    onClearBackupMixVolumes();
     audioType = AudioTypes.mix;
 
     final itemInfos = mixCollection.items ?? [];
@@ -51,10 +52,13 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     );
   }
 
+  void onClearBackupMixVolumes() {
+    backupMixVolumes.clear();
+  }
+
   void onUpdateVolumeForBackupMixVolume(double volume, MixItem item) {
-    final index = backupMixVolumes.indexWhere(
-      (mixVolume) => mixVolume.id == item.audio.id,
-    );
+    final index =
+        backupMixVolumes.indexWhere((mixVolume) => mixVolume.id == item.id);
 
     if (index != -1) {
       backupMixVolumes[index] =
@@ -62,7 +66,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     }
   }
 
-  void onUpdateVolumeBasedOnMasterVolume() {
+  void onUpdateMixVolumeBasedOnMasterVolume() {
     onMasterVolumeStream.listen((volumeMaster) {
       for (var item in mixItems) {
         final mixVolume = onGetBackupMixVolume(item);
