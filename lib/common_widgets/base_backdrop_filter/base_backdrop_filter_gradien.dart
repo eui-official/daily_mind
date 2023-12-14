@@ -6,10 +6,14 @@ import 'package:palette_generator/palette_generator.dart';
 
 class BaseBackdropFilterGradient extends HookWidget {
   final PaletteGenerator pallete;
+  final double dominantColorOpacity;
+  final double lightColorOpacity;
 
   const BaseBackdropFilterGradient({
     super.key,
     required this.pallete,
+    this.dominantColorOpacity = 1,
+    this.lightColorOpacity = 1,
   });
 
   @override
@@ -25,8 +29,8 @@ class BaseBackdropFilterGradient extends HookWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            dominantColor,
-            lightColor,
+            dominantColor.withOpacity(dominantColorOpacity),
+            lightColor.withOpacity(lightColorOpacity),
           ],
         );
       },
