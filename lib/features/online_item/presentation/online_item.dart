@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_item_box_size.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -27,11 +28,7 @@ class OnlineItem extends StatelessWidget {
           height: spacing(6),
           child: BaseNetworkImage(image: image),
         ),
-        title: Container(
-          alignment: Alignment.centerLeft,
-          height: spacing(6),
-          child: title,
-        ),
+        title: BaseItemBoxSize(child: title),
         shape: RoundedRectangleBorder(borderRadius: circularRadius()),
       ),
     );

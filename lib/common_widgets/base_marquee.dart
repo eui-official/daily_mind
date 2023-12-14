@@ -20,6 +20,7 @@ class BaseMarquee extends StatelessWidget {
       fadingEdgeEndFraction: 0.25,
       fadingEdgeStartFraction: 0.5,
       style: style,
+      velocity: 25,
     );
   }
 }

@@ -8,6 +8,8 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/disk_player_image/presentation/disk_player_image.dart';
 import 'package:daily_mind/features/online_playlist_switcher/presentation/online_playlist_switcher.dart';
+import 'package:daily_mind/theme/common.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -55,33 +57,32 @@ class OnlinePlayerDetails extends HookConsumerWidget {
               image: CachedNetworkImageProvider(image),
             ),
           ),
-          Column(
-            children: [
-              BaseSpacingContainer(
-                padding: const EdgeInsets.all(kToolbarHeight),
-                child: DiskPlayerImage(image: image),
-              ),
-              Expanded(
-                child: SingleChildScrollView(child: child),
-              ),
-              BaseSpacingContainer(
-                child: Column(
-                  children: [
-                    BasePlayerControl(
-                      backgroundHandler: baseBackgroundHandler,
-                      onNext: baseBackgroundHandler.skipToNext,
-                      onPrevious: baseBackgroundHandler.skipToPrevious,
-                    ),
-                    BasePlayerUserActions(
-                      actions: [
-                        OnlinePlaylistSwitcher(onSelected: onAddedToPlaylist),
-                      ],
-                    ),
-                  ],
+          BaseSpacingContainer(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(child: DiskPlayerImage(image: image)),
+                Column(
+                  children: space(
+                    [
+                      child,
+                      BasePlayerControl(
+                        backgroundHandler: baseBackgroundHandler,
+                        onNext: baseBackgroundHandler.skipToNext,
+                        onPrevious: baseBackgroundHandler.skipToPrevious,
+                      ),
+                      BasePlayerUserActions(
+                        actions: [
+                          OnlinePlaylistSwitcher(onSelected: onAddedToPlaylist),
+                        ],
+                      ),
+                    ],
+                    height: spacing(2),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          )
         ],
       ),
     );
