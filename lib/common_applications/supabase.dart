@@ -9,7 +9,8 @@ final supabase = Supabase.instance.client;
 class SupabaseAPI {
   // Get audios from ids
   Future<List<Audio>> onGetAudiosByIds(List<String> ids) async {
-    final rawAudios = await supabase.from('audios').select().in_('id', ids);
+    final rawAudios =
+        await supabase.from('audios').select().inFilter('id', ids);
 
     return onToAudios(rawAudios);
   }
@@ -26,8 +27,7 @@ class SupabaseAPI {
   Future<List<Category>> onGetCategories() async {
     final List<Category> categories = [];
 
-    final categoriesData =
-        await supabase.from('categories').select() as List<dynamic>;
+    final categoriesData = await supabase.from('categories').select();
 
     for (var data in categoriesData) {
       categories.add(Category.fromJson(data));
@@ -40,7 +40,7 @@ class SupabaseAPI {
   Future<List<Group>> onGetGroups() async {
     final List<Group> groups = [];
 
-    final groupsData = await supabase.from('groups').select() as List<dynamic>;
+    final groupsData = await supabase.from('groups').select();
 
     for (var data in groupsData) {
       groups.add(Group.fromJson(data));
