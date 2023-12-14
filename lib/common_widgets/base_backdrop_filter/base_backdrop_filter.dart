@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_hooks/use_image_palette.dart';
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter_gradien.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +7,16 @@ import 'package:transparent_image/transparent_image.dart';
 
 class BaseBackdropFilter extends HookWidget {
   final BorderRadius borderRadius;
+  final double dominantColorOpacity;
+  final double lightColorOpacity;
   final ImageProvider? image;
 
   const BaseBackdropFilter({
     super.key,
     this.borderRadius = BorderRadius.zero,
     this.image,
+    this.dominantColorOpacity = 1,
+    this.lightColorOpacity = 1,
   });
 
   @override
@@ -24,9 +27,10 @@ class BaseBackdropFilter extends HookWidget {
     return BaseNullBuilder(
       value: pallete.data,
       builder: (safePallete) {
-        return BaseAnimatedSwitcher(
-          key: ValueKey(safePallete),
-          child: BaseBackdropFilterGradient(pallete: safePallete),
+        return BaseBackdropFilterGradient(
+          pallete: safePallete,
+          dominantColorOpacity: dominantColorOpacity,
+          lightColorOpacity: lightColorOpacity,
         );
       },
     );

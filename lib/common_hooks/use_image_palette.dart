@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palette_generator/palette_generator.dart';
 
-const kImageSizeForExtractColors = Size(1, 1);
+const kImageSizeForExtractingColor = 8;
 
 AsyncSnapshot<PaletteGenerator> useImagePallete(ImageProvider image) {
-  final paletteGeneratorMemoized = useMemoized(
-    () => PaletteGenerator.fromImageProvider(
+  final resizeImaged = useMemoized(() {
+    return ResizeImage(
       image,
-      size: kImageSizeForExtractColors,
-    ),
-    [image],
+      width: kImageSizeForExtractingColor,
+      height: kImageSizeForExtractingColor,
+    );
+  }, [image]);
+
+  final paletteGeneratorMemoized = useMemoized(
+    () => PaletteGenerator.fromImageProvider(resizeImaged),
+    [resizeImaged],
   );
 
   final paletteGenerator = useFuture(paletteGeneratorMemoized);
