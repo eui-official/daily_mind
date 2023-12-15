@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
-import 'package:daily_mind/features/online_player/presentation/online_player_details.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
+import 'package:daily_mind/features/online_player_details/presentation/online_player_details.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -17,6 +18,8 @@ class OnlinePlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final onlinePlayerNotifier =
+        ref.read(onlinePlayerNotifierProvider.notifier);
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
     final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
@@ -37,6 +40,7 @@ class OnlinePlayer extends HookConsumerWidget {
       scrollController: scrollController,
       image: tag.image,
       tag: tag,
+      onExpanded: onlinePlayerNotifier.onToggleExpanded,
       child: OnlinePlayerBottom(audio: tag),
     );
   }

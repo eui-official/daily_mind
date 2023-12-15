@@ -7,6 +7,8 @@ import 'package:daily_mind/common_widgets/base_player_control/presentation/base_
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/disk_player_image/presentation/disk_player_image.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
+import 'package:daily_mind/features/online_player_details/presentation/online_player_details_expand_button.dart';
 import 'package:daily_mind/features/online_playlist_switcher/presentation/online_playlist_switcher.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -17,8 +19,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlinePlayerDetails extends HookConsumerWidget {
   final dynamic tag;
-  final String image;
   final ScrollController? scrollController;
+  final String image;
+  final VoidCallback onExpanded;
   final Widget child;
 
   const OnlinePlayerDetails({
@@ -26,11 +29,13 @@ class OnlinePlayerDetails extends HookConsumerWidget {
     required this.image,
     required this.child,
     required this.tag,
+    required this.onExpanded,
     this.scrollController,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
     final onAddedToPlaylist = useCallback(
@@ -48,6 +53,8 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       },
       [tag],
     );
+
+    print(onlinePlayerState.isExpanded);
 
     return Scaffold(
       body: Stack(
@@ -74,6 +81,9 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                       BasePlayerUserActions(
                         actions: [
                           OnlinePlaylistSwitcher(onSelected: onAddedToPlaylist),
+                          OnlinePlayerDetailsExpandButton(
+                            onPressed: onExpanded,
+                          ),
                         ],
                       ),
                     ],
