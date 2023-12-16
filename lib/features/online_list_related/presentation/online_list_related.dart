@@ -31,30 +31,30 @@ class OnlineListRelated extends HookConsumerWidget {
       children: space(
         [
           const OnlineListRelatedHeader(),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: sequence.length,
-            itemBuilder: (context, index) {
-              final s = sequence[index];
-              final tag = s.tag;
+          Expanded(
+            child: ListView.builder(
+              itemCount: sequence.length,
+              itemBuilder: (context, index) {
+                final s = sequence[index];
+                final tag = s.tag;
 
-              return OnlineItem(
-                onTap: () => onTap(index),
-                image: tag.image,
-                title: Text(
-                  tag.name,
-                  style: context.textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
+                return OnlineItem(
+                  onTap: () => onTap(index),
+                  image: tag.image,
+                  title: Text(
+                    tag.name,
+                    style: context.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ],
-        height: spacing(2),
+        height: spacing(),
       ),
     );
   }

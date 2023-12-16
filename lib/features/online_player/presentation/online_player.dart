@@ -18,8 +18,10 @@ class OnlinePlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+
     final onlinePlayerNotifier =
         ref.read(onlinePlayerNotifierProvider.notifier);
+
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
     final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);

@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_switch.dart';
 import 'package:daily_mind/features/online_auto_play_next_switch/presentation/online_auto_play_next_switch_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,7 +13,7 @@ class OnlineAutoPlayNextSwitch extends HookConsumerWidget {
     final onlineAutoPlayNextSwitchNotifier =
         ref.watch(onlineAutoPlayNextSwitchProvider.notifier);
 
-    return Switch(
+    return BaseSwitch(
       value: onlineAutoPlayNextSwitchState,
       onChanged: onlineAutoPlayNextSwitchNotifier.onChanged,
     );
