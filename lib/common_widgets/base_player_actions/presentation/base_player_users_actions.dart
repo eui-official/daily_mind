@@ -14,15 +14,18 @@ class BasePlayerUserActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(spacing(2)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: space(
-          [
-            const BaseTimerPicker(),
-            ...actions,
-          ],
-          width: spacing(2),
+      padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: space(
+            [
+              const BaseTimerPicker(),
+              ...actions,
+            ],
+            width: spacing(2),
+          ),
         ),
       ),
     );
