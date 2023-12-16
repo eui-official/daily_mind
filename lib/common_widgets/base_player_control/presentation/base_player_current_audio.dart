@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_domains/audio.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_item_box_size.dart';
 import 'package:daily_mind/common_widgets/base_marquee.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item.dart';
@@ -51,7 +52,7 @@ class BasePlayerCurrentAudio extends HookWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-          audioTitle
+          BaseAnimatedSwitcher(child: audioTitle),
         ],
         height: spacing(2),
       ),
