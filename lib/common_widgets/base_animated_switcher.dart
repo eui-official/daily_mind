@@ -13,7 +13,8 @@ class BaseAnimatedSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcherPlus.translationTop(
-      duration: kDefaultDuration,
+      reverseDuration: kDefaultDuration,
+      duration: kMediumDuration,
       child: child,
     );
   }
