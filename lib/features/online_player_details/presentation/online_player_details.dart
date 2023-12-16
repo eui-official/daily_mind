@@ -6,6 +6,7 @@ import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_fil
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_control.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/disk_player_image/presentation/disk_player_image.dart';
 import 'package:daily_mind/features/online_list_related/presentation/online_list_related.dart';
@@ -67,6 +68,22 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       [onlinePlayerState.isExpanded],
     );
 
+    final headerChild = useMemoized(() {
+      if (onlinePlayerState.isExpanded) {
+        return child;
+      }
+
+      return kEmptyWidget;
+    }, [onlinePlayerState.isExpanded]);
+
+    final aboveChild = useMemoized(() {
+      if (onlinePlayerState.isExpanded) {
+        return kEmptyWidget;
+      }
+
+      return child;
+    }, [onlinePlayerState.isExpanded]);
+
     return Scaffold(
       body: Stack(
         children: [
@@ -78,17 +95,18 @@ class OnlinePlayerDetails extends HookConsumerWidget {
           BaseSpacingContainer(
             padding: EdgeInsets.symmetric(
               horizontal: spacing(2),
-              vertical: spacing(4),
+              vertical: kToolbarHeight,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: space(
                 [
+                  BaseAnimatedSwitcher(child: headerChild),
                   Expanded(child: BaseAnimatedSwitcher(child: expandedChild)),
                   Column(
                     children: space(
                       [
-                        child,
+                        BaseAnimatedSwitcher(child: aboveChild),
                         BasePlayerControl(
                           backgroundHandler: baseBackgroundHandler,
                           onNext: baseBackgroundHandler.skipToNext,
