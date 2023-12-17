@@ -16,6 +16,8 @@ const kShortDuration = Duration(milliseconds: 200);
 
 const kDefaultDuration = Duration(milliseconds: 300);
 
+const kSwitcherDuration = Duration(milliseconds: 400);
+
 const kMediumDuration = Duration(milliseconds: 600);
 
 const kLongDuration = Duration(seconds: 1);

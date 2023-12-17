@@ -38,7 +38,7 @@ class BasePlayerCurrentAudio extends HookWidget {
       }
 
       return BaseItemBoxSize(child: marquee);
-    }, [isComplex]);
+    }, [isComplex, audio]);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -87,7 +87,6 @@ dependencies:
   transparent_image: ^2.0.1
   gradients: ^0.1.1+2
   uuid: ^4.2.2
-  animated_switcher_plus: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -65,7 +65,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
 
         return DiskPlayerImage(image: image);
       },
-      [onlinePlayerState.isExpanded],
+      [onlinePlayerState.isExpanded, tag],
     );
 
     final headerChild = useMemoized(() {
@@ -74,7 +74,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       }
 
       return kEmptyWidget;
-    }, [onlinePlayerState.isExpanded]);
+    }, [onlinePlayerState.isExpanded, tag]);
 
     final aboveChild = useMemoized(() {
       if (onlinePlayerState.isExpanded) {
@@ -82,7 +82,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       }
 
       return child;
-    }, [onlinePlayerState.isExpanded]);
+    }, [onlinePlayerState.isExpanded, tag]);
 
     return Scaffold(
       body: Stack(
