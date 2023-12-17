@@ -1,6 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_snackbar/base_snackbar.dart';
 import 'package:daily_mind/common_hooks/use_mix.dart';
+import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
@@ -30,6 +31,7 @@ class MixPlayer extends HookConsumerWidget {
     final mixNotifier = ref.watch(mixProvider.notifier);
     final mixData = useMix(ref);
     final nameFocusNode = useMemoized(() => FocusNode());
+    final firstItem = mixData.mixItems.first;
 
     final onSaveMix = useCallback(
       () async {
@@ -55,48 +57,51 @@ class MixPlayer extends HookConsumerWidget {
     );
 
     return BaseScaffold(
-      child: Column(
+      child: Stack(
         children: [
-          Expanded(
-            child: BaseSliverList(
-              scrollController: scrollController,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(spacing(2)),
-                  child: Column(
-                    children: space(
-                      [
-                        BaseContentHeader(
-                          title: 'name'.tr(),
-                          child: BaseTextField(
-                            focusNode: nameFocusNode,
-                            hintText: 'nameOfTheMix'.tr(),
-                            initialValue: mixState.title,
-                            onChanged: mixNotifier.onUpdateTitle,
-                          ),
+          BaseBackdropFilter(image: AssetImage(firstItem.audio.image)),
+          Column(
+            children: [
+              Expanded(
+                child: BaseSliverList(
+                  scrollController: scrollController,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(spacing(2)),
+                      child: Column(
+                        children: space(
+                          [
+                            BaseContentHeader(
+                              title: 'name'.tr(),
+                              child: BaseTextField(
+                                focusNode: nameFocusNode,
+                                hintText: 'nameOfTheMix'.tr(),
+                                initialValue: mixState.title,
+                                onChanged: mixNotifier.onUpdateTitle,
+                              ),
+                            ),
+                            MixPlayerListItem(
+                              mixItems: mixData.mixItems,
+                            ),
+                          ],
+                          height: spacing(4),
                         ),
-                        BaseContentHeader(
-                          title: 'Danh sách âm thanh'.tr(),
-                          spacingSize: 4,
-                          child: MixPlayerListItem(mixItems: mixData.mixItems),
-                        ),
-                      ],
-                      height: spacing(4),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-          BasePlayerUserActions(
-            actions: [
-              MixCollectionButtonSwitcher(
-                isCanAddNewMix: mixNotifier.isCanAddANewMix,
-                onDeleteMix: mixNotifier.onDeleteMix,
-                onSaveMix: onSaveMix,
+              ),
+              BasePlayerUserActions(
+                actions: [
+                  MixCollectionButtonSwitcher(
+                    isCanAddNewMix: mixNotifier.isCanAddANewMix,
+                    onDeleteMix: mixNotifier.onDeleteMix,
+                    onSaveMix: onSaveMix,
+                  ),
+                ],
               ),
             ],
-          ),
+          )
         ],
       ),
     );
