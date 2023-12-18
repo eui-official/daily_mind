@@ -47,7 +47,6 @@ dependencies:
   audio_service: ^0.18.12
   logger: ^2.0.2+1
   flutter_slidable: ^3.0.1
-  animations: ^2.0.8
   package_info_plus: ^5.0.1
   introduction_screen: ^3.1.11
   shared_preferences: ^2.2.2
@@ -73,19 +72,13 @@ dependencies:
   url_launcher: ^6.2.1
   skeletons: ^0.0.3
   line_icons: ^2.0.3
-  reactive_forms: ^16.1.1
-  group_button: ^5.3.3
-  percent_indicator: ^4.2.3
   flutter_local_notifications: ^16.2.0
-  pausable_timer: ^3.1.0+3
   adaptive_dialog: ^2.0.0
   isar_flutter_libs: ^3.1.0+1
-  device_info_plus: ^9.1.1
   background_fetch: ^1.2.1
   showcaseview: ^2.0.3
   another_flushbar: ^1.12.30
   transparent_image: ^2.0.1
-  gradients: ^0.1.1+2
   uuid: ^4.2.2
 dev_dependencies:
   flutter_test:
@@ -129,7 +122,6 @@ flutter:
     - assets/images/background/
     - assets/lottie/
     - assets/audios/
-    - assets/audios/sound-effects/
     - assets/audios/fires/
     - assets/audios/silients/
     - assets/audios/forests/
