@@ -3,7 +3,6 @@ import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigati
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:line_icons/line_icons.dart';
 
 class AppNavigationBar extends HookConsumerWidget {
   const AppNavigationBar({super.key});
@@ -16,10 +15,6 @@ class AppNavigationBar extends HookConsumerWidget {
 
     return BottomNavigationBar(
       items: [
-        onGetBottomNavigationBarItem(
-          icon: const Icon(LineIcons.clock),
-          label: 'Tập trung',
-        ),
         onGetBottomNavigationBarItem(
           icon: const Icon(Icons.music_note),
           label: 'Âm thanh tự nhiên',
