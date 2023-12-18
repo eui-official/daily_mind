@@ -4,7 +4,6 @@ import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
 import 'package:daily_mind/db/schemas/playlist.dart';
-import 'package:daily_mind/db/schemas/task.dart';
 import 'package:daily_mind/db/schemas/settings.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
@@ -22,7 +21,6 @@ class Db {
         PlaylistSchema,
         MixCollectionSchema,
         SettingsSchema,
-        TaskSchema,
         OnlinePlaylistSchema,
       ],
       directory: dir.path,
@@ -152,40 +150,6 @@ class Db {
     final mixCollections = isar.mixCollections.where().watch();
 
     return mixCollections;
-  }
-
-  Stream<List<Task>> onStreamTasks() {
-    return isar.tasks.where(sort: Sort.desc).anyId().watch();
-  }
-
-  List<Task> onGetTasks() {
-    return isar.tasks.where(sort: Sort.desc).anyId().findAllSync();
-  }
-
-  Task? onGetTask(int id) {
-    return isar.tasks.getSync(id);
-  }
-
-  int onAddANewTask(Task task) {
-    return isar.writeTxnSync(() {
-      return isar.tasks.putSync(task);
-    });
-  }
-
-  Future<int> onUpdateTask(Task task) async {
-    return isar.writeTxn(() async {
-      return isar.tasks.put(task);
-    });
-  }
-
-  void onDeleteTask(int id) {
-    isar.writeTxnSync(() {
-      isar.tasks.deleteSync(id);
-    });
-  }
-
-  Stream<Task?> onStreamTask(int id) {
-    return isar.tasks.watchObject(id);
   }
 
   void onAddOnlinePlaylist(OnlinePlaylist onlinePlaylist) {
