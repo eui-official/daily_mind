@@ -34,6 +34,7 @@ class MixMiniPlayer extends HookConsumerWidget {
       () async {
         await onShowScrollableBottomSheet(
           context,
+          useSafeArea: false,
           initialChildSize: 1,
           builder: (context, scrollController) => MixPlayer(
             scrollController: scrollController,

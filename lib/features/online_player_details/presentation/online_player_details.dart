@@ -84,54 +84,51 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       return child;
     }, [onlinePlayerState.isExpanded, tag]);
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: BaseBackdropFilter(
-              image: CachedNetworkImageProvider(image),
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: BaseBackdropFilter(
+            image: CachedNetworkImageProvider(image),
+          ),
+        ),
+        BaseSpacingContainer(
+          padding: EdgeInsets.symmetric(
+            horizontal: spacing(2),
+            vertical: kToolbarHeight,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: space(
+              [
+                BaseAnimatedSwitcher(child: headerChild),
+                Expanded(child: BaseAnimatedSwitcher(child: expandedChild)),
+                Column(
+                  children: space(
+                    [
+                      BaseAnimatedSwitcher(child: aboveChild),
+                      BasePlayerControl(
+                        backgroundHandler: baseBackgroundHandler,
+                        onNext: baseBackgroundHandler.skipToNext,
+                        onPrevious: baseBackgroundHandler.skipToPrevious,
+                      ),
+                      BasePlayerUserActions(
+                        actions: [
+                          OnlinePlaylistSwitcher(onSelected: onAddedToPlaylist),
+                          OnlinePlayerDetailsExpandButton(
+                            onPressed: onExpanded,
+                          ),
+                        ],
+                      ),
+                    ],
+                    height: spacing(2),
+                  ),
+                ),
+              ],
+              height: spacing(2),
             ),
           ),
-          BaseSpacingContainer(
-            padding: EdgeInsets.symmetric(
-              horizontal: spacing(2),
-              vertical: kToolbarHeight,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: space(
-                [
-                  BaseAnimatedSwitcher(child: headerChild),
-                  Expanded(child: BaseAnimatedSwitcher(child: expandedChild)),
-                  Column(
-                    children: space(
-                      [
-                        BaseAnimatedSwitcher(child: aboveChild),
-                        BasePlayerControl(
-                          backgroundHandler: baseBackgroundHandler,
-                          onNext: baseBackgroundHandler.skipToNext,
-                          onPrevious: baseBackgroundHandler.skipToPrevious,
-                        ),
-                        BasePlayerUserActions(
-                          actions: [
-                            OnlinePlaylistSwitcher(
-                                onSelected: onAddedToPlaylist),
-                            OnlinePlayerDetailsExpandButton(
-                              onPressed: onExpanded,
-                            ),
-                          ],
-                        ),
-                      ],
-                      height: spacing(2),
-                    ),
-                  ),
-                ],
-                height: spacing(2),
-              ),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }
