@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_content_player.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_toggle_button.dart';

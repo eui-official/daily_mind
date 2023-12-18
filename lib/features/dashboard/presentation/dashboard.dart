@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_providers/config_provider.dart';
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_theme_without_divider.dart';
 import 'package:daily_mind/common_widgets/fade_indexed_stack.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar.dart';

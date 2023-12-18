@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/dashboard/presentation/dashboard.dart';
 import 'package:daily_mind/features/introduction/application/introduction.dart';

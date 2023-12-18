@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/play.dart';
 import 'package:daily_mind/common_widgets/base_icon/presentation/music_playing.dart';
 import 'package:daily_mind/theme/theme.dart';

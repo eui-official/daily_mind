@@ -1,7 +1,7 @@
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/focus_mode/presentation/focus_mode_provider.dart';
 import 'package:daily_mind/features/focus_mode_session/presentation/focus_mode_session.dart';
