@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_loading_indicator.dart';
 import 'package:daily_mind/features/toggle_play_mode_button/presentation/toggle_play_mode_button.dart';
 import 'package:flutter/material.dart';

@@ -1,20 +1,21 @@
-import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class BaseAnimatedSwitcher extends StatelessWidget {
   final Widget child;
+  final AnimatedSwitcherTransitionBuilder transitionBuilder;
 
   const BaseAnimatedSwitcher({
     super.key,
     required this.child,
+    this.transitionBuilder = AnimatedSwitcher.defaultTransitionBuilder,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcherPlus.translationTop(
-      reverseDuration: kDefaultDuration,
-      duration: kMediumDuration,
+    return AnimatedSwitcher(
+      duration: kDefaultDuration,
+      transitionBuilder: transitionBuilder,
       child: child,
     );
   }

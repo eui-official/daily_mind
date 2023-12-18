@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_slider.dart';
 import 'package:daily_mind/theme/common.dart';

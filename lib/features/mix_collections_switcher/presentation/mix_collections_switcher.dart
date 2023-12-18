@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/features/mix_collections/presentation/mix_collections.dart';
 import 'package:daily_mind/features/mix_collections/presentation/mix_conllections_provider.dart';
 import 'package:daily_mind/features/mix_collections_empty/presentation/mix_collections_empty.dart';
