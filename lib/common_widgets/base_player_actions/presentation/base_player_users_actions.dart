@@ -5,16 +5,18 @@ import 'package:flutter/material.dart';
 
 class BasePlayerUserActions extends StatelessWidget {
   final List<Widget> actions;
+  final EdgeInsets? padding;
 
   const BasePlayerUserActions({
     super.key,
     this.actions = const [],
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: spacing(2)),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

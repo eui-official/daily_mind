@@ -1,7 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/base_snackbar/base_snackbar.dart';
 import 'package:daily_mind/common_hooks/use_mix.dart';
-import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_scaffold.dart';
@@ -9,6 +8,7 @@ import 'package:daily_mind/common_widgets/base_sliver_list.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
+import 'package:daily_mind/features/mix_player/presentation/mix_player_background_filter.dart';
 import 'package:daily_mind/features/mix_player_list_item/presentation/mix_player_list_item.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -31,7 +31,6 @@ class MixPlayer extends HookConsumerWidget {
     final mixNotifier = ref.watch(mixProvider.notifier);
     final mixData = useMix(ref);
     final nameFocusNode = useMemoized(() => FocusNode());
-    final firstItem = mixData.mixItems.first;
 
     final onSaveMix = useCallback(
       () async {
@@ -59,7 +58,8 @@ class MixPlayer extends HookConsumerWidget {
     return BaseScaffold(
       child: Stack(
         children: [
-          BaseBackdropFilter(image: AssetImage(firstItem.audio.image)),
+          if (mixData.mixItems.isNotEmpty)
+            MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
           Column(
             children: [
               Expanded(
@@ -92,6 +92,7 @@ class MixPlayer extends HookConsumerWidget {
                 ),
               ),
               BasePlayerUserActions(
+                padding: EdgeInsets.all(spacing(2)),
                 actions: [
                   MixCollectionButtonSwitcher(
                     isCanAddNewMix: mixNotifier.isCanAddANewMix,
