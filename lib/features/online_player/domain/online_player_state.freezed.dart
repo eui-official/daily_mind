@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OnlinePlayerState {
   bool get isExpanded => throw _privateConstructorUsedError;
+  OnlinePlayerOpenFromState get openFrom => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnlinePlayerStateCopyWith<OnlinePlayerState> get copyWith =>
@@ -29,7 +30,9 @@ abstract class $OnlinePlayerStateCopyWith<$Res> {
           OnlinePlayerState value, $Res Function(OnlinePlayerState) then) =
       _$OnlinePlayerStateCopyWithImpl<$Res, OnlinePlayerState>;
   @useResult
-  $Res call({bool isExpanded});
+  $Res call({bool isExpanded, OnlinePlayerOpenFromState openFrom});
+
+  $OnlinePlayerOpenFromStateCopyWith<$Res> get openFrom;
 }
 
 /// @nodoc
@@ -46,13 +49,26 @@ class _$OnlinePlayerStateCopyWithImpl<$Res, $Val extends OnlinePlayerState>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? openFrom = null,
   }) {
     return _then(_value.copyWith(
       isExpanded: null == isExpanded
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
+      openFrom: null == openFrom
+          ? _value.openFrom
+          : openFrom // ignore: cast_nullable_to_non_nullable
+              as OnlinePlayerOpenFromState,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OnlinePlayerOpenFromStateCopyWith<$Res> get openFrom {
+    return $OnlinePlayerOpenFromStateCopyWith<$Res>(_value.openFrom, (value) {
+      return _then(_value.copyWith(openFrom: value) as $Val);
+    });
   }
 }
 
@@ -64,7 +80,10 @@ abstract class _$$OnlinePlayerStateImplCopyWith<$Res>
       __$$OnlinePlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isExpanded});
+  $Res call({bool isExpanded, OnlinePlayerOpenFromState openFrom});
+
+  @override
+  $OnlinePlayerOpenFromStateCopyWith<$Res> get openFrom;
 }
 
 /// @nodoc
@@ -79,12 +98,17 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? openFrom = null,
   }) {
     return _then(_$OnlinePlayerStateImpl(
       isExpanded: null == isExpanded
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
+      openFrom: null == openFrom
+          ? _value.openFrom
+          : openFrom // ignore: cast_nullable_to_non_nullable
+              as OnlinePlayerOpenFromState,
     ));
   }
 }
@@ -92,14 +116,17 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
-  const _$OnlinePlayerStateImpl({required this.isExpanded});
+  const _$OnlinePlayerStateImpl(
+      {required this.isExpanded, required this.openFrom});
 
   @override
   final bool isExpanded;
+  @override
+  final OnlinePlayerOpenFromState openFrom;
 
   @override
   String toString() {
-    return 'OnlinePlayerState(isExpanded: $isExpanded)';
+    return 'OnlinePlayerState(isExpanded: $isExpanded, openFrom: $openFrom)';
   }
 
   @override
@@ -108,11 +135,13 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
         (other.runtimeType == runtimeType &&
             other is _$OnlinePlayerStateImpl &&
             (identical(other.isExpanded, isExpanded) ||
-                other.isExpanded == isExpanded));
+                other.isExpanded == isExpanded) &&
+            (identical(other.openFrom, openFrom) ||
+                other.openFrom == openFrom));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExpanded);
+  int get hashCode => Object.hash(runtimeType, isExpanded, openFrom);
 
   @JsonKey(ignore: true)
   @override
@@ -123,11 +152,15 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
 }
 
 abstract class _OnlinePlayerState implements OnlinePlayerState {
-  const factory _OnlinePlayerState({required final bool isExpanded}) =
+  const factory _OnlinePlayerState(
+          {required final bool isExpanded,
+          required final OnlinePlayerOpenFromState openFrom}) =
       _$OnlinePlayerStateImpl;
 
   @override
   bool get isExpanded;
+  @override
+  OnlinePlayerOpenFromState get openFrom;
   @override
   @JsonKey(ignore: true)
   _$$OnlinePlayerStateImplCopyWith<_$OnlinePlayerStateImpl> get copyWith =>

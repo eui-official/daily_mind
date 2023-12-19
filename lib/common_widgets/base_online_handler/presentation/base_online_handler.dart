@@ -4,7 +4,8 @@ import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/enums.dart';
-import 'package:daily_mind/features/online_mini_player/presentation/online_mini_player_provider.dart';
+import 'package:daily_mind/features/online_player/domain/online_player_open_from_state.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:daily_mind/types/common.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -26,16 +27,18 @@ class BaseOnlineHandler extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
-    final onlineMiniPlayerNotifier =
-        ref.watch(onlineMiniPlayerNotifierProvider.notifier);
+    final onlinePlayerNotifier =
+        ref.read(onlinePlayerNotifierProvider.notifier);
 
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final audios = audioCategory.audios;
     final category = audioCategory.category;
 
     final onTap = useCallback(() async {
-      onlineMiniPlayerNotifier.onUpdate(category);
       await baseBackgroundHandler.onInitOnline(audios);
+
+      final openFrom = OnlinePlayerOpenFromState(name: category.name);
+      onlinePlayerNotifier.onUpdateOpenFrom(openFrom);
 
       baseMiniPlayerNotifier.onUpdateState(
         const MiniPlayerState(

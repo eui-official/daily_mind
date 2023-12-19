@@ -7,7 +7,7 @@ part of 'online_player_provider.dart';
 // **************************************************************************
 
 String _$onlinePlayerNotifierHash() =>
-    r'407c72ce10e1125e30b47f99284a05dfc88678ee';
+    r'2d6ffd2c0daaa99d37cacccea8795f18638a5497';
 
 /// See also [OnlinePlayerNotifier].
 @ProviderFor(OnlinePlayerNotifier)
