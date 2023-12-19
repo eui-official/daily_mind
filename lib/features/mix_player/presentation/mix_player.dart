@@ -3,8 +3,8 @@ import 'package:daily_mind/common_applications/base_snackbar/base_snackbar.dart'
 import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
-import 'package:daily_mind/common_widgets/base_scaffold.dart';
 import 'package:daily_mind/common_widgets/base_sliver_list.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
@@ -55,12 +55,16 @@ class MixPlayer extends HookConsumerWidget {
       [mixState],
     );
 
-    return BaseScaffold(
-      child: Stack(
-        children: [
-          if (mixData.mixItems.isNotEmpty)
-            MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
-          Column(
+    return Stack(
+      children: [
+        if (mixData.mixItems.isNotEmpty)
+          MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
+        BaseSpacingContainer(
+          padding: EdgeInsets.symmetric(
+            horizontal: spacing(2),
+            vertical: kToolbarHeight,
+          ),
+          child: Column(
             children: [
               Expanded(
                 child: BaseSliverList(
@@ -92,7 +96,6 @@ class MixPlayer extends HookConsumerWidget {
                 ),
               ),
               BasePlayerUserActions(
-                padding: EdgeInsets.all(spacing(2)),
                 actions: [
                   MixCollectionButtonSwitcher(
                     isCanAddNewMix: mixNotifier.isCanAddANewMix,
@@ -102,9 +105,9 @@ class MixPlayer extends HookConsumerWidget {
                 ],
               ),
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+      ],
     );
   }
 }
