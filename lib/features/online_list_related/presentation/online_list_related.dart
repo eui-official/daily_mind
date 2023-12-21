@@ -5,7 +5,6 @@ import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlineListRelated extends HookConsumerWidget {
@@ -43,7 +42,7 @@ class OnlineListRelated extends HookConsumerWidget {
                   image: tag.image,
                   title: Text(
                     tag.name,
-                    style: context.textTheme.bodySmall?.copyWith(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w500,
                     ),
                     maxLines: 1,

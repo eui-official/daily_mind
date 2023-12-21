@@ -25,7 +25,7 @@ class BasePlayerCurrentAudio extends HookWidget {
     final audioTitle = useMemoized(() {
       final marquee = BaseMarquee(
         text: audio.name,
-        style: context.textTheme.bodySmall?.copyWith(
+        style: context.textTheme.bodyLarge?.copyWith(
           fontWeight: FontWeight.bold,
         ),
       );
@@ -48,7 +48,7 @@ class BasePlayerCurrentAudio extends HookWidget {
           if (isComplex)
             Text(
               'currentPlaying'.tr(),
-              style: context.textTheme.bodyLarge?.copyWith(
+              style: context.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:daily_mind/extensions/context.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
 
 class BaseIconButtonWithTitle extends StatelessWidget {
   final IconData iconData;
@@ -23,13 +24,10 @@ class BaseIconButtonWithTitle extends StatelessWidget {
       onPressed: onPressed,
       shape: RoundedRectangleBorder(borderRadius: circularRadius(2)),
       side: BorderSide.none,
-      avatar: Icon(
-        iconData,
-        color: Colors.white,
-      ),
+      avatar: Icon(iconData, color: Colors.white),
       label: Text(
         title,
-        style: const TextStyle(fontSize: 10),
+        style: context.textTheme.bodySmall,
       ),
     );
   }
