@@ -1,19 +1,16 @@
 import 'package:daily_mind/features/online_auto_play_next_switch/presentation/online_auto_play_next_switch.dart';
-import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
+import 'package:daily_mind/features/online_list_related_header/presentation/onlne_list_related_header_from.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart' hide Trans;
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OnlineListRelatedHeader extends HookConsumerWidget {
+class OnlineListRelatedHeader extends StatelessWidget {
   const OnlineListRelatedHeader({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
-
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -27,10 +24,7 @@ class OnlineListRelatedHeader extends HookConsumerWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
-                'Từ ${onlinePlayerState.name}',
-                style: const TextStyle(color: secondaryTextColor),
-              ),
+              const OnlineListRelatedHeaderFrom(),
             ],
             height: spacing(),
           ),

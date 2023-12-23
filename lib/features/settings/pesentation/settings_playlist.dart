@@ -7,8 +7,10 @@ import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile_trailing_arrow.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/online_playlist_selector/presentation/online_playlist_selector.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,7 @@ class SettingsPlaylist extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
+    final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
 
     final onSelected = useCallback(
       (playlistId) {
@@ -40,6 +43,9 @@ class SettingsPlaylist extends HookConsumerWidget {
               // Get audios from supapase
               final audios =
                   await supabaseAPI.onGetAudiosByIds(safePlaylist.itemIds);
+
+              onlinePlayerNotifier
+                  .onUpdateOpenFrom(safePlaylist.title ?? kEmptyString);
 
               await baseBackgroundHandler.onInitOnline(audios);
 
