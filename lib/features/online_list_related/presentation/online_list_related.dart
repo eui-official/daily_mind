@@ -53,7 +53,7 @@ class OnlineListRelated extends HookConsumerWidget {
             ),
           ),
         ],
-        height: spacing(),
+        height: spacing(3),
       ),
     );
   }

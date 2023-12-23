@@ -23,15 +23,13 @@ class OnlineListRelatedHeader extends HookConsumerWidget {
             [
               Text(
                 'playingNext'.tr(),
-                style: context.textTheme.titleLarge?.copyWith(
+                style: context.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 'Từ ${onlinePlayerState.name}',
-                style: context.textTheme.bodyLarge?.copyWith(
-                  color: secondaryTextColor,
-                ),
+                style: const TextStyle(color: secondaryTextColor),
               ),
             ],
             height: spacing(),

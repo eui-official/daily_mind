@@ -124,7 +124,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                   ),
                 ),
               ],
-              height: spacing(2),
+              height: spacing(3),
             ),
           ),
         )
