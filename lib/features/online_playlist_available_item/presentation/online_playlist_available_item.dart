@@ -4,6 +4,7 @@ import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart'
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class OnlinePlaylistAvailableItem extends StatelessWidget {
@@ -25,6 +26,10 @@ class OnlinePlaylistAvailableItem extends StatelessWidget {
         onTap: onTap,
         leading: const BaseSquareIcon(iconData: Icons.music_note),
         title: onlinePlaylist.title ?? kEmptyString,
+        subtitle: Text(
+          '${onlinePlaylist.itemIds.length} bài hát',
+          style: const TextStyle(color: secondaryTextColor),
+        ),
       ),
     );
   }
