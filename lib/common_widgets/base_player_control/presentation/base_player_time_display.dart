@@ -16,7 +16,7 @@ class BasePlayerTimeDisplay extends StatelessWidget {
       dateFormatter.onFormatDuration(
         Duration(seconds: seconds),
       ),
-      style: context.textTheme.labelSmall?.copyWith(
+      style: context.textTheme.bodySmall?.copyWith(
         color: context.theme.hintColor,
         fontWeight: FontWeight.bold,
       ),

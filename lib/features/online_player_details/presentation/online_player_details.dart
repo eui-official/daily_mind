@@ -39,7 +39,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
-    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerProvider);
 
     final onAddedToPlaylist = useCallback(
       (int playlistId) {
@@ -65,7 +65,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
 
         return DiskPlayerImage(image: image);
       },
-      [onlinePlayerState.isExpanded, tag],
+      [onlinePlayerState, tag],
     );
 
     final headerChild = useMemoized(() {
@@ -74,7 +74,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       }
 
       return kEmptyWidget;
-    }, [onlinePlayerState.isExpanded, tag]);
+    }, [onlinePlayerState, tag]);
 
     final aboveChild = useMemoized(() {
       if (onlinePlayerState.isExpanded) {
@@ -82,7 +82,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       }
 
       return child;
-    }, [onlinePlayerState.isExpanded, tag]);
+    }, [onlinePlayerState, tag]);
 
     return Stack(
       children: [
@@ -124,7 +124,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                   ),
                 ),
               ],
-              height: spacing(2),
+              height: spacing(3),
             ),
           ),
         )

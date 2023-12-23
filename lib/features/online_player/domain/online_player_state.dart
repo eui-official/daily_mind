@@ -6,5 +6,6 @@ part 'online_player_state.freezed.dart';
 class OnlinePlayerState with _$OnlinePlayerState {
   const factory OnlinePlayerState({
     required bool isExpanded,
+    required String name,
   }) = _OnlinePlayerState;
 }

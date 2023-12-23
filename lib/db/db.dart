@@ -190,6 +190,12 @@ class Db {
     return isar.onlinePlaylists.getSync(id);
   }
 
+  int onCountSongsFromPlaylist(int id) {
+    final onlinePlaylist = isar.onlinePlaylists.getSync(id);
+
+    return onlinePlaylist?.itemIds.length ?? 0;
+  }
+
   void onDeleteOnlinePlaylist(int id) {
     isar.writeTxnSync(() {
       isar.onlinePlaylists.deleteSync(id);

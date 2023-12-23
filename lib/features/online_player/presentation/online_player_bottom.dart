@@ -14,7 +14,7 @@ class OnlinePlayerBottom extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerProvider);
 
     return BasePlayerCurrentAudio(
       audio: audio,

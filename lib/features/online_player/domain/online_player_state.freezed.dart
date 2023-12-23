@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OnlinePlayerState {
   bool get isExpanded => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnlinePlayerStateCopyWith<OnlinePlayerState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $OnlinePlayerStateCopyWith<$Res> {
           OnlinePlayerState value, $Res Function(OnlinePlayerState) then) =
       _$OnlinePlayerStateCopyWithImpl<$Res, OnlinePlayerState>;
   @useResult
-  $Res call({bool isExpanded});
+  $Res call({bool isExpanded, String name});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$OnlinePlayerStateCopyWithImpl<$Res, $Val extends OnlinePlayerState>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
       isExpanded: null == isExpanded
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$OnlinePlayerStateImplCopyWith<$Res>
       __$$OnlinePlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isExpanded});
+  $Res call({bool isExpanded, String name});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? name = null,
   }) {
     return _then(_$OnlinePlayerStateImpl(
       isExpanded: null == isExpanded
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -92,14 +103,16 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
-  const _$OnlinePlayerStateImpl({required this.isExpanded});
+  const _$OnlinePlayerStateImpl({required this.isExpanded, required this.name});
 
   @override
   final bool isExpanded;
+  @override
+  final String name;
 
   @override
   String toString() {
-    return 'OnlinePlayerState(isExpanded: $isExpanded)';
+    return 'OnlinePlayerState(isExpanded: $isExpanded, name: $name)';
   }
 
   @override
@@ -108,11 +121,12 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
         (other.runtimeType == runtimeType &&
             other is _$OnlinePlayerStateImpl &&
             (identical(other.isExpanded, isExpanded) ||
-                other.isExpanded == isExpanded));
+                other.isExpanded == isExpanded) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExpanded);
+  int get hashCode => Object.hash(runtimeType, isExpanded, name);
 
   @JsonKey(ignore: true)
   @override
@@ -123,11 +137,14 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
 }
 
 abstract class _OnlinePlayerState implements OnlinePlayerState {
-  const factory _OnlinePlayerState({required final bool isExpanded}) =
-      _$OnlinePlayerStateImpl;
+  const factory _OnlinePlayerState(
+      {required final bool isExpanded,
+      required final String name}) = _$OnlinePlayerStateImpl;
 
   @override
   bool get isExpanded;
+  @override
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$OnlinePlayerStateImplCopyWith<_$OnlinePlayerStateImpl> get copyWith =>

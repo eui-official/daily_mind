@@ -1,14 +1,24 @@
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_player/domain/online_player_state.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-part 'online_player_provider.g.dart';
-
-@riverpod
-class OnlinePlayerNotifier extends _$OnlinePlayerNotifier {
-  @override
-  OnlinePlayerState build() => const OnlinePlayerState(isExpanded: false);
+class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
+  OnlinePlayerNotifier()
+      : super(const OnlinePlayerState(
+          isExpanded: false,
+          name: kEmptyString,
+        ));
 
   void onToggleExpanded() {
     state = state.copyWith(isExpanded: !state.isExpanded);
   }
+
+  void onUpdateOpenFrom(String name) {
+    state = state.copyWith(name: name);
+  }
 }
+
+final onlinePlayerProvider =
+    StateNotifierProvider<OnlinePlayerNotifier, OnlinePlayerState>((ref) {
+  return OnlinePlayerNotifier();
+});
