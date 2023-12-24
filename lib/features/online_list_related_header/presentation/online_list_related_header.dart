@@ -20,7 +20,7 @@ class OnlineListRelatedHeader extends StatelessWidget {
             [
               Text(
                 'playingNext'.tr(),
-                style: context.textTheme.headlineSmall?.copyWith(
+                style: context.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
