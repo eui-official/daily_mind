@@ -48,7 +48,7 @@ class BasePlayerCurrentAudio extends HookWidget {
           if (isComplex)
             Text(
               'currentPlaying'.tr(),
-              style: context.textTheme.headlineSmall?.copyWith(
+              style: context.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

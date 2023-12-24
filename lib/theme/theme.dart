@@ -10,7 +10,7 @@ const midnightBlack = Color(0xFF131211);
 const red = Color(0xFFE83151);
 const secondaryTextColor = Color(0xFFF4EBD9);
 
-final fontFamily = GoogleFonts.roboto().fontFamily;
+final fontFamily = GoogleFonts.inter().fontFamily;
 
 ThemeData createDarkTheme(SupportedTheme theme) {
   return FlexThemeData.dark(
