@@ -79,6 +79,7 @@ dependencies:
   another_flushbar: ^1.12.30
   transparent_image: ^2.0.1
   uuid: ^4.2.2
+  awesome_extensions: ^2.0.11
 dev_dependencies:
   flutter_test:
     sdk: flutter

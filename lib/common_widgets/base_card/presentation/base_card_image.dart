@@ -5,13 +5,15 @@ import 'package:get/utils.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class BaseCardImage extends StatelessWidget {
+  final BorderRadius? borderRadius;
   final double? height;
   final double? width;
   final ImageProvider image;
 
   const BaseCardImage({
-    required this.image,
     super.key,
+    required this.image,
+    this.borderRadius,
     this.height,
     this.width,
   });
@@ -22,7 +24,7 @@ class BaseCardImage extends StatelessWidget {
       height: height,
       width: width ?? context.width,
       child: ClipRRect(
-        borderRadius: circularRadius(2),
+        borderRadius: borderRadius ?? circularRadius(2),
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
