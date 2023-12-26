@@ -22,17 +22,20 @@ class OnlineItem extends StatelessWidget {
       type: MaterialType.transparency,
       child: GestureDetector(
         onTap: onTap,
-        child: Row(
-          children: space(
-            [
-              SizedBox(
-                width: spacing(5),
-                height: spacing(5),
-                child: BaseNetworkImage(image: image),
-              ),
-              Flexible(child: BaseItemBoxSize(child: title))
-            ],
-            width: spacing(),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: spacing(0.5)),
+          child: Row(
+            children: space(
+              [
+                SizedBox(
+                  width: spacing(5),
+                  height: spacing(5),
+                  child: BaseNetworkImage(image: image),
+                ),
+                Flexible(child: BaseItemBoxSize(child: title))
+              ],
+              width: spacing(),
+            ),
           ),
         ),
       ),
