@@ -20,17 +20,24 @@ class OnlineItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
-      child: ListTile(
-        contentPadding: EdgeInsets.zero,
-        minVerticalPadding: spacing(0.5),
+      child: GestureDetector(
         onTap: onTap,
-        leading: SizedBox(
-          width: spacing(6),
-          height: spacing(6),
-          child: BaseNetworkImage(image: image),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: spacing(0.5)),
+          child: Row(
+            children: space(
+              [
+                SizedBox(
+                  width: spacing(5),
+                  height: spacing(5),
+                  child: BaseNetworkImage(image: image),
+                ),
+                Flexible(child: BaseItemBoxSize(child: title))
+              ],
+              width: spacing(),
+            ),
+          ),
         ),
-        title: BaseItemBoxSize(child: title),
-        shape: RoundedRectangleBorder(borderRadius: circularRadius()),
       ),
     );
   }

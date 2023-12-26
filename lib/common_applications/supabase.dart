@@ -15,6 +15,13 @@ class SupabaseAPI {
     return onToAudios(rawAudios);
   }
 
+  Future<Audio> onGetAudioById(String id) async {
+    final rawAudio =
+        await supabase.from('audios').select().eq('id', id).single();
+
+    return Audio.fromJson(rawAudio);
+  }
+
   // Get audios
   Future<List<Audio>> onGetAudios() async {
     final rawAudios =
