@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_audios_ids_builder/presentation/base_audio_ids_builder.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
@@ -21,15 +22,18 @@ class PlaylistDetails extends StatelessWidget {
     return BaseNullBuilder(
       value: onlinePlaylist,
       builder: (safeOnlinePlaylist) {
-        final firstItemId = safeOnlinePlaylist.itemIds.first;
-
-        return AppBarScrollview(
-          title: safeOnlinePlaylist.title ?? kEmptyString,
-          flexibleSpace: FlexibleSpaceBar(
-            background: PlaylistDetailsImage(playlistId: firstItemId),
-          ),
-          expandedHeight: context.height / 3,
-          children: const [],
+        return BaseAudioIdsBuilder(
+          ids: safeOnlinePlaylist.itemIds,
+          builder: (audios) {
+            return AppBarScrollview(
+              title: safeOnlinePlaylist.title ?? kEmptyString,
+              flexibleSpace: FlexibleSpaceBar(
+                background: PlaylistDetailsImage(audio: audios.first),
+              ),
+              expandedHeight: context.height / 3,
+              children: const [],
+            );
+          },
         );
       },
     );

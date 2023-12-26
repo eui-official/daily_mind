@@ -20,7 +20,6 @@ class SettingsPlaylist extends HookConsumerWidget {
         final count = db.onCountSongsFromPlaylist(playlistId);
 
         if (count > 0) {
-          context.pop();
           context.push(PlaylistDetails(playlistId: playlistId));
         } else {
           showOkAlertDialog(
