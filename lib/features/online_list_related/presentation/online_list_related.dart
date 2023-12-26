@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item.dart';
+import 'package:daily_mind/features/online_item/presentation/online_title.dart';
 import 'package:daily_mind/features/online_list_related_header/presentation/online_list_related_header.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -40,14 +41,7 @@ class OnlineListRelated extends HookConsumerWidget {
                 return OnlineItem(
                   onTap: () => onTap(index),
                   image: tag.image,
-                  title: Text(
-                    tag.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  title: OnlineTitle(title: tag.name),
                 );
               },
             ),

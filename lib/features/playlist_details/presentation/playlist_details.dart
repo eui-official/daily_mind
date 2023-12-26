@@ -4,6 +4,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_image.dart';
+import 'package:daily_mind/features/playlist_details/presentation/playlist_list_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -25,13 +26,19 @@ class PlaylistDetails extends StatelessWidget {
         return BaseAudioIdsBuilder(
           ids: safeOnlinePlaylist.itemIds,
           builder: (audios) {
+            if (audios.isEmpty) {
+              return kEmptyWidget;
+            }
+
             return AppBarScrollview(
               title: safeOnlinePlaylist.title ?? kEmptyString,
               flexibleSpace: FlexibleSpaceBar(
                 background: PlaylistDetailsImage(audio: audios.first),
               ),
               expandedHeight: context.height / 3,
-              children: const [],
+              children: [
+                PlaylistListAudio(audios: audios),
+              ],
             );
           },
         );
