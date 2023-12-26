@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_applications/base_snackbar/base_snackbar.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
@@ -12,6 +13,7 @@ import 'package:daily_mind/features/disk_player_image/presentation/disk_player_i
 import 'package:daily_mind/features/online_list_related/presentation/online_list_related.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/online_player_details/presentation/online_player_details_expand_button.dart';
+import 'package:daily_mind/features/online_playlist_selector/presentation/online_playlist_selector.dart';
 import 'package:daily_mind/features/online_playlist_switcher/presentation/online_playlist_switcher.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -56,6 +58,18 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       },
       [tag],
     );
+
+    final onOpenPlaylist = useCallback(() {
+      onShowScrollableBottomSheet(
+        context,
+        useSafeArea: true,
+        initialChildSize: 1,
+        builder: (context, scrollController) => OnlinePlaylistSelector(
+          scrollController: scrollController,
+          onSelected: onAddedToPlaylist,
+        ),
+      );
+    }, [tag]);
 
     final expandedChild = useMemoized(
       () {
@@ -113,7 +127,9 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                       ),
                       BasePlayerUserActions(
                         actions: [
-                          OnlinePlaylistSwitcher(onSelected: onAddedToPlaylist),
+                          OnlinePlaylistSwitcher(
+                            onOpenPlaylist: onOpenPlaylist,
+                          ),
                           OnlinePlayerDetailsExpandButton(
                             onPressed: onExpanded,
                           ),

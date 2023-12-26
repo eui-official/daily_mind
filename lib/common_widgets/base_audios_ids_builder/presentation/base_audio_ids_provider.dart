@@ -13,9 +13,9 @@ class BaseAudioIdsNotifier extends _$BaseAudioIdsNotifier {
     return const BaseAudioIdsState(audios: []);
   }
 
-  void onInit(List<String> ids) async {
-    final audios = await supabaseAPI.onGetAudiosByIds(ids);
-
-    state = state.copyWith(audios: audios);
+  void onInit(List<String> ids) {
+    supabaseAPI.onGetAudiosByIds(ids).then((audios) {
+      state = state.copyWith(audios: audios);
+    });
   }
 }

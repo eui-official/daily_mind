@@ -20,29 +20,35 @@ class PlaylistDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final onlinePlaylist = db.onGetOnlinePlaylist(playlistId);
 
-    return BaseNullBuilder(
-      value: onlinePlaylist,
-      builder: (safeOnlinePlaylist) {
-        return BaseAudioIdsBuilder(
-          ids: safeOnlinePlaylist.itemIds,
-          builder: (audios) {
-            if (audios.isEmpty) {
-              return kEmptyWidget;
-            }
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.play_arrow),
+      ),
+      body: BaseNullBuilder(
+        value: onlinePlaylist,
+        builder: (safeOnlinePlaylist) {
+          return BaseAudioIdsBuilder(
+            ids: safeOnlinePlaylist.itemIds,
+            builder: (audios) {
+              if (audios.isEmpty) {
+                return kEmptyWidget;
+              }
 
-            return AppBarScrollview(
-              title: safeOnlinePlaylist.title ?? kEmptyString,
-              flexibleSpace: FlexibleSpaceBar(
-                background: PlaylistDetailsImage(audio: audios.first),
-              ),
-              expandedHeight: context.height / 3,
-              children: [
-                PlaylistListAudio(audios: audios),
-              ],
-            );
-          },
-        );
-      },
+              return AppBarScrollview(
+                title: safeOnlinePlaylist.title ?? kEmptyString,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: PlaylistDetailsImage(audio: audios.first),
+                ),
+                expandedHeight: context.height / 3,
+                children: [
+                  PlaylistListAudio(audios: audios),
+                ],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
