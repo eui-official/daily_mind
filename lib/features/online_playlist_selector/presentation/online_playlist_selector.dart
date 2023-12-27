@@ -1,16 +1,16 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:daily_mind/common_applications/adaptive_dialog_validators.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
-import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
 import 'package:daily_mind/features/online_playlist_available/presentation/online_playlist_available.dart';
+import 'package:daily_mind/types/common.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class OnlinePlaylistSelector extends HookWidget {
-  final ValueChanged<int> onSelected;
+  final OnValueBuilder<int> onSelected;
   final ScrollController? scrollController;
 
   const OnlinePlaylistSelector({
@@ -48,11 +48,16 @@ class OnlinePlaylistSelector extends HookWidget {
       [],
     );
 
-    return BaseSpacingContainer(
-      child: OnlinePlaylistAvailable(
-        onSelected: onSelected,
-        openAddOnlinePlaylist: openAddOnlinePlaylist,
-        scrollController: scrollController,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Danh sách playlist'.tr()),
+      ),
+      body: SafeArea(
+        child: OnlinePlaylistAvailable(
+          onSelected: (id) => onSelected(context, id),
+          openAddOnlinePlaylist: openAddOnlinePlaylist,
+          scrollController: scrollController,
+        ),
       ),
     );
   }
