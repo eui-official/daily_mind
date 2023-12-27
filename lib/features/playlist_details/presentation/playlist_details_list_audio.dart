@@ -4,10 +4,10 @@ import 'package:daily_mind/features/online_item/presentation/online_item.dart';
 import 'package:daily_mind/features/online_item/presentation/online_title.dart';
 import 'package:flutter/material.dart';
 
-class PlaylistListAudio extends StatelessWidget {
+class PlaylistDetailsListAudio extends StatelessWidget {
   final List<Audio> audios;
 
-  const PlaylistListAudio({
+  const PlaylistDetailsListAudio({
     super.key,
     required this.audios,
   });

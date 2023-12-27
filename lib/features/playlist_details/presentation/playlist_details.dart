@@ -1,14 +1,17 @@
+import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_audios_ids_builder/presentation/base_audio_ids_builder.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
-import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/playlist_details/presentation/playlist_details_image.dart';
-import 'package:daily_mind/features/playlist_details/presentation/playlist_list_audio.dart';
+import 'package:daily_mind/features/playlist_details/presentation/playlist_details_content.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class PlaylistDetails extends StatelessWidget {
+class PlaylistDetails extends HookConsumerWidget {
   final int playlistId;
 
   const PlaylistDetails({
@@ -17,38 +20,40 @@ class PlaylistDetails extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final onlinePlaylist = db.onGetOnlinePlaylist(playlistId);
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
 
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.play_arrow),
-      ),
-      body: BaseNullBuilder(
-        value: onlinePlaylist,
-        builder: (safeOnlinePlaylist) {
-          return BaseAudioIdsBuilder(
-            ids: safeOnlinePlaylist.itemIds,
-            builder: (audios) {
-              if (audios.isEmpty) {
-                return kEmptyWidget;
-              }
+    return BaseNullBuilder(
+      value: onlinePlaylist,
+      builder: (safeOnlinePlaylist) {
+        return BaseAudioIdsBuilder(
+          ids: safeOnlinePlaylist.itemIds,
+          builder: (audios) {
+            return Scaffold(
+              floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+              floatingActionButton: FloatingActionButton(
+                onPressed: () async {
+                  await baseBackgroundHandler.onInitOnline(audios);
 
-              return AppBarScrollview(
+                  baseMiniPlayerNotifier.onUpdateState(
+                    const MiniPlayerState(
+                      isShow: true,
+                      audioType: AudioTypes.online,
+                    ),
+                  );
+                },
+                child: const Icon(Icons.play_arrow),
+              ),
+              body: PlaylistDetailsContent(
                 title: safeOnlinePlaylist.title ?? kEmptyString,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: PlaylistDetailsImage(audio: audios.first),
-                ),
-                expandedHeight: context.height / 3,
-                children: [
-                  PlaylistListAudio(audios: audios),
-                ],
-              );
-            },
-          );
-        },
-      ),
+                audios: audios,
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
