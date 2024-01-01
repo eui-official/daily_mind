@@ -127,6 +127,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                         backgroundHandler: baseBackgroundHandler,
                         onNext: baseBackgroundHandler.skipToNext,
                         onPrevious: baseBackgroundHandler.skipToPrevious,
+                        tag: tag,
                       ),
                       BasePlayerUserActions(
                         actions: [

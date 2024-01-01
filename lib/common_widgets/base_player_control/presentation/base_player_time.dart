@@ -10,12 +10,14 @@ class BasePlayerTime extends HookWidget {
   final int position;
   final int max;
   final ValueChanged<Duration> onChangeEnd;
+  final dynamic tag;
 
   const BasePlayerTime({
     super.key,
-    required this.position,
     required this.max,
     required this.onChangeEnd,
+    required this.position,
+    required this.tag,
   });
 
   @override
@@ -32,6 +34,7 @@ class BasePlayerTime extends HookWidget {
 
     final child = useMemoized(() {
       return BasePlayerTimeSlider(
+        key: ValueKey(tag),
         max: max.toDouble(),
         onChangeEnd: onChangeEnd,
         value: position,
@@ -40,8 +43,9 @@ class BasePlayerTime extends HookWidget {
         },
       );
     }, [
-      position,
       max,
+      position,
+      tag,
     ]);
 
     return Column(

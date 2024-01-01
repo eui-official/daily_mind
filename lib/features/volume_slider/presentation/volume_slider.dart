@@ -22,6 +22,7 @@ class VolumeSlider extends HookWidget {
         min: 0,
         max: 1,
         divisions: 100,
+        secondaryTrackValue: volume.value.toDouble(),
         onChanged: (value) {
           volume.value = value;
           onVolumeChanged(value);
