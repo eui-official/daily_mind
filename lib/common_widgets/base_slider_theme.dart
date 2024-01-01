@@ -22,7 +22,7 @@ class BaseSliderTheme extends HookWidget {
         return spacing(4);
       }
 
-      return spacing();
+      return spacing(2);
     }, [isChanging]);
 
     return AnimatedContainer(
