@@ -1,6 +1,4 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:awesome_extensions/awesome_extensions.dart';
-import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile_trailing_arrow.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/online_playlist_selector/presentation/online_playlist_selector.dart';
@@ -9,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class SettingsPlaylist extends HookConsumerWidget {
   const SettingsPlaylist({super.key});
@@ -16,11 +15,17 @@ class SettingsPlaylist extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final onSelected = useCallback(
-      (playlistId) {
+      (
+        BuildContext context,
+        int playlistId,
+      ) {
         final count = db.onCountSongsFromPlaylist(playlistId);
 
         if (count > 0) {
-          context.push(PlaylistDetails(playlistId: playlistId));
+          pushScreenWithNavBar(
+            context,
+            PlaylistDetails(playlistId: playlistId),
+          );
         } else {
           showOkAlertDialog(
             context: context,
@@ -28,16 +33,14 @@ class SettingsPlaylist extends HookConsumerWidget {
           );
         }
       },
-      [],
+      [context],
     );
 
     return BaseTileTrailingArrow(
       onTap: () {
-        onShowScrollableBottomSheet(
+        pushScreenWithNavBar(
           context,
-          initialChildSize: 1,
-          builder: (context, scrollController) => OnlinePlaylistSelector(
-            scrollController: scrollController,
+          OnlinePlaylistSelector(
             onSelected: onSelected,
           ),
         );

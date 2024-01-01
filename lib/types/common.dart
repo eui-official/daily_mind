@@ -20,6 +20,8 @@ typedef OnItemBuilder<T> = Widget Function(
   T item,
 );
 
+typedef OnValueBuilder<T> = Function(BuildContext context, T value);
+
 typedef OnAudiosBuilder = Widget Function(List<Audio> audios);
 
 typedef OnItemIndexBuilder<T> = Widget Function(

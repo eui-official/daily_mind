@@ -70,26 +70,23 @@ class MixPlayer extends HookConsumerWidget {
                 child: BaseSliverList(
                   scrollController: scrollController,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(spacing(2)),
-                      child: Column(
-                        children: space(
-                          [
-                            BaseContentHeader(
-                              title: 'name'.tr(),
-                              child: BaseTextField(
-                                focusNode: nameFocusNode,
-                                hintText: 'nameOfTheMix'.tr(),
-                                initialValue: mixState.title,
-                                onChanged: mixNotifier.onUpdateTitle,
-                              ),
+                    Column(
+                      children: space(
+                        [
+                          BaseContentHeader(
+                            title: 'name'.tr(),
+                            child: BaseTextField(
+                              focusNode: nameFocusNode,
+                              hintText: 'nameOfTheMix'.tr(),
+                              initialValue: mixState.title,
+                              onChanged: mixNotifier.onUpdateTitle,
                             ),
-                            MixPlayerListItem(
-                              mixItems: mixData.mixItems,
-                            ),
-                          ],
-                          height: spacing(4),
-                        ),
+                          ),
+                          MixPlayerListItem(
+                            mixItems: mixData.mixItems,
+                          ),
+                        ],
+                        height: spacing(4),
                       ),
                     ),
                   ],

@@ -44,7 +44,10 @@ class OnlinePlayerDetails extends HookConsumerWidget {
     final onlinePlayerState = ref.watch(onlinePlayerProvider);
 
     final onAddedToPlaylist = useCallback(
-      (int playlistId) {
+      (
+        BuildContext context,
+        int playlistId,
+      ) {
         db.onAddAudioToPlaylist(tag.id, playlistId);
 
         final onlinePlaylist = db.onGetOnlinePlaylist(playlistId);
