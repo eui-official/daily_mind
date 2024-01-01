@@ -2,20 +2,21 @@ import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_slider_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/utils.dart';
 
-class BasePlayerTimeSlider extends HookWidget {
+class BaseSlider<T extends num> extends HookWidget {
   final double max;
-  final int value;
+  final int? divisions;
+  final T value;
   final ValueChanged<double> onValueChanged;
-  final ValueChanged<Duration> onChangeEnd;
+  final ValueChanged<double> onChangeEnd;
 
-  const BasePlayerTimeSlider({
+  const BaseSlider({
     super.key,
     required this.max,
     required this.onChangeEnd,
     required this.onValueChanged,
     required this.value,
+    this.divisions,
   });
 
   @override
@@ -25,10 +26,8 @@ class BasePlayerTimeSlider extends HookWidget {
 
     final onSliderChangedEnd = useCallback(
       (double value) {
-        final duration = value.seconds;
-
         isChanging.value = false;
-        onChangeEnd(duration);
+        onChangeEnd(value);
       },
       [],
     );
@@ -56,8 +55,9 @@ class BasePlayerTimeSlider extends HookWidget {
     return BaseSliderTheme(
       isChanging: isChanging.value,
       slider: Slider(
-        max: max.toDouble(),
+        max: max,
         min: 0,
+        divisions: divisions,
         onChanged: onSliderChanged,
         onChangeEnd: onSliderChangedEnd,
         onChangeStart: onSliderChangeStart,

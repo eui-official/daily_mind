@@ -1,10 +1,11 @@
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
-import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_slider.dart';
+import 'package:daily_mind/common_widgets/base_slider.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/utils.dart';
 
 class BasePlayerTime extends HookWidget {
   final int position;
@@ -33,10 +34,10 @@ class BasePlayerTime extends HookWidget {
     );
 
     final child = useMemoized(() {
-      return BasePlayerTimeSlider(
+      return BaseSlider(
         key: ValueKey(tag),
         max: max.toDouble(),
-        onChangeEnd: onChangeEnd,
+        onChangeEnd: (value) => onChangeEnd(value.seconds),
         value: position,
         onValueChanged: (value) {
           trackValueState.value = value;
