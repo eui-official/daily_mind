@@ -15,7 +15,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
   final isPlaying = playBackState.data?.playing ?? false;
 
   final mixItemsSnapshot = useStream(baseBackgroundHandler.onStreamMixItems);
-  final mixItems = mixItemsSnapshot.data ?? [];
+  final mixItemsData = mixItemsSnapshot.data ?? [];
+  final mixItems = mixItemsData.map((item) {
+    return MixItem(
+      player: item.player,
+      audio: item.audio,
+    );
+  }).toList();
 
   final mediaItemSnapshot = useStream(baseBackgroundHandler.mediaItem);
   final mediaItem = mediaItemSnapshot.data;

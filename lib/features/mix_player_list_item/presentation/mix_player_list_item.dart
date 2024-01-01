@@ -18,10 +18,12 @@ class MixPlayerListItem extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final children = useMemoized(() {
+      final items = mixItems.map((item) {
+        return MixPlayerItem(item: item);
+      });
+
       return space(
-        mixItems.map((item) {
-          return MixPlayerItem(item: item);
-        }).toList(),
+        items,
         height: spacing(5),
       );
     }, [mixItems]);

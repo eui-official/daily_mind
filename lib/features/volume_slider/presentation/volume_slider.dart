@@ -1,8 +1,7 @@
-import 'package:daily_mind/common_widgets/base_slider_theme.dart';
+import 'package:daily_mind/common_widgets/base_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-class VolumeSlider extends HookWidget {
+class VolumeSlider extends StatelessWidget {
   final ValueChanged<double> onVolumeChanged;
   final double initVolume;
 
@@ -14,19 +13,12 @@ class VolumeSlider extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final volume = useState(initVolume);
-
-    return BaseSliderTheme(
-      slider: Slider(
-        value: volume.value.toDouble(),
-        min: 0,
-        max: 1,
-        divisions: 100,
-        onChanged: (value) {
-          volume.value = value;
-          onVolumeChanged(value);
-        },
-      ),
+    return BaseSlider(
+      value: initVolume,
+      max: 1,
+      divisions: 100,
+      onChangeEnd: onVolumeChanged,
+      onValueChanged: onVolumeChanged,
     );
   }
 }

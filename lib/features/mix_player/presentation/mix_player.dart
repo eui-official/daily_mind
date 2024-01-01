@@ -27,9 +27,9 @@ class MixPlayer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mixState = ref.watch(mixProvider);
-    final mixNotifier = ref.watch(mixProvider.notifier);
     final mixData = useMix(ref);
+    final mixNotifier = ref.watch(mixProvider.notifier);
+    final mixState = ref.watch(mixProvider);
     final nameFocusNode = useMemoized(() => FocusNode());
 
     final onSaveMix = useCallback(
@@ -82,9 +82,7 @@ class MixPlayer extends HookConsumerWidget {
                               onChanged: mixNotifier.onUpdateTitle,
                             ),
                           ),
-                          MixPlayerListItem(
-                            mixItems: mixData.mixItems,
-                          ),
+                          MixPlayerListItem(mixItems: mixData.mixItems),
                         ],
                         height: spacing(4),
                       ),
