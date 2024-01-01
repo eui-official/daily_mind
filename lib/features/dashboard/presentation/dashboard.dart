@@ -1,9 +1,9 @@
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_position.dart';
 import 'package:daily_mind/extensions/context.dart';
 import 'package:daily_mind/features/app_navigation_bar/presentation/app_navigation_bar_provider.dart';
 import 'package:daily_mind/features/bird_loading/presentation/bird_loading.dart';
-import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
@@ -61,12 +61,7 @@ class Dashboard extends HookConsumerWidget {
               ),
             ),
           ),
-          const Positioned(
-            bottom: kBottomNavigationBarHeight * 1.25,
-            left: 0,
-            right: 0,
-            child: BaseMiniPlayerSwitcher(),
-          ),
+          const BaseMiniPlayerPosition(),
         ],
       );
     }, [
