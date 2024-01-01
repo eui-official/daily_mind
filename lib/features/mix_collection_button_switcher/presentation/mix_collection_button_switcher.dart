@@ -21,7 +21,7 @@ class MixCollectionButtonSwitcher extends StatelessWidget {
     final backgroundColor = isCanAddNewMix
         ? context.primaryColorDark50
         : context.theme.colorScheme.error;
-    final title = isCanAddNewMix ? 'Bộ sưu tập' : 'Xóa';
+    final title = isCanAddNewMix ? 'Lưu vào bộ sưu tập' : 'Xóa bộ sưu tập';
 
     return BaseIconButtonWithTitle(
       onPressed: onPressed,
