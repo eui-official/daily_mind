@@ -65,7 +65,7 @@ class MixCollectionItem extends HookConsumerWidget {
           );
         });
       }
-    }, []);
+    }, [mixCollection]);
 
     final onDeleted = useCallback(
       () async {
@@ -80,7 +80,7 @@ class MixCollectionItem extends HookConsumerWidget {
           db.onDeleteCollection(mixCollection.id);
         }
       },
-      [context],
+      [context, mixCollection],
     );
 
     final onOpenEdit = useCallback(() async {
