@@ -26,7 +26,7 @@ class MixPlayerListItem extends HookWidget {
         items,
         height: spacing(5),
       );
-    }, [mixItems]);
+    }, [mixItems.length]);
 
     return BaseContentHeader(
       title: 'Danh sách âm thanh'.tr(),
