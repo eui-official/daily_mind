@@ -1,3 +1,6 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
+import 'package:daily_mind/common_applications/safe_builder.dart';
+import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_audios_ids_builder/presentation/base_audio_ids_builder.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:daily_mind/constants/constants.dart';
@@ -18,6 +21,16 @@ class PlaylistDetails extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final onlinePlaylist = db.onGetOnlinePlaylist(playlistId);
 
+    useEffectDelayed(() {
+      db.onStreamOnlinePlaylist(playlistId).listen((onlinePlaylist) {
+        onSafeValueBuilder(onlinePlaylist, (safeOnlinePlaylist) {
+          if (safeOnlinePlaylist.itemIds.isEmpty) {
+            context.pop();
+          }
+        });
+      });
+    });
+
     return BaseNullBuilder(
       value: onlinePlaylist,
       builder: (safeOnlinePlaylist) {
@@ -26,8 +39,9 @@ class PlaylistDetails extends HookConsumerWidget {
           builder: (audios) {
             return Scaffold(
               body: PlaylistDetailsContent(
-                title: safeOnlinePlaylist.title ?? kEmptyString,
                 audios: audios,
+                playlistId: safeOnlinePlaylist.id,
+                title: safeOnlinePlaylist.title ?? kEmptyString,
               ),
             );
           },

@@ -17,12 +17,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PlaylistDetailsContent extends HookConsumerWidget {
   final String title;
+  final int playlistId;
   final List<Audio> audios;
 
   const PlaylistDetailsContent({
     super.key,
-    required this.title,
     required this.audios,
+    required this.playlistId,
+    required this.title,
   });
 
   @override
@@ -45,7 +47,10 @@ class PlaylistDetailsContent extends HookConsumerWidget {
               ),
               expandedHeight: context.height / 3,
               children: [
-                PlaylistDetailsListAudio(audios: audios),
+                PlaylistDetailsListAudio(
+                  playlistId: playlistId,
+                  audios: audios,
+                ),
               ],
             ),
             PlaylistDetailsPlayIconButton(

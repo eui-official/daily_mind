@@ -190,6 +190,10 @@ class Db {
     return isar.onlinePlaylists.getSync(id);
   }
 
+  Stream<OnlinePlaylist?> onStreamOnlinePlaylist(int id) {
+    return isar.onlinePlaylists.watchObject(id);
+  }
+
   int onCountSongsFromPlaylist(int id) {
     final onlinePlaylist = isar.onlinePlaylists.getSync(id);
 
@@ -199,6 +203,28 @@ class Db {
   void onDeleteOnlinePlaylist(int id) {
     isar.writeTxnSync(() {
       isar.onlinePlaylists.deleteSync(id);
+    });
+  }
+
+  void onDeleteSongInPlaylist(
+    int playlistId,
+    String audioId,
+  ) {
+    isar.writeTxnSync(() {
+      final onlinePlaylist =
+          isar.onlinePlaylists.where().idEqualTo(playlistId).findFirstSync();
+
+      onSafeValueBuilder(
+        onlinePlaylist,
+        (safeOnlinePlaylist) {
+          final itemIds = [...safeOnlinePlaylist.itemIds];
+          itemIds.remove(audioId);
+
+          safeOnlinePlaylist.itemIds = itemIds;
+
+          isar.onlinePlaylists.putSync(safeOnlinePlaylist);
+        },
+      );
     });
   }
 }
