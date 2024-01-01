@@ -4,9 +4,10 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Trans;
 
 class MixCollectionItemEditBottomSheet extends HookWidget {
   final MixCollection mixCollection;
@@ -26,7 +27,7 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
       return [
         BaseTile(
           leading: const Icon(Icons.edit),
-          title: 'Đổi tên',
+          title: 'Đổi tên'.tr(),
           onTap: onRenamed,
         ),
         BaseTile(
@@ -34,7 +35,7 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
             Icons.delete,
             color: context.theme.colorScheme.error,
           ),
-          title: 'Xóa',
+          title: 'Xóa'.tr(),
           color: context.theme.colorScheme.error,
           onTap: onDeleted,
         ),
