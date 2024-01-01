@@ -4,7 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class BaseSliable extends StatelessWidget {
-  final int id;
+  final dynamic id;
   final Widget child;
   final VoidCallback onDeleted;
 
