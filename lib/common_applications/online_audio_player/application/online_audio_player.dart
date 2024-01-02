@@ -28,13 +28,19 @@ class OnlineAudioPlayer extends AudioPlayer {
     return currentSequence.map((s) => s.tag as Audio).toList();
   }
 
-  Future<void> onInitSource(List<Audio> audios) async {
+  Future<void> onInitSource(
+    List<Audio> audios, {
+    int index = 0,
+  }) async {
     final newItems = List<Audio>.from(audios);
-    final playItem = newItems.removeAt(0);
+    final playItem = newItems.removeAt(index);
     final newList = [...newItems, playItem];
     final initialIndex = newList.indexOf(playItem);
 
-    await onSetAudioSource(newList, initialIndex: initialIndex);
+    await onSetAudioSource(
+      newList,
+      initialIndex: initialIndex,
+    );
   }
 
   Future<void> onSetAudioSource(
