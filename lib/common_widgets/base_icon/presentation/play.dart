@@ -13,7 +13,7 @@ class PlayIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Icon(
-      color: context.theme.hintColor,
+      color: context.theme.primaryColor,
       Icons.play_circle_fill_outlined,
       size: spacing(size),
     );

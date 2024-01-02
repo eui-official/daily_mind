@@ -17,7 +17,7 @@ class BaseMusicPlaying extends StatelessWidget {
   Widget build(BuildContext context) {
     return ColorFiltered(
       colorFilter: ColorFilter.mode(
-        color ?? context.theme.primaryColor,
+        color ?? context.theme.iconTheme.color!,
         BlendMode.modulate,
       ),
       child: Lottie.asset(

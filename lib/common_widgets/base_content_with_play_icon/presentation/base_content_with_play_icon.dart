@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 
 class BaseContentWithPlayIcon extends StatelessWidget {
   final bool isPlaying;
-  final Color? iconColor;
   final Widget child;
 
   const BaseContentWithPlayIcon({
     super.key,
     required this.child,
-    this.iconColor,
     this.isPlaying = false,
   });
 
@@ -21,10 +19,7 @@ class BaseContentWithPlayIcon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          BaseContentStatusIcon(
-            isPlaying: isPlaying,
-            iconColor: iconColor,
-          ),
+          BaseContentStatusIcon(isPlaying: isPlaying),
           child,
         ],
       ),

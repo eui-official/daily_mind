@@ -54,8 +54,7 @@ class OnlineCategoryHorizontal extends HookWidget {
                             ),
                             Flexible(
                               child: OnlineCategoryHorizontalContent(
-                                name: audioCategory.category.name,
-                                description: audioCategory.category.description,
+                                category: audioCategory.category,
                               ),
                             ),
                           ],
