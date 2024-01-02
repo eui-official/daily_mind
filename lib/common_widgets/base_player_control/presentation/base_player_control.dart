@@ -37,7 +37,6 @@ class BasePlayerControl extends HookWidget {
             max: seconds,
             onChangeEnd: backgroundHandler.onlinePlayer.seek,
             position: positionSnapshot.data?.inSeconds ?? 0,
-            tag: tag,
           ),
           BasePlayerActions(
             isPlaying: isPlaying,
