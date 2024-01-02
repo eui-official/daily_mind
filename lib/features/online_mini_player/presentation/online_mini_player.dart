@@ -20,15 +20,15 @@ class OnlineMiniPlayer extends HookConsumerWidget {
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
     final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
+    final currentIndex = currentIndexSnapshot.data ?? 0;
+
     final processingStateSnapshot =
         useStream(onlinePlayer.processingStateStream);
     final playBackState = useStream(baseBackgroundHandler.playbackState);
-
-    final sequence = onlinePlayer.audioSource?.sequence ?? [];
-    final currentIndex = currentIndexSnapshot.data ?? 0;
-
     final isLoading = processingStateSnapshot.data == ProcessingState.loading;
     final isPlaying = playBackState.data?.playing ?? false;
+
+    final sequence = onlinePlayer.audioSource?.sequence ?? [];
 
     final onOpenPlayerOnline = useCallback(() {
       onShowScrollableBottomSheet(
