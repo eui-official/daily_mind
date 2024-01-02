@@ -35,7 +35,7 @@ class AppBarScrollview extends StatelessWidget {
             ),
           ),
           bottom: bottom,
-          expandedHeight: expandedHeight ?? kToolbarHeight * 2,
+          expandedHeight: expandedHeight ?? kToolbarHeight,
           flexibleSpace: flexibleSpace,
           centerTitle: false,
           floating: true,
