@@ -9,21 +9,25 @@ class MusicPlaying extends StatelessWidget {
 
   const MusicPlaying({
     super.key,
-    this.size = 3,
+    this.size = 2,
     this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ColorFiltered(
-      colorFilter: ColorFilter.mode(
-        color ?? context.theme.primaryColor,
-        BlendMode.modulate,
-      ),
-      child: Lottie.asset(
-        'assets/lottie/music-playing.json',
-        width: spacing(size),
-        height: spacing(size),
+    return CircleAvatar(
+      radius: spacing(2),
+      backgroundColor: context.theme.primaryColor.withOpacity(0.25),
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          color ?? context.theme.primaryColor,
+          BlendMode.modulate,
+        ),
+        child: Lottie.asset(
+          'assets/lottie/music-playing.json',
+          width: spacing(size),
+          height: spacing(size),
+        ),
       ),
     );
   }
