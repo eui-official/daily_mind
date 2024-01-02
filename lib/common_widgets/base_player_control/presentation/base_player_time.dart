@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/base_id.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
 import 'package:daily_mind/common_widgets/base_slider.dart';
@@ -11,18 +12,17 @@ class BasePlayerTime extends HookWidget {
   final int position;
   final int max;
   final ValueChanged<Duration> onChangeEnd;
-  final dynamic tag;
 
   const BasePlayerTime({
     super.key,
     required this.max,
     required this.onChangeEnd,
     required this.position,
-    required this.tag,
   });
 
   @override
   Widget build(BuildContext context) {
+    final sliderId = useMemoized(() => baseId.id, [max]);
     final trackValueState = useState<double>(0);
 
     final remainingTime = useMemoized(
@@ -35,7 +35,7 @@ class BasePlayerTime extends HookWidget {
 
     final child = useMemoized(() {
       return BaseSlider(
-        key: ValueKey(tag),
+        key: ValueKey(sliderId),
         max: max.toDouble(),
         onChangeEnd: (value) => onChangeEnd(value.seconds),
         value: position,
@@ -46,7 +46,7 @@ class BasePlayerTime extends HookWidget {
     }, [
       max,
       position,
-      tag,
+      sliderId,
     ]);
 
     return Column(
