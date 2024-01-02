@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_item_box_size.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -18,24 +19,21 @@ class OnlineItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      type: MaterialType.transparency,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: spacing(0.5)),
-          child: Row(
-            children: space(
-              [
-                SizedBox(
-                  width: spacing(5),
-                  height: spacing(5),
-                  child: BaseNetworkImage(image: image),
-                ),
-                Flexible(child: BaseItemBoxSize(child: title))
-              ],
-              width: spacing(),
-            ),
+    return BaseInkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: spacing(0.5)),
+        child: Row(
+          children: space(
+            [
+              SizedBox(
+                width: spacing(5),
+                height: spacing(5),
+                child: BaseNetworkImage(image: image),
+              ),
+              Flexible(child: BaseItemBoxSize(child: title))
+            ],
+            width: spacing(),
           ),
         ),
       ),

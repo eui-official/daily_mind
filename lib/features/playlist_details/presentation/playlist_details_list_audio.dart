@@ -1,14 +1,21 @@
+import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_domains/audio.dart';
+import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_sliable.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
+import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item.dart';
 import 'package:daily_mind/features/online_item/presentation/online_title.dart';
-import 'package:flutter/material.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class PlaylistDetailsListAudio extends HookWidget {
+class PlaylistDetailsListAudio extends HookConsumerWidget {
   final OnlinePlaylist onlinePlaylist;
   final List<Audio> audios;
 
@@ -19,8 +26,31 @@ class PlaylistDetailsListAudio extends HookWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+    final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
+    final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final currentAudios = useState<List<Audio>>([]);
+
+    final onTap = useCallback(
+      (int index) async {
+        onlinePlayerNotifier.onUpdateId(onlinePlaylist.id);
+        onlinePlayerNotifier.onUpdateOpenFrom(onlinePlaylist.title);
+
+        await baseBackgroundHandler.onInitOnline(
+          audios,
+          index: index,
+        );
+
+        baseMiniPlayerNotifier.onUpdateState(
+          const MiniPlayerState(
+            isShow: true,
+            audioType: AudioTypes.online,
+          ),
+        );
+      },
+      [audios],
+    );
 
     final onDeleted = useCallback(
       (Audio audio) {
@@ -46,10 +76,13 @@ class PlaylistDetailsListAudio extends HookWidget {
     return BaseSpacingContainerHorizontal(
       child: Column(
         children: currentAudios.value.map((audio) {
+          final index = currentAudios.value.indexOf(audio);
+
           return BaseSliable(
             id: audio.id,
             onDeleted: () => onDeleted(audio),
             child: OnlineItem(
+              onTap: () => onTap(index),
               image: audio.image,
               title: OnlineTitle(title: audio.name),
             ),
