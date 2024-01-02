@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OnlinePlayerState {
   bool get isExpanded => throw _privateConstructorUsedError;
+  dynamic get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $OnlinePlayerStateCopyWith<$Res> {
           OnlinePlayerState value, $Res Function(OnlinePlayerState) then) =
       _$OnlinePlayerStateCopyWithImpl<$Res, OnlinePlayerState>;
   @useResult
-  $Res call({bool isExpanded, String name});
+  $Res call({bool isExpanded, dynamic id, String name});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$OnlinePlayerStateCopyWithImpl<$Res, $Val extends OnlinePlayerState>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? id = freezed,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
@@ -54,6 +56,10 @@ class _$OnlinePlayerStateCopyWithImpl<$Res, $Val extends OnlinePlayerState>
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -70,7 +76,7 @@ abstract class _$$OnlinePlayerStateImplCopyWith<$Res>
       __$$OnlinePlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isExpanded, String name});
+  $Res call({bool isExpanded, dynamic id, String name});
 }
 
 /// @nodoc
@@ -85,6 +91,7 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? id = freezed,
     Object? name = null,
   }) {
     return _then(_$OnlinePlayerStateImpl(
@@ -92,6 +99,10 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
               as bool,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -103,30 +114,35 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
-  const _$OnlinePlayerStateImpl({required this.isExpanded, required this.name});
+  const _$OnlinePlayerStateImpl(
+      {required this.isExpanded, required this.id, required this.name});
 
   @override
   final bool isExpanded;
+  @override
+  final dynamic id;
   @override
   final String name;
 
   @override
   String toString() {
-    return 'OnlinePlayerState(isExpanded: $isExpanded, name: $name)';
+    return 'OnlinePlayerState(isExpanded: $isExpanded, id: $id, name: $name)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnlinePlayerStateImpl &&
             (identical(other.isExpanded, isExpanded) ||
                 other.isExpanded == isExpanded) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExpanded, name);
+  int get hashCode => Object.hash(
+      runtimeType, isExpanded, const DeepCollectionEquality().hash(id), name);
 
   @JsonKey(ignore: true)
   @override
@@ -139,10 +155,13 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
 abstract class _OnlinePlayerState implements OnlinePlayerState {
   const factory _OnlinePlayerState(
       {required final bool isExpanded,
+      required final dynamic id,
       required final String name}) = _$OnlinePlayerStateImpl;
 
   @override
   bool get isExpanded;
+  @override
+  dynamic get id;
   @override
   String get name;
   @override

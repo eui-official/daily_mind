@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_widgets/base_sliver_list.dart';
-import 'package:daily_mind/common_widgets/base_square_icon.dart';
+import 'package:daily_mind/common_widgets/base_square_container.dart';
 import 'package:daily_mind/common_widgets/base_tile/presentation/base_tile.dart';
 import 'package:daily_mind/features/online_playlist_available/presentation/online_playlist_available_provider.dart';
 import 'package:daily_mind/features/online_playlist_available_item/presentation/online_playlist_available_item.dart';
@@ -33,7 +33,7 @@ class OnlinePlaylistAvailable extends HookConsumerWidget {
             padding: EdgeInsets.symmetric(vertical: spacing(2)),
             child: BaseTile(
               onTap: openAddOnlinePlaylist,
-              leading: const BaseSquareIcon(iconData: Icons.add),
+              leading: const BaseSquareContainer(child: Icon(Icons.add)),
               title: 'Thêm mới',
             ),
           ),

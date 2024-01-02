@@ -18,15 +18,12 @@ class MixSwitch extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return BaseSpacingContainerHorizontal(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: kToolbarHeight),
-        child: FadeIndexedStack(
-          index: index,
-          children: [
-            const MixListAudio(),
-            MixCollectionsSwitcher(onCreateNew: onCreateNew),
-          ],
-        ),
+      child: FadeIndexedStack(
+        index: index,
+        children: [
+          const MixListAudio(),
+          MixCollectionsSwitcher(onCreateNew: onCreateNew),
+        ],
       ),
     );
   }

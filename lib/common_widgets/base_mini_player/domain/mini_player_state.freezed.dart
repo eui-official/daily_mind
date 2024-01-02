@@ -116,7 +116,7 @@ class _$MiniPlayerStateImpl implements _MiniPlayerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MiniPlayerStateImpl &&

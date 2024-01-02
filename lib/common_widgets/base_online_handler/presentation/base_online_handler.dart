@@ -27,12 +27,14 @@ class BaseOnlineHandler extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
+    final onlinePlayerState = ref.watch(onlinePlayerProvider);
 
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final audios = audioCategory.audios;
     final category = audioCategory.category;
 
     final onTap = useCallback(() async {
+      onlinePlayerNotifier.onUpdateId(category.id);
       onlinePlayerNotifier.onUpdateOpenFrom(category.name);
 
       await baseBackgroundHandler.onInitOnline(audios);
@@ -43,7 +45,11 @@ class BaseOnlineHandler extends HookConsumerWidget {
           audioType: AudioTypes.online,
         ),
       );
-    }, [category, audios]);
+    }, [
+      audios,
+      category,
+      onlinePlayerState,
+    ]);
 
     return Container(
       padding: padding ?? EdgeInsets.symmetric(horizontal: spacing(2)),

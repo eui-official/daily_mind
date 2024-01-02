@@ -7,7 +7,7 @@ part of 'base_audio_ids_provider.dart';
 // **************************************************************************
 
 String _$baseAudioIdsNotifierHash() =>
-    r'6c7317858383c202f942011cf1b1e7f4b248a29c';
+    r'fcc493b1ba5e8fd0ed7e8f3dce1d3ecdf11e7b1b';
 
 /// Copied from Dart SDK
 class _SystemHash {
