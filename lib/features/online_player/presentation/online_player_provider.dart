@@ -13,8 +13,8 @@ class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
     state = state.copyWith(isExpanded: !state.isExpanded);
   }
 
-  void onUpdateOpenFrom(String name) {
-    state = state.copyWith(name: name);
+  void onUpdateOpenFrom(String? name) {
+    state = state.copyWith(name: name ?? kEmptyString);
   }
 }
 

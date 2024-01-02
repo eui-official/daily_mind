@@ -6,7 +6,9 @@ import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_st
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
+import 'package:daily_mind/db/schemas/online_playlist.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_image.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_list_audio.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_play_icon_button.dart';
@@ -17,13 +19,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PlaylistDetailsContent extends HookConsumerWidget {
   final String title;
-  final int playlistId;
+  final OnlinePlaylist onlinePlaylist;
   final List<Audio> audios;
 
   const PlaylistDetailsContent({
     super.key,
     required this.audios,
-    required this.playlistId,
+    required this.onlinePlaylist,
     required this.title,
   });
 
@@ -31,6 +33,19 @@ class PlaylistDetailsContent extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
+    final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
+
+    final onPlay = useCallback(() async {
+      onlinePlayerNotifier.onUpdateOpenFrom(onlinePlaylist.title);
+      await baseBackgroundHandler.onInitOnline(audios);
+
+      baseMiniPlayerNotifier.onUpdateState(
+        const MiniPlayerState(
+          isShow: true,
+          audioType: AudioTypes.online,
+        ),
+      );
+    }, [audios]);
 
     final child = useMemoized(
       () {
@@ -48,23 +63,12 @@ class PlaylistDetailsContent extends HookConsumerWidget {
               expandedHeight: context.height / 3,
               children: [
                 PlaylistDetailsListAudio(
-                  playlistId: playlistId,
+                  onlinePlaylist: onlinePlaylist,
                   audios: audios,
                 ),
               ],
             ),
-            PlaylistDetailsPlayIconButton(
-              onPlay: () async {
-                await baseBackgroundHandler.onInitOnline(audios);
-
-                baseMiniPlayerNotifier.onUpdateState(
-                  const MiniPlayerState(
-                    isShow: true,
-                    audioType: AudioTypes.online,
-                  ),
-                );
-              },
-            )
+            PlaylistDetailsPlayIconButton(onPlay: onPlay)
           ],
         );
       },

@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/online_player_details/presentation/online_player_details.dart';
@@ -28,19 +29,23 @@ class OnlinePlayer extends HookConsumerWidget {
 
     final sequence = sequenceSnapshot.data ?? [];
 
-    if (sequence.isEmpty) {
-      return kEmptyWidget;
-    }
+    final child = useMemoized(() {
+      if (sequence.isEmpty) {
+        return kEmptyWidget;
+      }
 
-    final s = sequence[currentIndex];
-    final tag = s.tag;
+      final s = sequence[currentIndex];
+      final tag = s.tag;
 
-    return OnlinePlayerDetails(
-      scrollController: scrollController,
-      image: tag.image,
-      tag: tag,
-      onExpanded: onlinePlayerNotifier.onToggleExpanded,
-      child: OnlinePlayerBottom(audio: tag),
-    );
+      return OnlinePlayerDetails(
+        image: tag.image,
+        onExpanded: onlinePlayerNotifier.onToggleExpanded,
+        scrollController: scrollController,
+        tag: tag,
+        child: OnlinePlayerBottom(audio: tag),
+      );
+    }, [sequence, currentIndex]);
+
+    return BaseAnimatedSwitcher(child: child);
   }
 }

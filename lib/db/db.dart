@@ -207,24 +207,16 @@ class Db {
   }
 
   void onDeleteSongInPlaylist(
-    int playlistId,
+    OnlinePlaylist onlinePlaylist,
     String audioId,
   ) {
     isar.writeTxnSync(() {
-      final onlinePlaylist =
-          isar.onlinePlaylists.where().idEqualTo(playlistId).findFirstSync();
+      final itemIds = [...onlinePlaylist.itemIds];
+      itemIds.remove(audioId);
 
-      onSafeValueBuilder(
-        onlinePlaylist,
-        (safeOnlinePlaylist) {
-          final itemIds = [...safeOnlinePlaylist.itemIds];
-          itemIds.remove(audioId);
+      onlinePlaylist.itemIds = itemIds;
 
-          safeOnlinePlaylist.itemIds = itemIds;
-
-          isar.onlinePlaylists.putSync(safeOnlinePlaylist);
-        },
-      );
+      isar.onlinePlaylists.putSync(onlinePlaylist);
     });
   }
 }

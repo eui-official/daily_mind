@@ -40,7 +40,7 @@ class PlaylistDetails extends HookConsumerWidget {
             return Scaffold(
               body: PlaylistDetailsContent(
                 audios: audios,
-                playlistId: safeOnlinePlaylist.id,
+                onlinePlaylist: safeOnlinePlaylist,
                 title: safeOnlinePlaylist.title ?? kEmptyString,
               ),
             );
