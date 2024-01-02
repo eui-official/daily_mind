@@ -109,7 +109,7 @@ class _$BaseInternetCheckStateImpl extends _BaseInternetCheckState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BaseInternetCheckStateImpl &&
