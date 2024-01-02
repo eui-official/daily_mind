@@ -19,7 +19,7 @@ class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
     state = state.copyWith(name: name ?? kEmptyString);
   }
 
-  void onUpdateId(String id) {
+  void onUpdateId(dynamic id) {
     state = state.copyWith(id: id);
   }
 }

@@ -1,13 +1,13 @@
+import 'package:daily_mind/common_widgets/base_music_playing/presentation/base_music_playing.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
-import 'package:lottie/lottie.dart';
 
-class MusicPlaying extends StatelessWidget {
+class CircularMusicPlaying extends StatelessWidget {
   final Color? color;
   final double size;
 
-  const MusicPlaying({
+  const CircularMusicPlaying({
     super.key,
     this.size = 2,
     this.color,
@@ -18,16 +18,9 @@ class MusicPlaying extends StatelessWidget {
     return CircleAvatar(
       radius: spacing(2),
       backgroundColor: context.theme.primaryColor.withOpacity(0.25),
-      child: ColorFiltered(
-        colorFilter: ColorFilter.mode(
-          color ?? context.theme.primaryColor,
-          BlendMode.modulate,
-        ),
-        child: Lottie.asset(
-          'assets/lottie/music-playing.json',
-          width: spacing(size),
-          height: spacing(size),
-        ),
+      child: BaseMusicPlaying(
+        color: color,
+        size: size,
       ),
     );
   }

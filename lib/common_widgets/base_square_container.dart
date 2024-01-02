@@ -3,24 +3,24 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
-class BaseSquareIcon extends StatelessWidget {
-  final IconData iconData;
+class BaseSquareContainer extends StatelessWidget {
+  final Widget child;
 
-  const BaseSquareIcon({
+  const BaseSquareContainer({
     super.key,
-    required this.iconData,
+    required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: spacing(5),
       height: spacing(5),
+      width: spacing(5),
       decoration: BoxDecoration(
         color: context.theme.primaryColorDark,
         borderRadius: circularRadius(),
       ),
-      child: Icon(iconData),
+      child: child,
     );
   }
 }
