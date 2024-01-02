@@ -17,7 +17,7 @@ class CircularMusicPlaying extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: spacing(2),
-      backgroundColor: context.theme.primaryColor,
+      backgroundColor: context.theme.primaryColorDark,
       child: BaseMusicPlaying(
         color: color,
         size: size,
