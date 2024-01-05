@@ -26,8 +26,9 @@ class BaseMusicPlaying extends StatelessWidget {
           ),
           child: Lottie.asset(
             'assets/lottie/music-playing.json',
-            width: spacing(size),
+            fit: BoxFit.cover,
             height: spacing(size),
+            width: spacing(size),
           ),
         );
       },

@@ -16,6 +16,7 @@ class BaseSquareContainer extends StatelessWidget {
     return Container(
       height: spacing(5),
       width: spacing(5),
+      alignment: Alignment.center,
       decoration: BoxDecoration(
         color: context.theme.primaryColorDark,
         borderRadius: circularRadius(),
