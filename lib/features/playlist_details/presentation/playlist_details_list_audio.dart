@@ -5,6 +5,7 @@ import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_st
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
 import 'package:daily_mind/common_widgets/base_sliable.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
@@ -28,9 +29,20 @@ class PlaylistDetailsListAudio extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
+
     final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
+    final onlinePlayerState = ref.read(onlinePlayerProvider);
+
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
+    final mediaItemSnapshot = useStream(baseBackgroundHandler.mediaItem);
+
     final currentAudios = useState<List<Audio>>([]);
+
+    final audioId = useMemoized(() {
+      final id = mediaItemSnapshot.data?.extras?['id'] ?? kEmptyString;
+
+      return id;
+    }, [mediaItemSnapshot.data]);
 
     final onTap = useCallback(
       (int index) async {
@@ -77,13 +89,16 @@ class PlaylistDetailsListAudio extends HookConsumerWidget {
       child: Column(
         children: currentAudios.value.map((audio) {
           final index = currentAudios.value.indexOf(audio);
+          final isPlaying =
+              audioId == audio.id && onlinePlayerState.id == onlinePlaylist.id;
 
           return BaseSliable(
             id: audio.id,
             onDeleted: () => onDeleted(audio),
             child: OnlineItem(
-              onTap: () => onTap(index),
               image: audio.image,
+              isPlaying: isPlaying,
+              onTap: () => onTap(index),
               title: OnlineTitle(title: audio.name),
             ),
           );

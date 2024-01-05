@@ -72,13 +72,14 @@ extension BaseOnlinePlayer on DailyMindBackgroundHandler {
         if (value != Duration.zero) {
           final tag = onlinePlayer.sequenceState?.currentSource?.tag;
 
-          onSafeValueBuilder<dynamic>(tag, (item) {
+          onSafeValueBuilder<Audio>(tag, (item) {
             mediaItem.add(
               MediaItem(
                 id: item.source,
                 title: item.name,
                 artUri: Uri.parse(item.image),
                 duration: value,
+                extras: item.toJson(),
               ),
             );
           });

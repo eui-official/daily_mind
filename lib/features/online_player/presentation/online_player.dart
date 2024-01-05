@@ -23,10 +23,9 @@ class OnlinePlayer extends HookConsumerWidget {
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
     final currentIndexSnapshot = useStream(onlinePlayer.currentIndexStream);
-    final sequenceSnapshot = useStream(onlinePlayer.sequenceStream);
-
     final currentIndex = currentIndexSnapshot.data ?? 0;
 
+    final sequenceSnapshot = useStream(onlinePlayer.sequenceStream);
     final sequence = sequenceSnapshot.data ?? [];
 
     final child = useMemoized(() {

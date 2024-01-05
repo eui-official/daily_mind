@@ -17,7 +17,6 @@ class OnlineListRelated extends HookConsumerWidget {
     final onlinePlayer = baseBackgroundHandler.onlinePlayer;
 
     final sequenceSnapshot = useStream(onlinePlayer.sequenceStream);
-
     final sequence = sequenceSnapshot.data ?? [];
 
     final onTap = useCallback((int index) {
