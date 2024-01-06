@@ -25,7 +25,7 @@ class OnlineItem extends StatelessWidget {
     return BaseInkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: spacing(0.5)),
+        padding: EdgeInsets.symmetric(vertical: spacing()),
         child: Row(
           children: space(
             [
@@ -41,7 +41,7 @@ class OnlineItem extends StatelessWidget {
               ),
               Flexible(child: BaseItemBoxSize(child: title))
             ],
-            width: spacing(),
+            width: spacing(2),
           ),
         ),
       ),
