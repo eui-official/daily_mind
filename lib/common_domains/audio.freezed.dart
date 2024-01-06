@@ -20,13 +20,14 @@ Audio _$AudioFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Audio {
-  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get source => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get source => throw _privateConstructorUsedError;
+  String? get fromSource => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,12 +40,13 @@ abstract class $AudioCopyWith<$Res> {
       _$AudioCopyWithImpl<$Res, Audio>;
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'created_at') String createdAt,
-      String name,
+      {@JsonKey(name: 'created_at') String createdAt,
+      String category,
+      String id,
       String image,
+      String name,
       String source,
-      String category});
+      String? fromSource});
 }
 
 /// @nodoc
@@ -60,38 +62,43 @@ class _$AudioCopyWithImpl<$Res, $Val extends Audio>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? createdAt = null,
-    Object? name = null,
-    Object? image = null,
-    Object? source = null,
     Object? category = null,
+    Object? id = null,
+    Object? image = null,
+    Object? name = null,
+    Object? source = null,
+    Object? fromSource = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String,
+      fromSource: freezed == fromSource
+          ? _value.fromSource
+          : fromSource // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -104,12 +111,13 @@ abstract class _$$AudioImplCopyWith<$Res> implements $AudioCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'created_at') String createdAt,
-      String name,
+      {@JsonKey(name: 'created_at') String createdAt,
+      String category,
+      String id,
       String image,
+      String name,
       String source,
-      String category});
+      String? fromSource});
 }
 
 /// @nodoc
@@ -123,38 +131,43 @@ class __$$AudioImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? createdAt = null,
-    Object? name = null,
-    Object? image = null,
-    Object? source = null,
     Object? category = null,
+    Object? id = null,
+    Object? image = null,
+    Object? name = null,
+    Object? source = null,
+    Object? fromSource = freezed,
   }) {
     return _then(_$AudioImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      source: null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String,
+      fromSource: freezed == fromSource
+          ? _value.fromSource
+          : fromSource // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -163,33 +176,36 @@ class __$$AudioImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AudioImpl implements _Audio {
   const _$AudioImpl(
-      {required this.id,
-      @JsonKey(name: 'created_at') required this.createdAt,
-      required this.name,
+      {@JsonKey(name: 'created_at') required this.createdAt,
+      required this.category,
+      required this.id,
       required this.image,
+      required this.name,
       required this.source,
-      required this.category});
+      this.fromSource});
 
   factory _$AudioImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioImplFromJson(json);
 
   @override
-  final String id;
-  @override
   @JsonKey(name: 'created_at')
   final String createdAt;
   @override
-  final String name;
+  final String category;
+  @override
+  final String id;
   @override
   final String image;
   @override
+  final String name;
+  @override
   final String source;
   @override
-  final String category;
+  final String? fromSource;
 
   @override
   String toString() {
-    return 'Audio(id: $id, createdAt: $createdAt, name: $name, image: $image, source: $source, category: $category)';
+    return 'Audio(createdAt: $createdAt, category: $category, id: $id, image: $image, name: $name, source: $source, fromSource: $fromSource)';
   }
 
   @override
@@ -197,20 +213,22 @@ class _$AudioImpl implements _Audio {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AudioImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.source, source) || other.source == source) &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.source, source) || other.source == source) &&
+            (identical(other.fromSource, fromSource) ||
+                other.fromSource == fromSource));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, createdAt, name, image, source, category);
+  int get hashCode => Object.hash(
+      runtimeType, createdAt, category, id, image, name, source, fromSource);
 
   @JsonKey(ignore: true)
   @override
@@ -228,28 +246,31 @@ class _$AudioImpl implements _Audio {
 
 abstract class _Audio implements Audio {
   const factory _Audio(
-      {required final String id,
-      @JsonKey(name: 'created_at') required final String createdAt,
-      required final String name,
+      {@JsonKey(name: 'created_at') required final String createdAt,
+      required final String category,
+      required final String id,
       required final String image,
+      required final String name,
       required final String source,
-      required final String category}) = _$AudioImpl;
+      final String? fromSource}) = _$AudioImpl;
 
   factory _Audio.fromJson(Map<String, dynamic> json) = _$AudioImpl.fromJson;
 
   @override
-  String get id;
-  @override
   @JsonKey(name: 'created_at')
   String get createdAt;
   @override
-  String get name;
+  String get category;
+  @override
+  String get id;
   @override
   String get image;
   @override
+  String get name;
+  @override
   String get source;
   @override
-  String get category;
+  String? get fromSource;
   @override
   @JsonKey(ignore: true)
   _$$AudioImplCopyWith<_$AudioImpl> get copyWith =>
