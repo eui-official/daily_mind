@@ -8,10 +8,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlineItemDropdownActions extends HookConsumerWidget {
   final Audio audio;
+  final VoidCallback onOpenPlaylist;
 
   const OnlineItemDropdownActions({
     super.key,
     required this.audio,
+    required this.onOpenPlaylist,
   });
 
   @override
@@ -29,8 +31,14 @@ class OnlineItemDropdownActions extends HookConsumerWidget {
 
     return PopupMenuButton(
       itemBuilder: (BuildContext context) => [
-        if (fromSource != null) PopupMenuItem(child: Text(fromSource.name)),
-        PopupMenuItem(child: Text('Thêm vào playlist'.tr()))
+        if (fromSource != null)
+          PopupMenuItem(
+            child: Text('Từ ${fromSource.name}'),
+          ),
+        PopupMenuItem(
+          onTap: onOpenPlaylist,
+          child: Text('Thêm vào playlist'.tr()),
+        )
       ],
       child: const Icon(Icons.more_vert),
     );
