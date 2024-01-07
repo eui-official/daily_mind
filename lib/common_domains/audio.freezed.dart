@@ -27,6 +27,7 @@ mixin _$Audio {
   String get image => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
+  @JsonKey(name: 'from_source')
   String? get fromSource => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +47,7 @@ abstract class $AudioCopyWith<$Res> {
       String image,
       String name,
       String source,
-      String? fromSource});
+      @JsonKey(name: 'from_source') String? fromSource});
 }
 
 /// @nodoc
@@ -117,7 +118,7 @@ abstract class _$$AudioImplCopyWith<$Res> implements $AudioCopyWith<$Res> {
       String image,
       String name,
       String source,
-      String? fromSource});
+      @JsonKey(name: 'from_source') String? fromSource});
 }
 
 /// @nodoc
@@ -182,7 +183,7 @@ class _$AudioImpl implements _Audio {
       required this.image,
       required this.name,
       required this.source,
-      this.fromSource});
+      @JsonKey(name: 'from_source') this.fromSource});
 
   factory _$AudioImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioImplFromJson(json);
@@ -201,6 +202,7 @@ class _$AudioImpl implements _Audio {
   @override
   final String source;
   @override
+  @JsonKey(name: 'from_source')
   final String? fromSource;
 
   @override
@@ -252,7 +254,7 @@ abstract class _Audio implements Audio {
       required final String image,
       required final String name,
       required final String source,
-      final String? fromSource}) = _$AudioImpl;
+      @JsonKey(name: 'from_source') final String? fromSource}) = _$AudioImpl;
 
   factory _Audio.fromJson(Map<String, dynamic> json) = _$AudioImpl.fromJson;
 
@@ -270,6 +272,7 @@ abstract class _Audio implements Audio {
   @override
   String get source;
   @override
+  @JsonKey(name: 'from_source')
   String? get fromSource;
   @override
   @JsonKey(ignore: true)
