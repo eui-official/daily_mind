@@ -14,7 +14,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class BaseOnlineHandler extends HookConsumerWidget {
   final AudioCategory audioCategory;
   final EdgeInsets? padding;
-  final OnOnlineHandlerBuilder builder;
+  final OnFunctionHandlerBuilder builder;
 
   const BaseOnlineHandler({
     super.key,

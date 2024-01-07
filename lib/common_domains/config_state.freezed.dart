@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ConfigState {
   List<Category> get categories => throw _privateConstructorUsedError;
   List<Group> get groups => throw _privateConstructorUsedError;
+  List<FromSource> get fromSources => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,11 @@ abstract class $ConfigStateCopyWith<$Res> {
           ConfigState value, $Res Function(ConfigState) then) =
       _$ConfigStateCopyWithImpl<$Res, ConfigState>;
   @useResult
-  $Res call({List<Category> categories, List<Group> groups, bool isLoading});
+  $Res call(
+      {List<Category> categories,
+      List<Group> groups,
+      List<FromSource> fromSources,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -49,6 +54,7 @@ class _$ConfigStateCopyWithImpl<$Res, $Val extends ConfigState>
   $Res call({
     Object? categories = null,
     Object? groups = null,
+    Object? fromSources = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -60,6 +66,10 @@ class _$ConfigStateCopyWithImpl<$Res, $Val extends ConfigState>
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
               as List<Group>,
+      fromSources: null == fromSources
+          ? _value.fromSources
+          : fromSources // ignore: cast_nullable_to_non_nullable
+              as List<FromSource>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -76,7 +86,11 @@ abstract class _$$ConfigStateImplCopyWith<$Res>
       __$$ConfigStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Category> categories, List<Group> groups, bool isLoading});
+  $Res call(
+      {List<Category> categories,
+      List<Group> groups,
+      List<FromSource> fromSources,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -92,6 +106,7 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
   $Res call({
     Object? categories = null,
     Object? groups = null,
+    Object? fromSources = null,
     Object? isLoading = null,
   }) {
     return _then(_$ConfigStateImpl(
@@ -103,6 +118,10 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
               as List<Group>,
+      fromSources: null == fromSources
+          ? _value._fromSources
+          : fromSources // ignore: cast_nullable_to_non_nullable
+              as List<FromSource>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -117,9 +136,11 @@ class _$ConfigStateImpl implements _ConfigState {
   const _$ConfigStateImpl(
       {required final List<Category> categories,
       required final List<Group> groups,
+      required final List<FromSource> fromSources,
       required this.isLoading})
       : _categories = categories,
-        _groups = groups;
+        _groups = groups,
+        _fromSources = fromSources;
 
   final List<Category> _categories;
   @override
@@ -137,12 +158,20 @@ class _$ConfigStateImpl implements _ConfigState {
     return EqualUnmodifiableListView(_groups);
   }
 
+  final List<FromSource> _fromSources;
+  @override
+  List<FromSource> get fromSources {
+    if (_fromSources is EqualUnmodifiableListView) return _fromSources;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fromSources);
+  }
+
   @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'ConfigState(categories: $categories, groups: $groups, isLoading: $isLoading)';
+    return 'ConfigState(categories: $categories, groups: $groups, fromSources: $fromSources, isLoading: $isLoading)';
   }
 
   @override
@@ -153,6 +182,8 @@ class _$ConfigStateImpl implements _ConfigState {
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             const DeepCollectionEquality().equals(other._groups, _groups) &&
+            const DeepCollectionEquality()
+                .equals(other._fromSources, _fromSources) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -162,6 +193,7 @@ class _$ConfigStateImpl implements _ConfigState {
       runtimeType,
       const DeepCollectionEquality().hash(_categories),
       const DeepCollectionEquality().hash(_groups),
+      const DeepCollectionEquality().hash(_fromSources),
       isLoading);
 
   @JsonKey(ignore: true)
@@ -175,12 +207,15 @@ abstract class _ConfigState implements ConfigState {
   const factory _ConfigState(
       {required final List<Category> categories,
       required final List<Group> groups,
+      required final List<FromSource> fromSources,
       required final bool isLoading}) = _$ConfigStateImpl;
 
   @override
   List<Category> get categories;
   @override
   List<Group> get groups;
+  @override
+  List<FromSource> get fromSources;
   @override
   bool get isLoading;
   @override

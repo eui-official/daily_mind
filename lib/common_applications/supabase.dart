@@ -1,6 +1,7 @@
 import 'package:daily_mind/common_applications/audio.dart';
 import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_domains/category.dart';
+import 'package:daily_mind/common_domains/from_source.dart';
 import 'package:daily_mind/common_domains/group.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -41,6 +42,18 @@ class SupabaseAPI {
     }
 
     return categories;
+  }
+
+  Future<List<FromSource>> onGetFromSources() async {
+    final List<FromSource> fromSources = [];
+
+    final fromSourcesData = await supabase.from('from_sources').select();
+
+    for (var data in fromSourcesData) {
+      fromSources.add(FromSource.fromJson(data));
+    }
+
+    return fromSources;
   }
 
   // Get groups

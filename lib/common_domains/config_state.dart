@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_domains/category.dart';
+import 'package:daily_mind/common_domains/from_source.dart';
 import 'package:daily_mind/common_domains/group.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,6 +10,7 @@ class ConfigState with _$ConfigState {
   const factory ConfigState({
     required List<Category> categories,
     required List<Group> groups,
+    required List<FromSource> fromSources,
     required bool isLoading,
   }) = _ConfigState;
 }

@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
+import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_item_box_size.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item_playing.dart';
@@ -11,6 +11,7 @@ class OnlineItem extends StatelessWidget {
   final String image;
   final VoidCallback? onTap;
   final Widget title;
+  final Widget? trailing;
 
   const OnlineItem({
     super.key,
@@ -18,31 +19,38 @@ class OnlineItem extends StatelessWidget {
     required this.title,
     this.isPlaying = false,
     this.onTap,
+    this.trailing,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BaseInkWell(
+    return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: spacing()),
-        child: Row(
-          children: space(
-            [
-              SizedBox(
-                width: spacing(5),
-                height: spacing(5),
-                child: Stack(
-                  children: [
-                    BaseNetworkImage(image: image),
-                    if (isPlaying) const OnlineItemPlaying(),
-                  ],
-                ),
+        child: Stack(
+          children: [
+            Row(
+              children: space(
+                [
+                  SizedBox(
+                    width: spacing(5),
+                    height: spacing(5),
+                    child: Stack(
+                      children: [
+                        BaseNetworkImage(image: image),
+                        if (isPlaying) const OnlineItemPlaying(),
+                      ],
+                    ),
+                  ),
+                  Flexible(child: BaseItemBoxSize(child: title)),
+                  trailing,
+                ].whereNotNull().toList(),
+                width: spacing(2),
               ),
-              Flexible(child: BaseItemBoxSize(child: title))
-            ],
-            width: spacing(2),
-          ),
+            )
+          ],
         ),
       ),
     );

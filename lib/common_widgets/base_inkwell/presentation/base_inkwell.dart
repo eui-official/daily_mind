@@ -9,10 +9,10 @@ class BaseInkWell extends StatelessWidget {
 
   const BaseInkWell({
     super.key,
-    this.child,
-    this.color,
-    this.onTap,
     this.borderRadius,
+    this.child,
+    this.color = Colors.transparent,
+    this.onTap,
     this.type = MaterialType.transparency,
   });
 

@@ -7,20 +7,22 @@ part of 'audio.dart';
 // **************************************************************************
 
 _$AudioImpl _$$AudioImplFromJson(Map<String, dynamic> json) => _$AudioImpl(
-      id: json['id'] as String,
       createdAt: json['created_at'] as String,
-      name: json['name'] as String,
-      image: json['image'] as String,
-      source: json['source'] as String,
       category: json['category'] as String,
+      id: json['id'] as String,
+      image: json['image'] as String,
+      name: json['name'] as String,
+      source: json['source'] as String,
+      fromSource: json['from_source'] as String?,
     );
 
 Map<String, dynamic> _$$AudioImplToJson(_$AudioImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'created_at': instance.createdAt,
-      'name': instance.name,
-      'image': instance.image,
-      'source': instance.source,
       'category': instance.category,
+      'id': instance.id,
+      'image': instance.image,
+      'name': instance.name,
+      'source': instance.source,
+      'from_source': instance.fromSource,
     };
