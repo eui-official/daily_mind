@@ -167,8 +167,6 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
   }
 
   void onPlayMix() {
-    onUpdateMediaItem();
-
     for (var item in mixItems) {
       item.player.play();
     }
