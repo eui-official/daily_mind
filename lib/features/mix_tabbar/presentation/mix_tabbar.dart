@@ -20,12 +20,16 @@ class MixTabbar extends HookConsumerWidget implements PreferredSizeWidget {
       tabController.animateTo(mixTabbarState);
     }, [mixTabbarState]);
 
-    return BaseTabbar(
-      tabController: tabController,
-      onTap: mixTabbarNotifier.onTap,
-      tabs: const [
-        BaseTabbarItem(title: 'Pha trộn'),
-        BaseTabbarItem(title: 'Bộ sưu tập'),
+    return Row(
+      children: [
+        BaseTabbar(
+          tabController: tabController,
+          onTap: mixTabbarNotifier.onTap,
+          tabs: const [
+            BaseTabbarItem(title: 'Pha trộn'),
+            BaseTabbarItem(title: 'Bộ sưu tập'),
+          ],
+        )
       ],
     );
   }
