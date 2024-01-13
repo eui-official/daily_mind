@@ -5,6 +5,7 @@ import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:badges/badges.dart' as badges;
 
 class BaseMixEditorItem extends StatelessWidget {
   final double initVolume;
@@ -13,6 +14,7 @@ class BaseMixEditorItem extends StatelessWidget {
   final String name;
   final ValueChanged<double> onVolumeChanged;
   final Widget prefixChild;
+  final VoidCallback onDeleted;
 
   const BaseMixEditorItem({
     super.key,
@@ -20,6 +22,7 @@ class BaseMixEditorItem extends StatelessWidget {
     required this.initVolume,
     required this.name,
     required this.onVolumeChanged,
+    required this.onDeleted,
     this.prefixChild = kEmptyWidget,
     this.volumeKey,
   });
@@ -29,10 +32,21 @@ class BaseMixEditorItem extends StatelessWidget {
     return Row(
       children: space(
         [
-          BaseCardImage(
-            height: spacing(7),
-            width: spacing(7),
-            image: AssetImage(image),
+          badges.Badge(
+            position: badges.BadgePosition.topStart(),
+            badgeContent: Icon(
+              Icons.close,
+              size: spacing(1.5),
+            ),
+            badgeStyle: badges.BadgeStyle(
+              badgeColor: context.theme.primaryColorDark,
+            ),
+            onTap: onDeleted,
+            child: BaseCardImage(
+              height: spacing(7),
+              width: spacing(7),
+              image: AssetImage(image),
+            ),
           ),
           Flexible(
             child: Column(
