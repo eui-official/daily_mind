@@ -67,7 +67,6 @@ class OnlineMiniPlayer extends HookConsumerWidget {
       isLoading,
       isPlaying,
       onlinePlayer.isReady,
-      onOpenPlayerOnline,
       sequence,
     ]);
 
