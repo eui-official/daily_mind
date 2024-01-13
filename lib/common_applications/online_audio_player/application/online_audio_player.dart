@@ -8,8 +8,11 @@ class OnlineAudioPlayer extends AudioPlayer {
   bool get isReady {
     final currentSequence = sequence ?? [];
 
-    return processingState == ProcessingState.ready &&
+    final isReady = [ProcessingState.ready, ProcessingState.buffering]
+            .contains(processingState) &&
         currentSequence.isNotEmpty;
+
+    return isReady;
   }
 
   OnlineAudioPlayerIndexState get indexState {

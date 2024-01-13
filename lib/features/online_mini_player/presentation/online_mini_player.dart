@@ -1,7 +1,8 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
+import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
+import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_skeleton.dart';
 import 'package:daily_mind/common_widgets/base_network_image.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -41,24 +42,34 @@ class OnlineMiniPlayer extends HookConsumerWidget {
       );
     }, [context]);
 
-    if (onlinePlayer.isReady) {
-      final item = sequence[currentIndex];
-      final tag = item.tag;
+    final child = useMemoized(() {
+      if (onlinePlayer.isReady) {
+        final item = sequence[currentIndex];
+        final tag = item.tag;
 
-      return BaseMiniPlayer(
-        onTap: onOpenPlayerOnline,
-        leading: BaseNetworkImage(
-          image: tag.image,
-          size: 5,
-        ),
-        isLoading: isLoading,
-        isPlaying: isPlaying,
-        onPause: baseBackgroundHandler.pause,
-        onPlay: baseBackgroundHandler.play,
-        title: tag.name,
-      );
-    }
+        return BaseMiniPlayer(
+          onTap: onOpenPlayerOnline,
+          leading: BaseNetworkImage(
+            image: tag.image,
+            size: 5,
+          ),
+          isLoading: isLoading,
+          isPlaying: isPlaying,
+          onPause: baseBackgroundHandler.pause,
+          onPlay: baseBackgroundHandler.play,
+          title: tag.name,
+        );
+      }
 
-    return kEmptyWidget;
+      return const BaseMiniPlayerSkeleton();
+    }, [
+      currentIndex,
+      isLoading,
+      isPlaying,
+      onlinePlayer.isReady,
+      sequence,
+    ]);
+
+    return BaseAnimatedSwitcher(child: child);
   }
 }
