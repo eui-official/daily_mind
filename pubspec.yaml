@@ -81,6 +81,7 @@ dependencies:
   awesome_extensions: ^2.0.11
   persistent_bottom_nav_bar_v2: ^5.0.0-beta.7
   blur: ^3.1.0
+  badges: ^3.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

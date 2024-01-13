@@ -11,4 +11,6 @@ class MixState with _$MixState {
     required String title,
     MixCollection? recentMixCollection,
   }) = _MixState;
+
+  bool get isEmpty => recentMixCollection?.items?.isEmpty ?? false;
 }

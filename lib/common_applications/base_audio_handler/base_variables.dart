@@ -22,6 +22,8 @@ mixin BaseAudioMixVariables on BaseAudioHandler {
 
   List<MixItem> get mixItems => onStreamMixItems.value;
 
+  bool get isMixItemsEmpty => mixItems.isEmpty;
+
   List<MixVolume> backupMixVolumes = [];
 }
 
