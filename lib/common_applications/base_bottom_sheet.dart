@@ -1,3 +1,5 @@
+import 'package:blur/blur.dart';
+import 'package:daily_mind/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 Future<T?> onShowScrollableBottomSheet<T>(
@@ -15,7 +17,17 @@ Future<T?> onShowScrollableBottomSheet<T>(
       return DraggableScrollableSheet(
         expand: false,
         initialChildSize: initialChildSize,
-        builder: builder,
+        builder: (BuildContext context, ScrollController scrollController) {
+          return Stack(
+            children: [
+              Container().blurred(
+                blurColor:
+                    context.theme.colorScheme.background.withOpacity(0.5),
+              ),
+              builder(context, scrollController),
+            ],
+          );
+        },
       );
     },
     context: context,
@@ -24,5 +36,6 @@ Future<T?> onShowScrollableBottomSheet<T>(
     isScrollControlled: isScrollControlled,
     useRootNavigator: useRootNavigator,
     useSafeArea: useSafeArea,
+    backgroundColor: Colors.transparent,
   );
 }

@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
@@ -40,50 +41,52 @@ class BaseMiniPlayer extends HookConsumerWidget {
       return Container(
         height: spacing(7),
         width: context.width,
-        margin: EdgeInsets.symmetric(horizontal: spacing(2)),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: circularRadius(),
-            color: context.theme.primaryColorDark.withOpacity(0.5),
-          ),
-          child: BaseInkWell(
-            onTap: onTap,
-            borderRadius: circularRadius(),
-            child: Row(
-              children: space(
-                [
-                  Container(
-                    padding: EdgeInsets.only(left: spacing()),
-                    child: BaseAnimatedSwitcher(
-                      key: ValueKey(leading.hashCode),
-                      child: leading,
-                    ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: space(
-                        [
-                          if (title.isNotEmpty)
-                            BaseMiniTitlePlayer(title: title),
-                          BaseMiniPlayerContent(subtitle: subtitle),
-                        ].whereNotNull().toList(),
-                        height: spacing(0.5),
+        padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+        child: Stack(
+          children: [
+            Container().blurred(
+              borderRadius: circularRadius(),
+              blurColor: context.theme.primaryColorDark.withOpacity(0.5),
+            ),
+            BaseInkWell(
+              onTap: onTap,
+              borderRadius: circularRadius(),
+              child: Row(
+                children: space(
+                  [
+                    Container(
+                      padding: EdgeInsets.only(left: spacing()),
+                      child: BaseAnimatedSwitcher(
+                        key: ValueKey(leading.hashCode),
+                        child: leading,
                       ),
                     ),
-                  ),
-                  BaseMiniPlayerToggleButton(
-                    isLoading: isLoading,
-                    isPlaying: isPlaying,
-                    onPause: onPause,
-                    onPlay: onPlay,
-                  ),
-                ],
-                width: spacing(),
+                    Flexible(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: space(
+                          [
+                            if (title.isNotEmpty)
+                              BaseMiniTitlePlayer(title: title),
+                            BaseMiniPlayerContent(subtitle: subtitle),
+                          ].whereNotNull().toList(),
+                          height: spacing(0.5),
+                        ),
+                      ),
+                    ),
+                    BaseMiniPlayerToggleButton(
+                      isLoading: isLoading,
+                      isPlaying: isPlaying,
+                      onPause: onPause,
+                      onPlay: onPlay,
+                    ),
+                  ],
+                  width: spacing(),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       );
     }, [
