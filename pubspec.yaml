@@ -71,7 +71,6 @@ dependencies:
   in_app_review: ^2.0.8
   url_launcher: ^6.2.1
   skeletons: ^0.0.3
-  flutter_local_notifications: ^16.2.0
   adaptive_dialog: ^2.0.0
   isar_flutter_libs: ^3.1.0+1
   background_fetch: ^1.2.1
