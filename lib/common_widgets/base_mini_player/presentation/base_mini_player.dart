@@ -62,7 +62,6 @@ class BaseMiniPlayer extends HookConsumerWidget {
                     ),
                     Flexible(
                       child: Container(
-                        alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(horizontal: spacing()),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
