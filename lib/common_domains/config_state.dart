@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_domains/artist.dart';
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/from_source.dart';
 import 'package:daily_mind/common_domains/group.dart';
@@ -8,9 +9,10 @@ part 'config_state.freezed.dart';
 @freezed
 class ConfigState with _$ConfigState {
   const factory ConfigState({
+    required List<Artist> artists,
     required List<Category> categories,
-    required List<Group> groups,
     required List<FromSource> fromSources,
+    required List<Group> groups,
     required bool isLoading,
   }) = _ConfigState;
 }

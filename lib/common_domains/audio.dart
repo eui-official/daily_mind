@@ -12,6 +12,8 @@ class Audio with _$Audio {
     required String image,
     required String name,
     required String source,
+    String? description,
+    String? artist,
     @JsonKey(name: 'from_source') String? fromSource,
   }) = _Audio;
 

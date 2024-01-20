@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConfigState {
+  List<Artist> get artists => throw _privateConstructorUsedError;
   List<Category> get categories => throw _privateConstructorUsedError;
-  List<Group> get groups => throw _privateConstructorUsedError;
   List<FromSource> get fromSources => throw _privateConstructorUsedError;
+  List<Group> get groups => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,9 +34,10 @@ abstract class $ConfigStateCopyWith<$Res> {
       _$ConfigStateCopyWithImpl<$Res, ConfigState>;
   @useResult
   $Res call(
-      {List<Category> categories,
-      List<Group> groups,
+      {List<Artist> artists,
+      List<Category> categories,
       List<FromSource> fromSources,
+      List<Group> groups,
       bool isLoading});
 }
 
@@ -52,24 +54,29 @@ class _$ConfigStateCopyWithImpl<$Res, $Val extends ConfigState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? artists = null,
     Object? categories = null,
-    Object? groups = null,
     Object? fromSources = null,
+    Object? groups = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
+      artists: null == artists
+          ? _value.artists
+          : artists // ignore: cast_nullable_to_non_nullable
+              as List<Artist>,
       categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      groups: null == groups
-          ? _value.groups
-          : groups // ignore: cast_nullable_to_non_nullable
-              as List<Group>,
       fromSources: null == fromSources
           ? _value.fromSources
           : fromSources // ignore: cast_nullable_to_non_nullable
               as List<FromSource>,
+      groups: null == groups
+          ? _value.groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<Group>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -87,9 +94,10 @@ abstract class _$$ConfigStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Category> categories,
-      List<Group> groups,
+      {List<Artist> artists,
+      List<Category> categories,
       List<FromSource> fromSources,
+      List<Group> groups,
       bool isLoading});
 }
 
@@ -104,24 +112,29 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? artists = null,
     Object? categories = null,
-    Object? groups = null,
     Object? fromSources = null,
+    Object? groups = null,
     Object? isLoading = null,
   }) {
     return _then(_$ConfigStateImpl(
+      artists: null == artists
+          ? _value._artists
+          : artists // ignore: cast_nullable_to_non_nullable
+              as List<Artist>,
       categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      groups: null == groups
-          ? _value._groups
-          : groups // ignore: cast_nullable_to_non_nullable
-              as List<Group>,
       fromSources: null == fromSources
           ? _value._fromSources
           : fromSources // ignore: cast_nullable_to_non_nullable
               as List<FromSource>,
+      groups: null == groups
+          ? _value._groups
+          : groups // ignore: cast_nullable_to_non_nullable
+              as List<Group>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -134,13 +147,23 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
 
 class _$ConfigStateImpl implements _ConfigState {
   const _$ConfigStateImpl(
-      {required final List<Category> categories,
-      required final List<Group> groups,
+      {required final List<Artist> artists,
+      required final List<Category> categories,
       required final List<FromSource> fromSources,
+      required final List<Group> groups,
       required this.isLoading})
-      : _categories = categories,
-        _groups = groups,
-        _fromSources = fromSources;
+      : _artists = artists,
+        _categories = categories,
+        _fromSources = fromSources,
+        _groups = groups;
+
+  final List<Artist> _artists;
+  @override
+  List<Artist> get artists {
+    if (_artists is EqualUnmodifiableListView) return _artists;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_artists);
+  }
 
   final List<Category> _categories;
   @override
@@ -148,14 +171,6 @@ class _$ConfigStateImpl implements _ConfigState {
     if (_categories is EqualUnmodifiableListView) return _categories;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_categories);
-  }
-
-  final List<Group> _groups;
-  @override
-  List<Group> get groups {
-    if (_groups is EqualUnmodifiableListView) return _groups;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_groups);
   }
 
   final List<FromSource> _fromSources;
@@ -166,12 +181,20 @@ class _$ConfigStateImpl implements _ConfigState {
     return EqualUnmodifiableListView(_fromSources);
   }
 
+  final List<Group> _groups;
+  @override
+  List<Group> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
+
   @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'ConfigState(categories: $categories, groups: $groups, fromSources: $fromSources, isLoading: $isLoading)';
+    return 'ConfigState(artists: $artists, categories: $categories, fromSources: $fromSources, groups: $groups, isLoading: $isLoading)';
   }
 
   @override
@@ -179,11 +202,12 @@ class _$ConfigStateImpl implements _ConfigState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfigStateImpl &&
+            const DeepCollectionEquality().equals(other._artists, _artists) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            const DeepCollectionEquality().equals(other._groups, _groups) &&
             const DeepCollectionEquality()
                 .equals(other._fromSources, _fromSources) &&
+            const DeepCollectionEquality().equals(other._groups, _groups) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -191,9 +215,10 @@ class _$ConfigStateImpl implements _ConfigState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_artists),
       const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(_groups),
       const DeepCollectionEquality().hash(_fromSources),
+      const DeepCollectionEquality().hash(_groups),
       isLoading);
 
   @JsonKey(ignore: true)
@@ -205,17 +230,20 @@ class _$ConfigStateImpl implements _ConfigState {
 
 abstract class _ConfigState implements ConfigState {
   const factory _ConfigState(
-      {required final List<Category> categories,
-      required final List<Group> groups,
+      {required final List<Artist> artists,
+      required final List<Category> categories,
       required final List<FromSource> fromSources,
+      required final List<Group> groups,
       required final bool isLoading}) = _$ConfigStateImpl;
 
   @override
+  List<Artist> get artists;
+  @override
   List<Category> get categories;
   @override
-  List<Group> get groups;
-  @override
   List<FromSource> get fromSources;
+  @override
+  List<Group> get groups;
   @override
   bool get isLoading;
   @override

@@ -13,6 +13,8 @@ _$AudioImpl _$$AudioImplFromJson(Map<String, dynamic> json) => _$AudioImpl(
       image: json['image'] as String,
       name: json['name'] as String,
       source: json['source'] as String,
+      description: json['description'] as String?,
+      artist: json['artist'] as String?,
       fromSource: json['from_source'] as String?,
     );
 
@@ -24,5 +26,7 @@ Map<String, dynamic> _$$AudioImplToJson(_$AudioImpl instance) =>
       'image': instance.image,
       'name': instance.name,
       'source': instance.source,
+      'description': instance.description,
+      'artist': instance.artist,
       'from_source': instance.fromSource,
     };
