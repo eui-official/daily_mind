@@ -53,9 +53,12 @@ class BaseMiniPlayer extends HookConsumerWidget {
               child: Row(
                 children: space(
                   [
-                    BaseAnimatedSwitcher(
-                      key: ValueKey(leading.hashCode),
-                      child: leading,
+                    Container(
+                      padding: EdgeInsets.only(left: spacing()),
+                      child: BaseAnimatedSwitcher(
+                        key: ValueKey(leading.hashCode),
+                        child: leading,
+                      ),
                     ),
                     Flexible(
                       child: Container(
