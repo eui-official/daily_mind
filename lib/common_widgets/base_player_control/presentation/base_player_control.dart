@@ -6,14 +6,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class BasePlayerControl extends HookWidget {
   final DailyMindBackgroundHandler backgroundHandler;
-  final dynamic tag;
+  final dynamic audio;
   final VoidCallback? onNext;
   final VoidCallback? onPrevious;
 
   const BasePlayerControl({
     super.key,
     required this.backgroundHandler,
-    required this.tag,
+    required this.audio,
     this.onNext,
     this.onPrevious,
   });
@@ -47,7 +47,7 @@ class BasePlayerControl extends HookWidget {
           ),
         ],
       );
-    }, [tag, seconds, positionSnapshot]);
+    }, [audio, seconds, positionSnapshot]);
 
     return child;
   }

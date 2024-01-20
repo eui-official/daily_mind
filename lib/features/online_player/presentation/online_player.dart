@@ -37,10 +37,9 @@ class OnlinePlayer extends HookConsumerWidget {
       final tag = s.tag;
 
       return OnlinePlayerDetails(
-        image: tag.image,
         onExpanded: onlinePlayerNotifier.onToggleExpanded,
         scrollController: scrollController,
-        tag: tag,
+        audio: tag,
         child: OnlinePlayerBottom(audio: tag),
       );
     }, [sequence, currentIndex]);
