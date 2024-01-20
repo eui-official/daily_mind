@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/audio.dart';
+import 'package:daily_mind/common_domains/artist.dart';
 import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/from_source.dart';
@@ -54,6 +55,18 @@ class SupabaseAPI {
     }
 
     return fromSources;
+  }
+
+  Future<List<Artist>> onGetArtists() async {
+    final List<Artist> artists = [];
+
+    final artistsData = await supabase.from('artists').select();
+
+    for (var data in artistsData) {
+      artists.add(Artist.fromJson(data));
+    }
+
+    return artists;
   }
 
   // Get groups

@@ -1,5 +1,4 @@
 import 'package:blur/blur.dart';
-import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_content_player.dart';
@@ -62,16 +61,19 @@ class BaseMiniPlayer extends HookConsumerWidget {
                       ),
                     ),
                     Flexible(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: space(
-                          [
-                            if (title.isNotEmpty)
-                              BaseMiniTitlePlayer(title: title),
-                            BaseMiniPlayerContent(subtitle: subtitle),
-                          ].whereNotNull().toList(),
-                          height: spacing(0.5),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: spacing()),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: space(
+                            [
+                              if (title.isNotEmpty)
+                                BaseMiniTitlePlayer(title: title),
+                              BaseMiniPlayerContent(subtitle: subtitle),
+                            ],
+                            height: spacing(0.5),
+                          ),
                         ),
                       ),
                     ),

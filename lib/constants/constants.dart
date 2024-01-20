@@ -6,7 +6,7 @@ const kAppDescription = 'DailyMind - Soothe, Sleep, Relax';
 
 const kEmptyString = '';
 
-const kNull = null;
+const Null kNull = null;
 
 const kEmptyWidget = SizedBox.shrink();
 

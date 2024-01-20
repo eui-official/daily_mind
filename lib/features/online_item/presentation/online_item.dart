@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 
 class OnlineItem extends StatelessWidget {
   final bool isPlaying;
+  final double size;
   final String image;
   final VoidCallback? onTap;
   final Widget title;
+  final Widget? subtitle;
   final Widget? trailing;
 
   const OnlineItem({
@@ -19,6 +21,8 @@ class OnlineItem extends StatelessWidget {
     required this.title,
     this.isPlaying = false,
     this.onTap,
+    this.size = 5,
+    this.subtitle,
     this.trailing,
   });
 
@@ -32,19 +36,34 @@ class OnlineItem extends StatelessWidget {
         child: Stack(
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: space(
                 [
                   SizedBox(
-                    width: spacing(5),
-                    height: spacing(5),
+                    width: spacing(size),
+                    height: spacing(size),
                     child: Stack(
                       children: [
-                        BaseNetworkImage(image: image),
+                        BaseNetworkImage(
+                          image: image,
+                          size: size,
+                        ),
                         if (isPlaying) const OnlineItemPlaying(),
                       ],
                     ),
                   ),
-                  Flexible(child: BaseItemBoxSize(child: title)),
+                  Flexible(
+                    child: BaseItemBoxSize(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(child: title),
+                          subtitle,
+                        ].whereNotNull().toList(),
+                      ),
+                    ),
+                  ),
                   trailing,
                 ].whereNotNull().toList(),
                 width: spacing(2),

@@ -27,6 +27,8 @@ mixin _$Audio {
   String get image => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get source => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get artist => throw _privateConstructorUsedError;
   @JsonKey(name: 'from_source')
   String? get fromSource => throw _privateConstructorUsedError;
 
@@ -47,6 +49,8 @@ abstract class $AudioCopyWith<$Res> {
       String image,
       String name,
       String source,
+      String? description,
+      String? artist,
       @JsonKey(name: 'from_source') String? fromSource});
 }
 
@@ -69,6 +73,8 @@ class _$AudioCopyWithImpl<$Res, $Val extends Audio>
     Object? image = null,
     Object? name = null,
     Object? source = null,
+    Object? description = freezed,
+    Object? artist = freezed,
     Object? fromSource = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,6 +102,14 @@ class _$AudioCopyWithImpl<$Res, $Val extends Audio>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      artist: freezed == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as String?,
       fromSource: freezed == fromSource
           ? _value.fromSource
           : fromSource // ignore: cast_nullable_to_non_nullable
@@ -118,6 +132,8 @@ abstract class _$$AudioImplCopyWith<$Res> implements $AudioCopyWith<$Res> {
       String image,
       String name,
       String source,
+      String? description,
+      String? artist,
       @JsonKey(name: 'from_source') String? fromSource});
 }
 
@@ -138,6 +154,8 @@ class __$$AudioImplCopyWithImpl<$Res>
     Object? image = null,
     Object? name = null,
     Object? source = null,
+    Object? description = freezed,
+    Object? artist = freezed,
     Object? fromSource = freezed,
   }) {
     return _then(_$AudioImpl(
@@ -165,6 +183,14 @@ class __$$AudioImplCopyWithImpl<$Res>
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      artist: freezed == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as String?,
       fromSource: freezed == fromSource
           ? _value.fromSource
           : fromSource // ignore: cast_nullable_to_non_nullable
@@ -183,6 +209,8 @@ class _$AudioImpl implements _Audio {
       required this.image,
       required this.name,
       required this.source,
+      this.description,
+      this.artist,
       @JsonKey(name: 'from_source') this.fromSource});
 
   factory _$AudioImpl.fromJson(Map<String, dynamic> json) =>
@@ -202,12 +230,16 @@ class _$AudioImpl implements _Audio {
   @override
   final String source;
   @override
+  final String? description;
+  @override
+  final String? artist;
+  @override
   @JsonKey(name: 'from_source')
   final String? fromSource;
 
   @override
   String toString() {
-    return 'Audio(createdAt: $createdAt, category: $category, id: $id, image: $image, name: $name, source: $source, fromSource: $fromSource)';
+    return 'Audio(createdAt: $createdAt, category: $category, id: $id, image: $image, name: $name, source: $source, description: $description, artist: $artist, fromSource: $fromSource)';
   }
 
   @override
@@ -223,14 +255,17 @@ class _$AudioImpl implements _Audio {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.source, source) || other.source == source) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.artist, artist) || other.artist == artist) &&
             (identical(other.fromSource, fromSource) ||
                 other.fromSource == fromSource));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, createdAt, category, id, image, name, source, fromSource);
+  int get hashCode => Object.hash(runtimeType, createdAt, category, id, image,
+      name, source, description, artist, fromSource);
 
   @JsonKey(ignore: true)
   @override
@@ -254,6 +289,8 @@ abstract class _Audio implements Audio {
       required final String image,
       required final String name,
       required final String source,
+      final String? description,
+      final String? artist,
       @JsonKey(name: 'from_source') final String? fromSource}) = _$AudioImpl;
 
   factory _Audio.fromJson(Map<String, dynamic> json) = _$AudioImpl.fromJson;
@@ -271,6 +308,10 @@ abstract class _Audio implements Audio {
   String get name;
   @override
   String get source;
+  @override
+  String? get description;
+  @override
+  String? get artist;
   @override
   @JsonKey(name: 'from_source')
   String? get fromSource;
