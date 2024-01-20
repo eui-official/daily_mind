@@ -145,7 +145,7 @@ class __$$ConfigStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ConfigStateImpl implements _ConfigState {
+class _$ConfigStateImpl extends _ConfigState {
   const _$ConfigStateImpl(
       {required final List<Artist> artists,
       required final List<Category> categories,
@@ -155,7 +155,8 @@ class _$ConfigStateImpl implements _ConfigState {
       : _artists = artists,
         _categories = categories,
         _fromSources = fromSources,
-        _groups = groups;
+        _groups = groups,
+        super._();
 
   final List<Artist> _artists;
   @override
@@ -228,13 +229,14 @@ class _$ConfigStateImpl implements _ConfigState {
       __$$ConfigStateImplCopyWithImpl<_$ConfigStateImpl>(this, _$identity);
 }
 
-abstract class _ConfigState implements ConfigState {
+abstract class _ConfigState extends ConfigState {
   const factory _ConfigState(
       {required final List<Artist> artists,
       required final List<Category> categories,
       required final List<FromSource> fromSources,
       required final List<Group> groups,
       required final bool isLoading}) = _$ConfigStateImpl;
+  const _ConfigState._() : super._();
 
   @override
   List<Artist> get artists;

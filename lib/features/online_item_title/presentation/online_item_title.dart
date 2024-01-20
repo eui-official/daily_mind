@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class OnlineTitle extends StatelessWidget {
+class OnlineItemTitle extends StatelessWidget {
   final String title;
 
-  const OnlineTitle({
+  const OnlineItemTitle({
     super.key,
     required this.title,
   });

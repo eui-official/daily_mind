@@ -7,6 +7,7 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class OnlineItem extends StatelessWidget {
+  final Widget? subtitle;
   final bool isPlaying;
   final String image;
   final VoidCallback? onTap;
@@ -19,6 +20,7 @@ class OnlineItem extends StatelessWidget {
     required this.title,
     this.isPlaying = false,
     this.onTap,
+    this.subtitle,
     this.trailing,
   });
 
@@ -44,7 +46,19 @@ class OnlineItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Flexible(child: BaseItemBoxSize(child: title)),
+                  Flexible(
+                    child: BaseItemBoxSize(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(child: title),
+                          subtitle,
+                        ].whereNotNull().toList(),
+                      ),
+                    ),
+                  ),
                   trailing,
                 ].whereNotNull().toList(),
                 width: spacing(2),
