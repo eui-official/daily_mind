@@ -5,7 +5,9 @@ import 'package:daily_mind/common_widgets/base_internet_connection_checker/prese
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/init/presentation/init.dart';
 import 'package:daily_mind/features/localization/presentation/localization.dart';
+import 'package:daily_mind/firebase_options.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -14,6 +16,9 @@ void main() async {
   final engine = WidgetsFlutterBinding.ensureInitialized();
 
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await db.onInit();
   final backgroundHandler = await AudioService.init(
