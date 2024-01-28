@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "567586104821",
+    "project_id": "dailymind-eui",
+    "storage_bucket": "dailymind-eui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567586104821:android:88450d46758896af2facbc",
+        "android_client_info": {
+          "package_name": "dev.andyng.dailymind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEqR7L85afaZTO3knABbGu4VySF_IX4kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

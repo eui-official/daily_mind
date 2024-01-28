@@ -1,12 +1,12 @@
 buildscript {
     ext.kotlin_version = '1.7.10'
-    
-    ext {
-        compileSdkVersion   = 33                
-        targetSdkVersion    = 33             
-        appCompatVersion    = "1.4.2"          
-    }
 
+    ext {
+        compileSdkVersion = 33                
+        targetSdkVersion  = 33             
+        appCompatVersion  = "1.4.2"          
+    }
+    
     repositories {
         google()
         mavenCentral()
@@ -14,6 +14,10 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
+        // START: FlutterFire Configuration
+        classpath 'com.google.gms:google-services:4.3.14'
+        // END: FlutterFire Configuration
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -22,9 +26,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url "${project(':background_fetch').projectDir}/libs"
-        }
     }
 }
 
