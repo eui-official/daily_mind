@@ -45,6 +45,7 @@ class AppBarScrollview extends StatelessWidget {
         SliverSafeArea(
           sliver: SliverPadding(
             padding: const EdgeInsets.only(
+              top: kToolbarHeight / 2,
               bottom: kBottomNavigationBarHeight * 2,
             ),
             sliver: SliverList(delegate: SliverChildListDelegate(children)),

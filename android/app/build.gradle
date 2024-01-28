@@ -36,6 +36,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace 'dev.andyng.dailymind'
+    compileSdkVersion rootProject.ext.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     dexOptions {
@@ -60,7 +61,7 @@ android {
         applicationId "dev.andyng.dailymind"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 23
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
