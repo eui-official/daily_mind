@@ -12,6 +12,7 @@ import 'package:daily_mind/extensions/list.dart';
 import 'package:daily_mind/features/mix/application/mix.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:daily_mind/features/mix/domain/mix_state.dart';
+import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const initMixState = MixState(title: kEmptyString);
@@ -19,10 +20,12 @@ const initMixState = MixState(title: kEmptyString);
 class MixdNotifier extends StateNotifier<MixState> {
   final BaseMiniPlayerProvider baseMiniPlayerNotifier;
   final DailyMindBackgroundHandler baseBackgroundHandler;
+  final OnlinePlayerNotifier onlinePlayerNotifier;
 
   MixdNotifier({
     required this.baseMiniPlayerNotifier,
     required this.baseBackgroundHandler,
+    required this.onlinePlayerNotifier,
   }) : super(initMixState);
 
   List<MixItem> get mixItems => baseBackgroundHandler.mixItems;
@@ -72,6 +75,8 @@ class MixdNotifier extends StateNotifier<MixState> {
   }
 
   void onSelect(AudioOffline audio) async {
+    onlinePlayerNotifier.onReset();
+
     if (mixItems.isContain(audio.id)) {
       final item = mixItems.firstWhere((item) => item.audio.id == audio.id);
       baseBackgroundHandler.onRemoveMixItem(item);
@@ -104,9 +109,11 @@ class MixdNotifier extends StateNotifier<MixState> {
 final mixProvider = StateNotifierProvider<MixdNotifier, MixState>((ref) {
   final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
   final baseBackgroundHandler = ref.read(baseBackgroundHandlerProvider);
+  final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
 
   return MixdNotifier(
     baseMiniPlayerNotifier: baseMiniPlayerNotifier,
     baseBackgroundHandler: baseBackgroundHandler,
+    onlinePlayerNotifier: onlinePlayerNotifier,
   );
 });
