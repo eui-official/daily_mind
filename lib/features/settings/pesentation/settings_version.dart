@@ -18,7 +18,7 @@ class SettingsVersion extends HookWidget {
       final data = packageInfoSnapshot.data;
 
       if (packageInfoSnapshot.hasData) {
-        return '${data?.version}+${data?.buildNumber}';
+        return 'v${data?.version}.${data?.buildNumber}';
       }
 
       return kEmptyString;
