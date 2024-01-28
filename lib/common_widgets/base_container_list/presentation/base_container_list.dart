@@ -32,6 +32,7 @@ class BaseContainerList<T> extends StatelessWidget {
             Container(
               decoration: BoxDecoration(borderRadius: circularRadius(2)),
               child: ListView.separated(
+                padding: EdgeInsets.zero,
                 itemBuilder: (context, index) => items[index],
                 itemCount: items.length,
                 physics: const NeverScrollableScrollPhysics(),
