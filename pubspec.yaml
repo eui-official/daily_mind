@@ -73,7 +73,6 @@ dependencies:
   skeletons: ^0.0.3
   adaptive_dialog: ^2.0.0
   isar_flutter_libs: ^3.1.0+1
-  background_fetch: ^1.2.1
   showcaseview: ^2.0.3
   another_flushbar: ^1.12.30
   transparent_image: ^2.0.1
