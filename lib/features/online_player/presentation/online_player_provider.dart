@@ -22,6 +22,10 @@ class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
   void onUpdateId(dynamic id) {
     state = state.copyWith(id: id);
   }
+
+  void onReset() {
+    state = initialState;
+  }
 }
 
 final onlinePlayerProvider =
