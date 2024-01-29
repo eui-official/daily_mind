@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
@@ -11,7 +13,7 @@ import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scro
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_image.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_list_audio.dart';
-import 'package:daily_mind/features/playlist_details/presentation/playlist_details_play_icon_button.dart';
+import 'package:daily_mind/features/playlist_details/presentation/playlist_details_top_actions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart' hide Trans;
@@ -35,11 +37,14 @@ class PlaylistDetailsContent extends HookConsumerWidget {
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
 
-    final onPlay = useCallback(() async {
+    final onPlay = useCallback(([int index = 0]) async {
       onlinePlayerNotifier.onUpdateId(onlinePlaylist.id);
       onlinePlayerNotifier.onUpdateOpenFrom(onlinePlaylist.title);
 
-      await baseBackgroundHandler.onInitOnline(audios);
+      await baseBackgroundHandler.onInitOnline(
+        audios,
+        index: index,
+      );
 
       baseMiniPlayerNotifier.onUpdateState(
         const MiniPlayerState(
@@ -48,6 +53,14 @@ class PlaylistDetailsContent extends HookConsumerWidget {
         ),
       );
     }, [audios]);
+
+    final onShuffle = useCallback(
+      () async {
+        final randomIndex = Random().nextInt(audios.length);
+        onPlay(randomIndex);
+      },
+      [audios],
+    );
 
     final child = useMemoized(
       () {
@@ -64,13 +77,16 @@ class PlaylistDetailsContent extends HookConsumerWidget {
               ),
               expandedHeight: context.height / 3,
               children: [
+                PlaylistDetailsTopActions(
+                  onPlay: onPlay,
+                  onShuffle: onShuffle,
+                ),
                 PlaylistDetailsListAudio(
                   onlinePlaylist: onlinePlaylist,
                   audios: audios,
                 ),
               ],
             ),
-            PlaylistDetailsPlayIconButton(onPlay: onPlay)
           ],
         );
       },
