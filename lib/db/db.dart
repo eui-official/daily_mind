@@ -190,14 +190,27 @@ class Db {
     return isar.onlinePlaylists.getSync(id);
   }
 
-  Stream<OnlinePlaylist?> onStreamOnlinePlaylist(int id) {
-    return isar.onlinePlaylists.watchObject(id);
+  Stream<OnlinePlaylist?> onStreamOnlinePlaylist(
+    int id, {
+    fireImmediately = false,
+  }) {
+    return isar.onlinePlaylists.watchObject(
+      id,
+      fireImmediately: fireImmediately,
+    );
   }
 
   int onCountSongsFromPlaylist(int id) {
     final onlinePlaylist = isar.onlinePlaylists.getSync(id);
 
     return onlinePlaylist?.itemIds.length ?? 0;
+  }
+
+  void onRenamePlaylist(String title, OnlinePlaylist playlist) {
+    isar.writeTxnSync(() {
+      playlist.title = title;
+      isar.onlinePlaylists.putSync(playlist);
+    });
   }
 
   void onDeleteOnlinePlaylist(int id) {

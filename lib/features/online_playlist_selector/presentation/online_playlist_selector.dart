@@ -1,5 +1,4 @@
-import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:daily_mind/common_applications/adaptive_dialog_validators.dart';
+import 'package:daily_mind/common_applications/base_dialogs.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
@@ -23,18 +22,12 @@ class OnlinePlaylistSelector extends HookWidget {
   Widget build(BuildContext context) {
     final openAddOnlinePlaylist = useCallback(
       () async {
-        final results = await showTextInputDialog(
-          context: context,
-          textFields: [
-            DialogTextField(
-              hintText: 'Tên playlist'.tr(),
-              validator: adaptiveDialogValidators.required,
-            ),
-          ],
+        final results = await context.onTextFieldDialog(
+          'Tên playlist'.tr(),
         );
 
-        if (results?.isNotEmpty ?? false) {
-          final result = results?.first;
+        if (results.isNotEmpty) {
+          final result = results.first;
 
           onSafeValueBuilder(
             result,

@@ -3,7 +3,6 @@ import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_audios_ids_builder/presentation/base_audio_ids_builder.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_content.dart';
 import 'package:flutter/material.dart';
@@ -40,8 +39,7 @@ class PlaylistDetails extends HookConsumerWidget {
             return Scaffold(
               body: PlaylistDetailsContent(
                 audios: audios,
-                onlinePlaylist: safeOnlinePlaylist,
-                title: safeOnlinePlaylist.title ?? kEmptyString,
+                playlistId: safeOnlinePlaylist.id,
               ),
             );
           },

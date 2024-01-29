@@ -1,7 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:daily_mind/common_applications/adaptive_dialog_validators.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
+import 'package:daily_mind/common_applications/base_dialogs.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
@@ -44,19 +44,13 @@ class MixCollectionItem extends HookConsumerWidget {
     final onRenamed = useCallback(() async {
       context.pop();
 
-      final results = await showTextInputDialog(
-        context: context,
-        textFields: [
-          DialogTextField(
-            hintText: 'Tên mix'.tr(),
-            initialText: mixCollection.title ?? kEmptyString,
-            validator: adaptiveDialogValidators.required,
-          ),
-        ],
+      final results = await context.onTextFieldDialog(
+        'Tên mix'.tr(),
+        mixCollection.title,
       );
 
-      if (results?.isNotEmpty ?? false) {
-        final result = results?.first;
+      if (results.isNotEmpty) {
+        final result = results.first;
 
         onSafeValueBuilder(result, (title) {
           baseBackgroundHandler.onUpdateMixCollectionTitle(

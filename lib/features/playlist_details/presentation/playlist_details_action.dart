@@ -3,18 +3,25 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PlaylistDetailsAction extends StatelessWidget {
-  const PlaylistDetailsAction({super.key});
+  final VoidCallback onEditName;
+  final VoidCallback onDeletePlaylist;
+
+  const PlaylistDetailsAction({
+    super.key,
+    required this.onEditName,
+    required this.onDeletePlaylist,
+  });
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       itemBuilder: (BuildContext context) => [
         PopupMenuItem(
-          onTap: () {},
+          onTap: onEditName,
           child: Text('Đổi tên'.tr()),
         ),
         PopupMenuItem(
-          onTap: () {},
+          onTap: onDeletePlaylist,
           child: Text('Xóa playlist'.tr()),
         )
       ],

@@ -5,6 +5,7 @@ import 'package:daily_mind/features/online_playlist_available/presentation/onlin
 import 'package:daily_mind/features/online_playlist_available_item/presentation/online_playlist_available_item.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlinePlaylistAvailable extends HookConsumerWidget {
@@ -24,6 +25,15 @@ class OnlinePlaylistAvailable extends HookConsumerWidget {
     final onlinePlaylistsState =
         ref.watch(onlinePlaylistAvailableNotifierProvider);
 
+    final playlistChildren = useMemoized(() {
+      return onlinePlaylistsState.map((onlinePlaylist) {
+        return OnlinePlaylistAvailableItem(
+          onTap: onSelected,
+          onlinePlaylist: onlinePlaylist,
+        );
+      }).toList();
+    }, [onlinePlaylistsState]);
+
     return BaseSliverList(
       scrollController: scrollController,
       children: [
@@ -35,12 +45,7 @@ class OnlinePlaylistAvailable extends HookConsumerWidget {
             title: 'Thêm mới',
           ),
         ),
-        ...onlinePlaylistsState.map((onlinePlaylist) {
-          return OnlinePlaylistAvailableItem(
-            onTap: () => onSelected(onlinePlaylist.id),
-            onlinePlaylist: onlinePlaylist,
-          );
-        })
+        ...playlistChildren,
       ],
     );
   }
