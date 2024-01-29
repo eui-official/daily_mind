@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
-import 'package:daily_mind/features/online_item_dropdown_actions/presentation/online_item_dropdown_icon.dart';
+import 'package:daily_mind/common_widgets/base_icon/presentation/dropdown.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -41,7 +41,7 @@ class OnlineItemDropdownActions extends HookConsumerWidget {
           child: Text('Thêm vào playlist'.tr()),
         )
       ],
-      child: const OnlineItemDropdownIcon(),
+      child: const DropdownIcon(),
     );
   }
 }

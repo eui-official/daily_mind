@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class OnlineItemDropdownIcon extends StatelessWidget {
-  const OnlineItemDropdownIcon({super.key});
+class DropdownIcon extends StatelessWidget {
+  const DropdownIcon({super.key});
 
   @override
   Widget build(BuildContext context) {

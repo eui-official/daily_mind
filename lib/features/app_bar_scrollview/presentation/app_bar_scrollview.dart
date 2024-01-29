@@ -9,11 +9,13 @@ class AppBarScrollview extends StatelessWidget {
   final ScrollPhysics? physics;
   final String title;
   final Widget? flexibleSpace;
+  final List<Widget> actions;
 
   const AppBarScrollview({
     super.key,
     required this.children,
     required this.title,
+    this.actions = const [],
     this.bottom,
     this.expandedHeight,
     this.flexibleSpace,
@@ -34,6 +36,7 @@ class AppBarScrollview extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          actions: actions,
           bottom: bottom,
           expandedHeight: expandedHeight ?? kToolbarHeight,
           flexibleSpace: flexibleSpace,

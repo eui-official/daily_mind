@@ -11,6 +11,7 @@ import 'package:daily_mind/constants/enums.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
+import 'package:daily_mind/features/playlist_details/presentation/playlist_details_action.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_image.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_list_audio.dart';
 import 'package:daily_mind/features/playlist_details/presentation/playlist_details_top_actions.dart';
@@ -72,6 +73,9 @@ class PlaylistDetailsContent extends HookConsumerWidget {
           children: [
             AppBarScrollview(
               title: title,
+              actions: const [
+                PlaylistDetailsAction(),
+              ],
               flexibleSpace: FlexibleSpaceBar(
                 background: PlaylistDetailsImage(audio: audios.first),
               ),
