@@ -25,16 +25,16 @@ class BaseContainerList<T> extends StatelessWidget {
             Text(
               title,
               style: context.textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.bold,
                 color: context.theme.hintColor,
               ),
             ),
             Container(
               decoration: BoxDecoration(borderRadius: circularRadius(2)),
               child: ListView.separated(
-                padding: EdgeInsets.zero,
                 itemBuilder: (context, index) => items[index],
                 itemCount: items.length,
+                padding: EdgeInsets.zero,
                 physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, index) => const BaseDivider(),
                 shrinkWrap: true,
