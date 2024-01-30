@@ -79,7 +79,6 @@ dependencies:
   uuid: ^4.2.2
   awesome_extensions: ^2.0.11
   persistent_bottom_nav_bar_v2: ^5.0.0-beta.7
-  blur: ^3.1.0
   badges: ^3.1.2
   firebase_crashlytics: ^3.4.9
   firebase_core: ^2.24.2
