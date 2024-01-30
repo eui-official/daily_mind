@@ -1,4 +1,3 @@
-import 'package:blur/blur.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_content_player.dart';
@@ -39,56 +38,53 @@ class BaseMiniPlayer extends HookConsumerWidget {
     final child = useMemoized(() {
       return Container(
         height: spacing(7),
-        width: context.width,
         padding: EdgeInsets.symmetric(horizontal: spacing(2)),
-        child: Stack(
-          children: [
-            Container().blurred(
-              borderRadius: circularRadius(),
-              blurColor: context.theme.primaryColorDark.withOpacity(0.5),
+        child: BaseInkWell(
+          onTap: onTap,
+          borderRadius: circularRadius(2),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: circularRadius(2),
+              color: context.theme.primaryColorDark,
             ),
-            BaseInkWell(
-              onTap: onTap,
-              borderRadius: circularRadius(),
-              child: Row(
-                children: space(
-                  [
-                    Container(
-                      padding: EdgeInsets.only(left: spacing()),
-                      child: BaseAnimatedSwitcher(
-                        key: ValueKey(leading.hashCode),
-                        child: leading,
-                      ),
+            child: Row(
+              children: space(
+                [
+                  Container(
+                    padding: EdgeInsets.only(left: spacing()),
+                    child: BaseAnimatedSwitcher(
+                      key: ValueKey(leading.hashCode),
+                      child: leading,
                     ),
-                    Flexible(
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: spacing()),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: space(
-                            [
-                              if (title.isNotEmpty)
-                                BaseMiniTitlePlayer(title: title),
-                              BaseMiniPlayerContent(subtitle: subtitle),
-                            ],
-                            height: spacing(0.5),
-                          ),
+                  ),
+                  Flexible(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: spacing()),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: space(
+                          [
+                            if (title.isNotEmpty)
+                              BaseMiniTitlePlayer(title: title),
+                            BaseMiniPlayerContent(subtitle: subtitle),
+                          ],
+                          height: spacing(0.5),
                         ),
                       ),
                     ),
-                    BaseMiniPlayerToggleButton(
-                      isLoading: isLoading,
-                      isPlaying: isPlaying,
-                      onPause: onPause,
-                      onPlay: onPlay,
-                    ),
-                  ],
-                  width: spacing(),
-                ),
+                  ),
+                  BaseMiniPlayerToggleButton(
+                    isLoading: isLoading,
+                    isPlaying: isPlaying,
+                    onPause: onPause,
+                    onPlay: onPlay,
+                  ),
+                ],
+                width: spacing(),
               ),
             ),
-          ],
+          ),
         ),
       );
     }, [

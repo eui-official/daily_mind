@@ -1,4 +1,3 @@
-import 'package:blur/blur.dart';
 import 'package:daily_mind/extensions/context.dart';
 import 'package:flutter/material.dart';
 
@@ -18,14 +17,11 @@ Future<T?> onShowScrollableBottomSheet<T>(
         expand: false,
         initialChildSize: initialChildSize,
         builder: (BuildContext context, ScrollController scrollController) {
-          return Stack(
-            children: [
-              Container().blurred(
-                blurColor:
-                    context.theme.colorScheme.background.withOpacity(0.5),
-              ),
-              builder(context, scrollController),
-            ],
+          return Container(
+            decoration: BoxDecoration(
+              color: context.theme.colorScheme.background,
+            ),
+            child: builder(context, scrollController),
           );
         },
       );
