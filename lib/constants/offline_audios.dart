@@ -36,11 +36,12 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         name: 'wave',
         image: 'assets/images/wave.png',
       ),
-      AudioOffline(
-        id: 'space',
-        name: 'space',
-        image: 'assets/images/sky.png',
-      ),
+    ],
+  ),
+  AudioOfflineCategory(
+    id: 'soundColors',
+    name: 'Màu sắc âm thanh',
+    audios: [
       AudioOffline(
         id: 'whiteNoise',
         name: 'whiteNoise',
@@ -52,6 +53,11 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
     id: 'waves',
     name: 'Sóng âm',
     audios: [
+      AudioOffline(
+        id: 'space',
+        name: 'space',
+        image: 'assets/images/sky.png',
+      ),
       AudioOffline(
         id: 'deltaWave',
         name: 'deltaWave',

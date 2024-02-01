@@ -12,7 +12,7 @@ import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/features/mix_player/presentation/mix_player_background_filter.dart';
-import 'package:daily_mind/features/mix_player_list_item/presentation/mix_player_list_item.dart';
+import 'package:daily_mind/features/mix_player_list_item_group_category/presentation/mix_player_list_item_group_category.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -67,8 +67,7 @@ class MixPlayer extends HookConsumerWidget {
 
     return Stack(
       children: [
-        if (mixData.mixItems.isNotEmpty)
-          MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
+        MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
         BaseSpacingContainer(
           padding: EdgeInsets.symmetric(
             horizontal: spacing(2),
@@ -92,7 +91,9 @@ class MixPlayer extends HookConsumerWidget {
                               onChanged: mixNotifier.onUpdateTitle,
                             ),
                           ),
-                          MixPlayerListItem(mixItems: mixData.mixItems),
+                          MixPlayerListItemGroupCategory(
+                            mixItems: mixData.mixItems,
+                          ),
                         ],
                         height: spacing(4),
                       ),
