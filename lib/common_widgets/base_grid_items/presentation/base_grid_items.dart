@@ -19,8 +19,8 @@ class BaseGridItems<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return StaggeredGrid.count(
       crossAxisCount: crossAxisCount,
-      mainAxisSpacing: spacing(2),
       crossAxisSpacing: spacing(2),
+      mainAxisSpacing: spacing(2),
       children: items.map((item) {
         final index = items.indexOf(item);
 

@@ -25,34 +25,35 @@ class AppBarScrollview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: scrollController,
-      physics: physics,
-      slivers: [
-        SliverAppBar(
-          title: Text(
-            title,
-            style: context.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
+    return SafeArea(
+      maintainBottomViewPadding: true,
+      child: CustomScrollView(
+        controller: scrollController,
+        physics: physics,
+        slivers: [
+          SliverAppBar(
+            title: Text(
+              title,
+              style: context.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            actions: actions,
+            bottom: bottom,
+            expandedHeight: expandedHeight ?? kToolbarHeight,
+            flexibleSpace: flexibleSpace,
+            centerTitle: false,
+            forceMaterialTransparency: true,
           ),
-          actions: actions,
-          bottom: bottom,
-          expandedHeight: expandedHeight ?? kToolbarHeight,
-          flexibleSpace: flexibleSpace,
-          centerTitle: false,
-          floating: true,
-          forceMaterialTransparency: true,
-          snap: true,
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.only(
-            top: kToolbarHeight / 2,
-            bottom: kBottomNavigationBarHeight * 2,
+          SliverPadding(
+            padding: const EdgeInsets.only(
+              top: kToolbarHeight / 2,
+              bottom: kBottomNavigationBarHeight * 2,
+            ),
+            sliver: SliverList(delegate: SliverChildListDelegate(children)),
           ),
-          sliver: SliverList(delegate: SliverChildListDelegate(children)),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
