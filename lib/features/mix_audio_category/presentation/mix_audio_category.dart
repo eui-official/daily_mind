@@ -46,9 +46,10 @@ class MixAudioCategory extends HookConsumerWidget {
       content: BaseGridItemsHeader(
         items: audioOfflineCategory.audios,
         onItemIndexBuilder: (context, index, audio) {
+          final isFirstAudio = audio == audioOfflineCategory.audios.first;
           final isSelected = mixData.mixItems.isContain(audio.id);
 
-          if (index == 0 && isFirstCategory) {
+          if (isFirstAudio && isFirstCategory) {
             return BaseShowcase(
               showcaseKey: soundKey,
               description: 'newMixTutorialContent1'.tr(),
