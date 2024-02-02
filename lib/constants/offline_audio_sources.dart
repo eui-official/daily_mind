@@ -44,4 +44,16 @@ OfflineAudioSources kOfflineAudioSources = {
     'assets/audios/birds-chirpings/birds-chirping-67827.mp3',
     'assets/audios/birds-chirpings/birds-chirping-75156.mp3',
   ],
+  'circketChirping': [
+    'assets/audios/cricket-chirpings/night-cricket-ambience-22484.mp3',
+  ],
+  'babblingBrook': [
+    'assets/audios/babbling-brooks/babbling-brook-25319.mp3',
+  ],
+  'waterfall': [
+    'assets/audios/waterfalls/waterfall-24060.mp3',
+  ],
+  'tibetanBowl': [
+    'assets/audios/tibetan-bowls/tibetan-bowl-26240.mp3',
+  ]
 };

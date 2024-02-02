@@ -1,9 +1,11 @@
 {
   "addToList": "Thêm {name} vào danh sách",
+  "babblingBrook": "Tiếng suối chảy",
+  "birdsChirping": "Chim hót líu lo",
   "byYourFavorites": "Theo sở thích của bạn",
   "cancel": "Thoát",
   "catPurring": "Tiếng mèo ngủ",
-  "birdsChirping": "Chim hót líu lo",
+  "circketChirping": "Tiếng dế kêu",
   "color": "Màu sắc",
   "colorList": "Danh sách màu sắc",
   "createANewMixFromNaturalSounds": "Tạo một bản nhạc từ các âm thanh thiên nhiên",
@@ -47,11 +49,13 @@
   "system": "Hệ thống",
   "task": "Nhiệm vụ",
   "taskList": "Danh sách công việc",
+  "thunderstorm": "Giông bão",
   "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "water": "Nước",
+  "waterfall": "Tiếng thác nước",
   "wave": "Sóng biển",
-  "thunderstorm": "Giông bão",
   "whiteNoise": "Tiếng ồn trắng",
+  "tibetanBowl": "Tiếng bát Tây Tạng",
   "wind": "Gió"
 }
