@@ -32,7 +32,7 @@ class Mix extends HookConsumerWidget {
 
     return Scaffold(
       body: AppBarScrollview(
-        title: 'naturalSounds'.tr(),
+        title: 'mixSounds'.tr(),
         bottom: const MixTabbar(),
         children: [
           MixSwitch(

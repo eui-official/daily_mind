@@ -82,6 +82,7 @@ dependencies:
   badges: ^3.1.2
   firebase_crashlytics: ^3.4.9
   firebase_core: ^2.24.2
+  sticky_headers: ^0.3.0+2
 dev_dependencies:
   flutter_test:
     sdk: flutter

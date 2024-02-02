@@ -45,12 +45,10 @@ class OnlinePlaylistSelector extends HookWidget {
       appBar: AppBar(
         title: Text('Danh sách playlist'.tr()),
       ),
-      body: SafeArea(
-        child: OnlinePlaylistAvailable(
-          onSelected: (id) => onSelected(context, id),
-          openAddOnlinePlaylist: openAddOnlinePlaylist,
-          scrollController: scrollController,
-        ),
+      body: OnlinePlaylistAvailable(
+        onSelected: (id) => onSelected(context, id),
+        openAddOnlinePlaylist: openAddOnlinePlaylist,
+        scrollController: scrollController,
       ),
     );
   }

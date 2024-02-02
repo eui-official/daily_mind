@@ -1,16 +1,11 @@
-import 'package:daily_mind/common_hooks/use_mix.dart';
-import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items_header.dart';
-import 'package:daily_mind/common_widgets/base_showcase/presentation/base_showcase.dart';
 import 'package:daily_mind/constants/offline_audios.dart';
-import 'package:daily_mind/extensions/list.dart';
-import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
-import 'package:daily_mind/features/mix_audio_card/presentation/mix_audio_card.dart';
-import 'package:daily_mind/common_widgets/base_showcase/constant/showcase_keys.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:daily_mind/features/mix_audio_category/presentation/mix_audio_category.dart';
+import 'package:daily_mind/theme/common.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class MixListAudio extends HookConsumerWidget {
+class MixListAudio extends HookWidget {
   final EdgeInsetsGeometry? padding;
 
   const MixListAudio({
@@ -19,34 +14,27 @@ class MixListAudio extends HookConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final mixNotifier = ref.read(mixProvider.notifier);
-    final mixData = useMix(ref);
+  Widget build(BuildContext context) {
+    final children = useMemoized(
+      () {
+        return kOfflineAudioCategories.map((audioOfflineCategory) {
+          final isFirstCategory =
+              audioOfflineCategory == kOfflineAudioCategories.first;
 
-    return BaseGridItemsHeader(
-      padding: padding,
-      items: kOfflineAudios,
-      onItemIndexBuilder: (context, index, audio) {
-        final isSelected = mixData.mixItems.isContain(audio.id);
-
-        if (index == 0) {
-          return BaseShowcase(
-            showcaseKey: soundKey,
-            description: 'newMixTutorialContent1'.tr(),
-            child: MixAudioCard(
-              isSelected: isSelected,
-              audio: audio,
-              onSelecting: mixNotifier.onSelect,
-            ),
+          return MixAudioCategory(
+            isFirstCategory: isFirstCategory,
+            audioOfflineCategory: audioOfflineCategory,
           );
-        }
-
-        return MixAudioCard(
-          isSelected: isSelected,
-          audio: audio,
-          onSelecting: mixNotifier.onSelect,
-        );
+        }).toList();
       },
+      [],
+    );
+
+    return Column(
+      children: space(
+        children,
+        height: spacing(5),
+      ),
     );
   }
 }

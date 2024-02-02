@@ -126,6 +126,7 @@ class PlaylistDetailsContent extends HookConsumerWidget {
         return Stack(
           children: [
             AppBarScrollview(
+              useSafeArea: false,
               title: onlinePlaylist?.title ?? kEmptyString,
               actions: [
                 PlaylistDetailsAction(
