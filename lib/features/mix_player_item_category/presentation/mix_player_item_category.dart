@@ -32,14 +32,12 @@ class MixPlayerItemCategory extends HookWidget {
 
     return BaseContentHeader(
       title: itemCategory.category.name,
-      titleStyle: context.textTheme.titleSmall?.copyWith(
+      titleStyle: context.textTheme.titleMedium?.copyWith(
         color: context.theme.hintColor,
         fontWeight: FontWeight.bold,
       ),
       spacingSize: 3,
-      child: Column(
-        children: children,
-      ),
+      child: Column(children: children),
     );
   }
 }

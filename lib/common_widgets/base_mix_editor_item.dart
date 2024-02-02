@@ -55,7 +55,7 @@ class BaseMixEditorItem extends StatelessWidget {
                 [
                   Text(
                     name,
-                    style: context.textTheme.bodySmall?.copyWith(
+                    style: context.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),

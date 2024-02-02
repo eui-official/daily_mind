@@ -95,7 +95,7 @@ class MixPlayer extends HookConsumerWidget {
                             mixItems: mixData.mixItems,
                           ),
                         ],
-                        height: spacing(4),
+                        height: spacing(5),
                       ),
                     ),
                   ],

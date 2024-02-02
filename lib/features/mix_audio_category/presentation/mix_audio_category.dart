@@ -31,13 +31,13 @@ class MixAudioCategory extends HookConsumerWidget {
     return StickyHeader(
       header: Container(
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(bottom: spacing(2)),
+        padding: EdgeInsets.only(bottom: spacing(3)),
         decoration: BoxDecoration(
           color: context.theme.colorScheme.surface,
         ),
         child: Text(
           audioOfflineCategory.name,
-          style: context.textTheme.bodyLarge?.copyWith(
+          style: context.textTheme.titleMedium?.copyWith(
             color: context.theme.hintColor,
             fontWeight: FontWeight.bold,
           ),

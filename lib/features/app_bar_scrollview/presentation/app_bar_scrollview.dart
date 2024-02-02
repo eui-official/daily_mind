@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/utils.dart';
 
-class AppBarScrollview extends StatelessWidget {
+class AppBarScrollview extends HookWidget {
   final double? expandedHeight;
   final List<Widget> children;
   final PreferredSizeWidget? bottom;
@@ -10,6 +11,7 @@ class AppBarScrollview extends StatelessWidget {
   final String title;
   final Widget? flexibleSpace;
   final List<Widget> actions;
+  final bool useSafeArea;
 
   const AppBarScrollview({
     super.key,
@@ -21,13 +23,13 @@ class AppBarScrollview extends StatelessWidget {
     this.flexibleSpace,
     this.physics,
     this.scrollController,
+    this.useSafeArea = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      maintainBottomViewPadding: true,
-      child: CustomScrollView(
+    final content = useMemoized(() {
+      return CustomScrollView(
         controller: scrollController,
         physics: physics,
         slivers: [
@@ -53,7 +55,27 @@ class AppBarScrollview extends StatelessWidget {
             sliver: SliverList(delegate: SliverChildListDelegate(children)),
           ),
         ],
-      ),
-    );
+      );
+    }, [
+      scrollController,
+      physics,
+      actions,
+      bottom,
+      expandedHeight,
+      flexibleSpace,
+      title,
+      children,
+    ]);
+
+    final child = useMemoized(() {
+      return useSafeArea
+          ? SafeArea(
+              maintainBottomViewPadding: true,
+              child: content,
+            )
+          : content;
+    }, [useSafeArea, content]);
+
+    return child;
   }
 }

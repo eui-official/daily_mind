@@ -33,7 +33,7 @@ class MixListAudio extends HookWidget {
     return Column(
       children: space(
         children,
-        height: spacing(3),
+        height: spacing(5),
       ),
     );
   }
