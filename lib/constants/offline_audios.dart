@@ -8,49 +8,49 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
     audios: [
       AudioOffline(
         id: 'rain',
-        name: 'rain',
+        name: 'sounds.rain',
         image: 'assets/images/rain-forest.png',
       ),
       AudioOffline(
         id: 'forest',
-        name: 'forest',
+        name: 'sounds.forest',
         image: 'assets/images/forest-with-birds.png',
       ),
       AudioOffline(
         id: 'wind',
-        name: 'wind',
+        name: 'sounds.wind',
         image: 'assets/images/wind-and-peaceful.png',
       ),
       AudioOffline(
         id: 'fire',
-        name: 'fire',
+        name: 'sounds.fire',
         image: 'assets/images/firecamp.png',
       ),
       AudioOffline(
         id: 'water',
-        name: 'water',
+        name: 'sounds.water',
         image: 'assets/images/water.png',
       ),
       AudioOffline(
         id: 'wave',
-        name: 'wave',
+        name: 'sounds.wave',
         image: 'assets/images/wave.png',
       ),
       AudioOffline(
         id: 'thunderstorm',
-        name: 'thunderstorm',
+        name: 'sounds.thunderstorm',
         image: 'assets/images/thunderstorm.png',
         isSubscriptionRequired: true,
       ),
       AudioOffline(
         id: 'babblingBrook',
-        name: 'babblingBrook',
+        name: 'sounds.babblingBrook',
         image: 'assets/images/babbling-brook.png',
         isSubscriptionRequired: true,
       ),
       AudioOffline(
         id: 'waterfall',
-        name: 'waterfall',
+        name: 'sounds.waterfall',
         image: 'assets/images/waterfall.png',
         isSubscriptionRequired: true,
       ),
@@ -62,7 +62,7 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
     audios: [
       AudioOffline(
         id: 'whiteNoise',
-        name: 'whiteNoise',
+        name: 'sounds.whiteNoise',
         image: 'assets/images/white-noise.png',
       ),
     ],
@@ -73,17 +73,17 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
     audios: [
       AudioOffline(
         id: 'space',
-        name: 'space',
+        name: 'sounds.space',
         image: 'assets/images/sky.png',
       ),
       AudioOffline(
         id: 'deltaWave',
-        name: 'deltaWave',
+        name: 'sounds.deltaWave',
         image: 'assets/images/delta-wave.png',
       ),
       AudioOffline(
         id: 'tibetanBowl',
-        name: 'tibetanBowl',
+        name: 'sounds.tibetanBowl',
         image: 'assets/images/tibetan-bowl.png',
       ),
     ],
@@ -94,19 +94,25 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
     audios: [
       AudioOffline(
         id: 'catPurring',
-        name: 'catPurring',
+        name: 'sounds.catPurring',
         image: 'assets/images/cat-purring.png',
       ),
       AudioOffline(
         id: 'birdsChirping',
-        name: 'birdsChirping',
+        name: 'sounds.birdsChirping',
         image: 'assets/images/birds-chirping.png',
         isSubscriptionRequired: true,
       ),
       AudioOffline(
         id: 'circketChirping',
-        name: 'circketChirping',
+        name: 'sounds.circketChirping',
         image: 'assets/images/cricket.png',
+        isSubscriptionRequired: true,
+      ),
+      AudioOffline(
+        id: 'whale',
+        name: 'sounds.whale',
+        image: 'assets/images/whale.png',
         isSubscriptionRequired: true,
       ),
     ],

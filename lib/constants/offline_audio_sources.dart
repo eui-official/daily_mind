@@ -55,5 +55,8 @@ OfflineAudioSources kOfflineAudioSources = {
   ],
   'tibetanBowl': [
     'assets/audios/tibetan-bowls/tibetan-bowl-26240.mp3',
+  ],
+  'whale': [
+    'assets/audios/whales/whale-sounds-ambient-116194.mp3',
   ]
 };
