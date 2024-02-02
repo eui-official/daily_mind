@@ -122,21 +122,23 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
-    - assets/images/background/
-    - assets/lottie/
     - assets/audios/
+    - assets/audios/cat-purrings/
+    - assets/audios/birds-chirpings/
+    - assets/audios/delta-waves/
     - assets/audios/fires/
-    - assets/audios/silients/
     - assets/audios/forests/
     - assets/audios/rains/
+    - assets/audios/silients/
     - assets/audios/spaces/
+    - assets/audios/thunderstorms/
     - assets/audios/waters/
     - assets/audios/waves/
     - assets/audios/white-noises/
     - assets/audios/winds/
-    - assets/audios/cat-purrings/
-    - assets/audios/delta-waves/
+    - assets/images/
+    - assets/images/background/
+    - assets/lottie/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -36,6 +36,11 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         name: 'wave',
         image: 'assets/images/wave.png',
       ),
+      AudioOffline(
+        id: 'thunderstorm',
+        name: 'thunderstorm',
+        image: 'assets/images/thunderstorm.png',
+      ),
     ],
   ),
   AudioOfflineCategory(
@@ -73,6 +78,11 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         id: 'catPurring',
         name: 'catPurring',
         image: 'assets/images/cat-purring.png',
+      ),
+      AudioOffline(
+        id: 'birdsChirping',
+        name: 'birdsChirping',
+        image: 'assets/images/birds-chirping.png',
       ),
     ],
   ),
