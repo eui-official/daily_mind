@@ -58,5 +58,8 @@ OfflineAudioSources kOfflineAudioSources = {
   ],
   'whale': [
     'assets/audios/whales/whale-sounds-ambient-116194.mp3',
+  ],
+  'leaveRustling': [
+    'assets/audios/leave-rustlings/leaves-rustling-14633.mp3',
   ]
 };

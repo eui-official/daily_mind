@@ -54,6 +54,12 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         image: 'assets/images/waterfall.png',
         isSubscriptionRequired: true,
       ),
+      AudioOffline(
+        id: 'leaveRustling',
+        name: 'sounds.leaveRustling',
+        image: 'assets/images/leave-rustling.png',
+        isSubscriptionRequired: true,
+      ),
     ],
   ),
   AudioOfflineCategory(
