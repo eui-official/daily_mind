@@ -61,5 +61,14 @@ OfflineAudioSources kOfflineAudioSources = {
   ],
   'leaveRustling': [
     'assets/audios/leave-rustlings/leaves-rustling-14633.mp3',
-  ]
+  ],
+  'pinkNoise': [
+    'assets/audios/pink-noises/pink-noise-1.mp3',
+  ],
+  "brownNoise": [
+    'assets/audios/brown-noises/brown-noise-1.mp3',
+  ],
+  "blueNoise": [
+    'assets/audios/blue-noises/blue-noise-1.mp3',
+  ],
 };

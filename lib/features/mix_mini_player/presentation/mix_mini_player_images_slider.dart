@@ -28,6 +28,7 @@ class MixMiniPlayerImagesSlider extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: circularRadius(),
             image: DecorationImage(
+              fit: BoxFit.cover,
               image: AssetImage(audio.image),
             ),
           ),
