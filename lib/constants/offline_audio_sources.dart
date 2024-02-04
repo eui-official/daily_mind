@@ -71,4 +71,10 @@ OfflineAudioSources kOfflineAudioSources = {
   "blueNoise": [
     'assets/audios/blue-noises/blue-noise-1.mp3',
   ],
+  "violetNoise": [
+    'assets/audios/violet-noises/violet-noise-1.mp3',
+  ],
+  "greyNoise": [
+    'assets/audios/grey-noises/grey-noise-1.mp3',
+  ],
 };

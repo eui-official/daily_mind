@@ -89,6 +89,18 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         image: 'assets/images/blue-noise.png',
         isSubscriptionRequired: true,
       ),
+      AudioOffline(
+        id: 'violetNoise',
+        name: 'sounds.violetNoise',
+        image: 'assets/images/violet-noise.png',
+        isSubscriptionRequired: true,
+      ),
+      AudioOffline(
+        id: 'greyNoise',
+        name: 'sounds.greyNoise',
+        image: 'assets/images/grey-noise.png',
+        isSubscriptionRequired: true,
+      ),
     ],
   ),
   AudioOfflineCategory(
