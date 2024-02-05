@@ -30,8 +30,20 @@ OfflineAudioSources kOfflineAudioSources = {
   'thunderstorm': [
     'assets/audios/thunderstorms/epic-storm-thunder-rainwindwaves-no-loops-106800.mp3',
   ],
+  'alphaWave': [
+    'assets/audios/alpha-waves/alpha-wave-1.mp3',
+  ],
   'deltaWave': [
     'assets/audios/delta-waves/delta-wave-1.mp3',
+  ],
+  'thetaWave': [
+    'assets/audios/theta-waves/theta-wave-1.mp3',
+  ],
+  'betaWave': [
+    'assets/audios/beta-waves/beta-wave-1.mp3',
+  ],
+  'gammaWave': [
+    'assets/audios/gamma-waves/gamma-wave-1.mp3',
   ],
   'whiteNoise': [
     'assets/audios/white-noises/white-noise-1.mp3',

@@ -108,14 +108,34 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
     name: 'Sóng âm',
     audios: [
       AudioOffline(
-        id: 'space',
-        name: 'sounds.space',
-        image: 'assets/images/sky.png',
+        id: 'alphaWave',
+        name: 'sounds.alphaWave',
+        image: 'assets/images/alpha-wave.png',
       ),
       AudioOffline(
         id: 'deltaWave',
         name: 'sounds.deltaWave',
         image: 'assets/images/delta-wave.png',
+      ),
+      AudioOffline(
+        id: 'thetaWave',
+        name: 'sounds.thetaWave',
+        image: 'assets/images/theta-wave.png',
+      ),
+      AudioOffline(
+        id: 'betaWave',
+        name: 'sounds.betaWave',
+        image: 'assets/images/beta-wave.png',
+      ),
+      AudioOffline(
+        id: 'gammaWave',
+        name: 'sounds.gammaWave',
+        image: 'assets/images/gamma-wave.png',
+      ),
+      AudioOffline(
+        id: 'space',
+        name: 'sounds.space',
+        image: 'assets/images/sky.png',
       ),
       AudioOffline(
         id: 'tibetanBowl',

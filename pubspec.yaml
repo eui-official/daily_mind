@@ -138,10 +138,14 @@ flutter:
     - assets/audios/rains/
     - assets/audios/silients/
     - assets/audios/spaces/
+    - assets/audios/theta-waves/
     - assets/audios/thunderstorms/
     - assets/audios/tibetan-bowls/
     - assets/audios/violet-noises/
     - assets/audios/waterfalls/
+    - assets/audios/beta-waves/
+    - assets/audios/gamma-waves/
+    - assets/audios/alpha-waves/
     - assets/audios/waters/
     - assets/audios/waves/
     - assets/audios/whales/
