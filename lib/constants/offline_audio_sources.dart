@@ -28,7 +28,7 @@ OfflineAudioSources kOfflineAudioSources = {
     'assets/audios/winds/wind-1.mp3',
   ],
   'thunderstorm': [
-    'assets/audios/thunderstorms/epic-storm-thunder-rainwindwaves-no-loops-106800.mp3',
+    'assets/audios/thunderstorms/thunder-storm-1.mp3',
   ],
   'alphaWave': [
     'assets/audios/alpha-waves/alpha-wave-1.mp3',
@@ -52,27 +52,28 @@ OfflineAudioSources kOfflineAudioSources = {
     'assets/audios/cat-purrings/cat-purring-1.mp3',
   ],
   'birdsChirping': [
-    'assets/audios/birds-chirpings/birds-chirping-04-6771.mp3',
-    'assets/audios/birds-chirpings/birds-chirping-67827.mp3',
-    'assets/audios/birds-chirpings/birds-chirping-75156.mp3',
+    'assets/audios/birds-chirpings/birds-chirping-1.mp3',
   ],
   'circketChirping': [
-    'assets/audios/cricket-chirpings/night-cricket-ambience-22484.mp3',
+    'assets/audios/cricket-chirpings/cricket-chirping-1.mp3',
+  ],
+  'frogCroaking': [
+    'assets/audios/frog-croakings/frog-croaking-1.mp3',
   ],
   'babblingBrook': [
-    'assets/audios/babbling-brooks/babbling-brook-25319.mp3',
+    'assets/audios/babbling-brooks/babbling-brook-1.mp3',
   ],
   'waterfall': [
-    'assets/audios/waterfalls/waterfall-24060.mp3',
+    'assets/audios/waterfalls/waterfall-1.mp3',
   ],
   'tibetanBowl': [
-    'assets/audios/tibetan-bowls/tibetan-bowl-26240.mp3',
+    'assets/audios/tibetan-bowls/tibetan-bowl-1.mp3',
   ],
   'whale': [
-    'assets/audios/whales/whale-sounds-ambient-116194.mp3',
+    'assets/audios/whales/whale-1.mp3',
   ],
   'leaveRustling': [
-    'assets/audios/leave-rustlings/leaves-rustling-14633.mp3',
+    'assets/audios/leave-rustlings/leaves-rustling-1.mp3',
   ],
   'pinkNoise': [
     'assets/audios/pink-noises/pink-noise-1.mp3',

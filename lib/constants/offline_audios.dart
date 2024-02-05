@@ -168,7 +168,7 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
       AudioOffline(
         id: 'frogCroaking',
         name: 'sounds.frogCroaking',
-        image: 'assets/images/frog.png',
+        image: 'assets/images/frog-croaking.png',
         isSubscriptionRequired: true,
       ),
       AudioOffline(
