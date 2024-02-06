@@ -189,6 +189,12 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         image: 'assets/images/horse-neighing.png',
         isSubscriptionRequired: true,
       ),
+      AudioOffline(
+        id: 'wolveHowling',
+        name: 'sounds.wolveHowling',
+        image: 'assets/images/wolve-howling.png',
+        isSubscriptionRequired: true,
+      ),
     ],
   ),
 ];
