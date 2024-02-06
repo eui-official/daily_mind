@@ -123,15 +123,20 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/audios/
+    - assets/audios/alpha-waves/
     - assets/audios/babbling-brooks/
+    - assets/audios/beta-waves/
     - assets/audios/birds-chirpings/
     - assets/audios/blue-noises/
     - assets/audios/brown-noises/
     - assets/audios/cat-purrings/
     - assets/audios/cricket-chirpings/
     - assets/audios/delta-waves/
+    - assets/audios/dolphins/
     - assets/audios/fires/
     - assets/audios/forests/
+    - assets/audios/frog-croakings/
+    - assets/audios/gamma-waves/
     - assets/audios/grey-noises/
     - assets/audios/leave-rustlings/
     - assets/audios/pink-noises/
@@ -142,11 +147,8 @@ flutter:
     - assets/audios/thunderstorms/
     - assets/audios/tibetan-bowls/
     - assets/audios/violet-noises/
+    - assets/audios/horse-neighings/
     - assets/audios/waterfalls/
-    - assets/audios/beta-waves/
-    - assets/audios/gamma-waves/
-    - assets/audios/alpha-waves/
-    - assets/audios/frog-croakings/
     - assets/audios/waters/
     - assets/audios/waves/
     - assets/audios/whales/

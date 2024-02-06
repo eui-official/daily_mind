@@ -72,6 +72,12 @@ OfflineAudioSources kOfflineAudioSources = {
   'whale': [
     'assets/audios/whales/whale-1.mp3',
   ],
+  'dolphin': [
+    'assets/audios/dolphins/dolphin-1.mp3',
+  ],
+  'horseNeighing': [
+    'assets/audios/horse-neighings/horse-neighing-1.mp3',
+  ],
   'leaveRustling': [
     'assets/audios/leave-rustlings/leaves-rustling-1.mp3',
   ],

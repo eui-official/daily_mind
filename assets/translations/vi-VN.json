@@ -54,7 +54,7 @@
     "deltaWave": "Sóng delta",
     "fire": "Lửa",
     "forest": "Rừng",
-    "frogCroaking": "Tiếng ếch kêu",
+    "frogCroaking": "Ếch kêu",
     "gammaWave": "Sóng gamma",
     "greyNoise": "Tiếng ồn xám",
     "leaveRustling": "Lá rơi",
@@ -70,6 +70,8 @@
     "wave": "Sóng biển",
     "whale": "Cá voi",
     "whiteNoise": "Tiếng ồn trắng",
-    "wind": "Gió"
+    "wind": "Gió",
+    "dolphin": "Cá heo",
+    "horseNeighing": "Ngựa hí"
   }
 }

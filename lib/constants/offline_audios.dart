@@ -177,6 +177,18 @@ final List<AudioOfflineCategory> kOfflineAudioCategories = [
         image: 'assets/images/whale.png',
         isSubscriptionRequired: true,
       ),
+      AudioOffline(
+        id: 'dolphin',
+        name: 'sounds.dolphin',
+        image: 'assets/images/dolphin.png',
+        isSubscriptionRequired: true,
+      ),
+      AudioOffline(
+        id: 'horseNeighing',
+        name: 'sounds.horseNeighing',
+        image: 'assets/images/horse-neighing.png',
+        isSubscriptionRequired: true,
+      ),
     ],
   ),
 ];
