@@ -52,11 +52,13 @@
     "catPurring": "Mèo ngủ",
     "circketChirping": "Dế kêu",
     "deltaWave": "Sóng delta",
+    "dolphin": "Cá heo",
     "fire": "Lửa",
     "forest": "Rừng",
-    "frogCroaking": "Tiếng ếch kêu",
+    "frogCroaking": "Ếch kêu",
     "gammaWave": "Sóng gamma",
     "greyNoise": "Tiếng ồn xám",
+    "horseNeighing": "Ngựa hí",
     "leaveRustling": "Lá rơi",
     "pinkNoise": "Tiếng ồn hồng",
     "rain": "Mưa",
@@ -70,6 +72,7 @@
     "wave": "Sóng biển",
     "whale": "Cá voi",
     "whiteNoise": "Tiếng ồn trắng",
-    "wind": "Gió"
+    "wind": "Gió",
+    "wolveHowling": "Chó sói hú"
   }
 }
