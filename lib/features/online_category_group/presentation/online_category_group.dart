@@ -1,7 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
-import 'package:daily_mind/constants/carousel.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
+import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:daily_mind/features/online_category_vertical/presentation/online_category_vertical.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -19,14 +19,22 @@ class OnlineCategoryGroup extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get single group from audio categories
     final group = useMemoized(
       () => audioCategories.first.group,
       [audioCategories],
     );
 
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: spacing(2)),
+    final items = useMemoized(() {
+      return audioCategories.map(
+        (audioCategory) {
+          return OnlineCategoryVertical(
+            audioCategory: audioCategory,
+          );
+        },
+      );
+    }, [audioCategories]);
+
+    return BaseSpacingContainerHorizontal(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: space(
@@ -42,23 +50,16 @@ class OnlineCategoryGroup extends HookWidget {
                 );
               },
             ),
-            CarouselSlider.builder(
-              itemCount: audioCategories.length,
-              itemBuilder: (context, index, realIndex) {
-                final audioCategory = audioCategories[index];
-
-                return LayoutBuilder(
-                  builder: (context, constraints) {
-                    return OnlineCategoryVertical(
-                      audioCategory: audioCategory,
-                      imageHeight: constraints.maxHeight,
-                      padding: EdgeInsets.zero,
-                    );
-                  },
-                );
-              },
-              options: kBaseCarouselOptions,
-            )
+            SizedBox(
+              height: kSmallCard,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: space(
+                  items,
+                  width: spacing(2),
+                ),
+              ),
+            ),
           ],
           height: spacing(2),
         ),

@@ -8,8 +8,8 @@ class BaseContentWithPlayIcon extends StatelessWidget {
 
   const BaseContentWithPlayIcon({
     super.key,
-    required this.child,
     this.isPlaying = false,
+    required this.child,
   });
 
   @override
