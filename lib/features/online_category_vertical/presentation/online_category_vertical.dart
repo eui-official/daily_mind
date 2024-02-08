@@ -1,10 +1,10 @@
-import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:daily_mind/common_domains/audio_category.dart';
 import 'package:daily_mind/common_widgets/base_card/presentation/base_card.dart';
 import 'package:daily_mind/common_widgets/base_content_with_play_icon/presentation/base_content_with_play_icon.dart';
 import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_online_handler.dart';
 import 'package:daily_mind/constants/audio_card_sizes.dart';
+import 'package:daily_mind/features/online_category_vertical/presentation/online_category_vertical_content.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -44,13 +44,9 @@ class OnlineCategoryVertical extends HookConsumerWidget {
           width: width ?? kSmallCard,
           image: image,
           content: BaseContentWithPlayIcon(
-            crossAxisAlignment: CrossAxisAlignment.start,
             isPlaying: isPlaying,
-            child: Text(
-              audioCategory.category.name,
-              style: context.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            child: OnlineCategoryVerticalContent(
+              name: audioCategory.category.name,
             ),
           ),
         );
