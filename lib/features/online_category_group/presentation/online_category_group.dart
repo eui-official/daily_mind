@@ -27,15 +27,11 @@ class OnlineCategoryGroup extends HookWidget {
     final items = useMemoized(() {
       return audioCategories.map(
         (audioCategory) {
-          return LayoutBuilder(
-            builder: (context, constraints) {
-              return OnlineCategoryVertical(
-                audioCategory: audioCategory,
-              );
-            },
+          return OnlineCategoryVertical(
+            audioCategory: audioCategory,
           );
         },
-      ).toList();
+      );
     }, [audioCategories]);
 
     return BaseSpacingContainerHorizontal(
