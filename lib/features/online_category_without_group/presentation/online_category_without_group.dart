@@ -20,7 +20,14 @@ class OnlineCategoryWithoutGroup extends StatelessWidget {
         items: audioCategories,
         onItemIndexBuilder: (context, index, audioCategory) {
           if (audioCategory.category.layout == 'vertical') {
-            return OnlineCategoryVertical(audioCategory: audioCategory);
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                return OnlineCategoryVertical(
+                  audioCategory: audioCategory,
+                  width: constraints.maxWidth,
+                );
+              },
+            );
           }
 
           return OnlineCategoryHorizontal(audioCategory: audioCategory);
