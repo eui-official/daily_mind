@@ -7,6 +7,7 @@ import 'package:daily_mind/common_widgets/base_online_handler/presentation/base_
 import 'package:daily_mind/constants/audio_card_sizes.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OnlineCategoryVertical extends HookConsumerWidget {
@@ -27,6 +28,12 @@ class OnlineCategoryVertical extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final onlinePlayerState = ref.watch(onlinePlayerProvider);
 
+    final image = useMemoized(() {
+      return CachedNetworkImageProvider(audioCategory.category.image);
+    }, [audioCategory]);
+
+    final isPlaying = onlinePlayerState.id == audioCategory.category.id;
+
     return BaseOnlineHandler(
       audioCategory: audioCategory,
       padding: padding,
@@ -35,13 +42,13 @@ class OnlineCategoryVertical extends HookConsumerWidget {
           onTap: onTap,
           height: height ?? kSmallCard,
           width: width ?? kSmallCard,
-          image: CachedNetworkImageProvider(audioCategory.category.image),
+          image: image,
           content: BaseContentWithPlayIcon(
             crossAxisAlignment: CrossAxisAlignment.start,
-            isPlaying: onlinePlayerState.id == audioCategory.category.id,
+            isPlaying: isPlaying,
             child: Text(
               audioCategory.category.name,
-              style: context.textTheme.bodyLarge?.copyWith(
+              style: context.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
