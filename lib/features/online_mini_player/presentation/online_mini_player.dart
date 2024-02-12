@@ -1,4 +1,5 @@
 import 'package:daily_mind/common_applications/base_bottom_sheet.dart';
+import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_skeleton.dart';
@@ -45,19 +46,19 @@ class OnlineMiniPlayer extends HookConsumerWidget {
     final child = useMemoized(() {
       if (onlinePlayer.isReady) {
         final item = sequence[currentIndex];
-        final tag = item.tag;
+        final audio = item.tag as Audio;
 
         return BaseMiniPlayer(
           onTap: onOpenPlayerOnline,
           leading: BaseNetworkImage(
-            image: tag.image,
+            image: audio.image,
             size: 5,
           ),
           isLoading: isLoading,
           isPlaying: isPlaying,
           onPause: baseBackgroundHandler.pause,
           onPlay: baseBackgroundHandler.play,
-          title: tag.name,
+          title: audio.name,
         );
       }
 

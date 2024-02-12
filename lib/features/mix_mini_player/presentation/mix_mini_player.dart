@@ -20,9 +20,9 @@ class MixMiniPlayer extends HookConsumerWidget {
     final mixData = useMix(ref);
 
     final title = mixData.mixItems.map((item) {
-      final audio = item.audio;
+      final offlineAudio = item.offlineAudio;
 
-      return audio.name.tr();
+      return offlineAudio.title.tr();
     }).join(', ');
 
     final subtitle = useMemoized(

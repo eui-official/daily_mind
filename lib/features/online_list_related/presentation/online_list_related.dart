@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/common_widgets/base_add_to_playlist_builder/presentation/base_add_to_playlist.dart';
@@ -31,6 +32,12 @@ class OnlineListRelated extends HookConsumerWidget {
       sequence,
     ]);
 
+    final onGetSubtitle = useCallback((String name) {
+      if (name.isNotEmpty) {
+        return OnlineItemSubtitle(title: name);
+      }
+    }, []);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: space(
@@ -41,7 +48,7 @@ class OnlineListRelated extends HookConsumerWidget {
               itemCount: sequence.length,
               itemBuilder: (context, index) {
                 final s = sequence[index];
-                final audio = s.tag;
+                final audio = s.tag as Audio;
                 final artist = configState.onGetArtistById(audio.artist);
                 final name = artist?.name ?? kEmptyString;
 
@@ -49,8 +56,7 @@ class OnlineListRelated extends HookConsumerWidget {
                   onTap: () => onTap(index),
                   image: audio.image,
                   title: OnlineItemTitle(title: audio.name),
-                  subtitle:
-                      name.isNotEmpty ? OnlineItemSubtitle(title: name) : kNull,
+                  subtitle: onGetSubtitle(name),
                   trailing: BaseAddToPlaylistBuilder(
                     audio: audio,
                     builder: (onOpenPlaylist) {

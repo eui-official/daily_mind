@@ -35,7 +35,8 @@ class BaseOnlineHandler extends HookConsumerWidget {
 
     final onTap = useCallback(() async {
       onlinePlayerNotifier.onUpdateId(category.id);
-      onlinePlayerNotifier.onUpdateOpenFrom(category.name);
+      onlinePlayerNotifier.onUpdateTitle(category.name);
+      onlinePlayerNotifier.onUpdateDescription(category.description);
 
       await baseBackgroundHandler.onInitOnline(audios);
 

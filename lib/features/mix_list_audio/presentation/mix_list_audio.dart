@@ -17,13 +17,13 @@ class MixListAudio extends HookWidget {
   Widget build(BuildContext context) {
     final children = useMemoized(
       () {
-        return kOfflineAudioCategories.map((audioOfflineCategory) {
+        return kOfflineAudioCategories.map((offlineAudioCategory) {
           final isFirstCategory =
-              audioOfflineCategory == kOfflineAudioCategories.first;
+              offlineAudioCategory == kOfflineAudioCategories.first;
 
           return MixAudioCategory(
             isFirstCategory: isFirstCategory,
-            audioOfflineCategory: audioOfflineCategory,
+            offlineAudioCategory: offlineAudioCategory,
           );
         }).toList();
       },

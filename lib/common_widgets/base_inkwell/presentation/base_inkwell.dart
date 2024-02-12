@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 
 class BaseInkWell extends StatelessWidget {
-  final Color? color;
+  final BorderRadius borderRadius;
   final MaterialType type;
+  final Color? color;
   final VoidCallback? onTap;
   final Widget? child;
-  final BorderRadius? borderRadius;
 
   const BaseInkWell({
     super.key,
-    this.borderRadius,
-    this.child,
+    this.borderRadius = BorderRadius.zero,
     this.color = Colors.transparent,
+    this.type = MaterialType.button,
+    this.child,
     this.onTap,
-    this.type = MaterialType.transparency,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: color,
-      type: type,
-      child: InkWell(
-        borderRadius: borderRadius,
-        onTap: onTap,
-        child: child,
+    return ClipRRect(
+      borderRadius: borderRadius,
+      child: Material(
+        color: color,
+        type: type,
+        child: InkWell(
+          onTap: onTap,
+          child: child,
+        ),
       ),
     );
   }

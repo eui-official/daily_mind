@@ -47,7 +47,7 @@ class PlaylistDetailsListAudio extends HookConsumerWidget {
     final onTap = useCallback(
       (int index) async {
         onlinePlayerNotifier.onUpdateId(onlinePlaylist.id);
-        onlinePlayerNotifier.onUpdateOpenFrom(onlinePlaylist.title);
+        onlinePlayerNotifier.onUpdateTitle(onlinePlaylist.title);
 
         await baseBackgroundHandler.onInitOnline(
           audios,
@@ -61,7 +61,7 @@ class PlaylistDetailsListAudio extends HookConsumerWidget {
           ),
         );
       },
-      [audios],
+      [audios, onlinePlaylist],
     );
 
     final onDeleted = useCallback(

@@ -28,7 +28,7 @@ class PlaylistDetails extends HookConsumerWidget {
           }
         });
       });
-    });
+    }, []);
 
     return BaseNullBuilder(
       value: onlinePlaylist,

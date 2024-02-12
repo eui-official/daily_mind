@@ -6,12 +6,12 @@ import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_fil
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_control.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_list_related/presentation/online_list_related.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
-import 'package:daily_mind/features/online_player_details/presentation/online_player_details_expand_button.dart';
+import 'package:daily_mind/features/online_player_details_expand/presentation/online_player_details_expand.dart';
+import 'package:daily_mind/features/online_player_details_show_category_info/presentation/online_player_details_show_category_info.dart';
 import 'package:daily_mind/features/online_player_disk_image/presentation/online_player_disk_image.dart';
-import 'package:daily_mind/features/online_playlist_switcher/presentation/online_playlist_switcher.dart';
+import 'package:daily_mind/features/online_playlist_add/presentation/online_playlist_add.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -37,39 +37,50 @@ class OnlinePlayerDetails extends HookConsumerWidget {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final onlinePlayerState = ref.watch(onlinePlayerProvider);
 
+    final description = onlinePlayerState.description;
+    final isExpanded = onlinePlayerState.isExpanded;
+    final isNotExpanded = onlinePlayerState.isNotExpanded;
+
+    final imageProvider = useMemoized(
+      () => CachedNetworkImageProvider(audio.image),
+      [audio.image],
+    );
+
+    final actions = useMemoized(() {
+      final List<Widget> children = [
+        BaseAddToPlaylistBuilder(
+          audio: audio,
+          builder: (onOpenPlaylist) => OnlinePlaylistAdd(
+            onOpenPlaylist: onOpenPlaylist,
+          ),
+        ),
+        OnlinePlayerDetailsExpand(onPressed: onExpanded),
+        if (description != null)
+          OnlinePlayerDetailsShowCategoryDescription(description: description),
+      ];
+
+      return children;
+    }, [
+      audio,
+      description,
+      onExpanded,
+    ]);
+
     final expandedChild = useMemoized(
       () {
-        if (onlinePlayerState.isExpanded) {
+        if (isExpanded) {
           return const OnlineListRelated();
         }
 
         return OnlinePlayerDiskImage(audio: audio);
       },
-      [onlinePlayerState, audio],
+      [isExpanded, audio],
     );
-
-    final headerChild = useMemoized(() {
-      if (onlinePlayerState.isExpanded) {
-        return child;
-      }
-
-      return kEmptyWidget;
-    }, [onlinePlayerState, audio]);
-
-    final aboveChild = useMemoized(() {
-      if (onlinePlayerState.isExpanded) {
-        return kEmptyWidget;
-      }
-
-      return child;
-    }, [onlinePlayerState, audio]);
 
     return Stack(
       children: [
         Positioned.fill(
-          child: BaseBackdropFilter(
-            image: CachedNetworkImageProvider(audio.image),
-          ),
+          child: BaseBackdropFilter(image: imageProvider),
         ),
         BaseSpacingContainer(
           padding: EdgeInsets.symmetric(
@@ -80,35 +91,21 @@ class OnlinePlayerDetails extends HookConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: space(
               [
-                BaseAnimatedSwitcher(child: headerChild),
+                if (isExpanded) BaseAnimatedSwitcher(child: child),
                 Expanded(child: BaseAnimatedSwitcher(child: expandedChild)),
                 Column(
                   children: space(
                     [
-                      BaseAnimatedSwitcher(child: aboveChild),
+                      if (isNotExpanded) BaseAnimatedSwitcher(child: child),
                       BasePlayerControl(
                         backgroundHandler: baseBackgroundHandler,
                         onNext: baseBackgroundHandler.skipToNext,
                         onPrevious: baseBackgroundHandler.skipToPrevious,
                         audio: audio,
                       ),
-                      BasePlayerUserActions(
-                        actions: [
-                          BaseAddToPlaylistBuilder(
-                            audio: audio,
-                            builder: (onOpenPlaylist) {
-                              return OnlinePlaylistSwitcher(
-                                onOpenPlaylist: onOpenPlaylist,
-                              );
-                            },
-                          ),
-                          OnlinePlayerDetailsExpandButton(
-                            onPressed: onExpanded,
-                          ),
-                        ],
-                      ),
+                      BasePlayerUserActions(actions: actions),
                     ],
-                    height: spacing(2),
+                    height: spacing(3),
                   ),
                 ),
               ],

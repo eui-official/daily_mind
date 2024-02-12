@@ -20,13 +20,13 @@ class MixPlayerItem extends HookConsumerWidget {
     final mixNotifier = ref.read(mixProvider.notifier);
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final player = item.player;
-    final audio = item.audio;
+    final offlineAudio = item.offlineAudio;
 
     return BaseMixEditorItem(
-      image: audio.image,
+      image: offlineAudio.image,
       initVolume: player.volume,
-      name: audio.name.tr(),
-      onDeleted: () => mixNotifier.onSelect(audio),
+      name: offlineAudio.title.tr(),
+      onDeleted: () => mixNotifier.onSelect(offlineAudio),
       onVolumeChanged: (volume) {
         baseBackgroundHandler.onUpdateMixItemVolume(volume, item);
       },

@@ -18,23 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MixItem {
   String get id => throw _privateConstructorUsedError;
   GaplessAudioPlayer get player => throw _privateConstructorUsedError;
-  AudioOffline get audio => throw _privateConstructorUsedError;
+  OfflineAudio get offlineAudio => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id, GaplessAudioPlayer player, AudioOffline audio)
+            String id, GaplessAudioPlayer player, OfflineAudio offlineAudio)
         def,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, GaplessAudioPlayer player, AudioOffline audio)?
+    TResult? Function(
+            String id, GaplessAudioPlayer player, OfflineAudio offlineAudio)?
         def,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, GaplessAudioPlayer player, AudioOffline audio)?
+    TResult Function(
+            String id, GaplessAudioPlayer player, OfflineAudio offlineAudio)?
         def,
     required TResult orElse(),
   }) =>
@@ -65,7 +67,7 @@ abstract class $MixItemCopyWith<$Res> {
   factory $MixItemCopyWith(MixItem value, $Res Function(MixItem) then) =
       _$MixItemCopyWithImpl<$Res, MixItem>;
   @useResult
-  $Res call({String id, GaplessAudioPlayer player, AudioOffline audio});
+  $Res call({String id, GaplessAudioPlayer player, OfflineAudio offlineAudio});
 }
 
 /// @nodoc
@@ -83,7 +85,7 @@ class _$MixItemCopyWithImpl<$Res, $Val extends MixItem>
   $Res call({
     Object? id = null,
     Object? player = null,
-    Object? audio = null,
+    Object? offlineAudio = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -94,10 +96,10 @@ class _$MixItemCopyWithImpl<$Res, $Val extends MixItem>
           ? _value.player
           : player // ignore: cast_nullable_to_non_nullable
               as GaplessAudioPlayer,
-      audio: null == audio
-          ? _value.audio
-          : audio // ignore: cast_nullable_to_non_nullable
-              as AudioOffline,
+      offlineAudio: null == offlineAudio
+          ? _value.offlineAudio
+          : offlineAudio // ignore: cast_nullable_to_non_nullable
+              as OfflineAudio,
     ) as $Val);
   }
 }
@@ -109,7 +111,7 @@ abstract class _$$MixItemImplCopyWith<$Res> implements $MixItemCopyWith<$Res> {
       __$$MixItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, GaplessAudioPlayer player, AudioOffline audio});
+  $Res call({String id, GaplessAudioPlayer player, OfflineAudio offlineAudio});
 }
 
 /// @nodoc
@@ -125,7 +127,7 @@ class __$$MixItemImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? player = null,
-    Object? audio = null,
+    Object? offlineAudio = null,
   }) {
     return _then(_$MixItemImpl(
       id: null == id
@@ -136,10 +138,10 @@ class __$$MixItemImplCopyWithImpl<$Res>
           ? _value.player
           : player // ignore: cast_nullable_to_non_nullable
               as GaplessAudioPlayer,
-      audio: null == audio
-          ? _value.audio
-          : audio // ignore: cast_nullable_to_non_nullable
-              as AudioOffline,
+      offlineAudio: null == offlineAudio
+          ? _value.offlineAudio
+          : offlineAudio // ignore: cast_nullable_to_non_nullable
+              as OfflineAudio,
     ));
   }
 }
@@ -147,18 +149,19 @@ class __$$MixItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MixItemImpl implements _MixItem {
-  _$MixItemImpl({required this.id, required this.player, required this.audio});
+  _$MixItemImpl(
+      {required this.id, required this.player, required this.offlineAudio});
 
   @override
   final String id;
   @override
   final GaplessAudioPlayer player;
   @override
-  final AudioOffline audio;
+  final OfflineAudio offlineAudio;
 
   @override
   String toString() {
-    return 'MixItem.def(id: $id, player: $player, audio: $audio)';
+    return 'MixItem.def(id: $id, player: $player, offlineAudio: $offlineAudio)';
   }
 
   @override
@@ -168,11 +171,12 @@ class _$MixItemImpl implements _MixItem {
             other is _$MixItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.player, player) || other.player == player) &&
-            (identical(other.audio, audio) || other.audio == audio));
+            (identical(other.offlineAudio, offlineAudio) ||
+                other.offlineAudio == offlineAudio));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, player, audio);
+  int get hashCode => Object.hash(runtimeType, id, player, offlineAudio);
 
   @JsonKey(ignore: true)
   @override
@@ -184,30 +188,32 @@ class _$MixItemImpl implements _MixItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id, GaplessAudioPlayer player, AudioOffline audio)
+            String id, GaplessAudioPlayer player, OfflineAudio offlineAudio)
         def,
   }) {
-    return def(id, player, audio);
+    return def(id, player, offlineAudio);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, GaplessAudioPlayer player, AudioOffline audio)?
+    TResult? Function(
+            String id, GaplessAudioPlayer player, OfflineAudio offlineAudio)?
         def,
   }) {
-    return def?.call(id, player, audio);
+    return def?.call(id, player, offlineAudio);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, GaplessAudioPlayer player, AudioOffline audio)?
+    TResult Function(
+            String id, GaplessAudioPlayer player, OfflineAudio offlineAudio)?
         def,
     required TResult orElse(),
   }) {
     if (def != null) {
-      return def(id, player, audio);
+      return def(id, player, offlineAudio);
     }
     return orElse();
   }
@@ -245,14 +251,14 @@ abstract class _MixItem implements MixItem {
   factory _MixItem(
       {required final String id,
       required final GaplessAudioPlayer player,
-      required final AudioOffline audio}) = _$MixItemImpl;
+      required final OfflineAudio offlineAudio}) = _$MixItemImpl;
 
   @override
   String get id;
   @override
   GaplessAudioPlayer get player;
   @override
-  AudioOffline get audio;
+  OfflineAudio get offlineAudio;
   @override
   @JsonKey(ignore: true)
   _$$MixItemImplCopyWith<_$MixItemImpl> get copyWith =>

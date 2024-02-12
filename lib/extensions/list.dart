@@ -10,7 +10,7 @@ extension MixItemsExt on List<MixItem> {
       return false;
     }
 
-    final items = where((item) => item.audio.id == id);
+    final items = where((item) => item.offlineAudio.id == id);
 
     return items.isNotEmpty;
   }
@@ -23,18 +23,18 @@ extension MixItemsExt on List<MixItem> {
     final itemCategories = <MixItemCategory>[];
 
     forEach((item) {
-      final audioCategory = kOfflineAudioCategories.firstWhere(
+      final offlineAudioCategory = kOfflineAudioCategories.firstWhere(
         (audioCategory) {
-          return audioCategory.audios.contains(item.audio);
+          return audioCategory.offlineAudios.contains(item.offlineAudio);
         },
       );
 
       final itemCategory = itemCategories.firstWhere(
         (itemCategory) {
-          return itemCategory.category == audioCategory;
+          return itemCategory.offlineAudioCategory == offlineAudioCategory;
         },
         orElse: () => MixItemCategory(
-          category: audioCategory,
+          offlineAudioCategory: offlineAudioCategory,
           mixItems: [],
         ),
       );

@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
-import 'package:daily_mind/common_domains/audio_offline.dart';
+import 'package:daily_mind/common_domains/offline_audio.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/domain/mini_player_state.dart';
 import 'package:daily_mind/common_widgets/base_mini_player/presentation/base_mini_player_provider.dart';
@@ -32,11 +32,11 @@ class MixdNotifier extends StateNotifier<MixState> {
 
   MixCollection get mixCollection {
     final items = mixItems.map((item) {
-      final audio = item.audio;
+      final offlineAudio = item.offlineAudio;
       final player = item.player;
 
       return MixCollectionItemInfo()
-        ..id = audio.id
+        ..id = offlineAudio.id
         ..volume = player.volume;
     }).toList();
 
@@ -74,15 +74,18 @@ class MixdNotifier extends StateNotifier<MixState> {
     }
   }
 
-  void onSelect(AudioOffline audio) async {
+  void onSelect(OfflineAudio offlineAudio) async {
     onlinePlayerNotifier.onReset();
 
-    if (mixItems.isContain(audio.id)) {
-      final item = mixItems.firstWhere((item) => item.audio.id == audio.id);
+    if (mixItems.isContain(offlineAudio.id)) {
+      final item = mixItems.firstWhere(
+        (item) => item.offlineAudio.id == offlineAudio.id,
+      );
+
       baseBackgroundHandler.onRemoveMixItem(item);
     } else {
       final newMixItem = MixItem(
-        audio: audio,
+        offlineAudio: offlineAudio,
         player: GaplessAudioPlayer(),
       );
 
