@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 const initialState = OnlinePlayerState(
   isExpanded: false,
   id: kEmptyString,
-  title: kEmptyString,
 );
 
 class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
