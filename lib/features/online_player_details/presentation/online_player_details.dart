@@ -46,6 +46,26 @@ class OnlinePlayerDetails extends HookConsumerWidget {
       [audio.image],
     );
 
+    final actions = useMemoized(() {
+      final List<Widget> children = [
+        BaseAddToPlaylistBuilder(
+          audio: audio,
+          builder: (onOpenPlaylist) => OnlinePlaylistAdd(
+            onOpenPlaylist: onOpenPlaylist,
+          ),
+        ),
+        OnlinePlayerDetailsExpand(onPressed: onExpanded),
+        if (description != null)
+          OnlinePlayerDetailsShowCategoryDescription(description: description),
+      ];
+
+      return children;
+    }, [
+      audio,
+      description,
+      onExpanded,
+    ]);
+
     final expandedChild = useMemoized(
       () {
         if (isExpanded) {
@@ -83,20 +103,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                         onPrevious: baseBackgroundHandler.skipToPrevious,
                         audio: audio,
                       ),
-                      BasePlayerUserActions(
-                        actions: [
-                          BaseAddToPlaylistBuilder(
-                            audio: audio,
-                            builder: (onOpenPlaylist) => OnlinePlaylistAdd(
-                              onOpenPlaylist: onOpenPlaylist,
-                            ),
-                          ),
-                          OnlinePlayerDetailsExpand(onPressed: onExpanded),
-                          if (description != null)
-                            OnlinePlayerDetailsShowCategoryDescription(
-                                description: description),
-                        ],
-                      ),
+                      BasePlayerUserActions(actions: actions),
                     ],
                     height: spacing(3),
                   ),
