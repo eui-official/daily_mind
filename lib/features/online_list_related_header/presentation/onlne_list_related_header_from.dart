@@ -12,18 +12,18 @@ class OnlineListRelatedHeaderFrom extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final onlinePlayerState = ref.watch(onlinePlayerProvider);
-    final name = onlinePlayerState.name;
+    final title = onlinePlayerState.title;
 
     final child = useMemoized(() {
-      if (name.isNotEmpty) {
+      if (title != null) {
         return Text(
-          'Từ ${onlinePlayerState.name}',
+          'Từ $title',
           style: const TextStyle(color: secondaryTextColor),
         );
       }
 
       return kEmptyWidget;
-    }, [name]);
+    }, [title]);
 
     return BaseAnimatedSwitcher(child: child);
   }

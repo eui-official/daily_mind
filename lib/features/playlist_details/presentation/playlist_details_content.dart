@@ -46,6 +46,7 @@ class PlaylistDetailsContent extends HookConsumerWidget {
     );
     final onlinePlaylistSnapshot = useStream(streamOnlinePlaylist);
     final onlinePlaylist = onlinePlaylistSnapshot.data;
+    final title = onlinePlaylist?.title;
 
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
@@ -53,7 +54,7 @@ class PlaylistDetailsContent extends HookConsumerWidget {
 
     final onPlay = useCallback(([int index = 0]) async {
       onlinePlayerNotifier.onUpdateId(playlistId);
-      onlinePlayerNotifier.onUpdateOpenFrom(onlinePlaylist?.title);
+      onlinePlayerNotifier.onUpdateTitle(title);
 
       await baseBackgroundHandler.onInitOnline(
         audios,
@@ -66,7 +67,7 @@ class PlaylistDetailsContent extends HookConsumerWidget {
           audioType: AudioTypes.online,
         ),
       );
-    }, [playlistId, onlinePlaylist, audios]);
+    }, [playlistId, title, audios]);
 
     final onShuffle = useCallback(
       () async {
@@ -77,27 +78,27 @@ class PlaylistDetailsContent extends HookConsumerWidget {
       [audios],
     );
 
-    final onEditName = useCallback(
+    final onEditTitle = useCallback(
       () async {
         final results = await context.onTextFieldDialog(
           'Tên playlist'.tr(),
-          onlinePlaylist?.title,
+          title,
         );
 
         if (results.isNotEmpty) {
           final result = results.first;
 
-          onSafeValueBuilder(result, (title) {
+          onSafeValueBuilder(result, (editedTitle) {
             onSafeValueBuilder(onlinePlaylist, (safeOnlinePlaylist) {
               db.onRenamePlaylist(
-                title,
+                editedTitle,
                 safeOnlinePlaylist,
               );
             });
           });
         }
       },
-      [onlinePlaylist],
+      [title, onlinePlaylist],
     );
 
     final onDeletePlaylist = useCallback(
@@ -127,10 +128,10 @@ class PlaylistDetailsContent extends HookConsumerWidget {
           children: [
             AppBarScrollview(
               useSafeArea: false,
-              title: onlinePlaylist?.title ?? kEmptyString,
+              title: title ?? kEmptyString,
               actions: [
                 PlaylistDetailsAction(
-                  onEditName: onEditName,
+                  onEditTitle: onEditTitle,
                   onDeletePlaylist: onDeletePlaylist,
                 ),
               ],

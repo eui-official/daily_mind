@@ -27,7 +27,7 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
       return [
         BaseTile(
           leading: const Icon(Icons.edit),
-          title: 'Đổi tên'.tr(),
+          title: 'Đổi tiêu đề'.tr(),
           onTap: onRenamed,
         ),
         BaseTile(

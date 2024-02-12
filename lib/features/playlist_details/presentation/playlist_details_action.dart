@@ -3,12 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class PlaylistDetailsAction extends StatelessWidget {
-  final VoidCallback onEditName;
+  final VoidCallback onEditTitle;
   final VoidCallback onDeletePlaylist;
 
   const PlaylistDetailsAction({
     super.key,
-    required this.onEditName,
+    required this.onEditTitle,
     required this.onDeletePlaylist,
   });
 
@@ -17,8 +17,8 @@ class PlaylistDetailsAction extends StatelessWidget {
     return PopupMenuButton(
       itemBuilder: (BuildContext context) => [
         PopupMenuItem(
-          onTap: onEditName,
-          child: Text('Đổi tên'.tr()),
+          onTap: onEditTitle,
+          child: Text('Đổi tiêu đề'.tr()),
         ),
         PopupMenuItem(
           onTap: onDeletePlaylist,

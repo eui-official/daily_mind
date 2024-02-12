@@ -7,7 +7,7 @@ class OnlinePlayerState with _$OnlinePlayerState {
   const factory OnlinePlayerState({
     required bool isExpanded,
     required dynamic id,
-    required String name,
+    String? title,
     String? description,
   }) = _OnlinePlayerState;
 }

@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 const initialState = OnlinePlayerState(
   isExpanded: false,
   id: kEmptyString,
-  name: kEmptyString,
+  title: kEmptyString,
 );
 
 class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
@@ -15,8 +15,12 @@ class OnlinePlayerNotifier extends StateNotifier<OnlinePlayerState> {
     state = state.copyWith(isExpanded: !state.isExpanded);
   }
 
-  void onUpdateOpenFrom(String? name) {
-    state = state.copyWith(name: name ?? kEmptyString);
+  void onUpdateTitle(String? title) {
+    state = state.copyWith(title: title);
+  }
+
+  void onUpdateDescription(String description) {
+    state = state.copyWith(description: description);
   }
 
   void onUpdateId(dynamic id) {

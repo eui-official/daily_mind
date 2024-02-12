@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OnlinePlayerState {
   bool get isExpanded => throw _privateConstructorUsedError;
   dynamic get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +32,7 @@ abstract class $OnlinePlayerStateCopyWith<$Res> {
           OnlinePlayerState value, $Res Function(OnlinePlayerState) then) =
       _$OnlinePlayerStateCopyWithImpl<$Res, OnlinePlayerState>;
   @useResult
-  $Res call({bool isExpanded, dynamic id, String name, String? description});
+  $Res call({bool isExpanded, dynamic id, String? title, String? description});
 }
 
 /// @nodoc
@@ -50,7 +50,7 @@ class _$OnlinePlayerStateCopyWithImpl<$Res, $Val extends OnlinePlayerState>
   $Res call({
     Object? isExpanded = null,
     Object? id = freezed,
-    Object? name = null,
+    Object? title = freezed,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
@@ -62,10 +62,10 @@ class _$OnlinePlayerStateCopyWithImpl<$Res, $Val extends OnlinePlayerState>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$$OnlinePlayerStateImplCopyWith<$Res>
       __$$OnlinePlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isExpanded, dynamic id, String name, String? description});
+  $Res call({bool isExpanded, dynamic id, String? title, String? description});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isExpanded = null,
     Object? id = freezed,
-    Object? name = null,
+    Object? title = freezed,
     Object? description = freezed,
   }) {
     return _then(_$OnlinePlayerStateImpl(
@@ -110,10 +110,10 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
   const _$OnlinePlayerStateImpl(
       {required this.isExpanded,
       required this.id,
-      required this.name,
+      this.title,
       this.description});
 
   @override
@@ -136,13 +136,13 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
   @override
   final dynamic id;
   @override
-  final String name;
+  final String? title;
   @override
   final String? description;
 
   @override
   String toString() {
-    return 'OnlinePlayerState(isExpanded: $isExpanded, id: $id, name: $name, description: $description)';
+    return 'OnlinePlayerState(isExpanded: $isExpanded, id: $id, title: $title, description: $description)';
   }
 
   @override
@@ -153,14 +153,14 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
             (identical(other.isExpanded, isExpanded) ||
                 other.isExpanded == isExpanded) &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isExpanded,
-      const DeepCollectionEquality().hash(id), name, description);
+      const DeepCollectionEquality().hash(id), title, description);
 
   @JsonKey(ignore: true)
   @override
@@ -174,7 +174,7 @@ abstract class _OnlinePlayerState implements OnlinePlayerState {
   const factory _OnlinePlayerState(
       {required final bool isExpanded,
       required final dynamic id,
-      required final String name,
+      final String? title,
       final String? description}) = _$OnlinePlayerStateImpl;
 
   @override
@@ -182,7 +182,7 @@ abstract class _OnlinePlayerState implements OnlinePlayerState {
   @override
   dynamic get id;
   @override
-  String get name;
+  String? get title;
   @override
   String? get description;
   @override
