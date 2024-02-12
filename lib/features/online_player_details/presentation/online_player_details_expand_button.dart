@@ -12,9 +12,8 @@ class OnlinePlayerDetailsExpandButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseIconButtonWithTitle(
-      iconData: Icons.more_horiz,
+      iconData: Icons.expand_rounded,
       onPressed: onPressed,
-      title: 'Danh sách',
     );
   }
 }

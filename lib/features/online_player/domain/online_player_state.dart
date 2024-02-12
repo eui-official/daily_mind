@@ -8,5 +8,6 @@ class OnlinePlayerState with _$OnlinePlayerState {
     required bool isExpanded,
     required dynamic id,
     required String name,
+    String? description,
   }) = _OnlinePlayerState;
 }

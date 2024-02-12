@@ -26,7 +26,7 @@ class BasePlayerUserActions extends StatelessWidget {
               const BaseTimerPicker(),
               ...actions,
             ],
-            width: spacing(2),
+            width: spacing(4),
           ),
         ),
       ),

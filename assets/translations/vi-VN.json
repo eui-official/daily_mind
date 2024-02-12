@@ -25,7 +25,7 @@
   "noInternetConnection": "Không có kết nối internet",
   "noInternetNotice": "Điều này có thể gây ảnh hưởng đến trãi nghiệm khi sử dụng",
   "ok": "Đồng ý",
-  "pickTime": "Hẹn giờ tắt",
+  "turnOffTheCurrentTimer": "Bạn có muốn xóa thời gian hiện tại?",
   "playingNext": "Phát tiếp theo",
   "rating": "Đánh giá trên cửa hàng",
   "relaxMoreWithStories": "Khám phá các câu truyện về phật giáo, và thiền định",
@@ -40,7 +40,6 @@
   "system": "Hệ thống",
   "task": "Nhiệm vụ",
   "taskList": "Danh sách công việc",
-  "turnOffTime": "Hẹn giờ tắt",
   "version": "Phiên bản",
   "sounds": {
     "alphaWave": "Sóng alpha",

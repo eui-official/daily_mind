@@ -1,9 +1,9 @@
 import 'package:daily_mind/common_widgets/base_icon_button_with_title.dart';
 import 'package:daily_mind/extensions/context.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class MixCollectionButtonSwitcher extends StatelessWidget {
+class MixCollectionButtonSwitcher extends HookWidget {
   final bool isCanAddNewMix;
   final VoidCallback onSaveMix;
   final VoidCallback onDeleteMix;
@@ -17,17 +17,32 @@ class MixCollectionButtonSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final onPressed = isCanAddNewMix ? onSaveMix : onDeleteMix;
-    final backgroundColor = isCanAddNewMix
-        ? context.primaryColorDark50
-        : context.theme.colorScheme.error;
-    final title = isCanAddNewMix ? 'Lưu vào bộ sưu tập' : 'Xóa bộ sưu tập';
+    final onPressed = useMemoized(
+      () => isCanAddNewMix ? onSaveMix : onDeleteMix,
+      [
+        isCanAddNewMix,
+        onSaveMix,
+        onDeleteMix,
+      ],
+    );
+
+    final backgroundColor = useMemoized(
+        () => isCanAddNewMix
+            ? context.theme.primaryColorDark
+            : context.theme.colorScheme.error,
+        [isCanAddNewMix]);
+
+    final iconData = useMemoized(
+      () => isCanAddNewMix
+          ? Icons.playlist_add_rounded
+          : Icons.playlist_remove_rounded,
+      [isCanAddNewMix],
+    );
 
     return BaseIconButtonWithTitle(
       onPressed: onPressed,
-      iconData: Icons.video_collection_outlined,
+      iconData: iconData,
       backgroundColor: backgroundColor,
-      title: title.tr(),
     );
   }
 }

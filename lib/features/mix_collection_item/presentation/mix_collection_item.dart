@@ -67,7 +67,7 @@ class MixCollectionItem extends HookConsumerWidget {
 
         final result = await showOkCancelAlertDialog(
           context: context,
-          title: 'Bạn có chắc chắn muốn xóa ${mixCollection.title}?'.tr(),
+          message: 'Bạn có chắc chắn muốn xóa ${mixCollection.title}?'.tr(),
         );
 
         if (result == OkCancelResult.ok) {

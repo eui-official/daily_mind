@@ -53,9 +53,9 @@ class MixCollectionItemEditBottomSheet extends HookWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Column(
-              children: space(children, height: spacing(2)),
-            ),
+            Expanded(
+              child: ListView(children: children),
+            )
           ],
           height: spacing(5),
         ),

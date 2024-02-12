@@ -24,18 +24,16 @@ class BaseTimerPicker extends HookConsumerWidget {
     final remaining = useTimer(ref);
 
     final title = useMemoized(() {
-      if (remaining == Duration.zero) {
-        return 'pickTime'.tr();
+      if (remaining != Duration.zero) {
+        return dateFormatter.onFormatDuration(remaining);
       }
-
-      return dateFormatter.onFormatDuration(remaining);
     }, [remaining]);
 
     final onOpenTimer = useCallback(() async {
       if (remaining != Duration.zero) {
         final result = await showOkCancelAlertDialog(
           context: context,
-          title: 'Bạn có muốn xóa thời gian hiện tại?'.tr(),
+          message: 'turnOffTheCurrentTimer'.tr(),
         );
 
         if (result == OkCancelResult.ok) {

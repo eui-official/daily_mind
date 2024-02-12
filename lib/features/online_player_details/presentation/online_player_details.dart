@@ -11,7 +11,7 @@ import 'package:daily_mind/features/online_list_related/presentation/online_list
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/online_player_details/presentation/online_player_details_expand_button.dart';
 import 'package:daily_mind/features/online_player_disk_image/presentation/online_player_disk_image.dart';
-import 'package:daily_mind/features/online_playlist_switcher/presentation/online_playlist_switcher.dart';
+import 'package:daily_mind/features/online_playlist_add/presentation/online_playlist_add.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +36,13 @@ class OnlinePlayerDetails extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final onlinePlayerState = ref.watch(onlinePlayerProvider);
+
+    final imageProvider = useMemoized(
+      () {
+        return CachedNetworkImageProvider(audio.image);
+      },
+      [audio.image],
+    );
 
     final expandedChild = useMemoized(
       () {
@@ -67,9 +74,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: BaseBackdropFilter(
-            image: CachedNetworkImageProvider(audio.image),
-          ),
+          child: BaseBackdropFilter(image: imageProvider),
         ),
         BaseSpacingContainer(
           padding: EdgeInsets.symmetric(
@@ -97,7 +102,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                           BaseAddToPlaylistBuilder(
                             audio: audio,
                             builder: (onOpenPlaylist) {
-                              return OnlinePlaylistSwitcher(
+                              return OnlinePlaylistAdd(
                                 onOpenPlaylist: onOpenPlaylist,
                               );
                             },
@@ -108,7 +113,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
                         ],
                       ),
                     ],
-                    height: spacing(2),
+                    height: spacing(3),
                   ),
                 ),
               ],

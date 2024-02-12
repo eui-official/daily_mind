@@ -16,9 +16,7 @@ class BaseSpacingBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseSpacingContainer(
       alignment: alignment,
-      padding: EdgeInsets.symmetric(
-        horizontal: spacing(2),
-      ).copyWith(
+      padding: EdgeInsets.only(
         top: spacing(2),
         bottom: kBottomNavigationBarHeight,
       ),
