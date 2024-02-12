@@ -41,7 +41,7 @@ class MixPlayer extends HookConsumerWidget {
         if (mixState.title.isEmpty) {
           await showOkAlertDialog(
             context: context,
-            message: 'Vui lòng nhập tên'.tr(),
+            message: 'Vui lòng nhập tiêu đề'.tr(),
           );
 
           nameFocusNode.requestFocus();
@@ -83,10 +83,10 @@ class MixPlayer extends HookConsumerWidget {
                       children: space(
                         [
                           BaseContentHeader(
-                            title: 'name'.tr(),
+                            title: 'title'.tr(),
                             child: BaseTextField(
                               focusNode: nameFocusNode,
-                              hintText: 'nameOfTheMix'.tr(),
+                              hintText: 'titleOfTheMix'.tr(),
                               initialValue: mixState.title,
                               onChanged: mixNotifier.onUpdateTitle,
                             ),

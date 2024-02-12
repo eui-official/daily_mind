@@ -23,7 +23,7 @@ class MixPlayerBackgroundFilter extends HookWidget {
       final firstItem = mixItems.first;
 
       return BaseBackdropFilter(
-        image: AssetImage(firstItem.audio.image),
+        image: AssetImage(firstItem.offlineAudio.image),
       );
     }, [mixItems]);
 

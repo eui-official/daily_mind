@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_domains/audio_offline_category.dart';
+import 'package:daily_mind/common_domains/offline_audio_category.dart';
 import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_widgets/base_grid_items/presentation/base_grid_items_header.dart';
 import 'package:daily_mind/common_widgets/base_showcase/constant/showcase_keys.dart';
@@ -14,12 +14,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class MixAudioCategory extends HookConsumerWidget {
-  final AudioOfflineCategory audioOfflineCategory;
+  final OfflineAudioCategory offlineAudioCategory;
   final bool isFirstCategory;
 
   const MixAudioCategory({
     super.key,
-    required this.audioOfflineCategory,
+    required this.offlineAudioCategory,
     required this.isFirstCategory,
   });
 
@@ -36,7 +36,7 @@ class MixAudioCategory extends HookConsumerWidget {
           color: context.theme.colorScheme.surface,
         ),
         child: Text(
-          audioOfflineCategory.name,
+          offlineAudioCategory.title,
           style: context.textTheme.titleMedium?.copyWith(
             color: context.theme.hintColor,
             fontWeight: FontWeight.bold,
@@ -44,12 +44,13 @@ class MixAudioCategory extends HookConsumerWidget {
         ),
       ),
       content: BaseGridItemsHeader(
-        items: audioOfflineCategory.audios,
+        items: offlineAudioCategory.offlineAudios,
         onItemIndexBuilder: (context, index, audio) {
-          final isFirstAudio = audio == audioOfflineCategory.audios.first;
+          final isFirstOfflineAudio =
+              audio == offlineAudioCategory.offlineAudios.first;
           final isSelected = mixData.mixItems.isContain(audio.id);
 
-          if (isFirstAudio && isFirstCategory) {
+          if (isFirstOfflineAudio && isFirstCategory) {
             return BaseShowcase(
               showcaseKey: soundKey,
               description: 'newMixTutorialContent1'.tr(),

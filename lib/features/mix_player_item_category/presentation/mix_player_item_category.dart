@@ -31,7 +31,7 @@ class MixPlayerItemCategory extends HookWidget {
     }, [itemCategory]);
 
     return BaseContentHeader(
-      title: itemCategory.category.name,
+      title: itemCategory.offlineAudioCategory.title,
       titleStyle: context.textTheme.titleMedium?.copyWith(
         color: context.theme.hintColor,
         fontWeight: FontWeight.bold,

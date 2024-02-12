@@ -12,7 +12,7 @@ class OnlinePlayerDetailsExpandButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseIconButtonWithTitle(
-      iconData: Icons.expand_rounded,
+      iconData: Icons.more_vert_rounded,
       onPressed: onPressed,
     );
   }

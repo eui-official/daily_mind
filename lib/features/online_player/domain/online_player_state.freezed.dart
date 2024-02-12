@@ -124,12 +124,13 @@ class __$$OnlinePlayerStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
+class _$OnlinePlayerStateImpl extends _OnlinePlayerState {
   const _$OnlinePlayerStateImpl(
       {required this.isExpanded,
       required this.id,
       this.title,
-      this.description});
+      this.description})
+      : super._();
 
   @override
   final bool isExpanded;
@@ -170,12 +171,13 @@ class _$OnlinePlayerStateImpl implements _OnlinePlayerState {
           this, _$identity);
 }
 
-abstract class _OnlinePlayerState implements OnlinePlayerState {
+abstract class _OnlinePlayerState extends OnlinePlayerState {
   const factory _OnlinePlayerState(
       {required final bool isExpanded,
       required final dynamic id,
       final String? title,
       final String? description}) = _$OnlinePlayerStateImpl;
+  const _OnlinePlayerState._() : super._();
 
   @override
   bool get isExpanded;

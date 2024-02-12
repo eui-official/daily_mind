@@ -14,13 +14,13 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
 
       return MixItem(
         player: player,
-        audio: info.id.onGetOfflineAudio,
+        offlineAudio: info.id.onGetOfflineAudio,
       );
     }).toList();
 
     if (mixItems.isNotEmpty) {
       for (var item in mixItems) {
-        item.player.onSetSource(item.audio.id);
+        item.player.onSetSource(item.offlineAudio.id);
         item.player.setVolume(item.player.volume);
       }
 
@@ -38,10 +38,10 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
 
   MixVolume onGetBackupMixVolume(MixItem item) {
     return backupMixVolumes.firstWhere(
-      (mixVolume) => mixVolume.id == item.audio.id,
+      (mixVolume) => mixVolume.id == item.offlineAudio.id,
       orElse: () {
         final mixVolume = MixVolume(
-          id: item.audio.id,
+          id: item.offlineAudio.id,
           volume: item.player.volume,
         );
 
@@ -87,16 +87,16 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
       final firstItem = mixItems.first;
 
       final itemTitle = mixItems.map((item) {
-        final audio = item.audio;
+        final offlineAudio = item.offlineAudio;
 
-        return audio.name.tr();
+        return offlineAudio.title.tr();
       }).join(', ');
 
       mediaItem.add(
         MediaItem(
-          id: firstItem.audio.id,
+          id: firstItem.offlineAudio.id,
           title: initialTitle ?? itemTitle,
-          artUri: await onGetSoundImageFromAsset(firstItem.audio.image),
+          artUri: await onGetSoundImageFromAsset(firstItem.offlineAudio.image),
         ),
       );
     }
@@ -120,10 +120,10 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
 
     onStreamMixItems.add([...mixItems, newItem]);
 
-    final audio = newItem.audio;
+    final offlineAudio = newItem.offlineAudio;
     final player = newItem.player;
 
-    player.onSetSource(audio.id);
+    player.onSetSource(offlineAudio.id);
     player.play();
 
     onUpdateMediaItem();

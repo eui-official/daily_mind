@@ -23,7 +23,7 @@ class OnlinePlaylistSelector extends HookWidget {
     final openAddOnlinePlaylist = useCallback(
       () async {
         final results = await context.onTextFieldDialog(
-          'Tên playlist'.tr(),
+          'Tiêu đề playlist'.tr(),
         );
 
         if (results.isNotEmpty) {

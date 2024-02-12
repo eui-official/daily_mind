@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_applications/gapless_audio_player.dart';
-import 'package:daily_mind/common_domains/audio_offline.dart';
+import 'package:daily_mind/common_domains/offline_audio.dart';
 import 'package:daily_mind/common_widgets/base_audio_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +8,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixAudioCard extends HookConsumerWidget {
   final bool isSelected;
-  final AudioOffline audio;
-  final ValueChanged<AudioOffline> onSelecting;
+  final OfflineAudio audio;
+  final ValueChanged<OfflineAudio> onSelecting;
   final player = GaplessAudioPlayer();
 
   MixAudioCard({
@@ -28,7 +28,7 @@ class MixAudioCard extends HookConsumerWidget {
     return BaseAudioCard(
       image: AssetImage(audio.image),
       isSelected: isSelected,
-      name: audio.name.tr(),
+      name: audio.title.tr(),
       onTap: onTap,
     );
   }

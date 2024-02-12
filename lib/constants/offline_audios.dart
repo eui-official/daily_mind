@@ -1,197 +1,197 @@
-import 'package:daily_mind/common_domains/audio_offline.dart';
-import 'package:daily_mind/common_domains/audio_offline_category.dart';
+import 'package:daily_mind/common_domains/offline_audio.dart';
+import 'package:daily_mind/common_domains/offline_audio_category.dart';
 
-final List<AudioOfflineCategory> kOfflineAudioCategories = [
-  AudioOfflineCategory(
+final List<OfflineAudioCategory> kOfflineAudioCategories = [
+  OfflineAudioCategory(
     id: 'naturals',
-    name: 'Âm thanh thiên nhiên',
-    audios: [
-      AudioOffline(
+    title: 'Âm thanh thiên nhiên',
+    offlineAudios: [
+      OfflineAudio(
         id: 'rain',
-        name: 'sounds.rain',
+        title: 'sounds.rain',
         image: 'assets/images/rain-forest.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'forest',
-        name: 'sounds.forest',
+        title: 'sounds.forest',
         image: 'assets/images/forest-with-birds.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'wind',
-        name: 'sounds.wind',
+        title: 'sounds.wind',
         image: 'assets/images/wind-and-peaceful.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'fire',
-        name: 'sounds.fire',
+        title: 'sounds.fire',
         image: 'assets/images/firecamp.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'water',
-        name: 'sounds.water',
+        title: 'sounds.water',
         image: 'assets/images/water.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'wave',
-        name: 'sounds.wave',
+        title: 'sounds.wave',
         image: 'assets/images/wave.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'thunderstorm',
-        name: 'sounds.thunderstorm',
+        title: 'sounds.thunderstorm',
         image: 'assets/images/thunderstorm.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'babblingBrook',
-        name: 'sounds.babblingBrook',
+        title: 'sounds.babblingBrook',
         image: 'assets/images/babbling-brook.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'waterfall',
-        name: 'sounds.waterfall',
+        title: 'sounds.waterfall',
         image: 'assets/images/waterfall.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'leaveRustling',
-        name: 'sounds.leaveRustling',
+        title: 'sounds.leaveRustling',
         image: 'assets/images/leave-rustling.png',
         isSubscriptionRequired: true,
       ),
     ],
   ),
-  AudioOfflineCategory(
+  OfflineAudioCategory(
     id: 'soundColors',
-    name: 'Màu sắc âm thanh',
-    audios: [
-      AudioOffline(
+    title: 'Màu sắc âm thanh',
+    offlineAudios: [
+      OfflineAudio(
         id: 'whiteNoise',
-        name: 'sounds.whiteNoise',
+        title: 'sounds.whiteNoise',
         image: 'assets/images/white-noise.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'pinkNoise',
-        name: 'sounds.pinkNoise',
+        title: 'sounds.pinkNoise',
         image: 'assets/images/pink-noise.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'brownNoise',
-        name: 'sounds.brownNoise',
+        title: 'sounds.brownNoise',
         image: 'assets/images/brown-noise.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'blueNoise',
-        name: 'sounds.blueNoise',
+        title: 'sounds.blueNoise',
         image: 'assets/images/blue-noise.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'violetNoise',
-        name: 'sounds.violetNoise',
+        title: 'sounds.violetNoise',
         image: 'assets/images/violet-noise.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'greyNoise',
-        name: 'sounds.greyNoise',
+        title: 'sounds.greyNoise',
         image: 'assets/images/grey-noise.png',
         isSubscriptionRequired: true,
       ),
     ],
   ),
-  AudioOfflineCategory(
+  OfflineAudioCategory(
     id: 'waves',
-    name: 'Sóng âm',
-    audios: [
-      AudioOffline(
+    title: 'Sóng âm',
+    offlineAudios: [
+      OfflineAudio(
         id: 'alphaWave',
-        name: 'sounds.alphaWave',
+        title: 'sounds.alphaWave',
         image: 'assets/images/alpha-wave.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'deltaWave',
-        name: 'sounds.deltaWave',
+        title: 'sounds.deltaWave',
         image: 'assets/images/delta-wave.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'thetaWave',
-        name: 'sounds.thetaWave',
+        title: 'sounds.thetaWave',
         image: 'assets/images/theta-wave.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'betaWave',
-        name: 'sounds.betaWave',
+        title: 'sounds.betaWave',
         image: 'assets/images/beta-wave.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'gammaWave',
-        name: 'sounds.gammaWave',
+        title: 'sounds.gammaWave',
         image: 'assets/images/gamma-wave.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'space',
-        name: 'sounds.space',
+        title: 'sounds.space',
         image: 'assets/images/sky.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'tibetanBowl',
-        name: 'sounds.tibetanBowl',
+        title: 'sounds.tibetanBowl',
         image: 'assets/images/tibetan-bowl.png',
       ),
     ],
   ),
-  AudioOfflineCategory(
+  OfflineAudioCategory(
     id: 'animals',
-    name: 'Âm thanh động vật',
-    audios: [
-      AudioOffline(
+    title: 'Âm thanh động vật',
+    offlineAudios: [
+      OfflineAudio(
         id: 'catPurring',
-        name: 'sounds.catPurring',
+        title: 'sounds.catPurring',
         image: 'assets/images/cat-purring.png',
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'birdsChirping',
-        name: 'sounds.birdsChirping',
+        title: 'sounds.birdsChirping',
         image: 'assets/images/birds-chirping.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'circketChirping',
-        name: 'sounds.circketChirping',
+        title: 'sounds.circketChirping',
         image: 'assets/images/cricket.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'frogCroaking',
-        name: 'sounds.frogCroaking',
+        title: 'sounds.frogCroaking',
         image: 'assets/images/frog-croaking.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'whale',
-        name: 'sounds.whale',
+        title: 'sounds.whale',
         image: 'assets/images/whale.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'dolphin',
-        name: 'sounds.dolphin',
+        title: 'sounds.dolphin',
         image: 'assets/images/dolphin.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'horseNeighing',
-        name: 'sounds.horseNeighing',
+        title: 'sounds.horseNeighing',
         image: 'assets/images/horse-neighing.png',
         isSubscriptionRequired: true,
       ),
-      AudioOffline(
+      OfflineAudio(
         id: 'wolveHowling',
-        name: 'sounds.wolveHowling',
+        title: 'sounds.wolveHowling',
         image: 'assets/images/wolve-howling.png',
         isSubscriptionRequired: true,
       ),

@@ -1,12 +1,12 @@
-class AudioOffline {
+class OfflineAudio {
   final String id;
-  final String name;
+  final String title;
   final String image;
   final bool isSubscriptionRequired;
 
-  AudioOffline({
+  OfflineAudio({
     required this.id,
-    required this.name,
+    required this.title,
     required this.image,
     this.isSubscriptionRequired = false,
   });

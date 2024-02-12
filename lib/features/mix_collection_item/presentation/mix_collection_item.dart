@@ -39,13 +39,13 @@ class MixCollectionItem extends HookConsumerWidget {
     final firstItem = items.first;
     final firstAudioOffline = firstItem.id.onGetOfflineAudio;
     final sounds =
-        items.map((item) => item.id.onGetOfflineAudio.name.tr()).join(', ');
+        items.map((item) => item.id.onGetOfflineAudio.title.tr()).join(', ');
 
     final onRenamed = useCallback(() async {
       context.pop();
 
       final results = await context.onTextFieldDialog(
-        'Tên mix'.tr(),
+        'Tiêu đề bản phối'.tr(),
         mixCollection.title,
       );
 
@@ -67,7 +67,8 @@ class MixCollectionItem extends HookConsumerWidget {
 
         final result = await showOkCancelAlertDialog(
           context: context,
-          message: 'Bạn có chắc chắn muốn xóa ${mixCollection.title}?'.tr(),
+          message:
+              'Bạn có chắc chắn muốn xóa bản phối ${mixCollection.title}?'.tr(),
         );
 
         if (result == OkCancelResult.ok) {

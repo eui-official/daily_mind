@@ -81,7 +81,7 @@ class PlaylistDetailsContent extends HookConsumerWidget {
     final onEditTitle = useCallback(
       () async {
         final results = await context.onTextFieldDialog(
-          'Tên playlist'.tr(),
+          'Tiêu đề playlist'.tr(),
           title,
         );
 

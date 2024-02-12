@@ -19,7 +19,7 @@ class MixMiniPlayerImagesSlider extends StatelessWidget {
       itemCount: mixItems.length,
       itemBuilder: (context, index, realIndex) {
         final item = mixItems[index];
-        final audio = item.audio;
+        final offlineAudio = item.offlineAudio;
 
         return Container(
           width: spacing(5),
@@ -29,7 +29,7 @@ class MixMiniPlayerImagesSlider extends StatelessWidget {
             borderRadius: circularRadius(),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage(audio.image),
+              image: AssetImage(offlineAudio.image),
             ),
           ),
         );

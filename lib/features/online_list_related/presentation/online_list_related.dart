@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/common_widgets/base_add_to_playlist_builder/presentation/base_add_to_playlist.dart';
@@ -5,7 +6,7 @@ import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_item_dropdown_actions/presentation/online_item_dropdown_actions.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item.dart';
 import 'package:daily_mind/features/online_item_subtitle/presentation/online_item_subtitle.dart';
-import 'package:daily_mind/features/online_item_name/presentation/online_item_name.dart';
+import 'package:daily_mind/features/online_item_title/presentation/online_item_title.dart';
 import 'package:daily_mind/features/online_list_related_header/presentation/online_list_related_header.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -41,14 +42,14 @@ class OnlineListRelated extends HookConsumerWidget {
               itemCount: sequence.length,
               itemBuilder: (context, index) {
                 final s = sequence[index];
-                final audio = s.tag;
+                final audio = s.tag as Audio;
                 final artist = configState.onGetArtistById(audio.artist);
                 final name = artist?.name ?? kEmptyString;
 
                 return OnlineItem(
                   onTap: () => onTap(index),
                   image: audio.image,
-                  title: OnlineItemName(title: audio.name),
+                  title: OnlineItemTitle(title: audio.name),
                   subtitle:
                       name.isNotEmpty ? OnlineItemSubtitle(title: name) : kNull,
                   trailing: BaseAddToPlaylistBuilder(
