@@ -8,7 +8,7 @@ import 'package:daily_mind/common_widgets/base_player_control/presentation/base_
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/features/online_list_related/presentation/online_list_related.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
-import 'package:daily_mind/features/online_player_details/presentation/online_player_details_expand_button.dart';
+import 'package:daily_mind/features/online_player_details_expand_button/presentation/online_player_details_expand_button.dart';
 import 'package:daily_mind/features/online_player_disk_image/presentation/online_player_disk_image.dart';
 import 'package:daily_mind/features/online_playlist_add/presentation/online_playlist_add.dart';
 import 'package:daily_mind/theme/common.dart';
