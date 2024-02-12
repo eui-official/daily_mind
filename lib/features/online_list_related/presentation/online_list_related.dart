@@ -32,6 +32,12 @@ class OnlineListRelated extends HookConsumerWidget {
       sequence,
     ]);
 
+    final onGetSubtitle = useCallback((String name) {
+      if (name.isNotEmpty) {
+        return OnlineItemSubtitle(title: name);
+      }
+    }, []);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: space(
@@ -50,8 +56,7 @@ class OnlineListRelated extends HookConsumerWidget {
                   onTap: () => onTap(index),
                   image: audio.image,
                   title: OnlineItemTitle(title: audio.name),
-                  subtitle:
-                      name.isNotEmpty ? OnlineItemSubtitle(title: name) : kNull,
+                  subtitle: onGetSubtitle(name),
                   trailing: BaseAddToPlaylistBuilder(
                     audio: audio,
                     builder: (onOpenPlaylist) {

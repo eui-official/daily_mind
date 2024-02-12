@@ -29,9 +29,10 @@ class OnlineCategoryVertical extends HookConsumerWidget {
     final onlinePlayerState = ref.watch(onlinePlayerProvider);
     final category = audioCategory.category;
 
-    final image = useMemoized(() {
-      return CachedNetworkImageProvider(category.image);
-    }, [category]);
+    final image = useMemoized(
+      () => CachedNetworkImageProvider(category.image),
+      [category],
+    );
 
     final isPlaying = onlinePlayerState.id == category.id;
 
