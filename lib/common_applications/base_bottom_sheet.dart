@@ -16,6 +16,8 @@ Future<T?> onShowScrollableBottomSheet<T>(
       return DraggableScrollableSheet(
         expand: false,
         initialChildSize: initialChildSize,
+        snap: true,
+        snapSizes: const [0.6],
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
             decoration: BoxDecoration(
