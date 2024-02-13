@@ -7,7 +7,7 @@ import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
 import 'package:daily_mind/common_widgets/base_sliver_list.dart';
-import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
+import 'package:daily_mind/common_widgets/base_stack_with_actions.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
 import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
@@ -65,53 +65,43 @@ class MixPlayer extends HookConsumerWidget {
       }
     }, [baseBackgroundHandler.isMixItemsEmpty]);
 
-    return Stack(
+    return BaseStackWithActions(
+      background: MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
       children: [
-        MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
-        BaseSpacingContainer(
-          padding: EdgeInsets.symmetric(
-            horizontal: spacing(2),
-            vertical: kToolbarHeight,
-          ),
-          child: Column(
+        Expanded(
+          child: BaseSliverList(
+            scrollController: scrollController,
             children: [
-              Expanded(
-                child: BaseSliverList(
-                  scrollController: scrollController,
-                  children: [
-                    Column(
-                      children: space(
-                        [
-                          BaseContentHeader(
-                            title: 'title'.tr(),
-                            child: BaseTextField(
-                              focusNode: nameFocusNode,
-                              hintText: 'titleOfTheMix'.tr(),
-                              initialValue: mixState.title,
-                              onChanged: mixNotifier.onUpdateTitle,
-                            ),
-                          ),
-                          MixPlayerListItemGroupCategory(
-                            mixItems: mixData.mixItems,
-                          ),
-                        ],
-                        height: spacing(5),
+              Column(
+                children: space(
+                  [
+                    BaseContentHeader(
+                      title: 'title'.tr(),
+                      child: BaseTextField(
+                        focusNode: nameFocusNode,
+                        hintText: 'titleOfTheMix'.tr(),
+                        initialValue: mixState.title,
+                        onChanged: mixNotifier.onUpdateTitle,
                       ),
                     ),
+                    MixPlayerListItemGroupCategory(
+                      mixItems: mixData.mixItems,
+                    ),
                   ],
+                  height: spacing(5),
                 ),
-              ),
-              BasePlayerUserActions(
-                actions: [
-                  MixCollectionButtonSwitcher(
-                    isCanAddNewMix: mixNotifier.isCanAddANewMix,
-                    onDeleteMix: mixNotifier.onDeleteMix,
-                    onSaveMix: onSaveMix,
-                  ),
-                ],
               ),
             ],
           ),
+        ),
+        BasePlayerUserActions(
+          actions: [
+            MixCollectionButtonSwitcher(
+              isCanAddNewMix: mixNotifier.isCanAddANewMix,
+              onDeleteMix: mixNotifier.onDeleteMix,
+              onSaveMix: onSaveMix,
+            ),
+          ],
         ),
       ],
     );
