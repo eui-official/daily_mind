@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:daily_mind/common_widgets/base_back_button.dart';
 import 'package:daily_mind/extensions/context.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +24,11 @@ class BasePlayerHeaderActions extends StatelessWidget {
             quarterTurns: 3,
             child: BaseBackButton(),
           ),
-          AirPlayRoutePickerView(
-            tintColor: Colors.white,
-            activeTintColor: context.theme.primaryColor,
-          ),
+          if (Platform.isIOS)
+            AirPlayRoutePickerView(
+              tintColor: Colors.white,
+              activeTintColor: context.theme.primaryColor,
+            ),
         ],
       ),
     );
