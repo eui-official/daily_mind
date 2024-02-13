@@ -30,8 +30,9 @@ class PlaylistDetailsListAudio extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
 
-    final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
-    final onlinePlayerState = ref.read(onlinePlayerProvider);
+    final onlinePlayerNotifier =
+        ref.read(onlinePlayerNotifierProvider.notifier);
+    final onlinePlayerState = ref.read(onlinePlayerNotifierProvider);
 
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final mediaItemSnapshot = useStream(baseBackgroundHandler.mediaItem);

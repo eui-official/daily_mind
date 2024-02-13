@@ -26,7 +26,7 @@ class OnlineCategoryVertical extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
     final category = audioCategory.category;
 
     final image = useMemoized(

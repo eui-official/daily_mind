@@ -26,8 +26,9 @@ class BaseOnlineHandler extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
-    final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
+    final onlinePlayerNotifier =
+        ref.read(onlinePlayerNotifierProvider.notifier);
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
 
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
     final audios = audioCategory.audios;

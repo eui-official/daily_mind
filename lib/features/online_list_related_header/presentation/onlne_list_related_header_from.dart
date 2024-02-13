@@ -11,7 +11,7 @@ class OnlineListRelatedHeaderFrom extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
     final title = onlinePlayerState.title;
 
     final child = useMemoized(() {

@@ -26,7 +26,7 @@ class OnlinePlaylistAvailableItem extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
 
     final onDeleted = useCallback(() async {
       final result = await context.onConfirmDeletePlaylistDialog();

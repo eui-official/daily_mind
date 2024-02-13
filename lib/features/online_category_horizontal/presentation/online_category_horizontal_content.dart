@@ -17,7 +17,7 @@ class OnlineCategoryHorizontalContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
 
     return Container(
       padding: EdgeInsets.all(spacing(2)),

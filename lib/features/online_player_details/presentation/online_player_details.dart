@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_add_to_playlist_builder/presentation/base_add_to_playlist.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter.dart';
@@ -9,6 +8,7 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/features/online_list_related/presentation/online_list_related.dart';
 import 'package:daily_mind/features/online_player/presentation/online_player_provider.dart';
 import 'package:daily_mind/features/online_player_details_expand/presentation/online_player_details_expand.dart';
+import 'package:daily_mind/features/online_player_details_header_actions/presentation/online_player_details_header_actions.dart';
 import 'package:daily_mind/features/online_player_details_show_category_info/presentation/online_player_details_show_category_info.dart';
 import 'package:daily_mind/features/online_player_disk_image/presentation/online_player_disk_image.dart';
 import 'package:daily_mind/features/online_playlist_add/presentation/online_playlist_add.dart';
@@ -34,8 +34,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
-    final onlinePlayerState = ref.watch(onlinePlayerProvider);
+    final onlinePlayerState = ref.watch(onlinePlayerNotifierProvider);
 
     final description = onlinePlayerState.description;
     final isExpanded = onlinePlayerState.isExpanded;
@@ -91,18 +90,14 @@ class OnlinePlayerDetails extends HookConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: space(
               [
+                const OnlinePlayerDetailsHeaderActions(),
                 if (isExpanded) BaseAnimatedSwitcher(child: child),
                 Expanded(child: BaseAnimatedSwitcher(child: expandedChild)),
                 Column(
                   children: space(
                     [
                       if (isNotExpanded) BaseAnimatedSwitcher(child: child),
-                      BasePlayerControl(
-                        backgroundHandler: baseBackgroundHandler,
-                        onNext: baseBackgroundHandler.skipToNext,
-                        onPrevious: baseBackgroundHandler.skipToPrevious,
-                        audio: audio,
-                      ),
+                      BasePlayerControl(audio: audio),
                       BasePlayerUserActions(actions: actions),
                     ],
                     height: spacing(3),
