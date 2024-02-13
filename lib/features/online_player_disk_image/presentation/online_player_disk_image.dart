@@ -18,23 +18,24 @@ class OnlinePlayerDiskImage extends HookWidget {
   Widget build(BuildContext context) {
     final description = audio.description;
 
-    return Container(
-      padding: const EdgeInsets.only(top: kToolbarHeight),
-      child: Column(
-        children: space(
-          [
-            DiskPlayerImage(image: audio.image),
-            if (description != null)
-              Text(
-                description,
-                textAlign: TextAlign.justify,
-                style: context.textTheme.bodySmall?.copyWith(
-                  color: context.theme.hintColor,
+    return Column(
+      children: space(
+        [
+          DiskPlayerImage(image: audio.image),
+          if (description != null)
+            Flexible(
+              child: SingleChildScrollView(
+                child: Text(
+                  description,
+                  textAlign: TextAlign.justify,
+                  style: context.textTheme.bodySmall?.copyWith(
+                    color: context.theme.hintColor,
+                  ),
                 ),
-              )
-          ],
-          height: spacing(2),
-        ),
+              ),
+            )
+        ],
+        height: spacing(2),
       ),
     );
   }
