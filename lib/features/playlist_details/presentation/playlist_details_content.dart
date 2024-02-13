@@ -50,7 +50,8 @@ class PlaylistDetailsContent extends HookConsumerWidget {
 
     final baseBackgroundHandler = ref.watch(baseBackgroundHandlerProvider);
     final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
-    final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
+    final onlinePlayerNotifier =
+        ref.read(onlinePlayerNotifierProvider.notifier);
 
     final onPlay = useCallback(([int index = 0]) async {
       onlinePlayerNotifier.onUpdateId(playlistId);

@@ -112,7 +112,7 @@ class MixdNotifier extends StateNotifier<MixState> {
 final mixProvider = StateNotifierProvider<MixdNotifier, MixState>((ref) {
   final baseMiniPlayerNotifier = ref.read(baseMiniPlayerProvider.notifier);
   final baseBackgroundHandler = ref.read(baseBackgroundHandlerProvider);
-  final onlinePlayerNotifier = ref.read(onlinePlayerProvider.notifier);
+  final onlinePlayerNotifier = ref.read(onlinePlayerNotifierProvider.notifier);
 
   return MixdNotifier(
     baseMiniPlayerNotifier: baseMiniPlayerNotifier,
