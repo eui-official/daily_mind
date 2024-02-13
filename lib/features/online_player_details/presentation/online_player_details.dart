@@ -77,6 +77,7 @@ class OnlinePlayerDetails extends HookConsumerWidget {
 
     return BaseStackWithActions(
       background: BaseBackdropFilter(image: imageProvider),
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: space(
         [
           if (isExpanded) BaseAnimatedSwitcher(child: child),

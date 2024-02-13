@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class BaseStackWithActions extends StatelessWidget {
   final Widget background;
   final List<Widget> children;
+  final MainAxisAlignment mainAxisAlignment;
 
   const BaseStackWithActions({
     super.key,
     required this.background,
     required this.children,
+    this.mainAxisAlignment = MainAxisAlignment.start,
   });
 
   @override
@@ -24,6 +26,7 @@ class BaseStackWithActions extends StatelessWidget {
             horizontal: spacing(2),
           ),
           child: Column(
+            mainAxisAlignment: mainAxisAlignment,
             children: [
               Container(
                 padding: const EdgeInsets.only(
