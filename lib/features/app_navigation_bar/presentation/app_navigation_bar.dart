@@ -1,3 +1,4 @@
+import 'package:daily_mind/features/activity/presentation/activity.dart';
 import 'package:daily_mind/features/mix/presentation/mix.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
@@ -14,23 +15,30 @@ class AppNavigationBar extends StatelessWidget {
       navBarOverlap: const NavBarOverlap.none(),
       tabs: [
         PersistentTabConfig(
+          screen: const Activity(),
+          item: ItemConfig(
+            icon: const Icon(Icons.spa_rounded),
+            activeColorPrimary: context.theme.primaryColor,
+          ),
+        ),
+        PersistentTabConfig(
           screen: const Mix(),
           item: ItemConfig(
-            icon: const Icon(Icons.music_note),
+            icon: const Icon(Icons.music_note_rounded),
             activeColorPrimary: context.theme.primaryColor,
           ),
         ),
         PersistentTabConfig(
           screen: const OnlineList(),
           item: ItemConfig(
-            icon: const Icon(Icons.explore),
+            icon: const Icon(Icons.explore_rounded),
             activeColorPrimary: context.theme.primaryColor,
           ),
         ),
         PersistentTabConfig(
           screen: const Settings(),
           item: ItemConfig(
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.settings_rounded),
             activeColorPrimary: context.theme.primaryColor,
           ),
         ),
