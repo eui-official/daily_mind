@@ -19,10 +19,10 @@ class BaseSliderTheme extends HookWidget {
   Widget build(BuildContext context) {
     final trackHeight = useMemoized(() {
       if (isChanging) {
-        return spacing(4);
+        return spacing(3);
       }
 
-      return spacing(2);
+      return spacing();
     }, [isChanging]);
 
     return AnimatedContainer(

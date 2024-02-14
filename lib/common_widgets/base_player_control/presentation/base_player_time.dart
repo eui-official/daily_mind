@@ -2,6 +2,7 @@ import 'package:daily_mind/common_applications/base_id.dart';
 import 'package:daily_mind/common_widgets/base_animated_switcher/presentation/base_animated_switcher.dart';
 import 'package:daily_mind/common_widgets/base_player_control/presentation/base_player_time_display.dart';
 import 'package:daily_mind/common_widgets/base_slider.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -49,19 +50,21 @@ class BasePlayerTime extends HookWidget {
       sliderId,
     ]);
 
-    return Column(
-      children: space(
-        [
-          BaseAnimatedSwitcher(child: child),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BasePlayerTimeDisplay(seconds: trackValueState.value.toInt()),
-              BasePlayerTimeDisplay(seconds: remainingTime.toInt()),
-            ],
-          )
-        ],
-        height: spacing(2),
+    return BaseSpacingContainerHorizontal(
+      child: Column(
+        children: space(
+          [
+            BaseAnimatedSwitcher(child: child),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BasePlayerTimeDisplay(seconds: trackValueState.value.toInt()),
+                BasePlayerTimeDisplay(seconds: remainingTime.toInt()),
+              ],
+            )
+          ],
+          height: spacing(2),
+        ),
       ),
     );
   }
