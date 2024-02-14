@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_applications/base_dialogs.dart';
+import 'package:daily_mind/extensions/base_dialogs.dart';
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';

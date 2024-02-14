@@ -13,7 +13,7 @@ class BaseBackdropFilterOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: gradient ?? baseLinearGradient,
+        gradient: gradient ?? onGetBaseLinearGradient(context),
       ),
     );
   }

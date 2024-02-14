@@ -35,11 +35,7 @@ class BaseCardImage extends StatelessWidget {
                 placeholder: MemoryImage(kTransparentImage),
               ),
             ),
-            BaseBackdropFilter(
-              image: image,
-              dominantColorOpacity: 0.3,
-              lightColorOpacity: 0.6,
-            ),
+            BaseBackdropFilter(image: image),
           ],
         ),
       ),

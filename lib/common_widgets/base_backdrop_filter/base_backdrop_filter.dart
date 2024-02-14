@@ -1,5 +1,5 @@
 import 'package:daily_mind/common_hooks/use_image_palette.dart';
-import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter_gradien.dart';
+import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter_gradient.dart';
 import 'package:daily_mind/common_widgets/base_null_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -15,8 +15,8 @@ class BaseBackdropFilter extends HookWidget {
     super.key,
     this.borderRadius = BorderRadius.zero,
     this.image,
-    this.dominantColorOpacity = 1,
-    this.lightColorOpacity = 1,
+    this.dominantColorOpacity = 0.6,
+    this.lightColorOpacity = 0.3,
   });
 
   @override

@@ -2,6 +2,7 @@ import 'package:daily_mind/common_domains/audio.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/common_widgets/base_add_to_playlist_builder/presentation/base_add_to_playlist.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/online_item_dropdown_actions/presentation/online_item_dropdown_actions.dart';
 import 'package:daily_mind/features/online_item/presentation/online_item.dart';
@@ -38,40 +39,42 @@ class OnlineListRelated extends HookConsumerWidget {
       }
     }, []);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: space(
-        [
-          const OnlineListRelatedHeader(),
-          Expanded(
-            child: ListView.builder(
-              itemCount: sequence.length,
-              itemBuilder: (context, index) {
-                final s = sequence[index];
-                final audio = s.tag as Audio;
-                final artist = configState.onGetArtistById(audio.artist);
-                final name = artist?.name ?? kEmptyString;
+    return BaseSpacingContainerHorizontal(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: space(
+          [
+            const OnlineListRelatedHeader(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: sequence.length,
+                itemBuilder: (context, index) {
+                  final s = sequence[index];
+                  final audio = s.tag as Audio;
+                  final artist = configState.onGetArtistById(audio.artist);
+                  final name = artist?.name ?? kEmptyString;
 
-                return OnlineItem(
-                  onTap: () => onTap(index),
-                  image: audio.image,
-                  title: OnlineItemTitle(title: audio.name),
-                  subtitle: onGetSubtitle(name),
-                  trailing: BaseAddToPlaylistBuilder(
-                    audio: audio,
-                    builder: (onOpenPlaylist) {
-                      return OnlineItemDropdownActions(
-                        audio: audio,
-                        onOpenPlaylist: onOpenPlaylist,
-                      );
-                    },
-                  ),
-                );
-              },
+                  return OnlineItem(
+                    onTap: () => onTap(index),
+                    image: audio.image,
+                    title: OnlineItemTitle(title: audio.name),
+                    subtitle: onGetSubtitle(name),
+                    trailing: BaseAddToPlaylistBuilder(
+                      audio: audio,
+                      builder: (onOpenPlaylist) {
+                        return OnlineItemDropdownActions(
+                          audio: audio,
+                          onOpenPlaylist: onOpenPlaylist,
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
-        height: spacing(3),
+          ],
+          height: spacing(3),
+        ),
       ),
     );
   }

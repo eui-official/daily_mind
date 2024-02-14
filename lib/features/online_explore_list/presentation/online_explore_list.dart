@@ -22,7 +22,7 @@ class OnlineExploreList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appNavigationState = ref.watch(appNavigationBarProvider);
+    final appNavigationState = ref.watch(appNavigationBarNotifierProvider);
 
     useEffectDelayed(
       () {
