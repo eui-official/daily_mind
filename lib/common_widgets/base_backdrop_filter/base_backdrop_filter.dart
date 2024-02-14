@@ -15,8 +15,8 @@ class BaseBackdropFilter extends HookWidget {
     super.key,
     this.borderRadius = BorderRadius.zero,
     this.image,
-    this.dominantColorOpacity = 1,
-    this.lightColorOpacity = 1,
+    this.dominantColorOpacity = 0.6,
+    this.lightColorOpacity = 0.3,
   });
 
   @override

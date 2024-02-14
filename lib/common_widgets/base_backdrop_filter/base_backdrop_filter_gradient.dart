@@ -12,8 +12,8 @@ class BaseBackdropFilterGradient extends HookWidget {
   const BaseBackdropFilterGradient({
     super.key,
     required this.pallete,
-    this.dominantColorOpacity = 1,
-    this.lightColorOpacity = 1,
+    this.dominantColorOpacity = 0.6,
+    this.lightColorOpacity = 0.3,
   });
 
   @override

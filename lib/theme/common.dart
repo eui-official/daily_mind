@@ -24,8 +24,8 @@ List<Widget> space(
 
 LinearGradient onGetBaseLinearGradient(BuildContext context) => LinearGradient(
       colors: [
-        context.theme.colorScheme.background.withOpacity(.6),
-        context.theme.colorScheme.background.withOpacity(.3),
+        context.theme.colorScheme.background.withOpacity(.4),
+        context.theme.colorScheme.background.withOpacity(.2),
       ],
       begin: Alignment.bottomRight,
       end: Alignment.topLeft,
