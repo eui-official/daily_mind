@@ -59,12 +59,9 @@ class BaseMixEditorItem extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  FractionallySizedBox(
-                    widthFactor: 0.9,
-                    child: VolumeSlider(
-                      initVolume: initVolume,
-                      onVolumeChanged: onVolumeChanged,
-                    ),
+                  VolumeSlider(
+                    initVolume: initVolume,
+                    onVolumeChanged: onVolumeChanged,
                   ),
                 ],
                 height: spacing(2),

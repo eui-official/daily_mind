@@ -6,6 +6,7 @@ import 'package:daily_mind/common_hooks/use_mix.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_widgets/base_content_header.dart';
 import 'package:daily_mind/common_widgets/base_player_actions/presentation/base_player_users_actions.dart';
+import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container_horizontal.dart';
 import 'package:daily_mind/common_widgets/base_stack_with_actions.dart';
 import 'package:daily_mind/common_widgets/base_text_field.dart';
 import 'package:daily_mind/features/mix_collection_button_switcher/presentation/mix_collection_button_switcher.dart';
@@ -71,23 +72,25 @@ class MixPlayer extends HookConsumerWidget {
         Expanded(
           child: SingleChildScrollView(
             controller: scrollController,
-            child: Column(
-              children: space(
-                [
-                  BaseContentHeader(
-                    title: 'title'.tr(),
-                    child: BaseTextField(
-                      focusNode: nameFocusNode,
-                      hintText: 'titleOfTheMix'.tr(),
-                      initialValue: mixState.title,
-                      onChanged: mixNotifier.onUpdateTitle,
+            child: BaseSpacingContainerHorizontal(
+              child: Column(
+                children: space(
+                  [
+                    BaseContentHeader(
+                      title: 'title'.tr(),
+                      child: BaseTextField(
+                        focusNode: nameFocusNode,
+                        hintText: 'titleOfTheMix'.tr(),
+                        initialValue: mixState.title,
+                        onChanged: mixNotifier.onUpdateTitle,
+                      ),
                     ),
-                  ),
-                  MixPlayerListItemGroupCategory(
-                    mixItems: mixData.mixItems,
-                  ),
-                ],
-                height: spacing(5),
+                    MixPlayerListItemGroupCategory(
+                      mixItems: mixData.mixItems,
+                    ),
+                  ],
+                  height: spacing(5),
+                ),
               ),
             ),
           ),
