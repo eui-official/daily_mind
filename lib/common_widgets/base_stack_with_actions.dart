@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_widgets/base_player_header_actions.dart';
-import 'package:daily_mind/common_widgets/base_sliver_list.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';

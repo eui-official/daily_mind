@@ -21,7 +21,7 @@ class Mix extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mixTabbarNotifier = ref.read(mixTabbarNotifierProvider.notifier);
     final mixTabbarState = ref.watch(mixTabbarNotifierProvider);
-    final appNavigationBarState = ref.watch(appNavigationBarProvider);
+    final appNavigationBarState = ref.watch(appNavigationBarNotifierProvider);
 
     useEffectDelayed(() {
       if (db.onIsFirstTime(kNewMixTutorial) &&
