@@ -27,6 +27,7 @@ class MixAudioCategory extends HookConsumerWidget {
     final mixData = useMix(ref);
 
     return BaseContentHeader(
+      spacingSize: 3,
       title: offlineAudioCategory.title,
       child: BaseGridItemsHeader(
         items: offlineAudioCategory.offlineAudios,
