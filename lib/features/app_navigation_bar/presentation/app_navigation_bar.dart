@@ -12,7 +12,9 @@ class AppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      backgroundColor: Colors.transparent,
       navBarOverlap: const NavBarOverlap.none(),
+      margin: EdgeInsets.zero,
       tabs: [
         PersistentTabConfig(
           screen: const Activity(),
@@ -46,7 +48,7 @@ class AppNavigationBar extends StatelessWidget {
       navBarBuilder: (navBarConfig) => Style1BottomNavBar(
         navBarConfig: navBarConfig,
         navBarDecoration: NavBarDecoration(
-          color: context.theme.scaffoldBackgroundColor,
+          color: context.theme.colorScheme.background,
         ),
       ),
     );

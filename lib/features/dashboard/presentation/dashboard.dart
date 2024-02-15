@@ -24,10 +24,15 @@ class Dashboard extends HookConsumerWidget {
         return const BirdLoading();
       }
 
-      return const Stack(
+      return Stack(
         children: [
-          AppNavigationBar(),
-          BaseMiniPlayerPosition(),
+          Container(
+            decoration: BoxDecoration(
+              gradient: context.baseBackgroundLinearGradient,
+            ),
+          ),
+          const AppNavigationBar(),
+          const BaseMiniPlayerPosition(),
         ],
       );
     }, [
