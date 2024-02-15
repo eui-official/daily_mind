@@ -22,4 +22,22 @@ extension ContextExt on BuildContext {
       ),
     );
   }
+
+  LinearGradient get baseLinearGradient => LinearGradient(
+        colors: [
+          theme.colorScheme.background.withOpacity(.4),
+          theme.colorScheme.background.withOpacity(.2),
+        ],
+        begin: Alignment.bottomRight,
+        end: Alignment.topLeft,
+      );
+
+  LinearGradient get baseBackgroundLinearGradient => LinearGradient(
+        colors: [
+          theme.primaryColorDark.withOpacity(.1),
+          theme.colorScheme.background,
+        ],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      );
 }

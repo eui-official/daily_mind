@@ -17,61 +17,59 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AppBarScrollview(
-        title: 'settings'.tr(),
-        children: space(
-          [
-            BaseContainerList(
-              title: 'Thư viện'.tr(),
-              items: const [
-                SettingsPlaylist(),
-              ],
-            ),
-            BaseContainerList(
-              title: 'styling'.tr(),
-              items: const [
-                SettingsColor(),
-              ],
-            ),
-            BaseContainerList(
-              title: 'feedback'.tr(),
-              items: [
-                BaseTile(
-                  onTap: () {
-                    inAppReview.openStoreListing(appStoreId: kAppStoreId);
-                  },
-                  title: 'rating'.tr(),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(spacing(2)),
-                    topRight: Radius.circular(spacing(2)),
-                  ),
+    return AppBarScrollview(
+      title: 'settings'.tr(),
+      children: space(
+        [
+          BaseContainerList(
+            title: 'Thư viện'.tr(),
+            items: const [
+              SettingsPlaylist(),
+            ],
+          ),
+          BaseContainerList(
+            title: 'styling'.tr(),
+            items: const [
+              SettingsColor(),
+            ],
+          ),
+          BaseContainerList(
+            title: 'feedback'.tr(),
+            items: [
+              BaseTile(
+                onTap: () {
+                  inAppReview.openStoreListing(appStoreId: kAppStoreId);
+                },
+                title: 'rating'.tr(),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(spacing(2)),
+                  topRight: Radius.circular(spacing(2)),
                 ),
-                BaseTile(
-                  onTap: () {
-                    launchUrl(Uri.parse('https://m.me/eui.dailymind'));
-                  },
-                  title: 'sendFeedback'.tr(),
-                  subtitle: Text(
-                    'sendFeedbackDescription'.tr(),
-                    style: const TextStyle(color: secondaryTextColor),
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(spacing(2)),
-                    bottomRight: Radius.circular(spacing(2)),
-                  ),
+              ),
+              BaseTile(
+                onTap: () {
+                  launchUrl(Uri.parse('https://m.me/eui.dailymind'));
+                },
+                title: 'sendFeedback'.tr(),
+                subtitle: Text(
+                  'sendFeedbackDescription'.tr(),
+                  style: const TextStyle(color: secondaryTextColor),
                 ),
-              ],
-            ),
-            BaseContainerList(
-              title: 'system'.tr(),
-              items: const [
-                SettingsVersion(),
-              ],
-            ),
-          ],
-          height: spacing(3),
-        ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(spacing(2)),
+                  bottomRight: Radius.circular(spacing(2)),
+                ),
+              ),
+            ],
+          ),
+          BaseContainerList(
+            title: 'system'.tr(),
+            items: const [
+              SettingsVersion(),
+            ],
+          ),
+        ],
+        height: spacing(3),
       ),
     );
   }

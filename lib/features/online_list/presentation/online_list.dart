@@ -16,15 +16,13 @@ class OnlineList extends HookConsumerWidget {
         ref.read(baseAudiosBuilderNotifierProvider.notifier);
 
     return InternetConnectionChecker(
-      child: Scaffold(
-        body: BaseRefresh(
-          onRefresh: baseAudiosBuilderNotifier.onRefreshAudioCategories,
-          child: AppBarScrollview(
-            title: 'explore'.tr(),
-            children: const [
-              OnlineExploreList(),
-            ],
-          ),
+      child: BaseRefresh(
+        onRefresh: baseAudiosBuilderNotifier.onRefreshAudioCategories,
+        child: AppBarScrollview(
+          title: 'explore'.tr(),
+          children: const [
+            OnlineExploreList(),
+          ],
         ),
       ),
     );

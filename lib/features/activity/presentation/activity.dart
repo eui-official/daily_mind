@@ -7,11 +7,9 @@ class Activity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AppBarScrollview(
-        title: 'activity'.tr(),
-        children: const [],
-      ),
+    return AppBarScrollview(
+      title: 'activity'.tr(),
+      children: const [],
     );
   }
 }

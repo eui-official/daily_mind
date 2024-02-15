@@ -30,19 +30,17 @@ class Mix extends HookConsumerWidget {
       }
     }, [context, appNavigationBarState]);
 
-    return Scaffold(
-      body: AppBarScrollview(
-        title: 'mixSounds'.tr(),
-        bottom: const MixTabbar(),
-        children: [
-          MixSwitch(
-            index: mixTabbarState,
-            onCreateNew: () {
-              mixTabbarNotifier.onTap(0);
-            },
-          ),
-        ],
-      ),
+    return AppBarScrollview(
+      title: 'mixSounds'.tr(),
+      bottom: const MixTabbar(),
+      children: [
+        MixSwitch(
+          index: mixTabbarState,
+          onCreateNew: () {
+            mixTabbarNotifier.onTap(0);
+          },
+        ),
+      ],
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:daily_mind/theme/common.dart';
+import 'package:daily_mind/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 class BaseBackdropFilterOverlay extends StatelessWidget {
@@ -13,7 +13,7 @@ class BaseBackdropFilterOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: gradient ?? onGetBaseLinearGradient(context),
+        gradient: gradient ?? context.baseLinearGradient,
       ),
     );
   }

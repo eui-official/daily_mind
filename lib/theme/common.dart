@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:daily_mind/extensions/context.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -21,15 +20,6 @@ List<Widget> space(
       .skip(1)
       .toList();
 }
-
-LinearGradient onGetBaseLinearGradient(BuildContext context) => LinearGradient(
-      colors: [
-        context.theme.colorScheme.background.withOpacity(.4),
-        context.theme.colorScheme.background.withOpacity(.2),
-      ],
-      begin: Alignment.bottomRight,
-      end: Alignment.topLeft,
-    );
 
 BorderRadius circularRadius([double size = 1]) =>
     BorderRadius.circular(spacing(size));
