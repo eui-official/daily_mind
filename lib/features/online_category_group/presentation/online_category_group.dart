@@ -59,7 +59,7 @@ class OnlineCategoryGroup extends HookWidget {
               ),
             ),
           ],
-          height: spacing(2),
+          height: spacing(3),
         ),
       ),
     );
