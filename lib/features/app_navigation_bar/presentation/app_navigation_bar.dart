@@ -1,4 +1,4 @@
-import 'package:daily_mind/features/activity/presentation/activity.dart';
+import 'package:daily_mind/features/alarm/presentation/alarm.dart';
 import 'package:daily_mind/features/mix/presentation/mix.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
@@ -17,7 +17,7 @@ class AppNavigationBar extends StatelessWidget {
       margin: EdgeInsets.zero,
       tabs: [
         PersistentTabConfig(
-          screen: const Activity(),
+          screen: const Alarm(),
           item: ItemConfig(
             icon: const Icon(Icons.spa_rounded),
             activeColorPrimary: context.theme.primaryColor,
