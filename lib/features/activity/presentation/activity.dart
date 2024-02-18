@@ -2,13 +2,13 @@ import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scro
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class Alarm extends StatelessWidget {
-  const Alarm({super.key});
+class Activity extends StatelessWidget {
+  const Activity({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBarScrollview(
-      title: 'alarm'.tr(),
+      title: 'activity'.tr(),
       children: const [],
     );
   }
