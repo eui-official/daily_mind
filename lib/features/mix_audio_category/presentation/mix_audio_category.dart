@@ -9,6 +9,7 @@ import 'package:daily_mind/features/mix/presentation/mix_provider.dart';
 import 'package:daily_mind/features/mix_audio_card/presentation/mix_audio_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart' hide Trans;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MixAudioCategory extends HookConsumerWidget {
@@ -29,6 +30,9 @@ class MixAudioCategory extends HookConsumerWidget {
     return BaseContentHeader(
       spacingSize: 3,
       title: offlineAudioCategory.title,
+      titleStyle: context.textTheme.titleLarge?.copyWith(
+        fontWeight: FontWeight.bold,
+      ),
       child: BaseGridItemsHeader(
         items: offlineAudioCategory.offlineAudios,
         onItemIndexBuilder: (context, index, audio) {

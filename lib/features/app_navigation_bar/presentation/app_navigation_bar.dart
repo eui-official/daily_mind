@@ -24,12 +24,12 @@ class AppNavigationBar extends StatelessWidget {
       ),
       items: [
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.spa_rounded),
+          icon: const Icon(Icons.bedtime_rounded),
           activeColorPrimary: context.theme.primaryColor,
           inactiveColorPrimary: context.theme.primaryColorDark,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(Icons.music_note_rounded),
+          icon: const Icon(Icons.eco_rounded),
           activeColorPrimary: context.theme.primaryColor,
           inactiveColorPrimary: context.theme.primaryColorDark,
         ),
