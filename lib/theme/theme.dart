@@ -1,7 +1,6 @@
 import 'package:daily_mind/features/settings/domain/supported_theme.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +20,6 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     appBarElevation: 2,
     scaffoldBackground: midnightBlack,
     error: red,
-    typography: Typography.material2021(platform: defaultTargetPlatform),
     subThemesData: FlexSubThemesData(
       alignedDropdown: true,
       inputDecoratorFocusedHasBorder: false,
