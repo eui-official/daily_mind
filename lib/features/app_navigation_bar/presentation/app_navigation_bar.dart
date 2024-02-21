@@ -1,5 +1,5 @@
 import 'package:daily_mind/extensions/context.dart';
-import 'package:daily_mind/features/activity/presentation/activity.dart';
+import 'package:daily_mind/features/sleep_mode/presentation/sleep_mode.dart';
 import 'package:daily_mind/features/mix/presentation/mix.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
@@ -14,7 +14,7 @@ class AppNavigationBar extends StatelessWidget {
     return PersistentTabView(
       context,
       screens: const [
-        Activity(),
+        SleepMode(),
         Mix(),
         OnlineList(),
         Settings(),
