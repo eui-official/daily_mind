@@ -5,10 +5,8 @@ class SleepModeAddForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Column(
-        children: [],
-      ),
+    return const Column(
+      children: [],
     );
   }
 }

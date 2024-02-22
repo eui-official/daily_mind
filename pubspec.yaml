@@ -86,6 +86,7 @@ dependencies:
   popover: ^0.3.0
   flutter_to_airplay: ^2.0.4
   wave: ^0.2.2
+  intl: ^0.18.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

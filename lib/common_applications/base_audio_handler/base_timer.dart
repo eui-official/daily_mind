@@ -49,7 +49,7 @@ extension BaseTimerPlayer on DailyMindBackgroundHandler {
     timer?.cancel();
     onUpdateTimerRemaining(timeOfDay);
 
-    timer = Timer.periodic(const Duration(seconds: 1), (currentTimer) {
+    timer = Timer.periodic(kLongDuration, (currentTimer) {
       final seconds = remainingTime.inSeconds;
 
       if (seconds.isEqual(0)) {
