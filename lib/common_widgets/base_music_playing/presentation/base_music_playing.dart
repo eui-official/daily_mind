@@ -25,7 +25,7 @@ class BaseMusicPlaying extends StatelessWidget {
             BlendMode.modulate,
           ),
           child: Lottie.asset(
-            'assets/lottie/music-playing.json',
+            'assets/lotties/music-playing.json',
             fit: BoxFit.cover,
             height: spacing(size),
             width: spacing(size),

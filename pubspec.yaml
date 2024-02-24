@@ -141,6 +141,7 @@ flutter:
     - assets/audios/frog-croakings/
     - assets/audios/gamma-waves/
     - assets/audios/grey-noises/
+    - assets/audios/horse-neighings/
     - assets/audios/leave-rustlings/
     - assets/audios/pink-noises/
     - assets/audios/rains/
@@ -150,17 +151,17 @@ flutter:
     - assets/audios/thunderstorms/
     - assets/audios/tibetan-bowls/
     - assets/audios/violet-noises/
-    - assets/audios/horse-neighings/
-    - assets/audios/wolve-howlings/
     - assets/audios/waterfalls/
     - assets/audios/waters/
     - assets/audios/waves/
     - assets/audios/whales/
     - assets/audios/white-noises/
     - assets/audios/winds/
+    - assets/audios/wolve-howlings/
+    - assets/icons/
     - assets/images/
     - assets/images/background/
-    - assets/lottie/
+    - assets/lotties/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see

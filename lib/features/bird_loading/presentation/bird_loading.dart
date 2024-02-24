@@ -2,7 +2,6 @@ import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
-import 'package:lottie/lottie.dart';
 
 class BirdLoading extends StatelessWidget {
   const BirdLoading({super.key});
@@ -22,9 +21,9 @@ class BirdLoading extends StatelessWidget {
                   context.theme.primaryColor,
                   BlendMode.modulate,
                 ),
-                child: Lottie.asset(
-                  'assets/lottie/bird.json',
-                  fit: BoxFit.contain,
+                child: Image.asset(
+                  'assets/icons/icon.png',
+                  fit: BoxFit.cover,
                   width: spacing(20),
                   height: spacing(20),
                 ),

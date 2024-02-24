@@ -1,9 +1,7 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
-import 'package:daily_mind/common_widgets/base_datetime_builder.dart';
-import 'package:daily_mind/theme/theme.dart';
+import 'package:daily_mind/features/sleep_mode_time_ticker/presentation/sleep_mode_time_ticker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
 const backgroundColor = Color(0xFFF15BB5);
@@ -24,7 +22,9 @@ const heightPercentages = [
 ];
 
 class SleepModeCurrentTime extends HookWidget {
-  const SleepModeCurrentTime({super.key});
+  const SleepModeCurrentTime({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,26 +43,14 @@ class SleepModeCurrentTime extends HookWidget {
           child: Container(
             alignment: Alignment.center,
             child: Lottie.asset(
-              'assets/lottie/circle.json',
+              'assets/lotties/circle.json',
               controller: controller,
               frameRate: const FrameRate(60),
               height: context.height * 0.3,
             ),
           ),
         ),
-        BaseDatetimeBuilder(
-          builder: (dateTime) {
-            final df = DateFormat(DateFormat.HOUR_MINUTE);
-
-            return Text(
-              df.format(dateTime),
-              style: context.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                letterSpacing: spacing(0.5),
-              ),
-            );
-          },
-        ),
+        const SleepModeTimeTicker(),
       ],
     );
   }
