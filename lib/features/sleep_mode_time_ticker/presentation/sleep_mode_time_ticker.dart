@@ -1,4 +1,4 @@
-import 'package:daily_mind/common_widgets/base_datetime_builder.dart';
+import 'package:daily_mind/common_widgets/base_datetime_builder/presentation/base_datetime_builder.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
