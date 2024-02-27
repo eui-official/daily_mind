@@ -1,8 +1,9 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
-import 'package:daily_mind/features/sleep_mode_time_ticker/presentation/sleep_mode_time_ticker.dart';
+import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
+import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:lottie/lottie.dart';
+import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 const backgroundColor = Color(0xFFF15BB5);
 
@@ -28,30 +29,61 @@ class SleepModeCurrentTime extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useAnimationController()
-      ..duration = const Duration(seconds: 8)
-      ..repeat();
+    final currentTime = useBaseDateTimeTicker();
+    ClockTimeFormat clockTimeFormat = ClockTimeFormat.twentyFourHours;
+    ClockIncrementTimeFormat clockIncrementTimeFormat =
+        ClockIncrementTimeFormat.oneMin;
 
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        ColorFiltered(
-          colorFilter: ColorFilter.mode(
-            context.theme.primaryColor,
-            BlendMode.modulate,
-          ),
-          child: Container(
-            alignment: Alignment.center,
-            child: Lottie.asset(
-              'assets/lotties/circle.json',
-              controller: controller,
-              frameRate: const FrameRate(60),
-              height: context.height * 0.3,
-            ),
-          ),
+    return TimePicker(
+      initTime: PickedTime(
+        h: currentTime.hour,
+        m: currentTime.minute,
+      ),
+      endTime: PickedTime(h: 8, m: 0),
+      primarySectors: clockTimeFormat.value,
+      secondarySectors: clockTimeFormat.value * 2,
+      decoration: TimePickerDecoration(
+        baseColor: context.theme.primaryColorDark,
+        pickerBaseCirclePadding: spacing(2),
+        sweepDecoration: TimePickerSweepDecoration(
+          pickerStrokeWidth: spacing(2),
+          pickerColor: context.theme.focusColor,
         ),
-        const SleepModeTimeTicker(),
-      ],
+        initHandlerDecoration: TimePickerHandlerDecoration(
+          color: context.theme.primaryColor,
+          icon: const Icon(Icons.power_settings_new_outlined),
+          radius: spacing(),
+          shape: BoxShape.circle,
+        ),
+        endHandlerDecoration: TimePickerHandlerDecoration(
+          color: context.theme.primaryColor,
+          icon: const Icon(Icons.notifications_active_outlined),
+          radius: spacing(),
+          shape: BoxShape.circle,
+        ),
+        primarySectorsDecoration: TimePickerSectorDecoration(
+          size: 4,
+          radiusPadding: spacing(3),
+        ),
+        secondarySectorsDecoration: TimePickerSectorDecoration(
+          size: 2,
+          radiusPadding: spacing(3),
+        ),
+        clockNumberDecoration: TimePickerClockNumberDecoration(
+          textStyle: context.textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+          scaleFactor: 2,
+          positionFactor: 0.2,
+          showNumberIndicators: true,
+          clockTimeFormat: clockTimeFormat,
+          clockIncrementTimeFormat: clockIncrementTimeFormat,
+        ),
+      ),
+      onSelectionChange: (start, end, isDisableRange) => print(
+          'onSelectionChange => init : ${start.h}:${start.m}, end : ${end.h}:${end.m}, isDisableRangeRange: $isDisableRange'),
+      onSelectionEnd: (start, end, isDisableRange) => print(
+          'onSelectionEnd => init : ${start.h}:${start.m}, end : ${end.h}:${end.m},, isDisableRangeRange: $isDisableRange'),
     );
   }
 }

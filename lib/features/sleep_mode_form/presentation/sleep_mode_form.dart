@@ -1,3 +1,4 @@
+import 'package:blur/blur.dart';
 import 'package:daily_mind/extensions/context.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_times.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -11,13 +12,19 @@ class SleepModeForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(spacing(2)),
-      decoration: BoxDecoration(
-        borderRadius: circularRadius(2),
-        color: context.theme.cardColor,
-      ),
-      child: const Column(
+      child: Stack(
         children: [
-          SleepModeWakeUpTimes(),
+          Positioned.fill(
+            child: Container().blurred(
+              blurColor: context.theme.cardColor,
+              borderRadius: circularRadius(2),
+            ),
+          ),
+          const Column(
+            children: [
+              SleepModeWakeUpTimes(),
+            ],
+          ),
         ],
       ),
     );

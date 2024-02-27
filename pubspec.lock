@@ -1253,6 +1253,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  progressive_time_picker:
+    dependency: "direct main"
+    description:
+      name: progressive_time_picker
+      sha256: a19e2effecd955ea01716f06d7efbb79788f4ed6c5bec32146c194fd4c901441
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   pub_semver:
     dependency: transitive
     description:
