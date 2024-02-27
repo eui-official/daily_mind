@@ -37,11 +37,12 @@ extension ContextExt on BuildContext {
       );
 
   LinearGradient get baseBackgroundLinearGradient => LinearGradient(
-        colors: [
-          theme.primaryColor.withOpacity(0.1),
-          theme.colorScheme.background.withOpacity(.5),
-        ],
         begin: Alignment.topRight,
         end: Alignment.bottomLeft,
+        colors: [
+          theme.primaryColorDark.withOpacity(0.1),
+          theme.colorScheme.background,
+        ],
+        stops: const [0.2, 0.8],
       );
 }
