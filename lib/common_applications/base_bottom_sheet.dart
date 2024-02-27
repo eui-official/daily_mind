@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:blur/blur.dart';
 import 'package:daily_mind/extensions/context.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +19,20 @@ Future<T?> onShowScrollableBottomSheet<T>(
       return DraggableScrollableSheet(
         expand: false,
         initialChildSize: initialChildSize,
+        minChildSize: min(0.5, initialChildSize),
         snap: true,
-        snapSizes: const [0.6],
+        snapSizes: const [0.5],
         builder: (BuildContext context, ScrollController scrollController) {
-          return Container(
-            decoration: BoxDecoration(
-              color: context.theme.colorScheme.background,
-            ),
-            child: builder(context, scrollController),
+          return Stack(
+            children: [
+              Container(
+                color: context.theme.colorScheme.background.withOpacity(0.4),
+              ).frosted(
+                frostColor:
+                    context.theme.colorScheme.background.withOpacity(0.4),
+              ),
+              builder(context, scrollController)
+            ],
           );
         },
       );

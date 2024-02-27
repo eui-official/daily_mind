@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 class BaseSpacingContainer extends StatelessWidget {
   final Alignment? alignment;
+  final BoxConstraints? constraints;
   final double size;
+  final EdgeInsets? margin;
   final EdgeInsets? padding;
   final Widget child;
 
@@ -11,7 +13,9 @@ class BaseSpacingContainer extends StatelessWidget {
     super.key,
     this.alignment,
     this.padding,
+    this.margin,
     this.size = 2,
+    this.constraints,
     required this.child,
   });
 
@@ -19,6 +23,8 @@ class BaseSpacingContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: alignment,
+      constraints: constraints,
+      margin: margin,
       padding: padding ?? EdgeInsets.all(spacing(size)),
       child: child,
     );

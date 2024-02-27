@@ -23,17 +23,13 @@ class BaseStackWithActions extends StatelessWidget {
       children: [
         background,
         BaseSpacingContainer(
-          padding: EdgeInsets.symmetric(
-            vertical: kToolbarHeight,
-            horizontal: spacing(2),
-          ),
+          margin: const EdgeInsets.symmetric(vertical: kToolbarHeight),
+          padding: EdgeInsets.symmetric(horizontal: spacing(2)),
           child: Column(
             mainAxisAlignment: mainAxisAlignment,
             children: [
               Container(
-                padding: const EdgeInsets.only(
-                  bottom: kToolbarHeight,
-                ),
+                padding: const EdgeInsets.only(bottom: kToolbarHeight),
                 child: const BasePlayerHeaderActions(),
               ),
               ...children,

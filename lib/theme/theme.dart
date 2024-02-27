@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 const celadon = Color(0xFFB0F2B4);
 const maize = Color(0xFFFFF07C);
-const midnightBlack = Color(0xFF131211);
+const background = Color(0xFF1C1C1E);
 const red = Color(0xFFE83151);
 const secondaryTextColor = Color(0xFFF4EBD9);
 
@@ -17,9 +17,10 @@ ThemeData createDarkTheme(SupportedTheme theme) {
     fontFamily: fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
-    appBarElevation: 2,
-    scaffoldBackground: midnightBlack,
+    darkIsTrueBlack: true,
     error: red,
+    background: background,
+    scaffoldBackground: background,
     subThemesData: FlexSubThemesData(
       alignedDropdown: true,
       inputDecoratorFocusedHasBorder: false,
