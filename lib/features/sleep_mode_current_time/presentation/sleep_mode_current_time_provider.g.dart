@@ -7,7 +7,7 @@ part of 'sleep_mode_current_time_provider.dart';
 // **************************************************************************
 
 String _$sleepModeCurrentTimeNotifierHash() =>
-    r'a6b49606852dd57c1311e1dfbb184e2ec4f3c7dd';
+    r'39600244c4991ee1738612df6ceb936ee158318b';
 
 /// Copied from Dart SDK
 class _SystemHash {

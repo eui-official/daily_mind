@@ -12,4 +12,12 @@ class SleepModeCurrentTimeNotifier extends _$SleepModeCurrentTimeNotifier {
       endTime: endTime,
     );
   }
+
+  void onUpdateEndTime(DateTime endTime) {
+    state = state.copyWith(endTime: endTime);
+  }
+
+  void onUpdateCurrentTime(DateTime currentTime) {
+    state = state.copyWith(currentTime: currentTime);
+  }
 }
