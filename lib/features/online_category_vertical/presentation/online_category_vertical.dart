@@ -43,7 +43,7 @@ class OnlineCategoryVertical extends HookConsumerWidget {
         return BaseCard(
           onTap: onTap,
           height: height ?? kSmallCard,
-          width: width ?? kSmallCard,
+          width: width ?? kSmallCard * 1.5,
           image: image,
           content: BaseContentWithPlayIcon(
             isPlaying: isPlaying,

@@ -24,6 +24,10 @@ class SleepModeWakeUpAvailable extends HookWidget {
         final isShowRecommended = wakeUpTime == wakeUpTimes.last;
 
         return SleepModeTimeCard(
+          decoration: BoxDecoration(
+            borderRadius: circularRadius(2),
+            border: Border.all(color: Colors.white10),
+          ),
           onTap: () => onSelect(wakeUpTime),
           isShowRecommended: isShowRecommended,
           wakeUpTime: wakeUpTime,

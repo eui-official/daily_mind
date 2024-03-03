@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
 import 'package:daily_mind/features/sleep_mode_current_time/presentation/sleep_mode_current_time_provider.dart';
+import 'package:daily_mind/features/sleep_mode_current_time/presentation/sleep_mode_total_sleep_time.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -10,6 +11,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 class SleepModeCurrentTime extends HookConsumerWidget {
+  final ClockTimeFormat clockTimeFormat = ClockTimeFormat.twentyFourHours;
+  final ClockIncrementTimeFormat clockIncrementTimeFormat =
+      ClockIncrementTimeFormat.fiveMin;
+
   const SleepModeCurrentTime({
     super.key,
   });
@@ -30,11 +35,15 @@ class SleepModeCurrentTime extends HookConsumerWidget {
         ref.watch(sleepModeCurrentTimeNotifierMemoized);
 
     final currentTime = useBaseDateTimeTicker();
-    ClockTimeFormat clockTimeFormat = ClockTimeFormat.twelveHours;
-    ClockIncrementTimeFormat clockIncrementTimeFormat =
-        ClockIncrementTimeFormat.oneMin;
+
+    final duration = sleepModeCurrentTimeState.currentTime
+        .difference(
+          sleepModeCurrentTimeState.endTime,
+        )
+        .abs();
 
     return TimePicker(
+      drawInitHandlerOnTop: true,
       initTime: PickedTime(
         h: sleepModeCurrentTimeState.currentTime.hour,
         m: sleepModeCurrentTimeState.currentTime.minute,
@@ -43,64 +52,68 @@ class SleepModeCurrentTime extends HookConsumerWidget {
         h: sleepModeCurrentTimeState.endTime.hour,
         m: sleepModeCurrentTimeState.endTime.minute,
       ),
+      height: context.height / 3,
       primarySectors: clockTimeFormat.value,
       secondarySectors: clockTimeFormat.value * 2,
       decoration: TimePickerDecoration(
-        baseColor: context.theme.primaryColor,
-        pickerBaseCirclePadding: spacing(4),
+        baseColor: context.theme.canvasColor.withOpacity(0.5),
+        pickerBaseCirclePadding: spacing(2),
         sweepDecoration: TimePickerSweepDecoration(
-          pickerStrokeWidth: spacing(2),
+          pickerStrokeWidth: spacing(4),
           pickerGradient: SweepGradient(
             colors: [
-              context.theme.colorScheme.primary,
-              context.theme.colorScheme.background,
+              context.theme.primaryColor,
+              context.theme.primaryColorDark,
+              context.theme.primaryColor,
             ],
             endAngle: pi,
             tileMode: TileMode.mirror,
           ),
+          showConnector: true,
+          connectorStrokeWidth: 2,
+          connectorColor: context.theme.hintColor,
         ),
         initHandlerDecoration: TimePickerHandlerDecoration(
+          shape: BoxShape.circle,
+          radius: spacing(1.5),
           icon: Icon(
             Icons.bedtime_rounded,
-            size: spacing(3),
+            size: spacing(2.5),
+            color: context.theme.primaryColorDark,
           ),
         ),
         endHandlerDecoration: TimePickerHandlerDecoration(
+          shape: BoxShape.circle,
+          radius: spacing(1.5),
           icon: Icon(
             Icons.notifications_rounded,
-            size: spacing(3),
+            size: spacing(2.5),
+            color: context.theme.primaryColorDark,
           ),
         ),
         primarySectorsDecoration: TimePickerSectorDecoration(
+          width: 1,
           size: 4,
           radiusPadding: spacing(3),
         ),
         secondarySectorsDecoration: TimePickerSectorDecoration(
+          width: 1,
           size: 2,
           radiusPadding: spacing(3),
+          color: context.theme.primaryColor,
         ),
         clockNumberDecoration: TimePickerClockNumberDecoration(
-          textStyle: context.textTheme.bodyMedium?.copyWith(
+          textStyle: context.textTheme.bodySmall?.copyWith(
             fontWeight: FontWeight.bold,
+            color: context.theme.hintColor,
           ),
-          clockIncrementHourFormat: ClockIncrementHourFormat.one,
-          positionFactor: 0.25,
+          positionFactor: 0.35,
           showNumberIndicators: true,
           clockTimeFormat: clockTimeFormat,
           clockIncrementTimeFormat: clockIncrementTimeFormat,
         ),
       ),
       onSelectionEnd: (start, end, valid) {
-        sleepModeCurrentTimeNotifier.onUpdateCurrentTime(
-          DateTime(
-            currentTime.year,
-            currentTime.month,
-            currentTime.day,
-            start.h,
-            start.m,
-          ),
-        );
-
         sleepModeCurrentTimeNotifier.onUpdateEndTime(
           DateTime(
             currentTime.year,
@@ -132,6 +145,9 @@ class SleepModeCurrentTime extends HookConsumerWidget {
           ),
         );
       },
+      child: Center(
+        child: SleepModeTotalSleepTime(duration: duration),
+      ),
     );
   }
 }

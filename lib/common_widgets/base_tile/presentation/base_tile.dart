@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_widgets/base_sliable.dart';
 import 'package:daily_mind/constants/constants.dart';
+import 'package:daily_mind/extensions/theme.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class BaseTile extends HookWidget {
     return ClipRRect(
       borderRadius: borderRadius ?? clipBorderRadius,
       child: Material(
-        type: MaterialType.transparency,
+        color: context.theme.menuBackground,
         child: ListTile(
           leading: leading,
           onTap: onTap,

@@ -9,16 +9,20 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SleepModeTimeCard extends StatelessWidget {
-  final VoidCallback? onTap;
-  final Widget? trailing;
-  final EdgeInsetsGeometry? padding;
-  final WakeUpTime wakeUpTime;
   final bool isShowRecommended;
+  final BoxDecoration? decoration;
+  final Color? color;
+  final EdgeInsetsGeometry? padding;
+  final VoidCallback? onTap;
+  final WakeUpTime wakeUpTime;
+  final Widget? trailing;
 
   const SleepModeTimeCard({
     super.key,
     required this.wakeUpTime,
     this.isShowRecommended = false,
+    this.color,
+    this.decoration,
     this.onTap,
     this.padding,
     this.trailing,
@@ -29,10 +33,12 @@ class SleepModeTimeCard extends StatelessWidget {
     final duration = wakeUpTime.endTime.difference(wakeUpTime.startTime);
 
     return BaseInkWell(
+      color: color,
       onTap: onTap,
       borderRadius: circularRadius(2),
       child: Container(
         padding: EdgeInsets.all(spacing(2)),
+        decoration: decoration,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

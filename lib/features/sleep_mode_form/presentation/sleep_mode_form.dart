@@ -1,6 +1,5 @@
 import 'package:blur/blur.dart';
 import 'package:daily_mind/extensions/context.dart';
-import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_times.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,7 @@ class SleepModeForm extends StatelessWidget {
             ),
           ),
           const Column(
-            children: [
-              SleepModeWakeUpTimes(),
-            ],
+            children: [],
           ),
         ],
       ),
