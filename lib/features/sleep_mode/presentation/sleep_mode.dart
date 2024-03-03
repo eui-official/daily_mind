@@ -1,5 +1,5 @@
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/sleep_mode_current_time/presentation/sleep_mode_current_time.dart';
+import 'package:daily_mind/features/sleep_mode_time/presentation/sleep_mode_time.dart';
 import 'package:daily_mind/features/sleep_mode_form/presentation/sleep_mode_form.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_times.dart';
 import 'package:daily_mind/theme/common.dart';

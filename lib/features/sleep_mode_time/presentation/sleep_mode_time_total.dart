@@ -1,13 +1,14 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SleepModeTotalSleepTime extends HookWidget {
+class SleepModeTimeTotal extends HookWidget {
   final Duration duration;
 
-  const SleepModeTotalSleepTime({
+  const SleepModeTimeTotal({
     super.key,
     required this.duration,
   });
@@ -27,7 +28,7 @@ class SleepModeTotalSleepTime extends HookWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const Text('hr'),
+          Text('hr'.tr()),
           if (minutes > 0) ...[
             Text(
               '$minutes',
@@ -35,7 +36,7 @@ class SleepModeTotalSleepTime extends HookWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Text('min'),
+            Text('min'.tr()),
           ]
         ],
         width: spacing(0.5),

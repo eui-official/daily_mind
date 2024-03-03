@@ -1,5 +1,6 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/theme/common.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SleepModeTimeRecommended extends StatelessWidget {
@@ -15,7 +16,7 @@ class SleepModeTimeRecommended extends StatelessWidget {
         ),
       ),
       backgroundColor: context.theme.primaryColorDark.withOpacity(0.4),
-      label: const Text('Đề xuất'),
+      label: Text('Đề xuất'.tr()),
     );
   }
 }

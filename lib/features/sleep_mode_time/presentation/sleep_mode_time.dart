@@ -2,18 +2,17 @@ import 'dart:math';
 
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
-import 'package:daily_mind/features/sleep_mode_current_time/presentation/sleep_mode_current_time_provider.dart';
-import 'package:daily_mind/features/sleep_mode_current_time/presentation/sleep_mode_total_sleep_time.dart';
+import 'package:daily_mind/features/sleep_mode_time/presentation/sleep_mode_time_provider.dart';
+import 'package:daily_mind/features/sleep_mode_time/presentation/sleep_mode_time_total.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 class SleepModeCurrentTime extends HookConsumerWidget {
   final ClockTimeFormat clockTimeFormat = ClockTimeFormat.twentyFourHours;
   final ClockIncrementTimeFormat clockIncrementTimeFormat =
-      ClockIncrementTimeFormat.fiveMin;
+      ClockIncrementTimeFormat.oneMin;
 
   const SleepModeCurrentTime({
     super.key,
@@ -21,18 +20,9 @@ class SleepModeCurrentTime extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sleepModeCurrentTimeNotifierMemoized = useMemoized(
-      () => sleepModeCurrentTimeNotifierProvider(
-        DateTime.now().add(const Duration(hours: 8)),
-      ),
-      [],
-    );
-
-    final sleepModeCurrentTimeNotifier = ref.read(
-      sleepModeCurrentTimeNotifierMemoized.notifier,
-    );
-    final sleepModeCurrentTimeState =
-        ref.watch(sleepModeCurrentTimeNotifierMemoized);
+    final sleepModeCurrentTimeNotifier =
+        ref.read(sleepModeTimeNotifierProvider.notifier);
+    final sleepModeCurrentTimeState = ref.watch(sleepModeTimeNotifierProvider);
 
     final currentTime = useBaseDateTimeTicker();
 
@@ -146,7 +136,7 @@ class SleepModeCurrentTime extends HookConsumerWidget {
         );
       },
       child: Center(
-        child: SleepModeTotalSleepTime(duration: duration),
+        child: SleepModeTimeTotal(duration: duration),
       ),
     );
   }

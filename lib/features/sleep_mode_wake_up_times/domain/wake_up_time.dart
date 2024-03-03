@@ -1,7 +1,7 @@
 class WakeUpTime {
-  final DateTime startTime;
-  final DateTime endTime;
   final int cycles;
+  final DateTime endTime;
+  final DateTime startTime;
 
   WakeUpTime({
     required this.cycles,
