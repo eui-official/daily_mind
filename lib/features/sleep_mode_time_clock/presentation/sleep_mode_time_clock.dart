@@ -2,47 +2,47 @@ import 'dart:math';
 
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
-import 'package:daily_mind/features/sleep_mode_time/presentation/sleep_mode_time_provider.dart';
-import 'package:daily_mind/features/sleep_mode_time/presentation/sleep_mode_time_total.dart';
+import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_provider.dart';
+import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_total.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
-class SleepModeCurrentTime extends HookConsumerWidget {
+class SleepModeTimeClock extends HookConsumerWidget {
   final ClockTimeFormat clockTimeFormat = ClockTimeFormat.twentyFourHours;
   final ClockIncrementTimeFormat clockIncrementTimeFormat =
       ClockIncrementTimeFormat.oneMin;
 
-  const SleepModeCurrentTime({
+  const SleepModeTimeClock({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sleepModeCurrentTimeNotifier =
-        ref.read(sleepModeTimeNotifierProvider.notifier);
-    final sleepModeCurrentTimeState = ref.watch(sleepModeTimeNotifierProvider);
+    final sleepModeTimeClockNotifier =
+        ref.read(sleepModeTimeClockNotifierProvider.notifier);
+    final sleepModeTimeClockState =
+        ref.watch(sleepModeTimeClockNotifierProvider);
 
     final currentTime = useBaseDateTimeTicker();
 
-    final duration = sleepModeCurrentTimeState.currentTime
+    final duration = sleepModeTimeClockState.currentTime
         .difference(
-          sleepModeCurrentTimeState.endTime,
+          sleepModeTimeClockState.endTime,
         )
         .abs();
 
     return TimePicker(
-      drawInitHandlerOnTop: true,
       initTime: PickedTime(
-        h: sleepModeCurrentTimeState.currentTime.hour,
-        m: sleepModeCurrentTimeState.currentTime.minute,
+        h: sleepModeTimeClockState.currentTime.hour,
+        m: sleepModeTimeClockState.currentTime.minute,
       ),
       endTime: PickedTime(
-        h: sleepModeCurrentTimeState.endTime.hour,
-        m: sleepModeCurrentTimeState.endTime.minute,
+        h: sleepModeTimeClockState.endTime.hour,
+        m: sleepModeTimeClockState.endTime.minute,
       ),
-      height: context.height / 3,
+      height: spacing(35),
       primarySectors: clockTimeFormat.value,
       secondarySectors: clockTimeFormat.value * 2,
       decoration: TimePickerDecoration(
@@ -104,7 +104,7 @@ class SleepModeCurrentTime extends HookConsumerWidget {
         ),
       ),
       onSelectionEnd: (start, end, valid) {
-        sleepModeCurrentTimeNotifier.onUpdateEndTime(
+        sleepModeTimeClockNotifier.onUpdateEndTime(
           DateTime(
             currentTime.year,
             currentTime.month,
@@ -115,7 +115,7 @@ class SleepModeCurrentTime extends HookConsumerWidget {
         );
       },
       onSelectionChange: (start, end, bool? valid) {
-        sleepModeCurrentTimeNotifier.onUpdateCurrentTime(
+        sleepModeTimeClockNotifier.onUpdateCurrentTime(
           DateTime(
             currentTime.year,
             currentTime.month,
@@ -125,7 +125,7 @@ class SleepModeCurrentTime extends HookConsumerWidget {
           ),
         );
 
-        sleepModeCurrentTimeNotifier.onUpdateEndTime(
+        sleepModeTimeClockNotifier.onUpdateEndTime(
           DateTime(
             currentTime.year,
             currentTime.month,
@@ -136,7 +136,7 @@ class SleepModeCurrentTime extends HookConsumerWidget {
         );
       },
       child: Center(
-        child: SleepModeTimeTotal(duration: duration),
+        child: SleepModeTimeClockTotal(duration: duration),
       ),
     );
   }

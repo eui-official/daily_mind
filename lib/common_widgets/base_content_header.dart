@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class BaseContentHeader extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final double spacingSize;
+  final MainAxisAlignment rowMainAxisAlignment;
   final String title;
   final TextStyle? titleStyle;
   final Widget child;
@@ -16,7 +17,8 @@ class BaseContentHeader extends StatelessWidget {
     super.key,
     required this.child,
     required this.title,
-    this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.rowMainAxisAlignment = MainAxisAlignment.spaceBetween,
     this.spacingSize = 2,
     this.titleStyle,
     this.trailing,
@@ -29,7 +31,7 @@ class BaseContentHeader extends StatelessWidget {
       children: space(
         [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: rowMainAxisAlignment,
             children: [
               Text(
                 title,

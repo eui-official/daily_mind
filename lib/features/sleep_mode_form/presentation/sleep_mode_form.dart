@@ -1,7 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:daily_mind/extensions/context.dart';
 import 'package:daily_mind/theme/common.dart';
-import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class SleepModeForm extends StatelessWidget {
@@ -10,7 +9,6 @@ class SleepModeForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(spacing(2)),
       child: Stack(
         children: [
           Positioned.fill(

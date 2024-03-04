@@ -1,6 +1,5 @@
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
-import 'package:daily_mind/features/sleep_mode_time/presentation/sleep_mode_time.dart';
-import 'package:daily_mind/features/sleep_mode_form/presentation/sleep_mode_form.dart';
+import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock.dart';
 import 'package:daily_mind/features/sleep_mode_time_range/presentation/sleep_mode_time_range.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_times.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -39,11 +38,7 @@ class SleepMode extends HookWidget {
               [
                 const SleepModeWakeUpTimes(),
                 const SleepModeTimeRange(),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: spacing(2)),
-                  child: const SleepModeCurrentTime(),
-                ),
-                const SleepModeForm(),
+                const SleepModeTimeClock(),
               ],
               height: spacing(3),
             ),

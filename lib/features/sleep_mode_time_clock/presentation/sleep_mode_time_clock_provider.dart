@@ -1,10 +1,10 @@
-import 'package:daily_mind/features/sleep_mode_time/domain/sleep_mode_time_state.dart';
+import 'package:daily_mind/features/sleep_mode_time_clock/domain/sleep_mode_time_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'sleep_mode_time_provider.g.dart';
+part 'sleep_mode_time_clock_provider.g.dart';
 
 @riverpod
-class SleepModeTimeNotifier extends _$SleepModeTimeNotifier {
+class SleepModeTimeClockNotifier extends _$SleepModeTimeClockNotifier {
   @override
   SleepModeTimeState build() {
     return SleepModeTimeState(

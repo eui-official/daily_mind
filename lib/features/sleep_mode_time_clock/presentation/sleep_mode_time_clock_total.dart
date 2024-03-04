@@ -5,10 +5,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SleepModeTimeTotal extends HookWidget {
+class SleepModeTimeClockTotal extends HookWidget {
   final Duration duration;
 
-  const SleepModeTimeTotal({
+  const SleepModeTimeClockTotal({
     super.key,
     required this.duration,
   });
