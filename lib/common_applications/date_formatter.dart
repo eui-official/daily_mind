@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 
 class DateFormatter {
-  final DateFormat df = DateFormat('HH:mm a');
+  final DateFormat df = DateFormat('hh:mm a');
 
   String onFormatDuration(Duration duration) {
     final hours = duration.inHours;

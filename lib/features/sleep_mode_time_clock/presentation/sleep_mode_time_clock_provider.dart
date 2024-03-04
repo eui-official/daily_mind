@@ -8,7 +8,7 @@ class SleepModeTimeClockNotifier extends _$SleepModeTimeClockNotifier {
   @override
   SleepModeTimeState build() {
     return SleepModeTimeState(
-      currentTime: DateTime.now(),
+      startTime: DateTime.now(),
       endTime: DateTime.now(),
     );
   }
@@ -17,7 +17,7 @@ class SleepModeTimeClockNotifier extends _$SleepModeTimeClockNotifier {
     state = state.copyWith(endTime: endTime);
   }
 
-  void onUpdateCurrentTime(DateTime currentTime) {
-    state = state.copyWith(currentTime: currentTime);
+  void onUpdateStartTime(DateTime currentTime) {
+    state = state.copyWith(startTime: currentTime);
   }
 }

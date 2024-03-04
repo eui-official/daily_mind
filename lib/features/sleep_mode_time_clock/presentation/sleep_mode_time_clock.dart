@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
+import 'package:daily_mind/extensions/date_time.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_provider.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_total.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -27,16 +28,14 @@ class SleepModeTimeClock extends HookConsumerWidget {
 
     final currentTime = useBaseDateTimeTicker();
 
-    final duration = sleepModeTimeClockState.currentTime
-        .difference(
-          sleepModeTimeClockState.endTime,
-        )
-        .abs();
+    Duration duration = sleepModeTimeClockState.endTime.onGetDifference(
+      sleepModeTimeClockState.startTime,
+    );
 
     return TimePicker(
       initTime: PickedTime(
-        h: sleepModeTimeClockState.currentTime.hour,
-        m: sleepModeTimeClockState.currentTime.minute,
+        h: sleepModeTimeClockState.startTime.hour,
+        m: sleepModeTimeClockState.startTime.minute,
       ),
       endTime: PickedTime(
         h: sleepModeTimeClockState.endTime.hour,
@@ -104,36 +103,27 @@ class SleepModeTimeClock extends HookConsumerWidget {
         ),
       ),
       onSelectionEnd: (start, end, valid) {
-        sleepModeTimeClockNotifier.onUpdateEndTime(
-          DateTime(
-            currentTime.year,
-            currentTime.month,
-            currentTime.day,
-            end.h,
-            end.m,
-          ),
-        );
-      },
-      onSelectionChange: (start, end, bool? valid) {
-        sleepModeTimeClockNotifier.onUpdateCurrentTime(
-          DateTime(
-            currentTime.year,
-            currentTime.month,
-            currentTime.day,
-            start.h,
-            start.m,
-          ),
+        final newEndTime = currentTime.withHourAndMinute(
+          hour: end.h,
+          minute: end.m,
         );
 
-        sleepModeTimeClockNotifier.onUpdateEndTime(
-          DateTime(
-            currentTime.year,
-            currentTime.month,
-            currentTime.day,
-            end.h,
-            end.m,
-          ),
+        sleepModeTimeClockNotifier.onUpdateEndTime(newEndTime);
+      },
+      onSelectionChange: (start, end, bool? valid) {
+        final newStartTime = currentTime.withHourAndMinute(
+          hour: start.h,
+          minute: start.m,
         );
+
+        sleepModeTimeClockNotifier.onUpdateStartTime(newStartTime);
+
+        final newEndTime = currentTime.withHourAndMinute(
+          hour: end.h,
+          minute: end.m,
+        );
+
+        sleepModeTimeClockNotifier.onUpdateEndTime(newEndTime);
       },
       child: Center(
         child: SleepModeTimeClockTotal(duration: duration),

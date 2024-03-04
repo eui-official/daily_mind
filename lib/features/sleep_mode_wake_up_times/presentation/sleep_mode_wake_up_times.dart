@@ -49,7 +49,7 @@ class SleepModeWakeUpTimes extends HookConsumerWidget {
         final index = wakeUpTimes.onGetWakeUpTimeIndex(wakeUpTime);
 
         sleepModeWakeUpNotifier.onUpdateIndex(index);
-        sleepModeTimeClockNotifier.onUpdateCurrentTime(wakeUpTime.startTime);
+        sleepModeTimeClockNotifier.onUpdateStartTime(wakeUpTime.startTime);
         sleepModeTimeClockNotifier.onUpdateEndTime(wakeUpTime.endTime);
       },
       [wakeUpTimes],
@@ -68,7 +68,7 @@ class SleepModeWakeUpTimes extends HookConsumerWidget {
                 sleepModeWakeUpNotifier.onUpdateIndex(index);
 
                 sleepModeTimeClockNotifier
-                    .onUpdateCurrentTime(wakeUpTime.startTime);
+                    .onUpdateStartTime(wakeUpTime.startTime);
                 sleepModeTimeClockNotifier.onUpdateEndTime(wakeUpTime.endTime);
 
                 context.pop();
