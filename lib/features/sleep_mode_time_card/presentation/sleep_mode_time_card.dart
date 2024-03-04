@@ -1,6 +1,7 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
-import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_end.dart';
+import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_display.dart';
 import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_recommended.dart';
 import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_sleep.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/domain/wake_up_time.dart';
@@ -45,7 +46,20 @@ class SleepModeTimeCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SleepModeTimeEnd(endTime: wakeUpTime.endTime),
+                Row(
+                  children: space(
+                    [
+                      SleepModeTimeDisplay(time: wakeUpTime.startTime),
+                      Icon(
+                        Icons.arrow_forward_rounded,
+                        size: spacing(2),
+                        color: context.theme.hintColor,
+                      ),
+                      SleepModeTimeDisplay(time: wakeUpTime.endTime),
+                    ],
+                    width: spacing(),
+                  ),
+                ),
                 SleepModeTimeSleep(
                   duration: duration,
                   cycles: wakeUpTime.cycles,

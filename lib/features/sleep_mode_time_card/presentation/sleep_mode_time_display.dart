@@ -2,18 +2,18 @@ import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_applications/date_formatter.dart';
 import 'package:flutter/material.dart';
 
-class SleepModeTimeEnd extends StatelessWidget {
-  final DateTime endTime;
+class SleepModeTimeDisplay extends StatelessWidget {
+  final DateTime time;
 
-  const SleepModeTimeEnd({
+  const SleepModeTimeDisplay({
     super.key,
-    required this.endTime,
+    required this.time,
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      dateFormatter.onFormatTime(endTime),
+      dateFormatter.onFormatTime(time),
       style: context.textTheme.titleMedium?.copyWith(
         fontWeight: FontWeight.bold,
       ),

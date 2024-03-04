@@ -5,6 +5,7 @@ import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BaseContentHeader extends StatelessWidget {
+  final CrossAxisAlignment crossAxisAlignment;
   final double spacingSize;
   final String title;
   final TextStyle? titleStyle;
@@ -15,6 +16,7 @@ class BaseContentHeader extends StatelessWidget {
     super.key,
     required this.child,
     required this.title,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
     this.spacingSize = 2,
     this.titleStyle,
     this.trailing,
@@ -23,7 +25,7 @@ class BaseContentHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: crossAxisAlignment,
       children: space(
         [
           Row(
