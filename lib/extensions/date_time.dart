@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 extension DateTimeExt on DateTime {
+  PickedTime get toPickedTime {
+    return PickedTime(
+      h: hour,
+      m: minute,
+    );
+  }
+
   DateTime withHourAndMinute({
     required int hour,
     required int minute,

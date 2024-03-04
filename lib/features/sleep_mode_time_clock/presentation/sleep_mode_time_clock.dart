@@ -7,6 +7,7 @@ import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mod
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_total.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
@@ -26,21 +27,31 @@ class SleepModeTimeClock extends HookConsumerWidget {
     final sleepModeTimeClockState =
         ref.watch(sleepModeTimeClockNotifierProvider);
 
-    final currentTime = useBaseDateTimeTicker();
-
     Duration duration = sleepModeTimeClockState.endTime.onGetDifference(
       sleepModeTimeClockState.startTime,
     );
 
+    final currentTime = useBaseDateTimeTicker();
+
+    final colors = useMemoized(() {
+      if (duration == Duration.zero) {
+        return [
+          context.theme.colorScheme.error,
+          context.theme.colorScheme.error.withOpacity(0.5),
+          context.theme.colorScheme.error.withOpacity(0.2),
+        ];
+      }
+
+      return [
+        context.theme.primaryColor,
+        context.theme.primaryColorDark,
+        context.theme.primaryColor,
+      ];
+    }, [duration]);
+
     return TimePicker(
-      initTime: PickedTime(
-        h: sleepModeTimeClockState.startTime.hour,
-        m: sleepModeTimeClockState.startTime.minute,
-      ),
-      endTime: PickedTime(
-        h: sleepModeTimeClockState.endTime.hour,
-        m: sleepModeTimeClockState.endTime.minute,
-      ),
+      initTime: sleepModeTimeClockState.startTime.toPickedTime,
+      endTime: sleepModeTimeClockState.endTime.toPickedTime,
       height: spacing(35),
       primarySectors: clockTimeFormat.value,
       secondarySectors: clockTimeFormat.value * 2,
@@ -50,11 +61,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
         sweepDecoration: TimePickerSweepDecoration(
           pickerStrokeWidth: spacing(4),
           pickerGradient: SweepGradient(
-            colors: [
-              context.theme.primaryColor,
-              context.theme.primaryColorDark,
-              context.theme.primaryColor,
-            ],
+            colors: colors,
             endAngle: pi,
             tileMode: TileMode.mirror,
           ),
