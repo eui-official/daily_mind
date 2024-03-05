@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 extension DateTimeExt on DateTime {
@@ -20,16 +19,25 @@ extension DateTimeExt on DateTime {
   }
 
   Duration onGetDifference(DateTime time) {
-    Duration duration = difference(time);
+    Duration duration;
 
-    if (duration.isNegative) {
-      duration = time.difference(this);
+    if (time.isBefore(this)) {
+      duration = difference(time);
+    } else {
+      final subtractSleepTime =
+          time.subtract(const Duration(hours: Duration.hoursPerDay));
 
-      duration = Duration(
-        hours: duration.inHours + TimeOfDay.hoursPerPeriod,
-        minutes: duration.inMinutes.remainder(TimeOfDay.minutesPerHour),
-      );
+      duration = subtractSleepTime.difference(this).abs();
     }
+
+    int totalMinutes = duration.inMinutes;
+    int hours = totalMinutes ~/ 60;
+    int minutes = totalMinutes % 60;
+
+    duration = Duration(
+      hours: hours,
+      minutes: minutes,
+    );
 
     return duration;
   }
