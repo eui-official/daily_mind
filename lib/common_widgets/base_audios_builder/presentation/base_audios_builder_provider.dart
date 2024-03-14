@@ -13,7 +13,7 @@ class BaseAudiosBuilderNotifier extends _$BaseAudiosBuilderNotifier {
   Future<AudioCategoryGroup> build() => onGetAudioCategories();
 
   Future<void> onRefreshAudioCategories() async {
-    final configNotifier = ref.read(configProvider.notifier);
+    final configNotifier = ref.read(configNotifierProvider.notifier);
     await configNotifier.onGetBaseConfig();
     final itemCategories = onGetAudioCategories();
 
@@ -21,7 +21,7 @@ class BaseAudiosBuilderNotifier extends _$BaseAudiosBuilderNotifier {
   }
 
   Future<AudioCategoryGroup> onGetAudioCategories() async {
-    final configState = ref.read(configProvider);
+    final configState = ref.read(configNotifierProvider);
 
     final audios = await supabaseAPI.onGetAudios();
 

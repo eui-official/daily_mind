@@ -16,7 +16,7 @@ class Dashboard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final configState = ref.watch(configProvider);
+    final configState = ref.watch(configNotifierProvider);
     final appNavigationBarState = ref.watch(appNavigationBarNotifierProvider);
 
     final child = useMemoized(() {

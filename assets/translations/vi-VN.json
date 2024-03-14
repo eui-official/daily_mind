@@ -41,7 +41,7 @@
   "task": "Nhiệm vụ",
   "taskList": "Danh sách công việc",
   "version": "Phiên bản",
-  "sounds": {
+  "audios": {
     "alphaWave": "Sóng alpha",
     "babblingBrook": "Suối chảy",
     "betaWave": "Sóng beta",

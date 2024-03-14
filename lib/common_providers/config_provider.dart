@@ -4,19 +4,26 @@ import 'package:daily_mind/common_domains/category.dart';
 import 'package:daily_mind/common_domains/config_state.dart';
 import 'package:daily_mind/common_domains/from_source.dart';
 import 'package:daily_mind/common_domains/group.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class ConfigNotifier extends StateNotifier<ConfigState> {
-  ConfigNotifier()
-      : super(
-          const ConfigState(
-            isLoading: true,
-            artists: [],
-            categories: [],
-            fromSources: [],
-            groups: [],
-          ),
-        ) {
+part 'config_provider.g.dart';
+
+@riverpod
+class ConfigNotifier extends _$ConfigNotifier {
+  @override
+  ConfigState build() {
+    onInit();
+
+    return const ConfigState(
+      isLoading: true,
+      artists: [],
+      categories: [],
+      fromSources: [],
+      groups: [],
+    );
+  }
+
+  void onInit() {
     onGetBaseConfig();
   }
 
@@ -35,8 +42,3 @@ class ConfigNotifier extends StateNotifier<ConfigState> {
     );
   }
 }
-
-final configProvider =
-    StateNotifierProvider<ConfigNotifier, ConfigState>((ref) {
-  return ConfigNotifier();
-});

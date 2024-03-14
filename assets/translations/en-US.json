@@ -41,7 +41,7 @@
   "task": "Task",
   "taskList": "Work list",
   "version": "Version",
-  "sounds": {
+  "audios": {
     "alphaWave": "Alpha waves",
     "babblingBrook": "Streams",
     "betaWave": "Beta waves",

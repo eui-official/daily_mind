@@ -1,5 +1,5 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:daily_mind/common_widgets/base_internet_connection_checker/domain/base_internet_check_state.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'base_internet_connection_checker_provider.g.dart';
@@ -9,12 +9,12 @@ class BaseInternetConnectionCheckerNotifier
     extends _$BaseInternetConnectionCheckerNotifier {
   @override
   Future<BaseInternetCheckState> build() async {
-    final connectivityResult = await Connectivity().checkConnectivity();
+    bool hasInternetAccess = await InternetConnection().hasInternetAccess;
 
-    return BaseInternetCheckState(connectivityResult: connectivityResult);
+    return BaseInternetCheckState(hasInternetAccess: hasInternetAccess);
   }
 
-  void onConnectivityChanged(ConnectivityResult connectivityResult) {
-    update((state) => state.copyWith(connectivityResult: connectivityResult));
+  void onConnectivityChanged(bool hasInternetAccess) {
+    update((state) => state.copyWith(hasInternetAccess: hasInternetAccess));
   }
 }

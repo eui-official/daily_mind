@@ -43,3 +43,5 @@ typedef AudioCategoryGroup = Map<String?, List<AudioCategory>>;
 typedef OnCounting = Function(int remainingSeconds);
 
 typedef OnAudioSelected = Function(dynamic audio, String audioFrom);
+
+typedef OnInternetCheckerBuilder = Widget Function(bool isDisconnected);

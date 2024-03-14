@@ -7,7 +7,7 @@ part of 'sleep_mode_time_clock_provider.dart';
 // **************************************************************************
 
 String _$sleepModeTimeClockNotifierHash() =>
-    r'fb1b36b949fde672cf47f0b323b391db27080d41';
+    r'729e1d6964ca859106109c9f9ed05d542f1977d8';
 
 /// See also [SleepModeTimeClockNotifier].
 @ProviderFor(SleepModeTimeClockNotifier)

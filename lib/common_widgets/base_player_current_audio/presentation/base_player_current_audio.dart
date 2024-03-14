@@ -21,7 +21,7 @@ class BasePlayerCurrentAudio extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final configState = ref.watch(configProvider);
+    final configState = ref.watch(configNotifierProvider);
 
     final audioTitle = useMemoized(() {
       final artist = configState.onGetArtistById(audio.artist);

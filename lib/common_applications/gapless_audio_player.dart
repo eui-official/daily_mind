@@ -1,19 +1,19 @@
 import 'dart:math';
 
 import 'package:daily_mind/common_applications/logger.dart';
-import 'package:daily_mind/constants/offline_audio_sources.dart';
+import 'package:daily_mind/common_domains/offline_audio.dart';
 import 'package:just_audio/just_audio.dart';
 
 class GaplessAudioPlayer extends AudioPlayer {
   late List<AudioSource> children;
 
-  Future<void> onSetSource(String id) async {
+  Future<void> onSetSource(OfflineAudio offlineAudio) async {
     try {
       children = [];
-      final paths = kOfflineAudioSources[id] ?? [];
+      final sources = offlineAudio.sources;
 
-      for (var path in paths) {
-        children.add(AudioSource.asset(path));
+      for (var source in sources) {
+        children.add(AudioSource.asset(source));
       }
 
       final source = ConcatenatingAudioSource(children: children);
