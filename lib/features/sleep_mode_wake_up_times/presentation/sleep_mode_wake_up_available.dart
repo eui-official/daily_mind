@@ -1,5 +1,7 @@
 import 'package:daily_mind/common_providers/wake_up_times_provider.dart';
+import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_card.dart';
+import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_recommended.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/domain/wake_up_time.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -32,7 +34,9 @@ class SleepModeWakeUpAvailable extends HookConsumerWidget {
               border: Border.all(color: Colors.white10),
             ),
             onTap: () => onSelect(wakeUpTime),
-            isShowRecommended: isShowRecommended,
+            icon: isShowRecommended
+                ? const SleepModeTimeRecommended()
+                : kEmptyWidget,
             wakeUpTime: wakeUpTime,
           );
         },

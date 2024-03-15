@@ -93,7 +93,6 @@ class SleepModeWakeUpTimes extends HookConsumerWidget {
                 color: context.theme.menuBackground,
                 onTap: onSelect,
                 padding: padding,
-                trailing: const Icon(Icons.keyboard_arrow_down_rounded),
                 wakeUpTime: wakeUpTimeSelected,
               )
             : const BaseSkeletonBox(),

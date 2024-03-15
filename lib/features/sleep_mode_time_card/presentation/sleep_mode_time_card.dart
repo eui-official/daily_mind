@@ -2,7 +2,6 @@ import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:collection/collection.dart';
 import 'package:daily_mind/common_widgets/base_dropdown_selector_card.dart';
 import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_display.dart';
-import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_recommended.dart';
 import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_sleep.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/domain/wake_up_time.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -16,7 +15,7 @@ class SleepModeTimeCard extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
   final WakeUpTime wakeUpTime;
-  final Widget? trailing;
+  final Widget? icon;
 
   const SleepModeTimeCard({
     super.key,
@@ -26,7 +25,7 @@ class SleepModeTimeCard extends StatelessWidget {
     this.decoration,
     this.onTap,
     this.padding,
-    this.trailing,
+    this.icon,
   });
 
   @override
@@ -36,6 +35,7 @@ class SleepModeTimeCard extends StatelessWidget {
     return BaseDropdownSelectorCard(
       color: color,
       onTap: onTap,
+      icon: icon,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -62,8 +62,6 @@ class SleepModeTimeCard extends StatelessWidget {
               ),
             ],
           ),
-          if (isShowRecommended) const SleepModeTimeRecommended(),
-          trailing,
         ].whereNotNull().toList(),
       ),
     );
