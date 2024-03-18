@@ -3,6 +3,7 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/extensions/date_time.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_provider.dart';
 import 'package:daily_mind/features/sleep_mode_time_box/presentation/sleep_mode_time_box.dart';
+import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_times.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -65,25 +66,22 @@ class SleepModeTimeRange extends HookConsumerWidget {
     );
 
     return BaseSpacingContainerHorizontal(
-      child: Row(
+      child: Column(
         children: space(
           [
-            Expanded(
-              child: SleepModeTimeBox(
-                onTap: onSelectTimeSleep,
-                title: 'Thời gian ngủ'.tr(),
-                time: sleepModeTimeClockState.startTime,
-              ),
+            const SleepModeWakeUpTimes(),
+            SleepModeTimeBox(
+              onTap: onSelectTimeSleep,
+              title: 'Thời gian ngủ'.tr(),
+              time: sleepModeTimeClockState.startTime,
             ),
-            Expanded(
-              child: SleepModeTimeBox(
-                onTap: onSelectTimeWakeUp,
-                title: 'Thức dậy'.tr(),
-                time: sleepModeTimeClockState.endTime,
-              ),
+            SleepModeTimeBox(
+              onTap: onSelectTimeWakeUp,
+              title: 'Thức dậy'.tr(),
+              time: sleepModeTimeClockState.endTime,
             ),
           ],
-          width: spacing(),
+          height: spacing(),
         ),
       ),
     );

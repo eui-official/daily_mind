@@ -52,14 +52,14 @@ class SleepModeTimeClock extends HookConsumerWidget {
     return TimePicker(
       initTime: sleepModeTimeClockState.startTime.toPickedTime,
       endTime: sleepModeTimeClockState.endTime.toPickedTime,
-      height: spacing(35),
+      height: spacing(30),
       primarySectors: clockTimeFormat.value,
       secondarySectors: clockTimeFormat.value * 2,
       decoration: TimePickerDecoration(
         baseColor: context.theme.canvasColor.withOpacity(0.5),
-        pickerBaseCirclePadding: spacing(2),
+        pickerBaseCirclePadding: spacing(1.5),
         sweepDecoration: TimePickerSweepDecoration(
-          pickerStrokeWidth: spacing(4),
+          pickerStrokeWidth: spacing(3),
           pickerGradient: SweepGradient(
             colors: colors,
             endAngle: pi,
@@ -103,7 +103,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
             fontWeight: FontWeight.bold,
             color: context.theme.hintColor,
           ),
-          positionFactor: 0.35,
+          positionFactor: 0.25,
           showNumberIndicators: true,
           clockTimeFormat: clockTimeFormat,
           clockIncrementTimeFormat: clockIncrementTimeFormat,

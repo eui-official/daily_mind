@@ -1,8 +1,6 @@
 import 'package:daily_mind/common_applications/date_formatter.dart';
-import 'package:daily_mind/common_widgets/base_content_header.dart';
-import 'package:daily_mind/common_widgets/base_inkwell/presentation/base_inkwell.dart';
-import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
-import 'package:daily_mind/theme/common.dart';
+import 'package:daily_mind/common_widgets/base_dropdown_selector_card.dart';
+import 'package:daily_mind/extensions/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 
@@ -20,25 +18,12 @@ class SleepModeTimeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseInkWell(
+    return BaseDropdownSelectorCard(
+      color: context.theme.menuBackground,
       onTap: onTap,
-      borderRadius: circularRadius(2),
-      child: BaseSpacingContainer(
-        size: 1,
-        child: BaseContentHeader(
-          title: title,
-          rowMainAxisAlignment: MainAxisAlignment.center,
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              dateFormatter.onFormatTime(time),
-              style: context.textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
-      ),
+      trailing: Text(dateFormatter.onFormatTime(time)),
+      icon: const Icon(Icons.timelapse_rounded),
+      child: Text(title),
     );
   }
 }

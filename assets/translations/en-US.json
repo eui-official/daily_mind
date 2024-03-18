@@ -73,5 +73,10 @@
     "whiteNoise": "White noise",
     "wind": "Wind",
     "wolveHowling": "Wolves howl"
+  },
+  "wakeUpAudios": {
+    "birds": "Tiếng chim hót",
+    "ocean": "Tiếng sóng biển",
+    "starDust": "Bụi sao"
   }
 }
