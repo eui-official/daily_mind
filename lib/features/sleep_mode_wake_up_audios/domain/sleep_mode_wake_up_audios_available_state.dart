@@ -9,6 +9,6 @@ class SleepModeWakeUpAudiosAvailableState
     with _$SleepModeWakeUpAudiosAvailableState {
   const factory SleepModeWakeUpAudiosAvailableState({
     required GaplessAudioPlayer gaplessAudioPlayer,
-    OfflineAudio? currentOfflineAudio,
+    OfflineAudio? currentWakeUpOfflineAudio,
   }) = _SleepModeWakeUpAudiosAvailableState;
 }

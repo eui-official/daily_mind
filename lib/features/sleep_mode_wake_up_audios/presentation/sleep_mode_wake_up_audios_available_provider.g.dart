@@ -7,7 +7,7 @@ part of 'sleep_mode_wake_up_audios_available_provider.dart';
 // **************************************************************************
 
 String _$sleepModeWakeUpAudiosAvailableNotifierHash() =>
-    r'5869babd786e831ded92fbe2ef4b27beebfbf026';
+    r'c2e9db1d1228845c092691ea04f5b7bff59f0d15';
 
 /// See also [SleepModeWakeUpAudiosAvailableNotifier].
 @ProviderFor(SleepModeWakeUpAudiosAvailableNotifier)

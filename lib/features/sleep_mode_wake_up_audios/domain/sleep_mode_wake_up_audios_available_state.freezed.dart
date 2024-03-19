@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SleepModeWakeUpAudiosAvailableState {
   GaplessAudioPlayer get gaplessAudioPlayer =>
       throw _privateConstructorUsedError;
-  OfflineAudio? get currentOfflineAudio => throw _privateConstructorUsedError;
+  OfflineAudio? get currentWakeUpOfflineAudio =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SleepModeWakeUpAudiosAvailableStateCopyWith<
@@ -36,7 +37,7 @@ abstract class $SleepModeWakeUpAudiosAvailableStateCopyWith<$Res> {
   @useResult
   $Res call(
       {GaplessAudioPlayer gaplessAudioPlayer,
-      OfflineAudio? currentOfflineAudio});
+      OfflineAudio? currentWakeUpOfflineAudio});
 }
 
 /// @nodoc
@@ -54,16 +55,16 @@ class _$SleepModeWakeUpAudiosAvailableStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? gaplessAudioPlayer = null,
-    Object? currentOfflineAudio = freezed,
+    Object? currentWakeUpOfflineAudio = freezed,
   }) {
     return _then(_value.copyWith(
       gaplessAudioPlayer: null == gaplessAudioPlayer
           ? _value.gaplessAudioPlayer
           : gaplessAudioPlayer // ignore: cast_nullable_to_non_nullable
               as GaplessAudioPlayer,
-      currentOfflineAudio: freezed == currentOfflineAudio
-          ? _value.currentOfflineAudio
-          : currentOfflineAudio // ignore: cast_nullable_to_non_nullable
+      currentWakeUpOfflineAudio: freezed == currentWakeUpOfflineAudio
+          ? _value.currentWakeUpOfflineAudio
+          : currentWakeUpOfflineAudio // ignore: cast_nullable_to_non_nullable
               as OfflineAudio?,
     ) as $Val);
   }
@@ -80,7 +81,7 @@ abstract class _$$SleepModeWakeUpAudiosAvailableStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {GaplessAudioPlayer gaplessAudioPlayer,
-      OfflineAudio? currentOfflineAudio});
+      OfflineAudio? currentWakeUpOfflineAudio});
 }
 
 /// @nodoc
@@ -97,16 +98,16 @@ class __$$SleepModeWakeUpAudiosAvailableStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? gaplessAudioPlayer = null,
-    Object? currentOfflineAudio = freezed,
+    Object? currentWakeUpOfflineAudio = freezed,
   }) {
     return _then(_$SleepModeWakeUpAudiosAvailableStateImpl(
       gaplessAudioPlayer: null == gaplessAudioPlayer
           ? _value.gaplessAudioPlayer
           : gaplessAudioPlayer // ignore: cast_nullable_to_non_nullable
               as GaplessAudioPlayer,
-      currentOfflineAudio: freezed == currentOfflineAudio
-          ? _value.currentOfflineAudio
-          : currentOfflineAudio // ignore: cast_nullable_to_non_nullable
+      currentWakeUpOfflineAudio: freezed == currentWakeUpOfflineAudio
+          ? _value.currentWakeUpOfflineAudio
+          : currentWakeUpOfflineAudio // ignore: cast_nullable_to_non_nullable
               as OfflineAudio?,
     ));
   }
@@ -117,16 +118,16 @@ class __$$SleepModeWakeUpAudiosAvailableStateImplCopyWithImpl<$Res>
 class _$SleepModeWakeUpAudiosAvailableStateImpl
     implements _SleepModeWakeUpAudiosAvailableState {
   const _$SleepModeWakeUpAudiosAvailableStateImpl(
-      {required this.gaplessAudioPlayer, this.currentOfflineAudio});
+      {required this.gaplessAudioPlayer, this.currentWakeUpOfflineAudio});
 
   @override
   final GaplessAudioPlayer gaplessAudioPlayer;
   @override
-  final OfflineAudio? currentOfflineAudio;
+  final OfflineAudio? currentWakeUpOfflineAudio;
 
   @override
   String toString() {
-    return 'SleepModeWakeUpAudiosAvailableState(gaplessAudioPlayer: $gaplessAudioPlayer, currentOfflineAudio: $currentOfflineAudio)';
+    return 'SleepModeWakeUpAudiosAvailableState(gaplessAudioPlayer: $gaplessAudioPlayer, currentWakeUpOfflineAudio: $currentWakeUpOfflineAudio)';
   }
 
   @override
@@ -136,13 +137,14 @@ class _$SleepModeWakeUpAudiosAvailableStateImpl
             other is _$SleepModeWakeUpAudiosAvailableStateImpl &&
             (identical(other.gaplessAudioPlayer, gaplessAudioPlayer) ||
                 other.gaplessAudioPlayer == gaplessAudioPlayer) &&
-            (identical(other.currentOfflineAudio, currentOfflineAudio) ||
-                other.currentOfflineAudio == currentOfflineAudio));
+            (identical(other.currentWakeUpOfflineAudio,
+                    currentWakeUpOfflineAudio) ||
+                other.currentWakeUpOfflineAudio == currentWakeUpOfflineAudio));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, gaplessAudioPlayer, currentOfflineAudio);
+      Object.hash(runtimeType, gaplessAudioPlayer, currentWakeUpOfflineAudio);
 
   @JsonKey(ignore: true)
   @override
@@ -157,13 +159,13 @@ abstract class _SleepModeWakeUpAudiosAvailableState
     implements SleepModeWakeUpAudiosAvailableState {
   const factory _SleepModeWakeUpAudiosAvailableState(
           {required final GaplessAudioPlayer gaplessAudioPlayer,
-          final OfflineAudio? currentOfflineAudio}) =
+          final OfflineAudio? currentWakeUpOfflineAudio}) =
       _$SleepModeWakeUpAudiosAvailableStateImpl;
 
   @override
   GaplessAudioPlayer get gaplessAudioPlayer;
   @override
-  OfflineAudio? get currentOfflineAudio;
+  OfflineAudio? get currentWakeUpOfflineAudio;
   @override
   @JsonKey(ignore: true)
   _$$SleepModeWakeUpAudiosAvailableStateImplCopyWith<

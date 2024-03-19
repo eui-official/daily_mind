@@ -39,7 +39,7 @@ class SleepModeWakeUpAudiosAvailable extends HookConsumerWidget {
     final children = useMemoized(() {
       return kOfflineWakeUpAudios.map((offlineWakeUpAudio) {
         final isPlaying =
-            sleepModeWakeUpAudiosAvailableState.currentOfflineAudio ==
+            sleepModeWakeUpAudiosAvailableState.currentWakeUpOfflineAudio ==
                 offlineWakeUpAudio;
 
         return ListTile(

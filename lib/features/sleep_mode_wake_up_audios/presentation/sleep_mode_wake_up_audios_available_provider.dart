@@ -18,7 +18,7 @@ class SleepModeWakeUpAudiosAvailableNotifier
   }
 
   void onPlaySound(OfflineAudio offlineAudio) {
-    state = state.copyWith(currentOfflineAudio: offlineAudio);
+    state = state.copyWith(currentWakeUpOfflineAudio: offlineAudio);
     state.gaplessAudioPlayer.onSetSource(offlineAudio);
   }
 
