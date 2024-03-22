@@ -3,6 +3,7 @@ import 'package:alarm/model/alarm_settings.dart';
 import 'package:daily_mind/features/sleep_mode/domain/sleep_mode_state.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_provider.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_audios/presentation/sleep_mode_wake_up_audios_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'sleep_mode_provider.g.dart';
@@ -11,14 +12,34 @@ part 'sleep_mode_provider.g.dart';
 class SleepModeNotifier extends _$SleepModeNotifier {
   @override
   SleepModeState build() {
+    onInit();
+
     return const SleepModeState();
   }
 
+  void onInit() {
+    Alarm.ringStream.stream.listen((event) {});
+  }
+
   void onStartSleeping() async {
+    final status = await Permission.notification.status;
+
+    if (status.isDenied) {
+      alarmPrint('Requesting notification permission...');
+      final res = await Permission.notification.request();
+      alarmPrint(
+        'Notification permission ${res.isGranted ? '' : 'not '}granted.',
+      );
+    }
+
     final sleepModeTimeClockState =
         ref.read(sleepModeTimeClockNotifierProvider);
     final sleepModeWakeUpAudiosState =
         ref.read(sleepModeWakeUpAudiosNotifierProvider);
+    const title = 'Đã đến giờ thức dậy!';
+    const body = 'Hãy bắt đầu';
+
+    await Alarm.setNotificationOnAppKillContent(title, body);
 
     final alarmSettings = AlarmSettings(
       id: 42,
@@ -28,9 +49,9 @@ class SleepModeNotifier extends _$SleepModeNotifier {
       loopAudio: true,
       vibrate: true,
       volume: 0.8,
-      fadeDuration: 3.0,
-      notificationTitle: 'Đã đến giờ thức dậy!',
-      notificationBody: 'Hãy bắt đầu',
+      fadeDuration: 30,
+      notificationTitle: title,
+      notificationBody: body,
       enableNotificationOnKill: true,
     );
 

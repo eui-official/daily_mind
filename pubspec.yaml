@@ -90,6 +90,8 @@ dependencies:
   progressive_time_picker: ^1.0.1
   internet_connection_checker_plus: ^2.2.0
   alarm: ^3.0.14
+  flutter_local_notifications: ^17.0.0
+  permission_handler: ^11.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
