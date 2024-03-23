@@ -55,7 +55,7 @@ class SleepMode extends HookWidget {
                   alignment: Alignment.center,
                   child: ElevatedButton(
                     onPressed: onStartSleeping,
-                    child: const Text('Bắt đầu ngủ'),
+                    child: Text('Bắt đầu ngủ'.tr()),
                   ),
                 ),
               ],
