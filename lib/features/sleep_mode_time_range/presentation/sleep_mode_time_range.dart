@@ -50,7 +50,7 @@ class SleepModeTimeRange extends HookConsumerWidget {
             const SleepModeWakeUpTimes(),
             SleepModeTimeBox(
               onTap: onSelectTimeWakeUp,
-              title: 'Thức dậy'.tr(),
+              title: 'Thời gian thức dậy'.tr(),
               time: sleepModeTimeClockState.endTime,
             ),
           ],
