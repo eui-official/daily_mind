@@ -10,10 +10,10 @@ class BaseInkWell extends StatelessWidget {
   const BaseInkWell({
     super.key,
     this.borderRadius = BorderRadius.zero,
-    this.color = Colors.transparent,
-    this.type = MaterialType.button,
     this.child,
+    this.color,
     this.onTap,
+    this.type = MaterialType.button,
   });
 
   @override
@@ -21,7 +21,7 @@ class BaseInkWell extends StatelessWidget {
     return ClipRRect(
       borderRadius: borderRadius,
       child: Material(
-        color: color,
+        color: color ?? Colors.transparent,
         type: type,
         child: InkWell(
           onTap: onTap,

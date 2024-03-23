@@ -10,7 +10,7 @@ class AppNavigationBarState with _$AppNavigationBarState {
     required int index,
   }) = _AppNavigationBarState;
 
-  bool get isActivityScreen => index == 0;
+  bool get isAlarmScreen => index == 0;
   bool get isMixScreen => index == 1;
   bool get isExploreScreen => index == 2;
   bool get isSettingsScreen => index == 3;

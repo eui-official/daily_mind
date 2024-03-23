@@ -1,5 +1,4 @@
 {
-  "activity": "Activity",
   "addToList": "Add {name} to the list",
   "byYourFavorites": "According to your preferences",
   "cancel": "Exit",
@@ -42,7 +41,7 @@
   "task": "Task",
   "taskList": "Work list",
   "version": "Version",
-  "sounds": {
+  "audios": {
     "alphaWave": "Alpha waves",
     "babblingBrook": "Streams",
     "betaWave": "Beta waves",
@@ -74,5 +73,10 @@
     "whiteNoise": "White noise",
     "wind": "Wind",
     "wolveHowling": "Wolves howl"
+  },
+  "wakeUpAudios": {
+    "birds": "Tiếng chim hót",
+    "ocean": "Tiếng sóng biển",
+    "starDust": "Bụi sao"
   }
 }

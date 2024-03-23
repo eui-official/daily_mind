@@ -19,7 +19,7 @@ class OnlineItemDropdownActions extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final configState = ref.watch(configProvider);
+    final configState = ref.watch(configNotifierProvider);
 
     final fromSource = useMemoized(
       () {

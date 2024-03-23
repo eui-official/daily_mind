@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:alarm/alarm.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:daily_mind/common_applications/base_audio_handler/base_audio_handler.dart';
 import 'package:daily_mind/common_applications/env.dart';
 import 'package:daily_mind/common_widgets/base_internet_connection_checker/presentation/base_internet_connection_checker.dart';
-import 'package:daily_mind/common_widgets/base_skeleton_theme.dart';
 import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/init/presentation/init.dart';
 import 'package:daily_mind/features/localization/presentation/localization.dart';
@@ -22,6 +22,7 @@ void main() async {
     () async {
       final engine = WidgetsFlutterBinding.ensureInitialized();
       await EasyLocalization.ensureInitialized();
+      await Alarm.init();
 
       await Supabase.initialize(
         url: Env.supaBaseProjectUrl,

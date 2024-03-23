@@ -20,7 +20,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
 
     if (mixItems.isNotEmpty) {
       for (var item in mixItems) {
-        item.player.onSetSource(item.offlineAudio.id);
+        item.player.onSetSource(item.offlineAudio);
         item.player.setVolume(item.player.volume);
       }
 
@@ -123,7 +123,7 @@ extension BaseMixPlayer on DailyMindBackgroundHandler {
     final offlineAudio = newItem.offlineAudio;
     final player = newItem.player;
 
-    player.onSetSource(offlineAudio.id);
+    player.onSetSource(offlineAudio);
     player.play();
 
     onUpdateMediaItem();

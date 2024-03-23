@@ -25,19 +25,24 @@ extension ContextExt on BuildContext {
 
   LinearGradient get baseLinearGradient => LinearGradient(
         colors: [
-          theme.colorScheme.background.withOpacity(.6),
-          theme.colorScheme.background.withOpacity(.3),
+          theme.colorScheme.background.withOpacity(.4),
+          theme.colorScheme.background.withOpacity(.2),
         ],
-        begin: Alignment.bottomRight,
-        end: Alignment.topLeft,
+        stops: const [
+          0,
+          0.6,
+        ],
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
       );
 
   LinearGradient get baseBackgroundLinearGradient => LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
         colors: [
-          theme.primaryColorDark.withOpacity(.1),
+          theme.primaryColorDark.withOpacity(0.1),
           theme.colorScheme.background,
         ],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+        stops: const [0.2, 0.8],
       );
 }

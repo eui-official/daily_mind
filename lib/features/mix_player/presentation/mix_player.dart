@@ -70,10 +70,11 @@ class MixPlayer extends HookConsumerWidget {
       background: MixPlayerBackgroundFilter(mixItems: mixData.mixItems),
       children: [
         Expanded(
-          child: SingleChildScrollView(
-            controller: scrollController,
-            child: BaseSpacingContainerHorizontal(
+          child: BaseSpacingContainerHorizontal(
+            child: SingleChildScrollView(
+              controller: scrollController,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: space(
                   [
                     BaseContentHeader(
@@ -96,6 +97,7 @@ class MixPlayer extends HookConsumerWidget {
           ),
         ),
         BasePlayerUserActions(
+          padding: const EdgeInsets.only(top: kToolbarHeight),
           actions: [
             MixCollectionButtonSwitcher(
               isCanAddNewMix: mixNotifier.isCanAddANewMix,

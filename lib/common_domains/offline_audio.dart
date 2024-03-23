@@ -2,12 +2,12 @@ class OfflineAudio {
   final String id;
   final String title;
   final String image;
-  final bool isSubscriptionRequired;
+  final List<String> sources;
 
   OfflineAudio({
     required this.id,
     required this.title,
     required this.image,
-    this.isSubscriptionRequired = false,
+    required this.sources,
   });
 }

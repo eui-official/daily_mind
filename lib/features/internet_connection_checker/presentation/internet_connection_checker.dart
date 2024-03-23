@@ -3,17 +3,18 @@ import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_widgets/base_internet_connection_checker/presentation/base_internet_connection_checker_provider.dart';
 import 'package:daily_mind/features/internet_connection_checker/presentation/internet_connection_notice.dart';
+import 'package:daily_mind/types/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class InternetConnectionChecker extends HookConsumerWidget {
-  final Widget child;
+  final OnInternetCheckerBuilder builder;
 
   const InternetConnectionChecker({
     super.key,
-    required this.child,
+    required this.builder,
   });
 
   @override
@@ -53,6 +54,6 @@ class InternetConnectionChecker extends HookConsumerWidget {
       onShowInternetDisconnected();
     }, [onShowInternetDisconnected]);
 
-    return child;
+    return builder(baseInternetCheckState.value?.isDisconnected ?? false);
   }
 }

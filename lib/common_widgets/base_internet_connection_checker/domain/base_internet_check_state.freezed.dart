@@ -12,12 +12,11 @@ part of 'base_internet_check_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BaseInternetCheckState {
-  ConnectivityResult get connectivityResult =>
-      throw _privateConstructorUsedError;
+  bool get hasInternetAccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BaseInternetCheckStateCopyWith<BaseInternetCheckState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $BaseInternetCheckStateCopyWith<$Res> {
           $Res Function(BaseInternetCheckState) then) =
       _$BaseInternetCheckStateCopyWithImpl<$Res, BaseInternetCheckState>;
   @useResult
-  $Res call({ConnectivityResult connectivityResult});
+  $Res call({bool hasInternetAccess});
 }
 
 /// @nodoc
@@ -47,13 +46,13 @@ class _$BaseInternetCheckStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? connectivityResult = null,
+    Object? hasInternetAccess = null,
   }) {
     return _then(_value.copyWith(
-      connectivityResult: null == connectivityResult
-          ? _value.connectivityResult
-          : connectivityResult // ignore: cast_nullable_to_non_nullable
-              as ConnectivityResult,
+      hasInternetAccess: null == hasInternetAccess
+          ? _value.hasInternetAccess
+          : hasInternetAccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -67,7 +66,7 @@ abstract class _$$BaseInternetCheckStateImplCopyWith<$Res>
       __$$BaseInternetCheckStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ConnectivityResult connectivityResult});
+  $Res call({bool hasInternetAccess});
 }
 
 /// @nodoc
@@ -83,13 +82,13 @@ class __$$BaseInternetCheckStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? connectivityResult = null,
+    Object? hasInternetAccess = null,
   }) {
     return _then(_$BaseInternetCheckStateImpl(
-      connectivityResult: null == connectivityResult
-          ? _value.connectivityResult
-          : connectivityResult // ignore: cast_nullable_to_non_nullable
-              as ConnectivityResult,
+      hasInternetAccess: null == hasInternetAccess
+          ? _value.hasInternetAccess
+          : hasInternetAccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -97,15 +96,15 @@ class __$$BaseInternetCheckStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BaseInternetCheckStateImpl extends _BaseInternetCheckState {
-  const _$BaseInternetCheckStateImpl({required this.connectivityResult})
+  const _$BaseInternetCheckStateImpl({required this.hasInternetAccess})
       : super._();
 
   @override
-  final ConnectivityResult connectivityResult;
+  final bool hasInternetAccess;
 
   @override
   String toString() {
-    return 'BaseInternetCheckState(connectivityResult: $connectivityResult)';
+    return 'BaseInternetCheckState(hasInternetAccess: $hasInternetAccess)';
   }
 
   @override
@@ -113,12 +112,12 @@ class _$BaseInternetCheckStateImpl extends _BaseInternetCheckState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BaseInternetCheckStateImpl &&
-            (identical(other.connectivityResult, connectivityResult) ||
-                other.connectivityResult == connectivityResult));
+            (identical(other.hasInternetAccess, hasInternetAccess) ||
+                other.hasInternetAccess == hasInternetAccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, connectivityResult);
+  int get hashCode => Object.hash(runtimeType, hasInternetAccess);
 
   @JsonKey(ignore: true)
   @override
@@ -130,12 +129,11 @@ class _$BaseInternetCheckStateImpl extends _BaseInternetCheckState {
 
 abstract class _BaseInternetCheckState extends BaseInternetCheckState {
   const factory _BaseInternetCheckState(
-          {required final ConnectivityResult connectivityResult}) =
-      _$BaseInternetCheckStateImpl;
+      {required final bool hasInternetAccess}) = _$BaseInternetCheckStateImpl;
   const _BaseInternetCheckState._() : super._();
 
   @override
-  ConnectivityResult get connectivityResult;
+  bool get hasInternetAccess;
   @override
   @JsonKey(ignore: true)
   _$$BaseInternetCheckStateImplCopyWith<_$BaseInternetCheckStateImpl>

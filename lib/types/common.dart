@@ -8,7 +8,7 @@ typedef OfflineAudioSources = Map<String, List<String>>;
 
 typedef OnWidgetSettingBuilder = Widget Function(Settings?);
 
-typedef OnkEmptyWidgetBuilder<T> = Widget Function(T data);
+typedef OnWidgetBuilder<T> = Widget Function(T data);
 
 typedef OnListItemBuilder<T> = Widget Function(
   BuildContext context,
@@ -43,3 +43,5 @@ typedef AudioCategoryGroup = Map<String?, List<AudioCategory>>;
 typedef OnCounting = Function(int remainingSeconds);
 
 typedef OnAudioSelected = Function(dynamic audio, String audioFrom);
+
+typedef OnInternetCheckerBuilder = Widget Function(bool isDisconnected);

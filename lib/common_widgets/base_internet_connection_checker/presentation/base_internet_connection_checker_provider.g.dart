@@ -7,7 +7,7 @@ part of 'base_internet_connection_checker_provider.dart';
 // **************************************************************************
 
 String _$baseInternetConnectionCheckerNotifierHash() =>
-    r'e1e271e4caf5fcc11733b6948ffa642a82baf523';
+    r'4020a2e6a203ccdb4d47cf5e4fa4b4bb2efb6f47';
 
 /// See also [BaseInternetConnectionCheckerNotifier].
 @ProviderFor(BaseInternetConnectionCheckerNotifier)

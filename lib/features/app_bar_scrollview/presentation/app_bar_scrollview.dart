@@ -36,7 +36,7 @@ class AppBarScrollview extends HookWidget {
           SliverAppBar(
             title: Text(
               title,
-              style: context.textTheme.headlineSmall?.copyWith(
+              style: context.textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

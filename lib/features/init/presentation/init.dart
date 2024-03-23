@@ -32,7 +32,7 @@ class Init extends HookConsumerWidget {
 
     useEffectDelayed(
       () {
-        ref.read(configProvider);
+        ref.read(configNotifierProvider);
 
         baseBackgroundHandlerNotifier.onSetBackgroundHandler(backgroundHandler);
 

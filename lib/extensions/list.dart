@@ -1,6 +1,7 @@
 import 'package:daily_mind/constants/offline_audios.dart';
 import 'package:daily_mind/features/mix/domain/mix_item.dart';
 import 'package:daily_mind/features/mix/domain/mix_item_category.dart';
+import 'package:daily_mind/features/sleep_mode_wake_up_times/domain/wake_up_time.dart';
 
 extension MixItemsExt on List<MixItem> {
   bool get isNoAudio => isEmpty;
@@ -47,5 +48,18 @@ extension MixItemsExt on List<MixItem> {
     });
 
     return itemCategories;
+  }
+}
+
+extension WakeUpTimes on List<WakeUpTime> {
+  int onGetWakeUpTimeIndex(WakeUpTime time) {
+    return indexWhere((element) {
+      final isMatchStartTime = element.startTime.hour == time.startTime.hour &&
+          element.startTime.minute == time.startTime.minute;
+      final isMatchEndTime = element.endTime.hour == time.endTime.hour &&
+          element.endTime.minute == time.endTime.minute;
+
+      return isMatchStartTime && isMatchEndTime;
+    });
   }
 }

@@ -8,7 +8,6 @@ import 'package:transparent_image/transparent_image.dart';
 class BaseBackdropFilter extends HookWidget {
   final BorderRadius borderRadius;
   final double dominantColorOpacity;
-  final double lightColorOpacity;
   final ImageProvider? image;
 
   const BaseBackdropFilter({
@@ -16,7 +15,6 @@ class BaseBackdropFilter extends HookWidget {
     this.borderRadius = BorderRadius.zero,
     this.image,
     this.dominantColorOpacity = 0.6,
-    this.lightColorOpacity = 0.3,
   });
 
   @override
@@ -30,7 +28,6 @@ class BaseBackdropFilter extends HookWidget {
         return BaseBackdropFilterGradient(
           pallete: safePallete,
           dominantColorOpacity: dominantColorOpacity,
-          lightColorOpacity: lightColorOpacity,
         );
       },
     );

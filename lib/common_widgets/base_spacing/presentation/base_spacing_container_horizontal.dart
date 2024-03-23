@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 
 class BaseSpacingContainerHorizontal extends StatelessWidget {
   final Alignment? alignment;
+  final BoxConstraints? constraints;
   final Widget child;
 
   const BaseSpacingContainerHorizontal({
     super.key,
     this.alignment,
+    this.constraints,
     required this.child,
   });
 
@@ -16,6 +18,7 @@ class BaseSpacingContainerHorizontal extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseSpacingContainer(
       alignment: alignment,
+      constraints: constraints,
       padding: EdgeInsets.symmetric(horizontal: spacing(2)),
       child: child,
     );

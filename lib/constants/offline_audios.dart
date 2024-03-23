@@ -8,57 +8,83 @@ final List<OfflineAudioCategory> kOfflineAudioCategories = [
     offlineAudios: [
       OfflineAudio(
         id: 'rain',
-        title: 'sounds.rain',
+        title: 'audios.rain',
         image: 'assets/images/rain-forest.png',
+        sources: [
+          'assets/audios/rains/rain-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'forest',
-        title: 'sounds.forest',
+        title: 'audios.forest',
         image: 'assets/images/forest-with-birds.png',
+        sources: [
+          'assets/audios/forests/forest-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'wind',
-        title: 'sounds.wind',
+        title: 'audios.wind',
         image: 'assets/images/wind-and-peaceful.png',
+        sources: [
+          'assets/audios/winds/wind-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'fire',
-        title: 'sounds.fire',
+        title: 'audios.fire',
         image: 'assets/images/firecamp.png',
+        sources: [
+          'assets/audios/fires/fire-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'water',
-        title: 'sounds.water',
+        title: 'audios.water',
         image: 'assets/images/water.png',
+        sources: [
+          'assets/audios/waters/water-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'wave',
-        title: 'sounds.wave',
+        title: 'audios.wave',
         image: 'assets/images/wave.png',
+        sources: [
+          'assets/audios/waves/wave-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'thunderstorm',
-        title: 'sounds.thunderstorm',
+        title: 'audios.thunderstorm',
         image: 'assets/images/thunderstorm.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/thunderstorms/thunder-storm-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'babblingBrook',
-        title: 'sounds.babblingBrook',
+        title: 'audios.babblingBrook',
         image: 'assets/images/babbling-brook.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/babbling-brooks/babbling-brook-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'waterfall',
-        title: 'sounds.waterfall',
+        title: 'audios.waterfall',
         image: 'assets/images/waterfall.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/waterfalls/waterfall-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'leaveRustling',
-        title: 'sounds.leaveRustling',
+        title: 'audios.leaveRustling',
         image: 'assets/images/leave-rustling.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/leave-rustlings/leaves-rustling-1.mp3',
+        ],
       ),
     ],
   ),
@@ -68,38 +94,51 @@ final List<OfflineAudioCategory> kOfflineAudioCategories = [
     offlineAudios: [
       OfflineAudio(
         id: 'whiteNoise',
-        title: 'sounds.whiteNoise',
+        title: 'audios.whiteNoise',
         image: 'assets/images/white-noise.png',
+        sources: [
+          'assets/audios/white-noises/white-noise-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'pinkNoise',
-        title: 'sounds.pinkNoise',
+        title: 'audios.pinkNoise',
         image: 'assets/images/pink-noise.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/pink-noises/pink-noise-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'brownNoise',
-        title: 'sounds.brownNoise',
+        title: 'audios.brownNoise',
         image: 'assets/images/brown-noise.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/brown-noises/brown-noise-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'blueNoise',
-        title: 'sounds.blueNoise',
+        title: 'audios.blueNoise',
         image: 'assets/images/blue-noise.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/blue-noises/blue-noise-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'violetNoise',
-        title: 'sounds.violetNoise',
+        title: 'audios.violetNoise',
         image: 'assets/images/violet-noise.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/violet-noises/violet-noise-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'greyNoise',
-        title: 'sounds.greyNoise',
+        title: 'audios.greyNoise',
         image: 'assets/images/grey-noise.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/grey-noises/grey-noise-1.mp3',
+        ],
       ),
     ],
   ),
@@ -109,38 +148,59 @@ final List<OfflineAudioCategory> kOfflineAudioCategories = [
     offlineAudios: [
       OfflineAudio(
         id: 'alphaWave',
-        title: 'sounds.alphaWave',
+        title: 'audios.alphaWave',
         image: 'assets/images/alpha-wave.png',
+        sources: [
+          'assets/audios/alpha-waves/alpha-wave-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'deltaWave',
-        title: 'sounds.deltaWave',
+        title: 'audios.deltaWave',
         image: 'assets/images/delta-wave.png',
+        sources: [
+          'assets/audios/delta-waves/delta-wave-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'thetaWave',
-        title: 'sounds.thetaWave',
+        title: 'audios.thetaWave',
         image: 'assets/images/theta-wave.png',
+        sources: [
+          'assets/audios/theta-waves/theta-wave-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'betaWave',
-        title: 'sounds.betaWave',
+        title: 'audios.betaWave',
         image: 'assets/images/beta-wave.png',
+        sources: [
+          'assets/audios/beta-waves/beta-wave-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'gammaWave',
-        title: 'sounds.gammaWave',
+        title: 'audios.gammaWave',
         image: 'assets/images/gamma-wave.png',
+        sources: [
+          'assets/audios/gamma-waves/gamma-wave-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'space',
-        title: 'sounds.space',
+        title: 'audios.space',
         image: 'assets/images/sky.png',
+        sources: [
+          'assets/audios/spaces/space-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'tibetanBowl',
-        title: 'sounds.tibetanBowl',
+        title: 'audios.tibetanBowl',
         image: 'assets/images/tibetan-bowl.png',
+        sources: [
+          'assets/audios/tibetan-bowls/tibetan-bowl-1.mp3',
+        ],
       ),
     ],
   ),
@@ -150,50 +210,67 @@ final List<OfflineAudioCategory> kOfflineAudioCategories = [
     offlineAudios: [
       OfflineAudio(
         id: 'catPurring',
-        title: 'sounds.catPurring',
+        title: 'audios.catPurring',
         image: 'assets/images/cat-purring.png',
+        sources: [
+          'assets/audios/cat-purrings/cat-purring-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'birdsChirping',
-        title: 'sounds.birdsChirping',
+        title: 'audios.birdsChirping',
         image: 'assets/images/birds-chirping.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/birds-chirpings/birds-chirping-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'circketChirping',
-        title: 'sounds.circketChirping',
+        title: 'audios.circketChirping',
         image: 'assets/images/cricket.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/cricket-chirpings/cricket-chirping-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'frogCroaking',
-        title: 'sounds.frogCroaking',
+        title: 'audios.frogCroaking',
         image: 'assets/images/frog-croaking.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/frog-croakings/frog-croaking-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'whale',
-        title: 'sounds.whale',
+        title: 'audios.whale',
         image: 'assets/images/whale.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/whales/whale-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'dolphin',
-        title: 'sounds.dolphin',
+        title: 'audios.dolphin',
         image: 'assets/images/dolphin.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/dolphins/dolphin-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'horseNeighing',
-        title: 'sounds.horseNeighing',
+        title: 'audios.horseNeighing',
         image: 'assets/images/horse-neighing.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/horse-neighings/horse-neighing-1.mp3',
+        ],
       ),
       OfflineAudio(
         id: 'wolveHowling',
-        title: 'sounds.wolveHowling',
+        title: 'audios.wolveHowling',
         image: 'assets/images/wolve-howling.png',
-        isSubscriptionRequired: true,
+        sources: [
+          'assets/audios/wolve-howlings/wolve-howling-1.mp3',
+        ],
       ),
     ],
   ),

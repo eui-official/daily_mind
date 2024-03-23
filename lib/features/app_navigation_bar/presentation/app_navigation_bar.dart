@@ -1,10 +1,10 @@
-import 'package:daily_mind/features/activity/presentation/activity.dart';
+import 'package:daily_mind/extensions/context.dart';
+import 'package:daily_mind/features/sleep_mode/presentation/sleep_mode.dart';
 import 'package:daily_mind/features/mix/presentation/mix.dart';
 import 'package:daily_mind/features/online_list/presentation/online_list.dart';
 import 'package:daily_mind/features/settings/pesentation/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:get/utils.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({super.key});
@@ -12,45 +12,45 @@ class AppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      backgroundColor: Colors.transparent,
-      navBarOverlap: const NavBarOverlap.none(),
-      margin: EdgeInsets.zero,
-      tabs: [
-        PersistentTabConfig(
-          screen: const Activity(),
-          item: ItemConfig(
-            icon: const Icon(Icons.spa_rounded),
-            activeColorPrimary: context.theme.primaryColor,
-          ),
+      context,
+      screens: const [
+        SleepMode(),
+        Mix(),
+        OnlineList(),
+        Settings(),
+      ],
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        animateTabTransition: true,
+      ),
+      items: [
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.bedtime_rounded),
+          activeColorPrimary: context.theme.primaryColor,
+          inactiveColorPrimary: context.theme.primaryColorDark,
         ),
-        PersistentTabConfig(
-          screen: const Mix(),
-          item: ItemConfig(
-            icon: const Icon(Icons.music_note_rounded),
-            activeColorPrimary: context.theme.primaryColor,
-          ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.eco_rounded),
+          activeColorPrimary: context.theme.primaryColor,
+          inactiveColorPrimary: context.theme.primaryColorDark,
         ),
-        PersistentTabConfig(
-          screen: const OnlineList(),
-          item: ItemConfig(
-            icon: const Icon(Icons.explore_rounded),
-            activeColorPrimary: context.theme.primaryColor,
-          ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.explore_rounded),
+          activeColorPrimary: context.theme.primaryColor,
+          inactiveColorPrimary: context.theme.primaryColorDark,
         ),
-        PersistentTabConfig(
-          screen: const Settings(),
-          item: ItemConfig(
-            icon: const Icon(Icons.settings_rounded),
-            activeColorPrimary: context.theme.primaryColor,
-          ),
+        PersistentBottomNavBarItem(
+          icon: const Icon(Icons.settings_rounded),
+          activeColorPrimary: context.theme.primaryColor,
+          inactiveColorPrimary: context.theme.primaryColorDark,
         ),
       ],
-      navBarBuilder: (navBarConfig) => Style1BottomNavBar(
-        navBarConfig: navBarConfig,
-        navBarDecoration: NavBarDecoration(
-          color: context.theme.colorScheme.background,
-        ),
+      decoration: NavBarDecoration(
+        gradient: context.baseBackgroundLinearGradient,
+        colorBehindNavBar: Colors.transparent,
       ),
+      backgroundColor: Colors.transparent,
+      navBarStyle: NavBarStyle.style2,
+      margin: EdgeInsets.zero,
     );
   }
 }
