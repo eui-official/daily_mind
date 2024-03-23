@@ -28,7 +28,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
         ref.watch(sleepModeTimeClockNotifierProvider);
 
     Duration duration = sleepModeTimeClockState.endTime.onGetDifference(
-      sleepModeTimeClockState.startTime,
+      sleepModeTimeClockState.sleepTime,
     );
 
     final currentTime = useBaseDateTimeTicker();
@@ -50,7 +50,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
     }, [duration]);
 
     return TimePicker(
-      initTime: sleepModeTimeClockState.startTime.toPickedTime,
+      initTime: sleepModeTimeClockState.sleepTime.toPickedTime,
       endTime: sleepModeTimeClockState.endTime.toPickedTime,
       height: spacing(30),
       primarySectors: clockTimeFormat.value,
@@ -118,13 +118,6 @@ class SleepModeTimeClock extends HookConsumerWidget {
         sleepModeTimeClockNotifier.onUpdateEndTime(newEndTime);
       },
       onSelectionChange: (start, end, bool? valid) {
-        final newStartTime = currentTime.withHourAndMinute(
-          hour: start.h,
-          minute: start.m,
-        );
-
-        sleepModeTimeClockNotifier.onUpdateStartTime(newStartTime);
-
         final newEndTime = currentTime.withHourAndMinute(
           hour: end.h,
           minute: end.m,

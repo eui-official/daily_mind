@@ -4,8 +4,11 @@ part 'sleep_mode_time_state.freezed.dart';
 
 @freezed
 class SleepModeTimeState with _$SleepModeTimeState {
+  const SleepModeTimeState._();
+
   const factory SleepModeTimeState({
-    required DateTime startTime,
     required DateTime endTime,
   }) = _SleepModeTimeState;
+
+  DateTime get sleepTime => DateTime.now().toLocal();
 }

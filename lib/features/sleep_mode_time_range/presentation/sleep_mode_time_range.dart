@@ -21,28 +21,6 @@ class SleepModeTimeRange extends HookConsumerWidget {
     final sleepModeTimeClockState =
         ref.watch(sleepModeTimeClockNotifierProvider);
 
-    final onSelectTimeSleep = useCallback(
-      () async {
-        final selectedTime = await showTimePicker(
-          initialTime: TimeOfDay(
-            hour: sleepModeTimeClockState.startTime.hour,
-            minute: sleepModeTimeClockState.startTime.minute,
-          ),
-          context: context,
-        );
-
-        onSafeValueBuilder(selectedTime, (value) {
-          final newTime = sleepModeTimeClockState.startTime.withHourAndMinute(
-            hour: value.hour,
-            minute: value.minute,
-          );
-
-          sleepModeTimeClockNoifier.onUpdateStartTime(newTime);
-        });
-      },
-      [sleepModeTimeClockState],
-    );
-
     final onSelectTimeWakeUp = useCallback(
       () async {
         final selectedTime = await showTimePicker(
@@ -70,11 +48,6 @@ class SleepModeTimeRange extends HookConsumerWidget {
         children: space(
           [
             const SleepModeWakeUpTimes(),
-            SleepModeTimeBox(
-              onTap: onSelectTimeSleep,
-              title: 'Thời gian ngủ'.tr(),
-              time: sleepModeTimeClockState.startTime,
-            ),
             SleepModeTimeBox(
               onTap: onSelectTimeWakeUp,
               title: 'Thức dậy'.tr(),
