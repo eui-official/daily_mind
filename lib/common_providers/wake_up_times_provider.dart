@@ -39,6 +39,7 @@ class WakeUpTimesNotifier extends _$WakeUpTimesNotifier {
   void onInit() {
     Timer.periodic(kLongDuration, (timer) {
       final List<WakeUpTime> wakeUpTimes = onGetWakeUpTimes();
+
       state = wakeUpTimes;
     });
   }

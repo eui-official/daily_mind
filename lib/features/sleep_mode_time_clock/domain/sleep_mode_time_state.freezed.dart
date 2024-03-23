@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SleepModeTimeState {
-  DateTime get startTime => throw _privateConstructorUsedError;
   DateTime get endTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +29,7 @@ abstract class $SleepModeTimeStateCopyWith<$Res> {
           SleepModeTimeState value, $Res Function(SleepModeTimeState) then) =
       _$SleepModeTimeStateCopyWithImpl<$Res, SleepModeTimeState>;
   @useResult
-  $Res call({DateTime startTime, DateTime endTime});
+  $Res call({DateTime endTime});
 }
 
 /// @nodoc
@@ -46,14 +45,9 @@ class _$SleepModeTimeStateCopyWithImpl<$Res, $Val extends SleepModeTimeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startTime = null,
     Object? endTime = null,
   }) {
     return _then(_value.copyWith(
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
@@ -70,7 +64,7 @@ abstract class _$$SleepModeTimeStateImplCopyWith<$Res>
       __$$SleepModeTimeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime startTime, DateTime endTime});
+  $Res call({DateTime endTime});
 }
 
 /// @nodoc
@@ -84,14 +78,9 @@ class __$$SleepModeTimeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startTime = null,
     Object? endTime = null,
   }) {
     return _then(_$SleepModeTimeStateImpl(
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
@@ -102,18 +91,15 @@ class __$$SleepModeTimeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SleepModeTimeStateImpl implements _SleepModeTimeState {
-  const _$SleepModeTimeStateImpl(
-      {required this.startTime, required this.endTime});
+class _$SleepModeTimeStateImpl extends _SleepModeTimeState {
+  const _$SleepModeTimeStateImpl({required this.endTime}) : super._();
 
-  @override
-  final DateTime startTime;
   @override
   final DateTime endTime;
 
   @override
   String toString() {
-    return 'SleepModeTimeState(startTime: $startTime, endTime: $endTime)';
+    return 'SleepModeTimeState(endTime: $endTime)';
   }
 
   @override
@@ -121,13 +107,11 @@ class _$SleepModeTimeStateImpl implements _SleepModeTimeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SleepModeTimeStateImpl &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startTime, endTime);
+  int get hashCode => Object.hash(runtimeType, endTime);
 
   @JsonKey(ignore: true)
   @override
@@ -137,13 +121,11 @@ class _$SleepModeTimeStateImpl implements _SleepModeTimeState {
           this, _$identity);
 }
 
-abstract class _SleepModeTimeState implements SleepModeTimeState {
-  const factory _SleepModeTimeState(
-      {required final DateTime startTime,
-      required final DateTime endTime}) = _$SleepModeTimeStateImpl;
+abstract class _SleepModeTimeState extends SleepModeTimeState {
+  const factory _SleepModeTimeState({required final DateTime endTime}) =
+      _$SleepModeTimeStateImpl;
+  const _SleepModeTimeState._() : super._();
 
-  @override
-  DateTime get startTime;
   @override
   DateTime get endTime;
   @override
