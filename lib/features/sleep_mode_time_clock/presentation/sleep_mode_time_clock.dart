@@ -71,7 +71,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
         ),
         initHandlerDecoration: TimePickerHandlerDecoration(
           shape: BoxShape.circle,
-          radius: spacing(1.5),
+          radius: spacing(2),
           icon: Icon(
             Icons.bedtime_rounded,
             size: spacing(2.5),
@@ -80,7 +80,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
         ),
         endHandlerDecoration: TimePickerHandlerDecoration(
           shape: BoxShape.circle,
-          radius: spacing(1.5),
+          radius: spacing(2),
           icon: Icon(
             Icons.notifications_rounded,
             size: spacing(2.5),
