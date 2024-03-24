@@ -37,14 +37,11 @@ class SleepMode extends HookConsumerWidget {
 
     final onStartSleeping = useCallback(
       () {
-        sleepModeNotifier.onStartSleeping(
-          sleepModeState.endTime,
-          sleepModeState.wakeUpOfflineAudio.sources.first,
-        );
+        sleepModeNotifier.onStartAlarm();
 
         pushNewScreen(
           context,
-          screen: const SleepModeTracker(),
+          screen: SleepModeTracker(sleepModeState: sleepModeState),
         );
       },
       [sleepModeState],

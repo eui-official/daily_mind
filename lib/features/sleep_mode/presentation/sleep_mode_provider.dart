@@ -33,10 +33,7 @@ class SleepModeNotifier extends _$SleepModeNotifier {
     state = state.copyWith(endTime: endTime);
   }
 
-  void onStartSleeping(
-    DateTime endTime,
-    String assetAudioPath,
-  ) async {
+  void onStartAlarm() async {
     final status = await notifications.onCheckPermissions();
 
     if (status) {
@@ -47,8 +44,8 @@ class SleepModeNotifier extends _$SleepModeNotifier {
 
       final alarmSettings = AlarmSettings(
         id: 42,
-        dateTime: endTime,
-        assetAudioPath: assetAudioPath,
+        dateTime: state.endTime,
+        assetAudioPath: state.wakeUpOfflineAudioPath,
         loopAudio: true,
         vibrate: true,
         volume: 0.8,
