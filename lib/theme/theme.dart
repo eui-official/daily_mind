@@ -11,7 +11,7 @@ const maize = Color(0xFFFFF07C);
 const red = Color(0xFFE83151);
 const secondaryTextColor = Color(0xFFF4EBD9);
 
-final fontFamily = GoogleFonts.quicksand().fontFamily;
+final fontFamily = GoogleFonts.inter().fontFamily;
 
 ThemeData createDarkTheme(SupportedTheme theme) {
   return FlexThemeData.dark(

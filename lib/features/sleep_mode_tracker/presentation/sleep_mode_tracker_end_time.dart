@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_applications/date_formatter.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,12 @@ class SleepModeTrackerEndTime extends StatelessWidget {
       shape: const StadiumBorder(
         side: BorderSide(style: BorderStyle.none),
       ),
-      label: Text('Thức dậy lúc ${dateFormatter.onFormatTime24h(endTime)}'),
+      label: Text(
+        'Thức dậy lúc ${dateFormatter.onFormatTime24h(endTime)}',
+        style: context.textTheme.bodyMedium?.copyWith(
+          color: context.theme.hintColor,
+        ),
+      ),
     );
   }
 }

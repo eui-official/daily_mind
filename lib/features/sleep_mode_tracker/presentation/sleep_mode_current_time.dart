@@ -13,7 +13,7 @@ class SleepModeCurrentTime extends HookWidget {
 
     return Text(
       dateFormatter.onFormatTime24h(currentTime),
-      style: context.textTheme.headlineLarge?.copyWith(
+      style: context.textTheme.displayMedium?.copyWith(
         fontWeight: FontWeight.bold,
       ),
     );

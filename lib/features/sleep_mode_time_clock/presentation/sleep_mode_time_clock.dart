@@ -26,7 +26,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Duration duration = endTime.onGetDifference(DateTime.now());
+    Duration duration = endTime.onGetDurationDifference(DateTime.now());
 
     final currentTime = useBaseDateTimeTicker();
 

@@ -19,7 +19,7 @@ extension DateTimeExt on DateTime {
     );
   }
 
-  Duration onGetDifference(DateTime time) {
+  Duration onGetDurationDifference(DateTime time) {
     int hours = hour - time.hour;
     int minutes = minute - time.minute;
 
