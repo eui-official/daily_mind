@@ -14,8 +14,8 @@ class SleepModeTimeClockTotal extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hours = duration.inMinutes ~/ TimeOfDay.minutesPerHour;
-    final minutes = duration.inMinutes % TimeOfDay.minutesPerHour;
+    final hours = duration.inHours;
+    final minutes = (duration.inMinutes % TimeOfDay.minutesPerHour);
 
     return Column(
       mainAxisSize: MainAxisSize.min,

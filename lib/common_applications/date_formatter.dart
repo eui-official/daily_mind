@@ -15,6 +15,10 @@ class DateFormatter {
     return dateFormat.format(dateTime);
   }
 
+  String onFormatTime24h(DateTime dateTime) {
+    return DateFormat('HH:mm').format(dateTime);
+  }
+
   String onFormatTime(DateTime dateTime) {
     return df.format(dateTime);
   }
