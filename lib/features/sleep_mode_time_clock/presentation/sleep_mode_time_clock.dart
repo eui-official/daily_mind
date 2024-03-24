@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
 import 'package:daily_mind/extensions/date_time.dart';
-import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_provider.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_total.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -12,24 +11,22 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progressive_time_picker/progressive_time_picker.dart';
 
 class SleepModeTimeClock extends HookConsumerWidget {
+  final DateTime endTime;
+  final ValueChanged<DateTime> onEndTimeChanged;
+
   final ClockTimeFormat clockTimeFormat = ClockTimeFormat.twentyFourHours;
   final ClockIncrementTimeFormat clockIncrementTimeFormat =
       ClockIncrementTimeFormat.oneMin;
 
   const SleepModeTimeClock({
     super.key,
+    required this.endTime,
+    required this.onEndTimeChanged,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sleepModeTimeClockNotifier =
-        ref.read(sleepModeTimeClockNotifierProvider.notifier);
-    final sleepModeTimeClockState =
-        ref.watch(sleepModeTimeClockNotifierProvider);
-
-    Duration duration = sleepModeTimeClockState.endTime.onGetDifference(
-      sleepModeTimeClockState.sleepTime,
-    );
+    Duration duration = endTime.onGetDifference(DateTime.now());
 
     final currentTime = useBaseDateTimeTicker();
 
@@ -50,8 +47,8 @@ class SleepModeTimeClock extends HookConsumerWidget {
     }, [duration]);
 
     return TimePicker(
-      initTime: sleepModeTimeClockState.sleepTime.toPickedTime,
-      endTime: sleepModeTimeClockState.endTime.toPickedTime,
+      initTime: DateTime.now().toPickedTime,
+      endTime: endTime.toPickedTime,
       height: spacing(30),
       primarySectors: clockTimeFormat.value,
       secondarySectors: clockTimeFormat.value * 2,
@@ -115,7 +112,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
           minute: end.m,
         );
 
-        sleepModeTimeClockNotifier.onUpdateEndTime(newEndTime);
+        onEndTimeChanged(newEndTime);
       },
       onSelectionChange: (start, end, bool? valid) {
         final newEndTime = currentTime.withHourAndMinute(
@@ -123,7 +120,7 @@ class SleepModeTimeClock extends HookConsumerWidget {
           minute: end.m,
         );
 
-        sleepModeTimeClockNotifier.onUpdateEndTime(newEndTime);
+        onEndTimeChanged(newEndTime);
       },
       child: Center(
         child: SleepModeTimeClockTotal(duration: duration),

@@ -17,17 +17,12 @@ class AppLoading extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: space(
             [
-              ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  context.theme.primaryColor,
-                  BlendMode.modulate,
-                ),
-                child: Image.asset(
-                  'assets/icons/icon.png',
-                  fit: BoxFit.cover,
-                  width: spacing(20),
-                  height: spacing(20),
-                ),
+              Image.asset(
+                'assets/icons/icon.png',
+                fit: BoxFit.cover,
+                width: spacing(20),
+                height: spacing(20),
+                color: context.theme.primaryColor,
               ),
               Text(
                 'Hít một hơi thật sâu'.tr(),

@@ -21,12 +21,13 @@ class SleepModeTimeClockTotal extends HookWidget {
       mainAxisSize: MainAxisSize.min,
       children: space(
         [
-          Text(
-            '$hours hr',
-            style: context.textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
+          if (hours > 0)
+            Text(
+              '$hours hr',
+              style: context.textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
           if (minutes > 0) ...[
             Text(
               '$minutes min',

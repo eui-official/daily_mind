@@ -5,7 +5,6 @@ import 'package:daily_mind/common_providers/wake_up_times_provider.dart';
 import 'package:daily_mind/common_widgets/base_skeleton_box.dart';
 import 'package:daily_mind/extensions/list.dart';
 import 'package:daily_mind/extensions/theme.dart';
-import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock_provider.dart';
 import 'package:daily_mind/features/sleep_mode_time_card/presentation/sleep_mode_time_card.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_available.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_times/presentation/sleep_mode_wake_up_provider.dart';
@@ -15,10 +14,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SleepModeWakeUpTimes extends HookConsumerWidget {
   final EdgeInsetsGeometry? padding;
+  final ValueChanged<DateTime> onEndTimeChanged;
 
   const SleepModeWakeUpTimes({
     super.key,
     this.padding,
+    required this.onEndTimeChanged,
   });
 
   @override
@@ -26,18 +27,13 @@ class SleepModeWakeUpTimes extends HookConsumerWidget {
     final sleepModeWakeUpNotifier =
         ref.read(sleepModeWakeUpNotifierProvider.notifier);
     final sleepModeWakeUpState = ref.watch(sleepModeWakeUpNotifierProvider);
-
-    final sleepModeTimeClockNotifier =
-        ref.read(sleepModeTimeClockNotifierProvider.notifier);
-    final sleepModeTimeClockState =
-        ref.watch(sleepModeTimeClockNotifierProvider);
     final wakeUpTimes = ref.watch(wakeUpTimesNotifierProvider);
 
     final wakeUpTimeSelected = useMemoized(
       () {
         return wakeUpTimes[sleepModeWakeUpState];
       },
-      [wakeUpTimes, sleepModeTimeClockState],
+      [wakeUpTimes, sleepModeWakeUpState],
     );
 
     final onUseRecommended = useCallback(
@@ -46,7 +42,7 @@ class SleepModeWakeUpTimes extends HookConsumerWidget {
         final index = wakeUpTimes.onGetWakeUpTimeIndex(wakeUpTime);
 
         sleepModeWakeUpNotifier.onUpdateIndex(index);
-        sleepModeTimeClockNotifier.onUpdateEndTime(wakeUpTime.endTime);
+        onEndTimeChanged(wakeUpTime.endTime);
       },
       [wakeUpTimes],
     );
@@ -62,9 +58,7 @@ class SleepModeWakeUpTimes extends HookConsumerWidget {
                 final index = wakeUpTimes.onGetWakeUpTimeIndex(wakeUpTime);
 
                 sleepModeWakeUpNotifier.onUpdateIndex(index);
-
-                sleepModeTimeClockNotifier.onUpdateEndTime(wakeUpTime.endTime);
-
+                onEndTimeChanged(wakeUpTime.endTime);
                 context.pop();
               },
               controller: controller,

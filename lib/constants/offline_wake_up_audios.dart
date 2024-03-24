@@ -22,7 +22,7 @@ final List<OfflineAudio> kOfflineWakeUpAudios = [
     title: 'wakeUpAudios.starDust',
     image: 'assets/images/brown-noise.png',
     sources: [
-      'assets/wake_up_audios/starDust.mp3',
+      'assets/wake_up_audios/star_dust.mp3',
     ],
   ),
 ];
