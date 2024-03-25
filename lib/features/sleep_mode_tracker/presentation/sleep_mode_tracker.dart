@@ -5,6 +5,7 @@ import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_c
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_duration_remaining.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker_end_time.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker_moon.dart';
+import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker_wave.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -22,35 +23,46 @@ class SleepModeTracker extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: BaseSpacingContainer(
-          alignment: Alignment.center,
-          child: Column(
-            children: space(
-              [
-                Container(
-                  padding: const EdgeInsets.only(bottom: kToolbarHeight),
-                  child: Text(
-                    'Theo dõi giấc ngủ'.tr(),
-                    style: context.textTheme.titleLarge,
-                  ),
+      body: Stack(
+        children: [
+          const SleepModeTrackerWave(),
+          SafeArea(
+            child: BaseSpacingContainer(
+              alignment: Alignment.center,
+              child: Column(
+                children: space(
+                  [
+                    Container(
+                      padding: const EdgeInsets.only(bottom: kToolbarHeight),
+                      child: Text(
+                        'Theo dõi giấc ngủ'.tr(),
+                        style: context.textTheme.titleLarge,
+                      ),
+                    ),
+                    const SleepModeTrackerMoon(),
+                    Column(
+                      children: space(
+                        [
+                          const SleepModeCurrentTime(),
+                          SleepModeTrackerEndTime(
+                              endTime: sleepModeState.endTime),
+                        ],
+                        height: spacing(),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: spacing(4)),
+                      child: SleepModeDurationRemaining(
+                        endTime: sleepModeState.endTime,
+                      ),
+                    ),
+                  ],
+                  height: spacing(4),
                 ),
-                const SleepModeTrackerMoon(),
-                Column(
-                  children: space(
-                    [
-                      const SleepModeCurrentTime(),
-                      SleepModeTrackerEndTime(endTime: sleepModeState.endTime),
-                    ],
-                    height: spacing(),
-                  ),
-                ),
-                SleepModeDurationRemaining(endTime: sleepModeState.endTime),
-              ],
-              height: spacing(4),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
