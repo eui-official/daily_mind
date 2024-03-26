@@ -13,7 +13,7 @@ class BasePlayerTimeDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      dateFormatter.onFormatDuration(
+      dateFormatter.onFormatDurationHours(
         Duration(seconds: seconds),
       ),
       style: context.textTheme.bodySmall?.copyWith(

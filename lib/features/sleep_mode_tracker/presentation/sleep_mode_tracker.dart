@@ -1,5 +1,6 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
+import 'package:daily_mind/common_widgets/base_swipe_up.dart';
 import 'package:daily_mind/features/sleep_mode/domain/sleep_mode_state.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_current_time.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_duration_remaining.dart';
@@ -23,51 +24,62 @@ class SleepModeTracker extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onSwipeUp = useCallback(
+      () {
+        context.pop();
+      },
+      [],
+    );
+
     return Scaffold(
-      body: PopScope(
-        canPop: false,
-        child: Stack(
-          children: [
-            const SleepModeTrackerWave(),
-            SafeArea(
-              child: BaseSpacingContainer(
-                alignment: Alignment.center,
-                child: Column(
-                  children: space(
-                    [
-                      Container(
-                        padding: const EdgeInsets.only(bottom: kToolbarHeight),
-                        child: Text(
-                          'Theo dõi giấc ngủ'.tr(),
-                          style: context.textTheme.titleLarge,
+      body: BaseSwipeUp(
+        onSwipeUp: onSwipeUp,
+        child: PopScope(
+          canPop: false,
+          child: Stack(
+            children: [
+              const SleepModeTrackerWave(),
+              SafeArea(
+                child: BaseSpacingContainer(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: space(
+                      [
+                        Container(
+                          padding:
+                              const EdgeInsets.only(bottom: kToolbarHeight),
+                          child: Text(
+                            'Theo dõi giấc ngủ'.tr(),
+                            style: context.textTheme.titleLarge,
+                          ),
                         ),
-                      ),
-                      const SleepModeTrackerMoon(),
-                      Column(
-                        children: space(
-                          [
-                            const SleepModeCurrentTime(),
-                            SleepModeTrackerEndTime(
-                              endTime: sleepModeState.endTime,
-                            ),
-                          ],
-                          height: spacing(),
+                        const SleepModeTrackerMoon(),
+                        Column(
+                          children: space(
+                            [
+                              const SleepModeCurrentTime(),
+                              SleepModeTrackerEndTime(
+                                endTime: sleepModeState.endTime,
+                              ),
+                            ],
+                            height: spacing(),
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: spacing(4)),
-                        child: SleepModeDurationRemaining(
-                          endTime: sleepModeState.endTime,
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: spacing(4)),
+                          child: SleepModeDurationRemaining(
+                            endTime: sleepModeState.endTime,
+                          ),
                         ),
-                      ),
-                      const SleepModeScrollUpToClose(),
-                    ],
-                    height: spacing(4),
+                        const SleepModeScrollUpToClose(),
+                      ],
+                      height: spacing(4),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

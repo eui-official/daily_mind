@@ -1,3 +1,4 @@
+import 'package:daily_mind/common_applications/date_formatter.dart';
 import 'package:daily_mind/common_widgets/base_datetime_builder/hook/useBaseDateTimeTicker.dart';
 import 'package:daily_mind/extensions/date_time.dart';
 import 'package:daily_mind/theme/common.dart';
@@ -18,8 +19,6 @@ class SleepModeDurationRemaining extends HookWidget {
   Widget build(BuildContext context) {
     final now = useBaseDateTimeTicker();
     final remaining = endTime.onGetDurationDifference(now);
-    final hours = remaining.inHours;
-    final minutes = remaining.inMinutes % 60;
 
     return Column(
       children: space(
@@ -31,7 +30,7 @@ class SleepModeDurationRemaining extends HookWidget {
             ),
           ),
           Text(
-            '$hours:$minutes',
+            dateFormatter.onFormatDuration(remaining),
             style: context.textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.bold,
             ),
