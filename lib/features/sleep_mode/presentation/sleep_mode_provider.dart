@@ -43,7 +43,7 @@ class SleepModeNotifier extends _$SleepModeNotifier {
       await Alarm.setNotificationOnAppKillContent(title, body);
 
       final alarmSettings = AlarmSettings(
-        id: 42,
+        id: 1,
         dateTime: state.endTime,
         assetAudioPath: state.wakeUpOfflineAudioPath,
         loopAudio: true,

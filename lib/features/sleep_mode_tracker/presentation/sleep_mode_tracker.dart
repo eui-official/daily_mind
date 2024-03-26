@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing_container.dart';
 import 'package:daily_mind/common_widgets/base_swipe_up.dart';
@@ -30,6 +31,12 @@ class SleepModeTracker extends HookWidget {
       },
       [],
     );
+
+    useEffect(() {
+      return () {
+        Alarm.stop(1);
+      };
+    }, []);
 
     return Scaffold(
       body: BaseSwipeUp(
