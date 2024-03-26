@@ -23,46 +23,49 @@ class SleepModeTracker extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const SleepModeTrackerWave(),
-          SafeArea(
-            child: BaseSpacingContainer(
-              alignment: Alignment.center,
-              child: Column(
-                children: space(
-                  [
-                    Container(
-                      padding: const EdgeInsets.only(bottom: kToolbarHeight),
-                      child: Text(
-                        'Theo dõi giấc ngủ'.tr(),
-                        style: context.textTheme.titleLarge,
+      body: PopScope(
+        canPop: false,
+        child: Stack(
+          children: [
+            const SleepModeTrackerWave(),
+            SafeArea(
+              child: BaseSpacingContainer(
+                alignment: Alignment.center,
+                child: Column(
+                  children: space(
+                    [
+                      Container(
+                        padding: const EdgeInsets.only(bottom: kToolbarHeight),
+                        child: Text(
+                          'Theo dõi giấc ngủ'.tr(),
+                          style: context.textTheme.titleLarge,
+                        ),
                       ),
-                    ),
-                    const SleepModeTrackerMoon(),
-                    Column(
-                      children: space(
-                        [
-                          const SleepModeCurrentTime(),
-                          SleepModeTrackerEndTime(
-                              endTime: sleepModeState.endTime),
-                        ],
-                        height: spacing(),
+                      const SleepModeTrackerMoon(),
+                      Column(
+                        children: space(
+                          [
+                            const SleepModeCurrentTime(),
+                            SleepModeTrackerEndTime(
+                                endTime: sleepModeState.endTime),
+                          ],
+                          height: spacing(),
+                        ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: spacing(4)),
-                      child: SleepModeDurationRemaining(
-                        endTime: sleepModeState.endTime,
+                      Container(
+                        padding: EdgeInsets.only(top: spacing(4)),
+                        child: SleepModeDurationRemaining(
+                          endTime: sleepModeState.endTime,
+                        ),
                       ),
-                    ),
-                  ],
-                  height: spacing(4),
+                    ],
+                    height: spacing(4),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

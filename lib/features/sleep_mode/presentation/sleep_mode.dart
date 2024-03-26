@@ -41,6 +41,7 @@ class SleepMode extends HookConsumerWidget {
 
         pushNewScreen(
           context,
+          withNavBar: false,
           screen: SleepModeTracker(sleepModeState: sleepModeState),
         );
       },

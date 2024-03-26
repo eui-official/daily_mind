@@ -11,8 +11,8 @@ class SleepModeTrackerWave extends StatelessWidget {
     final backgroundColor = context.theme.colorScheme.background;
 
     final colors = [
-      context.theme.primaryColorDark,
-      context.theme.primaryColor,
+      context.theme.primaryColorDark.withOpacity(0.2),
+      context.theme.primaryColor.withOpacity(0.1),
     ];
 
     final durations = [
