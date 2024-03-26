@@ -3,6 +3,7 @@ import 'package:daily_mind/common_widgets/base_spacing/presentation/base_spacing
 import 'package:daily_mind/features/sleep_mode/domain/sleep_mode_state.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_current_time.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_duration_remaining.dart';
+import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_scroll_up_to_close.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker_end_time.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker_moon.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker_wave.dart';
@@ -47,17 +48,19 @@ class SleepModeTracker extends HookWidget {
                           [
                             const SleepModeCurrentTime(),
                             SleepModeTrackerEndTime(
-                                endTime: sleepModeState.endTime),
+                              endTime: sleepModeState.endTime,
+                            ),
                           ],
                           height: spacing(),
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: spacing(4)),
+                        padding: EdgeInsets.symmetric(vertical: spacing(4)),
                         child: SleepModeDurationRemaining(
                           endTime: sleepModeState.endTime,
                         ),
                       ),
+                      const SleepModeScrollUpToClose(),
                     ],
                     height: spacing(4),
                   ),
