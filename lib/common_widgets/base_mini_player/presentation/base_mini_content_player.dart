@@ -33,7 +33,7 @@ class BaseMiniPlayerContent extends HookConsumerWidget {
               ),
             if (remaining != Duration.zero)
               Text(
-                dateFormatter.onFormatDuration(remaining),
+                dateFormatter.onFormatDurationHours(remaining),
                 style: context.textTheme.bodySmall?.copyWith(
                   color: secondaryTextColor,
                 ),

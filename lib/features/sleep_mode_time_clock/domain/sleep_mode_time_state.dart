@@ -10,5 +10,5 @@ class SleepModeTimeState with _$SleepModeTimeState {
     required DateTime endTime,
   }) = _SleepModeTimeState;
 
-  DateTime get sleepTime => DateTime.now().toLocal();
+  DateTime get startTime => DateTime.now().toLocal();
 }

@@ -25,7 +25,7 @@ class BaseTimerPicker extends HookConsumerWidget {
 
     final title = useMemoized(() {
       if (remaining != Duration.zero) {
-        return dateFormatter.onFormatDuration(remaining);
+        return dateFormatter.onFormatDurationHours(remaining);
       }
     }, [remaining]);
 

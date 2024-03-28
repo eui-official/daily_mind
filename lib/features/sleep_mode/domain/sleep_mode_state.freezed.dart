@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SleepModeState {
-  WakeUpTime? get wakeUpTime => throw _privateConstructorUsedError;
+  OfflineAudio get wakeUpOfflineAudio => throw _privateConstructorUsedError;
+  DateTime get endTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SleepModeStateCopyWith<SleepModeState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $SleepModeStateCopyWith<$Res> {
           SleepModeState value, $Res Function(SleepModeState) then) =
       _$SleepModeStateCopyWithImpl<$Res, SleepModeState>;
   @useResult
-  $Res call({WakeUpTime? wakeUpTime});
+  $Res call({OfflineAudio wakeUpOfflineAudio, DateTime endTime});
 }
 
 /// @nodoc
@@ -45,13 +46,18 @@ class _$SleepModeStateCopyWithImpl<$Res, $Val extends SleepModeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? wakeUpTime = freezed,
+    Object? wakeUpOfflineAudio = null,
+    Object? endTime = null,
   }) {
     return _then(_value.copyWith(
-      wakeUpTime: freezed == wakeUpTime
-          ? _value.wakeUpTime
-          : wakeUpTime // ignore: cast_nullable_to_non_nullable
-              as WakeUpTime?,
+      wakeUpOfflineAudio: null == wakeUpOfflineAudio
+          ? _value.wakeUpOfflineAudio
+          : wakeUpOfflineAudio // ignore: cast_nullable_to_non_nullable
+              as OfflineAudio,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$SleepModeStateImplCopyWith<$Res>
       __$$SleepModeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WakeUpTime? wakeUpTime});
+  $Res call({OfflineAudio wakeUpOfflineAudio, DateTime endTime});
 }
 
 /// @nodoc
@@ -78,28 +84,37 @@ class __$$SleepModeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? wakeUpTime = freezed,
+    Object? wakeUpOfflineAudio = null,
+    Object? endTime = null,
   }) {
     return _then(_$SleepModeStateImpl(
-      wakeUpTime: freezed == wakeUpTime
-          ? _value.wakeUpTime
-          : wakeUpTime // ignore: cast_nullable_to_non_nullable
-              as WakeUpTime?,
+      wakeUpOfflineAudio: null == wakeUpOfflineAudio
+          ? _value.wakeUpOfflineAudio
+          : wakeUpOfflineAudio // ignore: cast_nullable_to_non_nullable
+              as OfflineAudio,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SleepModeStateImpl implements _SleepModeState {
-  const _$SleepModeStateImpl({this.wakeUpTime});
+class _$SleepModeStateImpl extends _SleepModeState {
+  const _$SleepModeStateImpl(
+      {required this.wakeUpOfflineAudio, required this.endTime})
+      : super._();
 
   @override
-  final WakeUpTime? wakeUpTime;
+  final OfflineAudio wakeUpOfflineAudio;
+  @override
+  final DateTime endTime;
 
   @override
   String toString() {
-    return 'SleepModeState(wakeUpTime: $wakeUpTime)';
+    return 'SleepModeState(wakeUpOfflineAudio: $wakeUpOfflineAudio, endTime: $endTime)';
   }
 
   @override
@@ -107,12 +122,13 @@ class _$SleepModeStateImpl implements _SleepModeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SleepModeStateImpl &&
-            (identical(other.wakeUpTime, wakeUpTime) ||
-                other.wakeUpTime == wakeUpTime));
+            (identical(other.wakeUpOfflineAudio, wakeUpOfflineAudio) ||
+                other.wakeUpOfflineAudio == wakeUpOfflineAudio) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, wakeUpTime);
+  int get hashCode => Object.hash(runtimeType, wakeUpOfflineAudio, endTime);
 
   @JsonKey(ignore: true)
   @override
@@ -122,12 +138,16 @@ class _$SleepModeStateImpl implements _SleepModeState {
           this, _$identity);
 }
 
-abstract class _SleepModeState implements SleepModeState {
-  const factory _SleepModeState({final WakeUpTime? wakeUpTime}) =
-      _$SleepModeStateImpl;
+abstract class _SleepModeState extends SleepModeState {
+  const factory _SleepModeState(
+      {required final OfflineAudio wakeUpOfflineAudio,
+      required final DateTime endTime}) = _$SleepModeStateImpl;
+  const _SleepModeState._() : super._();
 
   @override
-  WakeUpTime? get wakeUpTime;
+  OfflineAudio get wakeUpOfflineAudio;
+  @override
+  DateTime get endTime;
   @override
   @JsonKey(ignore: true)
   _$$SleepModeStateImplCopyWith<_$SleepModeStateImpl> get copyWith =>
