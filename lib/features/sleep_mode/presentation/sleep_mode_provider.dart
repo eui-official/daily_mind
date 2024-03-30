@@ -3,6 +3,7 @@ import 'package:alarm/model/alarm_settings.dart';
 import 'package:daily_mind/common_applications/notifications.dart';
 import 'package:daily_mind/common_domains/offline_audio.dart';
 import 'package:daily_mind/constants/offline_wake_up_audios.dart';
+import 'package:daily_mind/db/db.dart';
 import 'package:daily_mind/features/sleep_mode/domain/sleep_mode_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -53,6 +54,11 @@ class SleepModeNotifier extends _$SleepModeNotifier {
         notificationTitle: title,
         notificationBody: body,
         enableNotificationOnKill: true,
+      );
+
+      db.onAddAlarm(
+        state.endTime,
+        state.wakeUpOfflineAudio.id,
       );
 
       await Alarm.set(alarmSettings: alarmSettings);

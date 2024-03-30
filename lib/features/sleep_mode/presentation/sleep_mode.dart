@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/sleep_mode/presentation/sleep_mode_provider.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker.dart';
@@ -69,7 +70,8 @@ class SleepMode extends HookConsumerWidget {
                   onChanged: sleepModeNotifier.onWakeUpOfflineAudioChanged,
                 ),
                 Container(
-                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(spacing(2)),
+                  width: context.width,
                   child: ElevatedButton(
                     onPressed: onStartSleeping,
                     child: Text('Bắt đầu ngủ'.tr()),

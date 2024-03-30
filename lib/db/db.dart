@@ -1,5 +1,6 @@
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/migration/v1.dart';
+import 'package:daily_mind/db/schemas/alarm.dart';
 import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
@@ -22,6 +23,7 @@ class Db {
         MixCollectionSchema,
         SettingsSchema,
         OnlinePlaylistSchema,
+        AlarmSchema,
       ],
       directory: dir.path,
     );
@@ -230,6 +232,19 @@ class Db {
       onlinePlaylist.itemIds = itemIds;
 
       isar.onlinePlaylists.putSync(onlinePlaylist);
+    });
+  }
+
+  void onAddAlarm(
+    DateTime endTime,
+    String audioId,
+  ) {
+    isar.writeTxnSync(() {
+      final alarm = Alarm()
+        ..endTime = endTime
+        ..audioId = audioId;
+
+      isar.alarms.putSync(alarm);
     });
   }
 }

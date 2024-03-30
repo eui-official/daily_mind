@@ -2,11 +2,11 @@ import 'package:daily_mind/common_domains/offline_audio.dart';
 
 final List<OfflineAudio> kOfflineWakeUpAudios = [
   OfflineAudio(
-    id: 'birds',
-    title: 'wakeUpAudios.birds',
-    image: 'assets/images/birds.png',
+    id: 'bird',
+    title: 'wakeUpAudios.bird',
+    image: 'assets/images/bird.png',
     sources: [
-      'assets/wake_up_audios/birds.mp3',
+      'assets/wake_up_audios/bird.mp3',
     ],
   ),
   OfflineAudio(
