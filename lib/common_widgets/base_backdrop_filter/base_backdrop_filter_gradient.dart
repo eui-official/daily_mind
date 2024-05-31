@@ -18,8 +18,8 @@ class BaseBackdropFilterGradient extends HookWidget {
   Widget build(BuildContext context) {
     final gradient = useMemoized(
       () {
-        final dominantColor = pallete.dominantColor?.color ??
-            context.theme.colorScheme.background;
+        final dominantColor =
+            pallete.dominantColor?.color ?? context.theme.colorScheme.surface;
 
         return LinearGradient(
           begin: Alignment.bottomLeft,

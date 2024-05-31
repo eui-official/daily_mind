@@ -8,7 +8,7 @@ class SleepModeTrackerWave extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = context.theme.colorScheme.background;
+    final backgroundColor = context.theme.colorScheme.surface;
 
     final colors = [
       context.theme.primaryColorDark.withOpacity(0.2),

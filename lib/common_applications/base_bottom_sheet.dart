@@ -26,10 +26,9 @@ Future<T?> onShowScrollableBottomSheet<T>(
           return Stack(
             children: [
               Container(
-                color: context.theme.colorScheme.background.withOpacity(0.4),
+                color: context.theme.colorScheme.surface.withOpacity(0.4),
               ).frosted(
-                frostColor:
-                    context.theme.colorScheme.background.withOpacity(0.4),
+                frostColor: context.theme.colorScheme.surface.withOpacity(0.4),
               ),
               builder(context, scrollController)
             ],

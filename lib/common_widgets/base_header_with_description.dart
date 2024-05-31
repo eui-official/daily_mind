@@ -48,7 +48,6 @@ class BaseHeaderWithDescription extends StatelessWidget {
               description,
               style: context.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w500,
-                color: secondaryTextColor,
               ),
               maxLines: maxLines,
               overflow: overflow,

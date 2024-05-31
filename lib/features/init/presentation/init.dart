@@ -3,7 +3,6 @@ import 'package:daily_mind/common_hooks/use_effect_delayed.dart';
 import 'package:daily_mind/common_providers/base_audio_handler_provider.dart';
 import 'package:daily_mind/common_providers/config_provider.dart';
 import 'package:daily_mind/common_widgets/base_showcase/presentation/base_showcase_builder.dart';
-import 'package:daily_mind/common_widgets/base_skeleton_theme.dart';
 import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/features/setting_watcher/presentation/setting_watcher.dart';
 import 'package:daily_mind/features/settings/application/settings.dart';
@@ -60,9 +59,7 @@ class Init extends HookConsumerWidget {
               theme: createDarkTheme(theme),
               themeMode: ThemeMode.dark,
               builder: (context, child) {
-                return BaseSkeletonTheme(
-                  child: child ?? kEmptyWidget,
-                );
+                return child ?? kEmptyWidget;
               },
               title: 'DailyMind',
             );

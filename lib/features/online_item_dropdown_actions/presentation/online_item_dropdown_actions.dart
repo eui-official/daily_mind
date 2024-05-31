@@ -23,7 +23,7 @@ class OnlineItemDropdownActions extends HookConsumerWidget {
 
     final fromSource = useMemoized(
       () {
-        return configState.fromSources.firstWhereOrNull(
+        return configState.requireValue.fromSources.firstWhereOrNull(
           (f) => f.id == audio.fromSource,
         );
       },
