@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_widgets/base_sliable.dart';
-import 'package:daily_mind/constants/constants.dart';
 import 'package:daily_mind/extensions/theme.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -32,7 +31,7 @@ class BaseTile extends HookWidget {
     final ancestor = context.findAncestorWidgetOfExactType<BaseSliable>();
 
     final clipBorderRadius = useMemoized(() {
-      if (ancestor == kNull) {
+      if (ancestor == null) {
         return circularRadius(2);
       }
 

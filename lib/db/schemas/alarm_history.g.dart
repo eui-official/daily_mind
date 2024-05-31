@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'alarm.dart';
+part of 'alarm_history.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,13 +9,13 @@ part of 'alarm.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetAlarmCollection on Isar {
-  IsarCollection<Alarm> get alarms => this.collection();
+extension GetAlarmHistoryCollection on Isar {
+  IsarCollection<AlarmHistory> get alarmHistorys => this.collection();
 }
 
-const AlarmSchema = CollectionSchema(
-  name: r'Alarm',
-  id: -6172094888861729789,
+const AlarmHistorySchema = CollectionSchema(
+  name: r'AlarmHistory',
+  id: -1463096488341244298,
   properties: {
     r'audioId': PropertySchema(
       id: 0,
@@ -28,22 +28,22 @@ const AlarmSchema = CollectionSchema(
       type: IsarType.dateTime,
     )
   },
-  estimateSize: _alarmEstimateSize,
-  serialize: _alarmSerialize,
-  deserialize: _alarmDeserialize,
-  deserializeProp: _alarmDeserializeProp,
+  estimateSize: _alarmHistoryEstimateSize,
+  serialize: _alarmHistorySerialize,
+  deserialize: _alarmHistoryDeserialize,
+  deserializeProp: _alarmHistoryDeserializeProp,
   idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _alarmGetId,
-  getLinks: _alarmGetLinks,
-  attach: _alarmAttach,
+  getId: _alarmHistoryGetId,
+  getLinks: _alarmHistoryGetLinks,
+  attach: _alarmHistoryAttach,
   version: '3.1.0+1',
 );
 
-int _alarmEstimateSize(
-  Alarm object,
+int _alarmHistoryEstimateSize(
+  AlarmHistory object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -57,8 +57,8 @@ int _alarmEstimateSize(
   return bytesCount;
 }
 
-void _alarmSerialize(
-  Alarm object,
+void _alarmHistorySerialize(
+  AlarmHistory object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -67,20 +67,20 @@ void _alarmSerialize(
   writer.writeDateTime(offsets[1], object.endTime);
 }
 
-Alarm _alarmDeserialize(
+AlarmHistory _alarmHistoryDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Alarm();
+  final object = AlarmHistory();
   object.audioId = reader.readStringOrNull(offsets[0]);
   object.endTime = reader.readDateTimeOrNull(offsets[1]);
   object.id = id;
   return object;
 }
 
-P _alarmDeserializeProp<P>(
+P _alarmHistoryDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -96,28 +96,31 @@ P _alarmDeserializeProp<P>(
   }
 }
 
-Id _alarmGetId(Alarm object) {
+Id _alarmHistoryGetId(AlarmHistory object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _alarmGetLinks(Alarm object) {
+List<IsarLinkBase<dynamic>> _alarmHistoryGetLinks(AlarmHistory object) {
   return [];
 }
 
-void _alarmAttach(IsarCollection<dynamic> col, Id id, Alarm object) {
+void _alarmHistoryAttach(
+    IsarCollection<dynamic> col, Id id, AlarmHistory object) {
   object.id = id;
 }
 
-extension AlarmQueryWhereSort on QueryBuilder<Alarm, Alarm, QWhere> {
-  QueryBuilder<Alarm, Alarm, QAfterWhere> anyId() {
+extension AlarmHistoryQueryWhereSort
+    on QueryBuilder<AlarmHistory, AlarmHistory, QWhere> {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension AlarmQueryWhere on QueryBuilder<Alarm, Alarm, QWhereClause> {
-  QueryBuilder<Alarm, Alarm, QAfterWhereClause> idEqualTo(Id id) {
+extension AlarmHistoryQueryWhere
+    on QueryBuilder<AlarmHistory, AlarmHistory, QWhereClause> {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -126,7 +129,8 @@ extension AlarmQueryWhere on QueryBuilder<Alarm, Alarm, QWhereClause> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterWhereClause> idNotEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -148,7 +152,8 @@ extension AlarmQueryWhere on QueryBuilder<Alarm, Alarm, QWhereClause> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterWhereClause> idGreaterThan(
+      Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -157,7 +162,7 @@ extension AlarmQueryWhere on QueryBuilder<Alarm, Alarm, QWhereClause> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -166,7 +171,7 @@ extension AlarmQueryWhere on QueryBuilder<Alarm, Alarm, QWhereClause> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterWhereClause> idBetween(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -183,8 +188,10 @@ extension AlarmQueryWhere on QueryBuilder<Alarm, Alarm, QWhereClause> {
   }
 }
 
-extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdIsNull() {
+extension AlarmHistoryQueryFilter
+    on QueryBuilder<AlarmHistory, AlarmHistory, QFilterCondition> {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'audioId',
@@ -192,7 +199,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdIsNotNull() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'audioId',
@@ -200,7 +208,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdEqualTo(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdEqualTo(
     String? value, {
     bool caseSensitive = true,
   }) {
@@ -213,7 +222,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdGreaterThan(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdGreaterThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -228,7 +238,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdLessThan(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdLessThan(
     String? value, {
     bool include = false,
     bool caseSensitive = true,
@@ -243,7 +254,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdBetween(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdBetween(
     String? lower,
     String? upper, {
     bool includeLower = true,
@@ -262,7 +274,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdStartsWith(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -275,7 +288,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdEndsWith(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
@@ -288,9 +302,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdContains(
-      String value,
-      {bool caseSensitive = true}) {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
         property: r'audioId',
@@ -300,9 +313,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
         property: r'audioId',
@@ -312,7 +324,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdIsEmpty() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'audioId',
@@ -321,7 +334,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> audioIdIsNotEmpty() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      audioIdIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'audioId',
@@ -330,7 +344,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> endTimeIsNull() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      endTimeIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'endTime',
@@ -338,7 +353,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> endTimeIsNotNull() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      endTimeIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'endTime',
@@ -346,8 +362,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> endTimeEqualTo(
-      DateTime? value) {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      endTimeEqualTo(DateTime? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'endTime',
@@ -356,7 +372,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> endTimeGreaterThan(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      endTimeGreaterThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -369,7 +386,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> endTimeLessThan(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      endTimeLessThan(
     DateTime? value, {
     bool include = false,
   }) {
@@ -382,7 +400,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> endTimeBetween(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition>
+      endTimeBetween(
     DateTime? lower,
     DateTime? upper, {
     bool includeLower = true,
@@ -399,7 +418,8 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition> idEqualTo(
+      Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -408,7 +428,7 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -421,7 +441,7 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> idLessThan(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -434,7 +454,7 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterFilterCondition> idBetween(
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -452,103 +472,109 @@ extension AlarmQueryFilter on QueryBuilder<Alarm, Alarm, QFilterCondition> {
   }
 }
 
-extension AlarmQueryObject on QueryBuilder<Alarm, Alarm, QFilterCondition> {}
+extension AlarmHistoryQueryObject
+    on QueryBuilder<AlarmHistory, AlarmHistory, QFilterCondition> {}
 
-extension AlarmQueryLinks on QueryBuilder<Alarm, Alarm, QFilterCondition> {}
+extension AlarmHistoryQueryLinks
+    on QueryBuilder<AlarmHistory, AlarmHistory, QFilterCondition> {}
 
-extension AlarmQuerySortBy on QueryBuilder<Alarm, Alarm, QSortBy> {
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> sortByAudioId() {
+extension AlarmHistoryQuerySortBy
+    on QueryBuilder<AlarmHistory, AlarmHistory, QSortBy> {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> sortByAudioId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.asc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> sortByAudioIdDesc() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> sortByAudioIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.desc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> sortByEndTime() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> sortByEndTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'endTime', Sort.asc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> sortByEndTimeDesc() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> sortByEndTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'endTime', Sort.desc);
     });
   }
 }
 
-extension AlarmQuerySortThenBy on QueryBuilder<Alarm, Alarm, QSortThenBy> {
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> thenByAudioId() {
+extension AlarmHistoryQuerySortThenBy
+    on QueryBuilder<AlarmHistory, AlarmHistory, QSortThenBy> {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> thenByAudioId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.asc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> thenByAudioIdDesc() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> thenByAudioIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'audioId', Sort.desc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> thenByEndTime() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> thenByEndTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'endTime', Sort.asc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> thenByEndTimeDesc() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> thenByEndTimeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'endTime', Sort.desc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> thenById() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 }
 
-extension AlarmQueryWhereDistinct on QueryBuilder<Alarm, Alarm, QDistinct> {
-  QueryBuilder<Alarm, Alarm, QDistinct> distinctByAudioId(
+extension AlarmHistoryQueryWhereDistinct
+    on QueryBuilder<AlarmHistory, AlarmHistory, QDistinct> {
+  QueryBuilder<AlarmHistory, AlarmHistory, QDistinct> distinctByAudioId(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'audioId', caseSensitive: caseSensitive);
     });
   }
 
-  QueryBuilder<Alarm, Alarm, QDistinct> distinctByEndTime() {
+  QueryBuilder<AlarmHistory, AlarmHistory, QDistinct> distinctByEndTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'endTime');
     });
   }
 }
 
-extension AlarmQueryProperty on QueryBuilder<Alarm, Alarm, QQueryProperty> {
-  QueryBuilder<Alarm, int, QQueryOperations> idProperty() {
+extension AlarmHistoryQueryProperty
+    on QueryBuilder<AlarmHistory, AlarmHistory, QQueryProperty> {
+  QueryBuilder<AlarmHistory, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Alarm, String?, QQueryOperations> audioIdProperty() {
+  QueryBuilder<AlarmHistory, String?, QQueryOperations> audioIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'audioId');
     });
   }
 
-  QueryBuilder<Alarm, DateTime?, QQueryOperations> endTimeProperty() {
+  QueryBuilder<AlarmHistory, DateTime?, QQueryOperations> endTimeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'endTime');
     });

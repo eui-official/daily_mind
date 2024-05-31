@@ -70,7 +70,7 @@ class MixdNotifier extends StateNotifier<MixState> {
     if (recentMixCollectionId != null) {
       db.onDeleteCollection(recentMixCollectionId);
 
-      state = state.copyWith(recentMixCollection: kNull);
+      state = state.copyWith(recentMixCollection: null);
     }
   }
 

@@ -1,6 +1,6 @@
 import 'package:daily_mind/common_applications/safe_builder.dart';
 import 'package:daily_mind/db/migration/v1.dart';
-import 'package:daily_mind/db/schemas/alarm.dart';
+import 'package:daily_mind/db/schemas/alarm_history.dart';
 import 'package:daily_mind/db/schemas/first_time.dart';
 import 'package:daily_mind/db/schemas/mix_collection.dart';
 import 'package:daily_mind/db/schemas/online_playlist.dart';
@@ -23,7 +23,7 @@ class Db {
         MixCollectionSchema,
         SettingsSchema,
         OnlinePlaylistSchema,
-        AlarmSchema,
+        AlarmHistorySchema,
       ],
       directory: dir.path,
     );
@@ -240,11 +240,25 @@ class Db {
     String audioId,
   ) {
     isar.writeTxnSync(() {
-      final alarm = Alarm()
+      final alarmHistory = AlarmHistory()
         ..endTime = endTime
         ..audioId = audioId;
 
-      isar.alarms.putSync(alarm);
+      isar.alarmHistorys.putSync(alarmHistory);
+    });
+  }
+
+  List<AlarmHistory> onGetAlarmHistories() {
+    return isar.alarmHistorys.where().findAllSync();
+  }
+
+  Stream<List<AlarmHistory>> onStreamAlarmHistories() {
+    return isar.alarmHistorys.where().watch();
+  }
+
+  void onDeleteAlarmHistor(int id) {
+    isar.writeTxnSync(() {
+      isar.alarmHistorys.deleteSync(id);
     });
   }
 }

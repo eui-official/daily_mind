@@ -1,9 +1,9 @@
 import 'package:isar/isar.dart';
 
-part 'alarm.g.dart';
+part 'alarm_history.g.dart';
 
 @collection
-class Alarm {
+class AlarmHistory {
   Id id = Isar.autoIncrement;
 
   DateTime? endTime;

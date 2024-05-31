@@ -1,6 +1,7 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/sleep_mode/presentation/sleep_mode_provider.dart';
+import 'package:daily_mind/features/sleep_mode_list_alarm/presentation/sleep_mode_list_alarm.dart';
 import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock.dart';
 import 'package:daily_mind/features/sleep_mode_time_range/presentation/sleep_mode_time_range.dart';
@@ -57,6 +58,7 @@ class SleepMode extends HookConsumerWidget {
             title: greeting,
             children: space(
               [
+                const SleepModeListAlarm(),
                 SleepModeTimeRange(
                   endTime: sleepModeState.endTime,
                   onEndTimeChanged: sleepModeNotifier.onEndTimeChanged,

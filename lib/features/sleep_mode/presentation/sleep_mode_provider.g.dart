@@ -6,7 +6,7 @@ part of 'sleep_mode_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sleepModeNotifierHash() => r'8b7357b2b6bb68ecbca425168635e81b5367a355';
+String _$sleepModeNotifierHash() => r'704cd961564c5f3aebbaf04f6692f86565817d5a';
 
 /// See also [SleepModeNotifier].
 @ProviderFor(SleepModeNotifier)
