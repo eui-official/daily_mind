@@ -4,14 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final fontFamily = GoogleFonts.inter().fontFamily;
+final fontFamily = GoogleFonts.manrope().fontFamily;
 
 ThemeData createDarkTheme(SupportedTheme theme) {
   return FlexThemeData.dark(
     fontFamily: fontFamily,
     scheme: theme.scheme,
     useMaterial3: true,
-    darkIsTrueBlack: true,
     subThemesData: FlexSubThemesData(
       alignedDropdown: true,
       inputDecoratorFocusedHasBorder: false,

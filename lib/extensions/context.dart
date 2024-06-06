@@ -28,21 +28,16 @@ extension ContextExt on BuildContext {
           theme.colorScheme.surface.withOpacity(.4),
           theme.colorScheme.surface.withOpacity(.2),
         ],
-        stops: const [
-          0,
-          0.6,
-        ],
         begin: Alignment.bottomLeft,
         end: Alignment.topRight,
       );
 
   LinearGradient get baseBackgroundLinearGradient => LinearGradient(
-        begin: Alignment.topRight,
-        end: Alignment.bottomLeft,
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
         colors: [
           theme.primaryColorDark.withOpacity(0.1),
           theme.colorScheme.surface,
         ],
-        stops: const [0.2, 0.8],
       );
 }

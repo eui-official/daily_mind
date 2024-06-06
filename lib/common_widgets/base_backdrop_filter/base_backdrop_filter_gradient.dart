@@ -11,7 +11,7 @@ class BaseBackdropFilterGradient extends HookWidget {
   const BaseBackdropFilterGradient({
     super.key,
     required this.pallete,
-    this.dominantColorOpacity = 0.5,
+    this.dominantColorOpacity = 0.3,
   });
 
   @override
@@ -24,13 +24,9 @@ class BaseBackdropFilterGradient extends HookWidget {
         return LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
-          stops: const [
-            0,
-            0.6,
-          ],
           colors: [
-            context.theme.cardColor,
-            dominantColor.withOpacity(dominantColorOpacity),
+            dominantColor,
+            context.theme.cardColor.withOpacity(dominantColorOpacity),
           ],
         );
       },

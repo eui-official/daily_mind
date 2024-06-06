@@ -1,20 +1,20 @@
 import 'package:daily_mind/features/settings/domain/supported_theme.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
-const kDefaultThemeId = "deepPurple";
+const kDefaultThemeId = "teal";
 
 const kDefaultTheme = SupportedTheme(
-  id: "deepPurple",
-  title: 'Deep Purple',
-  scheme: FlexScheme.deepPurple,
+  id: "teal",
+  title: 'Teal',
+  scheme: FlexScheme.tealM3,
 );
 
 List<SupportedTheme> kSupportedThemes = [
   kDefaultTheme,
   const SupportedTheme(
-    id: "teal",
-    title: 'Teal',
-    scheme: FlexScheme.amber,
+    id: "deepPurple",
+    title: 'Deep Purple',
+    scheme: FlexScheme.deepPurple,
   ),
   const SupportedTheme(
     id: "amber",
