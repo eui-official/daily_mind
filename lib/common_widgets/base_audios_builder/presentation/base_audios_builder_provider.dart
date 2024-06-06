@@ -30,9 +30,9 @@ class BaseAudiosBuilderNotifier extends _$BaseAudiosBuilderNotifier {
     List<AudioCategory> audioCategories = [];
 
     groupAudios.forEach((categoryId, audios) {
-      final category = configState.categories
+      final category = configState.requireValue.categories
           .firstWhere((category) => category.id == categoryId);
-      final group = configState.groups
+      final group = configState.requireValue.groups
           .firstWhereOrNull((group) => group.id == category.group);
 
       audioCategories.add(

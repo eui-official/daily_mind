@@ -1,5 +1,4 @@
 import 'package:daily_mind/common_widgets/base_backdrop_filter/base_backdrop_filter.dart';
-import 'package:daily_mind/common_widgets/base_skeleton_box.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
@@ -29,7 +28,6 @@ class BaseCardImage extends StatelessWidget {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            const BaseSkeletonBox(),
             Positioned.fill(
               child: FadeInImage(
                 fit: BoxFit.cover,

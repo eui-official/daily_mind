@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-double kBlur = 4;
+const double kBlur = 4;
 
 const kAppDescription = 'DailyMind - Soothe, Sleep, Relax';
 

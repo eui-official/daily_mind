@@ -11,26 +11,22 @@ class BaseBackdropFilterGradient extends HookWidget {
   const BaseBackdropFilterGradient({
     super.key,
     required this.pallete,
-    this.dominantColorOpacity = 0.5,
+    this.dominantColorOpacity = 0.3,
   });
 
   @override
   Widget build(BuildContext context) {
     final gradient = useMemoized(
       () {
-        final dominantColor = pallete.dominantColor?.color ??
-            context.theme.colorScheme.background;
+        final dominantColor =
+            pallete.dominantColor?.color ?? context.theme.colorScheme.surface;
 
         return LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
-          stops: const [
-            0,
-            0.6,
-          ],
           colors: [
-            context.theme.cardColor,
-            dominantColor.withOpacity(dominantColorOpacity),
+            dominantColor,
+            context.theme.cardColor.withOpacity(dominantColorOpacity),
           ],
         );
       },

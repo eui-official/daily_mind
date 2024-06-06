@@ -11,7 +11,7 @@ class AppLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: context.theme.colorScheme.background,
+        color: context.theme.colorScheme.surface,
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

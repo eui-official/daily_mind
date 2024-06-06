@@ -27,16 +27,12 @@ class BaseMiniPlayerContent extends HookConsumerWidget {
             if (subtitle.isNotEmpty)
               Text(
                 subtitle,
-                style: context.textTheme.bodySmall?.copyWith(
-                  color: secondaryTextColor,
-                ),
+                style: context.textTheme.bodySmall,
               ),
             if (remaining != Duration.zero)
               Text(
                 dateFormatter.onFormatDurationHours(remaining),
-                style: context.textTheme.bodySmall?.copyWith(
-                  color: secondaryTextColor,
-                ),
+                style: context.textTheme.bodySmall,
               ),
           ],
           width: spacing(2),

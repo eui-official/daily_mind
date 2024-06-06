@@ -1,6 +1,5 @@
-import 'package:daily_mind/theme/common.dart';
 import 'package:flutter/material.dart';
-import 'package:skeletons/skeletons.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class BaseSkeletonBox extends StatelessWidget {
   final double? height;
@@ -14,11 +13,10 @@ class BaseSkeletonBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SkeletonLine(
-      style: SkeletonLineStyle(
+    return Skeletonizer(
+      child: SizedBox(
         height: height,
         width: width,
-        borderRadius: circularRadius(2),
       ),
     );
   }

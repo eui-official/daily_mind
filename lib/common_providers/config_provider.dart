@@ -11,29 +11,15 @@ part 'config_provider.g.dart';
 @riverpod
 class ConfigNotifier extends _$ConfigNotifier {
   @override
-  ConfigState build() {
-    onInit();
+  Future<ConfigState> build() => onGetBaseConfig();
 
-    return const ConfigState(
-      isLoading: true,
-      artists: [],
-      categories: [],
-      fromSources: [],
-      groups: [],
-    );
-  }
-
-  void onInit() {
-    onGetBaseConfig();
-  }
-
-  Future<void> onGetBaseConfig() async {
+  Future<ConfigState> onGetBaseConfig() async {
     final List<Category> categories = await supabaseAPI.onGetCategories();
     final List<Group> groups = await supabaseAPI.onGetGroups();
     final List<FromSource> fromSources = await supabaseAPI.onGetFromSources();
     final List<Artist> artists = await supabaseAPI.onGetArtists();
 
-    state = state.copyWith(
+    return ConfigState(
       isLoading: false,
       artists: artists,
       categories: categories,

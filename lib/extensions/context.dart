@@ -10,7 +10,7 @@ extension ContextExt on BuildContext {
 
   Future onShowPopover(String content) {
     return showPopover(
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: theme.colorScheme.surface,
       context: this,
       width: width * 0.7,
       bodyBuilder: (context) => BaseSpacingContainer(
@@ -25,24 +25,19 @@ extension ContextExt on BuildContext {
 
   LinearGradient get baseLinearGradient => LinearGradient(
         colors: [
-          theme.colorScheme.background.withOpacity(.4),
-          theme.colorScheme.background.withOpacity(.2),
-        ],
-        stops: const [
-          0,
-          0.6,
+          theme.colorScheme.surface.withOpacity(.4),
+          theme.colorScheme.surface.withOpacity(.2),
         ],
         begin: Alignment.bottomLeft,
         end: Alignment.topRight,
       );
 
   LinearGradient get baseBackgroundLinearGradient => LinearGradient(
-        begin: Alignment.topRight,
-        end: Alignment.bottomLeft,
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
         colors: [
           theme.primaryColorDark.withOpacity(0.1),
-          theme.colorScheme.background,
+          theme.colorScheme.surface,
         ],
-        stops: const [0.2, 0.8],
       );
 }

@@ -1,8 +1,8 @@
 import 'package:daily_mind/features/app_bar_scrollview/presentation/app_bar_scrollview.dart';
 import 'package:daily_mind/features/sleep_mode/presentation/sleep_mode_provider.dart';
-import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker.dart';
 import 'package:daily_mind/features/sleep_mode_time_clock/presentation/sleep_mode_time_clock.dart';
 import 'package:daily_mind/features/sleep_mode_time_range/presentation/sleep_mode_time_range.dart';
+import 'package:daily_mind/features/sleep_mode_tracker/presentation/sleep_mode_tracker.dart';
 import 'package:daily_mind/features/sleep_mode_wake_up_audios/presentation/sleep_mode_wake_up_audios.dart';
 import 'package:daily_mind/theme/common.dart';
 import 'package:daily_mind/theme/theme.dart';
@@ -10,7 +10,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class SleepMode extends HookConsumerWidget {
   const SleepMode({super.key});
@@ -39,9 +39,8 @@ class SleepMode extends HookConsumerWidget {
       () {
         sleepModeNotifier.onStartAlarm();
 
-        pushNewScreen(
+        pushScreen(
           context,
-          withNavBar: false,
           screen: SleepModeTracker(sleepModeState: sleepModeState),
         );
       },

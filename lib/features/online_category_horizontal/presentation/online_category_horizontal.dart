@@ -29,7 +29,7 @@ class OnlineCategoryHorizontal extends HookWidget {
       value: paletteGenerator.data,
       builder: (palette) {
         final color = palette.dominantColor?.color.withOpacity(0.6) ??
-            context.theme.colorScheme.background;
+            context.theme.colorScheme.surface;
 
         return BaseOnlineHandler(
           audioCategory: audioCategory,
